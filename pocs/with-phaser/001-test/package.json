@@ -1,0 +1,21 @@
+{
+  "name": "001-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc && webpack",
+    "start": "webpack --watch & live-server --port=8085"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^6.0.1",
+    "phaser": "^3.18.1",
+    "webpack": "^4.35.2"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.5"
+  }
+}
