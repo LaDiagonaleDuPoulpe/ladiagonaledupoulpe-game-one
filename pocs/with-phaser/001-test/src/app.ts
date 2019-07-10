@@ -8,6 +8,8 @@ export class StarfallGame extends Phaser.Game {
     constructor(config: Phaser.Types.Core.GameConfig) {
         super(config);
     }
+
+    
 }
 
 // STARTER : https://phaser.io/tutorials/getting-started-phaser3/part5

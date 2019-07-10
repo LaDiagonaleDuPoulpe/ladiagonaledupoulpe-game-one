@@ -1,0 +1,19 @@
+{
+  "name": "002-first-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "phaser": "^3.18.1",
+    "webpack": "^4.35.2"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc && webpack"
+  },
+  "author": "",
+  "license": "ISC"
+}
