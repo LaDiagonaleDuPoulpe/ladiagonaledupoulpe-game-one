@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
     mode: 'production',
@@ -19,5 +20,11 @@ module.exports = {
     output: {
         filename: 'app.js',
         path: path.resolve(__dirname, 'dist')
-    }
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            'CANVAS_RENDERER': JSON.stringify(true),
+            'WEBGL_RENDERER': JSON.stringify(true)
+        })
+    ]
 };
