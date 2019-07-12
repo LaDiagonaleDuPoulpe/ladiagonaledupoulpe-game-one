@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="64" tileheight="64" infinite="0" nextlayerid="7" nextobjectid="12">
+ <tileset firstgid="1" name="RPGpack_sheet" tilewidth="64" tileheight="64" tilecount="260" columns="20">
+  <image source="../assets/images/RPGpack_sheet.png" width="1280" height="832"/>
+ </tileset>
+ <layer id="1" name="Background" width="10" height="10">
+  <data encoding="csv">
+11,13,7,7,7,7,7,7,7,8,
+31,33,22,22,22,22,22,22,22,28,
+51,53,22,22,22,22,22,22,22,28,
+26,28,22,22,22,22,22,22,22,28,
+26,28,22,22,22,22,22,22,22,28,
+26,48,22,22,22,22,22,22,22,28,
+26,22,22,22,22,22,22,22,22,28,
+26,22,22,22,22,22,22,22,22,28,
+26,22,22,4,5,22,22,22,22,28,
+46,47,47,24,25,47,47,47,47,48
+</data>
+ </layer>
+ <layer id="2" name="Blocked" width="10" height="10">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,181,0,0,186,0,
+0,201,201,0,0,0,0,186,0,0,
+0,221,221,202,0,0,0,0,0,0,
+0,201,201,222,0,0,0,0,0,0,
+0,221,221,0,0,0,0,0,0,0,
+0,0,0,0,0,0,186,181,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="3" name="Player">
+  <object id="1" name="StartingPosition" type="StartingPosition" x="477" y="360">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="Enemies">
+  <object id="2" name="Enemies" type="Enemies" x="132" y="504">
+   <point/>
+  </object>
+  <object id="3" name="Enemies" type="Enemies" x="289" y="82">
+   <point/>
+  </object>
+  <object id="4" name="Enemies" type="Enemies" x="228" y="467">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="Coins">
+  <object id="5" name="Coin" type="Coin" x="476" y="108">
+   <point/>
+  </object>
+  <object id="6" name="Coin" type="Coin" x="231" y="198">
+   <point/>
+  </object>
+  <object id="7" name="Coin" type="Coin" x="276" y="159">
+   <point/>
+  </object>
+  <object id="8" name="Coin" type="Coin" x="365" y="513">
+   <point/>
+  </object>
+  <object id="9" x="365" y="512">
+   <point/>
+  </object>
+  <object id="10" name="Coin" type="Coin" x="494" y="543">
+   <point/>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="Portal">
+  <object id="11" name="Portal" type="Portal" x="283" y="616">
+   <point/>
+  </object>
+ </objectgroup>
+</map>

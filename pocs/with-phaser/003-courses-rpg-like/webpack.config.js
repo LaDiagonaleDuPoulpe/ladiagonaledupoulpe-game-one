@@ -1,9 +1,21 @@
-const path = require('path');
+'use strict';
+
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
-    mode: 'production',
-    entry: './scripts/index.js',
+
+    entry: [
+        'babel-polyfill',
+        './scripts/index.js'
+    ],
+
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/dist/',
+        filename: 'app.js'
+    },
+
     module: {
         rules: [
             {
@@ -17,14 +29,12 @@ module.exports = {
             }
         ]
     },
-    output: {
-        filename: 'app.js',
-        path: path.resolve(__dirname, 'dist')
-    },
+
     plugins: [
         new webpack.DefinePlugin({
             'CANVAS_RENDERER': JSON.stringify(true),
             'WEBGL_RENDERER': JSON.stringify(true)
         })
     ]
+
 };

@@ -19,5 +19,7 @@ console.log('wtf');
 window.game = new Game(config);
 
 window.addEventListener('resize', (event) => {
-    window.game.resize(window.innerWidth, window.innerHeight);
+    console.log(window.innerWidth);
+    if(window.game)
+        window.game.scale.resize(window.innerWidth, window.innerHeight);
 });
