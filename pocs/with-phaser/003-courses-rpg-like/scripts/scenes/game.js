@@ -12,8 +12,14 @@ export default class GameScene extends Phaser.Scene {
     
     create() {
         this.scale.on('resize', this.resize, this);
+        this.cursors = this.input.keyboard.createCursorKeys();
+
         this.createMap();
         this.createPlayer();
+    }
+    
+    update() {
+        this.player.update(this.cursors);
     }
     
     createPlayer() {
