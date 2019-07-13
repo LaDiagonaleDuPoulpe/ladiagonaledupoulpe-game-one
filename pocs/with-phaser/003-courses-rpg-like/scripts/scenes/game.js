@@ -16,10 +16,16 @@ export default class GameScene extends Phaser.Scene {
 
         this.createMap();
         this.createPlayer();
+
+        this.addCollisions();
     }
     
     update() {
         this.player.update(this.cursors);
+    }
+
+    addCollisions() {
+        this.physics.add.collider(this.player, this.blockedLayer);
     }
     
     createPlayer() {
@@ -40,7 +46,9 @@ export default class GameScene extends Phaser.Scene {
         this.tiles = this.map.addTilesetImage('RPGpack_sheet');
         // create our layers
         this.backgroundLayer = this.map.createStaticLayer('Background', this.tiles, 0, 0);
+        
         this.blockedLayer = this.map.createStaticLayer('Blocked', this.tiles, 0, 0);
+        this.blockedLayer.setCollisionByExclusion([-1]);
     }
     
     resize(gameSize, baseSize, displaySize, resolution) {
