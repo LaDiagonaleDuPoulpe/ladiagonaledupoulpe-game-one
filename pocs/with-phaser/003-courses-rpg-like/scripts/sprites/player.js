@@ -5,6 +5,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         super(scene, x, y, 'characters', 325);
         this.scene = scene;
         
+        this.health = 3;
+        this.hitDelay = false;
+        
         console.log('Player', 'constructor');           
         
         this.initialize();
@@ -17,6 +20,13 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         
         this.setScale(4);
         console.log('scale ?!');
+    }
+    
+    loseHealth() {
+        this.health --;
+        if(this.health <= 0) {
+            this.scene.loadNextLevel(true);
+        }
     }
     
     update(cursors) {
@@ -32,6 +42,26 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
             this.setVelocityX(-150);
         } else if (cursors.right.isDown) {
             this.setVelocityX(150);
+        }
+    }
+    
+    enemyCollision(player, enemy) {
+        console.log('collision');
+
+        if(! this.hitDelay) {
+            this.loseHealth();
+            this.hitDelay = true;
+
+            this.tint = 0xff0000;
+            
+            this.scene.time.addEvent({
+                delay: 1200,
+                callback: () => {
+                    this.hitDelay = false;
+                    this.tint = 0xffffff;
+                },
+                callbackScope: this
+            });
         }
     }
 }

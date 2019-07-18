@@ -1,6 +1,8 @@
 import 'phaser';
 import Player from '../sprites/player';
 import Portal from '../sprites/portal';
+import Coins from '../groups/coins';
+import Enemies from '../groups/enemies';
 
 export default class GameScene extends Phaser.Scene {
     constructor(key) {
@@ -18,9 +20,14 @@ export default class GameScene extends Phaser.Scene {
         this.cursors = this.input.keyboard.createCursorKeys();
         
         this.createMap();
+
         this.createPlayer();
         
         this.createPortal();
+
+        this.createCoins();
+
+        this.createEnemies();
         
         this.addCollisions();
         
@@ -31,7 +38,19 @@ export default class GameScene extends Phaser.Scene {
     update() {
         this.player.update(this.cursors);
     }
+
+    createEnemies() {
+        this.enemies = this.map.createFromObjects('Enemies', 'Enemy', {});
+        this.enemiesGroup = new Enemies(this.physics.world, this, [], this.enemies);
+    }
     
+    createCoins() {
+        this.coins = this.map.createFromObjects('Coins', 'Coin', { key: 'coin' })
+        
+        console.log('coins', this.coins);
+        this.coinsGroup = new Coins(this.physics.world, this, [], this.coins);
+    }
+
     createPortal() {
         this.map.findObject('Portal', (obj) => {
             if(this.data.level === 1) {
@@ -44,13 +63,27 @@ export default class GameScene extends Phaser.Scene {
     
     addCollisions() {
         this.physics.add.collider(this.player, this.blockedLayer);
+        this.physics.add.collider(this.enemiesGroup, this.blockedLayer);
+        this.physics.add.overlap(this.player, this.enemiesGroup, this.player.enemyCollision.bind(this.player));
         this.physics.add.overlap(this.player, this.portal, this.loadNextLevel.bind(this));
+        this.physics.add.overlap(this.coinsGroup, this.player, this.coinsGroup.collect.bind(this.coinsGroup));
+    
+
+        // this.physics.add.collider(this.player, this.blockedLayer);
+        // this.physics.add.collider(this.enemiesGroup, this.blockedLayer);
+
+
+        // this.physics.add.overlap(this.player, this.enemiesGroup, this.player.enemyCollision.bind(this.player));
+        // this.physics.add.overlap(this.player, this.portal, this.loadNextLevel.bind(this));
+        // this.physics.add.overlap(this.coinsGroup, this.player, this.coinsGroup.collect.bind(this.coinsGroup));
+   
+        
     }
     
     createPlayer() {
         this.map.findObject('Player', (obj) => {
             if(this.data.newGame && this.data.level ===1) {
-                if (obj.type === 'StartingPositionPortal') {
+                if (obj.type === 'StartingPosition') {
                     this.player = new Player(this, obj.x, obj.y);
                 }
             }
