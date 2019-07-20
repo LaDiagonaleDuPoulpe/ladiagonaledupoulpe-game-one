@@ -7,6 +7,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         
         this.health = 3;
         this.hitDelay = false;
+        this.direction = 'up';
         
         console.log('Player', 'constructor');           
         
@@ -24,6 +25,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     
     loseHealth() {
         this.health --;
+        
+        this.scene.events.emit('loseHealth', this.health);
+        
         if(this.health <= 0) {
             this.scene.loadNextLevel(true);
         }
@@ -34,24 +38,28 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         // check if the up or down key is pressed
         if (cursors.up.isDown) {
             this.setVelocityY(-150);
+            this.direction = 'up';
         } else if (cursors.down.isDown) {
             this.setVelocityY(150);
+            this.direction = 'down';
         }
         // check if the left or right key is pressed
         if (cursors.left.isDown) {
             this.setVelocityX(-150);
+            this.direction = 'left';
         } else if (cursors.right.isDown) {
             this.setVelocityX(150);
+            this.direction = 'right';
         }
     }
     
     enemyCollision(player, enemy) {
         console.log('collision');
-
+        
         if(! this.hitDelay) {
             this.loseHealth();
             this.hitDelay = true;
-
+            
             this.tint = 0xff0000;
             
             this.scene.time.addEvent({

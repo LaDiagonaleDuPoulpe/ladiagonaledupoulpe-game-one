@@ -3,6 +3,7 @@ import Player from '../sprites/player';
 import Portal from '../sprites/portal';
 import Coins from '../groups/coins';
 import Enemies from '../groups/enemies';
+import Bullets from '../groups/bullets';
 
 export default class GameScene extends Phaser.Scene {
     constructor(key) {
@@ -13,12 +14,15 @@ export default class GameScene extends Phaser.Scene {
     init(data) {
         this.data = data;
         this.loadingLevel = false;
+
+        this.events.emit('newGame');
     }
     
     create() {
         this.scale.on('resize', this.resize, this);
         this.cursors = this.input.keyboard.createCursorKeys();
-        
+        this.spaceKey = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+
         this.createMap();
 
         this.createPlayer();
@@ -28,6 +32,8 @@ export default class GameScene extends Phaser.Scene {
         this.createCoins();
 
         this.createEnemies();
+
+        this.createBullets();
         
         this.addCollisions();
         
@@ -37,6 +43,14 @@ export default class GameScene extends Phaser.Scene {
     
     update() {
         this.player.update(this.cursors);
+
+        if (Phaser.Input.Keyboard.JustDown(this.spaceKey)) {
+            this.bullets.fireBullet(this.player.x, this.player.y, this.player.direction);
+        }
+    }
+
+    createBullets() {
+        this.bullets = new Bullets(this.physics.world, this, []);
     }
 
     createEnemies() {
@@ -64,19 +78,12 @@ export default class GameScene extends Phaser.Scene {
     addCollisions() {
         this.physics.add.collider(this.player, this.blockedLayer);
         this.physics.add.collider(this.enemiesGroup, this.blockedLayer);
+
+
         this.physics.add.overlap(this.player, this.enemiesGroup, this.player.enemyCollision.bind(this.player));
         this.physics.add.overlap(this.player, this.portal, this.loadNextLevel.bind(this));
-        this.physics.add.overlap(this.coinsGroup, this.player, this.coinsGroup.collect.bind(this.coinsGroup));
-    
-
-        // this.physics.add.collider(this.player, this.blockedLayer);
-        // this.physics.add.collider(this.enemiesGroup, this.blockedLayer);
-
-
-        // this.physics.add.overlap(this.player, this.enemiesGroup, this.player.enemyCollision.bind(this.player));
-        // this.physics.add.overlap(this.player, this.portal, this.loadNextLevel.bind(this));
-        // this.physics.add.overlap(this.coinsGroup, this.player, this.coinsGroup.collect.bind(this.coinsGroup));
-   
+        this.physics.add.overlap(this.coinsGroup, this.player, this.coinsGroup.collect.bind(this.coinsGroup));     
+        this.physics.add.overlap(this.bullets, this.enemiesGroup, this.bullets.collision);     
         
     }
     

@@ -22,6 +22,7 @@ export default class Bullets extends Phaser.Physics.Arcade.Group {
 
   fireBullet (x, y, direction) {
     const bullet = this.getFirstDead(false);
+    
     if (bullet) {
       bullet.enableBody(true);
       bullet.active = true;

@@ -4,6 +4,7 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
     constructor(scene, x, y, spriteIndex) {
         super(scene, x, y, 'characters', spriteIndex);
         this.scene = scene;
+        this.health = 3;
         
         console.log('Player', 'constructor');           
         
@@ -24,6 +25,23 @@ export default class Enemy extends Phaser.Physics.Arcade.Sprite {
             loop: true,
             callbackScope: this
         });
+    }
+
+    loseHealth() {
+        this.health --;
+        this.tint = 0xff0000;
+
+        if(this.health <= 0) {
+            this.timeEvent.destroy();
+            this.destroy();
+        } else {
+            this.scene.time.addEvent({
+                delay: 200,
+                callback: () => {
+                    this.tint = 0xffffff;
+                }
+            });
+        }
     }
     
     move() {

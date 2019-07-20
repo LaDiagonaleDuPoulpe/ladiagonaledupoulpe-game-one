@@ -17,6 +17,7 @@ export default class BootScene extends Phaser.Scene {
     this.load.spritesheet('characters', 'assets/images/roguelikeChar_transparent.png', { frameWidth: 17, frameHeight: 17 });
     this.load.image('portal', 'assets/images/raft.png');
     this.load.image('coin', 'assets/images/coin_01.png');
+    this.load.image('bullet', 'assets/images/ballBlack_04.png');
   }
 
   create () {
