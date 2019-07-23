@@ -5,8 +5,7 @@ class JSonLevelScene extends Phaser.Scene {
 
     constructor(key) {
         super({ key: key });
-
-        
+        this.setPrefabs();        
     }
 
     init(data) {

@@ -181,7 +181,7 @@ function (_Phaser$GameObjects$S) {
       _this.setOrigin(properties.anchor.x, properties.anchor.y);
     }
 
-    _this.scene.prefabs[_this.name] = _assertThisInitialized(_this);
+    _this.scene.sprites[_this.name] = _assertThisInitialized(_this);
     return _this;
   }
 
@@ -225,7 +225,8 @@ function (_Phaser$GameObjects$T) {
 
     _classCallCheck(this, TextPrefab);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(TextPrefab).call(this, scene, position.x, position.y, properties.text, properties.style));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(TextPrefab).call(this, scene, position.x, position.y, properties.text, properties.style)); // TODO: doing better => prefab and text-prefab got the same code in constructor
+
     _this.scene = scene;
     _this.name = name;
 
@@ -241,14 +242,14 @@ function (_Phaser$GameObjects$T) {
       _this.setOrigin(properties.anchor.x, properties.anchor.y);
     }
 
-    _this.scene.prefabs[_this.name] = _assertThisInitialized(_this);
+    _this.scene.sprites[_this.name] = _assertThisInitialized(_this);
     return _this;
   }
 
   return TextPrefab;
 }(Phaser.GameObjects.Text);
 
-/* harmony default export */ __webpack_exports__["default"] = (Prefab);
+/* harmony default export */ __webpack_exports__["default"] = (TextPrefab);
 
 /***/ }),
 
@@ -365,11 +366,17 @@ function (_Phaser$Scene) {
   _inherits(JSonLevelScene, _Phaser$Scene);
 
   function JSonLevelScene(key) {
+    var _this;
+
     _classCallCheck(this, JSonLevelScene);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(JSonLevelScene).call(this, {
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(JSonLevelScene).call(this, {
       key: key
     }));
+
+    _this.setPrefabs();
+
+    return _this;
   }
 
   _createClass(JSonLevelScene, [{
@@ -380,12 +387,12 @@ function (_Phaser$Scene) {
   }, {
     key: "create",
     value: function create() {
-      var _this = this;
+      var _this2 = this;
 
       this.sprites = {};
       this.groups = {};
       this.levelData.groups.forEach(function (name) {
-        _this.groups[name] = _this.add.group();
+        _this2.groups[name] = _this2.add.group();
       }, this);
 
       for (var key in this.levelData.sprites) {
@@ -518,6 +525,8 @@ function (_Phaser$Scene) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _json_level_scene__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./json-level-scene */ "./src/scenes/json-level-scene.js");
+/* harmony import */ var _prefabs_prefab__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../prefabs/prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _prefabs_text_prefab__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../prefabs/text-prefab */ "./src/prefabs/text-prefab.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -538,6 +547,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
+
 var TitleScene =
 /*#__PURE__*/
 function (_JSonLevelScene) {
@@ -552,9 +563,10 @@ function (_JSonLevelScene) {
   _createClass(TitleScene, [{
     key: "setPrefabs",
     value: function setPrefabs() {
+      console.log('setPrefabs');
       this.prefabs = {
-        background: Prefab.prototype.constructor,
-        text: TextPrefab.prototype.constructor
+        background: _prefabs_prefab__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.constructor,
+        text: _prefabs_text_prefab__WEBPACK_IMPORTED_MODULE_2__["default"].prototype.constructor
       };
     }
   }]);

@@ -3,6 +3,7 @@ class TextPrefab extends Phaser.GameObjects.Text {
     constructor(scene, name, position, properties) {
         super(scene, position.x, position.y, properties.text, properties.style);
    
+        // TODO: doing better => prefab and text-prefab got the same code in constructor
         this.scene = scene;
         this.name = name;
 
@@ -17,8 +18,8 @@ class TextPrefab extends Phaser.GameObjects.Text {
             this.setOrigin(properties.anchor.x, properties.anchor.y);
         } 
 
-        this.scene.prefabs[this.name] = this;
+        this.scene.sprites[this.name] = this;
     }
 }
 
-export default Prefab;
+export default TextPrefab;
