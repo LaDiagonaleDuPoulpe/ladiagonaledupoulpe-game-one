@@ -1,0 +1,16 @@
+{
+    "assets": {
+        "map_tileset": {"type": "image", "source": "assets/images/tileset.png"},
+
+        "player_spritesheet": {"type": "spritesheet", "source": "assets/images/world/player.png", "frame_width": 16, "frame_height": 16},
+        
+        "level_tilemap": {"type": "tilemap", "source": "assets/maps/town.json"}
+    },
+    "groups": [
+        "players"
+    ],
+    "map": {
+        "key": "level_tilemap",
+        "tilesets": ["map_tileset"]
+    }
+}

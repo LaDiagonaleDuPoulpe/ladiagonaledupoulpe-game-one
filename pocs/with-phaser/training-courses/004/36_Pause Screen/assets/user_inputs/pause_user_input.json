@@ -1,0 +1,10 @@
+{
+    "keydown": {
+        "Escape": {
+            "callback": "scene.back_to_world"
+        }
+    },
+    "keyup": {
+        
+    }
+}

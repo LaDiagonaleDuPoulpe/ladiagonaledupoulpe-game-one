@@ -1,0 +1,10 @@
+{
+    "keydown": {
+        "Enter": {
+            "callback": "scene.end_talk"
+        }
+    },
+    "keyup": {
+        
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "keydown": {
+        "Enter": {
+            "callback": "scene.start_game"
+        }
+    },
+    "keyup": {
+        
+    }
+}
