@@ -5,6 +5,8 @@ class JSonLevelScene extends Phaser.Scene {
 
     constructor(key) {
         super({ key: key });
+
+        
     }
 
     init(data) {
@@ -21,21 +23,17 @@ class JSonLevelScene extends Phaser.Scene {
 
         for (const key in this.levelData.sprites) {
             let spriteData = this.levelData.sprites[key];
-
-            let sprite = null;
-            switch (spriteData.type) {
-                case 'sprite': {
-                    sprite = new Prefab(this, key, spriteData.position, spriteData.properties);
-                } break;
-
-                case 'text': {
-                    sprite = new TextPrefab(this, key, spriteData.position, spriteData.properties);
-                } break;
-            
-                default:
-                    break;
-            }
+            let sprite = new this.prefabs[spriteData.type](this, key, spriteData.position, spriteData.properties);
         }
+    }
+
+    /**
+     * Define prefabs list 
+     * You must with constructors
+     * Todo: doing better : just pass class type, and the parent class will set all constructors in the array list
+     */
+    setPrefabs() {
+        throw new Error('You must override it in child class');
     }
 }
 

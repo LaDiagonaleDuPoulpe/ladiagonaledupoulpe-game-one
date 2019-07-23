@@ -8,7 +8,7 @@
     ],
     "sprites": {
         "background": {
-            "type": "sprite",
+            "type": "background",
             "position": {"x": 320, "y": 240},
             "properties": {
                 "texture": "background_image",

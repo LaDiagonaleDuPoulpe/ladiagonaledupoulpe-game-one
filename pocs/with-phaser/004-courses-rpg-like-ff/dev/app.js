@@ -390,25 +390,19 @@ function (_Phaser$Scene) {
 
       for (var key in this.levelData.sprites) {
         var spriteData = this.levelData.sprites[key];
-        var sprite = null;
-
-        switch (spriteData.type) {
-          case 'sprite':
-            {
-              sprite = new _prefabs_prefab__WEBPACK_IMPORTED_MODULE_0__["default"](this, key, spriteData.position, spriteData.properties);
-            }
-            break;
-
-          case 'text':
-            {
-              sprite = new _prefabs_text_prefab__WEBPACK_IMPORTED_MODULE_1__["default"](this, key, spriteData.position, spriteData.properties);
-            }
-            break;
-
-          default:
-            break;
-        }
+        var sprite = new this.prefabs[spriteData.type](this, key, spriteData.position, spriteData.properties);
       }
+    }
+    /**
+     * Define prefabs list 
+     * You must with constructors
+     * Todo: doing better : just pass class type, and the parent class will set all constructors in the array list
+     */
+
+  }, {
+    key: "setPrefabs",
+    value: function setPrefabs() {
+      throw new Error('You must override it in child class');
     }
   }]);
 
@@ -528,6 +522,10 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
@@ -550,6 +548,16 @@ function (_JSonLevelScene) {
 
     return _possibleConstructorReturn(this, _getPrototypeOf(TitleScene).call(this, 'TitleScene'));
   }
+
+  _createClass(TitleScene, [{
+    key: "setPrefabs",
+    value: function setPrefabs() {
+      this.prefabs = {
+        background: Prefab.prototype.constructor,
+        text: TextPrefab.prototype.constructor
+      };
+    }
+  }]);
 
   return TitleScene;
 }(_json_level_scene__WEBPACK_IMPORTED_MODULE_0__["default"]);

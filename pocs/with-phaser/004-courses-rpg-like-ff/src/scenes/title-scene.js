@@ -5,6 +5,12 @@ class TitleScene extends JSonLevelScene {
         super('TitleScene');
     }
 
+    setPrefabs() {
+        this.prefabs = {
+            background: Prefab.prototype.constructor,
+            text: TextPrefab.prototype.constructor
+        };
+    }
 }
 
 export default TitleScene;
