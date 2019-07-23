@@ -132,6 +132,126 @@ game.scene.start(BOOT_SCENE_KEY, {
 
 /***/ }),
 
+/***/ "./src/prefabs/prefab.js":
+/*!*******************************!*\
+  !*** ./src/prefabs/prefab.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var Prefab =
+/*#__PURE__*/
+function (_Phaser$GameObjects$S) {
+  _inherits(Prefab, _Phaser$GameObjects$S);
+
+  function Prefab(scene, name, position, properties) {
+    var _this;
+
+    _classCallCheck(this, Prefab);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Prefab).call(this, scene, position.x, position.y, properties.textures, properties.frame));
+    _this.scene = scene;
+    _this.name = name;
+
+    _this.scene.add.existing(_assertThisInitialized(_this));
+
+    _this.scene.groups[properties.group].add(_assertThisInitialized(_this));
+
+    if (properties.scale) {
+      _this.setScale(properties.scale.x, properties.scale.y);
+    }
+
+    if (properties.anchor) {
+      _this.setOrigin(properties.anchor.x, properties.anchor.y);
+    }
+
+    _this.scene.prefabs[_this.name] = _assertThisInitialized(_this);
+    return _this;
+  }
+
+  return Prefab;
+}(Phaser.GameObjects.Sprite);
+
+/* harmony default export */ __webpack_exports__["default"] = (Prefab);
+
+/***/ }),
+
+/***/ "./src/prefabs/text-prefab.js":
+/*!************************************!*\
+  !*** ./src/prefabs/text-prefab.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var TextPrefab =
+/*#__PURE__*/
+function (_Phaser$GameObjects$T) {
+  _inherits(TextPrefab, _Phaser$GameObjects$T);
+
+  function TextPrefab(scene, name, position, properties) {
+    var _this;
+
+    _classCallCheck(this, TextPrefab);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(TextPrefab).call(this, scene, position.x, position.y, properties.text, properties.style));
+    _this.scene = scene;
+    _this.name = name;
+
+    _this.scene.add.existing(_assertThisInitialized(_this));
+
+    _this.scene.groups[properties.group].add(_assertThisInitialized(_this));
+
+    if (properties.scale) {
+      _this.setScale(properties.scale.x, properties.scale.y);
+    }
+
+    if (properties.anchor) {
+      _this.setOrigin(properties.anchor.x, properties.anchor.y);
+    }
+
+    _this.scene.prefabs[_this.name] = _assertThisInitialized(_this);
+    return _this;
+  }
+
+  return TextPrefab;
+}(Phaser.GameObjects.Text);
+
+/* harmony default export */ __webpack_exports__["default"] = (Prefab);
+
+/***/ }),
+
 /***/ "./src/scenes/boot-scene.js":
 /*!**********************************!*\
   !*** ./src/scenes/boot-scene.js ***!
@@ -216,6 +336,8 @@ function (_Phaser$Scene) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _prefabs_prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefabs/prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _prefabs_text_prefab__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../prefabs/text-prefab */ "./src/prefabs/text-prefab.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -233,6 +355,9 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
 
 var JSonLevelScene =
 /*#__PURE__*/
@@ -270,22 +395,19 @@ function (_Phaser$Scene) {
         switch (spriteData.type) {
           case 'sprite':
             {
-              sprite = this.add.sprite(spriteData.position.x, spriteData.position.y, spriteData.texture);
+              sprite = new _prefabs_prefab__WEBPACK_IMPORTED_MODULE_0__["default"](this, key, spriteData.position, spriteData.properties);
             }
             break;
 
           case 'text':
             {
-              sprite = this.add.text(spriteData.position.x, spriteData.position.y, spriteData.text, spriteData.style);
+              sprite = new _prefabs_text_prefab__WEBPACK_IMPORTED_MODULE_1__["default"](this, key, spriteData.position, spriteData.properties);
             }
             break;
 
           default:
             break;
         }
-
-        this.sprites[key] = sprite;
-        this.groups[spriteData.group].add(sprite);
       }
     }
   }]);

@@ -1,4 +1,5 @@
-
+import Prefab from '../prefabs/prefab';
+import TextPrefab from '../prefabs/text-prefab';
 
 class JSonLevelScene extends Phaser.Scene {   
 
@@ -24,18 +25,16 @@ class JSonLevelScene extends Phaser.Scene {
             let sprite = null;
             switch (spriteData.type) {
                 case 'sprite': {
-                    sprite = this.add.sprite(spriteData.position.x, spriteData.position.y, spriteData.texture);
+                    sprite = new Prefab(this, key, spriteData.position, spriteData.properties);
                 } break;
 
                 case 'text': {
-                    sprite = this.add.text(spriteData.position.x, spriteData.position.y, spriteData.text, spriteData.style);
+                    sprite = new TextPrefab(this, key, spriteData.position, spriteData.properties);
                 } break;
             
                 default:
                     break;
             }
-            this.sprites[key] = sprite;
-            this.groups[spriteData.group].add(sprite);
         }
     }
 }
