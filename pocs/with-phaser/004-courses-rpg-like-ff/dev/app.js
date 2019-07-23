@@ -165,7 +165,7 @@ function (_Phaser$GameObjects$S) {
 
     _classCallCheck(this, Prefab);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Prefab).call(this, scene, position.x, position.y, properties.textures, properties.frame));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Prefab).call(this, scene, position.x, position.y, properties.texture, properties.frame));
     _this.scene = scene;
     _this.name = name;
 
@@ -181,7 +181,7 @@ function (_Phaser$GameObjects$S) {
       _this.setOrigin(properties.anchor.x, properties.anchor.y);
     }
 
-    _this.scene.sprites[_this.name] = _assertThisInitialized(_this);
+    _this.scene.prefabs[_this.name] = _assertThisInitialized(_this);
     return _this;
   }
 
@@ -242,7 +242,7 @@ function (_Phaser$GameObjects$T) {
       _this.setOrigin(properties.anchor.x, properties.anchor.y);
     }
 
-    _this.scene.sprites[_this.name] = _assertThisInitialized(_this);
+    _this.scene.prefabs[_this.name] = _assertThisInitialized(_this);
     return _this;
   }
 
@@ -389,15 +389,15 @@ function (_Phaser$Scene) {
     value: function create() {
       var _this2 = this;
 
-      this.sprites = {};
+      this.prefabs = {};
       this.groups = {};
       this.levelData.groups.forEach(function (name) {
         _this2.groups[name] = _this2.add.group();
       }, this);
 
-      for (var key in this.levelData.sprites) {
-        var spriteData = this.levelData.sprites[key];
-        var sprite = new this.prefabs[spriteData.type](this, key, spriteData.position, spriteData.properties);
+      for (var key in this.levelData.prefabs) {
+        var spriteData = this.levelData.prefabs[key];
+        var prefab = new this.prefabsClasses[spriteData.type](this, key, spriteData.position, spriteData.properties);
       }
     }
     /**
@@ -564,7 +564,7 @@ function (_JSonLevelScene) {
     key: "setPrefabs",
     value: function setPrefabs() {
       console.log('setPrefabs');
-      this.prefabs = {
+      this.prefabsClasses = {
         background: _prefabs_prefab__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.constructor,
         text: _prefabs_text_prefab__WEBPACK_IMPORTED_MODULE_2__["default"].prototype.constructor
       };

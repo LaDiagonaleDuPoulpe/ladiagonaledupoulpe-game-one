@@ -18,7 +18,7 @@ class TextPrefab extends Phaser.GameObjects.Text {
             this.setOrigin(properties.anchor.x, properties.anchor.y);
         } 
 
-        this.scene.sprites[this.name] = this;
+        this.scene.prefabs[this.name] = this;
     }
 }
 

@@ -9,7 +9,7 @@ class TitleScene extends JSonLevelScene {
 
     setPrefabs() {
         console.log('setPrefabs');
-        this.prefabs = {
+        this.prefabsClasses = {
             background: Prefab.prototype.constructor,
             text: TextPrefab.prototype.constructor
         };
