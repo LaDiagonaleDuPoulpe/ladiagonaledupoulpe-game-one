@@ -11,24 +11,27 @@
             "type": "sprite",
             "position": {"x": 320, "y": 240},
             "properties": {
-                
-            },
-            "texture": "background_image",
-            "group": "background"
+                "texture": "background_image",
+                "group": "background"
+            }
         },
         "title_message": {
             "type": "text",
             "position": {"x": 20, "y": 100},
-            "text": "Phaser RPG",
-            "style": {"font": "65px Kells", "fill": "#000000"},
-            "group": "text"            
+            "properties": {
+                "text": "Phaser RPG",
+                "style": {"font": "65px Kells", "fill": "#000000"},
+                "group": "text" 
+            }           
         },
         "start_message": {
             "type": "text",
             "position": {"x": 150, "y": 200},
-            "text": "Click to start playing",
-            "style": {"font": "25px Kells", "fill": "#000000"},
-            "group": "text"
+            "properties": {
+                "text": "Click to start playing",
+                "style": {"font": "25px Kells", "fill": "#000000"},
+                "group": "text"
+            }
         }
     }
 }

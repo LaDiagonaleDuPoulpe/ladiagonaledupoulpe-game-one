@@ -1,5 +1,6 @@
-class JSonLevelScene extends Phaser.Scene {
-    
+
+
+class JSonLevelScene extends Phaser.Scene {   
 
     constructor(key) {
         super({ key: key });
