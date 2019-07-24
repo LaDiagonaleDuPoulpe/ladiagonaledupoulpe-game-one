@@ -2,9 +2,12 @@ import JSonLevelScene from './json-level-scene';
 import Prefab from '../prefabs/prefab';
 import TextPrefab from '../prefabs/text-prefab';
 
+/**
+ * Loading worl tilemap scene
+ */
 class WorldScene extends JSonLevelScene {
     constructor() {
-        super('TitleScene');
+        super('WorldScene');
     }
 
     //#region public methods

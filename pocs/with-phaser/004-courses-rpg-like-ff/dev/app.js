@@ -280,6 +280,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+/**
+ * Scene that loads the game
+ * Now, it's loading the loading scene
+ */
 var BootScene =
 /*#__PURE__*/
 function (_Phaser$Scene) {
@@ -359,6 +363,9 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+/**
+ * Parent class to all scenev: anable you to load data from json file
+ */
 
 var JSonLevelScene =
 /*#__PURE__*/
@@ -554,6 +561,9 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+/**
+ * Scene displaying title and starts game after clicked on it
+ */
 
 var TitleScene =
 /*#__PURE__*/

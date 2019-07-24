@@ -2,6 +2,9 @@ import JSonLevelScene from './json-level-scene';
 import Prefab from '../prefabs/prefab';
 import TextPrefab from '../prefabs/text-prefab';
 
+/**
+ * Scene displaying title and starts game after clicked on it
+ */
 class TitleScene extends JSonLevelScene {
     constructor() {
         super('TitleScene');

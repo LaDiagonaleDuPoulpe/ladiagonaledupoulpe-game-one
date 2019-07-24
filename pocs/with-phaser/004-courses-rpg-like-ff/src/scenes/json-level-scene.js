@@ -1,6 +1,9 @@
 import Prefab from '../prefabs/prefab';
 import TextPrefab from '../prefabs/text-prefab';
 
+/**
+ * Parent class to all scenev: anable you to load data from json file
+ */
 class JSonLevelScene extends Phaser.Scene {   
 
     constructor(key) {

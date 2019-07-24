@@ -1,3 +1,7 @@
+/**
+ * Scene that loads the game
+ * Now, it's loading the loading scene
+ */
 class BootScene extends Phaser.Scene {
     
 
