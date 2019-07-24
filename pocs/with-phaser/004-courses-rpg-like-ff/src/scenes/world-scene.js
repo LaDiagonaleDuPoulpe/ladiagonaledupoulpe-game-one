@@ -11,22 +11,36 @@ class WorldScene extends JSonLevelScene {
     }
 
     //#region public methods
-    update() {
-        if (this.input.activePointer.isDown) {
-            this.startGame();
-        }
+    create() {
+        this.map = this.add.tilemap(this.levelData.map.key);
+
+        this.prepareTileSets();
+        this.prepareLayers();
     }
     //#endregion
     
     //#region internal methods
-    startGame() {
-        console.log('starting');
+    prepareLayers() {
+        this.layers = {};
+        this.map.layers.forEach((layer, index) => {
+            this.layers[layer.name] = this.map.createStaticLayer(layer.name, this.tilesets[layer.properties.tileset]);
+        });
+    }
+
+    prepareTileSets() {
+        this.tilesets = {};
+        this.map.tilesets.forEach((tileSet, index) => {
+            const tileSetContent = this.levelData.map.tilesets[index];
+            const mapTileset = this.map.addTilesetImage(tileSet.name, 
+                                                        tileSetContent);
+        
+            this.tilesets[tileSetContent] = mapTileset;
+            }, this);
     }
 
     setPrefabs() {
-        console.log('setPrefabs');
         this.prefabsClasses = {
-            background: Prefab.prototype.constructor,
+            player: Prefab.prototype.constructor,
             text: TextPrefab.prototype.constructor
         };
     }
