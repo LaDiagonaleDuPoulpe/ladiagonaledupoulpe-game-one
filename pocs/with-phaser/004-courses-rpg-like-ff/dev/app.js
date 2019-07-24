@@ -314,9 +314,9 @@ function (_Phaser$Scene) {
     key: "create",
     value: function create(data) {
       var levelData = this.cache.json.get(data.scene);
-      console.log('data', levelData);
       this.scene.start('LoadingScene', {
-        levelData: levelData
+        levelData: levelData,
+        scene: this.levels[data.scene].key
       });
     }
   }]);
@@ -507,8 +507,8 @@ function (_Phaser$Scene) {
     }
   }, {
     key: "create",
-    value: function create() {
-      this.scene.start('TitleScene', {
+    value: function create(data) {
+      this.scene.start(data.scene, {
         levelData: this.levelData
       });
     }
@@ -564,9 +564,24 @@ function (_JSonLevelScene) {
     _classCallCheck(this, TitleScene);
 
     return _possibleConstructorReturn(this, _getPrototypeOf(TitleScene).call(this, 'TitleScene'));
-  }
+  } //#region public methods
+
 
   _createClass(TitleScene, [{
+    key: "update",
+    value: function update() {
+      if (this.input.activePointer.isDown) {
+        this.startGame();
+      }
+    } //#endregion
+    //#region internal methods
+
+  }, {
+    key: "startGame",
+    value: function startGame() {
+      console.log('starting');
+    }
+  }, {
     key: "setPrefabs",
     value: function setPrefabs() {
       console.log('setPrefabs');
@@ -574,7 +589,8 @@ function (_JSonLevelScene) {
         background: _prefabs_prefab__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.constructor,
         text: _prefabs_text_prefab__WEBPACK_IMPORTED_MODULE_2__["default"].prototype.constructor
       };
-    }
+    } //#endregion
+
   }]);
 
   return TitleScene;

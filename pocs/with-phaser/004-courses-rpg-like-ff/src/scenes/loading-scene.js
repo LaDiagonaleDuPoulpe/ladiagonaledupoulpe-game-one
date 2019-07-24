@@ -42,8 +42,8 @@ class LoadingScene extends Phaser.Scene {
         }
     }
     
-    create() {
-        this.scene.start('TitleScene', {
+    create(data) {
+        this.scene.start(data.scene, {
             levelData: this.levelData
         });
     }

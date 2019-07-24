@@ -2,7 +2,7 @@ import JSonLevelScene from './json-level-scene';
 import Prefab from '../prefabs/prefab';
 import TextPrefab from '../prefabs/text-prefab';
 
-class TitleScene extends JSonLevelScene {
+class WorldScene extends JSonLevelScene {
     constructor() {
         super('TitleScene');
     }
@@ -30,4 +30,4 @@ class TitleScene extends JSonLevelScene {
     //#endregion
 }
 
-export default TitleScene;
+export default WorldScene;

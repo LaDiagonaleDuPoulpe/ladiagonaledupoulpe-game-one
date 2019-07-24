@@ -18,9 +18,10 @@ class BootScene extends Phaser.Scene {
 
     create(data) {
         const levelData = this.cache.json.get(data.scene);
-        console.log('data', levelData);
+
         this.scene.start('LoadingScene', {
-            levelData: levelData
+            levelData: levelData,
+            scene: this.levels[data.scene].key
         });
     }
 }
