@@ -494,6 +494,12 @@ function (_Phaser$Scene) {
             }
             break;
 
+          case "tilemap":
+            {
+              this.load.tilemapTiledJSON(key, asset.source);
+            }
+            break;
+
           default:
             break;
         }
