@@ -106,17 +106,21 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./scenes/title-scene */ "./src/scenes/title-scene.js");
-/* harmony import */ var _scenes_boot_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./scenes/boot-scene */ "./src/scenes/boot-scene.js");
-/* harmony import */ var _scenes_loading_scene__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./scenes/loading-scene */ "./src/scenes/loading-scene.js");
+/* harmony import */ var _scenes_world_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./scenes/world-scene */ "./src/scenes/world-scene.js");
+/* harmony import */ var _scenes_boot_scene__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./scenes/boot-scene */ "./src/scenes/boot-scene.js");
+/* harmony import */ var _scenes_loading_scene__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./scenes/loading-scene */ "./src/scenes/loading-scene.js");
+
 
 
 
 var TITLE_SCENE_KEY = 'TitleScene';
 var BOOT_SCENE_KEY = 'BootScene';
 var LOADING_SCENE_KEY = 'LoadingScene';
+var WORLD_SCENE_KEY = 'WorldScene';
 var titleScene = new _scenes_title_scene__WEBPACK_IMPORTED_MODULE_0__["default"]();
-var bootScene = new _scenes_boot_scene__WEBPACK_IMPORTED_MODULE_1__["default"]();
-var loadingScene = new _scenes_loading_scene__WEBPACK_IMPORTED_MODULE_2__["default"]();
+var bootScene = new _scenes_boot_scene__WEBPACK_IMPORTED_MODULE_2__["default"]();
+var loadingScene = new _scenes_loading_scene__WEBPACK_IMPORTED_MODULE_3__["default"]();
+var worldScene = new _scenes_world_scene__WEBPACK_IMPORTED_MODULE_1__["default"]();
 var config = {
   type: Phaser.AUTO,
   width: 640,
@@ -124,6 +128,7 @@ var config = {
 };
 var game = new Phaser.Game(config);
 game.scene.add(TITLE_SCENE_KEY, titleScene);
+game.scene.add(WORLD_SCENE_KEY, worldScene);
 game.scene.add(BOOT_SCENE_KEY, bootScene);
 game.scene.add(LOADING_SCENE_KEY, loadingScene);
 game.scene.start(BOOT_SCENE_KEY, {
@@ -301,6 +306,10 @@ function (_Phaser$Scene) {
       title: {
         key: 'TitleScene',
         path: 'assets/levels/title_screen.json'
+      },
+      town: {
+        key: 'WorldScene',
+        path: 'assets/levels/town.json'
       }
     };
     return _this;
@@ -590,6 +599,9 @@ function (_JSonLevelScene) {
     key: "startGame",
     value: function startGame() {
       console.log('starting');
+      this.scene.start('BootScene', {
+        scene: 'town'
+      });
     }
   }, {
     key: "setPrefabs",
@@ -607,6 +619,138 @@ function (_JSonLevelScene) {
 }(_json_level_scene__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (TitleScene);
+
+/***/ }),
+
+/***/ "./src/scenes/world-scene.js":
+/*!***********************************!*\
+  !*** ./src/scenes/world-scene.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _json_level_scene__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./json-level-scene */ "./src/scenes/json-level-scene.js");
+/* harmony import */ var _prefabs_prefab__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../prefabs/prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _prefabs_text_prefab__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../prefabs/text-prefab */ "./src/prefabs/text-prefab.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+/**
+* Loading worl tilemap scene
+*/
+
+var WorldScene =
+/*#__PURE__*/
+function (_JSonLevelScene) {
+  _inherits(WorldScene, _JSonLevelScene);
+
+  function WorldScene() {
+    _classCallCheck(this, WorldScene);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(WorldScene).call(this, 'WorldScene'));
+  } //#region public methods
+
+
+  _createClass(WorldScene, [{
+    key: "create",
+    value: function create() {
+      this.map = this.add.tilemap(this.levelData.map.key);
+      this.prepareTileSets();
+      this.prepareLayers();
+
+      _get(_getPrototypeOf(WorldScene.prototype), "create", this).call(this);
+
+      this.prepareObjects();
+    } //#endregion
+    //#region internal methods
+
+  }, {
+    key: "prepareObjects",
+    value: function prepareObjects() {
+      var _this = this;
+
+      this.map.objects.forEach(function (layer) {
+        layer.objects.forEach(_this.createOneOject, _this);
+      });
+    }
+  }, {
+    key: "createOneOject",
+    value: function createOneOject(object) {
+      var position = {
+        x: object.x + object.width / 2,
+        y: object.y + object.height / 2
+      };
+
+      if (this.prefabsClasses.hasOwnProperty(object.type)) {
+        var prefab = new this.prefabsClasses[object.type](this, object.name, position, object.properties);
+      }
+    }
+  }, {
+    key: "prepareLayers",
+    value: function prepareLayers() {
+      var _this2 = this;
+
+      this.layers = {};
+      this.map.layers.forEach(function (layer, index) {
+        _this2.layers[layer.name] = _this2.map.createStaticLayer(layer.name, _this2.tilesets[layer.properties.tileset]);
+
+        if (layer.properties.collision) {
+          _this2.map.setCollisionByExclusion([-1], true, layer.name);
+        }
+      });
+    }
+  }, {
+    key: "prepareTileSets",
+    value: function prepareTileSets() {
+      var _this3 = this;
+
+      this.tilesets = {};
+      this.map.tilesets.forEach(function (tileSet, index) {
+        var tileSetContent = _this3.levelData.map.tilesets[index];
+
+        var mapTileset = _this3.map.addTilesetImage(tileSet.name, tileSetContent);
+
+        _this3.tilesets[tileSetContent] = mapTileset;
+      }, this);
+    }
+  }, {
+    key: "setPrefabs",
+    value: function setPrefabs() {
+      this.prefabsClasses = {
+        player: _prefabs_prefab__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.constructor
+      };
+    } //#endregion
+
+  }]);
+
+  return WorldScene;
+}(_json_level_scene__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (WorldScene);
 
 /***/ }),
 

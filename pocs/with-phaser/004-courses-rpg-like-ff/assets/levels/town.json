@@ -12,7 +12,7 @@
         },
         "levelTileMap": {
             "type": "tilemap",
-            "srouce": "assets/maps/town.json"
+            "source": "assets/maps/town.json"
         }
     },
     "groups": [

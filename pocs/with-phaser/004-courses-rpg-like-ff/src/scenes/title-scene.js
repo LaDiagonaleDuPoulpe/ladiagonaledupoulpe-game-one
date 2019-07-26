@@ -21,6 +21,9 @@ class TitleScene extends JSonLevelScene {
     //#region internal methods
     startGame() {
         console.log('starting');
+        this.scene.start('BootScene', {
+                                       scene: 'town' 
+                                      });
     }
 
     setPrefabs() {
