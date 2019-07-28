@@ -71,7 +71,7 @@
                  "properties":
                     {
                      "group":"players",
-                     "texture":"player_spritesheet",
+                     "texture":"playerSpriteSheet",
                      "walking_speed":100
                     },
                  "propertytypes":

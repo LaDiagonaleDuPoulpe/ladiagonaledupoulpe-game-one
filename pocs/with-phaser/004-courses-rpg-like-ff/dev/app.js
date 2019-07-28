@@ -124,7 +124,7 @@ var worldScene = new _scenes_world_scene__WEBPACK_IMPORTED_MODULE_1__["default"]
 var config = {
   type: Phaser.AUTO,
   width: 640,
-  height: 360
+  height: 640
 };
 var game = new Phaser.Game(config);
 game.scene.add(TITLE_SCENE_KEY, titleScene);
@@ -287,7 +287,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 /**
  * Scene that loads the game
- * Now, it's loading the loading scene
+ * After, it will load the loading scene
  */
 var BootScene =
 /*#__PURE__*/
