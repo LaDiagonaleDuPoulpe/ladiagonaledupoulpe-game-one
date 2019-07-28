@@ -17,7 +17,15 @@ let worldScene = new WordScene();
 let config = {
     type: Phaser.AUTO,
     width: 640,
-    height: 640
+    height: 640,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: {
+                y: 0
+            }
+        }
+    }
 };
 
 

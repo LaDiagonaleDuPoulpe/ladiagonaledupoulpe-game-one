@@ -3,6 +3,10 @@ class Prefab extends Phaser.GameObjects.Sprite {
     constructor(scene, name, position, properties) {
         super(scene, position.x, position.y, properties.texture, properties.frame);
    
+        this.initialize(scene, name, position, properties);
+    }
+
+    initialize(scene, name, position, properties) {
         this.scene = scene;
         this.name = name;
 
