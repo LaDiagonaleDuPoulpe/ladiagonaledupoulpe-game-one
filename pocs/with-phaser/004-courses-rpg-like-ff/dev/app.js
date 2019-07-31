@@ -187,7 +187,8 @@ function (_Phaser$GameObjects$S) {
     _this.initialize(scene, name, position, properties);
 
     return _this;
-  }
+  } //#region protected methods
+
 
   _createClass(Prefab, [{
     key: "initialize",
@@ -206,7 +207,8 @@ function (_Phaser$GameObjects$S) {
       }
 
       this.scene.prefabs[this.name] = this;
-    }
+    } //#endregion
+
   }]);
 
   return Prefab;
@@ -322,11 +324,16 @@ function (_Prefab) {
     _classCallCheck(this, Player);
 
     return _possibleConstructorReturn(this, _getPrototypeOf(Player).call(this, scene, name, position, properties));
-  }
+  } //#region public methods
+
 
   _createClass(Player, [{
     key: "update",
-    value: function update() {}
+    value: function update() {
+      this.moveByKeyDown();
+    } //#endregion
+    //#region protected methods
+
   }, {
     key: "initialize",
     value: function initialize(scene, name, position, properties) {
@@ -335,6 +342,27 @@ function (_Prefab) {
       this.defineCollisionSettings();
       this.defineWalkingSpeed(properties);
       this.attachPlayerMovments();
+    } //#endregion
+    //#region internal methods
+
+  }, {
+    key: "moveByKeyDown",
+    value: function moveByKeyDown() {
+      if (this.moveLeft.isDown && this.body.velocity.x <= 0) {
+        this.body.velocity.x = -this.walkingSpeed;
+      } else if (this.moveRight.isDown && this.body.velocity.x >= 0) {
+        this.body.velocity.x = this.walkingSpeed;
+      } else {
+        this.body.velocity.x = 0;
+      }
+
+      if (this.moveUp.isDown && this.body.velocity.y <= 0) {
+        this.body.velocity.y = -this.walkingSpeed;
+      } else if (this.moveDown.isDown && this.body.velocity.y >= 0) {
+        this.body.velocity.y = this.walkingSpeed;
+      } else {
+        this.body.velocity.y = 0;
+      }
     }
   }, {
     key: "attachPlayerMovments",
@@ -348,14 +376,14 @@ function (_Prefab) {
     key: "defineWalkingSpeed",
     value: function defineWalkingSpeed(properties) {
       this.walkingSpeed = +properties.walkingSpeed;
-      this.body.velocity.x = -this.walkingSpeed;
     }
   }, {
     key: "defineCollisionSettings",
     value: function defineCollisionSettings() {
       this.body.collideWorldBounds = true;
       this.scene.physics.add.collider(this, this.scene.layers.buildings);
-    }
+    } //#endregion
+
   }]);
 
   return Player;

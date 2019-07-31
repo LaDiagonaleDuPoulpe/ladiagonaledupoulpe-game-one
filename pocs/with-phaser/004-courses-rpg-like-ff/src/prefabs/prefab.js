@@ -6,6 +6,7 @@ class Prefab extends Phaser.GameObjects.Sprite {
         this.initialize(scene, name, position, properties);
     }
 
+    //#region protected methods
     initialize(scene, name, position, properties) {
         this.scene = scene;
         this.name = name;
@@ -23,6 +24,7 @@ class Prefab extends Phaser.GameObjects.Sprite {
 
         this.scene.prefabs[this.name] = this;
     }
+    //#endregion
 }
 
 export default Prefab;
