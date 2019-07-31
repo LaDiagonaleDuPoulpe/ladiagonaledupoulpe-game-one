@@ -7,14 +7,23 @@ class Player extends Prefab {
         super(scene, name, position, properties);
     }
 
+    update() {
+        
+    }
+
     initialize(scene, name, position, properties) {
         super.initialize(scene, name, position, properties);
-
-        
-        this.scene.physics.add.existing(this);
         
         this.defineCollisionSettings();
         this.defineWalkingSpeed(properties);
+        this.attachPlayerMovments();
+    }
+
+    attachPlayerMovments() {
+        this.moveLeft = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+        this.moveRight = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+        this.moveUp = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
+        this.moveDown = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
     }
 
     defineWalkingSpeed(properties) {

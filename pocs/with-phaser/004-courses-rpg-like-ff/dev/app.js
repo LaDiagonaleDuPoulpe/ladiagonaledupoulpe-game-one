@@ -325,13 +325,24 @@ function (_Prefab) {
   }
 
   _createClass(Player, [{
+    key: "update",
+    value: function update() {}
+  }, {
     key: "initialize",
     value: function initialize(scene, name, position, properties) {
       _get(_getPrototypeOf(Player.prototype), "initialize", this).call(this, scene, name, position, properties);
 
-      this.scene.physics.add.existing(this);
       this.defineCollisionSettings();
       this.defineWalkingSpeed(properties);
+      this.attachPlayerMovments();
+    }
+  }, {
+    key: "attachPlayerMovments",
+    value: function attachPlayerMovments() {
+      this.moveLeft = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
+      this.moveRight = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
+      this.moveUp = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
+      this.moveDown = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
     }
   }, {
     key: "defineWalkingSpeed",
@@ -469,8 +480,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 /**
- * Parent class to all scenev: anable you to load data from json file
- */
+* Parent class to all scenev: anable you to load data from json file
+*/
 
 var JSonLevelScene =
 /*#__PURE__*/
@@ -489,7 +500,8 @@ function (_Phaser$Scene) {
     _this.setPrefabs();
 
     return _this;
-  }
+  } //#region public methods
+
 
   _createClass(JSonLevelScene, [{
     key: "init",
@@ -499,30 +511,56 @@ function (_Phaser$Scene) {
   }, {
     key: "create",
     value: function create() {
-      var _this2 = this;
-
       this.prefabs = {};
       this.groups = {};
-      this.levelData.groups.forEach(function (name) {
-        _this2.groups[name] = _this2.add.group();
-      }, this);
+      this.createGroups();
+      this.initAllPrefabs();
+    }
+  }, {
+    key: "update",
+    value: function update() {
+      this.updateAllPrefabs();
+    } //#endregion
+    //#region internal methods
 
+  }, {
+    key: "updateAllPrefabs",
+    value: function updateAllPrefabs() {
+      for (var name in this.prefabs) {
+        if (this.prefabs.hasOwnProperty(name)) {
+          this.prefabs[name].update();
+        }
+      }
+    }
+  }, {
+    key: "createGroups",
+    value: function createGroups() {
+      var _this2 = this;
+
+      this.levelData.groups.forEach(function (name) {
+        _this2.groups[name] = _this2.physics.add.group();
+      }, this);
+    }
+  }, {
+    key: "initAllPrefabs",
+    value: function initAllPrefabs() {
       for (var key in this.levelData.prefabs) {
         var spriteData = this.levelData.prefabs[key];
         var prefab = new this.prefabsClasses[spriteData.type](this, key, spriteData.position, spriteData.properties);
       }
     }
     /**
-     * Define prefabs list 
-     * You must with constructors
-     * Todo: doing better : just pass class type, and the parent class will set all constructors in the array list
-     */
+    * Define prefabs list 
+    * You must with constructors
+    * Todo: doing better : just pass class type, and the parent class will set all constructors in the array list
+    */
 
   }, {
     key: "setPrefabs",
     value: function setPrefabs() {
       throw new Error('You must override it in child class');
-    }
+    } //#endregion
+
   }]);
 
   return JSonLevelScene;
