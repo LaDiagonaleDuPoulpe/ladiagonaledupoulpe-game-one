@@ -342,6 +342,7 @@ function (_Prefab) {
       this.defineCollisionSettings();
       this.defineWalkingSpeed(properties);
       this.attachPlayerMovments();
+      this.prepareAnimationsByMovment();
     } //#endregion
     //#region internal methods
 
@@ -350,19 +351,50 @@ function (_Prefab) {
     value: function moveByKeyDown() {
       if (this.moveLeft.isDown && this.body.velocity.x <= 0) {
         this.body.velocity.x = -this.walkingSpeed;
+
+        if (this.body.velocity.y === 0) {
+          this.anims.play('walking_left', true);
+        }
       } else if (this.moveRight.isDown && this.body.velocity.x >= 0) {
         this.body.velocity.x = this.walkingSpeed;
+
+        if (this.body.velocity.y === 0) {
+          this.anims.play('walking_right', true);
+        }
       } else {
         this.body.velocity.x = 0;
       }
 
       if (this.moveUp.isDown && this.body.velocity.y <= 0) {
         this.body.velocity.y = -this.walkingSpeed;
+
+        if (this.body.velocity.x === 0) {
+          this.anims.play('walking_up', true);
+        }
       } else if (this.moveDown.isDown && this.body.velocity.y >= 0) {
         this.body.velocity.y = this.walkingSpeed;
+
+        if (this.body.velocity.x === 0) {
+          this.anims.play('walking_down', true);
+        }
       } else {
         this.body.velocity.y = 0;
       }
+
+      this.stopCurrentAnimation();
+    }
+  }, {
+    key: "stopCurrentAnimation",
+    value: function stopCurrentAnimation() {
+      if (this.body.velocity.x === 0 && this.body.velocity.y === 0) {
+        this.anims.stop();
+        this.displayCurrentFrameFromDirection();
+      }
+    }
+  }, {
+    key: "displayCurrentFrameFromDirection",
+    value: function displayCurrentFrameFromDirection() {
+      this.setFrame(this.stoppedAnimationFrames[this.body.facing - 10]);
     }
   }, {
     key: "attachPlayerMovments",
@@ -371,6 +403,32 @@ function (_Prefab) {
       this.moveRight = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
       this.moveUp = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
       this.moveDown = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);
+    }
+  }, {
+    key: "prepareAnimationsByMovment",
+    value: function prepareAnimationsByMovment() {
+      this.prepareOneAnimationByMovment('down', 0);
+      this.prepareOneAnimationByMovment('up', 1);
+      this.prepareOneAnimationByMovment('left', 2);
+      this.prepareOneAnimationByMovment('right', 3);
+      this.stoppedAnimationFrames = [0, 1, 0, 2, 3];
+    }
+  }, {
+    key: "prepareOneAnimationByMovment",
+    value: function prepareOneAnimationByMovment(direction) {
+      var spriteLevel = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+      var directionKey = "walking_".concat(direction);
+
+      if (!this.scene.anims.anims.has(directionKey)) {
+        this.scene.anims.create({
+          key: directionKey,
+          frames: this.scene.anims.generateFrameNumbers(this.texture.key, {
+            frames: [0 + spriteLevel, 4 + spriteLevel, 8 + spriteLevel, 12 + spriteLevel]
+          }),
+          frameRate: 6,
+          repeat: -1
+        });
+      }
     }
   }, {
     key: "defineWalkingSpeed",
