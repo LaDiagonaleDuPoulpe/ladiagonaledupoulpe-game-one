@@ -1,5 +1,6 @@
 import Prefab from '../prefabs/prefab';
 import TextPrefab from '../prefabs/text-prefab';
+import UserInput from '../plugins/user-input';
 
 /**
 * Parent class to all scenev: anable you to load data from json file
@@ -22,6 +23,7 @@ class JSonLevelScene extends Phaser.Scene {
         
         this.createGroups();
         this.initAllPrefabs();
+        this.initUserInputPlugin();
     }
     
     update() {
@@ -30,6 +32,18 @@ class JSonLevelScene extends Phaser.Scene {
     //#endregion
     
     //#region internal methods
+    /**
+     * Inits new UserInput class
+     */
+    initUserInputPlugin() {
+        this.userInput = new UserInput(this);
+        this.userInputData = this.cache.json.get(this.levelData.userInput.key);
+        this.userInput.setInput(this.userInputData);
+    }
+
+    /**
+     * Updates all child prefabs
+     */
     updateAllPrefabs() {
         for (const name in this.prefabs) {
             if (this.prefabs.hasOwnProperty(name)) {
@@ -38,12 +52,18 @@ class JSonLevelScene extends Phaser.Scene {
         }
     }
     
+    /**
+     * Creates physic group (to manage collision for example)
+     */
     createGroups() {
         this.levelData.groups.forEach(name => {
             this.groups[name] = this.physics.add.group();
         }, this);
     }
     
+    /**
+     * Create all prefab items
+     */
     initAllPrefabs() {
         for (const key in this.levelData.prefabs) {
             let spriteData = this.levelData.prefabs[key];

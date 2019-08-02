@@ -145,6 +145,115 @@ game.scene.start(BOOT_SCENE_KEY, {
 
 /***/ }),
 
+/***/ "./src/plugins/user-input.js":
+/*!***********************************!*\
+  !*** ./src/plugins/user-input.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var UserInput =
+/*#__PURE__*/
+function () {
+  function UserInput(scene) {
+    _classCallCheck(this, UserInput);
+
+    this.scene = scene;
+    this.enabled = false;
+    this.keyListeners = ['up', 'down'];
+  } //#region public methods
+
+  /**
+   * attach on input press key
+   * @param {*} data json data
+   */
+
+
+  _createClass(UserInput, [{
+    key: "setInput",
+    value: function setInput(data) {
+      var _this = this;
+
+      this.keyListeners.forEach(function (item) {
+        var key = 'key' + item;
+
+        _this.scene.input.keyboard.removeAllListeners(key);
+
+        _this.scene.input.keyboard.on(key, _this.process, _this);
+      });
+      this.userData = data;
+      this.enabled = true;
+    } //#endregion
+    //#region internal methods
+
+    /**
+     * Keyboard event process
+     * @param {*} event key event
+     */
+
+  }, {
+    key: "process",
+    value: function process(event) {
+      if (this.enabled) {
+        var input = this.userData[event.type][event.key];
+
+        if (input) {
+          callbackArray = input.callback.split('.');
+          var context = this.getContext(callbackArray);
+          var callingMethod = this.getCallingMethod(context, callbackArray);
+          callingMethod.apply(context, input.args);
+        }
+      }
+    }
+    /**
+     * Gets calling method from json file and event key
+     * @param {*} context 
+     * @param {string[]} callbackArray 
+     */
+
+  }, {
+    key: "getCallingMethod",
+    value: function getCallingMethod(context, callbackArray) {
+      var methodName = callbackArray[1];
+      return context[methodName];
+    }
+    /**
+     * Gets callback array, with context name and callback method
+     * @param {string[]} callbackArray 
+     */
+
+  }, {
+    key: "getContext",
+    value: function getContext(callbackArray) {
+      var context = undefined;
+      var callingObject = callbackArray[0];
+
+      if (callingObject === 'scene') {
+        context = this.scene;
+      } else {
+        context = this.scene.prefabs[callingObject];
+      }
+
+      return context;
+    } //#endregion
+
+  }]);
+
+  return UserInput;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (UserInput);
+
+/***/ }),
+
 /***/ "./src/prefabs/prefab.js":
 /*!*******************************!*\
   !*** ./src/prefabs/prefab.js ***!
@@ -556,6 +665,7 @@ function (_Phaser$Scene) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _prefabs_prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefabs/prefab */ "./src/prefabs/prefab.js");
 /* harmony import */ var _prefabs_text_prefab__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../prefabs/text-prefab */ "./src/prefabs/text-prefab.js");
+/* harmony import */ var _plugins_user_input__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../plugins/user-input */ "./src/plugins/user-input.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -573,6 +683,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -612,6 +723,7 @@ function (_Phaser$Scene) {
       this.groups = {};
       this.createGroups();
       this.initAllPrefabs();
+      this.initUserInputPlugin();
     }
   }, {
     key: "update",
@@ -619,6 +731,21 @@ function (_Phaser$Scene) {
       this.updateAllPrefabs();
     } //#endregion
     //#region internal methods
+
+    /**
+     * Inits new UserInput class
+     */
+
+  }, {
+    key: "initUserInputPlugin",
+    value: function initUserInputPlugin() {
+      this.userInput = new _plugins_user_input__WEBPACK_IMPORTED_MODULE_2__["default"](this);
+      this.userInputData = this.cache.json.get(this.levelData.userInput.key);
+      this.userInput.setInput(this.userInputData);
+    }
+    /**
+     * Updates all child prefabs
+     */
 
   }, {
     key: "updateAllPrefabs",
@@ -629,6 +756,10 @@ function (_Phaser$Scene) {
         }
       }
     }
+    /**
+     * Creates physic group (to manage collision for example)
+     */
+
   }, {
     key: "createGroups",
     value: function createGroups() {
@@ -638,6 +769,10 @@ function (_Phaser$Scene) {
         _this2.groups[name] = _this2.physics.add.group();
       }, this);
     }
+    /**
+     * Create all prefab items
+     */
+
   }, {
     key: "initAllPrefabs",
     value: function initAllPrefabs() {
@@ -705,7 +840,8 @@ function (_Phaser$Scene) {
     return _possibleConstructorReturn(this, _getPrototypeOf(LoadingScene).call(this, {
       key: 'LoadingScene'
     }));
-  }
+  } //#region public methods
+
 
   _createClass(LoadingScene, [{
     key: "init",
@@ -720,7 +856,26 @@ function (_Phaser$Scene) {
     key: "preload",
     value: function preload() {
       var assets = this.levelData.assets;
+      this.loadAssetsByType(assets);
+      this.loadUserInputData();
+    }
+  }, {
+    key: "create",
+    value: function create(data) {
+      this.scene.start(data.scene, {
+        levelData: this.levelData
+      });
+    } //#endregion
+    //#region internal methods
 
+    /**
+     * Loads image, spritesheets or tilemap from json data
+     * @param {*} assets 
+     */
+
+  }, {
+    key: "loadAssetsByType",
+    value: function loadAssetsByType(assets) {
       for (var key in assets) {
         var asset = assets[key];
 
@@ -752,13 +907,16 @@ function (_Phaser$Scene) {
         }
       }
     }
+    /**
+     * Loads user input json file
+     */
+
   }, {
-    key: "create",
-    value: function create(data) {
-      this.scene.start(data.scene, {
-        levelData: this.levelData
-      });
-    }
+    key: "loadUserInputData",
+    value: function loadUserInputData() {
+      this.load.json(this.levelData.userInput.key, this.levelData.userInput.path);
+    } //#endregion
+
   }]);
 
   return LoadingScene;

@@ -5,6 +5,7 @@ class LoadingScene extends Phaser.Scene {
         super({ key: 'LoadingScene' });
     }
     
+    //#region public methods
     init(data) {
         this.levelData = data.levelData;
         
@@ -14,6 +15,23 @@ class LoadingScene extends Phaser.Scene {
     preload() {
         let assets = this.levelData.assets;
         
+        this.loadAssetsByType(assets);
+        this.loadUserInputData();
+    }
+    
+    create(data) {
+        this.scene.start(data.scene, {
+            levelData: this.levelData
+        });
+    }
+    //#endregion
+
+    //#region internal methods
+    /**
+     * Loads image, spritesheets or tilemap from json data
+     * @param {*} assets 
+     */
+    loadAssetsByType(assets) {
         for (const key in assets) {
             let asset = assets[key];
             
@@ -41,12 +59,15 @@ class LoadingScene extends Phaser.Scene {
             }
         }
     }
-    
-    create(data) {
-        this.scene.start(data.scene, {
-            levelData: this.levelData
-        });
+
+    /**
+     * Loads user input json file
+     */
+    loadUserInputData() {
+        this.load.json(this.levelData.userInput.key,
+                       this.levelData.userInput.path);
     }
+    //#endregion
 }
 
 export default LoadingScene;

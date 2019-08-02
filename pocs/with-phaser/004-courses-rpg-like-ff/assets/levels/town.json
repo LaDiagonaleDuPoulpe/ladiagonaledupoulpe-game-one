@@ -23,5 +23,9 @@
         "tilesets": [
             "mapTileSet"
         ]
+    },
+    "userInput": {
+        "key": "town_user_input",
+        "path": "assets/user_inputs/world_map_user_input.json"
     }
 }
