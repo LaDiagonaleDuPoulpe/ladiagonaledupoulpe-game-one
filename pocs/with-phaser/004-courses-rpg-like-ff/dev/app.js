@@ -349,22 +349,15 @@ function (_Prefab) {
   }, {
     key: "moveByKeyDown",
     value: function moveByKeyDown() {
-      if (this.moveLeft.isDown && this.body.velocity.x <= 0) {
-        this.body.velocity.x = -this.walkingSpeed;
-
-        if (this.body.velocity.y === 0) {
-          this.anims.play('walking_left', true);
-        }
-      } else if (this.moveRight.isDown && this.body.velocity.x >= 0) {
-        this.body.velocity.x = this.walkingSpeed;
-
-        if (this.body.velocity.y === 0) {
-          this.anims.play('walking_right', true);
-        }
-      } else {
-        this.body.velocity.x = 0;
-      }
-
+      console.log('moveByKeyDown->velocity.x', this.body.velocity.x);
+      console.log('moveByKeyDown->velocity.y', this.body.velocity.y);
+      this.moveHorizontal();
+      this.moveVertical();
+      this.stopCurrentAnimation();
+    }
+  }, {
+    key: "moveVertical",
+    value: function moveVertical() {
       if (this.moveUp.isDown && this.body.velocity.y <= 0) {
         this.body.velocity.y = -this.walkingSpeed;
 
@@ -380,8 +373,25 @@ function (_Prefab) {
       } else {
         this.body.velocity.y = 0;
       }
+    }
+  }, {
+    key: "moveHorizontal",
+    value: function moveHorizontal() {
+      if (this.moveLeft.isDown && this.body.velocity.x <= 0) {
+        this.body.velocity.x = -this.walkingSpeed;
 
-      this.stopCurrentAnimation();
+        if (this.body.velocity.y === 0) {
+          this.anims.play('walking_left', true);
+        }
+      } else if (this.moveRight.isDown && this.body.velocity.x >= 0) {
+        this.body.velocity.x = this.walkingSpeed;
+
+        if (this.body.velocity.y === 0) {
+          this.anims.play('walking_right', true);
+        }
+      } else {
+        this.body.velocity.x = 0;
+      }
     }
   }, {
     key: "stopCurrentAnimation",
@@ -394,6 +404,7 @@ function (_Prefab) {
   }, {
     key: "displayCurrentFrameFromDirection",
     value: function displayCurrentFrameFromDirection() {
+      console.log('displayCurrentFrameFromDirection->this.body.facing - 10 :', this.body.facing - 10);
       this.setFrame(this.stoppedAnimationFrames[this.body.facing - 10]);
     }
   }, {

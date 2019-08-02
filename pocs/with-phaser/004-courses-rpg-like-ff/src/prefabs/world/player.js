@@ -26,20 +26,16 @@ class Player extends Prefab {
     
     //#region internal methods
     moveByKeyDown() {
-        if (this.moveLeft.isDown && this.body.velocity.x <= 0) {
-            this.body.velocity.x = -this.walkingSpeed;
-            if (this.body.velocity.y === 0) {
-                this.anims.play('walking_left', true);
-            }
-        } else if(this.moveRight.isDown && this.body.velocity.x >= 0) {
-            this.body.velocity.x = this.walkingSpeed;
-            if (this.body.velocity.y === 0) {
-                this.anims.play('walking_right', true);
-            }
-        } else {
-            this.body.velocity.x = 0;
-        }
+        console.log('moveByKeyDown->velocity.x', this.body.velocity.x);
+        console.log('moveByKeyDown->velocity.y', this.body.velocity.y);
 
+        this.moveHorizontal();
+        this.moveVertical();        
+
+        this.stopCurrentAnimation();   
+    }
+
+    moveVertical() {
         if (this.moveUp.isDown && this.body.velocity.y <= 0) {
             this.body.velocity.y = -this.walkingSpeed;
             if (this.body.velocity.x === 0) {
@@ -53,8 +49,22 @@ class Player extends Prefab {
         } else {
             this.body.velocity.y = 0;
         }
+    }
 
-        this.stopCurrentAnimation();   
+    moveHorizontal() {
+        if (this.moveLeft.isDown && this.body.velocity.x <= 0) {
+            this.body.velocity.x = -this.walkingSpeed;
+            if (this.body.velocity.y === 0) {
+                this.anims.play('walking_left', true);
+            }
+        } else if(this.moveRight.isDown && this.body.velocity.x >= 0) {
+            this.body.velocity.x = this.walkingSpeed;
+            if (this.body.velocity.y === 0) {
+                this.anims.play('walking_right', true);
+            }
+        } else {
+            this.body.velocity.x = 0;
+        }
     }
 
     stopCurrentAnimation() {
@@ -65,6 +75,7 @@ class Player extends Prefab {
     }
     
     displayCurrentFrameFromDirection() {
+        console.log('displayCurrentFrameFromDirection->this.body.facing - 10 :', this.body.facing - 10);
         this.setFrame(this.stoppedAnimationFrames[this.body.facing - 10]);
     }
 
@@ -90,7 +101,10 @@ class Player extends Prefab {
         if(! this.scene.anims.anims.has(directionKey)) {
             this.scene.anims.create({
                 key: directionKey,
-                frames: this.scene.anims.generateFrameNumbers(this.texture.key, { frames: [0 + spriteLevel, 4 + spriteLevel, 8 + spriteLevel, 12 + spriteLevel] }),
+                frames: this.scene.anims.generateFrameNumbers(this.texture.key, { frames: [0 + spriteLevel, 
+                                                                                           4 + spriteLevel, 
+                                                                                           8 + spriteLevel, 
+                                                                                           12 + spriteLevel] }),
                 frameRate: 6,
                 repeat: -1
             });
