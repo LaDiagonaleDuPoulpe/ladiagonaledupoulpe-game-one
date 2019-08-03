@@ -3,7 +3,7 @@ class UserInput {
         this.scene = scene;
 
         this.enabled = false;
-        this.keyListeners = ['up', 'down'];
+        this.keyListeners = ['down', 'up'];
     }
 
     //#region public methods
@@ -15,8 +15,7 @@ class UserInput {
         this.keyListeners.forEach(item => {
             const key = 'key' + item;
             this.scene.input.keyboard.removeAllListeners(key);
-
-            this.scene.input.keyboard.on(key, this.process, this);
+            this.scene.input.keyboard.on(key, this.processInput, this);
         });
 
         this.userData = data;
@@ -29,11 +28,11 @@ class UserInput {
      * Keyboard event process
      * @param {*} event key event
      */
-    process(event) {
+    processInput(event) {
         if (this.enabled) {
             const input = this.userData[event.type][event.key];
             if (input) {
-                callbackArray = input.callback.split('.');
+                const callbackArray = input.callback.split('.');
 
                 const context = this.getContext(callbackArray);
                 const callingMethod = this.getCallingMethod(context, callbackArray);

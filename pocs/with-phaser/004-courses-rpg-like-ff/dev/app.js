@@ -168,7 +168,7 @@ function () {
 
     this.scene = scene;
     this.enabled = false;
-    this.keyListeners = ['up', 'down'];
+    this.keyListeners = ['down', 'up'];
   } //#region public methods
 
   /**
@@ -187,7 +187,7 @@ function () {
 
         _this.scene.input.keyboard.removeAllListeners(key);
 
-        _this.scene.input.keyboard.on(key, _this.process, _this);
+        _this.scene.input.keyboard.on(key, _this.processInput, _this);
       });
       this.userData = data;
       this.enabled = true;
@@ -200,13 +200,13 @@ function () {
      */
 
   }, {
-    key: "process",
-    value: function process(event) {
+    key: "processInput",
+    value: function processInput(event) {
       if (this.enabled) {
         var input = this.userData[event.type][event.key];
 
         if (input) {
-          callbackArray = input.callback.split('.');
+          var callbackArray = input.callback.split('.');
           var context = this.getContext(callbackArray);
           var callingMethod = this.getCallingMethod(context, callbackArray);
           callingMethod.apply(context, input.args);
@@ -439,7 +439,9 @@ function (_Prefab) {
   _createClass(Player, [{
     key: "update",
     value: function update() {
-      this.moveByKeyDown();
+      if (this.body) {
+        this.moveByKeyDown();
+      }
     } //#endregion
     //#region protected methods
 
@@ -452,6 +454,17 @@ function (_Prefab) {
       this.defineWalkingSpeed(properties);
       this.attachPlayerMovments();
       this.prepareAnimationsByMovment();
+    }
+    /**
+     * Activates direction of the player
+     * @param {string} direction 
+     * @param {boolean} isMoving 
+     */
+
+  }, {
+    key: "changeMovement",
+    value: function changeMovement(direction, isMoving) {
+      this.movingDirections[direction] = isMoving;
     } //#endregion
     //#region internal methods
 
@@ -525,11 +538,6 @@ function (_Prefab) {
         up: false,
         down: false
       };
-    }
-  }, {
-    key: "changeMovement",
-    value: function changeMovement(direction, isMoving) {
-      this.movingDirections[direction] = move;
     }
   }, {
     key: "prepareAnimationsByMovment",
