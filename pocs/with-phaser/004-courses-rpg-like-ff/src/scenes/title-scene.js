@@ -11,11 +11,6 @@ class TitleScene extends JSonLevelScene {
     }
 
     //#region public methods
-    update() {
-        if (this.input.activePointer.isDown) {
-            this.startGame();
-        }
-    }
     //#endregion
     
     //#region internal methods

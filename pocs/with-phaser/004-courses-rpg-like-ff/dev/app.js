@@ -973,18 +973,11 @@ function (_JSonLevelScene) {
 
     return _possibleConstructorReturn(this, _getPrototypeOf(TitleScene).call(this, 'TitleScene'));
   } //#region public methods
+  //#endregion
+  //#region internal methods
 
 
   _createClass(TitleScene, [{
-    key: "update",
-    value: function update() {
-      if (this.input.activePointer.isDown) {
-        this.startGame();
-      }
-    } //#endregion
-    //#region internal methods
-
-  }, {
     key: "startGame",
     value: function startGame() {
       console.log('starting');
