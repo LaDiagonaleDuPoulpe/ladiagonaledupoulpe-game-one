@@ -388,6 +388,84 @@ function (_Phaser$GameObjects$T) {
 
 /***/ }),
 
+/***/ "./src/prefabs/world/door.js":
+/*!***********************************!*\
+  !*** ./src/prefabs/world/door.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var Door =
+/*#__PURE__*/
+function (_Prefab) {
+  _inherits(Door, _Prefab);
+
+  function Door(scene, name, position, properties) {
+    var _this;
+
+    _classCallCheck(this, Door);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Door).call(this, scene, name, position, properties));
+    _this.nextLevel = properties.nextLevel;
+    _this.body.immovable = true;
+
+    _this.scene.physics.add.collider(_assertThisInitialized(_this), _this.scene.groups.players, _this.enter, null, _assertThisInitialized(_this));
+
+    return _this;
+  } //#region public methods
+  //#endregion
+  //#region protected methods
+  // initialize(scene, name, position, properties) {
+  // }
+
+  /**
+   * Actions when user enter in the cave
+   * (callback when collision with Door)
+   */
+
+
+  _createClass(Door, [{
+    key: "enter",
+    value: function enter() {
+      this.scene.scene.start('BootScene', {
+        scene: this.nextLevel
+      });
+    } //#endregion
+
+  }]);
+
+  return Door;
+}(_prefab__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Door);
+
+/***/ }),
+
 /***/ "./src/prefabs/world/player.js":
 /*!*************************************!*\
   !*** ./src/prefabs/world/player.js ***!
@@ -638,6 +716,10 @@ function (_Phaser$Scene) {
       town: {
         key: 'WorldScene',
         path: 'assets/levels/town.json'
+      },
+      cave: {
+        key: 'WorldScene',
+        path: 'assets/levels/cave.json'
       }
     };
     return _this;
@@ -1032,6 +1114,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _prefabs_prefab__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../prefabs/prefab */ "./src/prefabs/prefab.js");
 /* harmony import */ var _prefabs_text_prefab__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../prefabs/text-prefab */ "./src/prefabs/text-prefab.js");
 /* harmony import */ var _prefabs_world_player__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ..//prefabs/world/player */ "./src/prefabs/world/player.js");
+/* harmony import */ var _prefabs_world_door__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ..//prefabs/world/door */ "./src/prefabs/world/door.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1053,6 +1136,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -1140,7 +1224,8 @@ function (_JSonLevelScene) {
     key: "setPrefabs",
     value: function setPrefabs() {
       this.prefabsClasses = {
-        player: _prefabs_world_player__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.constructor
+        player: _prefabs_world_player__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.constructor,
+        door: _prefabs_world_door__WEBPACK_IMPORTED_MODULE_4__["default"].prototype.constructor
       };
     } //#endregion
 

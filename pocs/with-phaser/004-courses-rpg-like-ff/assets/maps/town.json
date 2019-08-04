@@ -94,12 +94,12 @@
                  "properties":
                     {
                      "group":"doors",
-                     "next_level":"cave"
+                     "nextLevel":"cave"
                     },
                  "propertytypes":
                     {
                      "group":"string",
-                     "next_level":"string"
+                     "nextLevel":"string"
                     },
                  "rotation":0,
                  "type":"door",

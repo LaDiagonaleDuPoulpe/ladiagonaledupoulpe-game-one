@@ -2,6 +2,7 @@ import JSonLevelScene from './json-level-scene';
 import Prefab from '../prefabs/prefab';
 import TextPrefab from '../prefabs/text-prefab';
 import Player from '..//prefabs/world/player';
+import Door from '..//prefabs/world/door';
 
 /**
 * Loading worl tilemap scene
@@ -66,7 +67,8 @@ class WorldScene extends JSonLevelScene {
         
         setPrefabs() {
             this.prefabsClasses = {
-                player: Player.prototype.constructor
+                player: Player.prototype.constructor,
+                door: Door.prototype.constructor,
             };
         }
         //#endregion
