@@ -10,16 +10,17 @@
             "frameWidth": 16,
             "frameHeight": 16
         },
-        "levelTileMap": {
+        "townLevelTileMap": {
             "type": "tilemap",
             "source": "assets/maps/town.json"
         }
     },
     "groups": [
+        "doors",
         "players"
     ],
     "map": {
-        "key": "levelTileMap",
+        "key": "townLevelTileMap",
         "tilesets": [
             "mapTileSet"
         ]
