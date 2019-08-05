@@ -5,10 +5,6 @@ class Door extends Prefab {
     
     constructor(scene, name, position, properties) {
         super(scene, name, position, properties);        
-        this.nextLevel = properties.nextLevel;
-        this.body.immovable = true;
-        this.scene.physics.add.collider(this, this.scene.groups.players,
-                                        this.enter, null, this);
     }
     
     //#region public methods
@@ -16,13 +12,21 @@ class Door extends Prefab {
     //#endregion
     
     //#region protected methods
-    // initialize(scene, name, position, properties) {
-    // }
-
+    initialize(scene, name, position, properties) {
+        super.initialize(scene, name, position, properties);
+        
+        this.nextLevel = properties.nextLevel;
+        this.scene.physics.add.collider(this, this.scene.groups.players,
+            this.enter, null, this);
+            
+        this.body.immovable = true;
+    }
+        
+        
     /**
-     * Actions when user enter in the cave
-     * (callback when collision with Door)
-     */
+    * Actions when user enters in the cave
+    * (callback when collision with Door)
+    */
     enter() {
         this.scene.scene.start('BootScene', {
             scene: this.nextLevel

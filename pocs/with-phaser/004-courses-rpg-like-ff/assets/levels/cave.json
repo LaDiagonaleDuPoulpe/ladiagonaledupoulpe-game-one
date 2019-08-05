@@ -10,7 +10,7 @@
             "frameWidth": 16,
             "frameHeight": 16
         },
-        "levelTileMap": {
+        "cavelevelTileMap": {
             "type": "tilemap",
             "source": "assets/maps/cave.json"
         }
@@ -20,7 +20,7 @@
         "players"
     ],
     "map": {
-        "key": "levelTileMap",
+        "key": "cavelevelTileMap",
         "tilesets": [
             "mapTileSet"
         ]

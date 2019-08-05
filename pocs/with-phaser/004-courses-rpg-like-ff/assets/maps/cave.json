@@ -72,13 +72,13 @@
                     {
                      "group":"players",
                      "texture":"playerSpriteSheet",
-                     "walking_speed":"100"
+                     "walkingSpeed":"100"
                     },
                  "propertytypes":
                     {
                      "group":"string",
                      "texture":"string",
-                     "walking_speed":"string"
+                     "walkingSpeed":"string"
                     },
                  "rotation":0,
                  "type":"player",

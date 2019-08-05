@@ -409,9 +409,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -426,30 +430,29 @@ function (_Prefab) {
   _inherits(Door, _Prefab);
 
   function Door(scene, name, position, properties) {
-    var _this;
-
     _classCallCheck(this, Door);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Door).call(this, scene, name, position, properties));
-    _this.nextLevel = properties.nextLevel;
-    _this.body.immovable = true;
-
-    _this.scene.physics.add.collider(_assertThisInitialized(_this), _this.scene.groups.players, _this.enter, null, _assertThisInitialized(_this));
-
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(Door).call(this, scene, name, position, properties));
   } //#region public methods
   //#endregion
   //#region protected methods
-  // initialize(scene, name, position, properties) {
-  // }
-
-  /**
-   * Actions when user enter in the cave
-   * (callback when collision with Door)
-   */
 
 
   _createClass(Door, [{
+    key: "initialize",
+    value: function initialize(scene, name, position, properties) {
+      _get(_getPrototypeOf(Door.prototype), "initialize", this).call(this, scene, name, position, properties);
+
+      this.nextLevel = properties.nextLevel;
+      this.scene.physics.add.collider(this, this.scene.groups.players, this.enter, null, this);
+      this.body.immovable = true;
+    }
+    /**
+    * Actions when user enters in the cave
+    * (callback when collision with Door)
+    */
+
+  }, {
     key: "enter",
     value: function enter() {
       this.scene.scene.start('BootScene', {
