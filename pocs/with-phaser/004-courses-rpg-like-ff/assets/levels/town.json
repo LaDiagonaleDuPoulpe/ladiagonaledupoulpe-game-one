@@ -10,6 +10,14 @@
             "frameWidth": 16,
             "frameHeight": 16
         },
+        "villagerImage": {
+            "type": "image",
+            "source": "assets/images/world/villager.png"
+        },
+        "guardImage": {
+            "type": "image",
+            "source": "assets/images/world/knight.png"
+        },
         "townLevelTileMap": {
             "type": "tilemap",
             "source": "assets/maps/town.json"
@@ -17,7 +25,8 @@
     },
     "groups": [
         "doors",
-        "players"
+        "players",
+        "npcs"
     ],
     "map": {
         "key": "townLevelTileMap",
@@ -28,5 +37,10 @@
     "userInput": {
         "key": "town_user_input",
         "path": "assets/user_inputs/world_map_user_input.json"
+    },
+    "npcMessages": {
+        "villagerMessage": "assets/npc_messages/villager.txt",
+        "guardMessage": "assets/npc_messages/guard.txt"
+
     }
 }

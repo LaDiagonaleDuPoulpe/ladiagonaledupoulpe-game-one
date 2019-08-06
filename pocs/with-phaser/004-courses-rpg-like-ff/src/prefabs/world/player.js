@@ -13,6 +13,22 @@ class Player extends Prefab {
             this.moveByKeyDown();
         }
     }
+
+    /**
+     * Activates direction of the player
+     * @param {string} direction 
+     * @param {boolean} isMoving 
+     */
+    changeMovement(direction, isMoving) {
+        this.movingDirections[direction] = isMoving;
+    }
+
+    /**
+     * Stops movement of the player
+     */
+    stop() {
+        this.stoppingMovements();
+    }
     //#endregion
     
     //#region protected methods
@@ -25,20 +41,19 @@ class Player extends Prefab {
         this.prepareAnimationsByMovment();
     }
 
-    /**
-     * Activates direction of the player
-     * @param {string} direction 
-     * @param {boolean} isMoving 
-     */
-    changeMovement(direction, isMoving) {
-        this.movingDirections[direction] = isMoving;
-    }
     //#endregion
     
     //#region internal methods
+    stoppingMovements() {
+        this.movingDirections.down = false;
+        this.movingDirections.left = false;
+        this.movingDirections.right = false;
+        this.movingDirections.up = false;
+    }
+
     moveByKeyDown() {
-        console.log('moveByKeyDown->velocity.x', this.body.velocity.x);
-        console.log('moveByKeyDown->velocity.y', this.body.velocity.y);
+        // console.log('moveByKeyDown->velocity.x', this.body.velocity.x);
+        // console.log('moveByKeyDown->velocity.y', this.body.velocity.y);
         
         this.moveHorizontal();
         this.moveVertical();        
@@ -86,7 +101,7 @@ class Player extends Prefab {
     }
     
     displayCurrentFrameFromDirection() {
-        console.log('displayCurrentFrameFromDirection->this.body.facing - 10 :', this.body.facing - 10);
+        // console.log('displayCurrentFrameFromDirection->this.body.facing - 10 :', this.body.facing - 10);
         this.setFrame(this.stoppedAnimationFrames[this.body.facing - 10]);
     }
     
@@ -97,8 +112,7 @@ class Player extends Prefab {
             up: false,
             down: false
         };
-    }
-    
+    }    
     
     prepareAnimationsByMovment() {
         this.prepareOneAnimationByMovment('down', 0);

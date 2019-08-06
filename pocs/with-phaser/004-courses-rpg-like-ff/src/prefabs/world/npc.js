@@ -1,7 +1,7 @@
 import Prefab from '../prefab';
 import TitleScene from '../../scenes/title-scene';
 
-class Door extends Prefab {
+class NPC extends Prefab {
     
     constructor(scene, name, position, properties) {
         super(scene, name, position, properties);        
@@ -14,23 +14,23 @@ class Door extends Prefab {
     initialize(scene, name, position, properties) {
         super.initialize(scene, name, position, properties);
         
-        this.nextLevel = properties.nextLevel;
+        this.message = this.scene.cache.text.get(properties.message);
+
         this.scene.physics.add.collider(this, this.scene.groups.players,
-            this.enter, null, this);
+            this.talk, null, this);
             
         this.body.immovable = true;
     }        
         
     /**
-    * Actions when user enters in the cave
-    * (callback when collision with Door)
+    * Actions when people will talk
+    * (displaying npc message)
     */
-    enter() {
-        this.scene.scene.start('BootScene', {
-            scene: this.nextLevel
-        });
+    talk(npc, player) {
+        player.stop();
+        console.log('talk', this.message);
     }
     //#endregion
 }
 
-export default Door;
+export default NPC;

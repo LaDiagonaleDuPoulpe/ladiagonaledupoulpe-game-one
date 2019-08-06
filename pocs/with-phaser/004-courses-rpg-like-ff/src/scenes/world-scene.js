@@ -1,11 +1,12 @@
 import JSonLevelScene from './json-level-scene';
 import Prefab from '../prefabs/prefab';
 import TextPrefab from '../prefabs/text-prefab';
-import Player from '..//prefabs/world/player';
-import Door from '..//prefabs/world/door';
+import Player from '../prefabs/world/player';
+import Door from '../prefabs/world/door';
+import NPC from '../prefabs/world/npc';
 
 /**
-* Loading worl tilemap scene
+* Loading world tilemap scene
 */
 class WorldScene extends JSonLevelScene {
     constructor() {
@@ -23,9 +24,19 @@ class WorldScene extends JSonLevelScene {
 
         this.prepareObjects();
     }
+
+    preload() {
+        this.loadMessages();
+    }
     //#endregion
     
     //#region internal methods
+    loadMessages() {
+        for (const key in this.levelData.npcMessages) {    
+            this.load.text(key, this.levelData.npcMessages[key]);
+        }
+    }
+
     prepareObjects() {
         this.map.objects.forEach((layer) => {
            layer.objects.forEach(this.createOneOject, this);     
@@ -69,6 +80,7 @@ class WorldScene extends JSonLevelScene {
             this.prefabsClasses = {
                 player: Player.prototype.constructor,
                 door: Door.prototype.constructor,
+                npc: NPC.prototype.constructor,
             };
         }
         //#endregion

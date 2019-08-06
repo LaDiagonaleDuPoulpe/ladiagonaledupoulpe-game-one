@@ -10,7 +10,7 @@
  </tileset>
  <layer id="1" name="background" width="20" height="15">
   <properties>
-   <property name="tileset" value="map_tileset"/>
+   <property name="tileset" value="mapTileset"/>
   </properties>
   <data encoding="csv">
 4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
@@ -32,7 +32,7 @@
  </layer>
  <layer id="2" name="roads" width="20" height="15">
   <properties>
-   <property name="tileset" value="map_tileset"/>
+   <property name="tileset" value="mapTileset"/>
   </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -55,7 +55,7 @@
  <layer id="3" name="buildings" width="20" height="15">
   <properties>
    <property name="collision" type="bool" value="true"/>
-   <property name="tileset" value="map_tileset"/>
+   <property name="tileset" value="mapTileset"/>
   </properties>
   <data encoding="csv">
 114,114,114,114,114,114,114,0,64,65,0,0,0,0,0,0,0,0,0,0,
@@ -95,22 +95,22 @@
   <object id="4" name="villager" type="npc" x="448" y="288" width="32" height="32">
    <properties>
     <property name="group" value="npcs"/>
-    <property name="message" value="villager_message"/>
-    <property name="texture" value="villager_image"/>
+    <property name="message" value="villagerMessage"/>
+    <property name="texture" value="villagerImage"/>
    </properties>
   </object>
   <object id="5" name="guard" type="npc" x="288" y="96" width="32" height="32">
    <properties>
     <property name="group" value="npcs"/>
-    <property name="message" value="guard_message"/>
-    <property name="texture" value="guard_image"/>
+    <property name="message" value="guardMessage"/>
+    <property name="texture" value="guardImage"/>
    </properties>
   </object>
-  <object id="6" name="enemy_spawner1" type="enemy_spawner" x="64" y="320" width="32" height="32">
+  <object id="6" name="enemy_spawner1" type="enemySpawner" x="64" y="320" width="32" height="32">
    <properties>
     <property name="encounter" value="snake"/>
-    <property name="group" value="enemy_spawners"/>
-    <property name="texture" value="snake_image"/>
+    <property name="group" value="enemySpawners"/>
+    <property name="texture" value="snakeImage"/>
    </properties>
   </object>
   <object id="8" name="equipment1" type="equipment" x="192" y="288" width="32" height="32">
@@ -119,7 +119,7 @@
     <property name="bonus" type="int" value="10"/>
     <property name="group" value="equipments"/>
     <property name="stat" value="defense"/>
-    <property name="texture" value="warrior_helmet_image"/>
+    <property name="texture" value="warriorHelmetImage"/>
     <property name="unit_name" value="warrior"/>
    </properties>
   </object>
