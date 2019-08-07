@@ -40,9 +40,10 @@
         ]
     },
     "userInput": {
-        "key": "town_user_input",
-        "path": "assets/user_inputs/world_map_user_input.json"
+        "townUserInput": "assets/user_inputs/world_map_user_input.json",
+        "talkingUserInput": "assets/user_inputs/talking_user_input.json"
     },
+    "initialUserInput": "townUserInput",
     "npcMessages": {
         "villagerMessage": "assets/npc_messages/villager.txt",
         "guardMessage": "assets/npc_messages/guard.txt"

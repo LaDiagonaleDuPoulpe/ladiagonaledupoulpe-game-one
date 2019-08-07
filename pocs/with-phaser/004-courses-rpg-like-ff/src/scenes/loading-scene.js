@@ -64,8 +64,13 @@ class LoadingScene extends Phaser.Scene {
      * Loads user input json file
      */
     loadUserInputData() {
-        this.load.json(this.levelData.userInput.key,
-                       this.levelData.userInput.path);
+        for (const key in this.levelData.userInput) {
+            if (this.levelData.userInput.hasOwnProperty(key)) {
+                const path = this.levelData.userInput[key];
+                
+                this.load.json(key, path);
+            }
+        }
     }
     //#endregion
 }

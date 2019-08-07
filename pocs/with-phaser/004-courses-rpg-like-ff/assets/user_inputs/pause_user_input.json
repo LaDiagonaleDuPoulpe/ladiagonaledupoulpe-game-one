@@ -1,7 +1,7 @@
 {
     "keydown": {
         "Escape": {
-            "callback": "scene.back_to_world"
+            "callback": "scene.backToWorld"
         }
     },
     "keyup": {

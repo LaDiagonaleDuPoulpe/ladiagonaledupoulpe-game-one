@@ -1204,7 +1204,12 @@ function (_Phaser$Scene) {
   }, {
     key: "loadUserInputData",
     value: function loadUserInputData() {
-      this.load.json(this.levelData.userInput.key, this.levelData.userInput.path);
+      for (var key in this.levelData.userInput) {
+        if (this.levelData.userInput.hasOwnProperty(key)) {
+          var path = this.levelData.userInput[key];
+          this.load.json(key, path);
+        }
+      }
     } //#endregion
 
   }]);
