@@ -32,8 +32,8 @@ class WorldScene extends JSonLevelScene {
     }
 
     endTalk() {
-        this.currentMessage.destroy();
-        this.userInput.setInput(this.userInput.townUserInput);
+        this.currentMessageBox.destroy();
+        this.userInput.setInput(this.userInputs.townUserInput);
     }
     //#endregion
     

@@ -51,7 +51,7 @@ class NPC extends Prefab {
         const box = new MessageBox(this.scene, this.name + 'MessageBox', this.MESSAGE_BOX_POSITION, properties);
         this.scene.currentMessageBox = box;
 
-        this.scene.userInput.setInput(this.scene.userInput.talkingUserInput);
+        this.scene.userInput.setInput(this.scene.userInputs.talkingUserInput);
     }
     //#endregion
 }

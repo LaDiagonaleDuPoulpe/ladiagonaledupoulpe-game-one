@@ -652,7 +652,7 @@ function (_Prefab) {
       };
       var box = new _hud_message_box__WEBPACK_IMPORTED_MODULE_2__["default"](this.scene, this.name + 'MessageBox', this.MESSAGE_BOX_POSITION, properties);
       this.scene.currentMessageBox = box;
-      this.scene.userInput.setInput(this.scene.userInput.talkingUserInput);
+      this.scene.userInput.setInput(this.scene.userInputs.talkingUserInput);
     } //#endregion
 
   }]);
@@ -1413,8 +1413,8 @@ function (_JSonLevelScene) {
   }, {
     key: "endTalk",
     value: function endTalk() {
-      this.currentMessage.destroy();
-      this.userInput.setInput(this.userInput.townUserInput);
+      this.currentMessageBox.destroy();
+      this.userInput.setInput(this.userInputs.townUserInput);
     } //#endregion
     //#region internal methods
 
