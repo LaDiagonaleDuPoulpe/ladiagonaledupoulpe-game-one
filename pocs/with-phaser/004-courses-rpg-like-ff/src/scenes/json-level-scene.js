@@ -36,8 +36,16 @@ class JSonLevelScene extends Phaser.Scene {
      * Inits new UserInput class
      */
     initUserInputPlugin() {
+        this.userInputs = {};
+
+        for (const key in this.levelData.userInput) {
+            if (this.levelData.userInput.hasOwnProperty(key)) {
+                this.userInputs[key] = this.cache.json.get(key);
+            }
+        }
+
         this.userInput = new UserInput(this);
-        this.userInputData = this.cache.json.get(this.levelData.userInput.key);
+        this.userInputData = this.cache.json.get(this.levelData.initialUserInput);
         this.userInput.setInput(this.userInputData);
     }
 

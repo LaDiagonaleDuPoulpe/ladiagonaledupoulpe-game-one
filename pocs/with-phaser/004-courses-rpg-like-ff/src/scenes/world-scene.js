@@ -30,6 +30,11 @@ class WorldScene extends JSonLevelScene {
     preload() {
         this.loadMessages();
     }
+
+    endTalk() {
+        this.currentMessage.destroy();
+        this.userInput.setInput(this.userInput.townUserInput);
+    }
     //#endregion
     
     //#region internal methods

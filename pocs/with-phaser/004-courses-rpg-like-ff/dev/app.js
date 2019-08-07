@@ -302,11 +302,22 @@ function (_Prefab) {
 
     return _possibleConstructorReturn(this, _getPrototypeOf(MessageBox).call(this, scene, name, position, properties));
   } //#region public methods    
-  //#endregion
-  //#region protected methods
+
+  /**
+   * Hides and destroy the message box
+   */
 
 
   _createClass(MessageBox, [{
+    key: "destroy",
+    value: function destroy() {
+      _get(_getPrototypeOf(MessageBox.prototype), "destroy", this).call(this);
+
+      this.messageText.destroy();
+    } //#endregion
+    //#region protected methods
+
+  }, {
     key: "initialize",
     value: function initialize(scene, name, position, properties) {
       _get(_getPrototypeOf(MessageBox.prototype), "initialize", this).call(this, scene, name, position, properties);
@@ -625,12 +636,23 @@ function (_Prefab) {
     key: "talk",
     value: function talk(npc, player) {
       player.stop();
+      this.createBox();
+    }
+    /**
+     * Creates the message box
+     */
+
+  }, {
+    key: "createBox",
+    value: function createBox() {
       var properties = {
         texture: 'messageBoxImage',
         group: 'hud',
         message: this.message
       };
-      this.scene.currentMessageBox = new _hud_message_box__WEBPACK_IMPORTED_MODULE_2__["default"](this.scene, this.name + 'MessageBox', this.MESSAGE_BOX_POSITION, properties);
+      var box = new _hud_message_box__WEBPACK_IMPORTED_MODULE_2__["default"](this.scene, this.name + 'MessageBox', this.MESSAGE_BOX_POSITION, properties);
+      this.scene.currentMessageBox = box;
+      this.scene.userInput.setInput(this.scene.userInput.talkingUserInput);
     } //#endregion
 
   }]);
@@ -1029,8 +1051,16 @@ function (_Phaser$Scene) {
   }, {
     key: "initUserInputPlugin",
     value: function initUserInputPlugin() {
+      this.userInputs = {};
+
+      for (var key in this.levelData.userInput) {
+        if (this.levelData.userInput.hasOwnProperty(key)) {
+          this.userInputs[key] = this.cache.json.get(key);
+        }
+      }
+
       this.userInput = new _plugins_user_input__WEBPACK_IMPORTED_MODULE_2__["default"](this);
-      this.userInputData = this.cache.json.get(this.levelData.userInput.key);
+      this.userInputData = this.cache.json.get(this.levelData.initialUserInput);
       this.userInput.setInput(this.userInputData);
     }
     /**
@@ -1379,6 +1409,12 @@ function (_JSonLevelScene) {
     key: "preload",
     value: function preload() {
       this.loadMessages();
+    }
+  }, {
+    key: "endTalk",
+    value: function endTalk() {
+      this.currentMessage.destroy();
+      this.userInput.setInput(this.userInput.townUserInput);
     } //#endregion
     //#region internal methods
 

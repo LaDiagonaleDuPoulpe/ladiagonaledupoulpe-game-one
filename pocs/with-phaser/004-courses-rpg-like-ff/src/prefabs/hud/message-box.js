@@ -9,6 +9,13 @@ class MessageBox extends Prefab {
     }
     
     //#region public methods    
+    /**
+     * Hides and destroy the message box
+     */
+    destroy() {
+        super.destroy();
+        this.messageText.destroy();
+    }
     //#endregion
     
     //#region protected methods

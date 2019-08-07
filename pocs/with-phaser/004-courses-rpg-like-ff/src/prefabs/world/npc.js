@@ -36,16 +36,23 @@ class NPC extends Prefab {
     */
     talk(npc, player) {
         player.stop();
-        
+        this.createBox();
+    }
+    
+    /**
+     * Creates the message box
+     */
+    createBox() {
         const properties = {
             texture: 'messageBoxImage',
             group: 'hud',
             message: this.message
         };
-        this.scene.currentMessageBox = new MessageBox(this.scene, this.name + 'MessageBox', this.MESSAGE_BOX_POSITION, properties);
+        const box = new MessageBox(this.scene, this.name + 'MessageBox', this.MESSAGE_BOX_POSITION, properties);
+        this.scene.currentMessageBox = box;
+
+        this.scene.userInput.setInput(this.scene.userInput.talkingUserInput);
     }
-
-
     //#endregion
 }
 
