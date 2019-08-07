@@ -11,6 +11,8 @@ import NPC from '../prefabs/world/npc';
 class WorldScene extends JSonLevelScene {
     constructor() {
         super('WorldScene');
+
+        this.defineTextStyle();
     }
     
     //#region public methods
@@ -31,6 +33,13 @@ class WorldScene extends JSonLevelScene {
     //#endregion
     
     //#region internal methods
+    defineTextStyle() {
+        this.TEXT_STYLE = {
+            font: '14px Kells',
+            fill: "#ffffff"
+        };
+    }
+
     loadMessages() {
         for (const key in this.levelData.npcMessages) {    
             this.load.text(key, this.levelData.npcMessages[key]);

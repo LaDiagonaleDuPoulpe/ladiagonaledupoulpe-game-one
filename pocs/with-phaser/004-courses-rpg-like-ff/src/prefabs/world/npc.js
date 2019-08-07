@@ -1,5 +1,6 @@
 import Prefab from '../prefab';
 import TitleScene from '../../scenes/title-scene';
+import MessageBox from '../hud/message-box';
 
 class NPC extends Prefab {
     
@@ -15,21 +16,36 @@ class NPC extends Prefab {
         super.initialize(scene, name, position, properties);
         
         this.message = this.scene.cache.text.get(properties.message);
-
-        this.scene.physics.add.collider(this, this.scene.groups.players,
-            this.talk, null, this);
-            
-        this.body.immovable = true;
-    }        
         
+        this.MESSAGE_BOX_POSITION = {
+            x: 0,
+            y: 360
+        };
+
+        this.scene.physics.add.collider(this, this.scene.groups.players, this.talk, null, this);
+        
+        this.body.immovable = true;
+
+    }        
+    //#endregion
+    
+    //#region internal methods
     /**
     * Actions when people will talk
     * (displaying npc message)
     */
     talk(npc, player) {
         player.stop();
-        console.log('talk', this.message);
+        
+        const properties = {
+            texture: 'messageBoxImage',
+            group: 'hud',
+            message: this.message
+        };
+        this.scene.currentMessageBox = new MessageBox(this.scene, this.name + 'MessageBox', this.MESSAGE_BOX_POSITION, properties);
     }
+
+
     //#endregion
 }
 

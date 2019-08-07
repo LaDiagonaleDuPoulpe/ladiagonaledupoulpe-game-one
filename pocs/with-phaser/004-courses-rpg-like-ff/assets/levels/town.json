@@ -18,6 +18,10 @@
             "type": "image",
             "source": "assets/images/world/knight.png"
         },
+        "messageBoxImage": {
+            "type": "image",
+            "source": "assets/images/world/message_box.png"
+        },
         "townLevelTileMap": {
             "type": "tilemap",
             "source": "assets/maps/town.json"
@@ -26,7 +30,8 @@
     "groups": [
         "doors",
         "players",
-        "npcs"
+        "npcs",
+        "hud"
     ],
     "map": {
         "key": "townLevelTileMap",

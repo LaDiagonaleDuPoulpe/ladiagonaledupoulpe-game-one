@@ -254,6 +254,86 @@ function () {
 
 /***/ }),
 
+/***/ "./src/prefabs/hud/message-box.js":
+/*!****************************************!*\
+  !*** ./src/prefabs/hud/message-box.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
+/* harmony import */ var _text_prefab__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../text-prefab */ "./src/prefabs/text-prefab.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var MessageBox =
+/*#__PURE__*/
+function (_Prefab) {
+  _inherits(MessageBox, _Prefab);
+
+  function MessageBox(scene, name, position, properties) {
+    _classCallCheck(this, MessageBox);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MessageBox).call(this, scene, name, position, properties));
+  } //#region public methods    
+  //#endregion
+  //#region protected methods
+
+
+  _createClass(MessageBox, [{
+    key: "initialize",
+    value: function initialize(scene, name, position, properties) {
+      _get(_getPrototypeOf(MessageBox.prototype), "initialize", this).call(this, scene, name, position, properties);
+
+      var newPosition = {
+        x: this.x + this.width / 2,
+        y: this.y + 50
+      };
+      var newProperties = {
+        group: 'hud',
+        text: properties.message,
+        style: Object.create(this.scene.TEXT_STYLE)
+      };
+      this.messageText = new _text_prefab__WEBPACK_IMPORTED_MODULE_2__["default"](this.scene, this.name + 'Message', newPosition, newProperties);
+      this.setOrigin(0);
+      this.messageText.setOrigin(0.5);
+    } //#endregion
+
+  }]);
+
+  return MessageBox;
+}(_prefab__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (MessageBox);
+
+/***/ }),
+
 /***/ "./src/prefabs/prefab.js":
 /*!*******************************!*\
   !*** ./src/prefabs/prefab.js ***!
@@ -480,6 +560,7 @@ function (_Prefab) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
 /* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
+/* harmony import */ var _hud_message_box__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../hud/message-box */ "./src/prefabs/hud/message-box.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -505,6 +586,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var NPC =
 /*#__PURE__*/
 function (_Prefab) {
@@ -525,9 +607,15 @@ function (_Prefab) {
       _get(_getPrototypeOf(NPC.prototype), "initialize", this).call(this, scene, name, position, properties);
 
       this.message = this.scene.cache.text.get(properties.message);
+      this.MESSAGE_BOX_POSITION = {
+        x: 0,
+        y: 360
+      };
       this.scene.physics.add.collider(this, this.scene.groups.players, this.talk, null, this);
       this.body.immovable = true;
-    }
+    } //#endregion
+    //#region internal methods
+
     /**
     * Actions when people will talk
     * (displaying npc message)
@@ -537,7 +625,12 @@ function (_Prefab) {
     key: "talk",
     value: function talk(npc, player) {
       player.stop();
-      console.log('talk', this.message);
+      var properties = {
+        texture: 'messageBoxImage',
+        group: 'hud',
+        message: this.message
+      };
+      this.scene.currentMessageBox = new _hud_message_box__WEBPACK_IMPORTED_MODULE_2__["default"](this.scene, this.name + 'MessageBox', this.MESSAGE_BOX_POSITION, properties);
     } //#endregion
 
   }]);
@@ -1254,9 +1347,15 @@ function (_JSonLevelScene) {
   _inherits(WorldScene, _JSonLevelScene);
 
   function WorldScene() {
+    var _this;
+
     _classCallCheck(this, WorldScene);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(WorldScene).call(this, 'WorldScene'));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(WorldScene).call(this, 'WorldScene'));
+
+    _this.defineTextStyle();
+
+    return _this;
   } //#region public methods
 
 
@@ -1279,6 +1378,14 @@ function (_JSonLevelScene) {
     //#region internal methods
 
   }, {
+    key: "defineTextStyle",
+    value: function defineTextStyle() {
+      this.TEXT_STYLE = {
+        font: '14px Kells',
+        fill: "#ffffff"
+      };
+    }
+  }, {
     key: "loadMessages",
     value: function loadMessages() {
       for (var key in this.levelData.npcMessages) {
@@ -1288,10 +1395,10 @@ function (_JSonLevelScene) {
   }, {
     key: "prepareObjects",
     value: function prepareObjects() {
-      var _this = this;
+      var _this2 = this;
 
       this.map.objects.forEach(function (layer) {
-        layer.objects.forEach(_this.createOneOject, _this);
+        layer.objects.forEach(_this2.createOneOject, _this2);
       });
     }
   }, {
@@ -1309,29 +1416,29 @@ function (_JSonLevelScene) {
   }, {
     key: "prepareLayers",
     value: function prepareLayers() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.layers = {};
       this.map.layers.forEach(function (layer, index) {
-        _this2.layers[layer.name] = _this2.map.createStaticLayer(layer.name, _this2.tilesets[layer.properties.tileset]);
+        _this3.layers[layer.name] = _this3.map.createStaticLayer(layer.name, _this3.tilesets[layer.properties.tileset]);
 
         if (layer.properties.collision) {
-          _this2.map.setCollisionByExclusion([-1], true, layer.name);
+          _this3.map.setCollisionByExclusion([-1], true, layer.name);
         }
       });
     }
   }, {
     key: "prepareTileSets",
     value: function prepareTileSets() {
-      var _this3 = this;
+      var _this4 = this;
 
       this.tilesets = {};
       this.map.tilesets.forEach(function (tileSet, index) {
-        var tileSetContent = _this3.levelData.map.tilesets[index];
+        var tileSetContent = _this4.levelData.map.tilesets[index];
 
-        var mapTileset = _this3.map.addTilesetImage(tileSet.name, tileSetContent);
+        var mapTileset = _this4.map.addTilesetImage(tileSet.name, tileSetContent);
 
-        _this3.tilesets[tileSetContent] = mapTileset;
+        _this4.tilesets[tileSetContent] = mapTileset;
       }, this);
     }
   }, {
