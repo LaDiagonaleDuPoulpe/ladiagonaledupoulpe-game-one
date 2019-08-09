@@ -109,6 +109,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scenes_world_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./scenes/world-scene */ "./src/scenes/world-scene.js");
 /* harmony import */ var _scenes_boot_scene__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./scenes/boot-scene */ "./src/scenes/boot-scene.js");
 /* harmony import */ var _scenes_loading_scene__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./scenes/loading-scene */ "./src/scenes/loading-scene.js");
+/* harmony import */ var _scenes_battle_scene__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scenes/battle-scene */ "./src/scenes/battle-scene.js");
+
 
 
 
@@ -117,10 +119,12 @@ var TITLE_SCENE_KEY = 'TitleScene';
 var BOOT_SCENE_KEY = 'BootScene';
 var LOADING_SCENE_KEY = 'LoadingScene';
 var WORLD_SCENE_KEY = 'WorldScene';
+var BATTLE_SCENE_KEY = 'BattleScene';
 var titleScene = new _scenes_title_scene__WEBPACK_IMPORTED_MODULE_0__["default"]();
 var bootScene = new _scenes_boot_scene__WEBPACK_IMPORTED_MODULE_2__["default"]();
 var loadingScene = new _scenes_loading_scene__WEBPACK_IMPORTED_MODULE_3__["default"]();
 var worldScene = new _scenes_world_scene__WEBPACK_IMPORTED_MODULE_1__["default"]();
+var battleScene = new _scenes_battle_scene__WEBPACK_IMPORTED_MODULE_4__["default"]();
 var config = {
   type: Phaser.AUTO,
   width: 640,
@@ -139,6 +143,7 @@ game.scene.add(TITLE_SCENE_KEY, titleScene);
 game.scene.add(WORLD_SCENE_KEY, worldScene);
 game.scene.add(BOOT_SCENE_KEY, bootScene);
 game.scene.add(LOADING_SCENE_KEY, loadingScene);
+game.scene.add(BATTLE_SCENE_KEY, battleScene);
 game.scene.start(BOOT_SCENE_KEY, {
   scene: 'title'
 });
@@ -879,6 +884,73 @@ function (_Prefab) {
 
 /***/ }),
 
+/***/ "./src/scenes/battle-scene.js":
+/*!************************************!*\
+  !*** ./src/scenes/battle-scene.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _json_level_scene__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./json-level-scene */ "./src/scenes/json-level-scene.js");
+/* harmony import */ var _prefabs_prefab__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../prefabs/prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _prefabs_text_prefab__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../prefabs/text-prefab */ "./src/prefabs/text-prefab.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+/**
+ * Scene displaying title and starts game after clicked on it
+ */
+
+var BattleScene =
+/*#__PURE__*/
+function (_JSonLevelScene) {
+  _inherits(BattleScene, _JSonLevelScene);
+
+  function BattleScene() {
+    _classCallCheck(this, BattleScene);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(BattleScene).call(this, 'BattleScene'));
+  } //#region public methods
+  //#endregion
+  //#region internal methods
+
+
+  _createClass(BattleScene, [{
+    key: "setPrefabs",
+    value: function setPrefabs() {
+      console.log('BattleScene', 'setPrefabs');
+      this.prefabsClasses = {};
+    } //#endregion
+
+  }]);
+
+  return BattleScene;
+}(_json_level_scene__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (BattleScene);
+
+/***/ }),
+
 /***/ "./src/scenes/boot-scene.js":
 /*!**********************************!*\
   !*** ./src/scenes/boot-scene.js ***!
@@ -1298,22 +1370,20 @@ function (_JSonLevelScene) {
 
     return _possibleConstructorReturn(this, _getPrototypeOf(TitleScene).call(this, 'TitleScene'));
   } //#region public methods
-  //#endregion
-  //#region internal methods
 
 
   _createClass(TitleScene, [{
     key: "startGame",
     value: function startGame() {
-      console.log('starting');
       this.scene.start('BootScene', {
         scene: 'town'
       });
-    }
+    } //#endregion
+    //#region internal methods
+
   }, {
     key: "setPrefabs",
     value: function setPrefabs() {
-      console.log('setPrefabs');
       this.prefabsClasses = {
         background: _prefabs_prefab__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.constructor,
         text: _prefabs_text_prefab__WEBPACK_IMPORTED_MODULE_2__["default"].prototype.constructor
