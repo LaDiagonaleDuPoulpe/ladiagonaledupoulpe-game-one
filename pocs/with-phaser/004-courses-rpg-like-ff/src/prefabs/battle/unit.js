@@ -14,10 +14,10 @@ class Unit extends Prefab {
     initialize(scene, name, position, properties) {
         super.initialize(scene, name, position, properties);
         
-        this.startingAnimationKey = createAnimation('idle');
-        createAnimation('attack1');
-        createAnimation('attack2');
-        createAnimation('hit');
+        this.startingAnimationKey = this.createAnimation('idle', name, properties);
+        this.createAnimation('attack1', name, properties);
+        this.createAnimation('attack2', name, properties);
+        this.createAnimation('hit', name, properties);
 
         this.attachEvents();
 
@@ -48,10 +48,10 @@ class Unit extends Prefab {
      * @param {string} animationName
      * @returns Returns animation key 
      */
-    createAnimation(name, animationName) {
+    createAnimation(animationName, name, properties) {
         const animationKey = name + '_' + animationName;
 
-        if (this.scene.anims.anims.has(animationKey)) {
+        if (! this.scene.anims.anims.has(animationKey)) {
             const frameConfig = {
                 frames: properties.animations[animationName].frames,
             };
