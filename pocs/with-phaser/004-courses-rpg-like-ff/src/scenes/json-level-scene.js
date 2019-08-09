@@ -33,25 +33,27 @@ class JSonLevelScene extends Phaser.Scene {
     
     //#region internal methods
     /**
-     * Inits new UserInput class
-     */
+    * Inits new UserInput class
+    */
     initUserInputPlugin() {
-        this.userInputs = {};
-
-        for (const key in this.levelData.userInput) {
-            if (this.levelData.userInput.hasOwnProperty(key)) {
-                this.userInputs[key] = this.cache.json.get(key);
+        if (this.levelData.userInput) {
+            this.userInputs = {};
+            
+            for (const key in this.levelData.userInput) {
+                if (this.levelData.userInput.hasOwnProperty(key)) {
+                    this.userInputs[key] = this.cache.json.get(key);
+                }
             }
+            
+            this.userInput = new UserInput(this);
+            this.userInputData = this.cache.json.get(this.levelData.initialUserInput);
+            this.userInput.setInput(this.userInputData);
         }
-
-        this.userInput = new UserInput(this);
-        this.userInputData = this.cache.json.get(this.levelData.initialUserInput);
-        this.userInput.setInput(this.userInputData);
     }
-
+    
     /**
-     * Updates all child prefabs
-     */
+    * Updates all child prefabs
+    */
     updateAllPrefabs() {
         for (const name in this.prefabs) {
             if (this.prefabs.hasOwnProperty(name)) {
@@ -61,8 +63,8 @@ class JSonLevelScene extends Phaser.Scene {
     }
     
     /**
-     * Creates physic group (to manage collision for example)
-     */
+    * Creates physic group (to manage collision for example)
+    */
     createGroups() {
         this.levelData.groups.forEach(name => {
             this.groups[name] = this.physics.add.group();
@@ -70,8 +72,8 @@ class JSonLevelScene extends Phaser.Scene {
     }
     
     /**
-     * Create all prefab items
-     */
+    * Create all prefab items
+    */
     initAllPrefabs() {
         for (const key in this.levelData.prefabs) {
             let spriteData = this.levelData.prefabs[key];

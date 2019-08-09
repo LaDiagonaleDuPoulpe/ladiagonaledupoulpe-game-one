@@ -1117,27 +1117,29 @@ function (_Phaser$Scene) {
     //#region internal methods
 
     /**
-     * Inits new UserInput class
-     */
+    * Inits new UserInput class
+    */
 
   }, {
     key: "initUserInputPlugin",
     value: function initUserInputPlugin() {
-      this.userInputs = {};
+      if (this.levelData.userInput) {
+        this.userInputs = {};
 
-      for (var key in this.levelData.userInput) {
-        if (this.levelData.userInput.hasOwnProperty(key)) {
-          this.userInputs[key] = this.cache.json.get(key);
+        for (var key in this.levelData.userInput) {
+          if (this.levelData.userInput.hasOwnProperty(key)) {
+            this.userInputs[key] = this.cache.json.get(key);
+          }
         }
-      }
 
-      this.userInput = new _plugins_user_input__WEBPACK_IMPORTED_MODULE_2__["default"](this);
-      this.userInputData = this.cache.json.get(this.levelData.initialUserInput);
-      this.userInput.setInput(this.userInputData);
+        this.userInput = new _plugins_user_input__WEBPACK_IMPORTED_MODULE_2__["default"](this);
+        this.userInputData = this.cache.json.get(this.levelData.initialUserInput);
+        this.userInput.setInput(this.userInputData);
+      }
     }
     /**
-     * Updates all child prefabs
-     */
+    * Updates all child prefabs
+    */
 
   }, {
     key: "updateAllPrefabs",
@@ -1149,8 +1151,8 @@ function (_Phaser$Scene) {
       }
     }
     /**
-     * Creates physic group (to manage collision for example)
-     */
+    * Creates physic group (to manage collision for example)
+    */
 
   }, {
     key: "createGroups",
@@ -1162,8 +1164,8 @@ function (_Phaser$Scene) {
       }, this);
     }
     /**
-     * Create all prefab items
-     */
+    * Create all prefab items
+    */
 
   }, {
     key: "initAllPrefabs",
