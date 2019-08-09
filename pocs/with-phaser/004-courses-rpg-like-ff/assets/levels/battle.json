@@ -46,6 +46,32 @@
                 "scale": {
                     "x": 0.7,
                     "y": 0.7
+                },
+                "animations": {
+                    "idle": {
+                        "frames": [0, 1, 2, 3, 4, 5],
+                        "fps": 6
+                    },
+                    "attack1": {
+                        "frames": [6, 7, 8, 9, 10, 11],
+                        "fps": 6
+                    },
+                    "attack2": {
+                        "frames": [6, 7, 8, 9, 10, 11],
+                        "fps": 6
+                    },
+                    "hit": {
+                        "frames": [16, 17],
+                        "fps": 6
+                    }
+                },
+                "stats": {
+                    "attack": 20,
+                    "magicAttack": 5,
+                    "defense": 5,
+                    "health": 100,
+                    "mana": 100,
+                    "speed": 15
                 }
             }
         },
@@ -58,6 +84,32 @@
                 "scale": {
                     "x": 0.7,
                     "y": 0.7
+                },
+                "animations": {
+                    "idle": {
+                        "frames": [0, 1, 2, 3, 4],
+                        "fps": 5
+                    },
+                    "attack1": {
+                        "frames": [5, 6, 0],
+                        "fps": 3
+                    },
+                    "attack2": {
+                        "frames": [7, 8, 9, 10, 11, 12, 14, 0],
+                        "fps": 8
+                    },
+                    "hit": {
+                        "frames": [14, 15],
+                        "fps": 2
+                    }
+                },
+                "stats": {
+                    "attack": 5,
+                    "magicAttack": 20,
+                    "defense": 2,
+                    "health": 100,
+                    "mana": 100,
+                    "speed": 10
                 }
             }
         },
@@ -70,6 +122,31 @@
                 "scale": {
                     "x": 0.7,
                     "y": 0.7
+                },
+                "animations": {
+                    "idle": {
+                        "frames": [0, 1, 2, 3, 4],
+                        "fps": 5
+                    },
+                    "attack1": {
+                        "frames": [5, 6, 7, 8, 9, 10, 0],
+                        "fps": 7
+                    },
+                    "attack2": {
+                        "frames": [11, 12, 13, 14, 15, 16],
+                        "fps": 6
+                    },
+                    "hit": {
+                        "frames": [17, 18],
+                        "fps": 6
+                    }
+                },
+                "stats": {
+                    "attack": 10,
+                    "magicAttack": 5,
+                    "defense": 1,
+                    "health": 25,
+                    "speed": 20
                 }
             }
         },
@@ -82,6 +159,31 @@
                 "scale": {
                     "x": 0.7,
                     "y": 0.7
+                },
+                "animations": {
+                    "idle": {
+                        "frames": [0, 1, 2, 3, 4],
+                        "fps": 5
+                    },
+                    "attack1": {
+                        "frames": [5, 6, 7, 8, 9, 10, 0],
+                        "fps": 7
+                    },
+                    "attack2": {
+                        "frames": [11, 12, 13, 14, 15, 16],
+                        "fps": 6
+                    },
+                    "hit": {
+                        "frames": [17, 18],
+                        "fps": 6
+                    }
+                },
+                "stats": {
+                    "attack": 10,
+                    "magicAttack": 5,
+                    "defense": 1,
+                    "health": 25,
+                    "speed": 20
                 }
             }
         }

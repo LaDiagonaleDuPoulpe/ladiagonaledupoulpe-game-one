@@ -14,18 +14,34 @@ class Unit extends Prefab {
     initialize(scene, name, position, properties) {
         super.initialize(scene, name, position, properties);
         
-        const startingAnimationKey = createAnimation('idle');
+        this.startingAnimationKey = createAnimation('idle');
         createAnimation('attack1');
         createAnimation('attack2');
         createAnimation('hit');
 
-        this.anims.play(startingAnimationKey);
+        this.attachEvents();
+
+        this.anims.play(this.startingAnimationKey);
 
         this.stats = properties.stats;
     }   
     //#endregion
     
     //#region internal methods
+    /**
+     * Attachs on events (complete, ...)
+     */
+    attachEvents() {
+        this.on('animationcomplete', this.backToIdle.bind(this));
+    }
+
+    /**
+     * After battle, go back to idle animation
+     */
+    backToIdle() {
+        this.anims.play(this.startingAnimationKey);
+    }
+
     /**
      * Creates an animation and return the animationKey
      * @param {string} name 
