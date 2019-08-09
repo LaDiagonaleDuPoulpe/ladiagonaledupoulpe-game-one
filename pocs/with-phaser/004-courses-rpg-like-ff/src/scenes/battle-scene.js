@@ -17,6 +17,9 @@ class BattleScene extends JSonLevelScene {
     setPrefabs() {
         console.log('BattleScene', 'setPrefabs');
         this.prefabsClasses = {
+            background: Prefab.prototype.constructor,
+            playerUnit: Prefab.prototype.constructor,
+            enemyUnit: Prefab.prototype.constructor,
         };
     }
     //#endregion

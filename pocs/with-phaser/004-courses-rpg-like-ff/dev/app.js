@@ -939,7 +939,11 @@ function (_JSonLevelScene) {
     key: "setPrefabs",
     value: function setPrefabs() {
       console.log('BattleScene', 'setPrefabs');
-      this.prefabsClasses = {};
+      this.prefabsClasses = {
+        background: _prefabs_prefab__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.constructor,
+        playerUnit: _prefabs_prefab__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.constructor,
+        enemyUnit: _prefabs_prefab__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.constructor
+      };
     } //#endregion
 
   }]);
@@ -1007,6 +1011,10 @@ function (_Phaser$Scene) {
       cave: {
         key: 'WorldScene',
         path: 'assets/levels/cave.json'
+      },
+      battle: {
+        key: 'BattleScene',
+        path: 'assets/levels/battle.json'
       }
     };
     return _this;
