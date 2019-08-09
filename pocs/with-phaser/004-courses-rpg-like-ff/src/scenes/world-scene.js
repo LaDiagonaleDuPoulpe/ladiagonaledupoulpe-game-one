@@ -4,6 +4,7 @@ import TextPrefab from '../prefabs/text-prefab';
 import Player from '../prefabs/world/player';
 import Door from '../prefabs/world/door';
 import NPC from '../prefabs/world/npc';
+import EnemySpawner from '../prefabs/world/enemy-spawner';
 
 /**
 * Loading world tilemap scene
@@ -95,6 +96,7 @@ class WorldScene extends JSonLevelScene {
                 player: Player.prototype.constructor,
                 door: Door.prototype.constructor,
                 npc: NPC.prototype.constructor,
+                enemySpawner: EnemySpawner.prototype.constructor
             };
         }
         //#endregion
