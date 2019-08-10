@@ -9,17 +9,18 @@ import Unit from '../prefabs/battle/unit';
 class BattleScene extends JSonLevelScene {
     constructor() {
         super('BattleScene');
+        this.random = new Phaser.Math.RandomDataGenerator();
     }
 
     //#region public methods
     create() {
         super.create();
+        this.prefabs.warrior.attack();
     }
     //#endregion
     
     //#region internal methods
     setPrefabs() {
-        console.log('BattleScene', 'setPrefabs');
         this.prefabsClasses = {
             background: Prefab.prototype.constructor,
             playerUnit: Unit.prototype.constructor,

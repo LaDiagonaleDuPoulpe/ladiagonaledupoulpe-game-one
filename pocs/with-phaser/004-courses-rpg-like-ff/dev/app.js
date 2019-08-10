@@ -304,17 +304,25 @@ function (_Prefab) {
     _classCallCheck(this, Unit);
 
     return _possibleConstructorReturn(this, _getPrototypeOf(Unit).call(this, scene, name, position, properties));
-  } //#region public methods    
-  //#endregion
-  //#region protected methods
+  } //#region public methods  
 
 
   _createClass(Unit, [{
+    key: "attack",
+    value: function attack() {
+      var target = this.chooseTarget();
+      var damage = this.computeDamage(target);
+      target.receiveDamage(damage);
+      this.anims.play(this.name + '_' + 'attack1');
+    } //#endregion
+    //#region protected methods
+
+  }, {
     key: "initialize",
     value: function initialize(scene, name, position, properties) {
       _get(_getPrototypeOf(Unit.prototype), "initialize", this).call(this, scene, name, position, properties);
 
-      this.createAnimations();
+      this.createAnimations(name, properties);
       this.attachEvents();
       this.anims.play(this.startingAnimationKey);
       this.stats = properties.stats;
@@ -323,8 +331,71 @@ function (_Prefab) {
     //#region internal methods
 
   }, {
+    key: "receiveDamage",
+    value: function receiveDamage(damage) {
+      this.stats.health -= damage;
+      this.anims.play(this.name + '_' + 'hit');
+      this.displayDamageText(damage);
+
+      if (this.stats.health <= 0) {
+        this.stats.health = 0;
+        this.destroy();
+      }
+    }
+  }, {
+    key: "displayDamageText",
+    value: function displayDamageText(damage) {
+      var damageText = this.scene.add.text(this.x, this.y - 50, '' + damage, {
+        font: 'bold 24px Kells',
+        fill: '#ff0000'
+      }, this.scene.groups.hud);
+      this.timeEvent = this.scene.time.addEvent({
+        delay: 1000,
+        callback: damageText.destroy,
+        callbackScope: damageText
+      });
+    }
+    /**
+    * Compute damages to put on unit target
+    * @param {Unit} target 
+    */
+
+  }, {
+    key: "computeDamage",
+    value: function computeDamage(target) {
+      var attackMultiplier = this.scene.random.realInRange(0.8, 1.2);
+      var defenseMultiplier = this.scene.random.realInRange(0.8, 1.2);
+      var realAttackPoints = attackMultiplier * this.stats.attack;
+      var realDefenseUnitPoints = defenseMultiplier * target.stats.defense;
+      var damage = Math.max(0, Math.round(realAttackPoints - realDefenseUnitPoints));
+      return damage;
+    }
+  }, {
+    key: "chooseTarget",
+    value: function chooseTarget() {
+      return this.getActiveUnit();
+    }
+  }, {
+    key: "getActiveUnit",
+    value: function getActiveUnit() {
+      var targetGroup = this.scene.groups[this.targetUnits];
+      var targetIndex = this.scene.random.between(0, targetGroup.countActive() - 1);
+      var target = undefined;
+      var i = 0;
+      targetGroup.children.each(function (unit) {
+        if (unit.active) {
+          if (i == targetIndex) {
+            target = unit;
+          }
+
+          i++;
+        }
+      }, this);
+      return target;
+    }
+  }, {
     key: "createAnimations",
-    value: function createAnimations() {
+    value: function createAnimations(name, properties) {
       this.startingAnimationKey = this.createAnimation('idle', name, properties);
       this.createAnimation('attack1', name, properties);
       this.createAnimation('attack2', name, properties);
@@ -368,8 +439,8 @@ function (_Prefab) {
         this.scene.anims.create({
           key: animationKey,
           frames: frames,
-          frameRate: properties.animations[animationName].fps,
-          repeat: -1
+          frameRate: properties.animations[animationName].fps //repeat: -1
+
         });
       }
 
@@ -1138,9 +1209,13 @@ function (_JSonLevelScene) {
   _inherits(BattleScene, _JSonLevelScene);
 
   function BattleScene() {
+    var _this;
+
     _classCallCheck(this, BattleScene);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(BattleScene).call(this, 'BattleScene'));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BattleScene).call(this, 'BattleScene'));
+    _this.random = new Phaser.Math.RandomDataGenerator();
+    return _this;
   } //#region public methods
 
 
@@ -1148,13 +1223,14 @@ function (_JSonLevelScene) {
     key: "create",
     value: function create() {
       _get(_getPrototypeOf(BattleScene.prototype), "create", this).call(this);
+
+      this.prefabs.warrior.attack();
     } //#endregion
     //#region internal methods
 
   }, {
     key: "setPrefabs",
     value: function setPrefabs() {
-      console.log('BattleScene', 'setPrefabs');
       this.prefabsClasses = {
         background: _prefabs_prefab__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.constructor,
         playerUnit: _prefabs_battle_unit__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.constructor,

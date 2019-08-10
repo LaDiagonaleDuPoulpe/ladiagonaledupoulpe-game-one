@@ -7,14 +7,21 @@ class Unit extends Prefab {
         super(scene, name, position, properties);        
     }
     
-    //#region public methods    
+    //#region public methods  
+    attack() {
+        const target = this.chooseTarget();
+        const damage = this.computeDamage(target);
+        
+        target.receiveDamage(damage);
+        this.anims.play(this.name + '_' + 'attack1');
+    } 
     //#endregion
     
     //#region protected methods
     initialize(scene, name, position, properties) {
         super.initialize(scene, name, position, properties);
         
-        this.createAnimations();
+        this.createAnimations(name, properties);
         this.attachEvents();
         
         this.anims.play(this.startingAnimationKey);
@@ -25,7 +32,62 @@ class Unit extends Prefab {
     //#endregion
     
     //#region internal methods
-    createAnimations() {
+    receiveDamage(damage) {
+        this.stats.health -= damage;
+        this.anims.play(this.name + '_' + 'hit');
+
+        this.displayDamageText(damage);
+        if (this.stats.health <= 0) {
+            this.stats.health = 0;
+            this.destroy();
+        }
+    }
+    
+    displayDamageText(damage) {
+        const damageText = this.scene.add.text(this.x, this.y - 50, '' + damage, { font: 'bold 24px Kells', fill: '#ff0000' }, this.scene.groups.hud);
+        
+        this.timeEvent = this.scene.time.addEvent({ delay: 1000, callback: damageText.destroy, callbackScope: damageText });
+    }
+    
+    /**
+    * Compute damages to put on unit target
+    * @param {Unit} target 
+    */
+    computeDamage(target) {
+        const attackMultiplier = this.scene.random.realInRange(0.8, 1.2);
+        const defenseMultiplier = this.scene.random.realInRange(0.8, 1.2);
+        
+        const realAttackPoints = attackMultiplier * this.stats.attack;
+        const realDefenseUnitPoints = defenseMultiplier * target.stats.defense;
+        let damage = Math.max(0, Math.round(realAttackPoints - realDefenseUnitPoints));
+        
+        return damage;
+    }
+    
+    chooseTarget() {
+        return this.getActiveUnit();        
+    } 
+    
+    getActiveUnit() {
+        const targetGroup = this.scene.groups[this.targetUnits];
+        const targetIndex = this.scene.random.between(0, targetGroup.countActive() - 1);
+        let target = undefined;
+        
+        let i = 0;
+        targetGroup.children.each(unit => {
+            if (unit.active) {
+                if (i == targetIndex) {
+                    target = unit;
+                }
+                i ++;
+            }
+        }, this);
+        
+        
+        return target;
+    }
+    
+    createAnimations(name, properties) {
         this.startingAnimationKey = this.createAnimation('idle', name, properties);
         this.createAnimation('attack1', name, properties);
         this.createAnimation('attack2', name, properties);
@@ -65,7 +127,7 @@ class Unit extends Prefab {
                 key: animationKey,
                 frames: frames,
                 frameRate: properties.animations[animationName].fps,
-                repeat: -1
+                //repeat: -1
             });
         }
         
