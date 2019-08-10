@@ -12,6 +12,9 @@ class BattleScene extends JSonLevelScene {
     }
 
     //#region public methods
+    create() {
+        super.create();
+    }
     //#endregion
     
     //#region internal methods

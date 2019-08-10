@@ -314,19 +314,25 @@ function (_Prefab) {
     value: function initialize(scene, name, position, properties) {
       _get(_getPrototypeOf(Unit.prototype), "initialize", this).call(this, scene, name, position, properties);
 
+      this.createAnimations();
+      this.attachEvents();
+      this.anims.play(this.startingAnimationKey);
+      this.stats = properties.stats;
+      this.targetUnits = properties.targetUnits;
+    } //#endregion
+    //#region internal methods
+
+  }, {
+    key: "createAnimations",
+    value: function createAnimations() {
       this.startingAnimationKey = this.createAnimation('idle', name, properties);
       this.createAnimation('attack1', name, properties);
       this.createAnimation('attack2', name, properties);
       this.createAnimation('hit', name, properties);
-      this.attachEvents();
-      this.anims.play(this.startingAnimationKey);
-      this.stats = properties.stats;
-    } //#endregion
-    //#region internal methods
-
+    }
     /**
-     * Attachs on events (complete, ...)
-     */
+    * Attachs on events (complete, ...)
+    */
 
   }, {
     key: "attachEvents",
@@ -334,8 +340,8 @@ function (_Prefab) {
       this.on('animationcomplete', this.backToIdle.bind(this));
     }
     /**
-     * After battle, go back to idle animation
-     */
+    * After battle, go back to idle animation
+    */
 
   }, {
     key: "backToIdle",
@@ -343,11 +349,11 @@ function (_Prefab) {
       this.anims.play(this.startingAnimationKey);
     }
     /**
-     * Creates an animation and return the animationKey
-     * @param {string} name 
-     * @param {string} animationName
-     * @returns Returns animation key 
-     */
+    * Creates an animation and return the animationKey
+    * @param {string} name 
+    * @param {string} animationName
+    * @returns Returns animation key 
+    */
 
   }, {
     key: "createAnimation",
@@ -1108,6 +1114,10 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
@@ -1132,11 +1142,16 @@ function (_JSonLevelScene) {
 
     return _possibleConstructorReturn(this, _getPrototypeOf(BattleScene).call(this, 'BattleScene'));
   } //#region public methods
-  //#endregion
-  //#region internal methods
 
 
   _createClass(BattleScene, [{
+    key: "create",
+    value: function create() {
+      _get(_getPrototypeOf(BattleScene.prototype), "create", this).call(this);
+    } //#endregion
+    //#region internal methods
+
+  }, {
     key: "setPrefabs",
     value: function setPrefabs() {
       console.log('BattleScene', 'setPrefabs');

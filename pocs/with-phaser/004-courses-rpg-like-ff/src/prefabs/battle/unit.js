@@ -14,43 +14,47 @@ class Unit extends Prefab {
     initialize(scene, name, position, properties) {
         super.initialize(scene, name, position, properties);
         
-        this.startingAnimationKey = this.createAnimation('idle', name, properties);
-        this.createAnimation('attack1', name, properties);
-        this.createAnimation('attack2', name, properties);
-        this.createAnimation('hit', name, properties);
-
+        this.createAnimations();
         this.attachEvents();
-
+        
         this.anims.play(this.startingAnimationKey);
-
+        
         this.stats = properties.stats;
+        this.targetUnits = properties.targetUnits;
     }   
     //#endregion
     
     //#region internal methods
+    createAnimations() {
+        this.startingAnimationKey = this.createAnimation('idle', name, properties);
+        this.createAnimation('attack1', name, properties);
+        this.createAnimation('attack2', name, properties);
+        this.createAnimation('hit', name, properties);
+    }
+    
     /**
-     * Attachs on events (complete, ...)
-     */
+    * Attachs on events (complete, ...)
+    */
     attachEvents() {
         this.on('animationcomplete', this.backToIdle.bind(this));
     }
-
+    
     /**
-     * After battle, go back to idle animation
-     */
+    * After battle, go back to idle animation
+    */
     backToIdle() {
         this.anims.play(this.startingAnimationKey);
     }
-
+    
     /**
-     * Creates an animation and return the animationKey
-     * @param {string} name 
-     * @param {string} animationName
-     * @returns Returns animation key 
-     */
+    * Creates an animation and return the animationKey
+    * @param {string} name 
+    * @param {string} animationName
+    * @returns Returns animation key 
+    */
     createAnimation(animationName, name, properties) {
         const animationKey = name + '_' + animationName;
-
+        
         if (! this.scene.anims.anims.has(animationKey)) {
             const frameConfig = {
                 frames: properties.animations[animationName].frames,
@@ -64,7 +68,7 @@ class Unit extends Prefab {
                 repeat: -1
             });
         }
-
+        
         return animationKey;
     }
     //#endregion
