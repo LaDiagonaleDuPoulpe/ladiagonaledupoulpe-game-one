@@ -8,13 +8,28 @@ class Unit extends Prefab {
     }
     
     //#region public methods  
+    /**
+     * Lanuches an attack 
+     */
     attack() {
         const target = this.chooseTarget();
         const damage = this.computeDamage(target);
         
         target.receiveDamage(damage);
         this.anims.play(this.name + '_' + 'attack1');
-    } 
+    }
+    
+    /**
+     * Calculates current attack turn
+     * @param {number} currentTurn 
+     */
+    calculateAttackTurn(currentTurn) {
+        if (! currentTurn) {
+            currentTurn = this.attackTurn;
+        }
+
+        this.attackTurn = currentTurn + Math.ceil(100 / this.stats.speed);
+    }
     //#endregion
     
     //#region protected methods
@@ -64,10 +79,16 @@ class Unit extends Prefab {
         return damage;
     }
     
+    /**
+     * Chooses a target to attack
+     */
     chooseTarget() {
         return this.getActiveUnit();        
     } 
     
+    /**
+     * Gets active unit in battle scene
+     */
     getActiveUnit() {
         const targetGroup = this.scene.groups[this.targetUnits];
         const targetIndex = this.scene.random.between(0, targetGroup.countActive() - 1);
@@ -127,7 +148,7 @@ class Unit extends Prefab {
                 key: animationKey,
                 frames: frames,
                 frameRate: properties.animations[animationName].fps,
-                //repeat: -1
+                //repeat: -1 // repeat animation
             });
         }
         

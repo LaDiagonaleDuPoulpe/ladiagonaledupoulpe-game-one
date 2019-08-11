@@ -29,8 +29,9 @@
     "webpack-cli": "^3.1.0"
   },
   "dependencies": {
-    "phaser": "3.12.0",
     "firebase": "^5.0.3",
+    "js-priority-queue": "^0.1.5",
+    "phaser": "3.12.0",
     "phaser-animated-tiles": "^2.0.2"
   }
 }
