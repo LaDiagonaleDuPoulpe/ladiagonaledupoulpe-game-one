@@ -1,6 +1,6 @@
 {
     "assets": {
-        "background_image": {
+        "backgroundImage": {
             "type": "image", 
             "source": "assets/images/battle/background.png"
         },
@@ -21,19 +21,30 @@
             "source": "assets/images/battle/snake.png",
             "frameWidth": 147,
             "frameHeight": 94
+        },
+        "snakeFaceImage": {
+            "type": "image", 
+            "source": "assets/images/battle/snake_face.png"
+        },
+        "iconsSpriteSheet": {
+            "type": "spritesheet", 
+            "source": "assets/images/battle/icons.png",
+            "frameWidth": 40,
+            "frameHeight": 40
         }
     },
     "groups": [
         "background",
         "playerUnits",
-        "enemyUnits"
+        "enemyUnits",
+        "hud"
     ],
     "prefabs": {
         "background": {
             "type": "background",
             "position": {"x": 320, "y": 240},
             "properties": {
-                "texture": "background_image",
+                "texture": "backgroundImage",
                 "group": "background"
             }
         },
@@ -189,6 +200,108 @@
                     "speed": 20
                 },
                 "targetUnits": "playerUnits"
+            }
+        },
+        "attack": {
+            "type": "menuItem",
+            "position": {
+                "x": 210,
+                "y": 360
+            },
+            "properties": {
+                "group": "hud",
+                "texture": "iconsSpriteSheet",
+                "frame": 13,
+                "anchor": {
+                    "x": 0,
+                    "y": 0
+                }
+            }
+        },
+        "magic": {
+            "type": "menuItem",
+            "position": {
+                "x": 250,
+                "y": 360
+            },
+            "properties": {
+                "group": "hud",
+                "texture": "iconsSpriteSheet",
+                "frame": 10,
+                "anchor": {
+                    "x": 0,
+                    "y": 0
+                }
+            }
+        },
+        "item": {
+            "type": "menuItem",
+            "position": {
+                "x": 290,
+                "y": 360
+            },
+            "properties": {
+                "group": "hud",
+                "texture": "iconsSpriteSheet",
+                "frame": 12,
+                "anchor": {
+                    "x": 0,
+                    "y": 0
+                }
+            }
+        },
+        "run": {
+            "type": "menuItem",
+            "position": {
+                "x": 330,
+                "y": 360
+            },
+            "properties": {
+                "group": "hud",
+                "texture": "iconsSpriteSheet",
+                "frame": 11,
+                "anchor": {
+                    "x": 0,
+                    "y": 0
+                }
+            }
+        },
+        "snake1Item": {
+            "type": "menuItem",
+            "position": {
+                "x": 10,
+                "y": 350
+            },
+            "properties": {
+                "group": "hud",
+                "texture": "snakeFaceImage",
+                "scale": {
+                    "x": 0.5,
+                    "y": 0.5
+                },
+                "anchor": {
+                    "x": 0,
+                    "y": 0
+                }
+            }
+        },
+        "snake2Item": {
+            "type": "menuItem",
+            "position": {
+                "x": 60,
+                "y": 350
+            },
+            "properties": {
+                "group": "hud",
+                "texture": "snakeFaceImage",
+                "scale": {
+                    "x": 0.5,
+                    "y": 0.5
+                },
+                "anchor": {
+                    "x": 0,
+                    "y": 0
+                }
             }
         }
     }

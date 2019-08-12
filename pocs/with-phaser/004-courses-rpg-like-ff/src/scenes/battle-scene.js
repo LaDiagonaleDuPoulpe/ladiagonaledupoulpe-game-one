@@ -34,6 +34,8 @@ class BattleScene extends JSonLevelScene {
             this.currentUnit = undefined;
             this.goToNextTurn();
         }
+
+        console.log('next turn', this.units);
     }
     //#endregion
     

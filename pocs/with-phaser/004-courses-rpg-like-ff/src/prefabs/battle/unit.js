@@ -24,6 +24,7 @@ class Unit extends Prefab {
      * @param {number} currentTurn 
      */
     calculateAttackTurn(currentTurn) {
+        console.log('calculateAttackTurn', currentTurn);
         if (! currentTurn) {
             currentTurn = this.attackTurn;
         }

@@ -338,6 +338,8 @@ function (_Prefab) {
   }, {
     key: "calculateAttackTurn",
     value: function calculateAttackTurn(currentTurn) {
+      console.log('calculateAttackTurn', currentTurn);
+
       if (!currentTurn) {
         currentTurn = this.attackTurn;
       }
@@ -1283,6 +1285,8 @@ function (_JSonLevelScene) {
         this.currentUnit = undefined;
         this.goToNextTurn();
       }
+
+      console.log('next turn', this.units);
     } //#endregion
     //#region internal methods
 
