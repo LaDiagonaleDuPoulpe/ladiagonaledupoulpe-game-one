@@ -31,6 +31,17 @@ class JSonLevelScene extends Phaser.Scene {
     }
     //#endregion
     
+    //#region protected method
+    /**
+    * Creates prefab
+    * @param {string} spriteName 
+    * @param {json} spriteData 
+    */
+    createPrefab(spriteName, spriteData) {
+        return new this.prefabsClasses[spriteData.type](this, spriteName, spriteData.position, spriteData.properties);        
+    }    
+    //#endregion
+    
     //#region internal methods
     /**
     * Inits new UserInput class
@@ -75,9 +86,9 @@ class JSonLevelScene extends Phaser.Scene {
     * Create all prefab items
     */
     initAllPrefabs() {
-        for (const key in this.levelData.prefabs) {
+        for (const key in this.levelData.prefabs) {            
             let spriteData = this.levelData.prefabs[key];
-            let prefab = new this.prefabsClasses[spriteData.type](this, key, spriteData.position, spriteData.properties);
+            this.createPrefab(key, spriteData);
         }
     }
     

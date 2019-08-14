@@ -495,6 +495,183 @@ function (_Prefab) {
 
 /***/ }),
 
+/***/ "./src/prefabs/hud/menu-item.js":
+/*!**************************************!*\
+  !*** ./src/prefabs/hud/menu-item.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var MenuItem =
+/*#__PURE__*/
+function (_Prefab) {
+  _inherits(MenuItem, _Prefab);
+
+  function MenuItem(scene, name, position, properties) {
+    _classCallCheck(this, MenuItem);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MenuItem).call(this, scene, name, position, properties));
+  } //#region public methods   
+  //#endregion
+  //#region protected methods
+
+
+  _createClass(MenuItem, [{
+    key: "initialize",
+    value: function initialize(scene, name, position, properties) {
+      _get(_getPrototypeOf(MenuItem.prototype), "initialize", this).call(this, scene, name, position, properties);
+
+      this.setInteractive();
+      this.on('pointerDown', this.select.bind(this));
+    }
+    /**
+     * Selects one menu
+     */
+
+  }, {
+    key: "select",
+    value: function select() {
+      console.log(this.name + ' selected');
+    } //#endregion
+
+  }]);
+
+  return MenuItem;
+}(_prefab__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (MenuItem);
+
+/***/ }),
+
+/***/ "./src/prefabs/hud/menu.js":
+/*!*********************************!*\
+  !*** ./src/prefabs/hud/menu.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var Menu =
+/*#__PURE__*/
+function (_Prefab) {
+  _inherits(Menu, _Prefab);
+
+  function Menu(scene, name, position, properties) {
+    _classCallCheck(this, Menu);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Menu).call(this, scene, name, position, properties));
+  } //#region public methods
+
+  /**
+   * Enables or disables menu items
+   * @param {bool} state 
+   */
+
+
+  _createClass(Menu, [{
+    key: "enable",
+    value: function enable(state) {
+      this.items.forEach(function (item) {
+        item.setInteractive(state);
+        item.setVisible(state);
+      }, this);
+    } //#endregion
+    //#region protected methods
+
+  }, {
+    key: "initialize",
+    value: function initialize(scene, name, position, properties) {
+      _get(_getPrototypeOf(Menu.prototype), "initialize", this).call(this, scene, name, position, properties);
+
+      this.prepare(properties);
+    } //#endregion
+    //#region internal methods
+
+    /**
+     * Prepares menu with items in properties array
+     */
+
+  }, {
+    key: "prepare",
+    value: function prepare(properties) {
+      this.items = [];
+
+      for (var name in properties.menuItems) {
+        if (properties.menuItems.hasOwnProperty(name)) {
+          var menuItem = this.scene.createPrefab(name, properties.menuItems[name]);
+          this.items.push(menuItem);
+        }
+      }
+
+      this.enable(false);
+    } //#endregion
+
+  }]);
+
+  return Menu;
+}(_prefab__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Menu);
+
+/***/ }),
+
 /***/ "./src/prefabs/hud/message-box.js":
 /*!****************************************!*\
   !*** ./src/prefabs/hud/message-box.js ***!
@@ -1214,6 +1391,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _prefabs_battle_unit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../prefabs/battle/unit */ "./src/prefabs/battle/unit.js");
 /* harmony import */ var _node_modules_js_priority_queue_priority_queue_min__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../node_modules/js-priority-queue/priority-queue.min */ "./node_modules/js-priority-queue/priority-queue.min.js");
 /* harmony import */ var _node_modules_js_priority_queue_priority_queue_min__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_js_priority_queue_priority_queue_min__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _prefabs_hud_menu_item__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../prefabs/hud/menu-item */ "./src/prefabs/hud/menu-item.js");
+/* harmony import */ var _prefabs_hud_menu__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../prefabs/hud/menu */ "./src/prefabs/hud/menu.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1235,6 +1414,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
 
 
 
@@ -1266,6 +1447,7 @@ function (_JSonLevelScene) {
     value: function create() {
       _get(_getPrototypeOf(BattleScene.prototype), "create", this).call(this);
 
+      this.activeMenu();
       this.prepareGamingQueue();
     }
     /**
@@ -1296,8 +1478,15 @@ function (_JSonLevelScene) {
       this.prefabsClasses = {
         background: _prefabs_prefab__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.constructor,
         playerUnit: _prefabs_battle_unit__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.constructor,
-        enemyUnit: _prefabs_battle_unit__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.constructor
+        enemyUnit: _prefabs_battle_unit__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.constructor,
+        menuItem: _prefabs_hud_menu_item__WEBPACK_IMPORTED_MODULE_5__["default"].prototype.constructor,
+        menu: _prefabs_hud_menu__WEBPACK_IMPORTED_MODULE_6__["default"].prototype.constructor
       };
+    }
+  }, {
+    key: "activeMenu",
+    value: function activeMenu() {
+      this.prefabs.actionsMenu.enable(true);
     }
   }, {
     key: "prepareGamingQueue",
@@ -1499,6 +1688,19 @@ function (_Phaser$Scene) {
     value: function update() {
       this.updateAllPrefabs();
     } //#endregion
+    //#region protected method
+
+    /**
+    * Creates prefab
+    * @param {string} spriteName 
+    * @param {json} spriteData 
+    */
+
+  }, {
+    key: "createPrefab",
+    value: function createPrefab(spriteName, spriteData) {
+      return new this.prefabsClasses[spriteData.type](this, spriteName, spriteData.position, spriteData.properties);
+    } //#endregion
     //#region internal methods
 
     /**
@@ -1557,7 +1759,7 @@ function (_Phaser$Scene) {
     value: function initAllPrefabs() {
       for (var key in this.levelData.prefabs) {
         var spriteData = this.levelData.prefabs[key];
-        var prefab = new this.prefabsClasses[spriteData.type](this, key, spriteData.position, spriteData.properties);
+        this.createPrefab(key, spriteData);
       }
     }
     /**

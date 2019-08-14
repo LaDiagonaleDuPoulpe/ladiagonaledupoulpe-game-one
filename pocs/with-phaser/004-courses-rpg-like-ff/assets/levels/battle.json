@@ -42,10 +42,18 @@
     "prefabs": {
         "background": {
             "type": "background",
-            "position": {"x": 320, "y": 240},
+            "position": {"x": 0, "y": 0},
             "properties": {
                 "texture": "backgroundImage",
-                "group": "background"
+                "group": "background",
+                "scale": {
+                    "x": 1.0,
+                    "y": 0.7
+                },
+                "anchor": {
+                    "x": 0,
+                    "y": 0
+                }
             }
         },
         "warrior": {
@@ -202,105 +210,129 @@
                 "targetUnits": "playerUnits"
             }
         },
-        "attack": {
-            "type": "menuItem",
+        "actionsMenu": {
+            "type": "menu",
             "position": {
-                "x": 210,
-                "y": 360
+                "x": 200,
+                "y": 300
             },
             "properties": {
                 "group": "hud",
-                "texture": "iconsSpriteSheet",
-                "frame": 13,
-                "anchor": {
-                    "x": 0,
-                    "y": 0
+                "menuItems": {
+                    "attack": {
+                        "type": "menuItem",
+                        "position": {
+                            "x": 210,
+                            "y": 360
+                        },
+                        "properties": {
+                            "group": "hud",
+                            "texture": "iconsSpriteSheet",
+                            "frame": 13,
+                            "anchor": {
+                                "x": 0,
+                                "y": 0
+                            }
+                        }
+                    },
+                    "magic": {
+                        "type": "menuItem",
+                        "position": {
+                            "x": 250,
+                            "y": 360
+                        },
+                        "properties": {
+                            "group": "hud",
+                            "texture": "iconsSpriteSheet",
+                            "frame": 10,
+                            "anchor": {
+                                "x": 0,
+                                "y": 0
+                            }
+                        }
+                    },
+                    "item": {
+                        "type": "menuItem",
+                        "position": {
+                            "x": 290,
+                            "y": 360
+                        },
+                        "properties": {
+                            "group": "hud",
+                            "texture": "iconsSpriteSheet",
+                            "frame": 12,
+                            "anchor": {
+                                "x": 0,
+                                "y": 0
+                            }
+                        }
+                    },
+                    "run": {
+                        "type": "menuItem",
+                        "position": {
+                            "x": 330,
+                            "y": 360
+                        },
+                        "properties": {
+                            "group": "hud",
+                            "texture": "iconsSpriteSheet",
+                            "frame": 11,
+                            "anchor": {
+                                "x": 0,
+                                "y": 0
+                            }
+                        }
+                    }
                 }
             }
         },
-        "magic": {
-            "type": "menuItem",
-            "position": {
-                "x": 250,
-                "y": 360
-            },
-            "properties": {
-                "group": "hud",
-                "texture": "iconsSpriteSheet",
-                "frame": 10,
-                "anchor": {
-                    "x": 0,
-                    "y": 0
-                }
-            }
-        },
-        "item": {
-            "type": "menuItem",
-            "position": {
-                "x": 290,
-                "y": 360
-            },
-            "properties": {
-                "group": "hud",
-                "texture": "iconsSpriteSheet",
-                "frame": 12,
-                "anchor": {
-                    "x": 0,
-                    "y": 0
-                }
-            }
-        },
-        "run": {
-            "type": "menuItem",
-            "position": {
-                "x": 330,
-                "y": 360
-            },
-            "properties": {
-                "group": "hud",
-                "texture": "iconsSpriteSheet",
-                "frame": 11,
-                "anchor": {
-                    "x": 0,
-                    "y": 0
-                }
-            }
-        },
-        "snake1Item": {
-            "type": "menuItem",
+        "enemyUnitsMenu": {
+            "type": "menu",
             "position": {
                 "x": 10,
                 "y": 350
             },
             "properties": {
                 "group": "hud",
-                "texture": "snakeFaceImage",
-                "scale": {
-                    "x": 0.5,
-                    "y": 0.5
-                },
-                "anchor": {
-                    "x": 0,
-                    "y": 0
-                }
-            }
-        },
-        "snake2Item": {
-            "type": "menuItem",
-            "position": {
-                "x": 60,
-                "y": 350
-            },
-            "properties": {
-                "group": "hud",
-                "texture": "snakeFaceImage",
-                "scale": {
-                    "x": 0.5,
-                    "y": 0.5
-                },
-                "anchor": {
-                    "x": 0,
-                    "y": 0
+                "menuItems": {
+                    "snake1Item": {
+                        "type": "menuItem",
+                        "position": {
+                            "x": 10,
+                            "y": 350
+                        },
+                        "properties": {
+                            "group": "hud",
+                            "texture": "snakeFaceImage",
+                            "scale": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "anchor": {
+                                "x": 0,
+                                "y": 0
+                            }
+                        }
+                    },
+                    "snake2Item": {
+                        "type": "menuItem",
+                        "position": {
+                            "x": 60,
+                            "y": 350
+                        },
+                        "properties": {
+                            "group": "hud",
+                            "texture": "snakeFaceImage",
+                            "scale": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "anchor": {
+                                "x": 0,
+                                "y": 0
+                            }
+                        }
+                    }
                 }
             }
         }
