@@ -734,9 +734,14 @@ function (_Unit) {
   _inherits(PlayerUnit, _Unit);
 
   function PlayerUnit(scene, name, position, properties) {
+    var _this;
+
     _classCallCheck(this, PlayerUnit);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(PlayerUnit).call(this, scene, name, position, properties));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(PlayerUnit).call(this, scene, name, position, properties));
+    _this.experience = 0;
+    _this.currentLevel = 0;
+    return _this;
   } //#region public methods  
 
   /**
@@ -748,6 +753,46 @@ function (_Unit) {
     key: "playAction",
     value: function playAction() {
       this.scene.activateActionsMenu();
+    }
+    /**
+     * Upgrades experience 
+     * @param {number} value 
+     */
+
+  }, {
+    key: "receiveExperience",
+    value: function receiveExperience(value) {
+      this.experience += value;
+      this.verifyLevel();
+    } //#endregion
+    //#region internal methods
+
+  }, {
+    key: "verifyLevel",
+    value: function verifyLevel() {
+      var levelData = this.scene.experienceTable[this.currentLevel];
+
+      if (this.experience >= levelData.requiredExperience) {
+        this.goToNextLevel();
+        this.upgradeStats(levelData);
+      }
+    }
+  }, {
+    key: "goToNextLevel",
+    value: function goToNextLevel() {
+      this.currentLevel++;
+      this.experience = 0;
+    }
+  }, {
+    key: "upgradeStats",
+    value: function upgradeStats(levelData) {
+      console.log('upgradeStats::0', this.stats);
+
+      for (var stat in levelData.statsIncrease) {
+        this.stats[stat] += levelData.statsIncrease[stat];
+      }
+
+      console.log('upgradeStats::1', this.stats);
     } //#endregion
 
   }]);
@@ -2404,6 +2449,7 @@ function (_JSonLevelScene) {
     value: function create() {
       _get(_getPrototypeOf(BattleScene.prototype), "create", this).call(this);
 
+      this.getExperienceTable();
       this.createAllEnemies();
       this.prepareGamingQueue();
     }
@@ -2414,6 +2460,11 @@ function (_JSonLevelScene) {
 
       this.previousLevel = data.extraParameters.previousLevel;
       this.encounter = data.extraParameters.encounter;
+    }
+  }, {
+    key: "preload",
+    value: function preload() {
+      this.loadExperienceTable();
     }
     /**
      * Stops battle, and go back to map
@@ -2427,24 +2478,36 @@ function (_JSonLevelScene) {
       });
     }
     /**
-     * Launchs new turn of attack in battle scene, thanks to queue
+     * Launches new turn of attack in battle scene, thanks to queue
      */
 
   }, {
     key: "goToNextTurn",
     value: function goToNextTurn() {
-      this.currentUnit = this.units.dequeue();
+      var nextTurnIsValid = true;
 
-      if (this.currentUnit.active) {
-        this.currentUnit.playAction();
-        this.currentUnit.calculateAttackTurn();
-        this.units.queue(this.currentUnit);
-      } else {
-        this.currentUnit = undefined;
-        this.goToNextTurn();
+      if (this.groups.enemyUnits.countActive() === 0) {
+        this.endBattle();
+        nextTurnIsValid = false;
       }
 
-      console.log('next turn', this.units);
+      if (this.groups.playerUnits.countActive() === 0) {
+        this.gameOver();
+        nextTurnIsValid = false;
+      }
+
+      if (nextTurnIsValid) {
+        this.currentUnit = this.units.dequeue();
+
+        if (this.currentUnit.active) {
+          this.currentUnit.playAction();
+          this.currentUnit.calculateAttackTurn();
+          this.units.queue(this.currentUnit);
+        } else {
+          this.currentUnit = undefined;
+          this.goToNextTurn();
+        }
+      }
     }
     /**
      * Activates the actions menu
@@ -2468,6 +2531,52 @@ function (_JSonLevelScene) {
     } //#endregion
     //#region internal methods
 
+  }, {
+    key: "getExperienceTable",
+    value: function getExperienceTable() {
+      this.experienceTable = this.cache.json.get('experience_table');
+    }
+  }, {
+    key: "loadExperienceTable",
+    value: function loadExperienceTable() {
+      this.load.json('experience_table', 'assets/levels/experience_table.json');
+    }
+    /**
+     * All enemy units are killed
+     */
+
+  }, {
+    key: "endBattle",
+    value: function endBattle() {
+      this.giveMoreExperienceToUnits();
+      this.backToWorld();
+    }
+    /**
+     * Iterates units and gives experiences
+     */
+
+  }, {
+    key: "giveMoreExperienceToUnits",
+    value: function giveMoreExperienceToUnits() {
+      var _this2 = this;
+
+      var receivedExperience = this.encounter.rewars.experience;
+      this.groups.playerUnits.children.each(function (unit) {
+        var addingExperience = receiveExperience / _this2.groups.playerUnits.children.size;
+        unit.receiveExperience(addingExperience);
+      }, this);
+    }
+    /**
+     * All player units are killed
+     */
+
+  }, {
+    key: "gameOver",
+    value: function gameOver() {
+      this.scene.start('BootScene', {
+        scene: 'title'
+      });
+    }
     /**
      * Creates all enemy prefabs
      */
@@ -2518,12 +2627,12 @@ function (_JSonLevelScene) {
   }, {
     key: "calculateTurnForAllGroup",
     value: function calculateTurnForAllGroup(unitGroup, turn) {
-      var _this2 = this;
+      var _this3 = this;
 
       unitGroup.children.each(function (unit) {
         unit.calculateAttackTurn(turn);
 
-        _this2.units.queue(unit);
+        _this3.units.queue(unit);
       });
     } //#endregion
 

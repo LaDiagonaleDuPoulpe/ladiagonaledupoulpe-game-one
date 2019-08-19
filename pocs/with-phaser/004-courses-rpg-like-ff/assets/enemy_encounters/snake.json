@@ -205,5 +205,8 @@
                 }
             }
         }
+    },
+    "reward": {
+        "experience": 100
     }
 }

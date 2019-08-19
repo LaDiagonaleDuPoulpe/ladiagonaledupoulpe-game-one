@@ -24,6 +24,7 @@ class BattleScene extends JSonLevelScene {
     //#region public methods
     create() {
         super.create();
+        this.getExperienceTable();
         this.createAllEnemies();
         this.prepareGamingQueue();
     }
@@ -35,6 +36,10 @@ class BattleScene extends JSonLevelScene {
         this.encounter = data.extraParameters.encounter;
     }
 
+    preload() {
+        this.loadExperienceTable();
+    }
+
     /**
      * Stops battle, and go back to map
      */
@@ -43,21 +48,33 @@ class BattleScene extends JSonLevelScene {
     }
 
     /**
-     * Launchs new turn of attack in battle scene, thanks to queue
+     * Launches new turn of attack in battle scene, thanks to queue
      */
     goToNextTurn() {
-        this.currentUnit = this.units.dequeue();
+        let nextTurnIsValid = true;
 
-        if (this.currentUnit.active) {
-            this.currentUnit.playAction();
-            this.currentUnit.calculateAttackTurn();
-            this.units.queue(this.currentUnit);
-        } else {
-            this.currentUnit = undefined;
-            this.goToNextTurn();
+        if (this.groups.enemyUnits.countActive() === 0) {
+            this.endBattle();
+            nextTurnIsValid = false;
+        } 
+
+        if (this.groups.playerUnits.countActive() === 0) {
+            this.gameOver();
+            nextTurnIsValid = false;
         }
 
-        console.log('next turn', this.units);
+        if (nextTurnIsValid) {
+            this.currentUnit = this.units.dequeue();
+
+            if (this.currentUnit.active) {
+                this.currentUnit.playAction();
+                this.currentUnit.calculateAttackTurn();
+                this.units.queue(this.currentUnit);
+            } else {
+                this.currentUnit = undefined;
+                this.goToNextTurn();
+            }
+        }
     }
     
     /**
@@ -78,6 +95,41 @@ class BattleScene extends JSonLevelScene {
     //#endregion
     
     //#region internal methods
+    getExperienceTable() {
+        this.experienceTable = this.cache.json.get('experience_table');
+    }
+
+    loadExperienceTable() {
+        this.load.json('experience_table', 'assets/levels/experience_table.json');
+    }
+
+    /**
+     * All enemy units are killed
+     */
+    endBattle() {
+        this.giveMoreExperienceToUnits();
+        this.backToWorld();
+    }
+
+    /**
+     * Iterates units and gives experiences
+     */
+    giveMoreExperienceToUnits() {
+        const receivedExperience = this.encounter.rewars.experience;
+
+        this.groups.playerUnits.children.each(unit => {
+            const addingExperience = receiveExperience / this.groups.playerUnits.children.size;
+            unit.receiveExperience(addingExperience);
+        }, this);
+    }
+
+    /**
+     * All player units are killed
+     */
+    gameOver() {
+        this.scene.start('BootScene', { scene: 'title' });
+    }
+
     /**
      * Creates all enemy prefabs
      */
