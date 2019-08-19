@@ -328,10 +328,7 @@ function (_Prefab) {
   _createClass(Unit, [{
     key: "attack",
     value: function attack() {
-      var target = this.chooseTarget();
-      var damage = this.computeDamage(target);
-      target.receiveDamage(damage);
-      this.anims.play(this.name + '_' + 'attack1');
+      throw new Error('not implemented');
     }
     /**
      * Calculates current attack turn
@@ -360,7 +357,6 @@ function (_Prefab) {
       this.attachEvents();
       this.anims.play(this.startingAnimationKey);
       this.stats = properties.stats;
-      this.targetUnits = properties.targetUnits;
     } //#endregion
     //#region internal methods
 
@@ -403,15 +399,6 @@ function (_Prefab) {
       var realDefenseUnitPoints = defenseMultiplier * target.stats.defense;
       var damage = Math.max(0, Math.round(realAttackPoints - realDefenseUnitPoints));
       return damage;
-    }
-    /**
-     * Chooses a target to attack
-     */
-
-  }, {
-    key: "chooseTarget",
-    value: function chooseTarget() {
-      return this.getActiveUnit();
     }
     /**
      * Gets active unit in battle scene
@@ -458,8 +445,13 @@ function (_Prefab) {
 
   }, {
     key: "backToIdle",
-    value: function backToIdle() {
+    value: function backToIdle(animation) {
       this.anims.play(this.startingAnimationKey);
+      var beginingKey = this.name + '_' + 'attack';
+
+      if (animation.key.startsWith(beginingKey)) {
+        this.scene.goToNextTurn();
+      }
     }
     /**
     * Creates an animation and return the animationKey
@@ -1473,16 +1465,36 @@ function (_JSonLevelScene) {
       console.log('next turn', this.units);
     }
     /**
-     * Activates the menu
+     * Activates the actions menu
+     * @param {boolean} enable 
      */
 
   }, {
-    key: "activeMenu",
-    value: function activeMenu() {
-      this.prefabs.actionsMenu.enable(true);
+    key: "activateActionsMenu",
+    value: function activateActionsMenu(enable) {
+      this.setEnableMenu(this.prefabs.actionsMenu, enable);
+    }
+    /**
+     * Activates the enemies menu
+     * @param {boolean} enable 
+     */
+
+  }, {
+    key: "activateEnemysMenu",
+    value: function activateEnemysMenu(enable) {
+      this.setEnableMenu(this.prefabs.enemyUnitsMenu, enable);
     } //#endregion
     //#region internal methods
 
+  }, {
+    key: "setEnableMenu",
+    value: function setEnableMenu(menu, enable) {
+      if (!enable) {
+        enable = true;
+      }
+
+      menu.enable(enable);
+    }
   }, {
     key: "setPrefabs",
     value: function setPrefabs() {

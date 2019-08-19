@@ -40,14 +40,31 @@ class BattleScene extends JSonLevelScene {
     }
     
     /**
-     * Activates the menu
+     * Activates the actions menu
+     * @param {boolean} enable 
      */
-    activeMenu() {
-        this.prefabs.actionsMenu.enable(true);
+    activateActionsMenu(enable) {
+        this.setEnableMenu(this.prefabs.actionsMenu, enable);
+    }
+
+    /**
+     * Activates the enemies menu
+     * @param {boolean} enable 
+     */
+    activateEnemysMenu(enable) {
+        this.setEnableMenu(this.prefabs.enemyUnitsMenu, enable);
     }
     //#endregion
     
     //#region internal methods
+    setEnableMenu(menu, enable) {
+        if(! enable) {
+            enable = true;
+        }
+
+        menu.enable(enable);
+    }
+
     setPrefabs() {
         this.prefabsClasses = {
             background: Prefab.prototype.constructor,

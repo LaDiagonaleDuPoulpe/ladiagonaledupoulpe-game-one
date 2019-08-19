@@ -15,11 +15,7 @@ class Unit extends Prefab {
      * Lanuches an attack 
      */
     attack() {
-        const target = this.chooseTarget();
-        const damage = this.computeDamage(target);
-        
-        target.receiveDamage(damage);
-        this.anims.play(this.name + '_' + 'attack1');
+        throw new Error('not implemented');
     }
     
     /**
@@ -46,7 +42,6 @@ class Unit extends Prefab {
         this.anims.play(this.startingAnimationKey);
         
         this.stats = properties.stats;
-        this.targetUnits = properties.targetUnits;
     }   
     //#endregion
     
@@ -82,13 +77,6 @@ class Unit extends Prefab {
         
         return damage;
     }
-    
-    /**
-     * Chooses a target to attack
-     */
-    chooseTarget() {
-        return this.getActiveUnit();        
-    } 
     
     /**
      * Gets active unit in battle scene
@@ -129,8 +117,13 @@ class Unit extends Prefab {
     /**
     * After battle, go back to idle animation
     */
-    backToIdle() {
+    backToIdle(animation) {
         this.anims.play(this.startingAnimationKey);
+
+        const beginingKey = this.name +'_' + 'attack';
+        if (animation.key.startsWith(beginingKey)) {
+            this.scene.goToNextTurn();
+        }
     }
     
     /**

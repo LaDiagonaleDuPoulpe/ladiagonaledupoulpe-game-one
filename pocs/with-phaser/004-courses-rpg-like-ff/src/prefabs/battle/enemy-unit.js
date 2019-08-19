@@ -1,5 +1,6 @@
 import Prefab from '../prefab';
 import TitleScene from '../../scenes/title-scene';
+import Attack from './attack';
 
 /**
  * Enemy unit (during a battle)
@@ -16,10 +17,7 @@ class EnemyUnit extends Unit {
      */
     attack() {
         const target = this.chooseTarget();
-        const damage = this.computeDamage(target);
-        
-        target.receiveDamage(damage);
-        this.anims.play(this.name + '_' + 'attack1');
+        this.attack.hit(target);        
     }
     
     /**
@@ -47,10 +45,23 @@ class EnemyUnit extends Unit {
         
         this.stats = properties.stats;
         this.targetUnits = properties.targetUnits;
+
+        this.prepareAttack();        
     }   
     //#endregion
     
     //#region internal methods
+    prepareAttack() {
+        const key = this.name + '_' + 'attack';
+        const position = { x: 0, y: 0 };
+        const setting = {
+            group: 'attacks',
+            owner: this
+        };
+
+        this.attack = new Attack(this.scene, key, position, position, setting);
+    }
+
     receiveDamage(damage) {
         this.stats.health -= damage;
         this.anims.play(this.name + '_' + 'hit');
@@ -66,21 +77,6 @@ class EnemyUnit extends Unit {
         const damageText = this.scene.add.text(this.x, this.y - 50, '' + damage, { font: 'bold 24px Kells', fill: '#ff0000' }, this.scene.groups.hud);
         
         this.timeEvent = this.scene.time.addEvent({ delay: 1000, callback: damageText.destroy, callbackScope: damageText });
-    }
-    
-    /**
-    * Compute damages to put on unit target
-    * @param {Unit} target 
-    */
-    computeDamage(target) {
-        const attackMultiplier = this.scene.random.realInRange(0.8, 1.2);
-        const defenseMultiplier = this.scene.random.realInRange(0.8, 1.2);
-        
-        const realAttackPoints = attackMultiplier * this.stats.attack;
-        const realDefenseUnitPoints = defenseMultiplier * target.stats.defense;
-        let damage = Math.max(0, Math.round(realAttackPoints - realDefenseUnitPoints));
-        
-        return damage;
     }
     
     /**
@@ -129,7 +125,7 @@ class EnemyUnit extends Unit {
     /**
     * After battle, go back to idle animation
     */
-    backToIdle() {
+    backToIdle(animation) {
         this.anims.play(this.startingAnimationKey);
     }
     
