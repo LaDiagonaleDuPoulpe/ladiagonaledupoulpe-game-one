@@ -17,7 +17,8 @@
     },
     "groups": [
         "doors",
-        "players"
+        "players",
+        "enemySpawners"
     ],
     "map": {
         "key": "cavelevelTileMap",
