@@ -1,11 +1,11 @@
 {
-    "enemy_data": {
+    "enemyData": {
         "dragon1": {
-            "type": "boss_unit",
+            "type": "bossUnit",
             "position": {"x": 150, "y": 200},
             "properties": {
                 "texture": "dragon_spritesheet",
-                "group": "enemy_units",
+                "group": "enemyUnits",
                 "scale": {"x": 0.7, "y": 0.7},
                 "animations": {
                     "idle": {"frames": [0, 1, 2, 3, 4], "fps": 5},
@@ -15,29 +15,29 @@
                 },
                 "stats": {
                     "attack": 10,
-                    "magic_attack": 10,
+                    "magicAttack": 10,
                     "defense": 5,
                     "health": 100,
                     "speed": 10
                 },
-                "target_units": "player_units"
+                "targetUnits": "playerUnits"
             }
         },
-        "enemy_units_menu": {
+        "enemyUnitsMenu": {
             "type": "menu",
             "position": {"x": 10, "y": 350},
             "properties": {
                 "group": "hud",
-                "menu_items": {
-                    "dragon1_item": {
-                        "type": "enemy_menu_item",
+                "menuItems": {
+                    "dragon1Item": {
+                        "type": "enemyMenuItem",
                         "position": {"x": 10, "y": 350},
                         "properties": {
                             "group": "hud",
                             "texture": "dragon_face_image",
                             "scale": {"x": 0.5, "y": 0.5},
                             "anchor": {"x": 0, "y": 0},
-                            "enemy_name": "dragon1"
+                            "enemyName": "dragon1"
                         }
                     }
                 }

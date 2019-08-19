@@ -46,7 +46,6 @@ class WorldScene extends JSonLevelScene {
     //#endregion
 
     //#region internal methods
-
     defineTextStyle() {
         this.TEXT_STYLE = {
             font: '14px Kells',
