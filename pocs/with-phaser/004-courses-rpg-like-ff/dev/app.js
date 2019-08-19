@@ -1981,7 +1981,10 @@ function (_Prefab) {
     key: "spawn",
     value: function spawn() {
       this.scene.scene.start('BootScene', {
-        scene: 'battle'
+        scene: 'battle',
+        extraParameters: {
+          previousLevel: this.scene.levelData.level
+        }
       });
     } //#endregion
 
@@ -2398,6 +2401,13 @@ function (_JSonLevelScene) {
 
       this.prepareGamingQueue();
     }
+  }, {
+    key: "init",
+    value: function init(data) {
+      _get(_getPrototypeOf(BattleScene.prototype), "init", this).call(this, data);
+
+      this.previousLevel = data.extraParameters.previousLevel;
+    }
     /**
      * Stops battle, and go back to map
      */
@@ -2406,7 +2416,7 @@ function (_JSonLevelScene) {
     key: "backToWorld",
     value: function backToWorld() {
       this.scene.start('BootScene', {
-        scene: 'town'
+        scene: this.previousLevel
       });
     }
     /**
@@ -2587,7 +2597,8 @@ function (_Phaser$Scene) {
       var levelData = this.cache.json.get(data.scene);
       this.scene.start('LoadingScene', {
         levelData: levelData,
-        scene: this.levels[data.scene].key
+        scene: this.levels[data.scene].key,
+        extraParameters: data.extraParameters
       });
     }
   }]);
@@ -2831,7 +2842,8 @@ function (_Phaser$Scene) {
     key: "create",
     value: function create(data) {
       this.scene.start(data.scene, {
-        levelData: this.levelData
+        levelData: this.levelData,
+        extraParameters: data.extraParameters
       });
     } //#endregion
     //#region internal methods

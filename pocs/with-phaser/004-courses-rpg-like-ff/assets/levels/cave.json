@@ -30,5 +30,6 @@
         "caveUserInput": "assets/user_inputs/world_map_user_input.json",
         "talkingUserInput": "assets/user_inputs/talking_user_input.json"
     },
-    "initialUserInput": "caveUserInput"
+    "initialUserInput": "caveUserInput",
+    "level": "cave"
 }

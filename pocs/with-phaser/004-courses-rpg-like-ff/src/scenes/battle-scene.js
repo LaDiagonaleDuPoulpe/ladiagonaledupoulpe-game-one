@@ -27,11 +27,17 @@ class BattleScene extends JSonLevelScene {
         this.prepareGamingQueue();
     }
 
+    init(data) {
+        super.init(data);
+
+        this.previousLevel = data.extraParameters.previousLevel;
+    }
+
     /**
      * Stops battle, and go back to map
      */
     backToWorld() {
-        this.scene.start('BootScene', { scene: 'town' });
+        this.scene.start('BootScene', { scene: this.previousLevel });
     }
 
     /**

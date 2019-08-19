@@ -23,7 +23,12 @@ class EnemySpawner extends Prefab {
     * Action the enemy starts the battle
     */
     spawn() {
-        this.scene.scene.start('BootScene', { scene: 'battle' });
+        this.scene.scene.start('BootScene', {
+            scene: 'battle',
+            extraParameters: {
+                previousLevel: this.scene.levelData.level
+            }
+        });
     }
     //#endregion
 }
