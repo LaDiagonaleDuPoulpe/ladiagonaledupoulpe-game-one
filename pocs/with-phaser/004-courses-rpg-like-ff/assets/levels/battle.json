@@ -37,6 +37,7 @@
         "background",
         "playerUnits",
         "enemyUnits",
+        "attacks",
         "hud"
     ],
     "prefabs": {
@@ -220,7 +221,7 @@
                 "group": "hud",
                 "menuItems": {
                     "attack": {
-                        "type": "menuItem",
+                        "type": "physicalAttackMenuItem",
                         "position": {
                             "x": 210,
                             "y": 360
@@ -296,7 +297,7 @@
                 "group": "hud",
                 "menuItems": {
                     "snake1Item": {
-                        "type": "menuItem",
+                        "type": "enemyMenuItem",
                         "position": {
                             "x": 10,
                             "y": 350
@@ -311,11 +312,12 @@
                             "anchor": {
                                 "x": 0,
                                 "y": 0
-                            }
+                            },
+                            "enemyName": "snake1"
                         }
                     },
                     "snake2Item": {
-                        "type": "menuItem",
+                        "type": "enemyMenuItem",
                         "position": {
                             "x": 60,
                             "y": 350
@@ -330,7 +332,8 @@
                             "anchor": {
                                 "x": 0,
                                 "y": 0
-                            }
+                            },
+                            "enemyName": "snake2"
                         }
                     }
                 }
