@@ -31,5 +31,8 @@
         "talkingUserInput": "assets/user_inputs/talking_user_input.json"
     },
     "initialUserInput": "caveUserInput",
-    "level": "cave"
+    "level": "cave",
+    "enemyEncounters": {
+        "snake": "assets/enemy_encounters/snake.json"
+    }
 }
