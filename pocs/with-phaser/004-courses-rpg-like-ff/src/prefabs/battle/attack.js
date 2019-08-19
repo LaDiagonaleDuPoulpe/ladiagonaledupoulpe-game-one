@@ -18,7 +18,10 @@ class Attack extends Prefab {
     hit(target) {
         const damage = this.computeDamage(target);        
         target.receiveDamage(damage);
-        this.owner.anims.play(this.owner.name + '_' + 'attack1');
+
+        this.doMoreActionsDuringHit();
+
+        this.owner.anims.play(this.owner.name + '_' + this.defineAnimationToPlay());
     }
     //#endregion
     
@@ -28,6 +31,40 @@ class Attack extends Prefab {
         
         this.owner = properties.owner;
     }
+
+    /**
+     * Defines the animation key to play
+     */
+    defineAnimationToPlay() {
+        return 'attack1';
+    }
+
+    /**
+     * Here, you can do everything more, by overriding method
+     */
+    doMoreActionsDuringHit() {
+    }
+
+    /**
+     * Defines random value to attack multiplier
+     */
+    defineAttackMultiplier() {
+        return this.scene.random.realInRange(0.8, 1.2);
+    }
+
+    /**
+     * Defines random value to defense multiplier
+     */
+    defineDefenseMultiplier() {
+        return this.scene.random.realInRange(0.8, 1.2);
+    }
+
+    /**
+     * Defines the attack point value
+     */
+    getAttackPoint() {
+        return this.owner.stats.attack;
+    }
     //#endregion  
     
     //#region internal methods
@@ -36,10 +73,10 @@ class Attack extends Prefab {
     * @param {Unit} target 
     */
     computeDamage(target) {
-        const attackMultiplier = this.scene.random.realInRange(0.8, 1.2);
-        const defenseMultiplier = this.scene.random.realInRange(0.8, 1.2);
+        const attackMultiplier = this.defineAttackMultiplier();
+        const defenseMultiplier = this.defineDefenseMultiplier();
         
-        const realAttackPoints = attackMultiplier * this.owner.stats.attack;
+        const realAttackPoints = attackMultiplier * this.getAttackPoint();
         const realDefenseUnitPoints = defenseMultiplier * target.stats.defense;
         let damage = Math.max(0, Math.round(realAttackPoints - realDefenseUnitPoints));
         

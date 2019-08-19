@@ -1,7 +1,7 @@
 import Prefab from '../prefab';
 import TitleScene from '../../scenes/title-scene';
-import Attack from './attack';
 import Unit from './unit';
+import PhysicalAttack from './physical-attack';
 
 /**
  * Enemy unit (during a battle)
@@ -41,7 +41,7 @@ class EnemyUnit extends Unit {
             owner: this
         };
 
-        this.attack = new Attack(this.scene, key, position, setting);
+        this.attack = new PhysicalAttack(this.scene, key, position, setting);
     }
     
     /**

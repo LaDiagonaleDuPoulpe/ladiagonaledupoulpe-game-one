@@ -331,7 +331,8 @@ function (_Prefab) {
     value: function hit(target) {
       var damage = this.computeDamage(target);
       target.receiveDamage(damage);
-      this.owner.anims.play(this.owner.name + '_' + 'attack1');
+      this.doMoreActionsDuringHit();
+      this.owner.anims.play(this.owner.name + '_' + this.defineAnimationToPlay());
     } //#endregion
     //#region protected methods
 
@@ -341,6 +342,49 @@ function (_Prefab) {
       _get(_getPrototypeOf(Attack.prototype), "initialize", this).call(this, scene, name, position, properties);
 
       this.owner = properties.owner;
+    }
+    /**
+     * Defines the animation key to play
+     */
+
+  }, {
+    key: "defineAnimationToPlay",
+    value: function defineAnimationToPlay() {
+      return 'attack1';
+    }
+    /**
+     * Here, you can do everything more, by overriding method
+     */
+
+  }, {
+    key: "doMoreActionsDuringHit",
+    value: function doMoreActionsDuringHit() {}
+    /**
+     * Defines random value to attack multiplier
+     */
+
+  }, {
+    key: "defineAttackMultiplier",
+    value: function defineAttackMultiplier() {
+      return this.scene.random.realInRange(0.8, 1.2);
+    }
+    /**
+     * Defines random value to defense multiplier
+     */
+
+  }, {
+    key: "defineDefenseMultiplier",
+    value: function defineDefenseMultiplier() {
+      return this.scene.random.realInRange(0.8, 1.2);
+    }
+    /**
+     * Defines the attack point value
+     */
+
+  }, {
+    key: "getAttackPoint",
+    value: function getAttackPoint() {
+      return this.owner.stats.attack;
     } //#endregion  
     //#region internal methods
 
@@ -352,9 +396,9 @@ function (_Prefab) {
   }, {
     key: "computeDamage",
     value: function computeDamage(target) {
-      var attackMultiplier = this.scene.random.realInRange(0.8, 1.2);
-      var defenseMultiplier = this.scene.random.realInRange(0.8, 1.2);
-      var realAttackPoints = attackMultiplier * this.owner.stats.attack;
+      var attackMultiplier = this.defineAttackMultiplier();
+      var defenseMultiplier = this.defineDefenseMultiplier();
+      var realAttackPoints = attackMultiplier * this.getAttackPoint();
       var realDefenseUnitPoints = defenseMultiplier * target.stats.defense;
       var damage = Math.max(0, Math.round(realAttackPoints - realDefenseUnitPoints));
       return damage;
@@ -380,8 +424,8 @@ function (_Prefab) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
 /* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
-/* harmony import */ var _attack__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./attack */ "./src/prefabs/battle/attack.js");
-/* harmony import */ var _unit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./unit */ "./src/prefabs/battle/unit.js");
+/* harmony import */ var _unit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./unit */ "./src/prefabs/battle/unit.js");
+/* harmony import */ var _physical_attack__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./physical-attack */ "./src/prefabs/battle/physical-attack.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -458,7 +502,7 @@ function (_Unit) {
         group: 'attacks',
         owner: this
       };
-      this.attack = new _attack__WEBPACK_IMPORTED_MODULE_2__["default"](this.scene, key, position, setting);
+      this.attack = new _physical_attack__WEBPACK_IMPORTED_MODULE_3__["default"](this.scene, key, position, setting);
     }
     /**
      * Chooses a target to attack
@@ -495,9 +539,60 @@ function (_Unit) {
   }]);
 
   return EnemyUnit;
-}(_unit__WEBPACK_IMPORTED_MODULE_3__["default"]);
+}(_unit__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (EnemyUnit);
+
+/***/ }),
+
+/***/ "./src/prefabs/battle/physical-attack.js":
+/*!***********************************************!*\
+  !*** ./src/prefabs/battle/physical-attack.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
+/* harmony import */ var _attack__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./attack */ "./src/prefabs/battle/attack.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+/**
+* Enemy unit (during a battle)
+*/
+
+var PhysicalAttack =
+/*#__PURE__*/
+function (_Attack) {
+  _inherits(PhysicalAttack, _Attack);
+
+  function PhysicalAttack(scene, name, position, properties) {
+    _classCallCheck(this, PhysicalAttack);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(PhysicalAttack).call(this, scene, name, position, properties));
+  }
+
+  return PhysicalAttack;
+}(_attack__WEBPACK_IMPORTED_MODULE_2__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (PhysicalAttack);
 
 /***/ }),
 
@@ -788,6 +883,119 @@ function (_Prefab) {
 }(_prefab__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Unit);
+
+/***/ }),
+
+/***/ "./src/prefabs/hud/attack-menu-item.js":
+/*!*********************************************!*\
+  !*** ./src/prefabs/hud/attack-menu-item.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
+/* harmony import */ var _menu_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./menu-item */ "./src/prefabs/hud/menu-item.js");
+/* harmony import */ var _battle_physical_attack__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../battle/physical-attack */ "./src/prefabs/battle/physical-attack.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+/**
+ * It represents a specific menu item, to attack in a fight
+ */
+
+var AttackMenuItem =
+/*#__PURE__*/
+function (_MenuItem) {
+  _inherits(AttackMenuItem, _MenuItem);
+
+  function AttackMenuItem(scene, name, position, properties) {
+    _classCallCheck(this, AttackMenuItem);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(AttackMenuItem).call(this, scene, name, position, properties));
+  } //#region public methods   
+  //#endregion
+  //#region protected methods
+
+
+  _createClass(AttackMenuItem, [{
+    key: "initialize",
+    value: function initialize(scene, name, position, properties) {
+      _get(_getPrototypeOf(AttackMenuItem.prototype), "initialize", this).call(this, scene, name, position, properties);
+    }
+    /**
+     * Selects one menu
+     */
+
+  }, {
+    key: "select",
+    value: function select() {
+      this.setNewAttack();
+    }
+    /**
+     * Sets new attack item (a new turn)
+     */
+
+  }, {
+    key: "setNewAttack",
+    value: function setNewAttack() {
+      var position = {
+        x: 0,
+        y: 0
+      };
+      var setting = {
+        group: 'attacks',
+        owner: this.scene.currentUnit
+      };
+      var key = this.scene.currentUnit.name + '_' + 'attack';
+      this.scene.currentAttack = this.getAttackInstance(key, position, setting);
+      this.scene.activateActionsMenu(false);
+      this.scene.activateEnemysMenu(true);
+    }
+    /**
+     * Gets attack instance
+     * @param {string} key 
+     * @param {position} position 
+     * @param {properties} setting 
+     */
+
+  }, {
+    key: "getAttackInstance",
+    value: function getAttackInstance(key, position, setting) {
+      return new _battle_physical_attack__WEBPACK_IMPORTED_MODULE_3__["default"](this.scene, key, position, setting);
+    } //#endregion
+
+  }]);
+
+  return AttackMenuItem;
+}(_menu_item__WEBPACK_IMPORTED_MODULE_2__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (AttackMenuItem);
 
 /***/ }),
 
@@ -1153,7 +1361,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
 /* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
 /* harmony import */ var _menu_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./menu-item */ "./src/prefabs/hud/menu-item.js");
-/* harmony import */ var _battle_attack__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../battle/attack */ "./src/prefabs/battle/attack.js");
+/* harmony import */ var _battle_physical_attack__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../battle/physical-attack */ "./src/prefabs/battle/physical-attack.js");
+/* harmony import */ var _attack_menu_item__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./attack-menu-item */ "./src/prefabs/hud/attack-menu-item.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1180,54 +1389,33 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 /**
  * It represents a specific menu item, to attack in a fight
  */
 
 var PhysicalAttackMenuItem =
 /*#__PURE__*/
-function (_MenuItem) {
-  _inherits(PhysicalAttackMenuItem, _MenuItem);
+function (_AttackMenuItem) {
+  _inherits(PhysicalAttackMenuItem, _AttackMenuItem);
 
   function PhysicalAttackMenuItem(scene, name, position, properties) {
     _classCallCheck(this, PhysicalAttackMenuItem);
 
     return _possibleConstructorReturn(this, _getPrototypeOf(PhysicalAttackMenuItem).call(this, scene, name, position, properties));
-  } //#region public methods   
-  //#endregion
-  //#region protected methods
+  } //#region protected methods
 
 
   _createClass(PhysicalAttackMenuItem, [{
     key: "initialize",
     value: function initialize(scene, name, position, properties) {
       _get(_getPrototypeOf(PhysicalAttackMenuItem.prototype), "initialize", this).call(this, scene, name, position, properties);
-    }
-    /**
-     * Selects one menu
-     */
-
-  }, {
-    key: "select",
-    value: function select() {
-      var position = {
-        x: 0,
-        y: 0
-      };
-      var setting = {
-        group: 'attacks',
-        owner: this.scene.currentUnit
-      };
-      var key = this.scene.currentUnit.name + '_' + 'attack';
-      this.scene.currentAttack = new _battle_attack__WEBPACK_IMPORTED_MODULE_3__["default"](this.scene, key, position, setting);
-      this.scene.activateActionsMenu(false);
-      this.scene.activateEnemysMenu(true);
     } //#endregion
 
   }]);
 
   return PhysicalAttackMenuItem;
-}(_menu_item__WEBPACK_IMPORTED_MODULE_2__["default"]);
+}(_attack_menu_item__WEBPACK_IMPORTED_MODULE_4__["default"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (PhysicalAttackMenuItem);
 
