@@ -9,6 +9,8 @@ import PlayerUnit from '../prefabs/battle/player-unit';
 import EnemyUnit from '../prefabs/battle/enemy-unit';
 import PhysicalAttackMenuItem from '../prefabs/hud/physical-attack-menu-item';
 import EnemyMenuItem from '../prefabs/hud/enemy-menu-item';
+import MagicalAttackMenuItem from '../prefabs/hud/magical-attack-menu-item';
+import RunMenuItem from '../prefabs/hud/run-menu-item';
 
 /**
  * Scene displaying title and starts game after clicked on it
@@ -23,6 +25,13 @@ class BattleScene extends JSonLevelScene {
     create() {
         super.create();
         this.prepareGamingQueue();
+    }
+
+    /**
+     * Stops battle, and go back to map
+     */
+    backToWorld() {
+        this.scene.start('BootScene', { scene: 'town' });
     }
 
     /**
@@ -77,6 +86,8 @@ class BattleScene extends JSonLevelScene {
             menuItem: MenuItem.prototype.constructor,
             physicalAttackMenuItem: PhysicalAttackMenuItem.prototype.constructor,
             enemyMenuItem: EnemyMenuItem.prototype.constructor,
+            magicalAttackMenuItem: MagicalAttackMenuItem.prototype.constructor,
+            runMenuItem: RunMenuItem.prototype.constructor,
             menu: Menu.prototype.constructor
         };
     }

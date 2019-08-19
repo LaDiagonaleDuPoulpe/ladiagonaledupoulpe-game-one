@@ -237,7 +237,7 @@
                         }
                     },
                     "magic": {
-                        "type": "menuItem",
+                        "type": "magicalAttackMenuItem",
                         "position": {
                             "x": 250,
                             "y": 360
@@ -269,7 +269,7 @@
                         }
                     },
                     "run": {
-                        "type": "menuItem",
+                        "type": "runMenuItem",
                         "position": {
                             "x": 330,
                             "y": 360
@@ -281,7 +281,8 @@
                             "anchor": {
                                 "x": 0,
                                 "y": 0
-                            }
+                            },
+                            "runChance": 0.5
                         }
                     }
                 }
