@@ -160,11 +160,13 @@
                "name":"enemySpawner1",
                "properties":
                {
+                  "encounter":"snake",
                   "group":"enemySpawners",
                   "texture":"snakeImage"
                },
                "propertytypes":
                {
+                  "encounter":"string",
                   "group":"string",
                   "texture":"string"
                },

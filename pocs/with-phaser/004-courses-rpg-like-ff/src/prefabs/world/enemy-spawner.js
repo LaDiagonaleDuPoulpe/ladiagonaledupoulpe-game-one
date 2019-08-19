@@ -1,6 +1,9 @@
 import Prefab from '../prefab';
 import TitleScene from '../../scenes/title-scene';
 
+/**
+ * Manages player meeting with enemy
+ */
 class EnemySpawner extends Prefab {
     
     constructor(scene, name, position, properties) {
@@ -14,6 +17,8 @@ class EnemySpawner extends Prefab {
     initialize(scene, name, position, properties) {
         super.initialize(scene, name, position, properties);
         
+        this.encounter = this.scene.cache.json.get(properties.encounter);
+
         this.scene.physics.add.collider(this, this.scene.groups.players, this.spawn, null, this);
             
         this.body.immovable = true;
@@ -26,7 +31,8 @@ class EnemySpawner extends Prefab {
         this.scene.scene.start('BootScene', {
             scene: 'battle',
             extraParameters: {
-                previousLevel: this.scene.levelData.level
+                previousLevel: this.scene.levelData.level,
+                encounter: this.encounter
             }
         });
     }

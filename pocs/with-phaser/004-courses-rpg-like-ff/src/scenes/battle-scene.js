@@ -24,6 +24,7 @@ class BattleScene extends JSonLevelScene {
     //#region public methods
     create() {
         super.create();
+        this.createAllEnemies();
         this.prepareGamingQueue();
     }
 
@@ -31,6 +32,7 @@ class BattleScene extends JSonLevelScene {
         super.init(data);
 
         this.previousLevel = data.extraParameters.previousLevel;
+        this.encounter = data.extraParameters.encounter;
     }
 
     /**
@@ -76,6 +78,15 @@ class BattleScene extends JSonLevelScene {
     //#endregion
     
     //#region internal methods
+    /**
+     * Creates all enemy prefabs
+     */
+    createAllEnemies() {
+        for (let key in this.encounter.enemyData) {
+            this.createPrefab(key, this.encounter.enemyData[key]);
+        }
+    }
+
     setEnableMenu(menu, enable) {
         if(typeof(enable) == "undefined") {
             enable = true;

@@ -1950,6 +1950,9 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+/**
+ * Manages player meeting with enemy
+ */
 
 var EnemySpawner =
 /*#__PURE__*/
@@ -1970,6 +1973,7 @@ function (_Prefab) {
     value: function initialize(scene, name, position, properties) {
       _get(_getPrototypeOf(EnemySpawner.prototype), "initialize", this).call(this, scene, name, position, properties);
 
+      this.encounter = this.scene.cache.json.get(properties.encounter);
       this.scene.physics.add.collider(this, this.scene.groups.players, this.spawn, null, this);
       this.body.immovable = true;
     }
@@ -1983,7 +1987,8 @@ function (_Prefab) {
       this.scene.scene.start('BootScene', {
         scene: 'battle',
         extraParameters: {
-          previousLevel: this.scene.levelData.level
+          previousLevel: this.scene.levelData.level,
+          encounter: this.encounter
         }
       });
     } //#endregion
@@ -2399,6 +2404,7 @@ function (_JSonLevelScene) {
     value: function create() {
       _get(_getPrototypeOf(BattleScene.prototype), "create", this).call(this);
 
+      this.createAllEnemies();
       this.prepareGamingQueue();
     }
   }, {
@@ -2407,6 +2413,7 @@ function (_JSonLevelScene) {
       _get(_getPrototypeOf(BattleScene.prototype), "init", this).call(this, data);
 
       this.previousLevel = data.extraParameters.previousLevel;
+      this.encounter = data.extraParameters.encounter;
     }
     /**
      * Stops battle, and go back to map
@@ -2461,6 +2468,17 @@ function (_JSonLevelScene) {
     } //#endregion
     //#region internal methods
 
+    /**
+     * Creates all enemy prefabs
+     */
+
+  }, {
+    key: "createAllEnemies",
+    value: function createAllEnemies() {
+      for (var key in this.encounter.enemyData) {
+        this.createPrefab(key, this.encounter.enemyData[key]);
+      }
+    }
   }, {
     key: "setEnableMenu",
     value: function setEnableMenu(menu, enable) {
@@ -3053,6 +3071,10 @@ function (_JSonLevelScene) {
     return _this;
   } //#region public methods
 
+  /**
+   * Creates the world (loads map, tilesets, layers, ...)
+   */
+
 
   _createClass(WorldScene, [{
     key: "create",
@@ -3065,10 +3087,15 @@ function (_JSonLevelScene) {
 
       this.prepareObjects();
     }
+    /**
+     * Preloads data messages
+     */
+
   }, {
     key: "preload",
     value: function preload() {
       this.loadMessages();
+      this.loadEnemyEncounters();
     }
   }, {
     key: "endTalk",
@@ -3085,6 +3112,13 @@ function (_JSonLevelScene) {
         font: '14px Kells',
         fill: "#ffffff"
       };
+    }
+  }, {
+    key: "loadEnemyEncounters",
+    value: function loadEnemyEncounters() {
+      for (var key in this.levelData.enemyEncounters) {
+        this.load.json(key, this.levelData.enemyEncounters[key]);
+      }
     }
   }, {
     key: "loadMessages",
