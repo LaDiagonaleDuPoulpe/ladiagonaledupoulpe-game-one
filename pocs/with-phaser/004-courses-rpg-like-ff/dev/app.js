@@ -381,6 +381,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
 /* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
 /* harmony import */ var _attack__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./attack */ "./src/prefabs/battle/attack.js");
+/* harmony import */ var _unit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./unit */ "./src/prefabs/battle/unit.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -402,6 +403,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -431,22 +433,6 @@ function (_Unit) {
     value: function attack() {
       var target = this.chooseTarget();
       this.attack.hit(target);
-    }
-    /**
-     * Calculates current attack turn
-     * @param {number} currentTurn 
-     */
-
-  }, {
-    key: "calculateAttackTurn",
-    value: function calculateAttackTurn(currentTurn) {
-      console.log('calculateAttackTurn', currentTurn);
-
-      if (!currentTurn) {
-        currentTurn = this.attackTurn;
-      }
-
-      this.attackTurn = currentTurn + Math.ceil(100 / this.stats.speed);
     } //#endregion
     //#region protected methods
 
@@ -455,10 +441,6 @@ function (_Unit) {
     value: function initialize(scene, name, position, properties) {
       _get(_getPrototypeOf(EnemyUnit.prototype), "initialize", this).call(this, scene, name, position, properties);
 
-      this.createAnimations(name, properties);
-      this.attachEvents();
-      this.anims.play(this.startingAnimationKey);
-      this.stats = properties.stats;
       this.targetUnits = properties.targetUnits;
       this.prepareAttack();
     } //#endregion
@@ -476,32 +458,7 @@ function (_Unit) {
         group: 'attacks',
         owner: this
       };
-      this.attack = new _attack__WEBPACK_IMPORTED_MODULE_2__["default"](this.scene, key, position, position, setting);
-    }
-  }, {
-    key: "receiveDamage",
-    value: function receiveDamage(damage) {
-      this.stats.health -= damage;
-      this.anims.play(this.name + '_' + 'hit');
-      this.displayDamageText(damage);
-
-      if (this.stats.health <= 0) {
-        this.stats.health = 0;
-        this.destroy();
-      }
-    }
-  }, {
-    key: "displayDamageText",
-    value: function displayDamageText(damage) {
-      var damageText = this.scene.add.text(this.x, this.y - 50, '' + damage, {
-        font: 'bold 24px Kells',
-        fill: '#ff0000'
-      }, this.scene.groups.hud);
-      this.timeEvent = this.scene.time.addEvent({
-        delay: 1000,
-        callback: damageText.destroy,
-        callbackScope: damageText
-      });
+      this.attack = new _attack__WEBPACK_IMPORTED_MODULE_2__["default"](this.scene, key, position, setting);
     }
     /**
      * Chooses a target to attack
@@ -533,65 +490,12 @@ function (_Unit) {
         }
       }, this);
       return target;
-    }
-  }, {
-    key: "createAnimations",
-    value: function createAnimations(name, properties) {
-      this.startingAnimationKey = this.createAnimation('idle', name, properties);
-      this.createAnimation('attack1', name, properties);
-      this.createAnimation('attack2', name, properties);
-      this.createAnimation('hit', name, properties);
-    }
-    /**
-    * Attachs on events (complete, ...)
-    */
-
-  }, {
-    key: "attachEvents",
-    value: function attachEvents() {
-      this.on('animationcomplete', this.backToIdle.bind(this));
-    }
-    /**
-    * After battle, go back to idle animation
-    */
-
-  }, {
-    key: "backToIdle",
-    value: function backToIdle(animation) {
-      this.anims.play(this.startingAnimationKey);
-    }
-    /**
-    * Creates an animation and return the animationKey
-    * @param {string} name 
-    * @param {string} animationName
-    * @returns Returns animation key 
-    */
-
-  }, {
-    key: "createAnimation",
-    value: function createAnimation(animationName, name, properties) {
-      var animationKey = name + '_' + animationName;
-
-      if (!this.scene.anims.anims.has(animationKey)) {
-        var frameConfig = {
-          frames: properties.animations[animationName].frames
-        };
-        var frames = this.scene.anims.generateFrameNumbers(this.texture.key, frameConfig);
-        this.scene.anims.create({
-          key: animationKey,
-          frames: frames,
-          frameRate: properties.animations[animationName].fps //repeat: -1 // repeat animation
-
-        });
-      }
-
-      return animationKey;
     } //#endregion
 
   }]);
 
   return EnemyUnit;
-}(Unit);
+}(_unit__WEBPACK_IMPORTED_MODULE_3__["default"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (EnemyUnit);
 

@@ -1,6 +1,7 @@
 import Prefab from '../prefab';
 import TitleScene from '../../scenes/title-scene';
 import Attack from './attack';
+import Unit from './unit';
 
 /**
  * Enemy unit (during a battle)
@@ -19,31 +20,12 @@ class EnemyUnit extends Unit {
         const target = this.chooseTarget();
         this.attack.hit(target);        
     }
-    
-    /**
-     * Calculates current attack turn
-     * @param {number} currentTurn 
-     */
-    calculateAttackTurn(currentTurn) {
-        console.log('calculateAttackTurn', currentTurn);
-        if (! currentTurn) {
-            currentTurn = this.attackTurn;
-        }
-
-        this.attackTurn = currentTurn + Math.ceil(100 / this.stats.speed);
-    }
     //#endregion
     
     //#region protected methods
     initialize(scene, name, position, properties) {
         super.initialize(scene, name, position, properties);
-        
-        this.createAnimations(name, properties);
-        this.attachEvents();
-        
-        this.anims.play(this.startingAnimationKey);
-        
-        this.stats = properties.stats;
+
         this.targetUnits = properties.targetUnits;
 
         this.prepareAttack();        
@@ -59,24 +41,7 @@ class EnemyUnit extends Unit {
             owner: this
         };
 
-        this.attack = new Attack(this.scene, key, position, position, setting);
-    }
-
-    receiveDamage(damage) {
-        this.stats.health -= damage;
-        this.anims.play(this.name + '_' + 'hit');
-
-        this.displayDamageText(damage);
-        if (this.stats.health <= 0) {
-            this.stats.health = 0;
-            this.destroy();
-        }
-    }
-    
-    displayDamageText(damage) {
-        const damageText = this.scene.add.text(this.x, this.y - 50, '' + damage, { font: 'bold 24px Kells', fill: '#ff0000' }, this.scene.groups.hud);
-        
-        this.timeEvent = this.scene.time.addEvent({ delay: 1000, callback: damageText.destroy, callbackScope: damageText });
+        this.attack = new Attack(this.scene, key, position, setting);
     }
     
     /**
@@ -106,53 +71,6 @@ class EnemyUnit extends Unit {
         
         
         return target;
-    }
-    
-    createAnimations(name, properties) {
-        this.startingAnimationKey = this.createAnimation('idle', name, properties);
-        this.createAnimation('attack1', name, properties);
-        this.createAnimation('attack2', name, properties);
-        this.createAnimation('hit', name, properties);
-    }
-    
-    /**
-    * Attachs on events (complete, ...)
-    */
-    attachEvents() {
-        this.on('animationcomplete', this.backToIdle.bind(this));
-    }
-    
-    /**
-    * After battle, go back to idle animation
-    */
-    backToIdle(animation) {
-        this.anims.play(this.startingAnimationKey);
-    }
-    
-    /**
-    * Creates an animation and return the animationKey
-    * @param {string} name 
-    * @param {string} animationName
-    * @returns Returns animation key 
-    */
-    createAnimation(animationName, name, properties) {
-        const animationKey = name + '_' + animationName;
-        
-        if (! this.scene.anims.anims.has(animationKey)) {
-            const frameConfig = {
-                frames: properties.animations[animationName].frames,
-            };
-            const frames = this.scene.anims.generateFrameNumbers(this.texture.key, frameConfig);
-            
-            this.scene.anims.create({
-                key: animationKey,
-                frames: frames,
-                frameRate: properties.animations[animationName].fps,
-                //repeat: -1 // repeat animation
-            });
-        }
-        
-        return animationKey;
     }
     //#endregion
 }
