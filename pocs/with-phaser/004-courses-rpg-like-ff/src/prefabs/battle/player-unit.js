@@ -1,5 +1,6 @@
 import Prefab from '../prefab';
 import TitleScene from '../../scenes/title-scene';
+import Unit from './unit';
 
 /**
  * Enemy unit (during a battle)

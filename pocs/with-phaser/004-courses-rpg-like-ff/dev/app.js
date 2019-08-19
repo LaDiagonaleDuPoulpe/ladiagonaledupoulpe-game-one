@@ -270,6 +270,401 @@ function () {
 
 /***/ }),
 
+/***/ "./src/prefabs/battle/attack.js":
+/*!**************************************!*\
+  !*** ./src/prefabs/battle/attack.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+/**
+* Enemy unit (during a battle)
+*/
+
+var Attack =
+/*#__PURE__*/
+function (_Prefab) {
+  _inherits(Attack, _Prefab);
+
+  function Attack(scene, name, position, properties) {
+    _classCallCheck(this, Attack);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Attack).call(this, scene, name, position, properties));
+  } //#region public methods
+
+  /**
+   * Launches an attack
+   * @param {Unit} target 
+   */
+
+
+  _createClass(Attack, [{
+    key: "hit",
+    value: function hit(target) {
+      var damage = this.computeDamage(target);
+      target.receiveDamage(damage);
+      this.owner.anims.play(this.owner.name + '_' + 'attack1');
+    } //#endregion
+    //#region protected methods
+
+  }, {
+    key: "initialize",
+    value: function initialize(scene, name, position, properties) {
+      _get(_getPrototypeOf(Attack.prototype), "initialize", this).call(this, scene, name, position, properties);
+
+      this.owner = properties.owner;
+    } //#endregion  
+    //#region internal methods
+
+    /**
+    * Compute damages to put on unit target
+    * @param {Unit} target 
+    */
+
+  }, {
+    key: "computeDamage",
+    value: function computeDamage(target) {
+      var attackMultiplier = this.scene.random.realInRange(0.8, 1.2);
+      var defenseMultiplier = this.scene.random.realInRange(0.8, 1.2);
+      var realAttackPoints = attackMultiplier * this.owner.stats.attack;
+      var realDefenseUnitPoints = defenseMultiplier * target.stats.defense;
+      var damage = Math.max(0, Math.round(realAttackPoints - realDefenseUnitPoints));
+      return damage;
+    } //#endregion
+
+  }]);
+
+  return Attack;
+}(_prefab__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Attack);
+
+/***/ }),
+
+/***/ "./src/prefabs/battle/enemy-unit.js":
+/*!******************************************!*\
+  !*** ./src/prefabs/battle/enemy-unit.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
+/* harmony import */ var _attack__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./attack */ "./src/prefabs/battle/attack.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+/**
+ * Enemy unit (during a battle)
+ */
+
+var EnemyUnit =
+/*#__PURE__*/
+function (_Unit) {
+  _inherits(EnemyUnit, _Unit);
+
+  function EnemyUnit(scene, name, position, properties) {
+    _classCallCheck(this, EnemyUnit);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(EnemyUnit).call(this, scene, name, position, properties));
+  } //#region public methods  
+
+  /**
+   * Lanuches an attack 
+   */
+
+
+  _createClass(EnemyUnit, [{
+    key: "attack",
+    value: function attack() {
+      var target = this.chooseTarget();
+      this.attack.hit(target);
+    }
+    /**
+     * Calculates current attack turn
+     * @param {number} currentTurn 
+     */
+
+  }, {
+    key: "calculateAttackTurn",
+    value: function calculateAttackTurn(currentTurn) {
+      console.log('calculateAttackTurn', currentTurn);
+
+      if (!currentTurn) {
+        currentTurn = this.attackTurn;
+      }
+
+      this.attackTurn = currentTurn + Math.ceil(100 / this.stats.speed);
+    } //#endregion
+    //#region protected methods
+
+  }, {
+    key: "initialize",
+    value: function initialize(scene, name, position, properties) {
+      _get(_getPrototypeOf(EnemyUnit.prototype), "initialize", this).call(this, scene, name, position, properties);
+
+      this.createAnimations(name, properties);
+      this.attachEvents();
+      this.anims.play(this.startingAnimationKey);
+      this.stats = properties.stats;
+      this.targetUnits = properties.targetUnits;
+      this.prepareAttack();
+    } //#endregion
+    //#region internal methods
+
+  }, {
+    key: "prepareAttack",
+    value: function prepareAttack() {
+      var key = this.name + '_' + 'attack';
+      var position = {
+        x: 0,
+        y: 0
+      };
+      var setting = {
+        group: 'attacks',
+        owner: this
+      };
+      this.attack = new _attack__WEBPACK_IMPORTED_MODULE_2__["default"](this.scene, key, position, position, setting);
+    }
+  }, {
+    key: "receiveDamage",
+    value: function receiveDamage(damage) {
+      this.stats.health -= damage;
+      this.anims.play(this.name + '_' + 'hit');
+      this.displayDamageText(damage);
+
+      if (this.stats.health <= 0) {
+        this.stats.health = 0;
+        this.destroy();
+      }
+    }
+  }, {
+    key: "displayDamageText",
+    value: function displayDamageText(damage) {
+      var damageText = this.scene.add.text(this.x, this.y - 50, '' + damage, {
+        font: 'bold 24px Kells',
+        fill: '#ff0000'
+      }, this.scene.groups.hud);
+      this.timeEvent = this.scene.time.addEvent({
+        delay: 1000,
+        callback: damageText.destroy,
+        callbackScope: damageText
+      });
+    }
+    /**
+     * Chooses a target to attack
+     */
+
+  }, {
+    key: "chooseTarget",
+    value: function chooseTarget() {
+      return this.getActiveUnit();
+    }
+    /**
+     * Gets active unit in battle scene
+     */
+
+  }, {
+    key: "getActiveUnit",
+    value: function getActiveUnit() {
+      var targetGroup = this.scene.groups[this.targetUnits];
+      var targetIndex = this.scene.random.between(0, targetGroup.countActive() - 1);
+      var target = undefined;
+      var i = 0;
+      targetGroup.children.each(function (unit) {
+        if (unit.active) {
+          if (i == targetIndex) {
+            target = unit;
+          }
+
+          i++;
+        }
+      }, this);
+      return target;
+    }
+  }, {
+    key: "createAnimations",
+    value: function createAnimations(name, properties) {
+      this.startingAnimationKey = this.createAnimation('idle', name, properties);
+      this.createAnimation('attack1', name, properties);
+      this.createAnimation('attack2', name, properties);
+      this.createAnimation('hit', name, properties);
+    }
+    /**
+    * Attachs on events (complete, ...)
+    */
+
+  }, {
+    key: "attachEvents",
+    value: function attachEvents() {
+      this.on('animationcomplete', this.backToIdle.bind(this));
+    }
+    /**
+    * After battle, go back to idle animation
+    */
+
+  }, {
+    key: "backToIdle",
+    value: function backToIdle(animation) {
+      this.anims.play(this.startingAnimationKey);
+    }
+    /**
+    * Creates an animation and return the animationKey
+    * @param {string} name 
+    * @param {string} animationName
+    * @returns Returns animation key 
+    */
+
+  }, {
+    key: "createAnimation",
+    value: function createAnimation(animationName, name, properties) {
+      var animationKey = name + '_' + animationName;
+
+      if (!this.scene.anims.anims.has(animationKey)) {
+        var frameConfig = {
+          frames: properties.animations[animationName].frames
+        };
+        var frames = this.scene.anims.generateFrameNumbers(this.texture.key, frameConfig);
+        this.scene.anims.create({
+          key: animationKey,
+          frames: frames,
+          frameRate: properties.animations[animationName].fps //repeat: -1 // repeat animation
+
+        });
+      }
+
+      return animationKey;
+    } //#endregion
+
+  }]);
+
+  return EnemyUnit;
+}(Unit);
+
+/* harmony default export */ __webpack_exports__["default"] = (EnemyUnit);
+
+/***/ }),
+
+/***/ "./src/prefabs/battle/player-unit.js":
+/*!*******************************************!*\
+  !*** ./src/prefabs/battle/player-unit.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
+/* harmony import */ var _unit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./unit */ "./src/prefabs/battle/unit.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+/**
+ * Enemy unit (during a battle)
+ */
+
+var PlayerUnit =
+/*#__PURE__*/
+function (_Unit) {
+  _inherits(PlayerUnit, _Unit);
+
+  function PlayerUnit(scene, name, position, properties) {
+    _classCallCheck(this, PlayerUnit);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(PlayerUnit).call(this, scene, name, position, properties));
+  } //#region public methods  
+
+  /**
+   * Launches an attack 
+   */
+
+
+  _createClass(PlayerUnit, [{
+    key: "attack",
+    value: function attack() {
+      this.scene.activateActionsMenu();
+    } //#endregion
+
+  }]);
+
+  return PlayerUnit;
+}(_unit__WEBPACK_IMPORTED_MODULE_2__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (PlayerUnit);
+
+/***/ }),
+
 /***/ "./src/prefabs/battle/unit.js":
 /*!************************************!*\
   !*** ./src/prefabs/battle/unit.js ***!
@@ -487,6 +882,88 @@ function (_Prefab) {
 }(_prefab__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Unit);
+
+/***/ }),
+
+/***/ "./src/prefabs/hud/enemy-menu-item.js":
+/*!********************************************!*\
+  !*** ./src/prefabs/hud/enemy-menu-item.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
+/* harmony import */ var _menu_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./menu-item */ "./src/prefabs/hud/menu-item.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+/**
+ * It represents a specific menu item, about menu enemy
+ */
+
+var EnemyMenuItem =
+/*#__PURE__*/
+function (_MenuItem) {
+  _inherits(EnemyMenuItem, _MenuItem);
+
+  function EnemyMenuItem(scene, name, position, properties) {
+    _classCallCheck(this, EnemyMenuItem);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(EnemyMenuItem).call(this, scene, name, position, properties));
+  } //#region public methods   
+  //#endregion
+  //#region protected methods
+
+
+  _createClass(EnemyMenuItem, [{
+    key: "initialize",
+    value: function initialize(scene, name, position, properties) {
+      _get(_getPrototypeOf(EnemyMenuItem.prototype), "initialize", this).call(this, scene, name, position, properties);
+
+      this.enemy = this.scene.prefabs[properties.enemyName];
+    }
+    /**
+     * Selects one menu
+     */
+
+  }, {
+    key: "select",
+    value: function select() {
+      this.scene.currentAttack.hit(this.enemy);
+      this.scene.activateEnemysMenu(false);
+    } //#endregion
+
+  }]);
+
+  return EnemyMenuItem;
+}(_menu_item__WEBPACK_IMPORTED_MODULE_2__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (EnemyMenuItem);
 
 /***/ }),
 
@@ -755,6 +1232,98 @@ function (_Prefab) {
 }(_prefab__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (MessageBox);
+
+/***/ }),
+
+/***/ "./src/prefabs/hud/physical-attack-menu-item.js":
+/*!******************************************************!*\
+  !*** ./src/prefabs/hud/physical-attack-menu-item.js ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
+/* harmony import */ var _menu_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./menu-item */ "./src/prefabs/hud/menu-item.js");
+/* harmony import */ var _battle_attack__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../battle/attack */ "./src/prefabs/battle/attack.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+/**
+ * It represents a specific menu item, to attack in a fight
+ */
+
+var PhysicalAttackMenuItem =
+/*#__PURE__*/
+function (_MenuItem) {
+  _inherits(PhysicalAttackMenuItem, _MenuItem);
+
+  function PhysicalAttackMenuItem(scene, name, position, properties) {
+    _classCallCheck(this, PhysicalAttackMenuItem);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(PhysicalAttackMenuItem).call(this, scene, name, position, properties));
+  } //#region public methods   
+  //#endregion
+  //#region protected methods
+
+
+  _createClass(PhysicalAttackMenuItem, [{
+    key: "initialize",
+    value: function initialize(scene, name, position, properties) {
+      _get(_getPrototypeOf(PhysicalAttackMenuItem.prototype), "initialize", this).call(this, scene, name, position, properties);
+    }
+    /**
+     * Selects one menu
+     */
+
+  }, {
+    key: "select",
+    value: function select() {
+      var position = {
+        x: 0,
+        y: 0
+      };
+      var setting = {
+        group: 'attacks',
+        owner: this.scene.currentUnit
+      };
+      var key = this.scene.currentUnit.name + '_' + 'attack';
+      this.scene.currentAttack = new _battle_attack__WEBPACK_IMPORTED_MODULE_3__["default"](this.scene, key, position, setting);
+      this.scene.activateActionsMenu(false);
+      this.scene.activateEnemysMenu(true);
+    } //#endregion
+
+  }]);
+
+  return PhysicalAttackMenuItem;
+}(_menu_item__WEBPACK_IMPORTED_MODULE_2__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (PhysicalAttackMenuItem);
 
 /***/ }),
 
@@ -1388,6 +1957,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_js_priority_queue_priority_queue_min__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_js_priority_queue_priority_queue_min__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _prefabs_hud_menu_item__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../prefabs/hud/menu-item */ "./src/prefabs/hud/menu-item.js");
 /* harmony import */ var _prefabs_hud_menu__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../prefabs/hud/menu */ "./src/prefabs/hud/menu.js");
+/* harmony import */ var _prefabs_battle_player_unit__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../prefabs/battle/player-unit */ "./src/prefabs/battle/player-unit.js");
+/* harmony import */ var _prefabs_battle_enemy_unit__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../prefabs/battle/enemy-unit */ "./src/prefabs/battle/enemy-unit.js");
+/* harmony import */ var _prefabs_hud_physical_attack_menu_item__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../prefabs/hud/physical-attack-menu-item */ "./src/prefabs/hud/physical-attack-menu-item.js");
+/* harmony import */ var _prefabs_hud_enemy_menu_item__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../prefabs/hud/enemy-menu-item */ "./src/prefabs/hud/enemy-menu-item.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1409,6 +1982,10 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
 
 
 
@@ -1500,9 +2077,11 @@ function (_JSonLevelScene) {
     value: function setPrefabs() {
       this.prefabsClasses = {
         background: _prefabs_prefab__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.constructor,
-        playerUnit: _prefabs_battle_unit__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.constructor,
-        enemyUnit: _prefabs_battle_unit__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.constructor,
+        playerUnit: _prefabs_battle_player_unit__WEBPACK_IMPORTED_MODULE_7__["default"].prototype.constructor,
+        enemyUnit: _prefabs_battle_enemy_unit__WEBPACK_IMPORTED_MODULE_8__["default"].prototype.constructor,
         menuItem: _prefabs_hud_menu_item__WEBPACK_IMPORTED_MODULE_5__["default"].prototype.constructor,
+        physicalAttackMenuItem: _prefabs_hud_physical_attack_menu_item__WEBPACK_IMPORTED_MODULE_9__["default"].prototype.constructor,
+        enemyMenuItem: _prefabs_hud_enemy_menu_item__WEBPACK_IMPORTED_MODULE_10__["default"].prototype.constructor,
         menu: _prefabs_hud_menu__WEBPACK_IMPORTED_MODULE_6__["default"].prototype.constructor
       };
     }

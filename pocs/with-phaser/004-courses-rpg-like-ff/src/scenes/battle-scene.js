@@ -5,6 +5,10 @@ import Unit from '../prefabs/battle/unit';
 import PriorityQueue from '../../node_modules/js-priority-queue/priority-queue.min';
 import MenuItem from '../prefabs/hud/menu-item';
 import Menu from '../prefabs/hud/menu';
+import PlayerUnit from '../prefabs/battle/player-unit';
+import EnemyUnit from '../prefabs/battle/enemy-unit';
+import PhysicalAttackMenuItem from '../prefabs/hud/physical-attack-menu-item';
+import EnemyMenuItem from '../prefabs/hud/enemy-menu-item';
 
 /**
  * Scene displaying title and starts game after clicked on it
@@ -68,9 +72,11 @@ class BattleScene extends JSonLevelScene {
     setPrefabs() {
         this.prefabsClasses = {
             background: Prefab.prototype.constructor,
-            playerUnit: Unit.prototype.constructor,
-            enemyUnit: Unit.prototype.constructor,
+            playerUnit: PlayerUnit.prototype.constructor,
+            enemyUnit: EnemyUnit.prototype.constructor,
             menuItem: MenuItem.prototype.constructor,
+            physicalAttackMenuItem: PhysicalAttackMenuItem.prototype.constructor,
+            enemyMenuItem: EnemyMenuItem.prototype.constructor,
             menu: Menu.prototype.constructor
         };
     }
