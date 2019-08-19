@@ -15,7 +15,7 @@ class MenuItem extends Prefab {
         super.initialize(scene, name, position, properties);
 
         this.setInteractive();
-        this.on('pointerDown', this.select.bind(this));
+        this.on('pointerdown', this.select.bind(this));
     }     
 
     /**

@@ -12,9 +12,9 @@ class Unit extends Prefab {
     
     //#region public methods  
     /**
-     * Lanuches an attack 
+     * Lanuches an action 
      */
-    attack() {
+    playAction() {
         throw new Error('not implemented');
     }
     

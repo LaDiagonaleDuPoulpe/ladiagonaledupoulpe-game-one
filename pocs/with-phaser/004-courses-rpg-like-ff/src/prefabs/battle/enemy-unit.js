@@ -16,7 +16,7 @@ class EnemyUnit extends Unit {
     /**
      * Lanuches an attack 
      */
-    attack() {
+    playAction() {
         const target = this.chooseTarget();
         this.attack.hit(target);        
     }

@@ -429,8 +429,8 @@ function (_Unit) {
 
 
   _createClass(EnemyUnit, [{
-    key: "attack",
-    value: function attack() {
+    key: "playAction",
+    value: function playAction() {
       var target = this.chooseTarget();
       this.attack.hit(target);
     } //#endregion
@@ -555,8 +555,8 @@ function (_Unit) {
 
 
   _createClass(PlayerUnit, [{
-    key: "attack",
-    value: function attack() {
+    key: "playAction",
+    value: function playAction() {
       this.scene.activateActionsMenu();
     } //#endregion
 
@@ -620,13 +620,13 @@ function (_Prefab) {
   } //#region public methods  
 
   /**
-   * Lanuches an attack 
+   * Lanuches an action 
    */
 
 
   _createClass(Unit, [{
-    key: "attack",
-    value: function attack() {
+    key: "playAction",
+    value: function playAction() {
       throw new Error('not implemented');
     }
     /**
@@ -927,7 +927,7 @@ function (_Prefab) {
       _get(_getPrototypeOf(MenuItem.prototype), "initialize", this).call(this, scene, name, position, properties);
 
       this.setInteractive();
-      this.on('pointerDown', this.select.bind(this));
+      this.on('pointerdown', this.select.bind(this));
     }
     /**
      * Selects one menu
@@ -1935,7 +1935,7 @@ function (_JSonLevelScene) {
       this.currentUnit = this.units.dequeue();
 
       if (this.currentUnit.active) {
-        this.currentUnit.attack();
+        this.currentUnit.playAction();
         this.currentUnit.calculateAttackTurn();
         this.units.queue(this.currentUnit);
       } else {

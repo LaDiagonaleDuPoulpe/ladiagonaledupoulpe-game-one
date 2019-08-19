@@ -32,7 +32,7 @@ class BattleScene extends JSonLevelScene {
         this.currentUnit = this.units.dequeue();
 
         if (this.currentUnit.active) {
-            this.currentUnit.attack();
+            this.currentUnit.playAction();
             this.currentUnit.calculateAttackTurn();
             this.units.queue(this.currentUnit);
         } else {
@@ -80,7 +80,6 @@ class BattleScene extends JSonLevelScene {
             menu: Menu.prototype.constructor
         };
     }
-
 
     prepareGamingQueue() {
         this.units = new PriorityQueue({

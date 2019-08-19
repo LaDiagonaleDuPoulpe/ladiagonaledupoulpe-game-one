@@ -15,7 +15,7 @@ class PlayerUnit extends Unit {
     /**
      * Launches an attack 
      */
-    attack() {
+    playAction() {
         this.scene.activateActionsMenu();
     }
     //#endregion
