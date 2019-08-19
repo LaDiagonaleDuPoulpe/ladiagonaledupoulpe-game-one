@@ -662,13 +662,15 @@ function (_Prefab) {
   }, {
     key: "receiveDamage",
     value: function receiveDamage(damage) {
-      this.stats.health -= damage;
-      this.anims.play(this.name + '_' + 'hit');
-      this.displayDamageText(damage);
+      if (this.scene) {
+        this.stats.health -= damage;
+        this.anims.play(this.name + '_' + 'hit');
+        this.displayDamageText(damage);
 
-      if (this.stats.health <= 0) {
-        this.stats.health = 0;
-        this.destroy();
+        if (this.stats.health <= 0) {
+          this.stats.health = 0;
+          this.destroy();
+        }
       }
     }
   }, {
@@ -2671,7 +2673,7 @@ function (_JSonLevelScene) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! c:\Users\evan\source\repos\ladiagonaledupoulpe\ladiagonaledupoulpe-game-one\pocs\with-phaser\004-courses-rpg-like-ff\src\main.js */"./src/main.js");
+module.exports = __webpack_require__(/*! F:\Works\LaDiagonaleDuPoulpe\ladiagonaledupoulpe-game-one\pocs\with-phaser\004-courses-rpg-like-ff\src\main.js */"./src/main.js");
 
 
 /***/ })
