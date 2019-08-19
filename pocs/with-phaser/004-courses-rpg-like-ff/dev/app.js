@@ -305,6 +305,9 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+/**
+ * Unit (player or enemy)
+ */
 
 var Unit =
 /*#__PURE__*/
@@ -1447,7 +1450,6 @@ function (_JSonLevelScene) {
     value: function create() {
       _get(_getPrototypeOf(BattleScene.prototype), "create", this).call(this);
 
-      this.activeMenu();
       this.prepareGamingQueue();
     }
     /**
@@ -1469,6 +1471,15 @@ function (_JSonLevelScene) {
       }
 
       console.log('next turn', this.units);
+    }
+    /**
+     * Activates the menu
+     */
+
+  }, {
+    key: "activeMenu",
+    value: function activeMenu() {
+      this.prefabs.actionsMenu.enable(true);
     } //#endregion
     //#region internal methods
 
@@ -1482,11 +1493,6 @@ function (_JSonLevelScene) {
         menuItem: _prefabs_hud_menu_item__WEBPACK_IMPORTED_MODULE_5__["default"].prototype.constructor,
         menu: _prefabs_hud_menu__WEBPACK_IMPORTED_MODULE_6__["default"].prototype.constructor
       };
-    }
-  }, {
-    key: "activeMenu",
-    value: function activeMenu() {
-      this.prefabs.actionsMenu.enable(true);
     }
   }, {
     key: "prepareGamingQueue",

@@ -2,9 +2,9 @@ import Prefab from '../prefab';
 import TitleScene from '../../scenes/title-scene';
 
 /**
- * Unit (player or enemy)
+ * Enemy unit (during a battle)
  */
-class Unit extends Prefab {
+class EnemyUnit extends Unit {
     
     constructor(scene, name, position, properties) {
         super(scene, name, position, properties);        
@@ -161,4 +161,4 @@ class Unit extends Prefab {
     //#endregion
 }
 
-export default Unit;
+export default EnemyUnit;

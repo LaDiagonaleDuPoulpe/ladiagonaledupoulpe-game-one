@@ -18,8 +18,6 @@ class BattleScene extends JSonLevelScene {
     //#region public methods
     create() {
         super.create();
-
-        this.activeMenu();
         this.prepareGamingQueue();
     }
 
@@ -40,6 +38,13 @@ class BattleScene extends JSonLevelScene {
 
         console.log('next turn', this.units);
     }
+    
+    /**
+     * Activates the menu
+     */
+    activeMenu() {
+        this.prefabs.actionsMenu.enable(true);
+    }
     //#endregion
     
     //#region internal methods
@@ -53,9 +58,6 @@ class BattleScene extends JSonLevelScene {
         };
     }
 
-    activeMenu() {
-        this.prefabs.actionsMenu.enable(true);
-    }
 
     prepareGamingQueue() {
         this.units = new PriorityQueue({
