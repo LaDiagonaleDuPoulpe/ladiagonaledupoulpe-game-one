@@ -71,7 +71,7 @@ class BattleScene extends JSonLevelScene {
     
     //#region internal methods
     setEnableMenu(menu, enable) {
-        if(! enable) {
+        if(typeof(enable) == "undefined") {
             enable = true;
         }
 

@@ -545,6 +545,101 @@ function (_Unit) {
 
 /***/ }),
 
+/***/ "./src/prefabs/battle/magical-attack.js":
+/*!**********************************************!*\
+  !*** ./src/prefabs/battle/magical-attack.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
+/* harmony import */ var _attack__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./attack */ "./src/prefabs/battle/attack.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+/**
+* Enemy unit (during a battle)
+*/
+
+var MagicalAttack =
+/*#__PURE__*/
+function (_Attack) {
+  _inherits(MagicalAttack, _Attack);
+
+  function MagicalAttack(scene, name, position, properties) {
+    _classCallCheck(this, MagicalAttack);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(MagicalAttack).call(this, scene, name, position, properties));
+  } //#region protected methods
+
+
+  _createClass(MagicalAttack, [{
+    key: "initialize",
+    value: function initialize(scene, name, position, properties) {
+      _get(_getPrototypeOf(MagicalAttack.prototype), "initialize", this).call(this, scene, name, position, properties);
+
+      this.manaCost = properties.manaCost;
+    }
+  }, {
+    key: "defineAttackMultiplier",
+    value: function defineAttackMultiplier() {
+      return this.scene.random.realInRange(0.9, 1.3);
+    }
+  }, {
+    key: "defineDefenseMultiplier",
+    value: function defineDefenseMultiplier() {
+      return this.scene.random.realInRange(0.7, 1.1);
+    }
+  }, {
+    key: "getAttackPoint",
+    value: function getAttackPoint() {
+      return this.owner.stats.magicAttack;
+    }
+  }, {
+    key: "doMoreActionsDuringHit",
+    value: function doMoreActionsDuringHit() {
+      this.owner.stats.mana -= this.manaCost;
+    }
+  }, {
+    key: "defineAnimationToPlay",
+    value: function defineAnimationToPlay() {
+      return 'attack2';
+    } //#endregion
+
+  }]);
+
+  return MagicalAttack;
+}(_attack__WEBPACK_IMPORTED_MODULE_2__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (MagicalAttack);
+
+/***/ }),
+
 /***/ "./src/prefabs/battle/physical-attack.js":
 /*!***********************************************!*\
   !*** ./src/prefabs/battle/physical-attack.js ***!
@@ -1095,6 +1190,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _menu_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./menu-item */ "./src/prefabs/hud/menu-item.js");
 /* harmony import */ var _battle_physical_attack__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../battle/physical-attack */ "./src/prefabs/battle/physical-attack.js");
 /* harmony import */ var _attack_menu_item__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./attack-menu-item */ "./src/prefabs/hud/attack-menu-item.js");
+/* harmony import */ var _battle_magical_attack__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../battle/magical-attack */ "./src/prefabs/battle/magical-attack.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1116,6 +1212,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -1161,9 +1258,8 @@ function (_AttackMenuItem) {
   }, {
     key: "getAttackInstance",
     value: function getAttackInstance(key, position, setting) {
-      setting.prototype.manaCost = 0;
       setting.manaCost = this.MANA_COST;
-      return new MagicalAttack(key, position, setting);
+      return new _battle_magical_attack__WEBPACK_IMPORTED_MODULE_5__["default"](this.scene, key, position, setting);
     } //#endregion
 
   }]);
@@ -2358,7 +2454,7 @@ function (_JSonLevelScene) {
   }, {
     key: "setEnableMenu",
     value: function setEnableMenu(menu, enable) {
-      if (!enable) {
+      if (typeof enable == "undefined") {
         enable = true;
       }
 

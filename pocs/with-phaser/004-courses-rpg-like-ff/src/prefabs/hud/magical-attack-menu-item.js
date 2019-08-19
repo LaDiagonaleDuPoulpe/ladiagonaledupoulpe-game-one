@@ -3,6 +3,7 @@ import TitleScene from '../../scenes/title-scene';
 import MenuItem from './menu-item';
 import Attack from '../battle/physical-attack';
 import AttackMenuItem from './attack-menu-item';
+import MagicalAttack from '../battle/magical-attack';
 
 /**
  * It represents a specific menu item, to attack in a fight
@@ -32,10 +33,9 @@ class MagicalAttackMenuItem extends AttackMenuItem {
     }
 
     getAttackInstance(key, position, setting) {
-        setting.prototype.manaCost = 0;
         setting.manaCost = this.MANA_COST;
 
-        return new MagicalAttack(key, position, setting);
+        return new MagicalAttack(this.scene, key, position, setting);
     }
     //#endregion
 }
