@@ -25,9 +25,8 @@ class EnemyMenuItem extends MenuItem {
      * Selects one menu
      */
     select() {
-        this.scene.currentAttack.hit(this.enemy);
         this.scene.activateEnemysMenu(false);
-
+        this.scene.currentAttack.hit(this.enemy);
     }
     //#endregion
 }
