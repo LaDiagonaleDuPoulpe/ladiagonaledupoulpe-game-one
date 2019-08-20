@@ -2403,23 +2403,23 @@ function (_ShowPlayerUnit) {
       _get(_getPrototypeOf(ShowPlayerUnitInPauseScreen.prototype), "initialize", this).call(this, scene, name, position, properties);
 
       var prefabData = this.scene.cache.game.partyData[properties.prefab];
-      this.showUnitAttack = this.addZoneToDisplay(prefabData.stats.attack, 'Attack : \n', 250, 0);
-      this.showUnitDefense = this.addZoneToDisplay(prefabData.stats.attack, 'Defense : \n', 250, 50);
-      this.showUnitMagicAttack = this.addZoneToDisplay(prefabData.stats.magicAttack, 'Magic : \n', 400, 0);
-      this.showUnitSpeed = this.addZoneToDisplay(prefabData.stats.speed, 'Speed : \n', 400, 50);
-      this.addZoneAboutLevel(prefabData);
+      this.showUnitAttack = this.addZoneToDisplay(prefabData.stats.attack, 'Attack : \n', 250, 0, properties);
+      this.showUnitDefense = this.addZoneToDisplay(prefabData.stats.attack, 'Defense : \n', 250, 50, properties);
+      this.showUnitMagicAttack = this.addZoneToDisplay(prefabData.stats.magicAttack, 'Magic : \n', 400, 0, properties);
+      this.showUnitSpeed = this.addZoneToDisplay(prefabData.stats.speed, 'Speed : \n', 400, 50, properties);
+      this.addZoneAboutLevel(prefabData, properties);
     } //#endregion
     //#region internal methods
 
   }, {
     key: "addZoneAboutLevel",
-    value: function addZoneAboutLevel(prefabData) {
-      this.levelText = this.addZoneToDisplay(prefabData.currentLevel + 1, 'Level', 130, 50);
+    value: function addZoneAboutLevel(prefabData, properties) {
+      this.levelText = this.addZoneToDisplay(prefabData.currentLevel + 1, 'Level', 130, 50, properties);
     }
   }, {
     key: "addZoneToDisplay",
-    value: function addZoneToDisplay(value, textValue, addXPosition, addYPosition) {
-      var text = this.scene.add.text(this.x + addXPosition, this.y + addYPosition, textValue + value, properties.style);
+    value: function addZoneToDisplay(value, textValue, addXPosition, addYPosition, properties) {
+      var text = this.scene.add.text(this.x + addXPosition, this.y + addYPosition, textValue + value, properties.textStyle);
       text.setOrigin(0);
       return text;
     }

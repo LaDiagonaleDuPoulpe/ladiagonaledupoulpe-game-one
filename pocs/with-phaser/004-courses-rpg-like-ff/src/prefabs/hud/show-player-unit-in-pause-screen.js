@@ -43,22 +43,22 @@ class ShowPlayerUnitInPauseScreen extends ShowPlayerUnit {
 
         const prefabData = this.scene.cache.game.partyData[properties.prefab];
 
-        this.showUnitAttack = this.addZoneToDisplay(prefabData.stats.attack, 'Attack : \n', 250, 0);
-        this.showUnitDefense = this.addZoneToDisplay(prefabData.stats.attack, 'Defense : \n', 250, 50);
-        this.showUnitMagicAttack = this.addZoneToDisplay(prefabData.stats.magicAttack, 'Magic : \n', 400, 0);
-        this.showUnitSpeed = this.addZoneToDisplay(prefabData.stats.speed, 'Speed : \n', 400, 50);
+        this.showUnitAttack = this.addZoneToDisplay(prefabData.stats.attack, 'Attack : \n', 250, 0, properties);
+        this.showUnitDefense = this.addZoneToDisplay(prefabData.stats.attack, 'Defense : \n', 250, 50, properties);
+        this.showUnitMagicAttack = this.addZoneToDisplay(prefabData.stats.magicAttack, 'Magic : \n', 400, 0, properties);
+        this.showUnitSpeed = this.addZoneToDisplay(prefabData.stats.speed, 'Speed : \n', 400, 50, properties);
 
-        this.addZoneAboutLevel(prefabData);
+        this.addZoneAboutLevel(prefabData, properties);
     }     
     //#endregion
 
     //#region internal methods
-    addZoneAboutLevel(prefabData) {
-        this.levelText = this.addZoneToDisplay(prefabData.currentLevel + 1, 'Level', 130, 50);
+    addZoneAboutLevel(prefabData, properties) {
+        this.levelText = this.addZoneToDisplay(prefabData.currentLevel + 1, 'Level', 130, 50, properties);
     }
 
-    addZoneToDisplay(value, textValue, addXPosition, addYPosition) {
-        const text = this.scene.add.text(this.x + addXPosition, this.y + addYPosition, textValue + value, properties.style);
+    addZoneToDisplay(value, textValue, addXPosition, addYPosition, properties) {
+        const text = this.scene.add.text(this.x + addXPosition, this.y + addYPosition, textValue + value, properties.textStyle);
         text.setOrigin(0);
 
         return text;
