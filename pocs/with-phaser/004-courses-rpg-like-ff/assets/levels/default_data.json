@@ -18,19 +18,19 @@
         },
         "equipment": {
             "head": {
-                "name": "default_equipment",
+                "name": "defaultEquipment",
                 "texture": ""
             },
             "body": {
-                "name": "default_equipment",
+                "name": "defaultEquipment",
                 "texture": ""
             },
             "legs": {
-                "name": "default_equipment",
+                "name": "defaultEquipment",
                 "texture": ""
             },
             "feet": {
-                "name": "default_equipment",
+                "name": "defaultEquipment",
                 "texture": ""
             }
         },
@@ -56,19 +56,19 @@
         },
         "equipment": {
             "head": {
-                "name": "default_equipment",
+                "name": "defaultEquipment",
                 "texture": ""
             },
             "body": {
-                "name": "default_equipment",
+                "name": "defaultEquipment",
                 "texture": ""
             },
             "legs": {
-                "name": "default_equipment",
+                "name": "defaultEquipment",
                 "texture": ""
             },
             "feet": {
-                "name": "default_equipment",
+                "name": "defaultEquipment",
                 "texture": ""
             }
         },
