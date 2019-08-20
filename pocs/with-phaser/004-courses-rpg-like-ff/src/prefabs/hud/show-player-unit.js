@@ -13,6 +13,13 @@ class ShowPlayerUnit extends Prefab {
     }
     
     //#region public methods  
+    /**
+     * Updates status bar
+     */
+    change(prefab, faceTexture) {
+        this.updateUnitData(prefab);
+        this.updateFaceTexture(faceTexture);
+    }
     //#endregion
     
     //#region protected methods
@@ -27,6 +34,25 @@ class ShowPlayerUnit extends Prefab {
     //#endregion
 
     //#region internal methods
+    /**
+     * Updates face texture, with the texture attribute
+     * @param {JSON} texture 
+     */
+    updateFaceTexture(texture) {
+        this.faceSprite.setTexture(texture);
+    }
+
+    /**
+     * Updates unit data, by setting new with prefab attribute
+     * @param {JSON} prefab 
+     */
+    updateUnitData(prefab) {
+        this.unitData = prefab;
+
+        this.playerUnitHealthBar.unitData = this.unitData;
+        this.playerUnitManaBar.unitData = this.unitData;
+    }
+
     /**
      * Constructs status bar class and returns it
      * @param {string} key 

@@ -12,11 +12,13 @@ class PlayerUnit extends Unit {
 
         this.experience = 0;
         this.currentLevel = 0;
+
+        this.faceTexture = properties.faceTexture;
     }
 
     //#region public methods  
     /**
-     * Launches an attack 
+     * Launches an attack, or choose an element (potion, ...)
      */
     playAction() {
         this.scene.activateActionsMenu();
@@ -33,6 +35,13 @@ class PlayerUnit extends Unit {
     //#endregion
 
     //#region internal methods
+    updateStatusBar() {
+        this.scene.prefabs.showPlayerUnit.change(this, this.faceTexture);
+    }
+
+    /**
+     * Verifies level value, and updates if necessary
+     */
     verifyLevel() {
         const levelData = this.scene.experienceTable[this.currentLevel];
 
@@ -42,11 +51,18 @@ class PlayerUnit extends Unit {
         }
     }
 
+    /**
+     * Go to the next level
+     */
     goToNextLevel() {
         this.currentLevel++;
         this.experience = 0;
     }
 
+    /**
+     * Update stats from new level
+     * @param {JSON} levelData 
+     */
     upgradeStats(levelData) {
         console.log('upgradeStats::0', this.stats);
 

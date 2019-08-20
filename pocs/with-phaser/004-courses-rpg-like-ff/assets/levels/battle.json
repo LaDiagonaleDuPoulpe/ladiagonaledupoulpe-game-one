@@ -139,7 +139,8 @@
                     "mana": 100,
                     "speed": 15
                 },
-                "targetUnits": "enemyUnits"
+                "targetUnits": "enemyUnits",
+                "faceTexture": "warriorFaceImage"
             }
         },
         "mage": {
@@ -203,7 +204,8 @@
                     "mana": 100,
                     "speed": 10
                 },
-                "targetUnits": "enemyUnits"
+                "targetUnits": "enemyUnits",
+                "faceTexture": "mageFaceImage"
             }
         },
         "actionsMenu": {

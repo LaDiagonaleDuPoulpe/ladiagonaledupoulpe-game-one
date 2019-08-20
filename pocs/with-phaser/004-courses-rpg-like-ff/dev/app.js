@@ -758,11 +758,12 @@ function (_Unit) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(PlayerUnit).call(this, scene, name, position, properties));
     _this.experience = 0;
     _this.currentLevel = 0;
+    _this.faceTexture = properties.faceTexture;
     return _this;
   } //#region public methods  
 
   /**
-   * Launches an attack 
+   * Launches an attack, or choose an element (potion, ...)
    */
 
 
@@ -785,6 +786,15 @@ function (_Unit) {
     //#region internal methods
 
   }, {
+    key: "updateStatusBar",
+    value: function updateStatusBar() {
+      this.scene.prefabs.showPlayerUnit.change(this, this.faceTexture);
+    }
+    /**
+     * Verifies level value, and updates if necessary
+     */
+
+  }, {
     key: "verifyLevel",
     value: function verifyLevel() {
       var levelData = this.scene.experienceTable[this.currentLevel];
@@ -794,12 +804,21 @@ function (_Unit) {
         this.upgradeStats(levelData);
       }
     }
+    /**
+     * Go to the next level
+     */
+
   }, {
     key: "goToNextLevel",
     value: function goToNextLevel() {
       this.currentLevel++;
       this.experience = 0;
     }
+    /**
+     * Update stats from new level
+     * @param {JSON} levelData 
+     */
+
   }, {
     key: "upgradeStats",
     value: function upgradeStats(levelData) {
@@ -1817,11 +1836,21 @@ function (_Prefab) {
 
     return _possibleConstructorReturn(this, _getPrototypeOf(ShowPlayerUnit).call(this, scene, name, position, properties));
   } //#region public methods  
-  //#endregion
-  //#region protected methods
+
+  /**
+   * Updates status bar
+   */
 
 
   _createClass(ShowPlayerUnit, [{
+    key: "change",
+    value: function change(prefab, faceTexture) {
+      this.updateUnitData(prefab);
+      this.updateFaceTexture(faceTexture);
+    } //#endregion
+    //#region protected methods
+
+  }, {
     key: "initialize",
     value: function initialize(scene, name, position, properties) {
       _get(_getPrototypeOf(ShowPlayerUnit.prototype), "initialize", this).call(this, scene, name, position, properties);
@@ -1833,6 +1862,28 @@ function (_Prefab) {
     } //#endregion
     //#region internal methods
 
+    /**
+     * Updates face texture, with the texture attribute
+     * @param {JSON} texture 
+     */
+
+  }, {
+    key: "updateFaceTexture",
+    value: function updateFaceTexture(texture) {
+      this.faceSprite.setTexture(texture);
+    }
+    /**
+     * Updates unit data, by setting new with prefab attribute
+     * @param {JSON} prefab 
+     */
+
+  }, {
+    key: "updateUnitData",
+    value: function updateUnitData(prefab) {
+      this.unitData = prefab;
+      this.playerUnitHealthBar.unitData = this.unitData;
+      this.playerUnitManaBar.unitData = this.unitData;
+    }
     /**
      * Constructs status bar class and returns it
      * @param {string} key 
