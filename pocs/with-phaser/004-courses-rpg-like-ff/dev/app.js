@@ -3535,16 +3535,7 @@ function (_JSonLevelScene) {
         }
       });
       this.calculateTurnForAllGroup(this.groups.playerUnits, 0);
-      this.calculateTurnForAllGroup(this.groups.enemyUnits, 0); // 20/08/2019: just a test
-
-      this.cache.game.inventory.collect(this, {
-        "type": "potion",
-        "properties": {
-          "group": "items",
-          "itemTexture": "potionImage",
-          "healthPower": 50
-        }
-      });
+      this.calculateTurnForAllGroup(this.groups.enemyUnits, 0);
       this.createItemsMenu();
       this.goToNextTurn();
     }
