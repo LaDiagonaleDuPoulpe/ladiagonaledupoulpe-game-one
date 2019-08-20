@@ -24,7 +24,7 @@ class Unit extends Prefab {
      */
     calculateAttackTurn(currentTurn) {
         console.log('calculateAttackTurn', currentTurn);
-        if (!currentTurn) {
+        if (typeof(currentTurn) === 'undefined') {
             currentTurn = this.attackTurn;
         }
 
