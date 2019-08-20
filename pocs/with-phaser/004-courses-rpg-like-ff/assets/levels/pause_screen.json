@@ -83,6 +83,46 @@
                 },
                 "faceTexture": "mageFaceImage"
             }
+        },
+        "showWarriorUnit": {
+            "type": "showPlayerUnit",
+            "position": {
+                "x": 50,
+                "y": 100
+            },
+            "properties": {
+                "group": "hud",
+                "anchor": {
+                    "x": 0,
+                    "y": 0
+                }, 
+                "textStyle": {
+                    "font": "14px Kells",
+                    "fill": "#FFFFFF"
+                },
+                "prefab": "warrior",
+                "faceTexture": "warriorFaceImage"
+            }
+        },
+        "showMageUnit": {
+            "type": "showPlayerUnit",
+            "position": {
+                "x": 50,
+                "y": 250
+            },
+            "properties": {
+                "group": "hud",
+                "anchor": {
+                    "x": 0,
+                    "y": 0
+                }, 
+                "textStyle": {
+                    "font": "14px Kells",
+                    "fill": "#FFFFFF"
+                },
+                "prefab": "mage",
+                "faceTexture": "mageFaceImage"
+            }
         }
     },
     "userInput": {

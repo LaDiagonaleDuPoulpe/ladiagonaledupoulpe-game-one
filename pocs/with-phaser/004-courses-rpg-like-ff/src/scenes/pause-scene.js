@@ -2,6 +2,7 @@ import JSonLevelScene from './json-level-scene';
 import Prefab from '../prefabs/prefab';
 import TextPrefab from '../prefabs/text-prefab';
 import UnitStats from '../prefabs/hud/unit-stats';
+import ShowPlayerUnitInPauseScreen from '../prefabs/hud/show-player-unit-in-pause-screen';
 
 /**
  * Scene displaying resume of a fight
@@ -64,7 +65,8 @@ class PauseScene extends JSonLevelScene {
     setPrefabs() {
         this.prefabsClasses = {
             background: Prefab.prototype.constructor,
-            unitStats: UnitStats.prototype.constructor
+            unitStats: UnitStats.prototype.constructor,
+            showPlayerUnit: ShowPlayerUnitInPauseScreen.prototype.constructor
         };
     }
     //#endregion
