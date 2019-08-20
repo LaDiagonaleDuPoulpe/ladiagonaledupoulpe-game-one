@@ -2470,6 +2470,7 @@ function (_JSonLevelScene) {
 
       this.getExperienceTable();
       this.createAllEnemies();
+      this.loadPartyData();
       this.prepareGamingQueue();
     }
   }, {
@@ -2550,6 +2551,26 @@ function (_JSonLevelScene) {
     } //#endregion
     //#region internal methods
 
+    /**
+     * Loads party data from cache (prefabs stats)
+     */
+
+  }, {
+    key: "loadPartyData",
+    value: function loadPartyData() {
+      for (var unitDataKey in this.cache.game.partyData) {
+        var cacheDataUnit = this.cache.game.partyData[unitDataKey];
+        this.prefabs[unitDataKey].stats = {};
+
+        for (var statKey in cacheDataUnit.stats) {
+          this.prefabs[unitDataKey].stats[statKey] = cacheDataUnit.stats[statKey];
+          this.prefabs[unitDataKey].experience = cacheDataUnit.experience;
+          this.prefabs[unitDataKey].currentLevel = cacheDataUnit.currentLevel;
+        }
+      }
+
+      console.log('loadPartyData::warrior.stats', this.prefabs.warrior.stats);
+    }
   }, {
     key: "getExperienceTable",
     value: function getExperienceTable() {
@@ -3122,22 +3143,32 @@ function (_JSonLevelScene) {
       });
     }
   }, {
+    key: "preload",
+    value: function preload() {
+      this.loadDefaultDataParty();
+    }
+  }, {
     key: "create",
     value: function create() {
       _get(_getPrototypeOf(TitleScene.prototype), "create", this).call(this);
 
-      this.saveParty();
+      this.getDefaultDataParty();
     } //#endregion
     //#region internal methods
 
     /**
-     * Saves the party in cache
+     * Loads default data of the party
      */
 
   }, {
-    key: "saveParty",
-    value: function saveParty() {
-      this.cache.game.partyData = {};
+    key: "loadDefaultDataParty",
+    value: function loadDefaultDataParty() {
+      this.load.json('default_data', 'assets/levels/default_data.json');
+    }
+  }, {
+    key: "getDefaultDataParty",
+    value: function getDefaultDataParty() {
+      this.cache.game.partyData = this.cache.json.get('default_data');
     }
   }, {
     key: "setPrefabs",

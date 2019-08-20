@@ -20,21 +20,26 @@ class TitleScene extends JSonLevelScene {
                                       });
     }
 
-    create() {
-        super.create();
+    preload() {
+        this.loadDefaultDataParty();
+    }
 
-        this.saveParty();    
+    create() {
+        super.create();   
+        this.getDefaultDataParty();
     }
     //#endregion
     
     //#region internal methods
     /**
-     * Saves the party in cache
+     * Loads default data of the party
      */
-    saveParty() {
-        this.cache.game.partyData = {
+    loadDefaultDataParty() {
+        this.load.json('default_data', 'assets/levels/default_data.json');
+    }
 
-        };
+    getDefaultDataParty() {
+        this.cache.game.partyData = this.cache.json.get('default_data');
     }
 
     setPrefabs() {

@@ -26,6 +26,7 @@ class BattleScene extends JSonLevelScene {
         super.create();
         this.getExperienceTable();
         this.createAllEnemies();
+        this.loadPartyData();
         this.prepareGamingQueue();
     }
 
@@ -95,6 +96,24 @@ class BattleScene extends JSonLevelScene {
     //#endregion
     
     //#region internal methods
+    /**
+     * Loads party data from cache (prefabs stats)
+     */
+    loadPartyData() {
+        for (let unitDataKey in this.cache.game.partyData) {
+            const cacheDataUnit = this.cache.game.partyData[unitDataKey];
+            this.prefabs[unitDataKey].stats = {};
+
+            for (let statKey in cacheDataUnit.stats) {
+                this.prefabs[unitDataKey].stats[statKey] = cacheDataUnit.stats[statKey];
+                this.prefabs[unitDataKey].experience = cacheDataUnit.experience;
+                this.prefabs[unitDataKey].currentLevel = cacheDataUnit.currentLevel;
+            }
+        }
+
+        console.log('loadPartyData::warrior.stats', this.prefabs.warrior.stats);
+    }
+
     getExperienceTable() {
         this.experienceTable = this.cache.json.get('experience_table');
     }
