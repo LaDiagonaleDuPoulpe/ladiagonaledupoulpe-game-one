@@ -126,19 +126,35 @@ class BattleScene extends JSonLevelScene {
      * All enemy units are killed
      */
     endBattle() {
-        this.giveMoreExperienceToUnits();
+        this.giveMoreExperienceToUnits(this.saveDataFromUnitInCache.bind(this));
         this.backToWorld();
+    }
+
+    /**
+     * Saves data from one unit in cache data
+     * @param {Unit} unit 
+     */
+    saveDataFromUnitInCache(unit) {
+        console.log('saveDataFromUnitInCache::before', this.cache.game.partyData[unit.name].stats);
+
+        this.cache.game.partyData[unit.name].stats = unit.stats;
+        this.cache.game.partyData[unit.name].experience = unit.experience;
+        this.cache.game.partyData[unit.name].currentLevel = unit.currentLevel;
+
+        console.log('saveDataFromUnitInCache::after', this.cache.game.partyData[unit.name].stats);
     }
 
     /**
      * Iterates units and gives experiences
      */
-    giveMoreExperienceToUnits() {
+    giveMoreExperienceToUnits(saveDataInCache) {
         const receivedExperience = this.encounter.reward.experience;
 
         this.groups.playerUnits.children.each(unit => {
             const addingExperience = receivedExperience / this.groups.playerUnits.children.size;
             unit.receiveExperience(addingExperience);
+
+            saveDataInCache(unit);
         }, this);
     }
 
