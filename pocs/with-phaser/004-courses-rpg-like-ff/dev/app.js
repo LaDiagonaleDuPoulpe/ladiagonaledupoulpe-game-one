@@ -2560,9 +2560,9 @@ function (_JSonLevelScene) {
     value: function giveMoreExperienceToUnits() {
       var _this2 = this;
 
-      var receivedExperience = this.encounter.rewars.experience;
+      var receivedExperience = this.encounter.reward.experience;
       this.groups.playerUnits.children.each(function (unit) {
-        var addingExperience = receiveExperience / _this2.groups.playerUnits.children.size;
+        var addingExperience = receivedExperience / _this2.groups.playerUnits.children.size;
         unit.receiveExperience(addingExperience);
       }, this);
     }

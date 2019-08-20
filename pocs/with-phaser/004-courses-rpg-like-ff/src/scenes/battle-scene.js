@@ -115,10 +115,10 @@ class BattleScene extends JSonLevelScene {
      * Iterates units and gives experiences
      */
     giveMoreExperienceToUnits() {
-        const receivedExperience = this.encounter.rewars.experience;
+        const receivedExperience = this.encounter.reward.experience;
 
         this.groups.playerUnits.children.each(unit => {
-            const addingExperience = receiveExperience / this.groups.playerUnits.children.size;
+            const addingExperience = receivedExperience / this.groups.playerUnits.children.size;
             unit.receiveExperience(addingExperience);
         }, this);
     }
