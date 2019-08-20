@@ -111,10 +111,77 @@ var require;var require;!function(t){if(true)module.exports=t();else { var e; }}
 /*!*********************************!*\
   !*** ./src/global/inventory.js ***!
   \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\src\\global\\inventory.js: Unexpected token (40:23)\n\n\u001b[0m \u001b[90m 38 | \u001b[39m            \u001b[36mconst\u001b[39m item \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mitemClasses[type](scene\u001b[33m,\u001b[39m item\u001b[33m.\u001b[39mtype\u001b[33m,\u001b[39m position\u001b[33m,\u001b[39m item\u001b[33m.\u001b[39mproperties)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 39 | \u001b[39m            \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mitems[item\u001b[33m.\u001b[39mtype] \u001b[33m=\u001b[39m {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 40 | \u001b[39m                prefab \u001b[33m=\u001b[39m item\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 41 | \u001b[39m                amount\u001b[33m:\u001b[39m \u001b[35m1\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 42 | \u001b[39m            }\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 43 | \u001b[39m        }\u001b[0m\n    at Parser.raise (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:6325:17)\n    at Parser.unexpected (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:7642:16)\n    at Parser.parseMaybeAssign (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:8229:12)\n    at Parser.parseMaybeAssign (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:8226:25)\n    at Parser.parseExpression (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:8135:23)\n    at Parser.parseStatementContent (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:9958:23)\n    at Parser.parseStatement (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:9829:17)\n    at Parser.parseBlockOrModuleBlockBody (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:10405:25)\n    at Parser.parseBlockBody (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:10392:10)\n    at Parser.parseBlock (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:10376:10)\n    at Parser.parseStatementContent (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:9905:21)\n    at Parser.parseStatement (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:9829:17)\n    at Parser.parseIfStatement (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:10184:51)\n    at Parser.parseStatementContent (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:9874:21)\n    at Parser.parseStatement (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:9829:17)\n    at Parser.parseBlockOrModuleBlockBody (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:10405:25)\n    at Parser.parseBlockBody (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:10392:10)\n    at Parser.parseBlock (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:10376:10)\n    at Parser.parseFunctionBody (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:9424:24)\n    at Parser.parseFunctionBodyAndFinish (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:9394:10)\n    at Parser.parseMethod (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:9348:10)\n    at Parser.pushClassMethod (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:10804:30)\n    at Parser.parseClassMemberWithIsStatic (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:10729:12)\n    at Parser.parseClassMember (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:10668:10)\n    at withTopicForbiddingContext (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:10623:14)\n    at Parser.withTopicForbiddingContext (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:9702:14)\n    at Parser.parseClassBody (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:10600:10)\n    at Parser.parseClass (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:10574:22)\n    at Parser.parseStatementContent (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:9871:21)\n    at Parser.parseStatement (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:9829:17)\n    at Parser.parseBlockOrModuleBlockBody (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:10405:25)\n    at Parser.parseBlockBody (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:10392:10)\n    at Parser.parseTopLevel (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:9758:10)\n    at Parser.parse (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:11270:17)\n    at parse (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\parser\\lib\\index.js:11306:38)\n    at parser (F:\\Works\\LaDiagonaleDuPoulpe\\ladiagonaledupoulpe-game-one\\pocs\\with-phaser\\004-courses-rpg-like-ff\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:170:34)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _prefabs_battle_item__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefabs/battle/item */ "./src/prefabs/battle/item.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+/**
+ * Allosw you to collect items in the game
+ */
+
+var Inventory =
+/*#__PURE__*/
+function () {
+  function Inventory() {
+    _classCallCheck(this, Inventory);
+
+    this.items = [];
+    this.itemClasses = {
+      "potion": _prefabs_battle_item__WEBPACK_IMPORTED_MODULE_0__["default"].prototype.constructor
+    };
+  } //#region public methods
+
+  /**
+   * Collects a new item from a scene
+   */
+
+
+  _createClass(Inventory, [{
+    key: "collect",
+    value: function collect(scene, item) {
+      this.updateQuantity(item, 1, scene);
+    } //#endregion
+    //#region internal methods
+
+    /**
+     * Updates quantity of a type of item
+     * @param {string} type 
+     * @param {number} newValue 
+     */
+
+  }, {
+    key: "updateQuantity",
+    value: function updateQuantity(item, newValue, scene) {
+      if (this.items[item.type]) {
+        this.items[item.type].amount += newValue;
+      } else {
+        var position = {
+          x: 0,
+          y: 0
+        };
+        var newItem = new this.itemClasses[item.type](scene, item.type, position, item.properties);
+        this.items[item.type] = {
+          prefab: newItem,
+          amount: 1
+        };
+      }
+    } //#endregion
+
+  }]);
+
+  return Inventory;
+}();
+
+/* harmony default export */ __webpack_exports__["default"] = (Inventory);
 
 /***/ }),
 
@@ -133,7 +200,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scenes_loading_scene__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./scenes/loading-scene */ "./src/scenes/loading-scene.js");
 /* harmony import */ var _scenes_battle_scene__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scenes/battle-scene */ "./src/scenes/battle-scene.js");
 /* harmony import */ var _global_inventory__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./global/inventory */ "./src/global/inventory.js");
-/* harmony import */ var _global_inventory__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_global_inventory__WEBPACK_IMPORTED_MODULE_5__);
 
 
 
@@ -164,7 +230,7 @@ var config = {
   }
 };
 var game = new Phaser.Game(config);
-game.inventory = new _global_inventory__WEBPACK_IMPORTED_MODULE_5___default.a();
+game.inventory = new _global_inventory__WEBPACK_IMPORTED_MODULE_5__["default"]();
 game.scene.add(TITLE_SCENE_KEY, titleScene);
 game.scene.add(WORLD_SCENE_KEY, worldScene);
 game.scene.add(BOOT_SCENE_KEY, bootScene);
@@ -575,6 +641,76 @@ function (_Unit) {
 }(_unit__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (EnemyUnit);
+
+/***/ }),
+
+/***/ "./src/prefabs/battle/item.js":
+/*!************************************!*\
+  !*** ./src/prefabs/battle/item.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+/**
+ * Represents an item (potion, ...)
+ */
+
+var Item =
+/*#__PURE__*/
+function (_Prefab) {
+  _inherits(Item, _Prefab);
+
+  function Item(scene, name, position, properties) {
+    _classCallCheck(this, Item);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Item).call(this, scene, name, position, properties));
+  } //#region public methods  
+  //#endregion
+  //#region protected methods
+
+
+  _createClass(Item, [{
+    key: "initialize",
+    value: function initialize(scene, name, position, properties) {
+      _get(_getPrototypeOf(Item.prototype), "initialize", this).call(this, scene, name, position, properties);
+    } //#endregion
+    //#region internal methods
+    //#endregion
+
+  }]);
+
+  return Item;
+}(_prefab__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Item);
 
 /***/ }),
 
@@ -1276,6 +1412,87 @@ function (_MenuItem) {
 }(_menu_item__WEBPACK_IMPORTED_MODULE_2__["default"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (EnemyMenuItem);
+
+/***/ }),
+
+/***/ "./src/prefabs/hud/inventory-menu-item.js":
+/*!************************************************!*\
+  !*** ./src/prefabs/hud/inventory-menu-item.js ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
+/* harmony import */ var _menu_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./menu-item */ "./src/prefabs/hud/menu-item.js");
+/* harmony import */ var _battle_physical_attack__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../battle/physical-attack */ "./src/prefabs/battle/physical-attack.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+/**
+ * It represents a specific menu item, when you want to get items
+ */
+
+var InventoryMenuItem =
+/*#__PURE__*/
+function (_MenuItem) {
+  _inherits(InventoryMenuItem, _MenuItem);
+
+  function InventoryMenuItem(scene, name, position, properties) {
+    _classCallCheck(this, InventoryMenuItem);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(InventoryMenuItem).call(this, scene, name, position, properties));
+  } //#region public methods   
+  //#endregion
+  //#region protected methods
+
+
+  _createClass(InventoryMenuItem, [{
+    key: "initialize",
+    value: function initialize(scene, name, position, properties) {
+      _get(_getPrototypeOf(InventoryMenuItem.prototype), "initialize", this).call(this, scene, name, position, properties);
+    }
+    /**
+     * Selects one menu
+     */
+
+  }, {
+    key: "select",
+    value: function select() {
+      console.log('items menu', this.scene.game.inventory.items);
+    } //#endregion
+
+  }]);
+
+  return InventoryMenuItem;
+}(_menu_item__WEBPACK_IMPORTED_MODULE_2__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (InventoryMenuItem);
 
 /***/ }),
 
@@ -2750,6 +2967,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _prefabs_hud_magical_attack_menu_item__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../prefabs/hud/magical-attack-menu-item */ "./src/prefabs/hud/magical-attack-menu-item.js");
 /* harmony import */ var _prefabs_hud_run_menu_item__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../prefabs/hud/run-menu-item */ "./src/prefabs/hud/run-menu-item.js");
 /* harmony import */ var _prefabs_hud_show_player_unit__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../prefabs/hud/show-player-unit */ "./src/prefabs/hud/show-player-unit.js");
+/* harmony import */ var _prefabs_hud_inventory_menu_item__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../prefabs/hud/inventory-menu-item */ "./src/prefabs/hud/inventory-menu-item.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2771,6 +2989,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2932,7 +3151,17 @@ function (_JSonLevelScene) {
     key: "endBattle",
     value: function endBattle() {
       this.giveMoreExperienceToUnits(this.saveDataFromUnitInCache.bind(this));
+      this.collectItems();
       this.backToWorld();
+    }
+  }, {
+    key: "collectItems",
+    value: function collectItems() {
+      var _this2 = this;
+
+      this.encounter.reward.items.forEach(function (item) {
+        _this2.cache.game.inventory.collect(_this2, item);
+      }, this);
     }
     /**
      * Saves data from one unit in cache data
@@ -2955,11 +3184,11 @@ function (_JSonLevelScene) {
   }, {
     key: "giveMoreExperienceToUnits",
     value: function giveMoreExperienceToUnits(saveDataInCache) {
-      var _this2 = this;
+      var _this3 = this;
 
       var receivedExperience = this.encounter.reward.experience;
       this.groups.playerUnits.children.each(function (unit) {
-        var addingExperience = receivedExperience / _this2.groups.playerUnits.children.size;
+        var addingExperience = receivedExperience / _this3.groups.playerUnits.children.size;
         unit.receiveExperience(addingExperience);
         saveDataInCache(unit);
       }, this);
@@ -3006,6 +3235,7 @@ function (_JSonLevelScene) {
         physicalAttackMenuItem: _prefabs_hud_physical_attack_menu_item__WEBPACK_IMPORTED_MODULE_9__["default"].prototype.constructor,
         enemyMenuItem: _prefabs_hud_enemy_menu_item__WEBPACK_IMPORTED_MODULE_10__["default"].prototype.constructor,
         magicalAttackMenuItem: _prefabs_hud_magical_attack_menu_item__WEBPACK_IMPORTED_MODULE_11__["default"].prototype.constructor,
+        inventoryMenuItem: _prefabs_hud_inventory_menu_item__WEBPACK_IMPORTED_MODULE_14__["default"].prototype.constructor,
         runMenuItem: _prefabs_hud_run_menu_item__WEBPACK_IMPORTED_MODULE_12__["default"].prototype.constructor,
         menu: _prefabs_hud_menu__WEBPACK_IMPORTED_MODULE_6__["default"].prototype.constructor,
         showPlayerUnit: _prefabs_hud_show_player_unit__WEBPACK_IMPORTED_MODULE_13__["default"].prototype.constructor
@@ -3020,18 +3250,27 @@ function (_JSonLevelScene) {
         }
       });
       this.calculateTurnForAllGroup(this.groups.playerUnits, 0);
-      this.calculateTurnForAllGroup(this.groups.enemyUnits, 0);
+      this.calculateTurnForAllGroup(this.groups.enemyUnits, 0); // 20/08/2019: just a test
+
+      this.cache.game.inventory.collect(this, {
+        "type": "potion",
+        "properties": {
+          "group": "items",
+          "itemTexture": "potionImage",
+          "healthPower": 50
+        }
+      });
       this.goToNextTurn();
     }
   }, {
     key: "calculateTurnForAllGroup",
     value: function calculateTurnForAllGroup(unitGroup, turn) {
-      var _this3 = this;
+      var _this4 = this;
 
       unitGroup.children.each(function (unit) {
         unit.calculateAttackTurn(turn);
 
-        _this3.units.queue(unit);
+        _this4.units.queue(unit);
       });
     } //#endregion
 

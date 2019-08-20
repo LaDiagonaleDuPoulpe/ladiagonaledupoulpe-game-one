@@ -12,6 +12,7 @@ import EnemyMenuItem from '../prefabs/hud/enemy-menu-item';
 import MagicalAttackMenuItem from '../prefabs/hud/magical-attack-menu-item';
 import RunMenuItem from '../prefabs/hud/run-menu-item';
 import ShowPlayerUnit from '../prefabs/hud/show-player-unit';
+import InventoryMenuItem from '../prefabs/hud/inventory-menu-item';
 
 /**
  * Scene displaying title and starts game after clicked on it
@@ -128,7 +129,14 @@ class BattleScene extends JSonLevelScene {
      */
     endBattle() {
         this.giveMoreExperienceToUnits(this.saveDataFromUnitInCache.bind(this));
+        this.collectItems();
         this.backToWorld();
+    }
+
+    collectItems() {
+        this.encounter.reward.items.forEach((item) => {
+            this.cache.game.inventory.collect(this, item);
+        }, this);
     }
 
     /**
@@ -192,6 +200,7 @@ class BattleScene extends JSonLevelScene {
             physicalAttackMenuItem: PhysicalAttackMenuItem.prototype.constructor,
             enemyMenuItem: EnemyMenuItem.prototype.constructor,
             magicalAttackMenuItem: MagicalAttackMenuItem.prototype.constructor,
+            inventoryMenuItem: InventoryMenuItem.prototype.constructor,
             runMenuItem: RunMenuItem.prototype.constructor,
             menu: Menu.prototype.constructor,
             showPlayerUnit: ShowPlayerUnit.prototype.constructor
@@ -208,6 +217,16 @@ class BattleScene extends JSonLevelScene {
         this.calculateTurnForAllGroup(this.groups.playerUnits, 0);
         this.calculateTurnForAllGroup(this.groups.enemyUnits, 0);
     
+        // 20/08/2019: just a test
+        this.cache.game.inventory.collect(this, {
+            "type": "potion",
+            "properties": {
+                "group": "items",
+                "itemTexture": "potionImage",
+                "healthPower": 50
+            }
+        })
+
         this.goToNextTurn();
     }
 

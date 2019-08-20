@@ -17,7 +17,7 @@ class Inventory {
      * Collects a new item from a scene
      */
     collect(scene, item) {
-        updateQuantity(item, 1, scene);
+        this.updateQuantity(item, 1, scene);
     }
     //#endregion
 
@@ -35,9 +35,9 @@ class Inventory {
                 x: 0,
                 y: 0
             };
-            const item = new this.itemClasses[type](scene, item.type, position, item.properties);
+            const newItem = new this.itemClasses[item.type](scene, item.type, position, item.properties);
             this.items[item.type] = {
-                prefab = item,
+                prefab: newItem,
                 amount: 1
             };
         }

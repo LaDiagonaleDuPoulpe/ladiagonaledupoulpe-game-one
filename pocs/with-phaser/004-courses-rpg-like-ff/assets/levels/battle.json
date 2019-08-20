@@ -53,6 +53,7 @@
         "background",
         "playerUnits",
         "enemyUnits",
+        "items",
         "attacks",
         "hud"
     ],
@@ -250,7 +251,7 @@
                         }
                     },
                     "item": {
-                        "type": "menuItem",
+                        "type": "inventoryMenuItem",
                         "position": {
                             "x": 290,
                             "y": 360
