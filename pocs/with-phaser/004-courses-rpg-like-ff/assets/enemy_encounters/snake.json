@@ -130,6 +130,16 @@
         }
     },
     "reward": {
-        "experience": 100
+        "experience": 100,
+        "items": [
+            {
+                "type": "potion",
+                "properties": {
+                    "group": "items",
+                    "itemTexture": "potionImage",
+                    "healthPower": 50
+                }
+            }
+        ]
     }
 }

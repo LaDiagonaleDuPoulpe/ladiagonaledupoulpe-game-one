@@ -2,18 +2,64 @@
     "enemyData": {
         "bat1": {
             "type": "enemyUnit",
-            "position": {"x": 100, "y": 180},
+            "position": {
+                "x": 100,
+                "y": 180
+            },
             "properties": {
                 "texture": "batSpritesheet",
                 "group": "enemyUnits",
-                "scale": {"x": 0.7, "y": 0.7},
-                "anchor": {"x": 0.5, "y": 0.5},
+                "scale": {
+                    "x": 0.7,
+                    "y": 0.7
+                },
+                "anchor": {
+                    "x": 0.5,
+                    "y": 0.5
+                },
                 "targetUnits": "playerUnits",
                 "animations": {
-                    "idle": {"frames": [0, 1, 2, 3, 4], "fps": 5},
-                    "attack1": {"frames": [5, 6, 7, 8, 9, 0], "fps": 6},
-                    "attack2": {"frames": [10, 11, 12, 13, 14, 15, 16, 0], "fps": 8},
-                    "hit": {"frames": [17, 18], "fps": 2}
+                    "idle": {
+                        "frames": [
+                            0,
+                            1,
+                            2,
+                            3,
+                            4
+                        ],
+                        "fps": 5
+                    },
+                    "attack1": {
+                        "frames": [
+                            5,
+                            6,
+                            7,
+                            8,
+                            9,
+                            0
+                        ],
+                        "fps": 6
+                    },
+                    "attack2": {
+                        "frames": [
+                            10,
+                            11,
+                            12,
+                            13,
+                            14,
+                            15,
+                            16,
+                            0
+                        ],
+                        "fps": 8
+                    },
+                    "hit": {
+                        "frames": [
+                            17,
+                            18
+                        ],
+                        "fps": 2
+                    }
                 },
                 "stats": {
                     "attack": 10,
@@ -25,18 +71,64 @@
         },
         "bat2": {
             "type": "enemyUnit",
-            "position": {"x": 100, "y": 250},
+            "position": {
+                "x": 100,
+                "y": 250
+            },
             "properties": {
                 "texture": "batSpritesheet",
                 "group": "enemyUnits",
-                "scale": {"x": 0.7, "y": 0.7},
-                "anchor": {"x": 0.5, "y": 0.5},
+                "scale": {
+                    "x": 0.7,
+                    "y": 0.7
+                },
+                "anchor": {
+                    "x": 0.5,
+                    "y": 0.5
+                },
                 "targetUnits": "playerUnits",
                 "animations": {
-                    "idle": {"frames": [0, 1, 2, 3, 4], "fps": 5},
-                    "attack1": {"frames": [5, 6, 7, 8, 9, 0], "fps": 6},
-                    "attack2": {"frames": [10, 11, 12, 13, 14, 15, 16, 0], "fps": 8},
-                    "hit": {"frames": [17, 18], "fps": 2}
+                    "idle": {
+                        "frames": [
+                            0,
+                            1,
+                            2,
+                            3,
+                            4
+                        ],
+                        "fps": 5
+                    },
+                    "attack1": {
+                        "frames": [
+                            5,
+                            6,
+                            7,
+                            8,
+                            9,
+                            0
+                        ],
+                        "fps": 6
+                    },
+                    "attack2": {
+                        "frames": [
+                            10,
+                            11,
+                            12,
+                            13,
+                            14,
+                            15,
+                            16,
+                            0
+                        ],
+                        "fps": 8
+                    },
+                    "hit": {
+                        "frames": [
+                            17,
+                            18
+                        ],
+                        "fps": 2
+                    }
                 },
                 "stats": {
                     "attack": 10,
@@ -48,38 +140,68 @@
         },
         "enemyUnitsMenu": {
             "type": "menu",
-            "position": {"x": 10, "y": 350},
+            "position": {
+                "x": 10,
+                "y": 350
+            },
             "properties": {
                 "group": "hud",
                 "menuItems": {
                     "bat1Item": {
                         "type": "enemyMenuItem",
-                        "position": {"x": 10, "y": 350},
+                        "position": {
+                            "x": 10,
+                            "y": 350
+                        },
                         "properties": {
                             "group": "hud",
                             "texture": "bat_face_image",
-                            "scale": {"x": 0.5, "y": 0.5},
-                            "anchor": {"x": 0, "y": 0},
+                            "scale": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "anchor": {
+                                "x": 0,
+                                "y": 0
+                            },
                             "enemyName": "bat1"
                         }
                     },
                     "bat2_item": {
                         "type": "enemyMenuItem",
-                        "position": {"x": 70, "y": 350},
+                        "position": {
+                            "x": 70,
+                            "y": 350
+                        },
                         "properties": {
                             "group": "hud",
                             "texture": "bat_face_image",
-                            "scale": {"x": 0.5, "y": 0.5},
-                            "anchor": {"x": 0, "y": 0},
+                            "scale": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "anchor": {
+                                "x": 0,
+                                "y": 0
+                            },
                             "enemyName": "bat2"
                         }
                     }
                 }
             }
         }
-     },
+    },
     "reward": {
         "experience": 100,
-        "items": [{"type": "potion", "properties": {"group": "items", "item_texture": "potion_image", "health_power": 50}}]
+        "items": [
+            {
+                "type": "potion",
+                "properties": {
+                    "group": "items",
+                    "itemTexture": "potionImage",
+                    "healthPower": 50
+                }
+            }
+        ]
     }
 }

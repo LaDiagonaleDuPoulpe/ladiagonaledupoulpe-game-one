@@ -2,16 +2,62 @@
     "enemyData": {
         "dragon1": {
             "type": "bossUnit",
-            "position": {"x": 150, "y": 200},
+            "position": {
+                "x": 150,
+                "y": 200
+            },
             "properties": {
                 "texture": "dragon_spritesheet",
                 "group": "enemyUnits",
-                "scale": {"x": 0.7, "y": 0.7},
+                "scale": {
+                    "x": 0.7,
+                    "y": 0.7
+                },
                 "animations": {
-                    "idle": {"frames": [0, 1, 2, 3, 4], "fps": 5},
-                    "attack1": {"frames": [5, 6, 7, 8, 9, 10, 11, 0], "fps": 8},
-                    "attack2": {"frames": [12, 13, 14, 15, 16, 17, 18, 19, 0], "fps": 9},
-                    "hit": {"frames": [20, 21], "fps": 2}
+                    "idle": {
+                        "frames": [
+                            0,
+                            1,
+                            2,
+                            3,
+                            4
+                        ],
+                        "fps": 5
+                    },
+                    "attack1": {
+                        "frames": [
+                            5,
+                            6,
+                            7,
+                            8,
+                            9,
+                            10,
+                            11,
+                            0
+                        ],
+                        "fps": 8
+                    },
+                    "attack2": {
+                        "frames": [
+                            12,
+                            13,
+                            14,
+                            15,
+                            16,
+                            17,
+                            18,
+                            19,
+                            0
+                        ],
+                        "fps": 9
+                    },
+                    "hit": {
+                        "frames": [
+                            20,
+                            21
+                        ],
+                        "fps": 2
+                    }
                 },
                 "stats": {
                     "attack": 10,
@@ -25,18 +71,30 @@
         },
         "enemyUnitsMenu": {
             "type": "menu",
-            "position": {"x": 10, "y": 350},
+            "position": {
+                "x": 10,
+                "y": 350
+            },
             "properties": {
                 "group": "hud",
                 "menuItems": {
                     "dragon1Item": {
                         "type": "enemyMenuItem",
-                        "position": {"x": 10, "y": 350},
+                        "position": {
+                            "x": 10,
+                            "y": 350
+                        },
                         "properties": {
                             "group": "hud",
                             "texture": "dragon_face_image",
-                            "scale": {"x": 0.5, "y": 0.5},
-                            "anchor": {"x": 0, "y": 0},
+                            "scale": {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            "anchor": {
+                                "x": 0,
+                                "y": 0
+                            },
                             "enemyName": "dragon1"
                         }
                     }
@@ -46,6 +104,15 @@
     },
     "reward": {
         "experience": 100,
-        "items": [{"type": "potion", "properties": {"group": "items", "item_texture": "potion_image", "health_power": 50}}]
+        "items": [
+            {
+                "type": "potion",
+                "properties": {
+                    "group": "items",
+                    "itemTexture": "potionImage",
+                    "healthPower": 50
+                }
+            }
+        ]
     }
 }
