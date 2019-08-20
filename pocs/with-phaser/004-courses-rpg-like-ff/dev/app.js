@@ -475,6 +475,7 @@ function (_Unit) {
   _createClass(EnemyUnit, [{
     key: "playAction",
     value: function playAction() {
+      this.scene.prefabs.showPlayerUnit.display(false);
       var target = this.chooseTarget();
       this.attack.hit(target);
     }
@@ -770,6 +771,8 @@ function (_Unit) {
   _createClass(PlayerUnit, [{
     key: "playAction",
     value: function playAction() {
+      this.scene.prefabs.showPlayerUnit.display(true);
+      this.updateStatusBar();
       this.scene.activateActionsMenu();
     }
     /**
@@ -784,6 +787,10 @@ function (_Unit) {
       this.verifyLevel();
     } //#endregion
     //#region internal methods
+
+    /**
+     * Changes informations in the status bar (the unit face, the texture, the hp, ...)
+     */
 
   }, {
     key: "updateStatusBar",
@@ -1847,6 +1854,18 @@ function (_Prefab) {
     value: function change(prefab, faceTexture) {
       this.updateUnitData(prefab);
       this.updateFaceTexture(faceTexture);
+    }
+    /**
+     * Shows or hides status bar
+     * @param {boolean} isShown 
+     */
+
+  }, {
+    key: "display",
+    value: function display(isShown) {
+      this.playerUnitHealthBar.display(isShown);
+      this.playerUnitManaBar.display(isShown);
+      this.faceSprite.setVisible(isShown);
     } //#endregion
     //#region protected methods
 
@@ -2014,6 +2033,17 @@ function (_TextPrefab) {
     key: "update",
     value: function update() {
       this.updateScaleOfBar();
+    }
+    /**
+     * Shows or hides status bar
+     * @param {boolean} isShown 
+     */
+
+  }, {
+    key: "display",
+    value: function display(isShown) {
+      this.setVisible(isShown);
+      this.barSprite.setVisible(isShown);
     } //#endregion
     //#region internal methods
 

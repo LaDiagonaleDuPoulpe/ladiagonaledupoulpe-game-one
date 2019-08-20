@@ -17,6 +17,7 @@ class EnemyUnit extends Unit {
      * Lanuches an attack 
      */
     playAction() {
+        this.scene.prefabs.showPlayerUnit.display(false);
         const target = this.chooseTarget();
         this.attack.hit(target);
     }

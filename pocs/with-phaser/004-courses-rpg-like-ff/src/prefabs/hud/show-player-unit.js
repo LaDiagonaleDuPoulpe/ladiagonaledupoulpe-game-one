@@ -20,6 +20,16 @@ class ShowPlayerUnit extends Prefab {
         this.updateUnitData(prefab);
         this.updateFaceTexture(faceTexture);
     }
+
+    /**
+     * Shows or hides status bar
+     * @param {boolean} isShown 
+     */
+    display(isShown) {
+        this.playerUnitHealthBar.display(isShown);
+        this.playerUnitManaBar.display(isShown);
+        this.faceSprite.setVisible(isShown);
+    }
     //#endregion
     
     //#region protected methods

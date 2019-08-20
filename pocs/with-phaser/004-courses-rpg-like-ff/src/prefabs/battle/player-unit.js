@@ -21,6 +21,8 @@ class PlayerUnit extends Unit {
      * Launches an attack, or choose an element (potion, ...)
      */
     playAction() {
+        this.scene.prefabs.showPlayerUnit.display(true);
+        this.updateStatusBar();
         this.scene.activateActionsMenu();
     }
 
@@ -35,6 +37,9 @@ class PlayerUnit extends Unit {
     //#endregion
 
     //#region internal methods
+    /**
+     * Changes informations in the status bar (the unit face, the texture, the hp, ...)
+     */
     updateStatusBar() {
         this.scene.prefabs.showPlayerUnit.change(this, this.faceTexture);
     }

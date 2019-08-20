@@ -19,6 +19,15 @@ class ShowStatWithBar extends TextPrefab {
     update() {
         this.updateScaleOfBar();
     }
+
+    /**
+     * Shows or hides status bar
+     * @param {boolean} isShown 
+     */
+    display(isShown) {
+        this.setVisible(isShown);
+        this.barSprite.setVisible(isShown);
+    }
     //#endregion
 
     //#region internal methods
