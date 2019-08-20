@@ -288,6 +288,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scenes_loading_scene__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./scenes/loading-scene */ "./src/scenes/loading-scene.js");
 /* harmony import */ var _scenes_battle_scene__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scenes/battle-scene */ "./src/scenes/battle-scene.js");
 /* harmony import */ var _global_inventory__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./global/inventory */ "./src/global/inventory.js");
+/* harmony import */ var _scenes_pause_scene__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./scenes/pause-scene */ "./src/scenes/pause-scene.js");
+
 
 
 
@@ -299,11 +301,13 @@ var BOOT_SCENE_KEY = 'BootScene';
 var LOADING_SCENE_KEY = 'LoadingScene';
 var WORLD_SCENE_KEY = 'WorldScene';
 var BATTLE_SCENE_KEY = 'BattleScene';
+var PAUSE_SCENE_KEY = 'PauseScene';
 var titleScene = new _scenes_title_scene__WEBPACK_IMPORTED_MODULE_0__["default"]();
 var bootScene = new _scenes_boot_scene__WEBPACK_IMPORTED_MODULE_2__["default"]();
 var loadingScene = new _scenes_loading_scene__WEBPACK_IMPORTED_MODULE_3__["default"]();
 var worldScene = new _scenes_world_scene__WEBPACK_IMPORTED_MODULE_1__["default"]();
 var battleScene = new _scenes_battle_scene__WEBPACK_IMPORTED_MODULE_4__["default"]();
+var pauseScene = new _scenes_pause_scene__WEBPACK_IMPORTED_MODULE_6__["default"]();
 var config = {
   type: Phaser.AUTO,
   width: 640,
@@ -324,6 +328,7 @@ game.scene.add(WORLD_SCENE_KEY, worldScene);
 game.scene.add(BOOT_SCENE_KEY, bootScene);
 game.scene.add(LOADING_SCENE_KEY, loadingScene);
 game.scene.add(BATTLE_SCENE_KEY, battleScene);
+game.scene.add(PAUSE_SCENE_KEY, pauseScene);
 game.scene.start(BOOT_SCENE_KEY, {
   scene: 'title'
 });
@@ -2604,6 +2609,79 @@ function (_TextPrefab) {
 
 /***/ }),
 
+/***/ "./src/prefabs/hud/unit-stats.js":
+/*!***************************************!*\
+  !*** ./src/prefabs/hud/unit-stats.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
+/* harmony import */ var _text_prefab__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../text-prefab */ "./src/prefabs/text-prefab.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+/**
+ * Displaying stats of one unit
+ */
+
+var UnitStats =
+/*#__PURE__*/
+function (_Prefab) {
+  _inherits(UnitStats, _Prefab);
+
+  function UnitStats(scene, name, position, properties) {
+    _classCallCheck(this, UnitStats);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(UnitStats).call(this, scene, name, position, properties));
+  } //#region public methods 
+  //#endregion
+  //#region protected methods
+
+
+  _createClass(UnitStats, [{
+    key: "initialize",
+    value: function initialize(scene, name, position, properties) {
+      _get(_getPrototypeOf(UnitStats.prototype), "initialize", this).call(this, scene, name, position, properties);
+
+      this.stats = Object.create(properties.stats);
+      this.faceTexture = properties.faceTexture;
+    } //#endregion
+
+  }]);
+
+  return UnitStats;
+}(_prefab__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (UnitStats);
+
+/***/ }),
+
 /***/ "./src/prefabs/prefab.js":
 /*!*******************************!*\
   !*** ./src/prefabs/prefab.js ***!
@@ -4073,6 +4151,141 @@ function (_Phaser$Scene) {
 }(Phaser.Scene);
 
 /* harmony default export */ __webpack_exports__["default"] = (LoadingScene);
+
+/***/ }),
+
+/***/ "./src/scenes/pause-scene.js":
+/*!***********************************!*\
+  !*** ./src/scenes/pause-scene.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _json_level_scene__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./json-level-scene */ "./src/scenes/json-level-scene.js");
+/* harmony import */ var _prefabs_prefab__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../prefabs/prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _prefabs_text_prefab__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../prefabs/text-prefab */ "./src/prefabs/text-prefab.js");
+/* harmony import */ var _prefabs_hud_unit_stats__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../prefabs/hud/unit-stats */ "./src/prefabs/hud/unit-stats.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+/**
+ * Scene displaying resume of a fight
+ */
+
+var PauseScene =
+/*#__PURE__*/
+function (_JSonLevelScene) {
+  _inherits(PauseScene, _JSonLevelScene);
+
+  function PauseScene() {
+    _classCallCheck(this, PauseScene);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(PauseScene).call(this, 'PauseScene'));
+  } //#region public methods
+
+
+  _createClass(PauseScene, [{
+    key: "init",
+    value: function init(data) {
+      _get(_getPrototypeOf(PauseScene.prototype), "init", this).call(this, data);
+
+      this.previousLevel = data.extraParameters.previousLevel;
+    }
+    /**
+     * Starts the game
+     */
+
+  }, {
+    key: "startGame",
+    value: function startGame() {
+      this.scene.start('BootScene', {
+        scene: 'town'
+      });
+    }
+  }, {
+    key: "create",
+    value: function create() {
+      _get(_getPrototypeOf(PauseScene.prototype), "create", this).call(this);
+
+      this.getDefaultDataParty();
+    } //#endregion
+    //#region internal methods
+
+    /**
+         * Loads party data from cache (prefabs stats)
+         */
+
+  }, {
+    key: "loadPartyData",
+    value: function loadPartyData() {
+      for (var unitDataKey in this.cache.game.partyData) {
+        var cacheDataUnit = this.cache.game.partyData[unitDataKey];
+        this.prefabs[unitDataKey].stats = {};
+
+        for (var statKey in cacheDataUnit.stats) {
+          this.prefabs[unitDataKey].stats[statKey] = cacheDataUnit.stats[statKey] + cacheDataUnit.statsBonus[statKey];
+        }
+
+        this.prefabs[unitDataKey].experience = cacheDataUnit.experience;
+        this.prefabs[unitDataKey].currentLevel = cacheDataUnit.currentLevel;
+      }
+
+      console.log('loadPartyData::warrior.stats', this.prefabs.warrior.stats);
+    }
+    /**
+     * Loads default data of the party
+     */
+
+  }, {
+    key: "loadDefaultDataParty",
+    value: function loadDefaultDataParty() {
+      this.load.json('default_data', 'assets/levels/default_data.json');
+    }
+  }, {
+    key: "getDefaultDataParty",
+    value: function getDefaultDataParty() {
+      this.cache.game.partyData = this.cache.json.get('default_data');
+    }
+  }, {
+    key: "setPrefabs",
+    value: function setPrefabs() {
+      this.prefabsClasses = {
+        background: _prefabs_prefab__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.constructor,
+        unitStats: _prefabs_hud_unit_stats__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.constructor
+      };
+    } //#endregion
+
+  }]);
+
+  return PauseScene;
+}(_json_level_scene__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (PauseScene);
 
 /***/ }),
 

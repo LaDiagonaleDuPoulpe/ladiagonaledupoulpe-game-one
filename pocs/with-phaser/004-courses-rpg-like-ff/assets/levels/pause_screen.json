@@ -23,6 +23,7 @@
     },
     "groups": [
         "background",
+        "unitStats",
         "hud"
     ],
     "prefabs": {
@@ -43,6 +44,46 @@
                     "x": 0,
                     "y": 0
                 }
+            }
+        },
+        "warrior": {
+            "type": "unitStats",
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "properties": {
+                "texture": "",
+                "group": "unitStats",
+                "stats": {
+                    "attack": 20,
+                    "magicAttack": 5,
+                    "defense": 5,
+                    "health": 100,
+                    "mana": 100,
+                    "speed": 15
+                },
+                "faceTexture": "warriorFaceImage"
+            }
+        },
+        "mage": {
+            "type": "unitStats",
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "properties": {
+                "texture": "",
+                "group": "unitStats",
+                "stats": {
+                    "attack": 5,
+                    "magicAttack": 20,
+                    "defense": 2,
+                    "health": 100,
+                    "mana": 100,
+                    "speed": 10
+                },
+                "faceTexture": "mageFaceImage"
             }
         }
     }
