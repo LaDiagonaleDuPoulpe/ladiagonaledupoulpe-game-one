@@ -35,7 +35,7 @@ class ShowStatWithBar extends TextPrefab {
      * Updates scale of the status bar
      */
     updateScaleOfBar() {
-        this.currentStat = this.unitData[this.stat];
+        this.currentStat = this.unitData.stats[this.stat];
         this.barSprite.setScale(this.currentStat / 100, 1.0);
     }
 

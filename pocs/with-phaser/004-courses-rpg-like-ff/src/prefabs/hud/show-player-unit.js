@@ -78,8 +78,8 @@ class ShowPlayerUnit extends Prefab {
         }
 
         const position = {
-            x: 0,
-            y: 0 + positionY
+            x: this.x,
+            y: this.y + positionY
         };
 
         const setting = {
@@ -92,7 +92,7 @@ class ShowPlayerUnit extends Prefab {
             style: properties.textStyle,
             prefab: properties.prefab,
             stat: key,
-            barTexture: key + 'bar_image'
+            barTexture: key + 'barImage'
         }
 
         return new ShowStatWithBar(this.scene, name, position, setting);

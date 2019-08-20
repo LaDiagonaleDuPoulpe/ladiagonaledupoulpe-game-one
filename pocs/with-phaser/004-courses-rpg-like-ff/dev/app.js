@@ -1921,8 +1921,8 @@ function (_Prefab) {
       }
 
       var position = {
-        x: 0,
-        y: 0 + positionY
+        x: this.x,
+        y: this.y + positionY
       };
       var setting = {
         group: 'hud',
@@ -1934,7 +1934,7 @@ function (_Prefab) {
         style: properties.textStyle,
         prefab: properties.prefab,
         stat: key,
-        barTexture: key + 'bar_image'
+        barTexture: key + 'barImage'
       };
       return new _show_stat_with_bar__WEBPACK_IMPORTED_MODULE_3__["default"](this.scene, name, position, setting);
     }
@@ -2054,7 +2054,7 @@ function (_TextPrefab) {
   }, {
     key: "updateScaleOfBar",
     value: function updateScaleOfBar() {
-      this.currentStat = this.unitData[this.stat];
+      this.currentStat = this.unitData.stats[this.stat];
       this.barSprite.setScale(this.currentStat / 100, 1.0);
     }
     /**
