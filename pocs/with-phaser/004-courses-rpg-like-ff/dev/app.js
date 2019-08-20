@@ -3410,10 +3410,11 @@ function (_JSonLevelScene) {
         this.prefabs[unitDataKey].stats = {};
 
         for (var statKey in cacheDataUnit.stats) {
-          this.prefabs[unitDataKey].stats[statKey] = cacheDataUnit.stats[statKey];
-          this.prefabs[unitDataKey].experience = cacheDataUnit.experience;
-          this.prefabs[unitDataKey].currentLevel = cacheDataUnit.currentLevel;
+          this.prefabs[unitDataKey].stats[statKey] = cacheDataUnit.stats[statKey] + cacheDataUnit.statsBonus[statKey];
         }
+
+        this.prefabs[unitDataKey].experience = cacheDataUnit.experience;
+        this.prefabs[unitDataKey].currentLevel = cacheDataUnit.currentLevel;
       }
 
       console.log('loadPartyData::warrior.stats', this.prefabs.warrior.stats);

@@ -59,7 +59,7 @@ class BattleScene extends JSonLevelScene {
         if (this.groups.enemyUnits.countActive() === 0) {
             this.endBattle();
             nextTurnIsValid = false;
-        } 
+        }
 
         if (this.groups.playerUnits.countActive() === 0) {
             this.gameOver();
@@ -79,7 +79,7 @@ class BattleScene extends JSonLevelScene {
             }
         }
     }
-    
+
     /**
      * Activates the actions menu
      * @param {boolean} enable 
@@ -96,7 +96,7 @@ class BattleScene extends JSonLevelScene {
         this.setEnableMenu(this.prefabs.enemyUnitsMenu, enable);
     }
     //#endregion
-    
+
     //#region internal methods
     /**
      * Loads party data from cache (prefabs stats)
@@ -107,10 +107,10 @@ class BattleScene extends JSonLevelScene {
             this.prefabs[unitDataKey].stats = {};
 
             for (let statKey in cacheDataUnit.stats) {
-                this.prefabs[unitDataKey].stats[statKey] = cacheDataUnit.stats[statKey];
-                this.prefabs[unitDataKey].experience = cacheDataUnit.experience;
-                this.prefabs[unitDataKey].currentLevel = cacheDataUnit.currentLevel;
+                this.prefabs[unitDataKey].stats[statKey] = cacheDataUnit.stats[statKey] + cacheDataUnit.statsBonus[statKey];
             }
+            this.prefabs[unitDataKey].experience = cacheDataUnit.experience;
+            this.prefabs[unitDataKey].currentLevel = cacheDataUnit.currentLevel;
         }
 
         console.log('loadPartyData::warrior.stats', this.prefabs.warrior.stats);
@@ -184,7 +184,7 @@ class BattleScene extends JSonLevelScene {
     }
 
     setEnableMenu(menu, enable) {
-        if(typeof(enable) == "undefined") {
+        if (typeof (enable) == "undefined") {
             enable = true;
         }
 
