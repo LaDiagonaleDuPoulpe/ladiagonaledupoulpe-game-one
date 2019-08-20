@@ -286,6 +286,19 @@
                 }
             }
         },
+        "itemsMenu": {
+            "type": "menu",
+            "position": {
+                "x": 202,
+                "y": 350
+            },
+            "properties": {
+                "group": "hud",
+                "menuItems": {
+                    
+                } 
+            }
+        },
         "showPlayerUnit": {
             "type": "showPlayerUnit",
             "position": {

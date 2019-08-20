@@ -141,11 +141,43 @@ function () {
   } //#region public methods
 
   /**
-   * Collects a new item from a scene
+   * Creates the menu in the specific scene, and binds it with items
+   * @param {Scene} scene 
+   * @param {menu} itemsMenu 
+   * @todo Moves all the code in ItemsMenu, it have to be there !!
    */
 
 
   _createClass(Inventory, [{
+    key: "createMenu",
+    value: function createMenu(scene, itemsMenu) {
+      var itemPosition = {
+        x: itemsMenu.x,
+        y: itemsMenu.y
+      };
+
+      for (var itemType in this.items) {
+        var prefab = this.items[itemType].prefab;
+        var amount = this.items[itemType].amount;
+        var name = itemType + 'MenuItem';
+        var setting = {
+          group: 'hud',
+          texture: prefab.itemTexture,
+          itemName: itemType,
+          amount: amount
+        };
+        var menuItem = new ItemMenuItem(scene, name, itemPosition, setting);
+        menuItem.setOrigin(0);
+        itemsMenu.items.push(menuItem);
+      }
+
+      itemsMenu.enable(false);
+    }
+    /**
+     * Collects a new item from a scene
+     */
+
+  }, {
     key: "collect",
     value: function collect(scene, item) {
       this.updateQuantity(item, 1, scene);

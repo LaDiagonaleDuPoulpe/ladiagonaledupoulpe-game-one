@@ -14,6 +14,39 @@ class Inventory {
 
     //#region public methods
     /**
+     * Creates the menu in the specific scene, and binds it with items
+     * @param {Scene} scene 
+     * @param {menu} itemsMenu 
+     * @todo Moves all the code in ItemsMenu, it have to be there !!
+     */
+    createMenu(scene, itemsMenu) {
+        const itemPosition = {
+            x: itemsMenu.x,
+            y: itemsMenu.y
+        };
+
+        for (let itemType in this.items) {
+            const prefab = this.items[itemType].prefab;
+            const amount = this.items[itemType].amount;
+            
+            const name = itemType + 'MenuItem';
+            const setting = {
+                group: 'hud',
+                texture: prefab.itemTexture,
+                itemName: itemType,
+                amount: amount
+            };
+
+            const menuItem = new ItemMenuItem(scene, name, itemPosition, setting);
+            menuItem.setOrigin(0);
+
+            itemsMenu.items.push(menuItem);
+        }
+
+        itemsMenu.enable(false);
+    }
+
+    /**
      * Collects a new item from a scene
      */
     collect(scene, item) {
