@@ -183,7 +183,7 @@
                "name":"equipment1",
                "properties":
                {
-                  "body_part":"head",
+                  "bodyPart":"head",
                   "bonus":10,
                   "group":"equipments",
                   "stat":"defense",
