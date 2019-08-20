@@ -188,7 +188,7 @@
                   "group":"equipments",
                   "stat":"defense",
                   "texture":"warriorHelmetImage",
-                  "unit_name":"warrior"
+                  "unitName":"warrior"
                },
                "propertytypes":
                {
