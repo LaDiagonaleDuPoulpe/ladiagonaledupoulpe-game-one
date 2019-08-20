@@ -42,6 +42,10 @@
             "type": "image",
             "source": "assets/images/battle/manabar.png"
         },
+        "potionImage": {
+            "type": "image",
+            "source": "assets/images/battle/health_potion.png"
+        },
         "iconsSpriteSheet": {
             "type": "spritesheet",
             "source": "assets/images/battle/icons.png",
@@ -295,7 +299,7 @@
             "properties": {
                 "group": "hud",
                 "menuItems": {
-                    
+
                 } 
             }
         },

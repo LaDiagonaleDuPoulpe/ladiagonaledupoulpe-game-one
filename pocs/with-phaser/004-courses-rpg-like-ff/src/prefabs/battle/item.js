@@ -17,7 +17,7 @@ class Item extends Prefab {
     initialize(scene, name, position, properties) {
         super.initialize(scene, name, position, properties);
 
-        
+        this.itemTexture = properties.itemTexture;
     }
     //#endregion
 

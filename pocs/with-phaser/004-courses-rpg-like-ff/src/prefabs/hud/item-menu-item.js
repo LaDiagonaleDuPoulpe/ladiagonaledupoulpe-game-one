@@ -4,9 +4,9 @@ import MenuItem from './menu-item';
 import PhysicalAttack from '../battle/physical-attack';
 
 /**
- * It represents a specific menu item, when you want to get items
+ * It represents a specific menu item, when you want to select one item
  */
-class InventoryMenuItem extends MenuItem {
+class ItemMenuItem extends MenuItem {
 
     constructor(scene, name, position, properties) {
         super(scene, name, position, properties);
@@ -18,18 +18,18 @@ class InventoryMenuItem extends MenuItem {
     //#region protected methods
     initialize(scene, name, position, properties) {
         super.initialize(scene, name, position, properties);
+
+        this.itemName = properties.itemName;
+        this.amount = properties.amount;
     }
 
     /**
      * Selects one menu
      */
     select() {
-        if (this.scene.cache.game.inventory.hasItems()) {
-            this.scene.prefabs.actionsMenu.enable(false);
-            this.scene.prefabs.itemsMenu.enable(true);
-        }
+        console.log('select item menu item', this.itemName);
     }
     //#endregion
 }
 
-export default InventoryMenuItem;
+export default ItemMenuItem;

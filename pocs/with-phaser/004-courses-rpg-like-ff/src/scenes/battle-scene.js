@@ -225,11 +225,24 @@ class BattleScene extends JSonLevelScene {
                 "itemTexture": "potionImage",
                 "healthPower": 50
             }
-        })
+        });
 
+        this.createItemsMenu();
         this.goToNextTurn();
     }
 
+    /**
+     * Creates items menu
+     */
+    createItemsMenu() {
+        this.cache.game.inventory.createMenu(this, this.prefabs.itemsMenu);
+    }
+
+    /**
+     * Calculates turn for a group (all of the childrens)
+     * @param {group} unitGroup 
+     * @param {number} turn 
+     */
     calculateTurnForAllGroup(unitGroup, turn) {
         unitGroup.children.each(unit => {
             unit.calculateAttackTurn(turn);

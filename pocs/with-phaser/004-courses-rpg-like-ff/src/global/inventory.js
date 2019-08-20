@@ -1,4 +1,5 @@
 import Item from "../prefabs/battle/item";
+import ItemMenuItem from "../prefabs/hud/item-menu-item";
 
 /**
  * Allosw you to collect items in the game
@@ -13,6 +14,20 @@ class Inventory {
     }
 
     //#region public methods
+    /**
+     * Allows you to know if there is items in the array list
+     * @returns {boolean}
+     */
+    hasItems() {
+        for (let type in this.items) {
+            if (this.items[type].amount > 0) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     /**
      * Creates the menu in the specific scene, and binds it with items
      * @param {Scene} scene 
