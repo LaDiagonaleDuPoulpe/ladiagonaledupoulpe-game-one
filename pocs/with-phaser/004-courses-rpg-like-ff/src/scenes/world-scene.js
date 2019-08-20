@@ -15,21 +15,28 @@ class WorldScene extends JSonLevelScene {
 
         this.defineTextStyle();
     }
-    
+
     //#region public methods
+    /**
+     * Creates the world (loads map, tilesets, layers, ...)
+     */
     create() {
         this.map = this.add.tilemap(this.levelData.map.key);
-        
+
         this.prepareTileSets();
         this.prepareLayers();
-        
+
         super.create();
 
         this.prepareObjects();
     }
 
+    /**
+     * Preloads data messages
+     */
     preload() {
         this.loadMessages();
+        this.loadEnemyEncounters();
     }
 
     endTalk() {
@@ -37,7 +44,7 @@ class WorldScene extends JSonLevelScene {
         this.userInput.setInput(this.userInputs.townUserInput);
     }
     //#endregion
-    
+
     //#region internal methods
     defineTextStyle() {
         this.TEXT_STYLE = {
@@ -46,15 +53,21 @@ class WorldScene extends JSonLevelScene {
         };
     }
 
+    loadEnemyEncounters() {
+        for (let key in this.levelData.enemyEncounters) {
+            this.load.json(key, this.levelData.enemyEncounters[key]);
+        }
+    }
+
     loadMessages() {
-        for (const key in this.levelData.npcMessages) {    
+        for (const key in this.levelData.npcMessages) {
             this.load.text(key, this.levelData.npcMessages[key]);
         }
     }
 
     prepareObjects() {
         this.map.objects.forEach((layer) => {
-           layer.objects.forEach(this.createOneOject, this);     
+            layer.objects.forEach(this.createOneOject, this);
         });
     }
 
@@ -68,38 +81,36 @@ class WorldScene extends JSonLevelScene {
             let prefab = new this.prefabsClasses[object.type](this, object.name, position, object.properties);
         }
     }
-    
+
     prepareLayers() {
         this.layers = {};
         this.map.layers.forEach((layer, index) => {
             this.layers[layer.name] = this.map.createStaticLayer(layer.name, this.tilesets[layer.properties.tileset]);
-            
+
             if (layer.properties.collision) {
                 this.map.setCollisionByExclusion([-1], true, layer.name);
             }
         });
     }
-    
+
     prepareTileSets() {
         this.tilesets = {};
         this.map.tilesets.forEach((tileSet, index) => {
             const tileSetContent = this.levelData.map.tilesets[index];
-            const mapTileset = this.map.addTilesetImage(tileSet.name, 
-                tileSetContent);
-                
-                this.tilesets[tileSetContent] = mapTileset;
-            }, this);
-        }
-        
-        setPrefabs() {
-            this.prefabsClasses = {
-                player: Player.prototype.constructor,
-                door: Door.prototype.constructor,
-                npc: NPC.prototype.constructor,
-                enemySpawner: EnemySpawner.prototype.constructor
-            };
-        }
-        //#endregion
+            const mapTileset = this.map.addTilesetImage(tileSet.name, tileSetContent);
+            this.tilesets[tileSetContent] = mapTileset;
+        }, this);
     }
-    
-    export default WorldScene;
+
+    setPrefabs() {
+        this.prefabsClasses = {
+            player: Player.prototype.constructor,
+            door: Door.prototype.constructor,
+            npc: NPC.prototype.constructor,
+            enemySpawner: EnemySpawner.prototype.constructor
+        };
+    }
+    //#endregion
+}
+
+export default WorldScene;

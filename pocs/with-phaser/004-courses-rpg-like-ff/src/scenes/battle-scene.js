@@ -9,6 +9,8 @@ import PlayerUnit from '../prefabs/battle/player-unit';
 import EnemyUnit from '../prefabs/battle/enemy-unit';
 import PhysicalAttackMenuItem from '../prefabs/hud/physical-attack-menu-item';
 import EnemyMenuItem from '../prefabs/hud/enemy-menu-item';
+import MagicalAttackMenuItem from '../prefabs/hud/magical-attack-menu-item';
+import RunMenuItem from '../prefabs/hud/run-menu-item';
 
 /**
  * Scene displaying title and starts game after clicked on it
@@ -22,25 +24,58 @@ class BattleScene extends JSonLevelScene {
     //#region public methods
     create() {
         super.create();
+        this.getExperienceTable();
+        this.createAllEnemies();
+        this.loadPartyData();
         this.prepareGamingQueue();
     }
 
+    init(data) {
+        super.init(data);
+
+        this.previousLevel = data.extraParameters.previousLevel;
+        this.encounter = data.extraParameters.encounter;
+    }
+
+    preload() {
+        this.loadExperienceTable();
+    }
+
     /**
-     * Launchs new turn of attack in battle scene, thanks to queue
+     * Stops battle, and go back to map
+     */
+    backToWorld() {
+        this.scene.start('BootScene', { scene: this.previousLevel });
+    }
+
+    /**
+     * Launches new turn of attack in battle scene, thanks to queue
      */
     goToNextTurn() {
-        this.currentUnit = this.units.dequeue();
+        let nextTurnIsValid = true;
 
-        if (this.currentUnit.active) {
-            this.currentUnit.playAction();
-            this.currentUnit.calculateAttackTurn();
-            this.units.queue(this.currentUnit);
-        } else {
-            this.currentUnit = undefined;
-            this.goToNextTurn();
+        if (this.groups.enemyUnits.countActive() === 0) {
+            this.endBattle();
+            nextTurnIsValid = false;
+        } 
+
+        if (this.groups.playerUnits.countActive() === 0) {
+            this.gameOver();
+            nextTurnIsValid = false;
         }
 
-        console.log('next turn', this.units);
+        if (nextTurnIsValid) {
+            this.currentUnit = this.units.dequeue();
+
+            if (this.currentUnit.active) {
+                this.currentUnit.playAction();
+                this.currentUnit.calculateAttackTurn();
+                this.units.queue(this.currentUnit);
+            } else {
+                this.currentUnit = undefined;
+                this.goToNextTurn();
+            }
+        }
     }
     
     /**
@@ -61,8 +96,70 @@ class BattleScene extends JSonLevelScene {
     //#endregion
     
     //#region internal methods
+    /**
+     * Loads party data from cache (prefabs stats)
+     */
+    loadPartyData() {
+        for (let unitDataKey in this.cache.game.partyData) {
+            const cacheDataUnit = this.cache.game.partyData[unitDataKey];
+            this.prefabs[unitDataKey].stats = {};
+
+            for (let statKey in cacheDataUnit.stats) {
+                this.prefabs[unitDataKey].stats[statKey] = cacheDataUnit.stats[statKey];
+                this.prefabs[unitDataKey].experience = cacheDataUnit.experience;
+                this.prefabs[unitDataKey].currentLevel = cacheDataUnit.currentLevel;
+            }
+        }
+
+        console.log('loadPartyData::warrior.stats', this.prefabs.warrior.stats);
+    }
+
+    getExperienceTable() {
+        this.experienceTable = this.cache.json.get('experience_table');
+    }
+
+    loadExperienceTable() {
+        this.load.json('experience_table', 'assets/levels/experience_table.json');
+    }
+
+    /**
+     * All enemy units are killed
+     */
+    endBattle() {
+        this.giveMoreExperienceToUnits();
+        this.backToWorld();
+    }
+
+    /**
+     * Iterates units and gives experiences
+     */
+    giveMoreExperienceToUnits() {
+        const receivedExperience = this.encounter.reward.experience;
+
+        this.groups.playerUnits.children.each(unit => {
+            const addingExperience = receivedExperience / this.groups.playerUnits.children.size;
+            unit.receiveExperience(addingExperience);
+        }, this);
+    }
+
+    /**
+     * All player units are killed
+     */
+    gameOver() {
+        this.scene.start('BootScene', { scene: 'title' });
+    }
+
+    /**
+     * Creates all enemy prefabs
+     */
+    createAllEnemies() {
+        for (let key in this.encounter.enemyData) {
+            this.createPrefab(key, this.encounter.enemyData[key]);
+        }
+    }
+
     setEnableMenu(menu, enable) {
-        if(! enable) {
+        if(typeof(enable) == "undefined") {
             enable = true;
         }
 
@@ -77,6 +174,8 @@ class BattleScene extends JSonLevelScene {
             menuItem: MenuItem.prototype.constructor,
             physicalAttackMenuItem: PhysicalAttackMenuItem.prototype.constructor,
             enemyMenuItem: EnemyMenuItem.prototype.constructor,
+            magicalAttackMenuItem: MagicalAttackMenuItem.prototype.constructor,
+            runMenuItem: RunMenuItem.prototype.constructor,
             menu: Menu.prototype.constructor
         };
     }

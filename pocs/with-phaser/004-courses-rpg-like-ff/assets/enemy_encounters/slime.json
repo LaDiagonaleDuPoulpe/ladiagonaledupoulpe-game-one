@@ -1,14 +1,14 @@
 {
-    "enemy_data": {
+    "enemyData": {
         "slime1": {
-            "type": "enemy_unit",
+            "type": "enemyUnit",
             "position": {"x": 100, "y": 180},
             "properties": {
                 "texture": "slime_spritesheet",
-                "group": "enemy_units",
+                "group": "enemyUnits",
                 "scale": {"x": 0.7, "y": 0.7},
                 "anchor": {"x": 0.5, "y": 0.5},
-                "target_units": "player_units",
+                "targetUnits": "playerUnits",
                 "animations": {
                     "idle": {"frames": [0, 1, 2, 3, 4], "fps": 5},
                     "attack1": {"frames": [5, 6, 7, 8, 9, 0], "fps": 6},
@@ -24,14 +24,14 @@
             }
         },
         "slime2": {
-            "type": "enemy_unit",
+            "type": "enemyUnit",
             "position": {"x": 100, "y": 250},
             "properties": {
                 "texture": "slime_spritesheet",
-                "group": "enemy_units",
+                "group": "enemyUnits",
                 "scale": {"x": 0.7, "y": 0.7},
                 "anchor": {"x": 0.5, "y": 0.5},
-                "target_units": "player_units",
+                "targetUnits": "playerUnits",
                 "animations": {
                     "idle": {"frames": [0, 1, 2, 3, 4], "fps": 5},
                     "attack1": {"frames": [5, 6, 7, 8, 9, 0], "fps": 6},
@@ -46,32 +46,32 @@
                 }
             }
         },
-        "enemy_units_menu": {
+        "enemyUnitsMenu": {
             "type": "menu",
             "position": {"x": 10, "y": 350},
             "properties": {
                 "group": "hud",
-                "menu_items": {
-                    "slime1_item": {
-                        "type": "enemy_menu_item",
+                "menuItems": {
+                    "slime1Item": {
+                        "type": "enemyMenuItem",
                         "position": {"x": 10, "y": 350},
                         "properties": {
                             "group": "hud",
                             "texture": "slime_face_image",
                             "scale": {"x": 0.5, "y": 0.5},
                             "anchor": {"x": 0, "y": 0},
-                            "enemy_name": "slime1"
+                            "enemyName": "slime1"
                         }
                     },
-                    "slime2_item": {
-                        "type": "enemy_menu_item",
+                    "slime2Item": {
+                        "type": "enemyMenuItem",
                         "position": {"x": 60, "y": 350},
                         "properties": {
                             "group": "hud",
                             "texture": "slime_face_image",
                             "scale": {"x": 0.5, "y": 0.5},
                             "anchor": {"x": 0, "y": 0},
-                            "enemy_name": "slime2"
+                            "enemyName": "slime2"
                         }
                     }
                 }

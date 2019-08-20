@@ -52,6 +52,9 @@
     "npcMessages": {
         "villagerMessage": "assets/npc_messages/villager.txt",
         "guardMessage": "assets/npc_messages/guard.txt"
-
+    },
+    "level": "town",
+    "enemyEncounters": {
+        "snake": "assets/enemy_encounters/snake.json"
     }
 }

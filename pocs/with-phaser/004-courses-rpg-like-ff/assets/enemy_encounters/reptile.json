@@ -1,14 +1,14 @@
 {
-    "enemy_data": {
+    "enemyData": {
         "reptile1": {
-            "type": "enemy_unit",
+            "type": "enemyUnit",
             "position": {"x": 150, "y": 180},
             "properties": {
                 "texture": "reptile_spritesheet",
-                "group": "enemy_units",
+                "group": "enemyUnits",
                 "scale": {"x": 0.7, "y": 0.7},
                 "anchor": {"x": 0.5, "y": 0.5},
-                "target_units": "player_units",
+                "targetUnits": "playerUnits",
                 "animations": {
                     "idle": {"frames": [0, 1, 2, 3, 4], "fps": 5},
                     "attack1": {"frames": [5, 6, 7, 8, 9, 10, 0], "fps": 7},
@@ -24,14 +24,14 @@
             }
         },
         "dino1": {
-            "type": "enemy_unit",
+            "type": "enemyUnit",
             "position": {"x": 150, "y": 250},
             "properties": {
                 "texture": "dino_spritesheet",
-                "group": "enemy_units",
+                "group": "enemyUnits",
                 "scale": {"x": 0.7, "y": 0.7},
                 "anchor": {"x": 0.5, "y": 0.5},
-                "target_units": "player_units",
+                "target_units": "playerUnits",
                 "animations": {
                     "idle": {"frames": [0, 1, 2, 3, 4], "fps": 5},
                     "attack1": {"frames": [5, 6, 7, 8, 9, 10, 11, 12, 13, 0], "fps": 10},
@@ -46,32 +46,32 @@
                 }
             }
         },
-        "enemy_units_menu": {
+        "enemyUnitsMenu": {
             "type": "menu",
             "position": {"x": 10, "y": 350},
             "properties": {
                 "group": "hud",
-                "menu_items": {
-                    "reptile1_item": {
-                        "type": "enemy_menu_item",
+                "menuItems": {
+                    "reptile1Item": {
+                        "type": "enemyMenuItem",
                         "position": {"x": 10, "y": 350},
                         "properties": {
                             "group": "hud",
                             "texture": "reptile_face_image",
                             "scale": {"x": 0.5, "y": 0.5},
                             "anchor": {"x": 0, "y": 0},
-                            "enemy_name": "reptile1"
+                            "enemyName": "reptile1"
                         }
                     },
-                    "dino1_item": {
-                        "type": "enemy_menu_item",
+                    "dino1Item": {
+                        "type": "enemyMenuItem",
                         "position": {"x": 70, "y": 350},
                         "properties": {
                             "group": "hud",
                             "texture": "dino_face_image",
                             "scale": {"x": 0.5, "y": 0.5},
                             "anchor": {"x": 0, "y": 0},
-                            "enemy_name": "dino1"
+                            "enemyName": "dino1"
                         }
                     }
                 }
