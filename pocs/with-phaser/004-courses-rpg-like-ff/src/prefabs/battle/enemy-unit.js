@@ -26,7 +26,7 @@ class EnemyUnit extends Unit {
      */
     destroy() {
         if (this.active) {
-            const menuItem = this.scene.prefabs[this.name + '_' + 'item'];
+            const menuItem = this.scene.prefabs[this.name + 'Item'];
             if (menuItem) {
                 menuItem.destroy();
             }

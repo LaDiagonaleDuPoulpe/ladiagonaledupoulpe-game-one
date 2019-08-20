@@ -11,14 +11,32 @@ class TitleScene extends JSonLevelScene {
     }
 
     //#region public methods
+    /**
+     * Starts the game
+     */
     startGame() {
         this.scene.start('BootScene', {
                                        scene: 'town' 
                                       });
     }
+
+    create() {
+        super.create();
+
+        this.saveParty();    
+    }
     //#endregion
     
     //#region internal methods
+    /**
+     * Saves the party in cache
+     */
+    saveParty() {
+        this.cache.game.partyData = {
+
+        };
+    }
+
     setPrefabs() {
         this.prefabsClasses = {
             background: Prefab.prototype.constructor,

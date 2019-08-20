@@ -477,6 +477,23 @@ function (_Unit) {
     value: function playAction() {
       var target = this.chooseTarget();
       this.attack.hit(target);
+    }
+    /**
+     * Destroys enemy unit
+     */
+
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      if (this.active) {
+        var menuItem = this.scene.prefabs[this.name + 'Item'];
+
+        if (menuItem) {
+          menuItem.destroy();
+        }
+
+        _get(_getPrototypeOf(EnemyUnit.prototype), "destroy", this).call(this);
+      }
     } //#endregion
     //#region protected methods
 
@@ -1208,8 +1225,8 @@ function (_MenuItem) {
   }, {
     key: "select",
     value: function select() {
-      this.scene.currentAttack.hit(this.enemy);
       this.scene.activateEnemysMenu(false);
+      this.scene.currentAttack.hit(this.enemy);
     } //#endregion
 
   }]);
@@ -1450,8 +1467,10 @@ function (_Prefab) {
     key: "enable",
     value: function enable(state) {
       this.items.forEach(function (item) {
-        item.setInteractive(state);
-        item.setVisible(state);
+        if (item.active) {
+          item.setInteractive(state);
+          item.setVisible(state);
+        }
       }, this);
     } //#endregion
     //#region protected methods
@@ -3062,6 +3081,10 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
@@ -3086,6 +3109,10 @@ function (_JSonLevelScene) {
     return _possibleConstructorReturn(this, _getPrototypeOf(TitleScene).call(this, 'TitleScene'));
   } //#region public methods
 
+  /**
+   * Starts the game
+   */
+
 
   _createClass(TitleScene, [{
     key: "startGame",
@@ -3093,9 +3120,25 @@ function (_JSonLevelScene) {
       this.scene.start('BootScene', {
         scene: 'town'
       });
+    }
+  }, {
+    key: "create",
+    value: function create() {
+      _get(_getPrototypeOf(TitleScene.prototype), "create", this).call(this);
+
+      this.saveParty();
     } //#endregion
     //#region internal methods
 
+    /**
+     * Saves the party in cache
+     */
+
+  }, {
+    key: "saveParty",
+    value: function saveParty() {
+      this.cache.game.partyData = {};
+    }
   }, {
     key: "setPrefabs",
     value: function setPrefabs() {
