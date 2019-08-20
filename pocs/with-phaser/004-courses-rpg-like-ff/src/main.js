@@ -3,6 +3,7 @@ import WordScene from './scenes/world-scene';
 import BootScene from './scenes/boot-scene';
 import LoadingScene from './scenes/loading-scene';
 import BattleScene from './scenes/battle-scene';
+import Inventory from './global/inventory';
 
 const TITLE_SCENE_KEY = 'TitleScene';
 const BOOT_SCENE_KEY = 'BootScene';
@@ -14,7 +15,7 @@ const BATTLE_SCENE_KEY = 'BattleScene';
 let titleScene = new TitleScene();
 let bootScene = new BootScene();
 let loadingScene = new LoadingScene();
-let worldScene = new WordScene(); 
+let worldScene = new WordScene();
 let battleScene = new BattleScene();
 
 let config = {
@@ -31,9 +32,10 @@ let config = {
     }
 };
 
-
-
 let game = new Phaser.Game(config);
+
+game.inventory = new Inventory();
+
 game.scene.add(TITLE_SCENE_KEY, titleScene);
 game.scene.add(WORLD_SCENE_KEY, worldScene);
 game.scene.add(BOOT_SCENE_KEY, bootScene);
