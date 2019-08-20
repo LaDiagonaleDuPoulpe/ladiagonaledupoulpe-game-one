@@ -27,6 +27,13 @@ class ShowPlayerUnit extends Prefab {
     //#endregion
 
     //#region internal methods
+    /**
+     * Constructs status bar class and returns it
+     * @param {string} key 
+     * @param {string} title 
+     * @param {JSON} properties 
+     * @param {number} positionY 
+     */
     constructStatusBar(key, title, properties, positionY) {
         const name = this.name + '_' + key;
 
@@ -55,10 +62,18 @@ class ShowPlayerUnit extends Prefab {
         return new ShowStatWithBar(this.scene, name, position, setting);
     }
 
+    /**
+     * Defines unitData attribute
+     * @param {JSON} properties 
+     */
     setUnitData(properties) {
         this.unitData = this.scene.prefabs[properties.prefab];
     }
 
+    /**
+     * Prepares face information of the unit
+     * @param {JSON} properties 
+     */
     prepareFaceInformations(properties) {
         this.faceTexture = properties.faceTexture;
         this.faceSprite = this.scene.add.sprite(this.x + 130, this.y, properties.faceTexture);

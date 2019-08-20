@@ -891,7 +891,7 @@ function (_Prefab) {
     value: function calculateAttackTurn(currentTurn) {
       console.log('calculateAttackTurn', currentTurn);
 
-      if (!currentTurn) {
+      if (typeof currentTurn === 'undefined') {
         currentTurn = this.attackTurn;
       }
 
@@ -1833,6 +1833,14 @@ function (_Prefab) {
     } //#endregion
     //#region internal methods
 
+    /**
+     * Constructs status bar class and returns it
+     * @param {string} key 
+     * @param {string} title 
+     * @param {JSON} properties 
+     * @param {number} positionY 
+     */
+
   }, {
     key: "constructStatusBar",
     value: function constructStatusBar(key, title, properties, positionY) {
@@ -1860,11 +1868,21 @@ function (_Prefab) {
       };
       return new _show_stat_with_bar__WEBPACK_IMPORTED_MODULE_3__["default"](this.scene, name, position, setting);
     }
+    /**
+     * Defines unitData attribute
+     * @param {JSON} properties 
+     */
+
   }, {
     key: "setUnitData",
     value: function setUnitData(properties) {
       this.unitData = this.scene.prefabs[properties.prefab];
     }
+    /**
+     * Prepares face information of the unit
+     * @param {JSON} properties 
+     */
+
   }, {
     key: "prepareFaceInformations",
     value: function prepareFaceInformations(properties) {
@@ -1948,18 +1966,31 @@ function (_TextPrefab) {
     } //#endregion
     //#region internal methods
 
+    /**
+     * Updates scale of the status bar
+     */
+
   }, {
     key: "updateScaleOfBar",
     value: function updateScaleOfBar() {
       this.currentStat = this.unitData[this.stat];
       this.barSprite.setScale(this.currentStat / 100, 1.0);
     }
+    /**
+     * Adds sprite dedicated to the status bar
+     */
+
   }, {
     key: "createBar",
     value: function createBar(properties) {
       this.barSprite = this.scene.add.sprite(this.x, this.y + 20, properties.barTexture);
       this.barSprite.setOrigin(0);
     }
+    /**
+     * sets unitData attribute
+     * @param {JSON} properties 
+     */
+
   }, {
     key: "setUnitData",
     value: function setUnitData(properties) {

@@ -22,16 +22,26 @@ class ShowStatWithBar extends TextPrefab {
     //#endregion
 
     //#region internal methods
+    /**
+     * Updates scale of the status bar
+     */
     updateScaleOfBar() {
         this.currentStat = this.unitData[this.stat];
         this.barSprite.setScale(this.currentStat / 100, 1.0);
     }
 
+    /**
+     * Adds sprite dedicated to the status bar
+     */
     createBar(properties) {
         this.barSprite = this.scene.add.sprite(this.x, this.y + 20, properties.barTexture);
         this.barSprite.setOrigin(0);
     }
 
+    /**
+     * sets unitData attribute
+     * @param {JSON} properties 
+     */
     setUnitData(properties) {
         this.unitData = this.scene.prefabs[properties.prefab];
     }
