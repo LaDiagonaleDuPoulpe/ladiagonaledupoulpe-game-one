@@ -27,7 +27,22 @@ class ItemMenuItem extends MenuItem {
      * Selects one menu
      */
     select() {
-        console.log('select item menu item', this.itemName);
+        this.useItem();
+    }
+    //#endregion
+
+    //#region internal methods   
+    useItem() {
+        if (this.scene.cache.game.inventory.hasItem(this.itemName)) {
+            this.scene.prefabs.itemsMenu.enable(false);
+            this.scene.cache.game.inventory.useItem(this.itemName, this.scene.currentUnit);
+
+            const sceneBeforeDestroyItem = this.scene;
+            if (this.scene.cache.game.inventory.hasItem(this.itemName)) {
+                this.destroy();
+            }
+            sceneBeforeDestroyItem.goToNextTurn();
+        }
     }
     //#endregion
 }

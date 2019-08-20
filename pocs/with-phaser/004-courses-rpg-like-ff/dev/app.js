@@ -118,11 +118,13 @@ var require;var require;!function(t){if(true)module.exports=t();else { var e; }}
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _prefabs_battle_item__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefabs/battle/item */ "./src/prefabs/battle/item.js");
 /* harmony import */ var _prefabs_hud_item_menu_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../prefabs/hud/item-menu-item */ "./src/prefabs/hud/item-menu-item.js");
+/* harmony import */ var _prefabs_battle_unit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../prefabs/battle/unit */ "./src/prefabs/battle/unit.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 
 
 
@@ -143,12 +145,35 @@ function () {
   } //#region public methods
 
   /**
-   * Allows you to know if there is items in the array list
-   * @returns {boolean}
+   * Allows you to know if there is at least one item by type
+   * @param {string} type
+   * @returns {boolean} true or false
    */
 
 
   _createClass(Inventory, [{
+    key: "hasItem",
+    value: function hasItem(type) {
+      return this.items[type].amount > 0;
+    }
+    /**
+     * Use one item of a specific type
+     * @param {string} type 
+     * @param {Unit} target 
+     */
+
+  }, {
+    key: "useItem",
+    value: function useItem(type, target) {
+      this.items[type].prefab.use(target);
+      this.items[type].amount--;
+    }
+    /**
+     * Allows you to know if there is items in the array list
+     * @returns {boolean}
+     */
+
+  }, {
     key: "hasItems",
     value: function hasItems() {
       for (var type in this.items) {
@@ -175,21 +200,32 @@ function () {
       };
 
       for (var itemType in this.items) {
-        var prefab = this.items[itemType].prefab;
-        var amount = this.items[itemType].amount;
-        var name = itemType + 'MenuItem';
-        var setting = {
-          group: 'hud',
-          texture: prefab.itemTexture,
-          itemName: itemType,
-          amount: amount
-        };
-        var menuItem = new _prefabs_hud_item_menu_item__WEBPACK_IMPORTED_MODULE_1__["default"](scene, name, itemPosition, setting);
-        menuItem.setOrigin(0);
+        var menuItem = this.createMenuItem(itemType, scene);
         itemsMenu.items.push(menuItem);
       }
 
       itemsMenu.enable(false);
+    }
+    /**
+     * Creates one item for the menu
+     * @returns {ItemMenuItem} new Item
+     */
+
+  }, {
+    key: "createMenuItem",
+    value: function createMenuItem(itemType, scene) {
+      var prefab = this.items[itemType].prefab;
+      var amount = this.items[itemType].amount;
+      var name = itemType + 'MenuItem';
+      var setting = {
+        group: 'hud',
+        texture: prefab.itemTexture,
+        itemName: itemType,
+        amount: amount
+      };
+      var menuItem = new _prefabs_hud_item_menu_item__WEBPACK_IMPORTED_MODULE_1__["default"](scene, name, itemPosition, setting);
+      menuItem.setOrigin(0);
+      return menuItem;
     }
     /**
      * Collects a new item from a scene
@@ -742,12 +778,22 @@ function (_Prefab) {
     _classCallCheck(this, Item);
 
     return _possibleConstructorReturn(this, _getPrototypeOf(Item).call(this, scene, name, position, properties));
-  } //#region public methods  
-  //#endregion
-  //#region protected methods
+  } //#region public methods
+
+  /**
+   * Uses the item, applied to unit
+   * @param {Unit} target 
+   */
 
 
   _createClass(Item, [{
+    key: "use",
+    value: function use(target) {
+      console.log('using item');
+    } //#endregion
+    //#region protected methods
+
+  }, {
     key: "initialize",
     value: function initialize(scene, name, position, properties) {
       _get(_getPrototypeOf(Item.prototype), "initialize", this).call(this, scene, name, position, properties);
@@ -1623,7 +1669,24 @@ function (_MenuItem) {
   }, {
     key: "select",
     value: function select() {
-      console.log('select item menu item', this.itemName);
+      this.useItem();
+    } //#endregion
+    //#region internal methods   
+
+  }, {
+    key: "useItem",
+    value: function useItem() {
+      if (this.scene.cache.game.inventory.hasItem(this.itemName)) {
+        this.scene.prefabs.itemsMenu.enable(false);
+        this.scene.cache.game.inventory.useItem(this.itemName, this.scene.currentUnit);
+        var sceneBeforeDestroyItem = this.scene;
+
+        if (this.scene.cache.game.inventory.hasItem(this.itemName)) {
+          this.destroy();
+        }
+
+        sceneBeforeDestroyItem.goToNextTurn();
+      }
     } //#endregion
 
   }]);

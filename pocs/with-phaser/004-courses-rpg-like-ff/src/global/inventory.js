@@ -1,5 +1,6 @@
 import Item from "../prefabs/battle/item";
 import ItemMenuItem from "../prefabs/hud/item-menu-item";
+import Unit from "../prefabs/battle/unit";
 
 /**
  * Allosw you to collect items in the game
@@ -14,6 +15,25 @@ class Inventory {
     }
 
     //#region public methods
+    /**
+     * Allows you to know if there is at least one item by type
+     * @param {string} type
+     * @returns {boolean} true or false
+     */
+    hasItem(type) {
+        return this.items[type].amount > 0;
+    }
+
+    /**
+     * Use one item of a specific type
+     * @param {string} type 
+     * @param {Unit} target 
+     */
+    useItem(type, target) {
+        this.items[type].prefab.use(target);
+        this.items[type].amount --;
+    }
+
     /**
      * Allows you to know if there is items in the array list
      * @returns {boolean}
@@ -41,24 +61,33 @@ class Inventory {
         };
 
         for (let itemType in this.items) {
-            const prefab = this.items[itemType].prefab;
-            const amount = this.items[itemType].amount;
-            
-            const name = itemType + 'MenuItem';
-            const setting = {
-                group: 'hud',
-                texture: prefab.itemTexture,
-                itemName: itemType,
-                amount: amount
-            };
-
-            const menuItem = new ItemMenuItem(scene, name, itemPosition, setting);
-            menuItem.setOrigin(0);
-
+            const menuItem = this.createMenuItem(itemType, scene);
             itemsMenu.items.push(menuItem);
         }
 
         itemsMenu.enable(false);
+    }
+
+    /**
+     * Creates one item for the menu
+     * @returns {ItemMenuItem} new Item
+     */
+    createMenuItem(itemType, scene) {
+        const prefab = this.items[itemType].prefab;
+        const amount = this.items[itemType].amount;
+        
+        const name = itemType + 'MenuItem';
+        const setting = {
+            group: 'hud',
+            texture: prefab.itemTexture,
+            itemName: itemType,
+            amount: amount
+        };
+
+        const menuItem = new ItemMenuItem(scene, name, itemPosition, setting);
+        menuItem.setOrigin(0);
+
+        return menuItem;
     }
 
     /**

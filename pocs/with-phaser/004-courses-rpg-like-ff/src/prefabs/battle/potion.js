@@ -1,22 +1,21 @@
 import Prefab from '../prefab';
 import TitleScene from '../../scenes/title-scene';
+import Item from './item';
 
 /**
- * Represents an item (potion, ...)
+ * Represents an potion item
  */
-class Item extends Prefab {
+class Potion extends Item {
 
     constructor(scene, name, position, properties) {
         super(scene, name, position, properties);
     }
 
-    //#region public methods
-    /**
-     * Uses the item, applied to unit
-     * @param {Unit} target 
-     */ 
+    //#region public methods 
     use(target) {
-        console.log('using item');
+        console.log('using item::before', target.stats.health);
+        target.stats.health = Math.min(100, target.stats.health + this.healthPower);
+        console.log('using item::after', target.stats.health);
     } 
     //#endregion
 
@@ -24,7 +23,7 @@ class Item extends Prefab {
     initialize(scene, name, position, properties) {
         super.initialize(scene, name, position, properties);
 
-        this.itemTexture = properties.itemTexture;
+        this.healthPower = properties.healthPower;
     }
     //#endregion
 
@@ -32,4 +31,4 @@ class Item extends Prefab {
     //#endregion
 }
 
-export default Item;
+export default Potion;
