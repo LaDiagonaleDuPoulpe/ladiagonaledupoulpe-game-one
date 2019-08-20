@@ -26,6 +26,10 @@
             "type": "image",
             "source": "assets/images/world/message_box.png"
         },
+        "warriorHelmetImage": {
+            "type": "image",
+            "source": "assets/images/world/warrior_helmet.png"
+        },
         "townLevelTileMap": {
             "type": "tilemap",
             "source": "assets/maps/town.json"
@@ -35,6 +39,7 @@
         "doors",
         "players",
         "npcs",
+        "equipments",
         "enemySpawners",
         "hud"
     ],
