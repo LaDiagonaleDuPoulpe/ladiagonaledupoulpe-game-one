@@ -1,3 +1,6 @@
+/**
+ * Prefab to display text
+ */
 class TextPrefab extends Phaser.GameObjects.Text {
     
     constructor(scene, name, position, properties) {

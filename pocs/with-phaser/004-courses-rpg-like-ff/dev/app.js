@@ -1764,6 +1764,217 @@ function (_MenuItem) {
 
 /***/ }),
 
+/***/ "./src/prefabs/hud/show-player-unit.js":
+/*!*********************************************!*\
+  !*** ./src/prefabs/hud/show-player-unit.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
+/* harmony import */ var _text_prefab__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../text-prefab */ "./src/prefabs/text-prefab.js");
+/* harmony import */ var _show_stat_with_bar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./show-stat-with-bar */ "./src/prefabs/hud/show-stat-with-bar.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
+
+function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+/**
+ * Prefabs to show data information from a unit (HP, MP, ...)
+ */
+
+var ShowPlayerUnit =
+/*#__PURE__*/
+function (_Prefab) {
+  _inherits(ShowPlayerUnit, _Prefab);
+
+  function ShowPlayerUnit(scene, name, position, properties) {
+    _classCallCheck(this, ShowPlayerUnit);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ShowPlayerUnit).call(this, scene, name, position, properties));
+  } //#region public methods  
+  //#endregion
+  //#region protected methods
+
+
+  _createClass(ShowPlayerUnit, [{
+    key: "initialize",
+    value: function initialize(scene, name, position, properties) {
+      _get(_getPrototypeOf(ShowPlayerUnit.prototype), "initialize", this).call(this, scene, name, position, properties);
+
+      this.prepareFaceInformations(properties);
+      this.setUnitData(properties);
+      this.playerUnitHealthBar = this.constructStatusBar('health', 'HP', properties);
+      this.playerUnitManaBar = this.constructStatusBar('mana', 'MP', properties, 30);
+    } //#endregion
+    //#region internal methods
+
+  }, {
+    key: "constructStatusBar",
+    value: function constructStatusBar(key, title, properties, positionY) {
+      var name = this.name + '_' + key;
+
+      if (!positionY) {
+        positionY = 0;
+      }
+
+      var position = {
+        x: 0,
+        y: 0 + positionY
+      };
+      var setting = {
+        group: 'hud',
+        anchor: {
+          x: 0,
+          y: 0
+        },
+        text: title,
+        style: properties.textStyle,
+        prefab: properties.prefab,
+        stat: key,
+        barTexture: key + 'bar_image'
+      };
+      return new _show_stat_with_bar__WEBPACK_IMPORTED_MODULE_3__["default"](this.scene, name, position, setting);
+    }
+  }, {
+    key: "setUnitData",
+    value: function setUnitData(properties) {
+      this.unitData = this.scene.prefabs[properties.prefab];
+    }
+  }, {
+    key: "prepareFaceInformations",
+    value: function prepareFaceInformations(properties) {
+      this.faceTexture = properties.faceTexture;
+      this.faceSprite = this.scene.add.sprite(this.x + 130, this.y, properties.faceTexture);
+      this.faceSprite.setOrigin(0);
+    } //#endregion
+
+  }]);
+
+  return ShowPlayerUnit;
+}(_prefab__WEBPACK_IMPORTED_MODULE_0__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (ShowPlayerUnit);
+
+/***/ }),
+
+/***/ "./src/prefabs/hud/show-stat-with-bar.js":
+/*!***********************************************!*\
+  !*** ./src/prefabs/hud/show-stat-with-bar.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
+/* harmony import */ var _text_prefab__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../text-prefab */ "./src/prefabs/text-prefab.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+/**
+ * Prefabs to show data information in a status bar
+ */
+
+var ShowStatWithBar =
+/*#__PURE__*/
+function (_TextPrefab) {
+  _inherits(ShowStatWithBar, _TextPrefab);
+
+  function ShowStatWithBar(scene, name, position, properties) {
+    var _this;
+
+    _classCallCheck(this, ShowStatWithBar);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ShowStatWithBar).call(this, scene, name, position, properties));
+
+    _this.setUnitData(properties);
+
+    _this.stat = properties.stat;
+
+    _this.createBar(properties);
+
+    return _this;
+  } //#region public methods  
+
+
+  _createClass(ShowStatWithBar, [{
+    key: "update",
+    value: function update() {
+      this.updateScaleOfBar();
+    } //#endregion
+    //#region internal methods
+
+  }, {
+    key: "updateScaleOfBar",
+    value: function updateScaleOfBar() {
+      this.currentStat = this.unitData[this.stat];
+      this.barSprite.setScale(this.currentStat / 100, 1.0);
+    }
+  }, {
+    key: "createBar",
+    value: function createBar(properties) {
+      this.barSprite = this.scene.add.sprite(this.x, this.y + 20, properties.barTexture);
+      this.barSprite.setOrigin(0);
+    }
+  }, {
+    key: "setUnitData",
+    value: function setUnitData(properties) {
+      this.unitData = this.scene.prefabs[properties.prefab];
+    } //#endregion
+
+  }]);
+
+  return ShowStatWithBar;
+}(_text_prefab__WEBPACK_IMPORTED_MODULE_2__["default"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (ShowStatWithBar);
+
+/***/ }),
+
 /***/ "./src/prefabs/prefab.js":
 /*!*******************************!*\
   !*** ./src/prefabs/prefab.js ***!
@@ -1860,6 +2071,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+/**
+ * Prefab to display text
+ */
 var TextPrefab =
 /*#__PURE__*/
 function (_Phaser$GameObjects$T) {
@@ -2408,6 +2622,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _prefabs_hud_enemy_menu_item__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../prefabs/hud/enemy-menu-item */ "./src/prefabs/hud/enemy-menu-item.js");
 /* harmony import */ var _prefabs_hud_magical_attack_menu_item__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../prefabs/hud/magical-attack-menu-item */ "./src/prefabs/hud/magical-attack-menu-item.js");
 /* harmony import */ var _prefabs_hud_run_menu_item__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../prefabs/hud/run-menu-item */ "./src/prefabs/hud/run-menu-item.js");
+/* harmony import */ var _prefabs_hud_show_player_unit__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../prefabs/hud/show-player-unit */ "./src/prefabs/hud/show-player-unit.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2429,6 +2644,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2664,7 +2880,8 @@ function (_JSonLevelScene) {
         enemyMenuItem: _prefabs_hud_enemy_menu_item__WEBPACK_IMPORTED_MODULE_10__["default"].prototype.constructor,
         magicalAttackMenuItem: _prefabs_hud_magical_attack_menu_item__WEBPACK_IMPORTED_MODULE_11__["default"].prototype.constructor,
         runMenuItem: _prefabs_hud_run_menu_item__WEBPACK_IMPORTED_MODULE_12__["default"].prototype.constructor,
-        menu: _prefabs_hud_menu__WEBPACK_IMPORTED_MODULE_6__["default"].prototype.constructor
+        menu: _prefabs_hud_menu__WEBPACK_IMPORTED_MODULE_6__["default"].prototype.constructor,
+        showPlayerUnit: _prefabs_hud_show_player_unit__WEBPACK_IMPORTED_MODULE_13__["default"].prototype.constructor
       };
     }
   }, {

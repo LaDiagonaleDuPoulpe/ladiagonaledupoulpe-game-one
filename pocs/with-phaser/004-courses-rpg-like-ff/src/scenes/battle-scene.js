@@ -11,6 +11,7 @@ import PhysicalAttackMenuItem from '../prefabs/hud/physical-attack-menu-item';
 import EnemyMenuItem from '../prefabs/hud/enemy-menu-item';
 import MagicalAttackMenuItem from '../prefabs/hud/magical-attack-menu-item';
 import RunMenuItem from '../prefabs/hud/run-menu-item';
+import ShowPlayerUnit from '../prefabs/hud/show-player-unit';
 
 /**
  * Scene displaying title and starts game after clicked on it
@@ -192,7 +193,8 @@ class BattleScene extends JSonLevelScene {
             enemyMenuItem: EnemyMenuItem.prototype.constructor,
             magicalAttackMenuItem: MagicalAttackMenuItem.prototype.constructor,
             runMenuItem: RunMenuItem.prototype.constructor,
-            menu: Menu.prototype.constructor
+            menu: Menu.prototype.constructor,
+            showPlayerUnit: ShowPlayerUnit.prototype.constructor
         };
     }
 

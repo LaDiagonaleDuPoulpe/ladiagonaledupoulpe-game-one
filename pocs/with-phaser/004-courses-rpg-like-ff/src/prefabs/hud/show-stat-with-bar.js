@@ -9,22 +9,16 @@ class ShowStatWithBar extends TextPrefab {
     
     constructor(scene, name, position, properties) {
         super(scene, name, position, properties);        
+
+        this.setUnitData(properties);
+        this.stat = properties.stat;
+        this.createBar(properties);
     }
     
     //#region public methods  
     update() {
         this.updateScaleOfBar();
     }
-    //#endregion
-    
-    //#region protected methods
-    initialize(scene, name, position, properties) {
-        super.initialize(scene, name, position, properties);
-
-        this.setUnitData(properties);
-        this.stat = properties.stat;
-        this.createBar(properties);
-    }     
     //#endregion
 
     //#region internal methods
