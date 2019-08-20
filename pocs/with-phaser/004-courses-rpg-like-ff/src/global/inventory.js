@@ -1,6 +1,7 @@
 import Item from "../prefabs/battle/item";
 import ItemMenuItem from "../prefabs/hud/item-menu-item";
 import Unit from "../prefabs/battle/unit";
+import Potion from "../prefabs/battle/potion";
 
 /**
  * Allosw you to collect items in the game
@@ -10,7 +11,7 @@ class Inventory {
         this.items = [];
 
         this.itemClasses = {
-            "potion": Item.prototype.constructor
+            "potion": Potion.prototype.constructor
         };
     }
 
@@ -61,7 +62,7 @@ class Inventory {
         };
 
         for (let itemType in this.items) {
-            const menuItem = this.createMenuItem(itemType, scene);
+            const menuItem = this.createMenuItem(itemType, scene, itemPosition);
             itemsMenu.items.push(menuItem);
         }
 
@@ -72,7 +73,7 @@ class Inventory {
      * Creates one item for the menu
      * @returns {ItemMenuItem} new Item
      */
-    createMenuItem(itemType, scene) {
+    createMenuItem(itemType, scene, position) {
         const prefab = this.items[itemType].prefab;
         const amount = this.items[itemType].amount;
         
@@ -84,7 +85,7 @@ class Inventory {
             amount: amount
         };
 
-        const menuItem = new ItemMenuItem(scene, name, itemPosition, setting);
+        const menuItem = new ItemMenuItem(scene, name, position, setting);
         menuItem.setOrigin(0);
 
         return menuItem;
