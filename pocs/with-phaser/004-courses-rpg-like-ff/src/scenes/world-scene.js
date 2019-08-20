@@ -18,6 +18,15 @@ class WorldScene extends JSonLevelScene {
     }
 
     //#region public methods
+    putGameInPause() {
+        this.scene.start('BootScene', {
+            scene: 'pause',
+            extraParameters: {
+                previousLevel: this.levelData.level
+            }
+        })
+    }
+
     /**
      * Creates the world (loads map, tilesets, layers, ...)
      */

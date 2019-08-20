@@ -3,16 +3,15 @@
  * After, it will load the loading scene
  */
 class BootScene extends Phaser.Scene {
-    
-
     constructor() {
         super({ key: 'BootScene' });
 
         this.levels = {
-            title: {key: 'TitleScene', path: 'assets/levels/title_screen.json'},
-            town: {key: 'WorldScene', path: 'assets/levels/town.json'},
-            cave: {key: 'WorldScene', path: 'assets/levels/cave.json'},
-            battle: {key: 'BattleScene', path: 'assets/levels/battle.json'}
+            title: { key: 'TitleScene', path: 'assets/levels/title_screen.json' },
+            town: { key: 'WorldScene', path: 'assets/levels/town.json' },
+            cave: { key: 'WorldScene', path: 'assets/levels/cave.json' },
+            pause: { key: 'PauseScene', path: 'assets/levels/pause_screen.json' },
+            battle: { key: 'BattleScene', path: 'assets/levels/battle.json' }
         };
     }
 
@@ -29,7 +28,7 @@ class BootScene extends Phaser.Scene {
         this.scene.start('LoadingScene', {
             levelData: levelData,
             scene: this.levels[data.scene].key,
-            extraParameters: data.extraParameters 
+            extraParameters: data.extraParameters
         });
     }
 }

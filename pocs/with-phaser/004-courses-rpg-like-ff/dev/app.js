@@ -3818,6 +3818,10 @@ function (_Phaser$Scene) {
         key: 'WorldScene',
         path: 'assets/levels/cave.json'
       },
+      pause: {
+        key: 'PauseScene',
+        path: 'assets/levels/pause_screen.json'
+      },
       battle: {
         key: 'BattleScene',
         path: 'assets/levels/battle.json'
@@ -4217,14 +4221,14 @@ function (_JSonLevelScene) {
       this.previousLevel = data.extraParameters.previousLevel;
     }
     /**
-     * Starts the game
+     * Stops pause, and go back to map
      */
 
   }, {
-    key: "startGame",
-    value: function startGame() {
+    key: "backToWorld",
+    value: function backToWorld() {
       this.scene.start('BootScene', {
-        scene: 'town'
+        scene: this.previousLevel
       });
     }
   }, {
@@ -4467,12 +4471,22 @@ function (_JSonLevelScene) {
     return _this;
   } //#region public methods
 
-  /**
-   * Creates the world (loads map, tilesets, layers, ...)
-   */
-
 
   _createClass(WorldScene, [{
+    key: "putGameInPause",
+    value: function putGameInPause() {
+      this.scene.start('BootScene', {
+        scene: 'pause',
+        extraParameters: {
+          previousLevel: this.levelData.level
+        }
+      });
+    }
+    /**
+     * Creates the world (loads map, tilesets, layers, ...)
+     */
+
+  }, {
     key: "create",
     value: function create() {
       this.map = this.add.tilemap(this.levelData.map.key);

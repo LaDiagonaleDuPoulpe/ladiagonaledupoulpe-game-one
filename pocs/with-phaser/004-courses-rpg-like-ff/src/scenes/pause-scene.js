@@ -19,12 +19,10 @@ class PauseScene extends JSonLevelScene {
     }
 
     /**
-     * Starts the game
+     * Stops pause, and go back to map
      */
-    startGame() {
-        this.scene.start('BootScene', {
-            scene: 'town'
-        });
+    backToWorld() {
+        this.scene.start('BootScene', { scene: this.previousLevel });
     }
 
     create() {

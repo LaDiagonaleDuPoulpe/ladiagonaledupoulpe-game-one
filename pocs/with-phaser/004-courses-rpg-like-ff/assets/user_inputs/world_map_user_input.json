@@ -17,7 +17,7 @@
             "args": ["left", true]
         },
         "Escape": {
-            "callback": "scene.pause_game"
+            "callback": "scene.putGameInPause"
         }
     },
     "keyup": {
