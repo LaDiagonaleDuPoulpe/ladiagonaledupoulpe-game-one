@@ -10,9 +10,27 @@
             "frameWidth": 16,
             "frameHeight": 16
         },
+        "dragonSpriteSheet": {
+            "type": "spritesheet",
+            "source": "assets/images/battle/dragon.png",
+            "frameWidth": 258,
+            "frameHeight": 209
+        },
+        "dragonFaceImage": {
+            "type": "image",
+            "source": "assets/images/battle/dragon_face.png"
+        },
         "cavelevelTileMap": {
             "type": "tilemap",
             "source": "assets/maps/cave.json"
+        },
+        "dragonImage": {
+            "type": "image",
+            "source": "assets/images/world/dragon.png"
+        },
+        "snakeImage": {
+            "type": "image",
+            "source": "assets/images/world/snake.png"
         }
     },
     "groups": [
@@ -33,6 +51,7 @@
     "initialUserInput": "caveUserInput",
     "level": "cave",
     "enemyEncounters": {
-        "snake": "assets/enemy_encounters/snake.json"
+        "snake": "assets/enemy_encounters/snake.json",
+        "dragon": "assets/enemy_encounters/dragon.json"
     }
 }

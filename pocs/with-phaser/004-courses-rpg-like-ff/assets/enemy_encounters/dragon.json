@@ -7,7 +7,7 @@
                 "y": 200
             },
             "properties": {
-                "texture": "dragon_spritesheet",
+                "texture": "dragonSpriteSheet",
                 "group": "enemyUnits",
                 "scale": {
                     "x": 0.7,
@@ -86,7 +86,7 @@
                         },
                         "properties": {
                             "group": "hud",
-                            "texture": "dragon_face_image",
+                            "texture": "dragonFaceImage",
                             "scale": {
                                 "x": 0.5,
                                 "y": 0.5

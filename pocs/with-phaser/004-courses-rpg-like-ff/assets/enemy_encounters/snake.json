@@ -2,7 +2,10 @@
     "enemyData": {
         "snake1": {
             "type": "enemyUnit",
-            "position": {"x": 100, "y": 180},
+            "position": {
+                "x": 100,
+                "y": 180
+            },
             "properties": {
                 "texture": "snakeSpriteSheet",
                 "group": "enemyUnits",
@@ -12,19 +15,43 @@
                 },
                 "animations": {
                     "idle": {
-                        "frames": [0, 1, 2, 3, 4],
+                        "frames": [
+                            0,
+                            1,
+                            2,
+                            3,
+                            4
+                        ],
                         "fps": 5
                     },
                     "attack1": {
-                        "frames": [5, 6, 7, 8, 9, 10, 0],
+                        "frames": [
+                            5,
+                            6,
+                            7,
+                            8,
+                            9,
+                            10,
+                            0
+                        ],
                         "fps": 7
                     },
                     "attack2": {
-                        "frames": [11, 12, 13, 14, 15, 16],
+                        "frames": [
+                            11,
+                            12,
+                            13,
+                            14,
+                            15,
+                            16
+                        ],
                         "fps": 6
                     },
                     "hit": {
-                        "frames": [17, 18],
+                        "frames": [
+                            17,
+                            18
+                        ],
                         "fps": 6
                     }
                 },
@@ -40,7 +67,10 @@
         },
         "snake2": {
             "type": "enemyUnit",
-            "position": {"x": 100, "y": 250},
+            "position": {
+                "x": 100,
+                "y": 250
+            },
             "properties": {
                 "texture": "snakeSpriteSheet",
                 "group": "enemyUnits",
@@ -50,19 +80,43 @@
                 },
                 "animations": {
                     "idle": {
-                        "frames": [0, 1, 2, 3, 4],
+                        "frames": [
+                            0,
+                            1,
+                            2,
+                            3,
+                            4
+                        ],
                         "fps": 5
                     },
                     "attack1": {
-                        "frames": [5, 6, 7, 8, 9, 10, 0],
+                        "frames": [
+                            5,
+                            6,
+                            7,
+                            8,
+                            9,
+                            10,
+                            0
+                        ],
                         "fps": 7
                     },
                     "attack2": {
-                        "frames": [11, 12, 13, 14, 15, 16],
+                        "frames": [
+                            11,
+                            12,
+                            13,
+                            14,
+                            15,
+                            16
+                        ],
                         "fps": 6
                     },
                     "hit": {
-                        "frames": [17, 18],
+                        "frames": [
+                            17,
+                            18
+                        ],
                         "fps": 6
                     }
                 },

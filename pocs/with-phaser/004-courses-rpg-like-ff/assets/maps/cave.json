@@ -134,7 +134,7 @@
                 {
                  "height":32,
                  "id":8,
-                 "name":"enemy_spawner2",
+                 "name":"enemySpawner2",
                  "properties":
                     {
                      "encounter":"dragon",
