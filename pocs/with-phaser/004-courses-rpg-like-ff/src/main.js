@@ -1,3 +1,5 @@
+import firebase from 'firebase/app';
+
 import TitleScene from './scenes/title-scene';
 import WordScene from './scenes/world-scene';
 import BootScene from './scenes/boot-scene';
@@ -20,6 +22,18 @@ let loadingScene = new LoadingScene();
 let worldScene = new WordScene();
 let battleScene = new BattleScene();
 let pauseScene = new PauseScene();
+
+var firebaseConfig = {
+    apiKey: "AIzaSyAYCmzH46SO8DzATChqQTAwRHTIeQtZG-s",
+    authDomain: "phaserrpgtest-001.firebaseapp.com",
+    databaseURL: "https://phaserrpgtest-001.firebaseio.com",
+    projectId: "phaserrpgtest-001",
+    storageBucket: "",
+    messagingSenderId: "119332254887",
+    appId: "1:119332254887:web:dc3d7ed526849328"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
 
 let config = {
     type: Phaser.AUTO,
