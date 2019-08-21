@@ -1,7 +1,7 @@
 {
     "keydown": {
         "Enter": {
-            "callback": "scene.startGame"
+            "callback": "scene.login"
         }
     },
     "keyup": { }
