@@ -14,12 +14,10 @@ class EnemyUnit extends Unit {
 
     //#region public methods  
     /**
-     * Lanuches an attack 
+     * Launches an attack 
      */
     playAction() {
-        this.scene.prefabs.showPlayerUnit.display(false);
-        const target = this.chooseTarget();
-        this.attack.hit(target);
+        this.playActionWithAttack(this.attack);
     }
 
     /**
@@ -37,6 +35,16 @@ class EnemyUnit extends Unit {
     //#endregion
 
     //#region protected methods
+    /**
+     * Plays an action to attack or choose item
+     * @param {Attack} attackAction 
+     */
+    playActionWithAttack(attackAction) {
+        this.scene.prefabs.showPlayerUnit.display(false);
+        const target = this.chooseTarget();
+        attackAction.hit(target);
+    }
+
     initialize(scene, name, position, properties) {
         super.initialize(scene, name, position, properties);
 

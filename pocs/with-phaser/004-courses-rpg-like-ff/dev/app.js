@@ -602,6 +602,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _unit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./unit */ "./src/prefabs/battle/unit.js");
 /* harmony import */ var _physical_attack__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./physical-attack */ "./src/prefabs/battle/physical-attack.js");
 /* harmony import */ var _enemy_unit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./enemy-unit */ "./src/prefabs/battle/enemy-unit.js");
+/* harmony import */ var _magical_attack__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./magical-attack */ "./src/prefabs/battle/magical-attack.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -629,6 +630,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 /**
  * Boss unit (during a battle)
  */
@@ -643,19 +645,120 @@ function (_EnemyUnit) {
 
     return _possibleConstructorReturn(this, _getPrototypeOf(BossUnit).call(this, scene, name, position, properties));
   } //#region public methods  
-  //#endregion
-  //#region protected methods
 
 
   _createClass(BossUnit, [{
+    key: "playAction",
+    value: function playAction() {
+      switch (this.currentState) {
+        case 'default':
+          this.playDefaultAction();
+          break;
+
+        case 'special':
+          this.playSpecialAction();
+          break;
+
+        case 'enraged':
+          this.playEnragedAction();
+          break;
+      }
+
+      this.selectNextState();
+    } //#endregion
+    //#region protected methods
+
+  }, {
     key: "initialize",
     value: function initialize(scene, name, position, properties) {
       _get(_getPrototypeOf(BossUnit.prototype), "initialize", this).call(this, scene, name, position, properties);
 
-      console.log('Bossss ');
+      this.SPECIAL_ATTACK_THRESHOLD = 0.5;
+      this.prepareSpecialAttack();
+      this.maxHealth = this.stats.health;
+      this.enraged = false;
+      this.currentState = 'default';
     } //#endregion
     //#region internal methods
-    //#endregion
+
+  }, {
+    key: "selectNextState",
+    value: function selectNextState() {
+      this.currentState = 'default';
+
+      switch (this.currentState) {
+        case 'default':
+          if (this.stats.health < 0.5 * this.maxHealth && !this.enraged) {
+            this.enraged = true;
+            this.currentState = 'enraged';
+          } else {
+            var randomValue = this.scene.random.frac();
+
+            if (randomValue < this.SPECIAL_ATTACK_THRESHOLD) {
+              this.currentState = 'special';
+            }
+          }
+
+          break;
+      }
+
+      console.log('selectNextState', this.currentState);
+    }
+    /**
+     * Default action, as the same as parent
+     */
+
+  }, {
+    key: "playDefaultAction",
+    value: function playDefaultAction() {
+      console.log('default act');
+
+      _get(_getPrototypeOf(BossUnit.prototype), "playAction", this).call(this);
+    }
+    /**
+     * Special action
+     */
+
+  }, {
+    key: "playSpecialAction",
+    value: function playSpecialAction() {
+      console.log('special act');
+
+      _get(_getPrototypeOf(BossUnit.prototype), "playActionWithAttack", this).call(this, this.specialAttack);
+    }
+    /**
+     * Enraged action
+     */
+
+  }, {
+    key: "playEnragedAction",
+    value: function playEnragedAction() {
+      var _this = this;
+
+      console.log('enraged act');
+      this.scene.groups[this.targetUnits].children.each(function (target) {
+        if (target.active) {
+          _this.specialAttack.hit(target);
+        }
+      }, this);
+    }
+    /**
+     * Creates a special attack
+     */
+
+  }, {
+    key: "prepareSpecialAttack",
+    value: function prepareSpecialAttack() {
+      var position = {
+        x: 0,
+        y: 0
+      };
+      var setting = {
+        group: 'attacks',
+        owner: this
+      };
+      this.specialAttack = new _magical_attack__WEBPACK_IMPORTED_MODULE_5__["default"](this.scene, this.name + 'SpecialAttack', position, setting);
+    } //#endregion
 
   }]);
 
@@ -721,16 +824,14 @@ function (_Unit) {
   } //#region public methods  
 
   /**
-   * Lanuches an attack 
+   * Launches an attack 
    */
 
 
   _createClass(EnemyUnit, [{
     key: "playAction",
     value: function playAction() {
-      this.scene.prefabs.showPlayerUnit.display(false);
-      var target = this.chooseTarget();
-      this.attack.hit(target);
+      this.playActionWithAttack(this.attack);
     }
     /**
      * Destroys enemy unit
@@ -751,6 +852,18 @@ function (_Unit) {
     } //#endregion
     //#region protected methods
 
+    /**
+     * Plays an action to attack or choose item
+     * @param {Attack} attackAction 
+     */
+
+  }, {
+    key: "playActionWithAttack",
+    value: function playActionWithAttack(attackAction) {
+      this.scene.prefabs.showPlayerUnit.display(false);
+      var target = this.chooseTarget();
+      attackAction.hit(target);
+    }
   }, {
     key: "initialize",
     value: function initialize(scene, name, position, properties) {
