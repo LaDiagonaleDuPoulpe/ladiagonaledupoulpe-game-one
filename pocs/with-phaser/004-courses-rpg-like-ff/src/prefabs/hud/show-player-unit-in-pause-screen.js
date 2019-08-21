@@ -29,7 +29,9 @@ class ShowPlayerUnitInPauseScreen extends ShowPlayerUnit {
     display(isShown) {
         super.display(isShown);
 
-        this.showUnitAttack.setVisible(isShown);
+        this.showUnitHeadText.setVisible(isShown);
+        this.showUnitHeadTexture.setVisible(isShown);
+
         this.showUnitDefense.setVisible(isShown);
         this.showUnitMagicAttack.setVisible(isShown);
         this.showUnitSpeed.setVisible(isShown);
@@ -43,7 +45,8 @@ class ShowPlayerUnitInPauseScreen extends ShowPlayerUnit {
 
         const prefabData = this.scene.cache.game.partyData[properties.prefab];
 
-        this.showUnitAttack = this.addZoneToDisplay(prefabData.stats.attack, 'Attack : \n', 250, 0, properties);
+        this.addZoneAboutEquipment(prefabData, properties);
+
         this.showUnitDefense = this.addZoneToDisplay(prefabData.stats.attack, 'Defense : \n', 250, 50, properties);
         this.showUnitMagicAttack = this.addZoneToDisplay(prefabData.stats.magicAttack, 'Magic : \n', 400, 0, properties);
         this.showUnitSpeed = this.addZoneToDisplay(prefabData.stats.speed, 'Speed : \n', 400, 50, properties);
@@ -53,10 +56,37 @@ class ShowPlayerUnitInPauseScreen extends ShowPlayerUnit {
     //#endregion
 
     //#region internal methods
+    /**
+     * Equipment zone
+     * @param {JSON} prefabData 
+     * @param {JSON} properties 
+     */
+    addZoneAboutEquipment(prefabData, properties) {
+        this.showUnitHeadText = this.addZoneToDisplay('', 'Head: ', 250, 0, properties);
+
+        const headEquipment = prefabData.equipment.head;
+        let headTexture = undefined; // undefined, to not display empty texture
+        if (headEquipment.texture !== "") {
+            headTexture = headEquipment.texture;
+        }
+
+        this.showUnitHeadTexture = this.scene.add.sprite(this.x + 250, this.y + 20, headTexture);
+        this.showUnitHeadTexture.setOrigin(0);
+        this.showUnitHeadTexture.setScale(0.3);
+    }
+
+    /**
+     * Level zone 
+     * @param {JSON} prefabData 
+     * @param {JSON} properties 
+     */
     addZoneAboutLevel(prefabData, properties) {
         this.levelText = this.addZoneToDisplay(prefabData.currentLevel + 1, 'Level', 130, 50, properties);
     }
 
+    /**
+     * text zone to display
+     */
     addZoneToDisplay(value, textValue, addXPosition, addYPosition, properties) {
         const text = this.scene.add.text(this.x + addXPosition, this.y + addYPosition, textValue + value, properties.textStyle);
         text.setOrigin(0);

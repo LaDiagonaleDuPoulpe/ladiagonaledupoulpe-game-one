@@ -22,6 +22,7 @@ class Equipment extends Prefab {
         this.bodyPart = properties.bodyPart;
         this.stat = properties.stat;
         this.bonus = +properties.bonus;
+        this.textureName = properties.texture;
 
         this.body.immovable = true;
         this.body.setSize(this.width * this.scaleX, this.height * this.scaleY);
@@ -48,7 +49,8 @@ class Equipment extends Prefab {
 
         if (isDifferentEquipement) {
             unitData.equipment[this.bodyPart] = {
-                name: this.name
+                name: this.name,
+                texture: this.textureName
             };
             unitData.statsBonus[this.stat] = this.bonus;
             this.destroy();

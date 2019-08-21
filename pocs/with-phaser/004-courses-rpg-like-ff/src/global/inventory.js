@@ -72,6 +72,7 @@ class Inventory {
     /**
      * Creates one item for the menu
      * @returns {ItemMenuItem} new Item
+     * @todo puts the code out there
      */
     createMenuItem(itemType, scene, position) {
         const prefab = this.items[itemType].prefab;

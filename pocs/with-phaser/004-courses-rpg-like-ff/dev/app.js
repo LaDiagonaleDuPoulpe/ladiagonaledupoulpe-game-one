@@ -211,6 +211,7 @@ function () {
     /**
      * Creates one item for the menu
      * @returns {ItemMenuItem} new Item
+     * @todo puts the code out there
      */
 
   }, {
@@ -2389,7 +2390,8 @@ function (_ShowPlayerUnit) {
     value: function display(isShown) {
       _get(_getPrototypeOf(ShowPlayerUnitInPauseScreen.prototype), "display", this).call(this, isShown);
 
-      this.showUnitAttack.setVisible(isShown);
+      this.showUnitHeadText.setVisible(isShown);
+      this.showUnitHeadTexture.setVisible(isShown);
       this.showUnitDefense.setVisible(isShown);
       this.showUnitMagicAttack.setVisible(isShown);
       this.showUnitSpeed.setVisible(isShown);
@@ -2403,7 +2405,7 @@ function (_ShowPlayerUnit) {
       _get(_getPrototypeOf(ShowPlayerUnitInPauseScreen.prototype), "initialize", this).call(this, scene, name, position, properties);
 
       var prefabData = this.scene.cache.game.partyData[properties.prefab];
-      this.showUnitAttack = this.addZoneToDisplay(prefabData.stats.attack, 'Attack : \n', 250, 0, properties);
+      this.addZoneAboutEquipment(prefabData, properties);
       this.showUnitDefense = this.addZoneToDisplay(prefabData.stats.attack, 'Defense : \n', 250, 50, properties);
       this.showUnitMagicAttack = this.addZoneToDisplay(prefabData.stats.magicAttack, 'Magic : \n', 400, 0, properties);
       this.showUnitSpeed = this.addZoneToDisplay(prefabData.stats.speed, 'Speed : \n', 400, 50, properties);
@@ -2411,11 +2413,42 @@ function (_ShowPlayerUnit) {
     } //#endregion
     //#region internal methods
 
+    /**
+     * Equipment zone
+     * @param {JSON} prefabData 
+     * @param {JSON} properties 
+     */
+
+  }, {
+    key: "addZoneAboutEquipment",
+    value: function addZoneAboutEquipment(prefabData, properties) {
+      this.showUnitHeadText = this.addZoneToDisplay('', 'Head: ', 250, 0, properties);
+      var headEquipment = prefabData.equipment.head;
+      var headTexture = undefined; // undefined, to not display empty texture
+
+      if (headEquipment.texture !== "") {
+        headTexture = headEquipment.texture;
+      }
+
+      this.showUnitHeadTexture = this.scene.add.sprite(this.x + 250, this.y + 20, headTexture);
+      this.showUnitHeadTexture.setOrigin(0);
+      this.showUnitHeadTexture.setScale(0.3);
+    }
+    /**
+     * Level zone 
+     * @param {JSON} prefabData 
+     * @param {JSON} properties 
+     */
+
   }, {
     key: "addZoneAboutLevel",
     value: function addZoneAboutLevel(prefabData, properties) {
       this.levelText = this.addZoneToDisplay(prefabData.currentLevel + 1, 'Level', 130, 50, properties);
     }
+    /**
+     * text zone to display
+     */
+
   }, {
     key: "addZoneToDisplay",
     value: function addZoneToDisplay(value, textValue, addXPosition, addYPosition, properties) {
@@ -3193,6 +3226,7 @@ function (_Prefab) {
       this.bodyPart = properties.bodyPart;
       this.stat = properties.stat;
       this.bonus = +properties.bonus;
+      this.textureName = properties.texture;
       this.body.immovable = true;
       this.body.setSize(this.width * this.scaleX, this.height * this.scaleY);
       this.scene.physics.add.collider(this, this.scene.groups.players, this.collect, null, this);
@@ -3221,7 +3255,8 @@ function (_Prefab) {
 
       if (isDifferentEquipement) {
         unitData.equipment[this.bodyPart] = {
-          name: this.name
+          name: this.name,
+          texture: this.textureName
         };
         unitData.statsBonus[this.stat] = this.bonus;
         this.destroy();
