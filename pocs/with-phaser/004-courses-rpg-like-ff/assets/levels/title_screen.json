@@ -4,6 +4,7 @@
     },
     "groups": [
         "background",
+        "items",
         "texts"
     ],
     "prefabs": {
