@@ -1,3 +1,7 @@
+import firebase from 'firebase/app';
+import auth from 'firebase/auth';
+import database from 'firebase/database';
+
 import JSonLevelScene from './json-level-scene';
 import Prefab from '../prefabs/prefab';
 import TextPrefab from '../prefabs/text-prefab';
@@ -131,9 +135,21 @@ class BattleScene extends JSonLevelScene {
     endBattle() {
         this.giveMoreExperienceToUnits(this.saveDataFromUnitInCache.bind(this));
         this.collectItems();
-        this.backToWorld();
+        this.saveDataBefore();
     }
 
+    /**
+     * Saves data to database
+     */
+    saveDataBefore() {
+        firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/partyData')
+        .set(this.cache.game.partyData)
+        .then(this.backToWorld.bind(this));
+    }
+
+    /**
+     * Collects items from an enemy
+     */
     collectItems() {
         this.encounter.reward.items.forEach((item) => {
             this.cache.game.inventory.collect(this, item);

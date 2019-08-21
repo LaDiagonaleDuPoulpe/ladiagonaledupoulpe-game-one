@@ -1,3 +1,7 @@
+import firebase from 'firebase/app';
+import auth from 'firebase/auth';
+import database from 'firebase/database';
+
 import Prefab from '../prefab';
 import TitleScene from '../../scenes/title-scene';
 
@@ -5,18 +9,18 @@ import TitleScene from '../../scenes/title-scene';
  * Equipment that could be present in the worl scene
  */
 class Equipment extends Prefab {
-    
+
     constructor(scene, name, position, properties) {
-        super(scene, name, position, properties);        
+        super(scene, name, position, properties);
     }
-    
+
     //#region public methods    
     //#endregion
-    
+
     //#region protected methods
     initialize(scene, name, position, properties) {
         super.initialize(scene, name, position, properties);
-        
+
         this.setScale(0.3, 0.3);
         this.unitName = properties.unitName;
         this.bodyPart = properties.bodyPart;
@@ -28,12 +32,12 @@ class Equipment extends Prefab {
         this.body.setSize(this.width * this.scaleX, this.height * this.scaleY);
 
         this.scene.physics.add.collider(this, this.scene.groups.players, this.collect, null, this);
-    }        
-        
+    }
+
     /**
     * Actions when user touch an equipment
     */
-   collect() {
+    collect() {
         const unitData = this.scene.cache.game.partyData[this.unitName];
         this.updateUnitBodyPart(unitData);
     }
@@ -53,6 +57,9 @@ class Equipment extends Prefab {
                 texture: this.textureName
             };
             unitData.statsBonus[this.stat] = this.bonus;
+
+            firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/partyData')
+                .set(this.scene.cache.game.partyData);
             this.destroy();
         }
     }

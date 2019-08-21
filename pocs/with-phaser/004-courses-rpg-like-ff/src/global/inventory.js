@@ -1,7 +1,12 @@
+import firebase from 'firebase/app';
+import auth from 'firebase/auth';
+import database from 'firebase/database';
+
 import Item from "../prefabs/battle/item";
 import ItemMenuItem from "../prefabs/hud/item-menu-item";
 import Unit from "../prefabs/battle/unit";
 import Potion from "../prefabs/battle/potion";
+
 
 /**
  * Allosw you to collect items in the game
@@ -32,7 +37,11 @@ class Inventory {
      */
     useItem(type, target) {
         this.items[type].prefab.use(target);
-        this.items[type].amount --;
+        this.items[type].amount--;
+
+        const key = this.items[type].keys.pop();
+        firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/items/' + key)
+                           .remove();
     }
 
     /**
@@ -77,7 +86,7 @@ class Inventory {
     createMenuItem(itemType, scene, position) {
         const prefab = this.items[itemType].prefab;
         const amount = this.items[itemType].amount;
-        
+
         const name = itemType + 'MenuItem';
         const setting = {
             group: 'hud',
@@ -95,8 +104,16 @@ class Inventory {
     /**
      * Collects a new item from a scene
      */
-    collect(scene, item) {
+    collect(scene, item, key) {
         this.updateQuantity(item, 1, scene);
+
+        if (! key) {
+            const itemDatabaseRef = firebase.database().ref('users/' + firebase.auth().currentUser.uid + '/items')
+                                                        .push(item);
+            key = itemDatabaseRef.key;
+        }
+
+        this.items[item.type].keys.push(key);
     }
     //#endregion
 
@@ -117,7 +134,8 @@ class Inventory {
             const newItem = new this.itemClasses[item.type](scene, item.type, position, item.properties);
             this.items[item.type] = {
                 prefab: newItem,
-                amount: 1
+                amount: 1,
+                keys: []
             };
         }
     }

@@ -20232,15 +20232,22 @@ module.exports = g;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _prefabs_battle_item__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefabs/battle/item */ "./src/prefabs/battle/item.js");
-/* harmony import */ var _prefabs_hud_item_menu_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../prefabs/hud/item-menu-item */ "./src/prefabs/hud/item-menu-item.js");
-/* harmony import */ var _prefabs_battle_unit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../prefabs/battle/unit */ "./src/prefabs/battle/unit.js");
-/* harmony import */ var _prefabs_battle_potion__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../prefabs/battle/potion */ "./src/prefabs/battle/potion.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.cjs.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase/auth */ "./node_modules/firebase/auth/dist/index.esm.js");
+/* harmony import */ var firebase_database__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase/database */ "./node_modules/firebase/database/dist/index.esm.js");
+/* harmony import */ var _prefabs_battle_item__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../prefabs/battle/item */ "./src/prefabs/battle/item.js");
+/* harmony import */ var _prefabs_hud_item_menu_item__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../prefabs/hud/item-menu-item */ "./src/prefabs/hud/item-menu-item.js");
+/* harmony import */ var _prefabs_battle_unit__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../prefabs/battle/unit */ "./src/prefabs/battle/unit.js");
+/* harmony import */ var _prefabs_battle_potion__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../prefabs/battle/potion */ "./src/prefabs/battle/potion.js");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+
 
 
 
@@ -20258,7 +20265,7 @@ function () {
 
     this.items = [];
     this.itemClasses = {
-      "potion": _prefabs_battle_potion__WEBPACK_IMPORTED_MODULE_3__["default"].prototype.constructor
+      "potion": _prefabs_battle_potion__WEBPACK_IMPORTED_MODULE_6__["default"].prototype.constructor
     };
   } //#region public methods
 
@@ -20285,6 +20292,8 @@ function () {
     value: function useItem(type, target) {
       this.items[type].prefab.use(target);
       this.items[type].amount--;
+      var key = this.items[type].keys.pop();
+      firebase_app__WEBPACK_IMPORTED_MODULE_0___default.a.database().ref('users/' + firebase_app__WEBPACK_IMPORTED_MODULE_0___default.a.auth().currentUser.uid + '/items/' + key).remove();
     }
     /**
      * Allows you to know if there is items in the array list
@@ -20342,7 +20351,7 @@ function () {
         itemName: itemType,
         amount: amount
       };
-      var menuItem = new _prefabs_hud_item_menu_item__WEBPACK_IMPORTED_MODULE_1__["default"](scene, name, position, setting);
+      var menuItem = new _prefabs_hud_item_menu_item__WEBPACK_IMPORTED_MODULE_4__["default"](scene, name, position, setting);
       menuItem.setOrigin(0);
       return menuItem;
     }
@@ -20352,8 +20361,15 @@ function () {
 
   }, {
     key: "collect",
-    value: function collect(scene, item) {
+    value: function collect(scene, item, key) {
       this.updateQuantity(item, 1, scene);
+
+      if (!key) {
+        var itemDatabaseRef = firebase_app__WEBPACK_IMPORTED_MODULE_0___default.a.database().ref('users/' + firebase_app__WEBPACK_IMPORTED_MODULE_0___default.a.auth().currentUser.uid + '/items').push(item);
+        key = itemDatabaseRef.key;
+      }
+
+      this.items[item.type].keys.push(key);
     } //#endregion
     //#region internal methods
 
@@ -20376,7 +20392,8 @@ function () {
         var newItem = new this.itemClasses[item.type](scene, item.type, position, item.properties);
         this.items[item.type] = {
           prefab: newItem,
-          amount: 1
+          amount: 1,
+          keys: []
         };
       }
     } //#endregion
@@ -23493,8 +23510,12 @@ function (_Prefab) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
-/* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.cjs.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase/auth */ "./node_modules/firebase/auth/dist/index.esm.js");
+/* harmony import */ var firebase_database__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase/database */ "./node_modules/firebase/database/dist/index.esm.js");
+/* harmony import */ var _prefab__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _scenes_title_scene__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../scenes/title-scene */ "./src/scenes/title-scene.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -23516,6 +23537,9 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
 
 
 
@@ -23580,6 +23604,7 @@ function (_Prefab) {
           texture: this.textureName
         };
         unitData.statsBonus[this.stat] = this.bonus;
+        firebase_app__WEBPACK_IMPORTED_MODULE_0___default.a.database().ref('users/' + firebase_app__WEBPACK_IMPORTED_MODULE_0___default.a.auth().currentUser.uid + '/partyData').set(this.scene.cache.game.partyData);
         this.destroy();
       }
     } //#endregion
@@ -23587,7 +23612,7 @@ function (_Prefab) {
   }]);
 
   return Equipment;
-}(_prefab__WEBPACK_IMPORTED_MODULE_0__["default"]);
+}(_prefab__WEBPACK_IMPORTED_MODULE_3__["default"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Equipment);
 
@@ -23921,23 +23946,27 @@ function (_Prefab) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _json_level_scene__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./json-level-scene */ "./src/scenes/json-level-scene.js");
-/* harmony import */ var _prefabs_prefab__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../prefabs/prefab */ "./src/prefabs/prefab.js");
-/* harmony import */ var _prefabs_text_prefab__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../prefabs/text-prefab */ "./src/prefabs/text-prefab.js");
-/* harmony import */ var _prefabs_battle_unit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../prefabs/battle/unit */ "./src/prefabs/battle/unit.js");
-/* harmony import */ var _node_modules_js_priority_queue_priority_queue_min__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../node_modules/js-priority-queue/priority-queue.min */ "./node_modules/js-priority-queue/priority-queue.min.js");
-/* harmony import */ var _node_modules_js_priority_queue_priority_queue_min__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_js_priority_queue_priority_queue_min__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _prefabs_hud_menu_item__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../prefabs/hud/menu-item */ "./src/prefabs/hud/menu-item.js");
-/* harmony import */ var _prefabs_hud_menu__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../prefabs/hud/menu */ "./src/prefabs/hud/menu.js");
-/* harmony import */ var _prefabs_battle_player_unit__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../prefabs/battle/player-unit */ "./src/prefabs/battle/player-unit.js");
-/* harmony import */ var _prefabs_battle_enemy_unit__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../prefabs/battle/enemy-unit */ "./src/prefabs/battle/enemy-unit.js");
-/* harmony import */ var _prefabs_hud_physical_attack_menu_item__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../prefabs/hud/physical-attack-menu-item */ "./src/prefabs/hud/physical-attack-menu-item.js");
-/* harmony import */ var _prefabs_hud_enemy_menu_item__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../prefabs/hud/enemy-menu-item */ "./src/prefabs/hud/enemy-menu-item.js");
-/* harmony import */ var _prefabs_hud_magical_attack_menu_item__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../prefabs/hud/magical-attack-menu-item */ "./src/prefabs/hud/magical-attack-menu-item.js");
-/* harmony import */ var _prefabs_hud_run_menu_item__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../prefabs/hud/run-menu-item */ "./src/prefabs/hud/run-menu-item.js");
-/* harmony import */ var _prefabs_hud_show_player_unit__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../prefabs/hud/show-player-unit */ "./src/prefabs/hud/show-player-unit.js");
-/* harmony import */ var _prefabs_hud_inventory_menu_item__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../prefabs/hud/inventory-menu-item */ "./src/prefabs/hud/inventory-menu-item.js");
-/* harmony import */ var _prefabs_battle_boss_unit__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../prefabs/battle/boss-unit */ "./src/prefabs/battle/boss-unit.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! firebase/app */ "./node_modules/firebase/app/dist/index.cjs.js");
+/* harmony import */ var firebase_app__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(firebase_app__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var firebase_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! firebase/auth */ "./node_modules/firebase/auth/dist/index.esm.js");
+/* harmony import */ var firebase_database__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! firebase/database */ "./node_modules/firebase/database/dist/index.esm.js");
+/* harmony import */ var _json_level_scene__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./json-level-scene */ "./src/scenes/json-level-scene.js");
+/* harmony import */ var _prefabs_prefab__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../prefabs/prefab */ "./src/prefabs/prefab.js");
+/* harmony import */ var _prefabs_text_prefab__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../prefabs/text-prefab */ "./src/prefabs/text-prefab.js");
+/* harmony import */ var _prefabs_battle_unit__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../prefabs/battle/unit */ "./src/prefabs/battle/unit.js");
+/* harmony import */ var _node_modules_js_priority_queue_priority_queue_min__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../node_modules/js-priority-queue/priority-queue.min */ "./node_modules/js-priority-queue/priority-queue.min.js");
+/* harmony import */ var _node_modules_js_priority_queue_priority_queue_min__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_node_modules_js_priority_queue_priority_queue_min__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _prefabs_hud_menu_item__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../prefabs/hud/menu-item */ "./src/prefabs/hud/menu-item.js");
+/* harmony import */ var _prefabs_hud_menu__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../prefabs/hud/menu */ "./src/prefabs/hud/menu.js");
+/* harmony import */ var _prefabs_battle_player_unit__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../prefabs/battle/player-unit */ "./src/prefabs/battle/player-unit.js");
+/* harmony import */ var _prefabs_battle_enemy_unit__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../prefabs/battle/enemy-unit */ "./src/prefabs/battle/enemy-unit.js");
+/* harmony import */ var _prefabs_hud_physical_attack_menu_item__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../prefabs/hud/physical-attack-menu-item */ "./src/prefabs/hud/physical-attack-menu-item.js");
+/* harmony import */ var _prefabs_hud_enemy_menu_item__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../prefabs/hud/enemy-menu-item */ "./src/prefabs/hud/enemy-menu-item.js");
+/* harmony import */ var _prefabs_hud_magical_attack_menu_item__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../prefabs/hud/magical-attack-menu-item */ "./src/prefabs/hud/magical-attack-menu-item.js");
+/* harmony import */ var _prefabs_hud_run_menu_item__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../prefabs/hud/run-menu-item */ "./src/prefabs/hud/run-menu-item.js");
+/* harmony import */ var _prefabs_hud_show_player_unit__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../prefabs/hud/show-player-unit */ "./src/prefabs/hud/show-player-unit.js");
+/* harmony import */ var _prefabs_hud_inventory_menu_item__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../prefabs/hud/inventory-menu-item */ "./src/prefabs/hud/inventory-menu-item.js");
+/* harmony import */ var _prefabs_battle_boss_unit__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../prefabs/battle/boss-unit */ "./src/prefabs/battle/boss-unit.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -23959,6 +23988,9 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
 
 
 
@@ -24124,8 +24156,21 @@ function (_JSonLevelScene) {
     value: function endBattle() {
       this.giveMoreExperienceToUnits(this.saveDataFromUnitInCache.bind(this));
       this.collectItems();
-      this.backToWorld();
+      this.saveDataBefore();
     }
+    /**
+     * Saves data to database
+     */
+
+  }, {
+    key: "saveDataBefore",
+    value: function saveDataBefore() {
+      firebase_app__WEBPACK_IMPORTED_MODULE_0___default.a.database().ref('users/' + firebase_app__WEBPACK_IMPORTED_MODULE_0___default.a.auth().currentUser.uid + '/partyData').set(this.cache.game.partyData).then(this.backToWorld.bind(this));
+    }
+    /**
+     * Collects items from an enemy
+     */
+
   }, {
     key: "collectItems",
     value: function collectItems() {
@@ -24200,24 +24245,24 @@ function (_JSonLevelScene) {
     key: "setPrefabs",
     value: function setPrefabs() {
       this.prefabsClasses = {
-        background: _prefabs_prefab__WEBPACK_IMPORTED_MODULE_1__["default"].prototype.constructor,
-        playerUnit: _prefabs_battle_player_unit__WEBPACK_IMPORTED_MODULE_7__["default"].prototype.constructor,
-        enemyUnit: _prefabs_battle_enemy_unit__WEBPACK_IMPORTED_MODULE_8__["default"].prototype.constructor,
-        bossUnit: _prefabs_battle_boss_unit__WEBPACK_IMPORTED_MODULE_15__["default"].prototype.constructor,
-        menuItem: _prefabs_hud_menu_item__WEBPACK_IMPORTED_MODULE_5__["default"].prototype.constructor,
-        physicalAttackMenuItem: _prefabs_hud_physical_attack_menu_item__WEBPACK_IMPORTED_MODULE_9__["default"].prototype.constructor,
-        enemyMenuItem: _prefabs_hud_enemy_menu_item__WEBPACK_IMPORTED_MODULE_10__["default"].prototype.constructor,
-        magicalAttackMenuItem: _prefabs_hud_magical_attack_menu_item__WEBPACK_IMPORTED_MODULE_11__["default"].prototype.constructor,
-        inventoryMenuItem: _prefabs_hud_inventory_menu_item__WEBPACK_IMPORTED_MODULE_14__["default"].prototype.constructor,
-        runMenuItem: _prefabs_hud_run_menu_item__WEBPACK_IMPORTED_MODULE_12__["default"].prototype.constructor,
-        menu: _prefabs_hud_menu__WEBPACK_IMPORTED_MODULE_6__["default"].prototype.constructor,
-        showPlayerUnit: _prefabs_hud_show_player_unit__WEBPACK_IMPORTED_MODULE_13__["default"].prototype.constructor
+        background: _prefabs_prefab__WEBPACK_IMPORTED_MODULE_4__["default"].prototype.constructor,
+        playerUnit: _prefabs_battle_player_unit__WEBPACK_IMPORTED_MODULE_10__["default"].prototype.constructor,
+        enemyUnit: _prefabs_battle_enemy_unit__WEBPACK_IMPORTED_MODULE_11__["default"].prototype.constructor,
+        bossUnit: _prefabs_battle_boss_unit__WEBPACK_IMPORTED_MODULE_18__["default"].prototype.constructor,
+        menuItem: _prefabs_hud_menu_item__WEBPACK_IMPORTED_MODULE_8__["default"].prototype.constructor,
+        physicalAttackMenuItem: _prefabs_hud_physical_attack_menu_item__WEBPACK_IMPORTED_MODULE_12__["default"].prototype.constructor,
+        enemyMenuItem: _prefabs_hud_enemy_menu_item__WEBPACK_IMPORTED_MODULE_13__["default"].prototype.constructor,
+        magicalAttackMenuItem: _prefabs_hud_magical_attack_menu_item__WEBPACK_IMPORTED_MODULE_14__["default"].prototype.constructor,
+        inventoryMenuItem: _prefabs_hud_inventory_menu_item__WEBPACK_IMPORTED_MODULE_17__["default"].prototype.constructor,
+        runMenuItem: _prefabs_hud_run_menu_item__WEBPACK_IMPORTED_MODULE_15__["default"].prototype.constructor,
+        menu: _prefabs_hud_menu__WEBPACK_IMPORTED_MODULE_9__["default"].prototype.constructor,
+        showPlayerUnit: _prefabs_hud_show_player_unit__WEBPACK_IMPORTED_MODULE_16__["default"].prototype.constructor
       };
     }
   }, {
     key: "prepareGamingQueue",
     value: function prepareGamingQueue() {
-      this.units = new _node_modules_js_priority_queue_priority_queue_min__WEBPACK_IMPORTED_MODULE_4___default.a({
+      this.units = new _node_modules_js_priority_queue_priority_queue_min__WEBPACK_IMPORTED_MODULE_7___default.a({
         comparator: function comparator(unitA, unitB) {
           return unitA.attackTurn - unitB.attackTurn;
         }
@@ -24257,7 +24302,7 @@ function (_JSonLevelScene) {
   }]);
 
   return BattleScene;
-}(_json_level_scene__WEBPACK_IMPORTED_MODULE_0__["default"]);
+}(_json_level_scene__WEBPACK_IMPORTED_MODULE_3__["default"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (BattleScene);
 
