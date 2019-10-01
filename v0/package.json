@@ -1,0 +1,19 @@
+{
+  "name": "ladiagonale",
+  "version": "0.1.0",
+  "description": "octopuses saves their planet ?",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "evan boissonnot",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.1",
+    "phaser": "^3.19.0",
+    "ts-loader": "^6.2.0",
+    "typescript": "^3.6.3",
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
+  }
+}
