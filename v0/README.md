@@ -23,3 +23,11 @@ git... See ‘Git URLs as Dependencies’ below
 user/repo See ‘GitHub URLs’ below
 tag A specific version tagged and published as tag See npm-dist-tag
 path/path/path See Local Paths below
+
+## 2. creation main class and custom game class
+two class to start with phaser 
+adding config, and resize event
+
+## 3. creating logger, environment class, searching to use a di injector with typescript
+environment class is ready
+searching for di motor
