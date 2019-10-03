@@ -5,6 +5,8 @@
       "module": "commonjs",
       "sourceMap": true,
       "noImplicitAny": false,
-      "strict": false
+      "strict": false,
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true
     }
   }

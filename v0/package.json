@@ -10,7 +10,9 @@
   "author": "evan boissonnot",
   "license": "ISC",
   "dependencies": {
-    "phaser": "^3.19.0"
+    "phaser": "^3.19.0",
+    "reflect-metadata": "^0.1.13",
+    "tsyringe": "^3.4.0"
   },
   "devDependencies": {
     "expose-loader": "0.7.5",

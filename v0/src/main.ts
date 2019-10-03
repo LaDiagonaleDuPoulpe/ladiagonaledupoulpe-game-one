@@ -1,3 +1,5 @@
+import "reflect-metadata";
+
 import { CustomGame } from './app/bootstrap/custom-game';
 import config from './app/config/config';
 
