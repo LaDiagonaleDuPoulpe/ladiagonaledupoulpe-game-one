@@ -1,12 +1,12 @@
-import { Logger } from '../logs/logger';
+import { DefaultLogger } from '../services/default-logger';
 
 /**
  * Parent class of all custom scenes of the game
  */
 export class BaseScene extends Phaser.Scene {
-    constructor(protected logger: Logger) {
+    constructor(key: string, protected _logger: DefaultLogger) {
         super({
-            key: ''
+            key: key
         });
     }
 }
