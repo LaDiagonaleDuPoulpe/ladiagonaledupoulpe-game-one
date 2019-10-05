@@ -1,5 +1,5 @@
 import { BaseScene } from './base-scene';
-import { DefaultLogger } from '../services/default-logger';
+import { DefaultLogger } from '../../shared/services/default-logger';
 
 import { injectable, container } from 'tsyringe';
 
@@ -13,6 +13,10 @@ export class BootScene extends BaseScene {
     }
 
     //#region public methods
+    preload() {
+                
+    }
+
     create(data: any) {
         this._logger.log('create', data);
 

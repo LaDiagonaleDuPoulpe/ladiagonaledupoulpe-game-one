@@ -2,8 +2,9 @@ import "phaser";
 import { injectable, container } from 'tsyringe';
 
 import { Config } from "../config/config";
-import { DefaultLogger } from "../services/default-logger";
+import { DefaultLogger } from "../../shared/services/default-logger";
 import { BootScene } from "../scenes/boot-scene";
+import { loadavg } from "os";
 
 
 const BOOT_SCENE_KEY = 'BootScene';

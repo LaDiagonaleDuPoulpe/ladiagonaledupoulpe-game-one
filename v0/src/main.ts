@@ -1,8 +1,7 @@
 import "reflect-metadata";
 import { container } from "tsyringe";
 
-import { CustomGame } from './app/bootstrap/custom-game';
-import { Config } from './app/config/config';
+import { CustomGame } from './app/core/bootstrap/custom-game';
 
 const BOOT_SCENE_KEY = 'BootScene';
 

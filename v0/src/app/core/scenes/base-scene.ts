@@ -1,4 +1,4 @@
-import { DefaultLogger } from '../services/default-logger';
+import { DefaultLogger } from '../../shared/services/default-logger';
 
 /**
  * Parent class of all custom scenes of the game

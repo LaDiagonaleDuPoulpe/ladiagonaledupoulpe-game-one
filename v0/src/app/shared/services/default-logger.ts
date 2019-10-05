@@ -1,4 +1,4 @@
-import { environment } from "../environments/environment";
+import { environment } from "../../environments/environment";
 
 /**
  * Default logger class to log info, error
