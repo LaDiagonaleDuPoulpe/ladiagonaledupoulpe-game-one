@@ -1,3 +1,5 @@
+import { Observable, of } from 'rxjs';
+
 import { Level } from "../../core/models/level";
 
 /**
@@ -8,12 +10,12 @@ export class LevelService {
     /**
      * Selects all services
      */
-    public selectAll(): Level[] {
+    public selectAll(): Observable<Level[]> {
         const levels = [];
 
         levels.push(new Level('title', 'TitleScene'));
 
-        return levels;
+        return of(levels);
     }
     //#endregion
 }
