@@ -12,6 +12,7 @@
   "dependencies": {
     "phaser": "^3.19.0",
     "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.5.3",
     "tsyringe": "^3.4.0"
   },
   "devDependencies": {
