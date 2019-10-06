@@ -5,17 +5,21 @@ import { Config } from "../config/config";
 import { DefaultLogger } from "../../shared/services/default-logger";
 import { BootScene } from "../scenes/boot-scene";
 import { loadavg } from "os";
+import { LoadingScene } from '../scenes/loading-scene';
 
 
 const BOOT_SCENE_KEY = 'BootScene';
+const LOAD_SCENE_KEY = 'LoadingScene';
 
 /**
  * Starting game : all you need to start the game : config, events
  */
 @injectable()
 export class CustomGame extends Phaser.Game {
-    constructor(config: Config, private logger: DefaultLogger,
-        private bootScene: BootScene) {
+    constructor(config: Config, 
+                private logger: DefaultLogger,
+                private _bootScene: BootScene,
+                private _loadingScene: LoadingScene) {
         super(config.forRoot());
 
         this.init();
@@ -26,7 +30,8 @@ export class CustomGame extends Phaser.Game {
      * initialize all data, adding scenes
      */
     private init() {
-        this.scene.add(BOOT_SCENE_KEY, this.bootScene);
+        this.scene.add(LOAD_SCENE_KEY, this._loadingScene);
+        this.scene.add(BOOT_SCENE_KEY, this._bootScene);
     }
     //#endregion
 

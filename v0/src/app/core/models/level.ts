@@ -39,7 +39,7 @@ export class Level {
     }
 
     public get path(): string {
-        return `assets/levels/${this.key}_level.json`;
+        return `assets/levels/level-${this.key}.json`;
     }
     //#endregion
 }
