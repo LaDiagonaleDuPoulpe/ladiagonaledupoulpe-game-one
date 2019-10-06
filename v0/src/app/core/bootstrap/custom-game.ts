@@ -6,6 +6,7 @@ import { DefaultLogger } from "../../shared/services/default-logger";
 import { BootScene } from "../scenes/boot-scene";
 import { loadavg } from "os";
 import { LoadingScene } from '../scenes/loading-scene';
+import { SceneConfig } from '../models/scene-config';
 
 
 const BOOT_SCENE_KEY = 'BootScene';
@@ -45,7 +46,8 @@ export class CustomGame extends Phaser.Game {
         this.logger.log('starting');
         super.start();
 
-        this.scene.start(BOOT_SCENE_KEY, { scene: 'title' });
+        const config = new SceneConfig('title');
+        this.scene.start(BOOT_SCENE_KEY, config);
     }
     //#endregion
 }

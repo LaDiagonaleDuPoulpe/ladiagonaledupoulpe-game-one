@@ -1,12 +1,12 @@
 export class Level {
     //#region fields
     private _key: string;
-    private _scene: string;
+    private _sceneName: string;
     //#endregion
 
-    constructor(key: string, scene: string) {
+    constructor(key: string, sceneName: string) {
         this.key = key;
-        this.scene = scene;
+        this.sceneName = sceneName;
     }
 
     //#region properties
@@ -27,15 +27,15 @@ export class Level {
     /**
      * Gets scene value
      */
-    public get scene(): string {
-        return this._scene;
+    public get sceneName(): string {
+        return this._sceneName;
     }
 
     /**
      * Sets scene value
      */
-    public set scene(value: string) {
-        this._scene = value;
+    public set sceneName(value: string) {
+        this._sceneName = value;
     }
 
     public get path(): string {
