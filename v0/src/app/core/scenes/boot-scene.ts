@@ -31,9 +31,7 @@ export class BootScene extends BaseScene {
         const newConfig = <LevelConfig> Object.create(config);
 
         newConfig.data = levelData;
-        newConfig.level = this._levels[config.level.key];
-
-        this._logger.log('create', newConfig);
+        newConfig.level = this._levels.find(item => item.key === config.level.key);
 
         this.scene.start(SceneKey.loading, newConfig);
     }

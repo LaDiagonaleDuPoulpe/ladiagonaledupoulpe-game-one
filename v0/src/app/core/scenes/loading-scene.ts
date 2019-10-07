@@ -9,6 +9,10 @@ import { LevelConfig } from '../models/level-config';
 */
 @injectable()
 export class LoadingScene extends BaseScene {
+    //#region fields
+    private _levelConfig: LevelConfig;
+    //#endregion
+
     constructor(protected _logger: DefaultLogger) {
         super(LoadingScene.name, _logger);
     }
@@ -18,8 +22,17 @@ export class LoadingScene extends BaseScene {
     //#endregion
 
     //#region public methods
-    create(data: LevelConfig) {
+    create(config: LevelConfig) {
+        this._levelConfig = config;
+    }
 
+    init() {
+        let message = this.add.text(window.innerWidth / 2, window.innerHeight / 2, 
+                                    "Chargement du niveau", 
+                                    { 
+                                        font: "48px Kells", 
+                                        fill: "#ffffff" 
+                                    });
     }
     //#endregion
 }
