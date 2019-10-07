@@ -23,15 +23,18 @@ export class LoadingScene extends BaseScene {
 
     //#region public methods
     create(config: LevelConfig) {
-        this._levelConfig = config;
+        this._logger.log('create');
+        
     }
 
-    init() {
+    init(config: LevelConfig) {
+        this._levelConfig = config;
+        
         let message = this.add.text(window.innerWidth / 2, window.innerHeight / 2, 
                                     "Chargement du niveau", 
                                     { 
-                                        font: "48px Kells", 
-                                        fill: "#ffffff" 
+                                        font: "48px " + this._levelConfig.sceneConfiguration.font, 
+                                        fill: this._levelConfig.sceneConfiguration.foreColor 
                                     });
     }
     //#endregion

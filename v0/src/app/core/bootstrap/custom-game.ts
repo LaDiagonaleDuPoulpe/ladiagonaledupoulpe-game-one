@@ -58,6 +58,8 @@ export class CustomGame extends Phaser.Game {
         super.start();
 
         const config = new LevelConfig(new Level('title'));
+        config.sceneConfiguration = this._sceneConfig;
+
         this.scene.start(SceneKey.boot, config);
     }
     //#endregion
