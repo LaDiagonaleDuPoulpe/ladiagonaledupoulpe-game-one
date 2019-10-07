@@ -11,6 +11,7 @@ import { SceneKey } from "../../shared/constants/scene-key";
 import { Level } from "../models/level";
 import { SceneConfigService } from "../../shared/services/scene-config.service";
 import { SceneConfig } from "../models/scene-config";
+import { TitleScene } from "../scenes/title-scene";
 
 /**
  * Starting game : all you need to start the game : config, events
@@ -25,7 +26,8 @@ export class CustomGame extends Phaser.Game {
                 private _sceneConfigService: SceneConfigService,
                 private logger: DefaultLogger,
                 private _bootScene: BootScene,
-                private _loadingScene: LoadingScene) {
+                private _loadingScene: LoadingScene,
+                private _titleScene: TitleScene) {
         super(config.forRoot());
 
         this.init();
@@ -37,6 +39,7 @@ export class CustomGame extends Phaser.Game {
      */
     private init() {
         this.scene.add(SceneKey.loading, this._loadingScene);
+        this.scene.add(SceneKey.title, this._titleScene);
         this.scene.add(SceneKey.boot, this._bootScene);
 
         this.loadConfigurations();
