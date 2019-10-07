@@ -4,7 +4,7 @@ export class Level {
     private _sceneName: string;
     //#endregion
 
-    constructor(key: string, sceneName: string) {
+    constructor(key: string, sceneName?: string) {
         this.key = key;
         this.sceneName = sceneName;
     }

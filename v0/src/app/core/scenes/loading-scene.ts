@@ -2,14 +2,14 @@ import { injectable } from 'tsyringe';
 
 import { BaseScene } from './base-scene';
 import { DefaultLogger } from '../../shared/services/default-logger';
-import { SceneConfig } from '../models/scene-config';
+import { LevelConfig } from '../models/level-config';
 
 /**
 * Loads all assets of the game
 */
 @injectable()
 export class LoadingScene extends BaseScene {
-    constructor(protected _logger: DefaultLogger, ) {
+    constructor(protected _logger: DefaultLogger) {
         super(LoadingScene.name, _logger);
     }
 
@@ -18,7 +18,7 @@ export class LoadingScene extends BaseScene {
     //#endregion
 
     //#region public methods
-    create(data: SceneConfig) {
+    create(data: LevelConfig) {
 
     }
     //#endregion
