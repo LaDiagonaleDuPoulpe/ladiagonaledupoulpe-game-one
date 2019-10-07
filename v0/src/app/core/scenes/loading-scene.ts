@@ -2,6 +2,7 @@ import { injectable } from 'tsyringe';
 
 import { BaseScene } from './base-scene';
 import { DefaultLogger } from '../../shared/services/default-logger';
+import { SceneConfig } from '../models/scene-config';
 
 /**
 * Loads all assets of the game
@@ -17,6 +18,8 @@ export class LoadingScene extends BaseScene {
     //#endregion
 
     //#region public methods
+    create(data: SceneConfig) {
 
+    }
     //#endregion
 }

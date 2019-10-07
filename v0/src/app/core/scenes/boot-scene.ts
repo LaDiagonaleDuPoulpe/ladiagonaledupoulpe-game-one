@@ -5,6 +5,7 @@ import { BaseScene } from './base-scene';
 import { DefaultLogger } from '../../shared/services/default-logger';
 import { LevelService } from '../../shared/services/level-service';
 import { Level } from '../models/level';
+import { SceneConfig } from '../models/scene-config';
 
 /**
 * Boot scene : scene will be loaded to start the game
@@ -24,9 +25,10 @@ export class BootScene extends BaseScene {
         this.prepareJsonContents();
     }
     
-    create(data: any) {
-        this._logger.log('create', data);
+    create(data: SceneConfig) {
         
+
+
         //const levelData = this.cache.json(da)
     }
     //#endregion
