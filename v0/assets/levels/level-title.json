@@ -1,9 +1,12 @@
 {
     "assets": {
-        "images": {
-            "background": {
-                
+        "images": [
+            {
+                "key": "background",
+                "url": "assets/images/default/background.gif"
             }
-        }
-    }
+        ]
+    },
+    "groups": [],
+    "prefabs": []
 }

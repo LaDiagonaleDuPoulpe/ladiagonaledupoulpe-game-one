@@ -7,6 +7,7 @@ import { LevelService } from '../../shared/services/level.service';
 import { Level } from '../models/level';
 import { LevelConfig } from '../models/level-config';
 import { SceneKey } from '../../shared/constants/scene-key';
+import { SceneData } from '../models/scene-data';
 
 /**
 * Boot scene : scene will be loaded to start the game
@@ -30,9 +31,9 @@ export class BootScene extends BaseScene {
         const levelData = this.cache.json.get(config.level.key);
         const newConfig = <LevelConfig> Object.create(config);
 
-        this._logger.log('boot', newConfig);
+        this._logger.log('boot', levelData);
 
-        newConfig.data = levelData;
+        newConfig.data = <SceneData> levelData;
         newConfig.level = this._levels.find(item => item.key === config.level.key);
 
         this.scene.start(SceneKey.loading, newConfig);

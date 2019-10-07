@@ -1,6 +1,7 @@
 import { SceneKey } from "../../shared/constants/scene-key";
 import { Level } from "./level";
 import { SceneConfig } from "./scene-config";
+import { SceneData } from "./scene-data";
 
 /**
  * Configuration of one scene
@@ -8,7 +9,7 @@ import { SceneConfig } from "./scene-config";
 export class LevelConfig {
     //#region fields
     private _level: Level;
-    private _data: any;
+    private _data: SceneData;
     private _sceneConfig: SceneConfig;
     //#endregion
 
@@ -48,14 +49,14 @@ export class LevelConfig {
     /**
      * Gets data from json file
      */
-    public get data(): string {
+    public get data(): SceneData {
         return this._data;
     }
 
     /**
      * Sets data from json file
      */
-    public set data(value: string) {
+    public set data(value: SceneData) {
         this._data = value;
     }
     //#endregion
