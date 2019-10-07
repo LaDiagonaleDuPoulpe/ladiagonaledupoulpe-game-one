@@ -21,11 +21,13 @@ const defaultConfig =  {
 /**
  * Gets default config for the game
  */
-export class Config {
+export class GameConfig {
+    //#region public methods
     /**
      * Returns singleton of the default real config for the game
      */
     forRoot() {
         return defaultConfig;
     }
+    //#endregion
 }

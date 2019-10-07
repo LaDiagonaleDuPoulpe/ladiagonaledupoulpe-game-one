@@ -3,7 +3,7 @@ import { injectable, container } from 'tsyringe';
 
 import { BaseScene } from './base-scene';
 import { DefaultLogger } from '../../shared/services/default-logger';
-import { LevelService } from '../../shared/services/level-service';
+import { LevelService } from '../../shared/services/level.service';
 import { Level } from '../models/level';
 import { LevelConfig } from '../models/level-config';
 import { SceneKey } from '../../shared/constants/scene-key';
