@@ -27,6 +27,32 @@
                     "y": 0
                 }
             }
+        },
+        {
+            "key": "title",
+            "type": "text",
+            "position": {
+                "x": 20,
+                "y": 100
+            },
+            "properties": {
+                "group": "texts",
+                "style": {"font": "20px Kells", "fill": "#000000"},
+                "text": "La diagonale du poulpe"
+            }
+        },
+        {
+            "key": "start",
+            "type": "text",
+            "position": {
+                "x": 150,
+                "y": 200
+            },
+            "properties": {
+                "group": "texts",
+                "style": {"font": "20px Kells", "fill": "#000000"},
+                "text": "click to start playing"
+            }
         }
     ]
 }
