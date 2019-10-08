@@ -12,6 +12,7 @@ export abstract class BaseLevelScene extends BaseScene {
     //#region fields
     private _levelConfig: LevelConfig;
     private _physicalGroups: Dictionary<Phaser.Physics.Arcade.Group> = {};
+    private _prefabSprites: Dictionary<Phaser.GameObjects.GameObject> = {};
     //#endregion
 
     constructor(key: string, protected _logger: DefaultLogger) {
@@ -46,6 +47,8 @@ export abstract class BaseLevelScene extends BaseScene {
     
             this.add.existing(sprite);
             this.physicalGroups[prefab.properties.group].add(sprite);
+
+            this.prefabSprites[prefab.key] = sprite;            
         }, this);
     }
     //#endregion
@@ -56,6 +59,13 @@ export abstract class BaseLevelScene extends BaseScene {
      */
     public get physicalGroups(): Dictionary<Phaser.Physics.Arcade.Group> {
         return this._physicalGroups;
+    }
+
+     /**
+     * Gets prefab sprite list
+     */
+    public get prefabSprites(): Dictionary<Phaser.GameObjects.GameObject> {
+        return this._prefabSprites;
     }
     //#endregion
 }
