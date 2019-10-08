@@ -31,7 +31,7 @@ export class LoadingScene extends BaseScene {
 
     preload() {
         this._logger.log('preload');
-        this.loadAssets();
+        this.prepareAssets();
     }
 
     init(config: LevelConfig) {
@@ -47,11 +47,11 @@ export class LoadingScene extends BaseScene {
     //#endregion
 
     //#region internal methods
-    private loadAssets() {
-        this.loadImages();
+    private prepareAssets() {
+        this.prepareImagesToBeLoaded();
     }
 
-    private loadImages() {
+    private prepareImagesToBeLoaded() {
         this._logger.log('loadImages', this._levelConfig.data);
 
         this._levelConfig.data.assets.images.forEach((image) => {

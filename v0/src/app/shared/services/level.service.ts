@@ -1,7 +1,7 @@
 import { Observable, of } from 'rxjs';
 
 import { Level } from "../../core/models/level";
-import { SceneKey } from '../constants/scene-key';
+import { SceneKey } from '../enums/scene-key';
 
 /**
  * Service to load, save levels of the game

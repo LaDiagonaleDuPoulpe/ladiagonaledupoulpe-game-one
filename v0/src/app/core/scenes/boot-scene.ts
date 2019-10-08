@@ -6,7 +6,7 @@ import { DefaultLogger } from '../../shared/services/default-logger';
 import { LevelService } from '../../shared/services/level.service';
 import { Level } from '../models/level';
 import { LevelConfig } from '../models/level-config';
-import { SceneKey } from '../../shared/constants/scene-key';
+import { SceneKey } from '../../shared/enums/scene-key';
 import { SceneData } from '../models/scene-data';
 
 /**

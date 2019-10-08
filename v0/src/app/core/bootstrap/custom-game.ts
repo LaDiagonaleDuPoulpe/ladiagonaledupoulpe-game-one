@@ -7,7 +7,7 @@ import { BootScene } from "../scenes/boot-scene";
 import { loadavg } from "os";
 import { LoadingScene } from '../scenes/loading-scene';
 import { LevelConfig } from '../models/level-config';
-import { SceneKey } from "../../shared/constants/scene-key";
+import { SceneKey } from "../../shared/enums/scene-key";
 import { Level } from "../models/level";
 import { SceneConfigService } from "../../shared/services/scene-config.service";
 import { SceneConfig } from "../models/scene-config";

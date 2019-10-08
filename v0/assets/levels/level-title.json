@@ -7,6 +7,26 @@
             }
         ]
     },
-    "groups": [],
-    "prefabs": []
+    "groups": [
+        "backgrounds",
+        "texts"
+    ],
+    "prefabs": [
+        {
+            "key": "background",
+            "type": "background",
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "properties": {
+                "texture": "background",
+                "group": "backgrounds",
+                "anchor": {
+                    "x": 0,
+                    "y": 0
+                }
+            }
+        }
+    ]
 }
