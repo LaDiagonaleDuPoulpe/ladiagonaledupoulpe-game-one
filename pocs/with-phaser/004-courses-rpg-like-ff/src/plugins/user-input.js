@@ -17,7 +17,7 @@ class UserInput {
             this.scene.input.keyboard.removeAllListeners(key);
             this.scene.input.keyboard.on(key, this.processInput, this);
         });
-
+        
         this.userData = data;
         this.enabled = true; 
     }

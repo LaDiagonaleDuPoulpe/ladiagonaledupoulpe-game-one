@@ -3,6 +3,7 @@ import { BaseScene } from "./base-scene";
 import { LevelConfig } from "../models/level-config";
 import { Dictionary } from "../../shared/custom-types/dictionary";
 import { PrefabSpriteFactory } from "../prefab-sprites/prefab-sprite-factory";
+import { SceneData } from "../models/scene-data";
 
 /**
  * Base level scene : abstract class of all active map scenes
@@ -31,6 +32,23 @@ export abstract class BaseLevelScene extends BaseScene {
 
     init(config: LevelConfig) {
         this._levelConfig = config;
+    }
+
+    /**
+     * Attach an action from event
+     * @param item Event key
+     * @param callback Action to launch
+     */
+    attachActionToKeyboardEvent(item: string, callback: Function) {
+        this.input.keyboard.on('key' + item, callback, this);
+    }
+
+    /**
+     * Removes all event listeners 
+     * @param item event key as a string
+     */
+    removeAllKeyboardListener(item: string) {
+        this.input.keyboard.removeAllListeners('key' + item);
     }
     //#endregion
 
@@ -67,5 +85,14 @@ export abstract class BaseLevelScene extends BaseScene {
     public get prefabSprites(): Dictionary<Phaser.GameObjects.GameObject> {
         return this._prefabSprites;
     }
+
+    /**
+     * Gets scene data (from json file)
+     */
+    public get configData(): SceneData {
+        return this._levelConfig.data;
+    }
+
+    
     //#endregion
 }
