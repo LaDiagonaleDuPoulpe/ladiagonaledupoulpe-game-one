@@ -6,7 +6,9 @@ import UserInput from '../plugins/user-input';
 * Parent class to all scenev: anable you to load data from json file
 */
 class JSonLevelScene extends Phaser.Scene {   
-    
+    //#region fields
+    //#endregion
+
     constructor(key) {
         super({ key: key });
         this.setPrefabs();        

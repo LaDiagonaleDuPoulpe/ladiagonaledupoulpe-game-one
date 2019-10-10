@@ -2,6 +2,7 @@ import { BaseLevelScene } from "../scenes/base-level-scene";
 
 /**
  * User input manager : each event listener launch action
+ * @deprecated
  */
 export class UserInputManager {
     //#region fields
