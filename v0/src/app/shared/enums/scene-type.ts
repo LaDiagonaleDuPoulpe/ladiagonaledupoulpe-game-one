@@ -1,6 +1,6 @@
 /**
  * Scene key enum
- * List all keys of scene, that are loaded in game motor
+ * List all types of scene, that are loaded in game motor
  */
 export enum SceneType {
     boot = 'BootScene',

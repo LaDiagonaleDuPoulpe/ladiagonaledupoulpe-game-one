@@ -17,6 +17,8 @@ export class TitleScene extends BaseLevelScene {
     }
     
     startGame() {
+        
+
         this.scene.start(SceneType.boot, {
             scene: 'town' 
         });
