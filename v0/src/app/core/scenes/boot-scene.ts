@@ -25,6 +25,7 @@ export class BootScene extends BaseScene {
     //#region public methods
     preload() {
         this.prepareJsonContentsInCache();
+        this._logger.log('BootScene', 'preload');
     }
 
     create(config: LevelConfig) {

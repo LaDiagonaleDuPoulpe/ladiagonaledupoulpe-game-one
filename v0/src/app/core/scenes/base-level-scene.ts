@@ -138,9 +138,14 @@ export abstract class BaseLevelScene extends BaseScene {
     * Gets scene data (from json file)
     */
     public get configData(): SceneData {
-        return this._levelConfig.data;
+        return this.levelConfig.data;
     }
     
-    
+    /**
+     * Gets level config
+     */
+    protected get levelConfig(): LevelConfig {
+        return this._levelConfig;
+    }
     //#endregion
 }

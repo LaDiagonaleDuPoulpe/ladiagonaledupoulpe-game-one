@@ -1,17 +1,19 @@
 import "phaser";
-import { injectable, container } from 'tsyringe';
+import { map } from 'rxjs/operators';
+import { injectable } from 'tsyringe';
 
-import { GameConfig } from "../config/game-config";
-import { DefaultLogger } from "../../shared/services/default-logger";
-import { BootScene } from "../scenes/boot-scene";
-import { loadavg } from "os";
-import { LoadingScene } from '../scenes/loading-scene';
-import { LevelConfig } from '../models/level-config';
 import { SceneType } from "../../shared/enums/scene-type";
-import { Level } from "../models/level";
+import { DefaultLogger } from "../../shared/services/default-logger";
 import { SceneConfigService } from "../../shared/services/scene-config.service";
+import { GameConfig } from "../config/game-config";
+import { Level } from "../models/level";
+import { LevelConfig } from '../models/level-config';
 import { SceneConfig } from "../models/scene-config";
+import { BootScene } from "../scenes/boot-scene";
+import { LoadingScene } from '../scenes/loading-scene';
 import { TitleScene } from "../scenes/title-scene";
+import { LevelService } from '../../shared/services/level.service';
+
 
 /**
  * Starting game : all you need to start the game : config, events
@@ -65,5 +67,8 @@ export class CustomGame extends Phaser.Game {
 
         this.scene.start(SceneType.boot, config);
     }
+    //#endregion
+
+    //#region internal methods
     //#endregion
 }

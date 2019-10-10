@@ -18,16 +18,15 @@ export class TitleScene extends BaseLevelScene {
     
     startGame() {
         
-
-        this.scene.start(SceneType.boot, {
-            scene: 'town' 
-        });
+        this._logger.log('startGame', this.levelConfig);
+        this.scene.start(SceneType.boot, this.levelConfig);
     }
     //#endregion
     
     //#region internal methods
     protected onKeyUp(event: KeyboardEvent) {
         this._logger.log('keyUp');
+        this.startGame();
     }
     
     protected onKeyDown(event: KeyboardEvent) {
