@@ -7,7 +7,7 @@ import { BootScene } from "../scenes/boot-scene";
 import { loadavg } from "os";
 import { LoadingScene } from '../scenes/loading-scene';
 import { LevelConfig } from '../models/level-config';
-import { SceneKey } from "../../shared/enums/scene-key";
+import { SceneType } from "../../shared/enums/scene-type";
 import { Level } from "../models/level";
 import { SceneConfigService } from "../../shared/services/scene-config.service";
 import { SceneConfig } from "../models/scene-config";
@@ -38,9 +38,9 @@ export class CustomGame extends Phaser.Game {
      * initialize all data, adding scenes
      */
     private init() {
-        this.scene.add(SceneKey.loading, this._loadingScene);
-        this.scene.add(SceneKey.title, this._titleScene);
-        this.scene.add(SceneKey.boot, this._bootScene);
+        this.scene.add(SceneType.loading, this._loadingScene);
+        this.scene.add(SceneType.title, this._titleScene);
+        this.scene.add(SceneType.boot, this._bootScene);
 
         this.loadConfigurations();
     }
@@ -63,7 +63,7 @@ export class CustomGame extends Phaser.Game {
         const config = new LevelConfig(new Level('title'));
         config.sceneConfiguration = this._sceneConfig;
 
-        this.scene.start(SceneKey.boot, config);
+        this.scene.start(SceneType.boot, config);
     }
     //#endregion
 }

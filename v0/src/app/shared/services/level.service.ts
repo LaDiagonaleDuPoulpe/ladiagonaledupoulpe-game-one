@@ -1,7 +1,7 @@
 import { Observable, of } from 'rxjs';
 
 import { Level } from "../../core/models/level";
-import { SceneKey } from '../enums/scene-key';
+import { SceneType } from '../enums/scene-type';
 
 /**
  * Service to load, save levels of the game
@@ -14,7 +14,7 @@ export class LevelService {
     public selectAll(): Observable<Level[]> {
         const levels = [];
 
-        levels.push(new Level('title', SceneKey.title));
+        levels.push(new Level('title', SceneType.title));
 
         return of(levels);
     }

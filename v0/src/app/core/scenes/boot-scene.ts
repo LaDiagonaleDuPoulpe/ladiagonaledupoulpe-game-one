@@ -6,7 +6,7 @@ import { DefaultLogger } from '../../shared/services/default-logger';
 import { LevelService } from '../../shared/services/level.service';
 import { Level } from '../models/level';
 import { LevelConfig } from '../models/level-config';
-import { SceneKey } from '../../shared/enums/scene-key';
+import { SceneType } from '../../shared/enums/scene-type';
 import { SceneData } from '../models/scene-data';
 
 /**
@@ -36,7 +36,7 @@ export class BootScene extends BaseScene {
         newConfig.data = <SceneData> levelData;
         newConfig.level = this._levels.find(item => item.key === config.level.key);
 
-        this.scene.start(SceneKey.loading, newConfig);
+        this.scene.start(SceneType.loading, newConfig);
     }
     //#endregion
 

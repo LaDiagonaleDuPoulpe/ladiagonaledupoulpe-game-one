@@ -11,6 +11,8 @@ import { SceneData } from "../models/scene-data";
 */
 export abstract class BaseLevelScene extends BaseScene {
     //#region fields    
+    private _keyListeners = ['Down', 'Up'];
+
     private _levelConfig: LevelConfig;
     private _physicalGroups: Dictionary<Phaser.Physics.Arcade.Group> = {};
     private _prefabSprites: Dictionary<Phaser.GameObjects.GameObject> = {};
@@ -22,8 +24,11 @@ export abstract class BaseLevelScene extends BaseScene {
     
     //#region public methods
     create() {
+        this.manageKeyEvents();
+
         this.createCollisionGroups();
         this.createAllPrefabSprites();
+
     }
     
     update() {
@@ -40,15 +45,17 @@ export abstract class BaseLevelScene extends BaseScene {
     * @param callback Action to launch
     */
     attachActionToKeyboardEvent(item: string, callback: Function) {
-        this.input.keyboard.on('key' + item, callback, this);
+        const event = 'key' + item.toLowerCase();
+        this.input.keyboard.on(event, callback, this);
     }
     
     /**
-    * Removes all event listeners 
-    * @param item event key as a string
-    */
+     * Removes all event listeners 
+     * @param item event key as a string
+     */
     removeAllKeyboardListener(item: string) {
-        this.input.keyboard.removeAllListeners('key' + item);
+        const event = 'key' + item.toLowerCase();
+        this.input.keyboard.removeAllListeners(event);
     }
     
     /**
@@ -65,6 +72,35 @@ export abstract class BaseLevelScene extends BaseScene {
     //#endregion
     
     //#region internal methods
+    private manageKeyEvents() {
+        this._keyListeners.forEach((key) => {
+            this.removeAllKeyboardListener(key);
+            this.configEventsToListen(key);
+        }, this);
+    }
+
+    /**
+     * Override this method to add event listeners 
+     */
+    protected configEventsToListen(currentKeyEvent: string) {
+        const method = this[`onKey${currentKeyEvent}`];
+        this.attachActionToKeyboardEvent(currentKeyEvent, method);
+    }
+    
+    /**
+     * Override this method to manage key up listener
+     */
+    protected onKeyUp(event: KeyboardEvent) {
+        throw new Error('Children class may overrides me');
+    }
+
+    /**
+     * Override this method to manage key down listener
+     */
+    protected onKeyDown(event: KeyboardEvent) {
+        throw new Error('Children class may overrides me');
+    }
+
     private createCollisionGroups() {
         this._levelConfig.data.groups.forEach((groupName) => {
             this.physicalGroups[groupName] = this.physics.add.group();

@@ -1,4 +1,4 @@
-import { SceneKey } from "../../shared/enums/scene-key";
+import { SceneType } from "../../shared/enums/scene-type";
 import { Level } from "./level";
 import { SceneConfig } from "./scene-config";
 import { SceneData } from "./scene-data";
