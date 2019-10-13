@@ -7,27 +7,34 @@ import { Level } from '../../core/models/level';
 @injectable()
 export class LevelManageService {
     //#region fields
-    private _previousLevel: string; 
-    private _currentLevel: string; 
-    private _levels: Level[] = null;
+    private _previousLevelKey: string; 
+    private _currentLevelKey: string; 
     //#endregion
 
     constructor() {
-        this._previousLevel = '';
-        this._currentLevel = '';
+        this._previousLevelKey = '';
+        this._currentLevelKey = '';
     }
 
     //#region public methods
-    /**
-     * Defines list of level
-     * @param levels List of level
-     */
-    init(levels: Level[]) {
-        this._levels = levels;
+    init() {
     }
 
-    public getNext() {
-        this._previousLevel = this._currentLevel;
+    /**
+     * Go to next level key to load
+     */
+    public next(): string {
+        this._previousLevelKey = this._currentLevelKey;
+
+        if (this._previousLevelKey === '') {
+            this._currentLevelKey = 'title';
+        }
+
+        if (this._previousLevelKey == 'title') {
+            this._currentLevelKey = 'level-one-ship-crash';
+        }
+
+        return this._currentLevelKey;
     }
     //#endregion
 }

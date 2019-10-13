@@ -9,10 +9,11 @@ import { GameConfig } from "../config/game-config";
 import { Level } from "../models/level";
 import { LevelConfig } from '../models/level-config';
 import { SceneConfig } from "../models/scene-config";
-import { BootScene } from "../scenes/boot-scene";
+import { MainScene } from "../scenes/main-scene";
 import { LoadingScene } from '../scenes/loading-scene';
 import { TitleScene } from "../scenes/title-scene";
 import { LevelService } from '../../shared/services/level.service';
+import { LevelManageService } from '../../shared/services/level-manager.service';
 
 
 /**
@@ -22,12 +23,14 @@ import { LevelService } from '../../shared/services/level.service';
 export class CustomGame extends Phaser.Game {
     //#region fields
     private _sceneConfig: SceneConfig;
+    private _levels: Level[];
     //#endregion
 
     constructor(config: GameConfig, 
                 private _sceneConfigService: SceneConfigService,
-                private logger: DefaultLogger,
-                private _bootScene: BootScene,
+                private _levelManageService: LevelManageService,
+                private _logger: DefaultLogger,
+                private _bootScene: MainScene,
                 private _loadingScene: LoadingScene,
                 private _titleScene: TitleScene) {
         super(config.forRoot());
@@ -53,22 +56,30 @@ export class CustomGame extends Phaser.Game {
     //#endregion
 
     //#region public methods
+    preload() {
+        this._logger.log('game', 'preload');
+    }
+
     boot() {
         //this.logger.log('boot'); // not run : boot event here is calling before constructor and so on, before dependency injection        
         super.boot();
     }
 
     start() {
-        this.logger.log('starting');
+        this._logger.log('starting');
         super.start();
 
-        const config = new LevelConfig(new Level('title'));
+        const config = new LevelConfig();
         config.sceneConfiguration = this._sceneConfig;
+        config.nextLevelToLoadByKey = this._levelManageService.next();
 
-        this.scene.start(SceneType.boot, config);
+        this.scene.start(SceneType.main, config);
     }
     //#endregion
 
     //#region internal methods
+    //#endregion
+
+    //#region properties
     //#endregion
 }

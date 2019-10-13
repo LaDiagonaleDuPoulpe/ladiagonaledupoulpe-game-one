@@ -8,12 +8,14 @@ import { SceneData } from "./scene-data";
  */
 export class LevelConfig {
     //#region fields
+    private _nextLevelToLoadByKey: string;
     private _level: Level;
+    private _levels: Level[];
     private _data: SceneData;
     private _sceneConfig: SceneConfig;
     //#endregion
 
-    constructor(level: Level) {
+    constructor(level?: Level) {
         this.level = level;
     }
 
@@ -40,6 +42,20 @@ export class LevelConfig {
     }
 
     /**
+     * Sets all levels
+     */
+    public set levels(value: Level[]) {
+        this._levels = value;
+    }
+
+    /**
+     * Gets all levels
+     */
+    public get levels(): Level[] {
+        return this._levels;
+    }
+
+    /**
      * Sets level to display
      */
     public set level(value: Level) {
@@ -58,6 +74,20 @@ export class LevelConfig {
      */
     public set data(value: SceneData) {
         this._data = value;
+    }
+
+    /**
+     * Gets next key of next level to load in game
+     */
+    public get nextLevelToLoadByKey(): string {
+        return this._nextLevelToLoadByKey;
+    }
+
+    /**
+     * Sets next key of next level to load in game
+     */
+    public set nextLevelToLoadByKey(value: string) {
+        this._nextLevelToLoadByKey = value;
     }
     //#endregion
 }
