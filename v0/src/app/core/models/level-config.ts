@@ -19,6 +19,16 @@ export class LevelConfig {
         this.level = level;
     }
 
+    //#region public methods
+    /**
+     * Gets one level by a key string
+     * @param key Key as string to find a level
+     */
+    public getLevelByKey(key: string): Level {
+        return this.levels.find(item => item.key === key);
+    }
+    //#endregion
+
     //#region properties
     /**
      * Gets scene configuration
@@ -88,6 +98,7 @@ export class LevelConfig {
      */
     public set nextLevelToLoadByKey(value: string) {
         this._nextLevelToLoadByKey = value;
+        this.level = this.getLevelByKey(value);
     }
     //#endregion
 }

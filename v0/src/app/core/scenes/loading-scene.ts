@@ -32,7 +32,7 @@ export class LoadingScene extends BaseScene {
         this._logger.log('create', config);
 
         if (config && config.level) {
-            //this.scene.start(config.level.sceneName, config);
+            this.scene.start(config.level.sceneName, config);
         }
     }
 
@@ -44,7 +44,7 @@ export class LoadingScene extends BaseScene {
     init(config: LevelConfig) {
         this._levelConfig = config;
 
-        const levelData = this.cache.json.get(config.level.key);
+        const levelData = this.cache.json.get(config.nextLevelToLoadByKey);
         this._levelConfig.data = <SceneData> levelData;
 
         let message = this.add.text(window.innerWidth / 2, window.innerHeight / 2,

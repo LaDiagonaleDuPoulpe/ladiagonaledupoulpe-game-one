@@ -28,7 +28,7 @@ export class CustomGame extends Phaser.Game {
 
     constructor(config: GameConfig, 
                 private _sceneConfigService: SceneConfigService,
-                private _levelManageService: LevelManageService,
+                private _levelService: LevelService,
                 private _logger: DefaultLogger,
                 private _bootScene: MainScene,
                 private _loadingScene: LoadingScene,
@@ -71,7 +71,6 @@ export class CustomGame extends Phaser.Game {
 
         const config = new LevelConfig();
         config.sceneConfiguration = this._sceneConfig;
-        config.nextLevelToLoadByKey = this._levelManageService.next();
 
         this.scene.start(SceneType.main, config);
     }

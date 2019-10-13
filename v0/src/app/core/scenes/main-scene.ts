@@ -8,6 +8,7 @@ import { Level } from '../models/level';
 import { LevelConfig } from '../models/level-config';
 import { SceneType } from '../../shared/enums/scene-type';
 import { SceneData } from '../models/scene-data';
+import { LevelManageService } from '../../shared/services/level-manager.service';
 
 /**
 * Boot scene : scene will be loaded to start the game
@@ -18,7 +19,9 @@ export class MainScene extends BaseScene {
     private _levels: Level[];
     //#endregion
 
-    constructor(protected _logger: DefaultLogger, private _levelService: LevelService) {
+    constructor(protected _logger: DefaultLogger, 
+                private _levelService: LevelService,
+                private _levelManageService: LevelManageService) {
         super(MainScene.name, _logger);
     }
 
@@ -30,13 +33,9 @@ export class MainScene extends BaseScene {
     
     create(config: LevelConfig) {
         config.levels = this._levels;
-        // const levelData = this.cache.json.get(config.level.key);
-        // const newConfig = <LevelConfig> Object.create(config);
 
-        // this._logger.log('main', levelData);
-
-        // newConfig.data = <SceneData> levelData;
-        // newConfig.level = this._levels.find(item => item.key === config.level.key);
+        this._logger.log('MainScene:create', this._levels);
+        config.nextLevelToLoadByKey =  this._levelManageService.next();
 
         this.scene.start(SceneType.loading, config);
     }
