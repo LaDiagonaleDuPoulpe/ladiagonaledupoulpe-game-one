@@ -58,17 +58,41 @@ export class LoadingScene extends BaseScene {
 
     //#region internal methods
     private prepareAssets() {
-        this.prepareImagesToBeLoaded();
+        if (this._levelConfig && this._levelConfig.data) {
+            this.prepareImagesToBeLoaded();
+            this.prepareSpriteSheets();
+            this.prepareTileMaps();
+        }
+    }
+
+    private prepareSpriteSheets() {
+        this._logger.log('prepareSpriteSheets', this._levelConfig.data);
+        
+        this._levelConfig.data.assets.spritesheets.forEach(spritesheet => {
+            this.load.spritesheet(spritesheet.key, spritesheet.url, {
+                frameWidth: spritesheet.frameSetting.dimension.width,
+                frameHeight: spritesheet.frameSetting.dimension.height,
+                spacing: spritesheet.frameSetting.spacing,
+                margin: spritesheet.frameSetting.margin
+            });
+        }, this);
+    }
+    
+    private prepareTileMaps() {
+        this._logger.log('prepareTileMaps', this._levelConfig.data);
+        
+        this._levelConfig.data.assets.tilemaps.forEach(tilemap =>{
+            this.load.tilemapTiledJSON(tilemap.key, tilemap.url);
+        }, this);
+
     }
 
     private prepareImagesToBeLoaded() {
-        this._logger.log('loadImages', this._levelConfig.data);
+        this._logger.log('prepareImagesToBeLoaded', this._levelConfig.data);
 
-        if (this._levelConfig && this._levelConfig.data) {
-            this._levelConfig.data.assets.images.forEach((image) => {
-                this.load.image(image.key, image.url);
-            }, this);
-        }
+        this._levelConfig.data.assets.images.forEach((image) => {
+            this.load.image(image.key, image.url);
+        }, this);
     }
     //#endregion
 }

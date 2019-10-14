@@ -31,7 +31,7 @@ export class LevelManageService {
         }
 
         if (this._previousLevelKey == 'title') {
-            this._currentLevelKey = 'level-one-ship-crash';
+            this._currentLevelKey = '000-inside-broken-ship';
         }
 
         return this._currentLevelKey;

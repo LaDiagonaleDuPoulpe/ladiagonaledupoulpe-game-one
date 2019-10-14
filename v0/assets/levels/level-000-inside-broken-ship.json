@@ -1,0 +1,65 @@
+{
+    "assets": {
+        "images": [
+
+        ],
+        "tilemaps": [
+
+        ],
+        "spritesheets": [
+            
+        ]
+    },
+    "groups": [
+        "backgrounds",
+        "texts"
+    ],
+    "prefabs": [
+        {
+            "key": "background",
+            "type": "background",
+            "position": {
+                "x": 0,
+                "y": 0
+            },
+            "properties": {
+                "texture": "background",
+                "group": "backgrounds",
+                "anchor": {
+                    "x": 0,
+                    "y": 0
+                },
+                "scale": {
+                    "x": 2,
+                    "y": 2
+                }
+            }
+        },
+        {
+            "key": "title",
+            "type": "text",
+            "position": {
+                "x": 20,
+                "y": 100
+            },
+            "properties": {
+                "group": "texts",
+                "style": {"font": "20px Kells", "fill": "#000000"},
+                "text": "La diagonale du poulpe"
+            }
+        },
+        {
+            "key": "start",
+            "type": "text",
+            "position": {
+                "x": 150,
+                "y": 200
+            },
+            "properties": {
+                "group": "texts",
+                "style": {"font": "20px Kells", "fill": "#000000"},
+                "text": "click to start playing"
+            }
+        }
+    ]
+}

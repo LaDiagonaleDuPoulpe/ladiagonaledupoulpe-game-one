@@ -6,5 +6,6 @@ export enum SceneType {
     main = 'MainScene',
     boot = 'BootScene',
     loading = 'LoadingScene',
-    title = 'TitleScene'
+    title = 'TitleScene',
+    map = 'MapScene'
 };

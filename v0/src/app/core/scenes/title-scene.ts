@@ -18,8 +18,10 @@ export class TitleScene extends BaseLevelScene {
         super.init(data);
     }
     
-    startGame() {
-        
+    /**
+     * Starts the game
+     */
+    startGame() {        
         this._logger.log('startGame', this.levelConfig);
         
         this.levelConfig.level.key = this._levelManageService.next();
