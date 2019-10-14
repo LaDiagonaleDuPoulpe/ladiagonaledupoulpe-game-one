@@ -46,7 +46,7 @@ export class MapScene extends BaseLevelScene {
 
         private prepareLayers() {
             this._map.layers.forEach((layer, index) => {
-                const currentTileSetKey = layer.properties["tileset"];
+                const currentTileSetKey = (<any> layer.properties[index]).value;
                 const staticLayer = this._map.createStaticLayer(layer.name, this._tilesets[currentTileSetKey]);
                 this._layers[layer.name] = staticLayer;
             }, this);

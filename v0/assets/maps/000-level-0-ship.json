@@ -87,15 +87,21 @@
                  "x":16,
                  "y":-16
                 }],
-         "height":48,
+         "height":64,
          "id":1,
-         "name":"Calque de Tile 1",
+         "name":"background",
          "opacity":1,
-         "startx":-32,
-         "starty":-48,
+         "properties":[
+                {
+                 "name":"tileset",
+                 "type":"string",
+                 "value":"mapTileSet"
+                }],
+         "startx":-48,
+         "starty":-64,
          "type":"tilelayer",
          "visible":true,
-         "width":64,
+         "width":80,
          "x":0,
          "y":0
         }],

@@ -3,7 +3,10 @@
  <tileset firstgid="1" name="tileset" tilewidth="16" tileheight="16" spacing="1" margin="1" tilecount="1645" columns="47">
   <image source="../images/ship/tileset.png" width="800" height="600"/>
  </tileset>
- <layer id="1" name="Calque de Tile 1" width="10" height="10">
+ <layer id="1" name="background" width="10" height="10">
+  <properties>
+   <property name="tileset" value="mapTileSet"/>
+  </properties>
   <data encoding="csv">
    <chunk x="-32" y="-48" width="16" height="16">
 5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
