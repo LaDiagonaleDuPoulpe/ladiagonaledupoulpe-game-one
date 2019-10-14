@@ -3,11 +3,14 @@
         "images": [
             {
                 "key": "mapTileSet",
-                "url": "assets/images/tileset.png"
+                "url": "assets/images/ship/tileset.png"
             }
         ],
         "tilemaps": [
-            
+            {
+                "key": "crashShip",
+                "source": "assets/maps/000-level-0-ship.json"
+            }
         ],
         "spritesheets": [
             

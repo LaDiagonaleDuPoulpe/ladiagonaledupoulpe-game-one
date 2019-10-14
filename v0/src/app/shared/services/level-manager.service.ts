@@ -1,19 +1,22 @@
-import { injectable } from "tsyringe";
+import { injectable, singleton } from "tsyringe";
 import { Level } from '../../core/models/level';
+import { Logger } from '../../logs/logger';
 
 /**
  * Manager to gets current scene and next scene
  */
-@injectable()
+@singleton()
 export class LevelManageService {
     //#region fields
     private _previousLevelKey: string; 
     private _currentLevelKey: string; 
     //#endregion
 
-    constructor() {
+    constructor(private _logger: Logger) {
         this._previousLevelKey = '';
         this._currentLevelKey = '';
+
+        this._logger.log('LevelManageService', 'constructor');
     }
 
     //#region public methods

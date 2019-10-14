@@ -24,8 +24,7 @@ export class TitleScene extends BaseLevelScene {
     startGame() {        
         this._logger.log('startGame', this.levelConfig);
         
-        this.levelConfig.level.key = this._levelManageService.next();
-
+        this.levelConfig.nextLevelToLoadByKey = this._levelManageService.next();
         this.scene.start(SceneType.loading, this.levelConfig);
     }
     //#endregion
