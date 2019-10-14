@@ -1,18 +1,26 @@
 {
     "assets": {
         "images": [
-
+            {
+                "key": "mapTileSet",
+                "url": "assets/images/tileset.png"
+            }
         ],
         "tilemaps": [
-
+            
         ],
         "spritesheets": [
             
         ]
     },
+    "map": {
+        "key": "townLevelTileMap",
+        "tilesets": [
+            "mapTileSet"
+        ]
+    },
     "groups": [
-        "backgrounds",
-        "texts"
+        "players"
     ],
     "prefabs": [
         {

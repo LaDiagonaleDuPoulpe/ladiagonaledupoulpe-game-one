@@ -1,6 +1,7 @@
 import { AssetImage } from "./asset-image";
 import { AssetsData } from "./assets-data";
 import { Prefab } from "./prefab";
+import { AssetMap } from './asset-map';
 
 /**
  * Data of the scene
@@ -21,5 +22,10 @@ export class SceneData {
      * Prefabs list of one scene
      */
     public prefabs: Prefab[];
+
+    /**
+     * Map to load in current scene
+     */
+    public map: AssetMap;
     //#endregion
 }

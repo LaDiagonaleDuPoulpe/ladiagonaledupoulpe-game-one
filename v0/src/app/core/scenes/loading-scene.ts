@@ -24,7 +24,6 @@ export class LoadingScene extends BaseScene {
     }
 
     //#region internal methods
-
     //#endregion
 
     //#region public methods
@@ -68,23 +67,26 @@ export class LoadingScene extends BaseScene {
     private prepareSpriteSheets() {
         this._logger.log('prepareSpriteSheets', this._levelConfig.data);
         
-        this._levelConfig.data.assets.spritesheets.forEach(spritesheet => {
-            this.load.spritesheet(spritesheet.key, spritesheet.url, {
-                frameWidth: spritesheet.frameSetting.dimension.width,
-                frameHeight: spritesheet.frameSetting.dimension.height,
-                spacing: spritesheet.frameSetting.spacing,
-                margin: spritesheet.frameSetting.margin
-            });
-        }, this);
+        if (this._levelConfig.data.assets.spritesheets) {
+            this._levelConfig.data.assets.spritesheets.forEach(spritesheet => {
+                this.load.spritesheet(spritesheet.key, spritesheet.url, {
+                    frameWidth: spritesheet.frameSetting.dimension.width,
+                    frameHeight: spritesheet.frameSetting.dimension.height,
+                    spacing: spritesheet.frameSetting.spacing,
+                    margin: spritesheet.frameSetting.margin
+                });
+            }, this);
+        }
     }
     
     private prepareTileMaps() {
         this._logger.log('prepareTileMaps', this._levelConfig.data);
         
-        this._levelConfig.data.assets.tilemaps.forEach(tilemap =>{
-            this.load.tilemapTiledJSON(tilemap.key, tilemap.url);
-        }, this);
-
+        if (this._levelConfig.data.assets.tilemaps) {
+            this._levelConfig.data.assets.tilemaps.forEach(tilemap =>{
+                this.load.tilemapTiledJSON(tilemap.key, tilemap.url);
+            }, this);
+        }
     }
 
     private prepareImagesToBeLoaded() {
