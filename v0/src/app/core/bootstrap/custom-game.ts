@@ -46,17 +46,24 @@ export class CustomGame extends Phaser.Game {
      * initialize all data, adding scenes
      */
     private init() {
+        this.addScenes();
+        this.loadConfigurations();
+        this.attachEvents();
+    }
+    
+    private addScenes() {
         this.scene.add(SceneType.map, this._mapScene);
         this.scene.add(SceneType.loading, this._loadingScene);
         this.scene.add(SceneType.title, this._titleScene);
         this.scene.add(SceneType.main, this._mainScene);
-
-        this.loadConfigurations();
     }
 
     private loadConfigurations() {
         this._sceneConfigService.loadDefault().subscribe(config => this._sceneConfig = config);
 
+    }
+    
+    private attachEvents() {
         this.scale.on('resize', this.resize, this);
     }
     //#endregion
@@ -89,9 +96,6 @@ export class CustomGame extends Phaser.Game {
     resize(gameSize, baseSize, displaySize, resolution) {
         
         this._logger.log('resize', gameSize);
-        this._logger.log('resize2', baseSize);
-        this._logger.log('resize3', displaySize);
-        this._logger.log('resolution', resolution);
         // //this.scale.resize(window.innerWidth, window.innerHeight);
         // this.scale.refresh();
     }
