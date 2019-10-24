@@ -4,6 +4,10 @@
             {
                 "key": "background",
                 "url": "assets/images/default/background.gif"
+            },
+            {
+                "key": "buttonNew",
+                "url": "assets/images/menu/button-test.png"
             }
         ]
     },
@@ -29,33 +33,47 @@
                 "scale": {
                     "x": 2,
                     "y": 2
-                }
+                },
+                "depth": 1
             }
         },
         {
             "key": "title",
             "type": "text",
             "position": {
-                "x": 20,
+                "x": 10,
                 "y": 100
             },
             "properties": {
                 "group": "texts",
-                "style": {"font": "20px Kells", "fill": "#000000"},
-                "text": "La diagonale du poulpe"
+                "style": {
+                    "font": "40px Kells", 
+                    "fill": "#FFFFFF"
+                },
+                "text": "La diagonale du poulpe",
+                "depth": 0
             }
         },
         {
             "key": "start",
-            "type": "text",
+            "type": "buttonImage",
             "position": {
-                "x": 150,
+                "x": 20,
                 "y": 200
             },
             "properties": {
+                "texture": "buttonNew",
                 "group": "texts",
-                "style": {"font": "20px Kells", "fill": "#000000"},
-                "text": "click to start playing"
+                "style": {
+                    "font": "20px Kells", 
+                    "fill": "#FFFFF0"
+                },
+                "text": "Nouvelle partie",
+                "scale": {
+                    "x": 0.2,
+                    "y": 0.2
+                },
+                "depth": 0
             }
         }
     ]

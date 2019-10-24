@@ -3,5 +3,6 @@
  */
 export enum PrefabType {
     background = 'background',
-    text = 'text'
+    text = 'text',
+    clickable = 'buttonImage'
 }

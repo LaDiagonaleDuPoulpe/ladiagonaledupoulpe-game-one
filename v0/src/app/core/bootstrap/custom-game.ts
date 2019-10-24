@@ -65,6 +65,7 @@ export class CustomGame extends Phaser.Game {
     
     private attachEvents() {
         this.scale.on('resize', this.resize, this);
+        this.input.mouse.capture = true;
     }
     //#endregion
 

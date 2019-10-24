@@ -5,6 +5,7 @@ import { PropertiesSetting } from "../models/properties-setting";
 import { PrefabType } from "../../shared/enums/prefab-type";
 import { BackgroundPrefabSprite } from "./background-prefab-sprite";
 import { TextPrefabSprite } from "./text-prefab-sprite";
+import { ClickableTextPrefabSprite } from './clickable-text-prefab-sprite';
 
 /**
  * Factory to create custom sprite prefab
@@ -33,7 +34,11 @@ export class PrefabSpriteFactory {
 
             case PrefabType.text: {
                 sprite = new TextPrefabSprite(scene, name, position, properties);
-            }
+            } break;
+
+            case PrefabType.clickable: {
+                sprite = new ClickableTextPrefabSprite(scene, name, position, properties);
+            } break;
         }
 
         return sprite;

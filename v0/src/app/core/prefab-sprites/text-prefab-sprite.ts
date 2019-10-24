@@ -14,5 +14,16 @@ export class TextPrefabSprite extends Phaser.GameObjects.Text {
 
         this.style.setFont(this._properties.style.font);
         this.style.setFill(this._properties.style.fill);
+
+        this._scene.add.existing(this);
     }
+
+    //#region properties
+    /**
+     * Gets properties setting
+     */
+    protected get properties(): PropertiesSetting {
+        return this._properties;
+    }
+    //#endregion
 }

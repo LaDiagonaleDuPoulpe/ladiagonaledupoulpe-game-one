@@ -111,9 +111,7 @@ export abstract class BaseLevelScene extends BaseScene {
         this._levelConfig.data.prefabs.forEach((prefab) => {
             const sprite = PrefabSpriteFactory.create(prefab.type, this, prefab.key, prefab.position, prefab.properties);
             
-            this.add.existing(sprite);
             this.physicalGroups[prefab.properties.group].add(sprite);
-            
             this.prefabSprites[prefab.key] = sprite;            
         }, this);
     }
