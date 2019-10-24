@@ -27,12 +27,15 @@ export class TitleScene extends BaseLevelScene {
         this.levelConfig.nextLevelToLoadByKey = this._levelManageService.next();
         this.scene.start(SceneType.loading, this.levelConfig);
     }
+
+    goToNextScene() {
+        this.startGame();
+    }
     //#endregion
     
     //#region internal methods
     protected onKeyUp(event: KeyboardEvent) {
         this._logger.log('keyUp');
-        this.startGame();
     }
     
     protected onKeyDown(event: KeyboardEvent) {

@@ -55,8 +55,8 @@
             }
         },
         {
-            "key": "start",
-            "type": "buttonImage",
+            "key": "new-game",
+            "type": "clickableText",
             "position": {
                 "x": 20,
                 "y": 200

@@ -69,6 +69,13 @@ export abstract class BaseLevelScene extends BaseScene {
             }
         }
     }
+
+    /**
+     * Calls next scene and starts it
+     */
+    goToNextScene() {
+        throw new Error('Children class may overrides me');
+    }
     //#endregion
     
     //#region internal methods
@@ -142,7 +149,7 @@ export abstract class BaseLevelScene extends BaseScene {
     /**
      * Gets level config
      */
-    protected get levelConfig(): LevelConfig {
+    public get levelConfig(): LevelConfig {
         return this._levelConfig;
     }
     //#endregion

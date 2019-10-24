@@ -4,5 +4,6 @@
 export enum PrefabType {
     background = 'background',
     text = 'text',
-    clickable = 'buttonImage'
+    clickableText = 'clickableText',
+    buttonImage = 'buttonImage'
 }

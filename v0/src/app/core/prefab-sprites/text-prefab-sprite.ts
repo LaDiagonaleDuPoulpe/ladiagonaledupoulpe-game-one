@@ -6,7 +6,7 @@ import { PropertiesSetting } from "../models/properties-setting";
  * Sprite prefab to display text
  */
 export class TextPrefabSprite extends Phaser.GameObjects.Text {
-    constructor(private _scene: BaseLevelScene,
+    constructor(protected _scene: BaseLevelScene,
         private _name: string,
         private _position: Position,
         private _properties: PropertiesSetting) {

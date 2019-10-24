@@ -46,5 +46,10 @@ export class PropertiesSetting {
      * Frame of the sprite prefab
      */
     public frame: string;
+
+    /**
+     * Depth in the scene
+     */
+    public depth: integer;
     //#endregion
 }
