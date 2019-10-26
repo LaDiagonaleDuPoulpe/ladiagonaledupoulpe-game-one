@@ -5,6 +5,12 @@
                 "key": "background",
                 "url": "assets/images/default/background.gif"
             }
+        ],
+        "videos": [
+            {
+                "key": "video-intro",
+                "url": "assets/videos/level-000/000-video.mp4"
+            }
         ]
     },
     "groups": [
@@ -13,27 +19,6 @@
     ],
     "prefabs": [
         {
-            "key": "background",
-            "type": "background",
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "properties": {
-                "texture": "background",
-                "group": "backgrounds",
-                "anchor": {
-                    "x": 0,
-                    "y": 0
-                },
-                "scale": {
-                    "x": 2,
-                    "y": 2
-                },
-                "depth": 1
-            }
-        },
-        {
             "key": "video-intro",
             "type": "video",
             "position": {
@@ -41,6 +26,7 @@
                 "y": 0
             },
             "properties": {
+                "texture": "videointro",
                 "group": "videos",
                 "depth": 0
             }

@@ -28,7 +28,6 @@ export abstract class BaseLevelScene extends BaseScene {
 
         this.createCollisionGroups();
         this.createAllPrefabSprites();
-
     }
     
     update() {
@@ -75,6 +74,20 @@ export abstract class BaseLevelScene extends BaseScene {
      */
     goToNextScene() {
         throw new Error('Children class may overrides me');
+    }
+
+    /**
+     * Get video asset by key string
+     * @param key string to find asset
+     */
+    getVideoByKey(key: string) {
+        const videoAsset = this.configData.assets.videos.find((video) => video.key === key, this);
+
+        if (! videoAsset) {
+            throw new Error(`Video with key ${key} is missing`);
+        }
+
+        return videoAsset;
     }
     //#endregion
     

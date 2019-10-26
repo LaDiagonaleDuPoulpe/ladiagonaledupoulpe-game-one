@@ -7,6 +7,7 @@ import { BackgroundPrefabSprite } from "./background-prefab.sprite";
 import { TextPrefabSprite } from "./text-prefab.sprite";
 import { ClickableImagePrefabSprite } from './clickable-image-prefab.sprite';
 import { ClickableTextPrefabSprite } from './clickable-text-prefab.sprite';
+import { VideoSprite } from './video.sprite';
 
 /**
  * Factory to create custom sprite prefab
@@ -44,6 +45,11 @@ export class PrefabSpriteFactory {
             case PrefabType.clickableText: {
                 sprite = new ClickableTextPrefabSprite(scene, name, position, properties);
             } break;
+
+            case PrefabType.video: {
+                sprite = new VideoSprite(scene, name, position, properties);
+            } break;
+
         }
 
         return sprite;

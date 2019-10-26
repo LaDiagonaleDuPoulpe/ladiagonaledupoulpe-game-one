@@ -14,7 +14,7 @@ export class VideoSprite extends Phaser.GameObjects.Image {
     //#endregion
 
     constructor(private _scene: BaseLevelScene,
-        _name: string,
+        private _name: string,
         private _position: Position,
         private _properties: PropertiesSetting) {
         
@@ -26,9 +26,7 @@ export class VideoSprite extends Phaser.GameObjects.Image {
         }      
                     
     //#region internal methods
-    private initialize() {
-        this._scene.textures.createCanvas(this._properties.texture);
-        
+    private initialize() {        
         this.setVideoLoading();        
         this.setInteractive();
 
@@ -36,10 +34,31 @@ export class VideoSprite extends Phaser.GameObjects.Image {
     }
     
     private setVideoLoading() {
+        const texture = this._scene.textures.createCanvas(this._properties.texture, 800, 800);
+
         this._videoElement = document.createElement('video');
+
+        this._videoElement.src = this.getCurrentAssetVideo(this._name).url;
+        this._videoElement.muted = true;
+
+        this.width = 800;
+        this.height = 800;
+
+        this._videoElement.width = 800;
+        this._videoElement.height = 800;
+
+        // this.setOrigin(0.5, 0.5);
+		this.x= 0;
+		this.y=0;
+		// this.setScale(0.5, 0.5);
 
         const self = this;
         this._videoElement.addEventListener('loadeddata', () => {
+            this._videoElement.play();
+            //self.texture.drawImage(this, 0, 0);
+            const text = self.texture;
+            texture.context.drawImage(this._videoElement, 0, 0);
+		    texture.refresh();
             self._loaded = true;
         });
 
@@ -48,6 +67,10 @@ export class VideoSprite extends Phaser.GameObjects.Image {
                 this._videoElement.play();
             });
         }
+    }
+
+    private getCurrentAssetVideo(key: string) {
+        return this._scene.getVideoByKey(key);
     }
     //#endregion
     

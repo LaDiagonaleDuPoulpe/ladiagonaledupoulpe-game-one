@@ -95,6 +95,6 @@ export class LoadingScene extends BaseScene {
         this._levelConfig.data.assets.images.forEach((image) => {
             this.load.image(image.key, image.url);
         }, this);
-    }
+    }    
     //#endregion
 }

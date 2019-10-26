@@ -13,6 +13,11 @@ export class AssetsData {
     public images: AssetImage[];
 
     /**
+     * List of videos to be loaded in current scene
+     */
+    public videos: AssetImage[];
+
+    /**
      * List of map to be loaded in current scene
      */
     public tilemaps: AssetTileMap[];

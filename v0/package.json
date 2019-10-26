@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack --mode development && webpack-dev-server --mode development",
-    "build": "webpack --mode production && webpack-dev-server --mode production"
+    "build": "webpack --mode production",
+    "prod": "webpack --mode production && webpack-dev-server --mode production"
   },
   "author": "evan boissonnot",
   "license": "ISC",
