@@ -10,9 +10,11 @@ import { BaseLevelScene } from './base-level-scene';
 @injectable()
  export class VideoScene extends BaseLevelScene {
     constructor(protected _logger: DefaultLogger,
-                private _levelManageService: LevelManageService) {
-        super(VideoScene.name, _logger);
-
+                private _levelManageService: LevelManageService,) {
+        super(VideoScene.name, _logger, _levelManageService);
     }
+
+    //#region public methods
+    //#endregion
         
 }

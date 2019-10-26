@@ -17,7 +17,7 @@ export class MapScene extends BaseLevelScene {
 
     constructor(protected _logger: DefaultLogger,
         private _levelManageService: LevelManageService) {
-            super(MapScene.name, _logger);
+            super(MapScene.name, _logger, _levelManageService);
         }
         
         //#region public methods

@@ -92,23 +92,19 @@ export class LoadingScene extends BaseScene {
     }
 
     private prepareImagesToBeLoaded() {
-        this._levelConfig.data.assets.images.forEach((asset) => {
-            this.load.image(asset.key, asset.url);
-        }, this);
+        if (this._levelConfig.data.assets.images) {
+            this._levelConfig.data.assets.images.forEach((asset) => {
+                this.load.image(asset.key, asset.url);
+            }, this);
+        }
     }    
 
     private prepareVideosToBeLoaded() {
-        this._levelConfig.data.assets.videos.forEach((asset) => {
-            this.load.video(asset.key, asset.url);
-        }, this);
+        if (this._levelConfig.data.assets.videos) {
+            this._levelConfig.data.assets.videos.forEach((asset) => {
+                this.load.video(asset.key, asset.url);
+            }, this);
+        }
     }    
-
-    private prepareAssetsWithUrl(assets: AssetImage[], loader: Function) {
-        this._logger.log('prepareImagesToBeLoaded', this._levelConfig.data);
-
-        assets.forEach((asset) => {
-            loader(asset.key, asset.url);
-        }, this);
-    }
     //#endregion
 }

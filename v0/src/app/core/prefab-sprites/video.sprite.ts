@@ -28,6 +28,9 @@ export class VideoSprite extends Phaser.GameObjects.Video {
     //#region internal methods
     private initialize() {       
         this._scene.add.existing(this);
+    
+    
+
         this.play(false);
     }
 

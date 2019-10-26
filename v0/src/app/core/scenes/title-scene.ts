@@ -10,7 +10,7 @@ import { LevelManageService } from '../../shared/services/level-manager.service'
 export class TitleScene extends BaseLevelScene {
     constructor(protected _logger: DefaultLogger,
                 private _levelManageService: LevelManageService) {
-        super(TitleScene.name, _logger);
+        super(TitleScene.name, _logger, _levelManageService);
     }
     
     //#region public methods

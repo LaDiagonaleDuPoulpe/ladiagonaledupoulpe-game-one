@@ -4,6 +4,7 @@ import { LevelConfig } from "../models/level-config";
 import { Dictionary } from "../../shared/custom-types/dictionary";
 import { PrefabSpriteFactory } from "../prefab-sprites/prefab-sprite-factory";
 import { SceneData } from "../models/scene-data";
+import { LevelManageService } from '../../shared/services/level-manager.service';
 
 /**
 * Base level scene : abstract class of all active map scenes
@@ -18,7 +19,7 @@ export abstract class BaseLevelScene extends BaseScene {
     private _prefabSprites: Dictionary<Phaser.GameObjects.GameObject> = {};
     //#endregion
     
-    constructor(key: string, protected _logger: DefaultLogger) {
+    constructor(key: string, protected _logger: DefaultLogger, protected _levelManager: LevelManageService) {
         super(key, _logger);
     }
     
@@ -73,7 +74,7 @@ export abstract class BaseLevelScene extends BaseScene {
      * Calls next scene and starts it
      */
     goToNextScene() {
-        throw new Error('Children class may overrides me');
+        this._levelManager.next();
     }
 
     /**
