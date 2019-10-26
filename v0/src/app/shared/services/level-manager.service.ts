@@ -30,6 +30,10 @@ export class LevelManageService {
         this._previousLevelKey = this._currentLevelKey;
 
         if (this._previousLevelKey === '') {
+            this._currentLevelKey = '000-video-intro';
+        }
+
+        if (this._previousLevelKey == '000-video-intro') {
             this._currentLevelKey = 'title';
         }
 

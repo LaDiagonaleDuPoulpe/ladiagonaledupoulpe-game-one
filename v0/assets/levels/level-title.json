@@ -75,6 +75,50 @@
                 },
                 "depth": 0
             }
+        },
+        {
+            "key": "existing-game",
+            "type": "clickableText",
+            "position": {
+                "x": 20,
+                "y": 250
+            },
+            "properties": {
+                "texture": "buttonNew",
+                "group": "texts",
+                "style": {
+                    "font": "20px Kells", 
+                    "fill": "#FFFFF0"
+                },
+                "text": "Charger une partie existante",
+                "scale": {
+                    "x": 0.2,
+                    "y": 0.2
+                },
+                "depth": 0
+            }
+        },
+        {
+            "key": "credits",
+            "type": "clickableText",
+            "position": {
+                "x": 20,
+                "y": 350
+            },
+            "properties": {
+                "texture": "buttonNew",
+                "group": "texts",
+                "style": {
+                    "font": "20px Kells", 
+                    "fill": "#FFFFF0"
+                },
+                "text": "Crédits",
+                "scale": {
+                    "x": 0.2,
+                    "y": 0.2
+                },
+                "depth": 0
+            }
         }
     ]
 }

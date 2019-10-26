@@ -1,12 +1,12 @@
-import { PrefabSprite } from "./prefab-sprite";
+import { PrefabSprite } from "./prefab.sprite";
 import { BaseLevelScene } from "../scenes/base-level-scene";
 import { Position } from "../models/position";
 import { PropertiesSetting } from "../models/properties-setting";
 import { PrefabType } from "../../shared/enums/prefab-type";
-import { BackgroundPrefabSprite } from "./background-prefab-sprite";
-import { TextPrefabSprite } from "./text-prefab-sprite";
-import { ClickableImagePrefabSprite } from './clickable-image-prefab-sprite';
-import { ClickableTextPrefabSprite } from './clickable-text-prefab-sprite';
+import { BackgroundPrefabSprite } from "./background-prefab.sprite";
+import { TextPrefabSprite } from "./text-prefab.sprite";
+import { ClickableImagePrefabSprite } from './clickable-image-prefab.sprite';
+import { ClickableTextPrefabSprite } from './clickable-text-prefab.sprite';
 
 /**
  * Factory to create custom sprite prefab

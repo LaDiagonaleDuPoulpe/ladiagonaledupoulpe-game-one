@@ -15,6 +15,7 @@ export class LevelService {
         const levels = [];
 
         levels.push(new Level('title', SceneType.title));
+        levels.push(new Level('000-video-intro', SceneType.video));
         levels.push(new Level('000-inside-broken-ship', SceneType.map));
 
         return of(levels);

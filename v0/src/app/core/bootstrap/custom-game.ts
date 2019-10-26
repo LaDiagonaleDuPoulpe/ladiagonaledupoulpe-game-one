@@ -15,6 +15,7 @@ import { TitleScene } from "../scenes/title-scene";
 import { LevelService } from '../../shared/services/level.service';
 import { LevelManageService } from '../../shared/services/level-manager.service';
 import { MapScene } from '../scenes/map-scene';
+import { VideoScene } from '../scenes/video-scene';
 
 
 /**
@@ -35,6 +36,7 @@ export class CustomGame extends Phaser.Game {
                 private _mainScene: MainScene,
                 private _loadingScene: LoadingScene,
                 private _titleScene: TitleScene,
+                private _videoScene: VideoScene,
                 private _mapScene: MapScene) {
         super(config.forRoot());
 
@@ -55,6 +57,7 @@ export class CustomGame extends Phaser.Game {
         this.scene.add(SceneType.map, this._mapScene);
         this.scene.add(SceneType.loading, this._loadingScene);
         this.scene.add(SceneType.title, this._titleScene);
+        this.scene.add(SceneType.video, this._videoScene);
         this.scene.add(SceneType.main, this._mainScene);
     }
 
