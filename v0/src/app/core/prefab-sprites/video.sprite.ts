@@ -24,13 +24,21 @@ export class VideoSprite extends Phaser.GameObjects.Video {
 
             this.initialize(); 
         }      
+
+    //#region public methods
+    completeHandler() {
+        this._scene.goToNextScene();   
+    }
+    //#endregion
                     
     //#region internal methods
     private initialize() {       
-        this._scene.add.existing(this);
-    
-    
+        this._scene.add.existing(this);  
+        
+        this.setOrigin(this._position.x, this._position.y);
 
+        this.setDisplaySize(window.innerWidth, window.innerHeight);
+        //this.setSize(window.innerWidth, window.innerHeight);
         this.play(false);
     }
 

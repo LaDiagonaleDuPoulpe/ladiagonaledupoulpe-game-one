@@ -14,13 +14,12 @@ export abstract class BaseLevelScene extends BaseScene {
     //#region fields    
     private _keyListeners = ['Down', 'Up'];
 
-    private _levelConfig: LevelConfig;
     private _physicalGroups: Dictionary<Phaser.Physics.Arcade.Group> = {};
     private _prefabSprites: Dictionary<Phaser.GameObjects.GameObject> = {};
     //#endregion
     
     constructor(key: string, protected _logger: DefaultLogger, protected _levelManager: LevelManageService) {
-        super(key, _logger);
+        super(key, _logger, _levelManager);
     }
     
     //#region public methods
@@ -33,10 +32,6 @@ export abstract class BaseLevelScene extends BaseScene {
     
     update() {
        this.updateAllPrefabs();
-    }
-    
-    init(config: LevelConfig) {
-        this._levelConfig = config;
     }
     
     /**
@@ -68,13 +63,6 @@ export abstract class BaseLevelScene extends BaseScene {
                 sprite.update();
             }
         }
-    }
-
-    /**
-     * Calls next scene and starts it
-     */
-    goToNextScene() {
-        this._levelManager.next();
     }
 
     /**
@@ -123,13 +111,13 @@ export abstract class BaseLevelScene extends BaseScene {
     }
 
     private createCollisionGroups() {
-        this._levelConfig.data.groups.forEach((groupName) => {
+        this.levelConfig.data.groups.forEach((groupName) => {
             this.physicalGroups[groupName] = this.physics.add.group();
         }, this);
     }
     
     private createAllPrefabSprites() {
-        this._levelConfig.data.prefabs.forEach((prefab) => {
+        this.levelConfig.data.prefabs.forEach((prefab) => {
             const sprite = PrefabSpriteFactory.create(prefab.type, this, prefab.key, prefab.position, prefab.properties);
             
             this.physicalGroups[prefab.properties.group].add(sprite);
@@ -151,20 +139,6 @@ export abstract class BaseLevelScene extends BaseScene {
     */
     public get prefabSprites(): Dictionary<Phaser.GameObjects.GameObject> {
         return this._prefabSprites;
-    }
-    
-    /**
-    * Gets scene data (from json file)
-    */
-    public get configData(): SceneData {
-        return this.levelConfig.data;
-    }
-    
-    /**
-     * Gets level config
-     */
-    public get levelConfig(): LevelConfig {
-        return this._levelConfig;
     }
     //#endregion
 }

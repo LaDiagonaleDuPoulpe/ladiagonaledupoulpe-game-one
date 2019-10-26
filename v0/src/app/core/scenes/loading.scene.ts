@@ -15,13 +15,9 @@ import { AssetImage } from '../models/asset-image';
 */
 @injectable()
 export class LoadingScene extends BaseScene {
-    //#region fields
-    private _levelConfig: LevelConfig;
-    //#endregion
-
     constructor(protected _logger: DefaultLogger,
                 private _levelManageService: LevelManageService) {
-        super(LoadingScene.name, _logger);
+        super(LoadingScene.name, _logger, _levelManageService);
     }
 
     //#region internal methods
@@ -42,23 +38,23 @@ export class LoadingScene extends BaseScene {
     }
 
     init(config: LevelConfig) {
-        this._levelConfig = config;
+        this.levelConfig = config;
 
         const levelData = this.cache.json.get(config.nextLevelToLoadByKey);
-        this._levelConfig.data = <SceneData> levelData;
+        this.levelConfig.data = <SceneData> levelData;
 
         let message = this.add.text(window.innerWidth / 2, window.innerHeight / 2,
             "Chargement du niveau",
             {
-                font: "48px " + this._levelConfig.sceneConfiguration.font,
-                fill: this._levelConfig.sceneConfiguration.foreColor
+                font: "48px " + this.levelConfig.sceneConfiguration.font,
+                fill: this.levelConfig.sceneConfiguration.foreColor
             });
     }
     //#endregion
 
     //#region internal methods
     private prepareAssets() {
-        if (this._levelConfig && this._levelConfig.data) {
+        if (this.levelConfig && this.levelConfig.data) {
             this.prepareImagesToBeLoaded();
             this.prepareVideosToBeLoaded();
             this.prepareSpriteSheets();
@@ -67,10 +63,10 @@ export class LoadingScene extends BaseScene {
     }
 
     private prepareSpriteSheets() {
-        this._logger.log('prepareSpriteSheets', this._levelConfig.data);
+        this._logger.log('prepareSpriteSheets', this.levelConfig.data);
         
-        if (this._levelConfig.data.assets.spritesheets) {
-            this._levelConfig.data.assets.spritesheets.forEach(spritesheet => {
+        if (this.levelConfig.data.assets.spritesheets) {
+            this.levelConfig.data.assets.spritesheets.forEach(spritesheet => {
                 this.load.spritesheet(spritesheet.key, spritesheet.url, {
                     frameWidth: spritesheet.frameSetting.dimension.width,
                     frameHeight: spritesheet.frameSetting.dimension.height,
@@ -82,26 +78,26 @@ export class LoadingScene extends BaseScene {
     }
     
     private prepareTileMaps() {
-        this._logger.log('prepareTileMaps', this._levelConfig.data);
+        this._logger.log('prepareTileMaps', this.levelConfig.data);
         
-        if (this._levelConfig.data.assets.tilemaps) {
-            this._levelConfig.data.assets.tilemaps.forEach(tilemap =>{
+        if (this.levelConfig.data.assets.tilemaps) {
+            this.levelConfig.data.assets.tilemaps.forEach(tilemap =>{
                 this.load.tilemapTiledJSON(tilemap.key, tilemap.url);
             }, this);
         }
     }
 
     private prepareImagesToBeLoaded() {
-        if (this._levelConfig.data.assets.images) {
-            this._levelConfig.data.assets.images.forEach((asset) => {
+        if (this.levelConfig.data.assets.images) {
+            this.levelConfig.data.assets.images.forEach((asset) => {
                 this.load.image(asset.key, asset.url);
             }, this);
         }
     }    
 
     private prepareVideosToBeLoaded() {
-        if (this._levelConfig.data.assets.videos) {
-            this._levelConfig.data.assets.videos.forEach((asset) => {
+        if (this.levelConfig.data.assets.videos) {
+            this.levelConfig.data.assets.videos.forEach((asset) => {
                 this.load.video(asset.key, asset.url);
             }, this);
         }

@@ -22,7 +22,7 @@ export class MainScene extends BaseScene {
     constructor(protected _logger: DefaultLogger, 
                 private _levelService: LevelService,
                 private _levelManageService: LevelManageService) {
-        super(MainScene.name, _logger);
+        super(MainScene.name, _logger, _levelManageService);
     }
 
     //#region public methods
@@ -32,12 +32,11 @@ export class MainScene extends BaseScene {
     }
     
     create(config: LevelConfig) {
-        config.levels = this._levels;
+        this.levelConfig = config;
+        this.levelConfig.levels = this._levels;
 
         this._logger.log('MainScene:create', this._levels);
-        config.nextLevelToLoadByKey =  this._levelManageService.next();
-
-        this.scene.start(SceneType.loading, config);
+        this.goToNextScene();
     }
     //#endregion
 
