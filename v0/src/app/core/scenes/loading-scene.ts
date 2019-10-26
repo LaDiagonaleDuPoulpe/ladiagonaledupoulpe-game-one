@@ -7,6 +7,7 @@ import { Level } from '../models/level';
 import { SceneType } from '../../shared/enums/scene-type';
 import { SceneData } from '../models/scene-data';
 import { LevelManageService } from '../../shared/services/level-manager.service';
+import { AssetImage } from '../models/asset-image';
 
 /**
 * Loads all assets of the game scene
@@ -59,6 +60,7 @@ export class LoadingScene extends BaseScene {
     private prepareAssets() {
         if (this._levelConfig && this._levelConfig.data) {
             this.prepareImagesToBeLoaded();
+            this.prepareVideosToBeLoaded();
             this.prepareSpriteSheets();
             this.prepareTileMaps();
         }
@@ -90,11 +92,23 @@ export class LoadingScene extends BaseScene {
     }
 
     private prepareImagesToBeLoaded() {
-        this._logger.log('prepareImagesToBeLoaded', this._levelConfig.data);
-
-        this._levelConfig.data.assets.images.forEach((image) => {
-            this.load.image(image.key, image.url);
+        this._levelConfig.data.assets.images.forEach((asset) => {
+            this.load.image(asset.key, asset.url);
         }, this);
     }    
+
+    private prepareVideosToBeLoaded() {
+        this._levelConfig.data.assets.videos.forEach((asset) => {
+            this.load.video(asset.key, asset.url);
+        }, this);
+    }    
+
+    private prepareAssetsWithUrl(assets: AssetImage[], loader: Function) {
+        this._logger.log('prepareImagesToBeLoaded', this._levelConfig.data);
+
+        assets.forEach((asset) => {
+            loader(asset.key, asset.url);
+        }, this);
+    }
     //#endregion
 }

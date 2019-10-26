@@ -6,11 +6,11 @@ import { Position } from '../models/position';
 /**
  * Sprite to display one video
  */
-export class VideoSprite extends Phaser.GameObjects.Image {
+export class VideoSprite extends Phaser.GameObjects.Video {
     //#region fields
     private _loaded = false;
     private _loop = false;
-    private _videoElement: HTMLVideoElement;
+    private _create
     //#endregion
 
     constructor(private _scene: BaseLevelScene,
@@ -20,53 +20,15 @@ export class VideoSprite extends Phaser.GameObjects.Image {
         
         super(_scene, _position.x, 
                       _position.y, 
-                      _properties.texture);
+                      _name);
 
             this.initialize(); 
         }      
                     
     //#region internal methods
-    private initialize() {        
-        this.setVideoLoading();        
-        this.setInteractive();
-
+    private initialize() {       
         this._scene.add.existing(this);
-    }
-    
-    private setVideoLoading() {
-        const texture = this._scene.textures.createCanvas(this._properties.texture, 800, 800);
-
-        this._videoElement = document.createElement('video');
-
-        this._videoElement.src = this.getCurrentAssetVideo(this._name).url;
-        this._videoElement.muted = true;
-
-        this.width = 800;
-        this.height = 800;
-
-        this._videoElement.width = 800;
-        this._videoElement.height = 800;
-
-        // this.setOrigin(0.5, 0.5);
-		this.x= 0;
-		this.y=0;
-		// this.setScale(0.5, 0.5);
-
-        const self = this;
-        this._videoElement.addEventListener('loadeddata', () => {
-            this._videoElement.play();
-            //self.texture.drawImage(this, 0, 0);
-            const text = self.texture;
-            texture.context.drawImage(this._videoElement, 0, 0);
-		    texture.refresh();
-            self._loaded = true;
-        });
-
-        if (this._loop) {
-            this._videoElement.addEventListener('ended', () => {
-                this._videoElement.play();
-            });
-        }
+        this.play(false);
     }
 
     private getCurrentAssetVideo(key: string) {

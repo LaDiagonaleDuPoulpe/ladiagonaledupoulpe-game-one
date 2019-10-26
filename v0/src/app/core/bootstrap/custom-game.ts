@@ -40,6 +40,8 @@ export class CustomGame extends Phaser.Game {
                 private _mapScene: MapScene) {
         super(config.forRoot());
 
+        Phaser.GameObjects.Video
+
         this.init();
     }
 

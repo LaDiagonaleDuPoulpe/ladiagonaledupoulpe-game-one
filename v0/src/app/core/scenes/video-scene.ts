@@ -12,6 +12,7 @@ import { BaseLevelScene } from './base-level-scene';
     constructor(protected _logger: DefaultLogger,
                 private _levelManageService: LevelManageService) {
         super(VideoScene.name, _logger);
+
     }
         
 }
