@@ -1,5 +1,5 @@
 import { DefaultLogger } from "../../shared/services/default-logger";
-import { BaseScene } from "./base-scene";
+import { BaseScene } from "./base.scene";
 import { LevelConfig } from "../models/level-config";
 import { Dictionary } from "../../shared/custom-types/dictionary";
 import { PrefabSpriteFactory } from "../prefab-sprites/prefab-sprite-factory";

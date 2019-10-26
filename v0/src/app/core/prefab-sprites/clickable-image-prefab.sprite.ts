@@ -1,4 +1,4 @@
-import { BaseLevelScene } from "../scenes/base-level-scene";
+import { BaseLevelScene } from "../scenes/base-level.scene";
 import { Position } from "../models/position";
 import { PropertiesSetting } from "../models/properties-setting";
 import { TextPrefabSprite } from "./text-prefab.sprite";

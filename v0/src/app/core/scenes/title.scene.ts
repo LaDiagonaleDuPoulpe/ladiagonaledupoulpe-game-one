@@ -1,7 +1,7 @@
 import { injectable } from "tsyringe";
 
 import { DefaultLogger } from "../../shared/services/default-logger";
-import { BaseLevelScene } from "./base-level-scene";
+import { BaseLevelScene } from "./base-level.scene";
 import { LevelConfig } from '../models/level-config';
 import { SceneType } from '../../shared/enums/scene-type';
 import { LevelManageService } from '../../shared/services/level-manager.service';

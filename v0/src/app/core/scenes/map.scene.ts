@@ -2,7 +2,7 @@ import { injectable } from "tsyringe";
 import { Dictionary } from '../../shared/custom-types/dictionary';
 import { DefaultLogger } from "../../shared/services/default-logger";
 import { LevelManageService } from "../../shared/services/level-manager.service";
-import { BaseLevelScene } from './base-level-scene';
+import { BaseLevelScene } from './base-level.scene';
 
 /**
 * Scene with map loading, (tile json loaded)

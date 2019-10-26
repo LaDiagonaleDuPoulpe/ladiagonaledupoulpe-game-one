@@ -1,4 +1,4 @@
-import { BaseLevelScene } from "../scenes/base-level-scene";
+import { BaseLevelScene } from "../scenes/base-level.scene";
 
 /**
  * User input manager : each event listener launch action

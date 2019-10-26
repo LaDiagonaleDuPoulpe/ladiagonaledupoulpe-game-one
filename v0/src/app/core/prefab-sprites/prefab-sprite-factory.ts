@@ -1,5 +1,5 @@
 import { PrefabSprite } from "./prefab.sprite";
-import { BaseLevelScene } from "../scenes/base-level-scene";
+import { BaseLevelScene } from "../scenes/base-level.scene";
 import { Position } from "../models/position";
 import { PropertiesSetting } from "../models/properties-setting";
 import { PrefabType } from "../../shared/enums/prefab-type";

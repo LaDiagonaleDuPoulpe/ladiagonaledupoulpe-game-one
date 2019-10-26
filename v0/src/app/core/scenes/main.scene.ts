@@ -1,7 +1,7 @@
 import { map } from 'rxjs/operators';
 import { injectable, container } from 'tsyringe';
 
-import { BaseScene } from './base-scene';
+import { BaseScene } from './base.scene';
 import { DefaultLogger } from '../../shared/services/default-logger';
 import { LevelService } from '../../shared/services/level.service';
 import { Level } from '../models/level';

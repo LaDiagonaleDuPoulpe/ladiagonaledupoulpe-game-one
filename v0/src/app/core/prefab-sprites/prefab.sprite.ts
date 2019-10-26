@@ -1,6 +1,6 @@
 import { Position } from "../models/position";
 import { PropertiesSetting } from "../models/properties-setting";
-import { BaseLevelScene } from "../scenes/base-level-scene";
+import { BaseLevelScene } from "../scenes/base-level.scene";
 
 /**
  * Sprite adding in scene : could be image or animated image

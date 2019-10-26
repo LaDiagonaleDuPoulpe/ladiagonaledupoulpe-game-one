@@ -9,13 +9,13 @@ import { GameConfig } from "../config/game-config";
 import { Level } from "../models/level";
 import { LevelConfig } from '../models/level-config';
 import { SceneConfig } from "../models/scene-config";
-import { MainScene } from "../scenes/main-scene";
-import { LoadingScene } from '../scenes/loading-scene';
-import { TitleScene } from "../scenes/title-scene";
+import { MainScene } from "../scenes/main.scene";
+import { LoadingScene } from '../scenes/loading.scene';
+import { TitleScene } from "../scenes/title.scene";
 import { LevelService } from '../../shared/services/level.service';
 import { LevelManageService } from '../../shared/services/level-manager.service';
-import { MapScene } from '../scenes/map-scene';
-import { VideoScene } from '../scenes/video-scene';
+import { MapScene } from '../scenes/map.scene';
+import { VideoScene } from '../scenes/video.scene';
 
 
 /**
