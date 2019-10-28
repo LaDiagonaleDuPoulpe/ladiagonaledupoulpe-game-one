@@ -9,12 +9,24 @@
                 "key": "buttonNew",
                 "url": "assets/images/menu/button-test.png"
             }
-        ]
+        ],
+        "tilemaps": [
+            {
+                "key": "animate-intro",
+                "url": "assets/maps/000-intro.json"
+            }
+        ],
     },
     "groups": [
         "backgrounds",
         "texts"
     ],
+    "map": {
+        "key": "animate-intro",
+        "tilesets": [
+            "mapTileSet"
+        ]
+    },
     "prefabs": [
         {
             "key": "background",

@@ -5,11 +5,13 @@ import { BaseLevelScene } from "./base-level.scene";
 import { LevelConfig } from '../models/level-config';
 import { SceneType } from '../../shared/enums/scene-type';
 import { LevelManageService } from '../../shared/services/level-manager.service';
+import { MapScene } from './map.scene';
+import { BaseMapLevelScene } from './base-map-level.scene';
 
 @injectable()
-export class TitleScene extends BaseLevelScene {
+export class TitleScene extends BaseMapLevelScene {
     constructor(protected _logger: DefaultLogger,
-                private _levelManageService: LevelManageService) {
+                protected _levelManageService: LevelManageService) {
         super(TitleScene.name, _logger, _levelManageService);
     }
     

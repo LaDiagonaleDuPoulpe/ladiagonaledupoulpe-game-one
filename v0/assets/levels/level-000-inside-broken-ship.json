@@ -23,7 +23,8 @@
         ]
     },
     "groups": [
-        "players"
+        "players",
+        "doors"
     ],
     "prefabs": [
         
