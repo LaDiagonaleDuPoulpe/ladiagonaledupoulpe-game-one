@@ -87,7 +87,7 @@
                  "x":16,
                  "y":-16
                 }],
-         "height":64,
+         "height":48,
          "id":1,
          "name":"background",
          "opacity":1,
@@ -95,13 +95,13 @@
                 {
                  "name":"tileset",
                  "type":"string",
-                 "value":"mapTileSet"
+                 "value":"mapShipTileSet"
                 }],
-         "startx":-48,
-         "starty":-64,
+         "startx":-32,
+         "starty":-48,
          "type":"tilelayer",
          "visible":true,
-         "width":96,
+         "width":64,
          "x":0,
          "y":0
         }],

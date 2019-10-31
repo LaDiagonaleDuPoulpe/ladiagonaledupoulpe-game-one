@@ -2,24 +2,38 @@
     "assets": {
         "images": [
             {
-                "key": "background",
-                "url": "assets/images/default/background.gif"
-            },
-            {
                 "key": "buttonNew",
                 "url": "assets/images/menu/button-test.png"
+            },
+            {
+                "key": "mapTileSet",
+                "url": "assets/images/default/000-title/tileset.png"
             }
         ],
         "tilemaps": [
             {
                 "key": "animate-intro",
-                "url": "assets/maps/000-intro.json"
+                "url": "assets/maps/000-level-title.json"
             }
         ],
+        "spritesheets": [
+            {
+                "key": "waveSpriteSheet",
+                "type": "spritesheet",
+                "url": "assets/images/default/000-title/wave.png",
+                "frameSetting": {
+                    "dimension": {
+                        "width": 16,
+                        "height": 16
+                    }
+                }
+            }
+        ]
     },
     "groups": [
         "backgrounds",
-        "texts"
+        "texts",
+        "waves"
     ],
     "map": {
         "key": "animate-intro",
@@ -28,27 +42,7 @@
         ]
     },
     "prefabs": [
-        {
-            "key": "background",
-            "type": "background",
-            "position": {
-                "x": 0,
-                "y": 0
-            },
-            "properties": {
-                "texture": "background",
-                "group": "backgrounds",
-                "anchor": {
-                    "x": 0,
-                    "y": 0
-                },
-                "scale": {
-                    "x": 2,
-                    "y": 2
-                },
-                "depth": 1
-            }
-        },
+        
         {
             "key": "title",
             "type": "text",

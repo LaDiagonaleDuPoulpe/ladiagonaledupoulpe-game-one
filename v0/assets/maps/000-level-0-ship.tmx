@@ -5,7 +5,7 @@
  </tileset>
  <layer id="1" name="background" width="10" height="10">
   <properties>
-   <property name="tileset" value="mapTileSet"/>
+   <property name="tileset" value="mapShipTileSet"/>
   </properties>
   <data encoding="csv">
    <chunk x="-32" y="-48" width="16" height="16">

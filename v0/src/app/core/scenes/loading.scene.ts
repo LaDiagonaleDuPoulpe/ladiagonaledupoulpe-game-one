@@ -2,12 +2,12 @@ import { injectable } from 'tsyringe';
 
 import { BaseScene } from './base.scene';
 import { DefaultLogger } from '../../shared/services/default-logger';
-import { LevelConfig } from '../models/level-config';
-import { Level } from '../models/level';
+import { LevelConfig } from '../models/levels/level-config';
+import { Level } from '../models/levels/level';
 import { SceneType } from '../../shared/enums/scene-type';
-import { SceneData } from '../models/scene-data';
+import { SceneData } from '../models/scenes/scene-data';
 import { LevelManageService } from '../../shared/services/level-manager.service';
-import { AssetImage } from '../models/asset-image';
+import { AssetImage } from '../models/assets/asset-image';
 
 /**
 * Loads all assets of the game scene

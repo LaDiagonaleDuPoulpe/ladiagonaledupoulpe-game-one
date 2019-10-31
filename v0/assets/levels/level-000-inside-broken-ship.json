@@ -2,7 +2,7 @@
     "assets": {
         "images": [
             {
-                "key": "mapTileSet",
+                "key": "mapShipTileSet",
                 "url": "assets/images/ship/tileset.png"
             }
         ],
@@ -19,7 +19,7 @@
     "map": {
         "key": "crashShip",
         "tilesets": [
-            "mapTileSet"
+            "mapShipTileSet"
         ]
     },
     "groups": [

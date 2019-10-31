@@ -1,7 +1,7 @@
 import { DefaultLogger } from '../../shared/services/default-logger';
-import { SceneData } from '../models/scene-data';
+import { SceneData } from '../models/scenes/scene-data';
 import { SceneType } from '../../shared/enums/scene-type';
-import { LevelConfig } from '../models/level-config';
+import { LevelConfig } from '../models/levels/level-config';
 import { LevelManageService } from '../../shared/services/level-manager.service';
 
 /**

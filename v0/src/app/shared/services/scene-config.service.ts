@@ -1,5 +1,5 @@
 import { Observable, of } from "rxjs";
-import { SceneConfig } from "../../core/models/scene-config";
+import { SceneConfig } from "../../core/models/scenes/scene-config";
 
 /**
  * Service to load configuration of each scene (color, text, font, ...)

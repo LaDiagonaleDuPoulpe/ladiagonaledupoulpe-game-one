@@ -1,9 +1,9 @@
 import { DefaultLogger } from "../../shared/services/default-logger";
 import { BaseScene } from "./base.scene";
-import { LevelConfig } from "../models/level-config";
+import { LevelConfig } from "../models/levels/level-config";
 import { Dictionary } from "../../shared/custom-types/dictionary";
 import { PrefabSpriteFactory } from "../prefab-sprites/prefab-sprite-factory";
-import { SceneData } from "../models/scene-data";
+import { SceneData } from "../models/scenes/scene-data";
 import { LevelManageService } from '../../shared/services/level-manager.service';
 
 /**

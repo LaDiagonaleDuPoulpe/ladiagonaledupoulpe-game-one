@@ -4,10 +4,10 @@ import { injectable, container } from 'tsyringe';
 import { BaseScene } from './base.scene';
 import { DefaultLogger } from '../../shared/services/default-logger';
 import { LevelService } from '../../shared/services/level.service';
-import { Level } from '../models/level';
-import { LevelConfig } from '../models/level-config';
+import { Level } from '../models/levels/level';
+import { LevelConfig } from '../models/levels/level-config';
 import { SceneType } from '../../shared/enums/scene-type';
-import { SceneData } from '../models/scene-data';
+import { SceneData } from '../models/scenes/scene-data';
 import { LevelManageService } from '../../shared/services/level-manager.service';
 
 /**

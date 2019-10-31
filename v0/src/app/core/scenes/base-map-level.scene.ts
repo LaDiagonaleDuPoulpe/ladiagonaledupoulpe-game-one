@@ -44,10 +44,13 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
     
     private prepareLayers() {
         this._map.layers.forEach((layer, index) => {
-            const currentTileSetKey = (<any> layer.properties[index]).value;
-            const staticLayer = this._map.createStaticLayer(layer.name, this._tilesets[currentTileSetKey]);
-            this._layers[layer.name] = staticLayer;
-            
+            const property = (<any> layer.properties[0]);
+
+            if (property) {
+                const currentTileSetKey = property.value;
+                const staticLayer = this._map.createStaticLayer(layer.name, this._tilesets[currentTileSetKey]);
+                this._layers[layer.name] = staticLayer;
+            }
             
         }, this);
     }

@@ -1,6 +1,6 @@
 import { Observable, of } from 'rxjs';
 
-import { Level } from "../../core/models/level";
+import { Level } from "../../core/models/levels/level";
 import { SceneType } from '../enums/scene-type';
 
 /**

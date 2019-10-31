@@ -1,7 +1,7 @@
-import { AssetImage } from "./asset-image";
-import { AssetsData } from "./assets-data";
+import { AssetImage } from "./assets/asset-image";
+import { AssetsData } from "./assets/assets-data";
 import { Prefab } from "./prefab";
-import { AssetMap } from './asset-map';
+import { AssetMap } from './assets/asset-map';
 
 /**
  * Data of the scene
