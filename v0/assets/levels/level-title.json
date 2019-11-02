@@ -8,6 +8,10 @@
             {
                 "key": "mapTileSet",
                 "url": "assets/images/default/000-title/tileset.png"
+            },
+            {
+                "key": "cloud1Image",
+                "source": "assets/images/default/000-title/cloud-1.png"
             }
         ],
         "tilemaps": [
@@ -17,23 +21,14 @@
             }
         ],
         "spritesheets": [
-            {
-                "key": "waveSpriteSheet",
-                "type": "spritesheet",
-                "url": "assets/images/default/000-title/wave.png",
-                "frameSetting": {
-                    "dimension": {
-                        "width": 16,
-                        "height": 16
-                    }
-                }
-            }
+            
         ]
     },
     "groups": [
         "backgrounds",
         "texts",
-        "waves"
+        "waves",
+        "clouds"
     ],
     "map": {
         "key": "animate-intro",
@@ -41,8 +36,7 @@
             "mapTileSet"
         ]
     },
-    "prefabs": [
-        
+    "prefabs": [        
         {
             "key": "title",
             "type": "text",
