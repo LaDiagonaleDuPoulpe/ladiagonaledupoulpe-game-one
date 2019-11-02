@@ -20,6 +20,20 @@
 29,29,29,29,29,29,29,29,29,29,30,30,30,30,30
 </data>
  </layer>
+ <objectgroup id="9" name="objects">
+  <object id="2" name="wave1" type="wave" x="682" y="910" width="346" height="114">
+   <properties>
+    <property name="group" value="waves"/>
+    <property name="texture" value="waveImage"/>
+   </properties>
+  </object>
+  <object id="6" name="cloud1" type="cloud" x="324.242" y="169.697" width="154.545" height="69.697">
+   <properties>
+    <property name="group" value="clouds"/>
+    <property name="texture" value="cloud1Image"/>
+   </properties>
+  </object>
+ </objectgroup>
  <layer id="7" name="sea" width="15" height="10">
   <properties>
    <property name="tileset" value="mapTileSet"/>
@@ -37,20 +51,6 @@
 37,37,37,37,37,37,37,37,37,37,37,37,37,37,37
 </data>
  </layer>
- <objectgroup id="9" name="objects">
-  <object id="2" name="wave1" type="wave" x="682" y="910" width="346" height="114">
-   <properties>
-    <property name="group" value="waves"/>
-    <property name="texture" value="waveImage"/>
-   </properties>
-  </object>
-  <object id="6" name="cloud1" type="cloud" x="33.3333" y="160.606" width="154.545" height="69.697">
-   <properties>
-    <property name="group" value="clouds"/>
-    <property name="texture" value="cloud1Image"/>
-   </properties>
-  </object>
- </objectgroup>
  <layer id="6" name="tubes" width="15" height="10" offsetx="12" offsety="-128">
   <properties>
    <property name="tileset" value="mapTileSet"/>

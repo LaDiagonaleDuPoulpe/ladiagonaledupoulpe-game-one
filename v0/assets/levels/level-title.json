@@ -11,7 +11,7 @@
             },
             {
                 "key": "cloud1Image",
-                "source": "assets/images/default/000-title/cloud-1.png"
+                "url": "assets/images/default/000-title/cloud-1.png"
             }
         ],
         "tilemaps": [

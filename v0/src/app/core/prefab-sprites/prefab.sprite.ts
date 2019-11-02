@@ -26,6 +26,17 @@ export abstract class PrefabSprite extends Phaser.GameObjects.Sprite {
         if (this._properties.scale) {
             this.setScale(this._properties.scale.x, this._properties.scale.y);
         }
+
+        this.setDepth(this.defaultDepth);
+    }
+    //#endregion
+
+    //#region properties
+    /**
+     * Defines default depth of the sprite
+     */
+    public get defaultDepth(): number {
+        return 1;
     }
     //#endregion
 }

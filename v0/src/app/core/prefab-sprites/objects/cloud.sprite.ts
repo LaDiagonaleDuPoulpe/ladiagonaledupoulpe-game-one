@@ -19,4 +19,10 @@ export class CloudSprite extends PrefabSprite {
 
     }
     //#endregion
+
+    //#region properties
+    public get defaultDepth(): number {
+        return 0;
+    }
+    //#endregion
 }

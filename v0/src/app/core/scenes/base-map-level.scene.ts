@@ -69,8 +69,8 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
                 this._logger.log('prepareObject', spriteObject)
                 if (spriteObject.visible) {
                     const objectPosition = {
-                        x: 1,
-                        y: 1
+                        x: 100,
+                        y: 100
                     };
 
                     const properties = {
