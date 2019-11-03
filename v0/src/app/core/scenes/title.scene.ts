@@ -19,7 +19,7 @@ export class TitleScene extends BaseMapLevelScene {
     init(data: LevelConfig) {
         super.init(data);
     }
-    
+
     /**
      * Starts the game
      */

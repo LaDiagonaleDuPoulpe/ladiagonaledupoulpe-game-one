@@ -57,6 +57,7 @@ export abstract class BaseLevelScene extends BaseScene {
     * Updates all child prefabs
     */
     updateAllPrefabs() {
+        this._logger.log('updateAllPrefabs');
         for (const key in this.prefabSprites) {
             if (this.prefabSprites.hasOwnProperty(key)) {
                 const sprite = this.prefabSprites[key];
@@ -119,10 +120,21 @@ export abstract class BaseLevelScene extends BaseScene {
     private createAllPrefabSprites() {
         this.levelConfig.data.prefabs.forEach((prefab) => {
             const sprite = PrefabSpriteFactory.create(prefab.type, this, prefab.key, prefab.position, prefab.properties);
-            
-            this.physicalGroups[prefab.properties.group].add(sprite);
-            this.prefabSprites[prefab.key] = sprite;            
+            this.saveSpriteInScene(sprite, prefab.properties.group, prefab.key);
         }, this);
+    }
+    
+    /**
+     * Adds the sprite in the scene, and group collision
+     * @param sprite Creating sprite to add in scene
+     * @param group Group collision name
+     * @param key Key as name
+     */
+    protected saveSpriteInScene(sprite, group: string, key: string) {
+        if (sprite) {
+            this.physicalGroups[group].add(sprite);
+            this.prefabSprites[key] = sprite;            
+        }
     }
     //#endregion
     

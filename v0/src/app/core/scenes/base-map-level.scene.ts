@@ -27,13 +27,14 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
     }
     
     create() {
+        super.create();
+
         if (this.levelConfig.data.map) {
             this._map = this.add.tilemap(this.levelConfig.data.map.key);
             this.prepareTileSets();
             this.prepareLayers();     
             this.prepareObjects();       
-        }
-        super.create();
+        }        
     }
     //#endregion
     
@@ -87,11 +88,13 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
             const properties = {
                 depth: this.getPropertyValue('depth', spriteObject),
                 texture: this.getPropertyValue('texture', spriteObject),
-                frame: this.getPropertyValue('frame', spriteObject)
+                frame: this.getPropertyValue('frame', spriteObject),
+                group: this.getPropertyValue('group', spriteObject)
             }
 
             const sprite = PrefabSpriteFactory.create(<PrefabType> spriteObject.type, this, spriteObject.name, 
                                                       objectPosition, <PropertiesSetting> properties);
+            this.saveSpriteInScene(sprite, properties.group, spriteObject.name);
         }
     }
 

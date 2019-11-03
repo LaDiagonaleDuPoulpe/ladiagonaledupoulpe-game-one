@@ -12,6 +12,7 @@ export abstract class PrefabSprite extends Phaser.GameObjects.Sprite {
                 private _properties: PropertiesSetting) {
         super(_scene, _position.x, _position.y, _properties.texture, _properties.frame);
 
+        this.setActive(true);
         this._scene.add.existing(this);
 
         this.initialize();
@@ -28,6 +29,8 @@ export abstract class PrefabSprite extends Phaser.GameObjects.Sprite {
         }
 
         this.setDepth(this.defaultDepth);
+
+        //this._scene.gr[properties.group].add(this);
     }
     //#endregion
 

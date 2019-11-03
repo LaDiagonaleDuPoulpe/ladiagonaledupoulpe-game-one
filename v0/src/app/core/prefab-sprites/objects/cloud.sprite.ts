@@ -16,7 +16,8 @@ export class CloudSprite extends PrefabSprite {
 
     //#region public methods
     update() {
-
+        const x = this.x + 0.1;
+        this.setPosition(x, this.y);
     }
     //#endregion
 
