@@ -5,6 +5,7 @@ import { Dictionary } from '../../shared/custom-types/dictionary';
 import { PrefabSpriteFactory } from '../prefab-sprites/prefab-sprite-factory';
 import { PropertiesSetting } from '../models/properties-setting';
 import { PrefabType } from '../../shared/enums/prefab-type';
+import { stat } from 'fs';
 
 /**
 * Base map level scene : it's the mother class to represent all map scene
@@ -47,12 +48,17 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
     }
     
     private prepareLayers() {
+        let i = 1;
+            
         this._map.layers.forEach((layer, index) => {
             const property = (<any> layer.properties[0]);
 
-            if (property) {
+            if (property && layer.visible) {
                 const currentTileSetKey = property.value;
                 const staticLayer = this._map.createStaticLayer(layer.name, this._tilesets[currentTileSetKey]);
+                // to be finished staticLayer.setDepth();
+                //staticLayer.setDepth(i ++);
+
                 this._layers[layer.name] = staticLayer;
             }
 

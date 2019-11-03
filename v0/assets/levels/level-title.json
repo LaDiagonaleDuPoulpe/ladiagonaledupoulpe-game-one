@@ -12,6 +12,10 @@
             {
                 "key": "cloud1Image",
                 "url": "assets/images/default/000-title/cloud-1.png"
+            },
+            {
+                "key": "tube1Image",
+                "url": "assets/images/default/000-title/tube.png"
             }
         ],
         "tilemaps": [
@@ -28,7 +32,8 @@
         "backgrounds",
         "texts",
         "waves",
-        "clouds"
+        "clouds",
+        "tubes"
     ],
     "map": {
         "key": "animate-intro",

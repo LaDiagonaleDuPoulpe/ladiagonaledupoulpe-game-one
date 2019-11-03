@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="15" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="10" nextobjectid="7">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="15" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="10" nextobjectid="8">
  <tileset firstgid="1" name="main" tilewidth="128" tileheight="128" tilecount="529" columns="23">
   <image source="../images/default/000-title/tileset.png" width="3000" height="3000"/>
  </tileset>
@@ -27,10 +27,18 @@
     <property name="texture" value="waveImage"/>
    </properties>
   </object>
-  <object id="6" name="cloud1" type="cloud" x="324.242" y="169.697" width="154.545" height="69.697">
+  <object id="6" name="cloud1" type="cloud" x="45.4545" y="190.909" width="154.545" height="69.697">
    <properties>
+    <property name="depth" value="0"/>
     <property name="group" value="clouds"/>
     <property name="texture" value="cloud1Image"/>
+   </properties>
+  </object>
+  <object id="7" name="tube1" type="tileSprite" x="266.667" y="163.636">
+   <properties>
+    <property name="depth" value="1"/>
+    <property name="group" value="tubes"/>
+    <property name="texture" value="tube1Image"/>
    </properties>
   </object>
  </objectgroup>
@@ -51,7 +59,7 @@
 37,37,37,37,37,37,37,37,37,37,37,37,37,37,37
 </data>
  </layer>
- <layer id="6" name="tubes" width="15" height="10" offsetx="12" offsety="-128">
+ <layer id="6" name="tubes" width="15" height="10" visible="0" offsetx="12" offsety="-128">
   <properties>
    <property name="tileset" value="mapTileSet"/>
   </properties>
