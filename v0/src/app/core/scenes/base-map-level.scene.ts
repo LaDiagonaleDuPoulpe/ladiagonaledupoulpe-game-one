@@ -57,8 +57,6 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
             if (property && layer.visible) {
                 const currentTileSetKey = property.value;
                 const staticLayer = this._map.createStaticLayer(layer.name, this._tilesets[currentTileSetKey]);
-                // to be finished staticLayer.setDepth();
-                //staticLayer.setDepth(i ++);
 
                 this._layers[layer.name] = staticLayer;
             }

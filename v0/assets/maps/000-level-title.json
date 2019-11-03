@@ -49,7 +49,7 @@
                 {
                  "height":69.6969696969697,
                  "id":6,
-                 "name":"cloud1",
+                 "name":"cloud3",
                  "properties":[
                         {
                          "name":"depth",
@@ -70,8 +70,8 @@
                  "type":"cloud",
                  "visible":true,
                  "width":154.545454545455,
-                 "x":45.4545454545454,
-                 "y":190.909090909091
+                 "x":193.939393939394,
+                 "y":81.8181818181818
                 }, 
                 {
                  "height":0,
@@ -108,7 +108,7 @@
                         {
                          "name":"depth",
                          "type":"int",
-                         "value":1
+                         "value":2
                         }, 
                         {
                          "name":"group",
@@ -135,7 +135,7 @@
                         {
                          "name":"depth",
                          "type":"int",
-                         "value":1
+                         "value":2
                         }, 
                         {
                          "name":"group",
@@ -162,7 +162,7 @@
                         {
                          "name":"depth",
                          "type":"int",
-                         "value":1
+                         "value":2
                         }, 
                         {
                          "name":"group",
@@ -180,6 +180,60 @@
                  "width":154.545,
                  "x":1395.45477272727,
                  "y":460.606227272727
+                }, 
+                {
+                 "height":69.697,
+                 "id":12,
+                 "name":"cloud1",
+                 "properties":[
+                        {
+                         "name":"depth",
+                         "type":"string",
+                         "value":"0"
+                        }, 
+                        {
+                         "name":"group",
+                         "type":"string",
+                         "value":"clouds"
+                        }, 
+                        {
+                         "name":"texture",
+                         "type":"string",
+                         "value":"cloud1Image"
+                        }],
+                 "rotation":0,
+                 "type":"cloud",
+                 "visible":true,
+                 "width":154.545,
+                 "x":46.9699242424242,
+                 "y":189.393924242424
+                }, 
+                {
+                 "height":69.697,
+                 "id":13,
+                 "name":"cloud2",
+                 "properties":[
+                        {
+                         "name":"depth",
+                         "type":"string",
+                         "value":"0"
+                        }, 
+                        {
+                         "name":"group",
+                         "type":"string",
+                         "value":"clouds"
+                        }, 
+                        {
+                         "name":"texture",
+                         "type":"string",
+                         "value":"cloud1Image"
+                        }],
+                 "rotation":0,
+                 "type":"cloud",
+                 "visible":true,
+                 "width":154.545,
+                 "x":122.7275,
+                 "y":301.515136363636
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -226,7 +280,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":12,
+ "nextobjectid":14,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.4",
