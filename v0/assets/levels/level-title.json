@@ -16,6 +16,14 @@
             {
                 "key": "tube1Image",
                 "url": "assets/images/default/000-title/tube.png"
+            },
+            {
+                "key": "tube2Image",
+                "url": "assets/images/default/000-title/tube2.png"
+            },
+            {
+                "key": "tube3Image",
+                "url": "assets/images/default/000-title/tube3.png"
             }
         ],
         "tilemaps": [

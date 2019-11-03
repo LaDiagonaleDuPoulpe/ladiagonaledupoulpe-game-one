@@ -8,5 +8,6 @@ export enum PrefabType {
     buttonImage = 'buttonImage',
     video = 'video',
     wave = 'wave',
-    cloud = 'cloud'
+    cloud = 'cloud',
+    staticSprite = 'staticImage'
 }

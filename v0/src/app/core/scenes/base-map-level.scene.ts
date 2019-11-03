@@ -72,23 +72,27 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
         this._map.objects.forEach(object => {
 
             object.objects.forEach(spriteObject => {
-                this._logger.log('prepareObject', spriteObject)
-                if (spriteObject.visible) {
-                    const objectPosition = {
-                        x: 100,
-                        y: 100
-                    };
-
-                    const properties = {
-                        texture: this.getPropertyValue('texture', spriteObject),
-                        frame: this.getPropertyValue('frame', spriteObject)
-                    }
-    
-                    const sprite = PrefabSpriteFactory.create(<PrefabType> spriteObject.type, this, spriteObject.name, 
-                                                              objectPosition, <PropertiesSetting> properties);
-                }
+                this.createObject(spriteObject);
             }, this);
         }, this);
+    }
+
+    private createObject(spriteObject: Phaser.Types.Tilemaps.TiledObject) {
+        if (spriteObject.visible) {
+            const objectPosition = {
+                x: 100,
+                y: 100
+            };
+
+            const properties = {
+                depth: this.getPropertyValue('depth', spriteObject),
+                texture: this.getPropertyValue('texture', spriteObject),
+                frame: this.getPropertyValue('frame', spriteObject)
+            }
+
+            const sprite = PrefabSpriteFactory.create(<PrefabType> spriteObject.type, this, spriteObject.name, 
+                                                      objectPosition, <PropertiesSetting> properties);
+        }
     }
 
     private getPropertyValue(key: string, spriteObject: Phaser.Types.Tilemaps.TiledObject): any {
