@@ -80,8 +80,8 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
     private createObject(spriteObject: Phaser.Types.Tilemaps.TiledObject) {
         if (spriteObject.visible) {
             const objectPosition = {
-                x: 100,
-                y: 100
+                x: spriteObject.x,
+                y: spriteObject.y
             };
 
             const properties = {

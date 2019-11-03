@@ -125,7 +125,7 @@
                  "visible":true,
                  "width":154.545,
                  "x":228.788106060606,
-                 "y":533.3335
+                 "y":512.121378787879
                 }, 
                 {
                  "height":133.333,
@@ -151,8 +151,35 @@
                  "type":"staticImage",
                  "visible":true,
                  "width":154.545,
-                 "x":910.606287878788,
-                 "y":496.969863636364
+                 "x":807.575984848485,
+                 "y":363.63653030303
+                }, 
+                {
+                 "height":133.333,
+                 "id":11,
+                 "name":"tube3",
+                 "properties":[
+                        {
+                         "name":"depth",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
+                         "name":"group",
+                         "type":"string",
+                         "value":"tubes"
+                        }, 
+                        {
+                         "name":"texture",
+                         "type":"string",
+                         "value":"tube3Image"
+                        }],
+                 "rotation":0,
+                 "type":"staticImage",
+                 "visible":true,
+                 "width":154.545,
+                 "x":1395.45477272727,
+                 "y":460.606227272727
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -199,7 +226,7 @@
          "y":0
         }],
  "nextlayerid":10,
- "nextobjectid":11,
+ "nextobjectid":12,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.2.4",
