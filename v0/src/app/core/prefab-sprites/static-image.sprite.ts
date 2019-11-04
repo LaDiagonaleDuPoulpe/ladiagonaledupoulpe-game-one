@@ -14,6 +14,10 @@ export class StaticImageSprite extends Phaser.GameObjects.Image {
 
         this._scene.add.existing(this);
 
+        if (this._properties.depth) {
+            this.setDepth(this._properties.depth);
+        }
+
         console.log(StaticImageSprite.name, this._properties.depth);
     }
 }

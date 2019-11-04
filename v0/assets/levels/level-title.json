@@ -64,7 +64,7 @@
                     "fill": "#FFFFFF"
                 },
                 "text": "La diagonale du poulpe",
-                "depth": 0
+                "depth": 2
             }
         },
         {
@@ -86,7 +86,7 @@
                     "x": 0.2,
                     "y": 0.2
                 },
-                "depth": 0
+                "depth": 2
             }
         },
         {
@@ -108,7 +108,7 @@
                     "x": 0.2,
                     "y": 0.2
                 },
-                "depth": 0
+                "depth": 2
             }
         },
         {
@@ -130,7 +130,7 @@
                     "x": 0.2,
                     "y": 0.2
                 },
-                "depth": 0
+                "depth": 2
             }
         }
     ]

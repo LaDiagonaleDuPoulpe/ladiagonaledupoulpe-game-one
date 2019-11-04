@@ -6,7 +6,7 @@ import { BaseLevelScene } from "../scenes/base-level.scene";
  * Sprite adding in scene : could be image or animated image
  */
 export abstract class PrefabSprite extends Phaser.GameObjects.Sprite {
-    constructor(private _scene: BaseLevelScene, 
+    constructor(protected _scene: BaseLevelScene, 
                 private _name: string, 
                 private _position: Position, 
                 private _properties: PropertiesSetting) {

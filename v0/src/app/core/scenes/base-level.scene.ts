@@ -57,7 +57,6 @@ export abstract class BaseLevelScene extends BaseScene {
     * Updates all child prefabs
     */
     updateAllPrefabs() {
-        this._logger.log('updateAllPrefabs');
         for (const key in this.prefabSprites) {
             if (this.prefabSprites.hasOwnProperty(key)) {
                 const sprite = this.prefabSprites[key];
