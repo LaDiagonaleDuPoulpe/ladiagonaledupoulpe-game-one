@@ -12,7 +12,7 @@ import { stat } from 'fs';
 */
 export abstract class BaseMapLevelScene extends BaseLevelScene {
     //#region fields
-    private _map: Phaser.Tilemaps.Tilemap;
+    public _map: Phaser.Tilemaps.Tilemap;
     private _tilesets: Dictionary<Phaser.Tilemaps.Tileset> = {};
     private _layers: Dictionary<Phaser.Tilemaps.StaticTilemapLayer> = {}
     //#endregion
@@ -76,7 +76,11 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
         }, this);
     }
 
-    private createObject(spriteObject: Phaser.Types.Tilemaps.TiledObject) {
+    /**
+     * Creates one object from a sprite object 
+     * @param spriteObject Sprite object from objects list
+     */
+    protected createObject(spriteObject: Phaser.Types.Tilemaps.TiledObject) {
         if (spriteObject.visible) {
             const objectPosition = {
                 x: spriteObject.x,
