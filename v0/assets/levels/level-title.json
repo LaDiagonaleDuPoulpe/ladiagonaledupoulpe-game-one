@@ -28,6 +28,10 @@
             {
                 "key": "tube3Image",
                 "url": "assets/images/default/000-title/tube3.png"
+            },
+            {
+                "key": "vague1Image",
+                "url": "assets/images/default/000-title/vague-tube.png"
             }
         ],
         "tilemaps": [

@@ -9,5 +9,6 @@ export enum PrefabType {
     video = 'video',
     wave = 'wave',
     cloud = 'cloud',
-    staticSprite = 'staticImage'
+    static = 'staticImage',
+    default = 'arcade'
 }

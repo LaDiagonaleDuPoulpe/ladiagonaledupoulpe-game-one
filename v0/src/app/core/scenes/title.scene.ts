@@ -19,13 +19,13 @@ export class TitleScene extends BaseMapLevelScene {
     constructor(protected _logger: DefaultLogger,
                 protected _levelManageService: LevelManageService) {
         super(TitleScene.name, _logger, _levelManageService);
-
-
     }
     
     //#region public methods
     init(data: LevelConfig) {
         super.init(data);
+
+        this.createWavesOnTubes();
     }
 
     update() {
@@ -50,6 +50,10 @@ export class TitleScene extends BaseMapLevelScene {
     //#endregion
     
     //#region internal methods
+    createWavesOnTubes() {
+        //this.createObjectWithDetails('tube-wave', '')
+    }
+
     createNewCloud() {
         const isOkToGenerateCloud = Phaser.Math.Between(0, 100) % 35 === 0;
 
@@ -60,8 +64,6 @@ export class TitleScene extends BaseMapLevelScene {
             cloudSprite.y = Phaser.Math.Between(0, 450);
 
             this.createObject(cloudSprite);
-
-            // chaque nuage doit se détruit une fois qu'il est en dehors de l'écran
         }
     }
 

@@ -82,22 +82,36 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
      */
     protected createObject(spriteObject: Phaser.Types.Tilemaps.TiledObject) {
         if (spriteObject.visible) {
+            this.createObjectWithDetails(spriteObject.name, spriteObject.type,
+                                        spriteObject.x, spriteObject.y,
+                                        this.getPropertyValue('depth', spriteObject),
+                                        this.getPropertyValue('texture', spriteObject), 
+                                        this.getPropertyValue('group', spriteObject),
+                                        this.getPropertyValue('frame', spriteObject));
+        }
+    }
+
+    /**
+     * Creates one object from all details
+     */
+    protected createObjectWithDetails(name: string, type: string, x: number, y: number, depth: number, 
+                                      texture: string, group: string, 
+                                      frame?: string) {
             const objectPosition = {
-                x: spriteObject.x,
-                y: spriteObject.y
+                x: x,
+                y: y
             };
 
             const properties = {
-                depth: this.getPropertyValue('depth', spriteObject),
-                texture: this.getPropertyValue('texture', spriteObject),
-                frame: this.getPropertyValue('frame', spriteObject),
-                group: this.getPropertyValue('group', spriteObject)
+                depth: depth,
+                texture: texture,
+                frame: frame,
+                group: group
             }
 
-            const sprite = PrefabSpriteFactory.create(<PrefabType> spriteObject.type, this, spriteObject.name, 
+            const sprite = PrefabSpriteFactory.create(<PrefabType> type, this, name, 
                                                       objectPosition, <PropertiesSetting> properties);
-            this.saveSpriteInScene(sprite, properties.group, spriteObject.name);
-        }
+            this.saveSpriteInScene(sprite, properties.group, name);
     }
 
     private getPropertyValue(key: string, spriteObject: Phaser.Types.Tilemaps.TiledObject): any {

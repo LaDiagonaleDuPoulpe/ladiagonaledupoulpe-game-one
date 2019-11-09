@@ -4,9 +4,9 @@ import { Position } from '../../models/position';
 import { BaseArcadeSprite } from './base-arcade.sprite';
 
 /**
- * It represents a cloud in scene
+ * It represents the default arcade sprite
  */
-export class CloudSprite extends BaseArcadeSprite {
+export class DefaultArcadeSprite extends BaseArcadeSprite {
     constructor(_scene: BaseLevelScene, 
         _name: string, 
         _position: Position, 

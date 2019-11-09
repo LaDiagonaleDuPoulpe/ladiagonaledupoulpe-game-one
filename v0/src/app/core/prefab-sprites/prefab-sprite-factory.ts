@@ -10,6 +10,7 @@ import { ClickableTextPrefabSprite } from './clickable-text-prefab.sprite';
 import { VideoSprite } from './video.sprite';
 import { CloudSprite } from './objects/cloud.sprite';
 import { StaticImageSprite } from './static-image.sprite';
+import { DefaultArcadeSprite } from './objects/default-arcade.sprite';
 
 /**
  * Factory to create custom sprite prefab
@@ -27,8 +28,6 @@ export class PrefabSpriteFactory {
                         properties: PropertiesSetting): any {
 
         let sprite = null;
-
-        console.log(type);
 
         /**
          * TODO: see to generic create item
@@ -58,8 +57,12 @@ export class PrefabSpriteFactory {
                 sprite = new CloudSprite(scene, name, position, properties);
             } break;
 
-            case PrefabType.staticSprite: {
+            case PrefabType.static: {
                 sprite = new StaticImageSprite(scene, name, position, properties);
+            } break;
+
+            case PrefabType.default: {
+                sprite = new DefaultArcadeSprite(scene, name, position, properties);
             } break;
         }
 
