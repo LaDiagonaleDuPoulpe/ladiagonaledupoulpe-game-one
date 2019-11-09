@@ -31,17 +31,7 @@ export class TitleScene extends BaseMapLevelScene {
     update() {
         super.update();
 
-        const isOkToGenerateCloud = Phaser.Math.Between(0, 100) % 35 === 0;
-
-        if (this._map.objects.length > 0  && isOkToGenerateCloud) {            
-            const cloudSprite = this._map.objects[0].objects.find(item => item.type === PrefabType.cloud);
-            this._logger.log('update', cloudSprite);
-
-            cloudSprite.x = 0;
-            cloudSprite.y = Phaser.Math.Between(0, 400);
-
-            this.createObject(cloudSprite);
-        }
+        this.createNewCloud();
     }
 
     /**
@@ -60,6 +50,21 @@ export class TitleScene extends BaseMapLevelScene {
     //#endregion
     
     //#region internal methods
+    createNewCloud() {
+        const isOkToGenerateCloud = Phaser.Math.Between(0, 100) % 35 === 0;
+
+        if (this._map.objects.length > 0  && isOkToGenerateCloud) {            
+            const cloudSprite = this._map.objects[0].objects.find(item => item.type === PrefabType.cloud);
+
+            cloudSprite.x = -300;
+            cloudSprite.y = Phaser.Math.Between(0, 450);
+
+            this.createObject(cloudSprite);
+
+            // chaque nuage doit se détruit une fois qu'il est en dehors de l'écran
+        }
+    }
+
     protected onKeyUp(event: KeyboardEvent) {
         this._logger.log('keyUp');
     }
