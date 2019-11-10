@@ -51,7 +51,7 @@ export class TitleScene extends BaseMapLevelScene {
     
     //#region internal methods
     createWavesOnTubes() {
-        //this.createObjectWithDetails('tube-wave', '')
+        // TODO: 09/11/2019, See how to use spritesheet
     }
 
     createNewCloud() {
