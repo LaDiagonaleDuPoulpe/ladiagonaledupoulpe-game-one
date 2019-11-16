@@ -41,7 +41,14 @@
             }
         ],
         "spritesheets": [
-            
+            {
+                "key": "waveTubeSpriteSheet",
+                "url": "",
+                "frame": {
+                    "width": "519",
+                    "height": "220"
+                }
+            }
         ]
     },
     "groups": [
@@ -49,7 +56,8 @@
         "texts",
         "waves",
         "clouds",
-        "tubes"
+        "tubes",
+        "waveTubes"
     ],
     "map": {
         "key": "animate-intro",
@@ -57,7 +65,28 @@
             "mapTileSet"
         ]
     },
-    "prefabs": [        
+    "prefabs": [    
+        {
+            "key": "waveTube1",
+            "type": "aDefinir",
+            "position": {
+                "x": 100,
+                "y": 500
+            },
+            "properties": {
+                "texture": "waveTubeSpriteSheet",
+                "group": "waveTubes",
+                "scale": {
+                    "x": 0.7,
+                    "y": 0.7
+                },
+                "animations": [
+                    {
+                        "key": "idle"
+                    }
+                ]
+            }
+        },    
         {
             "key": "title",
             "type": "text",

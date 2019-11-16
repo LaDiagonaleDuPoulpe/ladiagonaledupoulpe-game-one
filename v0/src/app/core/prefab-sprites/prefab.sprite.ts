@@ -19,7 +19,10 @@ export abstract class PrefabSprite extends Phaser.GameObjects.Sprite {
     }
 
     //#region internal methods
-    private initialize() {
+    /**
+     * Initializes the sprite prefab
+     */
+    protected initialize() {
         if (this._properties.anchor) {
             this.setOrigin(this._properties.anchor.x, this._properties.anchor.y);
         }
@@ -30,11 +33,16 @@ export abstract class PrefabSprite extends Phaser.GameObjects.Sprite {
 
         if (this._properties.depth) {
             this.setDepth(this._properties.depth);
-            console.log('Sprite', this._properties.depth);
         }
     }
     //#endregion
 
     //#region properties
+    /**
+     * Gets the json properties of the prefab
+     */
+    protected get properties(): PropertiesSetting {
+        return this._properties;
+    }
     //#endregion
 }
