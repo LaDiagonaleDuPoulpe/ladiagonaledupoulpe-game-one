@@ -9,6 +9,6 @@ export class AssetSpriteSheet extends Asset {
     /**
      * Dimensions of the frame
      */
-    public frameSetting: AssetFrame;
+    public frame: AssetFrame;
     //#endregion
 }

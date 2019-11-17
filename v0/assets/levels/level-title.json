@@ -43,10 +43,14 @@
         "spritesheets": [
             {
                 "key": "waveTubeSpriteSheet",
-                "url": "",
+                "url": "assets/images/default/000-title/wave-tube-sprites-00.png",
                 "frame": {
-                    "width": "519",
-                    "height": "220"
+                    "dimension": {
+                        "width": 519,
+                        "height": 220
+                    },
+                    "spacing": 0,
+                    "margin": 0
                 }
             }
         ]
@@ -82,7 +86,13 @@
                 },
                 "animations": [
                     {
-                        "key": "idle"
+                        "key": "idle",
+                        "frames": [
+                            0,
+                            1,
+                            2
+                        ],
+                        "fps": 5
                     }
                 ]
             }
