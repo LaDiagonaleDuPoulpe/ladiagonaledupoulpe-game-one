@@ -1,6 +1,7 @@
 import { PrefabType } from "../../shared/enums/prefab-type";
 import { Position } from "./position";
 import { Style } from "./style";
+import { animation } from './animations/animation';
 
 /**
  * Prefab properties setting
@@ -51,5 +52,10 @@ export class PropertiesSetting {
      * Depth in the scene
      */
     public depth: integer;
+
+    /**
+     * List of animations for the prefab
+     */
+    public animations: animation[];
     //#endregion
 }

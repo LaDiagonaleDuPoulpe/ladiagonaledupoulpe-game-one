@@ -7,9 +7,24 @@ import { PropertiesSetting } from "./properties-setting";
  */
 export class Prefab {
     //#region fields
+    /**
+     * Key to find the prefab
+     */
     public key: string;
+
+    /**
+     * Type of the prefab
+     */
     public type: PrefabType;
+
+    /**
+     * Position x, y of the prefab
+     */
     public position: Position;
+
+    /**
+     * Adding configuration of the prefab
+     */
     public properties: PropertiesSetting;
     //#endregion
 }
