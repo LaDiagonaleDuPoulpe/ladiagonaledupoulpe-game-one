@@ -16,9 +16,9 @@ var game = new Phaser.Game(config);
 function preload() {
     //this.load.atlas('tubes-waves', 'images/waves/waves-tubes.png', 'images/waves/waves-tubes.json');
 
-    this.load.path = 'images/waves/';
+    //this.load.path = 'images/waves/';
 
-    this.load.multiatlas('tubes-waves', 'waves-tubes.json');
+    this.load.multiatlas('tubes-waves', 'images/waves/waves-tubes.json', 'images/waves');
 
 }
 
@@ -33,6 +33,8 @@ function create() {
         zeroPad: 3,
         suffix: '.png'
     });
+
+    console.log(frameNames);
 
     this.anims.create({ key: 'up', frames: frameNames, frameRate: 3, repeat: -1 });
     capguy.anims.play('up');
