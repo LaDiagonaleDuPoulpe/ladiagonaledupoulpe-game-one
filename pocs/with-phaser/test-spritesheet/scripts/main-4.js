@@ -14,13 +14,35 @@ var config = {
 var game = new Phaser.Game(config);
 
 function preload() {
-    this.load.atlas('mysprite', 'images/spritesheet.png', 'images/sprites.json');
+    this.load.spritesheet('tube-waves', 'images/waves/waves-tubes.png', { frameWidth: 506, frameHeight: 178 });
 }
 
 function create() {
-    this.sprite = this.add.sprite(100, 300, 'mysprite');
-    const animations = this.anims.generateFrameNames('idle', 1, 6);
-    //this.sprite.animations.add('idle', Phaser.Animation.generateFrameNames('idle', 1, 6), 5, true);
+    createAnimations.call(this);
+}
+
+function createAnimations() {
+    console.log('this :', this);
+    createAnimation.call(this, 'idle');
+}
+
+function createAnimation(animationKey) {
+
+    const generatedFrames = this.anims.generateFrameNumbers('tube-waves');
+
+    console.log('frames :', generatedFrames);
+
+    this.anims.create({
+        key: animationKey,
+        frames: generatedFrames,
+        frameRate: 2,
+        repeat: -1 // repeat animation
+    });
+
+    var sprite = this.add.sprite(200, 300, 'mummy');
+
+    sprite.play(animationKey);
+
 }
 
 function update() {
