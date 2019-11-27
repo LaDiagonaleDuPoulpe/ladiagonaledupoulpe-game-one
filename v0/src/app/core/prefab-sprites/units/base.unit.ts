@@ -9,6 +9,10 @@ import { basename } from 'path';
  * Unit is prefab with spritesheet animation
  */
 export abstract class BaseUnit extends PrefabSprite {
+    //#region fields
+    private startingAnimationKey: string;
+    //#endregion
+
     constructor(_scene: BaseLevelScene, 
         _name: string, 
         _position: Position, 
@@ -21,29 +25,39 @@ export abstract class BaseUnit extends PrefabSprite {
         super.initialize();
 
         this.prepareAnimations(this.name, this.properties);
+
+        if (this.startingAnimationKey) {
+            this.anims.play(this.startingAnimationKey);
+        }
     }
     //#endregion
 
     //#region internal methods
     private prepareAnimations(name: string, properties: PropertiesSetting) {
-        
+        this.startingAnimationKey = this.createAnimation('idle', name, properties);
     }
 
-    private createAnimation(animationName, spriteName: string, properties: PropertiesSetting) {
+    private createAnimation(animationName, spriteName: string, properties: PropertiesSetting): string {
         const animationKey = spriteName + '_' + animationName;
 
         if (! this.scene.anims.exists(animationKey)) {
-            const frameConfig = {};
+            const animationObject = properties.animations.find((item) => item.key == animationName);
 
-            const frames = this.scene.anims.generateFrameNumbers(this.texture.key, frameConfig);
+            const frameConfig = {
+                frames: animationObject.frames
+            };
+
+            const frames = this.scene.anims.generateFrameNumbers(properties.texture, {});//, frameConfig);
             
             this.scene.anims.create({
                 key: animationKey,
                 frames: frames,
-                frameRate: properties.animations[animationName].fps,
-                //repeat: -1 // repeat animation
+                frameRate: animationObject.fps,
+                repeat: animationObject.repeat 
             });
         }
+
+        return animationKey;
     }
     //#endregion
 }

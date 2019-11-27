@@ -10,10 +10,12 @@ export abstract class PrefabSprite extends Phaser.GameObjects.Sprite {
                 private _name: string, 
                 private _position: Position, 
                 private _properties: PropertiesSetting) {
-        super(_scene, _position.x, _position.y, _properties.texture, _properties.frame);
+        super(_scene, _position.x, _position.y, _properties.texture);
 
         this.setActive(true);
         this._scene.add.existing(this);
+
+        this.name = this._name;
 
         this.initialize();
     }

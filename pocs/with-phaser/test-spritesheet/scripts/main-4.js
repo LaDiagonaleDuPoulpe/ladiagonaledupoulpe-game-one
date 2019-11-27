@@ -39,7 +39,7 @@ function createAnimation(animationKey) {
         repeat: -1 // repeat animation
     });
 
-    var sprite = this.add.sprite(200, 300, 'mummy');
+    var sprite = this.add.sprite(200, 300);
 
     sprite.play(animationKey);
 

@@ -17,5 +17,8 @@ export class animation {
      * List of frames in the sprite to animate
      */
     public frames: number[];
+
+    /** Repat value : -1, infinite */
+    public repeat: number;
     //#endregion
 }

@@ -11,6 +11,7 @@ import { VideoSprite } from './video.sprite';
 import { CloudSprite } from './objects/cloud.sprite';
 import { StaticImageSprite } from './static-image.sprite';
 import { DefaultArcadeSprite } from './objects/default-arcade.sprite';
+import { StaticUnit } from './units/static.unit';
 
 /**
  * Factory to create custom sprite prefab
@@ -64,6 +65,10 @@ export class PrefabSpriteFactory {
             case PrefabType.default: {
                 sprite = new DefaultArcadeSprite(scene, name, position, properties);
             } break;
+
+            case PrefabType.animated: {
+                sprite = new StaticUnit(scene, name, position, properties);
+            }
         }
 
         return sprite;
