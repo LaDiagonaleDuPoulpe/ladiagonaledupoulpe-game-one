@@ -4,7 +4,7 @@
 			"image": "waves-tubes.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1520,
+				"w": 1835,
 				"h": 178
 			},
 			"scale": 1,
@@ -71,6 +71,27 @@
 						"w": 504,
 						"h": 176
 					}
+				},
+				{
+					"filename": "001-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 316,
+						"h": 145
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 0,
+						"w": 313,
+						"h": 142
+					},
+					"frame": {
+						"x": 1521,
+						"y": 1,
+						"w": 313,
+						"h": 142
+					}
 				}
 			]
 		}
@@ -78,6 +99,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:8a4de4925c870b5469070c510194d158:d579f9a7377961796126c489fd82a4d4:c84b02b0535fc47237f92164edebe413$"
+		"smartupdate": "$TexturePacker:SmartUpdate:41d8b428fbcadfd97ca9f3e10c42ee0d:78385db9520a74996f8fc193687f247e:c84b02b0535fc47237f92164edebe413$"
 	}
 }

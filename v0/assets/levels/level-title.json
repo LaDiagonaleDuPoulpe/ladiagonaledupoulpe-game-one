@@ -74,8 +74,8 @@
             "key": "waveTube1",
             "type": "animsprite",
             "position": {
-                "x": 100,
-                "y": 500
+                "x": 400,
+                "y": 850
             },
             "properties": {
                 "texture": "waveTubeSpriteSheet",
@@ -84,6 +84,7 @@
                     "x": 1.0,
                     "y": 1.0
                 },
+                "depth": 3,
                 "animations": [
                     {
                         "key": "idle",
@@ -92,7 +93,36 @@
                             2,
                             3
                         ],
-                        "fps": 5,
+                        "fps": 2,
+                        "repeat": -1
+                    }
+                ]
+            }
+        }, 
+        {
+            "key": "waveTube2",
+            "type": "animsprite",
+            "position": {
+                "x": 400,
+                "y": 850
+            },
+            "properties": {
+                "texture": "waveTubeSpriteSheet",
+                "group": "waveTubes",
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "depth": 3,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            4,
+                            5,
+                            6
+                        ],
+                        "fps": 2,
                         "repeat": -1
                     }
                 ]
