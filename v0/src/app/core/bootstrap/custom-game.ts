@@ -65,7 +65,6 @@ export class CustomGame extends Phaser.Game {
 
     private loadConfigurations() {
         this._sceneConfigService.loadDefault().subscribe(config => this._sceneConfig = config);
-
     }
     
     private attachEvents() {

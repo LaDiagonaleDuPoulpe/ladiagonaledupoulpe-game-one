@@ -133,7 +133,7 @@ export abstract class BaseLevelScene extends BaseScene {
     protected saveSpriteInScene(sprite, group: string, key: string) {
         if (sprite) {
             this.physicalGroups[group].add(sprite);
-            this.prefabSprites[key] = sprite;            
+            this.prefabSprites[key] = sprite;             
         }
     }
     //#endregion
