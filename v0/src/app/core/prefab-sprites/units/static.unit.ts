@@ -3,6 +3,9 @@ import { BaseLevelScene } from '../../scenes/base-level.scene';
 import { PropertiesSetting } from '../../models/properties-setting';
 import { Position } from '../../models/position';
 
+/**
+ * Animated sprite will not move
+ */
 export class StaticUnit extends BaseUnit {
     constructor(_scene: BaseLevelScene, 
         _name: string, 

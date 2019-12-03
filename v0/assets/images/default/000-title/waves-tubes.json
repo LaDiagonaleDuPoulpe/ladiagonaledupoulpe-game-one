@@ -4,72 +4,135 @@
 			"image": "waves-tubes.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1520,
-				"h": 178
+				"w": 1578,
+				"h": 450
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "002.png",
+					"filename": "0-001.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 521,
-						"h": 226
+						"w": 526,
+						"h": 225
 					},
 					"spriteSourceSize": {
-						"x": 5,
-						"y": 47,
-						"w": 506,
-						"h": 176
+						"x": 0,
+						"y": 0,
+						"w": 526,
+						"h": 225
 					},
 					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 506,
-						"h": 176
+						"x": 0,
+						"y": 0,
+						"w": 526,
+						"h": 225
 					}
 				},
 				{
-					"filename": "001.png",
+					"filename": "0-002.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 521,
-						"h": 226
+						"w": 526,
+						"h": 225
 					},
 					"spriteSourceSize": {
-						"x": 5,
-						"y": 47,
-						"w": 504,
-						"h": 176
+						"x": 0,
+						"y": 0,
+						"w": 526,
+						"h": 225
 					},
 					"frame": {
-						"x": 509,
-						"y": 1,
-						"w": 504,
-						"h": 176
+						"x": 526,
+						"y": 0,
+						"w": 526,
+						"h": 225
 					}
 				},
 				{
-					"filename": "003.png",
+					"filename": "0-003.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 521,
-						"h": 226
+						"w": 526,
+						"h": 225
 					},
 					"spriteSourceSize": {
-						"x": 5,
-						"y": 47,
-						"w": 504,
-						"h": 176
+						"x": 0,
+						"y": 0,
+						"w": 526,
+						"h": 225
 					},
 					"frame": {
-						"x": 1015,
-						"y": 1,
-						"w": 504,
-						"h": 176
+						"x": 1052,
+						"y": 0,
+						"w": 526,
+						"h": 225
+					}
+				},
+				{
+					"filename": "1-001.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 526,
+						"h": 178
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 526,
+						"h": 178
+					},
+					"frame": {
+						"x": 0,
+						"y": 225,
+						"w": 526,
+						"h": 178
+					}
+				},
+				{
+					"filename": "1-002.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 526,
+						"h": 178
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 526,
+						"h": 178
+					},
+					"frame": {
+						"x": 526,
+						"y": 225,
+						"w": 526,
+						"h": 178
+					}
+				},
+				{
+					"filename": "1-003.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 526,
+						"h": 178
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 526,
+						"h": 178
+					},
+					"frame": {
+						"x": 1052,
+						"y": 225,
+						"w": 526,
+						"h": 178
 					}
 				}
 			]
@@ -78,6 +141,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:8a4de4925c870b5469070c510194d158:d579f9a7377961796126c489fd82a4d4:c84b02b0535fc47237f92164edebe413$"
+		"smartupdate": "$TexturePacker:SmartUpdate:bca279d53836a14df252502359af0167:06740b76e9cd9ed410328cb7326f5c2d:c84b02b0535fc47237f92164edebe413$"
 	}
 }

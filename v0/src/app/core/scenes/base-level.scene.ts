@@ -25,7 +25,6 @@ export abstract class BaseLevelScene extends BaseScene {
     //#region public methods
     create() {
         this.manageKeyEvents();
-
         this.createCollisionGroups();
         this.createAllPrefabSprites();
     }

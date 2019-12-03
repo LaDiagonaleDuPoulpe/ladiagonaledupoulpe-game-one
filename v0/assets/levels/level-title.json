@@ -47,7 +47,7 @@
                 "frame": {
                     "dimension": {
                         "width": 526,
-                        "height": 226
+                        "height": 225
                     },
                     "spacing": 0,
                     "margin": 0
@@ -128,7 +128,7 @@
             "key": "waveTube2",
             "type": "animsprite",
             "position": {
-                "x": 700,
+                "x": 800,
                 "y": 800
             },
             "properties": {
@@ -157,7 +157,7 @@
             "key": "waveTube3",
             "type": "animsprite",
             "position": {
-                "x": 1300,
+                "x": 1400,
                 "y": 800
             },
             "properties": {
@@ -211,7 +211,45 @@
                     }
                 ]
             }
-        },    
+        }, 
+        {
+            "key": "wave1",
+            "type": "animsprite",
+            "position": {
+                "x": 200,
+                "y": 800
+            },
+            "properties": {
+                "texture": "wavesSpriteSheet",
+                "group": "waves",
+                "scale": {
+                    "x": 2.0,
+                    "y": 2.0
+                },
+                "depth": 3,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            0,
+                            1,
+                            2,
+                            3,
+                            4,
+                            5,
+                            6,
+                            7,
+                            8,
+                            9,
+                            10,
+                            11
+                        ],
+                        "fps": 3,
+                        "repeat": -1
+                    }
+                ]
+            }
+        },   
         {
             "key": "title",
             "type": "text",

@@ -102,7 +102,7 @@
         <key>algorithmSettings</key>
         <struct type="AlgorithmSettings">
             <key>algorithm</key>
-            <enum type="AlgorithmSettings::AlgorithmId">MaxRects</enum>
+            <enum type="AlgorithmSettings::AlgorithmId">Grid</enum>
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
@@ -132,7 +132,7 @@
             <key>json</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>waves-tubes</filename>
+                <filename>../../../../../v0/assets/images/default/000-title/waves-tubes.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -163,13 +163,13 @@
             <key>scaleMode</key>
             <enum type="ScaleMode">Smooth</enum>
             <key>extrude</key>
-            <uint>1</uint>
+            <uint>0</uint>
             <key>trimThreshold</key>
             <uint>1</uint>
             <key>trimMargin</key>
             <uint>1</uint>
             <key>trimMode</key>
-            <enum type="SpriteSettings::TrimMode">Trim</enum>
+            <enum type="SpriteSettings::TrimMode">None</enum>
             <key>tracerTolerance</key>
             <int>200</int>
             <key>heuristicMask</key>
@@ -181,9 +181,9 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">vague-tube-01.png</key>
-            <key type="filename">vague-tube-02.png</key>
-            <key type="filename">vague-tube.png</key>
+            <key type="filename">../../../../../v0/assets/images/default/000-title/0-001.png</key>
+            <key type="filename">../../../../../v0/assets/images/default/000-title/0-002.png</key>
+            <key type="filename">../../../../../v0/assets/images/default/000-title/0-003.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -192,18 +192,38 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>130,57,261,113</rect>
+                <rect>132,56,263,113</rect>
                 <key>scale9Paddings</key>
-                <rect>130,57,261,113</rect>
+                <rect>132,56,263,113</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../../../../v0/assets/images/default/000-title/1-001.png</key>
+            <key type="filename">../../../../../v0/assets/images/default/000-title/1-002.png</key>
+            <key type="filename">../../../../../v0/assets/images/default/000-title/1-003.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>132,45,263,89</rect>
+                <key>scale9Paddings</key>
+                <rect>132,45,263,89</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>vague-tube-02.png</filename>
-            <filename>vague-tube.png</filename>
-            <filename>vague-tube-01.png</filename>
+            <filename>../../../../../v0/assets/images/default/000-title/0-001.png</filename>
+            <filename>../../../../../v0/assets/images/default/000-title/0-002.png</filename>
+            <filename>../../../../../v0/assets/images/default/000-title/0-003.png</filename>
+            <filename>../../../../../v0/assets/images/default/000-title/1-001.png</filename>
+            <filename>../../../../../v0/assets/images/default/000-title/1-002.png</filename>
+            <filename>../../../../../v0/assets/images/default/000-title/1-003.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
