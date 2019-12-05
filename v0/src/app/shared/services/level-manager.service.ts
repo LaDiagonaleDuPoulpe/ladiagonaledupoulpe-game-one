@@ -1,6 +1,6 @@
 import { injectable, singleton } from "tsyringe";
 import { Level } from '../../core/models/levels/level';
-import { Logger } from '../../logs/logger';
+import { Logger } from '../../loggers/logger';
 
 /**
 * Manager to gets current scene and next scene
