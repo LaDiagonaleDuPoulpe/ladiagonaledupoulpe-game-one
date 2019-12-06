@@ -3,6 +3,7 @@ import { DefaultLogger } from '../../shared/services/default-logger';
 import { LevelManageService } from '../../shared/services/level-manager.service';
 import { ObjectCreator } from '../prefab-sprites/objects/creators/object-creator';
 import { BaseLevelScene } from './base-level.scene';
+import { PrefabType } from '../../shared/enums/prefab-type';
 
 /**
 * Base map level scene : it's the mother class to represent all map scene
@@ -35,6 +36,19 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
             this.prepareLayers();     
             this.prepareObjects();       
         }        
+    }
+
+    /**
+     * Gets one sprite object by its type 
+     */
+    getOneObject(type: PrefabType): Phaser.Types.Tilemaps.TiledObject {
+        let item: Phaser.Types.Tilemaps.TiledObject = null;
+
+        if (this._map.objects.length) {
+            item = this._map.objects[0].objects.find(item => item.type === type)
+        }
+
+        return item;
     }
     //#endregion
     
