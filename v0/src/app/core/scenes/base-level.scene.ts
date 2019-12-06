@@ -1,10 +1,9 @@
-import { DefaultLogger } from "../../shared/services/default-logger";
-import { BaseScene } from "./base.scene";
-import { LevelConfig } from "../models/levels/level-config";
-import { Dictionary } from "../../shared/custom-types/dictionary";
-import { PrefabSpriteFactory } from "../prefab-sprites/prefab-sprite-factory";
-import { SceneData } from "../models/scenes/scene-data";
+import { Dictionary } from '../../shared/custom-types/dictionary';
+import { DefaultLogger } from '../../shared/services/default-logger';
 import { LevelManageService } from '../../shared/services/level-manager.service';
+import { ObjectCreator } from '../prefab-sprites/objects/creators/object-creator';
+import { PrefabSpriteFactory } from '../prefab-sprites/prefab-sprite-factory';
+import { BaseScene } from './base.scene';
 
 /**
 * Base level scene : abstract class of all active map scenes
@@ -18,7 +17,10 @@ export abstract class BaseLevelScene extends BaseScene {
     private _prefabSprites: Dictionary<Phaser.GameObjects.GameObject> = {};
     //#endregion
     
-    constructor(key: string, protected _logger: DefaultLogger, protected _levelManager: LevelManageService) {
+    constructor(key: string, 
+                protected _logger: DefaultLogger, 
+                protected _levelManager: LevelManageService,
+                protected _objectCreator: ObjectCreator) {
         super(key, _logger, _levelManager);
     }
     

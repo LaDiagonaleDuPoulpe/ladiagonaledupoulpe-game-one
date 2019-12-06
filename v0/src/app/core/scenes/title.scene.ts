@@ -1,13 +1,12 @@
-import { injectable } from "tsyringe";
+import { injectable } from 'tsyringe';
 
-import { DefaultLogger } from "../../shared/services/default-logger";
-import { BaseLevelScene } from "./base-level.scene";
-import { LevelConfig } from '../models/levels/level-config';
-import { SceneType } from '../../shared/enums/scene-type';
-import { LevelManageService } from '../../shared/services/level-manager.service';
-import { MapScene } from './map.scene';
-import { BaseMapLevelScene } from './base-map-level.scene';
 import { PrefabType } from '../../shared/enums/prefab-type';
+import { SceneType } from '../../shared/enums/scene-type';
+import { DefaultLogger } from '../../shared/services/default-logger';
+import { LevelManageService } from '../../shared/services/level-manager.service';
+import { LevelConfig } from '../models/levels/level-config';
+import { ObjectCreator } from '../prefab-sprites/objects/creators/object-creator';
+import { BaseMapLevelScene } from './base-map-level.scene';
 
 @injectable()
 export class TitleScene extends BaseMapLevelScene {
@@ -15,27 +14,24 @@ export class TitleScene extends BaseMapLevelScene {
     private _lastGeneratedCloudTime: Date;
     //#endregion
 
-
     constructor(protected _logger: DefaultLogger,
-                protected _levelManageService: LevelManageService) {
-        super(TitleScene.name, _logger, _levelManageService);
+                protected _levelManageService: LevelManageService,
+                protected _objectCreator: ObjectCreator) {
+        super(TitleScene.name, _logger, _levelManageService, _objectCreator);
     }
     
     //#region public methods
     init(data: LevelConfig) {
         super.init(data);
-
-        this.createWavesOnTubes();
     }
 
     update() {
         super.update();
-
         this.createNewCloud();
     }
 
     /**
-     * Starts the game
+     * Starts the game, gets next scene and starts it
      */
     startGame() {        
         this._logger.log('startGame', this.levelConfig);
@@ -50,10 +46,6 @@ export class TitleScene extends BaseMapLevelScene {
     //#endregion
     
     //#region internal methods
-    createWavesOnTubes() {
-        // TODO: 09/11/2019, See how to use spritesheet
-    }
-
     createNewCloud() {
         const isOkToGenerateCloud = Phaser.Math.Between(0, 100) % 35 === 0;
 
@@ -63,7 +55,7 @@ export class TitleScene extends BaseMapLevelScene {
             cloudSprite.x = -300;
             cloudSprite.y = Phaser.Math.Between(0, 450);
 
-            this.createObject(cloudSprite);
+            this._objectCreator.createObject(cloudSprite, this, this.saveSpriteInScene);
         }
     }
 
@@ -74,6 +66,5 @@ export class TitleScene extends BaseMapLevelScene {
     protected onKeyDown(event: KeyboardEvent) {
         this._logger.log('keyDown');
     }
-
     //#endregion
 }
