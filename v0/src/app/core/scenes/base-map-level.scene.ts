@@ -71,7 +71,7 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
         this._map.objects.forEach(object => {
 
             object.objects.forEach(spriteObject => {
-                this._objectCreator.createObject(spriteObject, this, this.saveSpriteInScene);
+                this._objectCreator.createObject(spriteObject, this, this.saveSpriteInScene.bind(this));
             }, this);
         }, this);
     }

@@ -55,7 +55,7 @@ export class TitleScene extends BaseMapLevelScene {
             cloudSprite.x = -300;
             cloudSprite.y = Phaser.Math.Between(0, 450);
 
-            this._objectCreator.createObject(cloudSprite, this, this.saveSpriteInScene);
+            this._objectCreator.createObject(cloudSprite, this, this.saveSpriteInScene.bind(this));
         }
     }
 
