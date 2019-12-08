@@ -16,7 +16,9 @@ export class ObjectCreator {
     * Creates one object from a sprite object 
     * @param spriteObject Sprite object from objects list
     */
-    public createObject(spriteObject: Phaser.Types.Tilemaps.TiledObject, scene: BaseLevelScene, saveInSprite: Function) {
+    public createObject(spriteObject: Phaser.Types.Tilemaps.TiledObject, scene: BaseLevelScene, saveInSprite: Function): Phaser.GameObjects.Sprite {
+        let createdSprite: Phaser.GameObjects.Sprite = null;
+
         if (spriteObject.visible) {
             const config: SpriteConfig = {
                 scene: scene,
@@ -30,14 +32,16 @@ export class ObjectCreator {
                 frame: this.getPropertyValue('frame', spriteObject)
             };
             
-            this.createObjectWithDetails(config, saveInSprite);
+            createdSprite = this.createObjectWithDetails(config, saveInSprite);
         }
+
+        return createdSprite;
     }
     
     /**
     * Creates one object from all details
     */
-    protected createObjectWithDetails(config: SpriteConfig, saveInSprite: Function) {
+    public createObjectWithDetails(config: SpriteConfig, saveInSprite: Function): Phaser.GameObjects.Sprite {
         const objectPosition = {
             x: config.x,
             y: config.y
@@ -53,6 +57,8 @@ export class ObjectCreator {
         const sprite = PrefabSpriteFactory.create(<PrefabType> config.type, config.scene, name, objectPosition, <PropertiesSetting> properties);
         
         saveInSprite(sprite, properties.group, name);
+
+        return sprite;
     }
     //#endregion
     
