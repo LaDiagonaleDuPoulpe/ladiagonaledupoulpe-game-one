@@ -1,10 +1,11 @@
 import { BaseMapLevelScene } from '../../../scenes/base-map-level.scene';
 import { ObjectCreator } from './object-creator';
+import { PrefabType } from '../../../../shared/enums/prefab-type';
 
 /**
  * Base class of creator of sprites, like units
  */
-export abstract class SpriteCreator<T> {
+export abstract class SpriteCreator {
     //#region Public methods
     /**
      * Creates new sprite object
@@ -14,7 +15,11 @@ export abstract class SpriteCreator<T> {
      */
     public createNewOne(scene: BaseMapLevelScene, objectCreator: ObjectCreator, saveInScene: Function) {
         if (this.isPermittedToCreate()) {
+            const sprite = scene.getOneObject(this.spriteType);
 
+            this.configureSprite(sprite);
+
+            objectCreator.createObject(sprite, scene, saveInScene);
         }
     }
     //#endregion
@@ -28,10 +33,10 @@ export abstract class SpriteCreator<T> {
     /**
      * Configures sprite : define position, frame rate, ...
      */
-    protected abstract configureSprite(sprite: Phaser.GameObjects.Sprite): void;
+    protected abstract configureSprite(sprite: Phaser.Types.Tilemaps.TiledObject): void;
     //#endregion
 
     ///#region Properties
-    public abstract get SpriteType(): T;
+    public abstract get spriteType(): PrefabType;
     //#endregion
 }
