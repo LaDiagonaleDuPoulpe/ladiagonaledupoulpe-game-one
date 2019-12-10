@@ -15,11 +15,14 @@ export abstract class SpriteCreator {
      */
     public createNewOne(scene: BaseMapLevelScene, objectCreator: ObjectCreator, saveInScene: Function) {
         if (this.isPermittedToCreate()) {
-            const sprite = scene.getOneObject(this.spriteType);
+            let sprite = null;
+            
+        
 
-            this.configureSprite(sprite);
-
-            objectCreator.createObject(sprite, scene, saveInScene);
+            // objectCreator.createObject(sprite, scene, saveInScene);
+            if (sprite != null) {
+                this.configureSprite(sprite);
+            }
         }
     }
     //#endregion

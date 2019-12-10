@@ -303,6 +303,68 @@
             }
         }, 
         {
+            "key": "spikes2",
+            "type": "animsprite",
+            "position": {
+                "x": 750,
+                "y": 300
+            },
+            "properties": {
+                "texture": "spikeSpriteSheet",
+                "group": "spikes",
+                "scale": {
+                    "x": 2.0,
+                    "y": 2.0
+                },
+                "depth": 3,
+                "visible": true,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            0,
+                            1,
+                            2,
+                            3
+                        ],
+                        "fps": 5,
+                        "repeat": -1
+                    }
+                ]
+            }
+        },
+        {
+            "key": "spikes3",
+            "type": "animsprite",
+            "position": {
+                "x": 350,
+                "y": 100
+            },
+            "properties": {
+                "texture": "spikeSpriteSheet",
+                "group": "spikes",
+                "scale": {
+                    "x": 2.0,
+                    "y": 2.0
+                },
+                "depth": 3,
+                "visible": true,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            0,
+                            1,
+                            2,
+                            3
+                        ],
+                        "fps": 5,
+                        "repeat": -1
+                    }
+                ]
+            }
+        }, 
+        {
             "key": "wave1",
             "type": "animsprite",
             "position": {
