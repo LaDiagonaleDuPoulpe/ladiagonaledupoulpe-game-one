@@ -54,9 +54,7 @@ export abstract class BaseUnit extends PrefabSprite {
                 frames: frames,
                 frameRate: animationObject.fps,
                 repeat: animationObject.repeat
-            });
-
-            
+            });            
         }
 
         return animationKey;

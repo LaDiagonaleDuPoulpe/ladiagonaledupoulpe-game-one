@@ -1,5 +1,6 @@
 import { SpriteCreator } from './sprite-creator';
 import { PrefabType } from '../../../../shared/enums/prefab-type';
+import { BaseUnit } from '../../units/base.unit';
 
 /**
  * Allows you to create waves in one scene
@@ -7,16 +8,29 @@ import { PrefabType } from '../../../../shared/enums/prefab-type';
 export class WavesCreator extends SpriteCreator {
     //#region Fields
     private _isAllowToCreate = true;
+    private _moduloList = [5, 10, 15, 30];
+    private _currentModulo = 0;
+    private _minY = 500;
+    private _maxY = 1000;
     //#endregion
 
     //#region Internal methods
     protected isPermittedToCreate(): boolean {
-        return Phaser.Math.Between(0, 100) % 35 === 0;
+        this._currentModulo = Phaser.Math.Between(0, 3);
+
+        return Phaser.Math.Between(0, 100) % this._moduloList[this._currentModulo] === 0;
     }
     protected configureSprite(sprite: Phaser.Types.Tilemaps.TiledObject): void {
         sprite.x = Phaser.Math.Between(0, 1800);
+        sprite.y = Phaser.Math.Between(this._minY, this._maxY);
         
-        sprite.y = Phaser.Math.Between(500, 1000); 
+        if (sprite instanceof BaseUnit) {
+            let scale = 2;
+
+            scale = sprite.y / 600;
+
+            (<BaseUnit> sprite).setScale(scale, scale);
+        }
     }
     //#endregion
     
