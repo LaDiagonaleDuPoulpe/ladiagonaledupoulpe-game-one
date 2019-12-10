@@ -49,12 +49,14 @@ export abstract class BaseUnit extends PrefabSprite {
 
             const frames = this.scene.anims.generateFrameNumbers(properties.texture, frameConfig);
             
-            this.scene.anims.create({
+            const animation = this.scene.anims.create({
                 key: animationKey,
                 frames: frames,
                 frameRate: animationObject.fps,
-                repeat: animationObject.repeat 
+                repeat: animationObject.repeat
             });
+
+            
         }
 
         return animationKey;

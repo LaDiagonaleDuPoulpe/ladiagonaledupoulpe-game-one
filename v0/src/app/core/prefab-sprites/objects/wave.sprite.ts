@@ -17,17 +17,19 @@ export class WaveSprite extends BaseUnit {
         _position: Position, 
         _properties: PropertiesSetting) {
         super(_scene, _name, _position, _properties);
+
+        this.on('animationcomplete', this.completeAnimation, this);
     }
 
     //#region public methods
     update() {
-        this.x = this.x + 1;
+        this.x = this.x + 1; 
+    }
+    //#endregion
 
-        this._nbTurn ++;
-        if (this._nbTurn > 70) {
-            this.destroy();
-        }
-        
+    //#region Internal methods
+    private completeAnimation() {
+        this.destroy();
     }
     //#endregion
 }

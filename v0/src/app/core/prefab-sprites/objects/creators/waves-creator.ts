@@ -14,7 +14,7 @@ export class WavesCreator extends SpriteCreator {
         return Phaser.Math.Between(0, 100) % 35 === 0;
     }
     protected configureSprite(sprite: Phaser.Types.Tilemaps.TiledObject): void {
-        sprite.x = Phaser.Math.Between(0, 1500);
+        sprite.x = Phaser.Math.Between(0, 1800);
         
         sprite.y = Phaser.Math.Between(500, 1000); 
     }
