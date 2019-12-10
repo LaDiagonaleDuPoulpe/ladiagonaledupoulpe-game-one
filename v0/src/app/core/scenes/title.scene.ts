@@ -8,6 +8,7 @@ import { LevelConfig } from '../models/levels/level-config';
 import { ObjectCreator } from '../prefab-sprites/objects/creators/object-creator';
 import { BaseMapLevelScene } from './base-map-level.scene';
 import { CloudCreator } from '../prefab-sprites/objects/creators/clouds-creator';
+import { WavesCreator } from '../prefab-sprites/objects/creators/waves-creator';
 
 @injectable()
 export class TitleScene extends BaseMapLevelScene {
@@ -18,7 +19,8 @@ export class TitleScene extends BaseMapLevelScene {
     constructor(protected _logger: DefaultLogger,
                 protected _levelManageService: LevelManageService,
                 protected _objectCreator: ObjectCreator,
-                private _cloudCreator: CloudCreator) {
+                private _cloudCreator: CloudCreator,
+                private _waveCreator: WavesCreator) {
         super(TitleScene.name, _logger, _levelManageService, _objectCreator);
     }
     
@@ -30,6 +32,7 @@ export class TitleScene extends BaseMapLevelScene {
     update() {
         super.update();
         this.createNewCloud();
+        // this.createNewWave();
     }
 
     /**
@@ -48,6 +51,10 @@ export class TitleScene extends BaseMapLevelScene {
     //#endregion
     
     //#region internal methods
+    createNewWave() {
+        this._waveCreator.createNewOne(this, this._objectCreator, this.saveSpriteInScene.bind(this));
+    }
+
     createNewCloud() {
         this._cloudCreator.createNewOne(this, this._objectCreator, this.saveSpriteInScene.bind(this));
     }

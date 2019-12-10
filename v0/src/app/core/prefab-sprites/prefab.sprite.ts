@@ -36,6 +36,10 @@ export abstract class PrefabSprite extends Phaser.GameObjects.Sprite {
         if (this._properties.depth) {
             this.setDepth(this._properties.depth);
         }
+
+        if (typeof this._properties.visible !== "undefined") {
+            this.visible = this._properties.visible;
+        }
     }
     //#endregion
 

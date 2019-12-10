@@ -21,6 +21,10 @@ export abstract class BaseArcadeSprite extends Phaser.Physics.Arcade.Sprite {
             this.setDepth(_properties.depth);
         }
 
+        if (typeof _properties.visible !== "undefined") {
+            this.setVisible(_properties.visible);
+        }
+
         this.speed = Phaser.Math.Between(10, 100);
         
         _scene.add.existing(this);
