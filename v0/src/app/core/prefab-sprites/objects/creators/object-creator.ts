@@ -5,6 +5,8 @@ import { PrefabType } from '../../../../shared/enums/prefab-type';
 import { PropertiesSetting } from '../../../models/properties-setting';
 import { BaseLevelScene } from '../../../scenes/base-level.scene';
 import { PrefabSpriteFactory } from '../../prefab-sprite-factory';
+import { Position } from '../../../models/position';
+import { timingSafeEqual } from 'crypto';
 
 /**
 * Allows you to create an object like a sprite
@@ -53,9 +55,23 @@ export class ObjectCreator {
             texture: config.texture,
             frame: config.frame,
             group: config.group
-        }
-        
-        const sprite = PrefabSpriteFactory.create(<PrefabType> config.type, config.scene, name, objectPosition, <PropertiesSetting> properties);
+        };
+
+        return this.createObjectWithAllProperties(<PrefabType> config.type, name, objectPosition, config.scene, 
+                                                  <PropertiesSetting> properties, saveInSprite);
+    }
+
+    /**
+     * Creates a prefab, add in scene, and return it
+     * @param type Type of the prefab
+     * @param name Name of the prefab
+     * @param position Position (x, y) of the prefab
+     * @param scene Scene to add the prefab
+     * @param properties All config of the prefab (frame, depth, ...)
+     * @param saveInSprite
+     */
+    public createObjectWithAllProperties(type: PrefabType, name: string, position: Position, scene: BaseLevelScene, properties: PropertiesSetting, saveInSprite: Function): Phaser.GameObjects.Sprite {
+        const sprite = PrefabSpriteFactory.create(type, scene, name, position, <PropertiesSetting> properties);
         
         saveInSprite(sprite, properties.group, name);
 

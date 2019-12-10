@@ -108,7 +108,46 @@
                 "depth": 0,
                 "visible": true
             }
-        },   
+        }, 
+        {
+            "key": "wave1",
+            "type": "wave",
+            "position": {
+                "x": 400,
+                "y": 800
+            },
+            "properties": {
+                "texture": "wavesSpriteSheet",
+                "group": "waves",
+                "scale": {
+                    "x": 2.0,
+                    "y": 2.0
+                },
+                "depth": 1,
+                "visible": true,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            11,
+                            10,
+                            9,
+                            8,
+                            7,
+                            6,
+                            5,
+                            4,
+                            3,
+                            2,
+                            1,
+                            0
+                        ],
+                        "fps": 10,
+                        "repeat": 0
+                    }
+                ]
+            }
+        },     
         {
             "key": "tube1",
             "type": "staticImage",
@@ -382,45 +421,6 @@
                 ]
             }
         }, 
-        {
-            "key": "wave1",
-            "type": "animsprite",
-            "position": {
-                "x": 400,
-                "y": 800
-            },
-            "properties": {
-                "texture": "wavesSpriteSheet",
-                "group": "waves",
-                "scale": {
-                    "x": 2.0,
-                    "y": 2.0
-                },
-                "depth": 3,
-                "visible": true,
-                "animations": [
-                    {
-                        "key": "idle",
-                        "frames": [
-                            11,
-                            10,
-                            9,
-                            8,
-                            7,
-                            6,
-                            5,
-                            4,
-                            3,
-                            2,
-                            1,
-                            0
-                        ],
-                        "fps": 10,
-                        "repeat": -1
-                    }
-                ]
-            }
-        },   
         {
             "key": "title",
             "type": "text",

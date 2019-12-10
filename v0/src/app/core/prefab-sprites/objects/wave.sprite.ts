@@ -8,6 +8,10 @@ import { BaseUnit } from '../units/base.unit';
  * It represents wave in the sea
  */
 export class WaveSprite extends BaseUnit {
+    //#region Fields
+    private _nbTurn = 0;
+    //#endregion
+
     constructor(_scene: BaseLevelScene, 
         _name: string, 
         _position: Position, 
@@ -17,7 +21,13 @@ export class WaveSprite extends BaseUnit {
 
     //#region public methods
     update() {
+        this.x = this.x + 1;
 
+        this._nbTurn ++;
+        if (this._nbTurn > 70) {
+            this.destroy();
+        }
+        
     }
     //#endregion
 }

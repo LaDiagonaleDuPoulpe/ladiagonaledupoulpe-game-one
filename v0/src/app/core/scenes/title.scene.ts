@@ -32,7 +32,7 @@ export class TitleScene extends BaseMapLevelScene {
     update() {
         super.update();
         this.createNewCloud();
-        // this.createNewWave();
+        this.createNewWave();
     }
 
     /**
