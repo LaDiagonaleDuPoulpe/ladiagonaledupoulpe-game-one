@@ -1,12 +1,12 @@
-import { PrefabSprite } from '../prefab.sprite';
-import { BaseLevelScene } from '../../scenes/base-level.scene';
-import { PropertiesSetting } from '../../models/properties-setting';
 import { Position } from '../../models/position';
+import { PropertiesSetting } from '../../models/properties-setting';
+import { BaseLevelScene } from '../../scenes/base-level.scene';
+import { BaseArcadeSprite } from './base-arcade.sprite';
 
 /**
  * It represents wave in the sea
  */
-export class WaveSprite extends PrefabSprite {
+export class WaveSprite extends BaseArcadeSprite {
     constructor(_scene: BaseLevelScene, 
         _name: string, 
         _position: Position, 

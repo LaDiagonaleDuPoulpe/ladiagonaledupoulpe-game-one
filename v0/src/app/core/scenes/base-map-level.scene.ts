@@ -34,7 +34,7 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
             this._map = this.add.tilemap(this.levelConfig.data.map.key);
             this.prepareTileSets();
             this.prepareLayers();     
-            this.prepareObjects();       
+           // this.prepareObjects();       
         }        
     }
 

@@ -14,10 +14,6 @@
                 "url": "assets/images/default/000-title/cloud-1.png"
             },
             {
-                "key": "cloud2Image",
-                "url": "assets/images/default/000-title/cloud-2.png"
-            },
-            {
                 "key": "tube1Image",
                 "url": "assets/images/default/000-title/tube.png"
             },
@@ -96,6 +92,96 @@
     },
     "prefabs": [    
         {
+            "key": "tube1",
+            "type": "staticImage",
+            "position": {
+                "x": 410,
+                "y": 400
+            },
+            "properties": {
+                "texture": "tube1Image",
+                "group": "tubes",
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "depth": 3,
+                "visible": true,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            0,
+                            1,
+                            2
+                        ],
+                        "fps": 2,
+                        "repeat": -1
+                    }
+                ]
+            }
+        }, 
+        {
+            "key": "tube2",
+            "type": "staticImage",
+            "position": {
+                "x": 810,
+                "y": 400
+            },
+            "properties": {
+                "texture": "tube2Image",
+                "group": "tubes",
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "depth": 3,
+                "visible": true,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            0,
+                            1,
+                            2
+                        ],
+                        "fps": 2,
+                        "repeat": -1
+                    }
+                ]
+            }
+        }, 
+        {
+            "key": "tube3",
+            "type": "staticImage",
+            "position": {
+                "x": 1410,
+                "y": 300
+            },
+            "properties": {
+                "texture": "tube3Image",
+                "group": "tubes",
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "depth": 3,
+                "visible": true,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            0,
+                            1,
+                            2
+                        ],
+                        "fps": 2,
+                        "repeat": -1
+                    }
+                ]
+            }
+        }, 
+        {
             "key": "waveTube1",
             "type": "animsprite",
             "position": {
@@ -110,6 +196,7 @@
                     "y": 1.0
                 },
                 "depth": 3,
+                "visible": true,
                 "animations": [
                     {
                         "key": "idle",
@@ -139,6 +226,7 @@
                     "y": 1.0
                 },
                 "depth": 3,
+                "visible": true,
                 "animations": [
                     {
                         "key": "idle",
@@ -168,6 +256,7 @@
                     "y": 1.0
                 },
                 "depth": 3,
+                "visible": true,
                 "animations": [
                     {
                         "key": "idle",
@@ -197,6 +286,7 @@
                     "y": 2.0
                 },
                 "depth": 3,
+                "visible": true,
                 "animations": [
                     {
                         "key": "idle",
@@ -216,7 +306,7 @@
             "key": "wave1",
             "type": "animsprite",
             "position": {
-                "x": 200,
+                "x": 400,
                 "y": 800
             },
             "properties": {
@@ -227,22 +317,23 @@
                     "y": 2.0
                 },
                 "depth": 3,
+                "visible": true,
                 "animations": [
                     {
                         "key": "idle",
                         "frames": [
-                            0,
-                            1,
-                            2,
-                            3,
-                            4,
-                            5,
-                            6,
-                            7,
-                            8,
-                            9,
+                            11,
                             10,
-                            11
+                            9,
+                            8,
+                            7,
+                            6,
+                            5,
+                            4,
+                            3,
+                            2,
+                            1,
+                            0
                         ],
                         "fps": 10,
                         "repeat": -1
@@ -264,7 +355,8 @@
                     "fill": "#FFFFFF"
                 },
                 "text": "La diagonale du poulpe",
-                "depth": 3
+                "depth": 3,
+                "visible": true
             }
         },
         {
@@ -286,7 +378,8 @@
                     "x": 0.2,
                     "y": 0.2
                 },
-                "depth": 2
+                "depth": 2,
+                "visible": true
             }
         },
         {
@@ -308,7 +401,8 @@
                     "x": 0.2,
                     "y": 0.2
                 },
-                "depth": 2
+                "depth": 2,
+                "visible": true
             }
         },
         {
@@ -330,7 +424,8 @@
                     "x": 0.2,
                     "y": 0.2
                 },
-                "depth": 2
+                "depth": 2,
+                "visible": true
             }
         }
     ]

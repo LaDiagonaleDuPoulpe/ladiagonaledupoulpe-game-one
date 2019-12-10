@@ -12,6 +12,7 @@ import { CloudSprite } from './objects/cloud.sprite';
 import { StaticImageSprite } from './static-image.sprite';
 import { DefaultArcadeSprite } from './objects/default-arcade.sprite';
 import { StaticUnit } from './units/static.unit';
+import { WaveSprite } from './objects/wave.sprite';
 
 /**
  * Factory to create custom sprite prefab
@@ -68,7 +69,11 @@ export class PrefabSpriteFactory {
 
             case PrefabType.animated: {
                 sprite = new StaticUnit(scene, name, position, properties);
-            }
+            } break;
+
+            case PrefabType.wave: {
+                sprite = new WaveSprite(scene, name, position, properties);
+            } break;
         }
 
         return sprite;

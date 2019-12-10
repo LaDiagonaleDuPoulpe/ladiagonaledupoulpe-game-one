@@ -26,6 +26,7 @@ export class ObjectCreator {
                 type: spriteObject.type,
                 x: spriteObject.x,
                 y: spriteObject.y,
+                visible: this.getPropertyValue('visible', spriteObject),
                 depth: this.getPropertyValue('depth', spriteObject),
                 texture: this.getPropertyValue('texture', spriteObject),
                 group: this.getPropertyValue('group', spriteObject),

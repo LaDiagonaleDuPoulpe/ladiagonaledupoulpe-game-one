@@ -57,5 +57,10 @@ export class PropertiesSetting {
      * List of animations for the prefab
      */
     public animations: animation[];
+
+    /**
+     * Visibility of the item
+     */
+    public visible: boolean;
     //#endregion
 }

@@ -13,5 +13,6 @@ export interface SpriteConfig {
     depth: number, 
     texture: string;
     group: string; 
+    visible: boolean;
     frame?: string;
 }

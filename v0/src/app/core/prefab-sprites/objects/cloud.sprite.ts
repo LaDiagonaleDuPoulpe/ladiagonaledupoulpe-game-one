@@ -1,6 +1,6 @@
-import { BaseLevelScene } from '../../scenes/base-level.scene';
-import { PropertiesSetting } from '../../models/properties-setting';
 import { Position } from '../../models/position';
+import { PropertiesSetting } from '../../models/properties-setting';
+import { BaseLevelScene } from '../../scenes/base-level.scene';
 import { BaseArcadeSprite } from './base-arcade.sprite';
 
 /**
