@@ -90,7 +90,25 @@
             "mapTileSet"
         ]
     },
-    "prefabs": [    
+    "prefabs": [  
+        {
+            "key": "cloud1",
+            "type": "cloud",
+            "position": {
+                "x": 410,
+                "y": 400
+            },
+            "properties": {
+                "texture": "cloud1Image",
+                "group": "clouds",
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "depth": 0,
+                "visible": true
+            }
+        },   
         {
             "key": "tube1",
             "type": "staticImage",

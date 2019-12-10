@@ -17,9 +17,22 @@ export abstract class SpriteCreator {
         if (this.isPermittedToCreate()) {
             let sprite = null;
             
-        
+            const prefab = scene.getOnePrefabByType(this.spriteType);
+            if (prefab) {
+                const config = {
+                    type: this.spriteType,
+                    name: prefab.key,
+                    scene: scene,
+                    x: prefab.position.x,
+                    y: prefab.position.y,
+                    depth: prefab.properties.depth,
+                    texture: prefab.properties.texture,
+                    group: prefab.properties.group,
+                    visible: true
+                };
+                sprite = objectCreator.createObjectWithDetails(config, saveInScene);
+            }
 
-            // objectCreator.createObject(sprite, scene, saveInScene);
             if (sprite != null) {
                 this.configureSprite(sprite);
             }
