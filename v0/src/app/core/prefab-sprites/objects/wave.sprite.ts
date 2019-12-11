@@ -23,7 +23,7 @@ export class WaveSprite extends BaseUnit {
 
     //#region public methods
     update() {
-        this.x = this.x + 1; 
+        this.x = this.x + 3; 
     }
     //#endregion
 

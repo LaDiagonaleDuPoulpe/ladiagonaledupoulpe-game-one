@@ -17,5 +17,13 @@ export class StaticImageSprite extends Phaser.GameObjects.Image {
         if (this._properties.depth) {
             this.setDepth(this._properties.depth);
         }
+
+        if (this._properties.scale) {
+            this.setScale(this._properties.scale.x, this._properties.scale.y);
+        }
+
+        if (typeof this._properties.visible !== "undefined") {
+            this.visible = this._properties.visible;
+        }
     }
 }

@@ -8,7 +8,7 @@ import { BaseUnit } from '../../units/base.unit';
 export class WavesCreator extends SpriteCreator {
     //#region Fields
     private _isAllowToCreate = true;
-    private _moduloList = [5, 10, 15, 30];
+    private _moduloList = [2, 5, 10, 15, 30];
     private _currentModulo = 0;
     private _minY = 500;
     private _maxY = 1000;
@@ -16,7 +16,7 @@ export class WavesCreator extends SpriteCreator {
 
     //#region Internal methods
     protected isPermittedToCreate(): boolean {
-        this._currentModulo = Phaser.Math.Between(0, 3);
+        this._currentModulo = Phaser.Math.Between(0, 4);
 
         return Phaser.Math.Between(0, 100) % this._moduloList[this._currentModulo] === 0;
     }
