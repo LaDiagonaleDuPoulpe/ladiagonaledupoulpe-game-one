@@ -10,6 +10,7 @@ export class StaticImageSprite extends Phaser.GameObjects.Image {
         private _name: string, 
         private _position: Position, 
         private _properties: PropertiesSetting) {
+            
         super(_scene, _position.x, _position.y, _properties.texture, _properties.frame);
 
         this._scene.add.existing(this);

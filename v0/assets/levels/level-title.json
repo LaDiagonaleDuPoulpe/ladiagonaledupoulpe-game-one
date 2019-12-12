@@ -28,7 +28,19 @@
             {
                 "key": "vague1Image",
                 "url": "assets/images/default/000-title/vague-tube.png"
-            }
+            },
+            {
+                "key": "pipeRightTopImage",
+                "url": "assets/images/default/000-title/pipe-right-part.png"
+            },
+            {
+                "key": "pipeLong1Image",
+                "url": "assets/images/default/000-title/pipe-long-front.png"
+            },
+            {
+                "key": "pipeWide1Image",
+                "url": "assets/images/default/000-title/pipe-long-wide.png"
+            }            
         ],
         "tilemaps": [
             {
@@ -44,6 +56,18 @@
                     "dimension": {
                         "width": 526,
                         "height": 225
+                    },
+                    "spacing": 0,
+                    "margin": 0
+                }
+            },
+            {
+                "key": "pipeRightSpriteSheet",
+                "url": "assets/images/default/000-title/pipes-right.png",
+                "frame": {
+                    "dimension": {
+                        "width": 431,
+                        "height": 942
                     },
                     "spacing": 0,
                     "margin": 0
@@ -82,7 +106,8 @@
         "clouds",
         "tubes",
         "waveTubes",
-        "spikes"
+        "spikes",
+        "pipes"
     ],
     "map": {
         "key": "animate-intro",
@@ -91,6 +116,60 @@
         ]
     },
     "prefabs": [  
+        {
+            "key": "pipe1",
+            "type": "staticImage",
+            "position": {
+                "x": 1750,
+                "y": 100
+            },
+            "properties": {
+                "texture": "pipeRightTopImage",
+                "group": "pipes",
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "depth": 5,
+                "visible": true
+            }
+        },
+        {
+            "key": "pipe2",
+            "type": "staticImage",
+            "position": {
+                "x": 1150,
+                "y": 100
+            },
+            "properties": {
+                "texture": "pipeLong1Image",
+                "group": "pipes",
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "depth": 5,
+                "visible": true
+            }
+        }, 
+        {
+            "key": "pipe3",
+            "type": "staticImage",
+            "position": {
+                "x": 280,
+                "y": 200
+            },
+            "properties": {
+                "texture": "pipeWide1Image",
+                "group": "pipes",
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "depth": 4,
+                "visible": true
+            }
+        }, 
         {
             "key": "cloud1",
             "type": "cloud",
@@ -107,6 +186,34 @@
                 },
                 "depth": 0,
                 "visible": true
+            }
+        }, 
+        {
+            "key": "pipeRight1",
+            "type": "animsprite",
+            "position": {
+                "x": 1000,
+                "y": 200
+            },
+            "properties": {
+                "texture": "pipeRightSpriteSheet",
+                "group": "pipes",
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "depth": 2,
+                "visible": true,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            0,1,2,3
+                        ],
+                        "fps": 10,
+                        "repeat": -1
+                    }
+                ]
             }
         }, 
         {
@@ -162,7 +269,7 @@
                     "x": 1.0,
                     "y": 1.0
                 },
-                "depth": 3,
+                "depth": 4,
                 "visible": true,
                 "animations": [
                     {
@@ -424,7 +531,7 @@
             "key": "spikes3",
             "type": "animsprite",
             "position": {
-                "x": 350,
+                "x": 310,
                 "y": 100
             },
             "properties": {
@@ -465,7 +572,7 @@
                     "fill": "#FFFFFF"
                 },
                 "text": "La diagonale du poulpe",
-                "depth": 3,
+                "depth": 10,
                 "visible": true
             }
         },
@@ -488,7 +595,7 @@
                     "x": 0.2,
                     "y": 0.2
                 },
-                "depth": 2,
+                "depth": 10,
                 "visible": true
             }
         },
@@ -511,7 +618,7 @@
                     "x": 0.2,
                     "y": 0.2
                 },
-                "depth": 2,
+                "depth": 10,
                 "visible": true
             }
         },
@@ -534,7 +641,7 @@
                     "x": 0.2,
                     "y": 0.2
                 },
-                "depth": 2,
+                "depth": 10,
                 "visible": true
             }
         }
