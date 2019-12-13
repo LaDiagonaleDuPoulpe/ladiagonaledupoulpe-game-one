@@ -74,7 +74,7 @@
                 }
             },
             {
-                "key": "spikeSpriteSheet",
+                "key": "sparkSpriteSheet",
                 "url": "assets/images/default/000-title/spikes-1.png",
                 "frame": {
                     "dimension": {
@@ -106,7 +106,7 @@
         "clouds",
         "tubes",
         "waveTubes",
-        "spikes",
+        "sparks",
         "pipes"
     ],
     "map": {
@@ -466,15 +466,15 @@
             }
         },
         {
-            "key": "spikes1",
+            "key": "spark1",
             "type": "animsprite",
             "position": {
                 "x": 1350,
                 "y": 200
             },
             "properties": {
-                "texture": "spikeSpriteSheet",
-                "group": "spikes",
+                "texture": "sparkSpriteSheet",
+                "group": "sparks",
                 "scale": {
                     "x": 2.0,
                     "y": 2.0
@@ -497,15 +497,15 @@
             }
         }, 
         {
-            "key": "spikes2",
+            "key": "spark2",
             "type": "animsprite",
             "position": {
                 "x": 750,
                 "y": 300
             },
             "properties": {
-                "texture": "spikeSpriteSheet",
-                "group": "spikes",
+                "texture": "sparkSpriteSheet",
+                "group": "sparks",
                 "scale": {
                     "x": 2.0,
                     "y": 2.0
@@ -528,15 +528,15 @@
             }
         },
         {
-            "key": "spikes3",
+            "key": "spark3",
             "type": "animsprite",
             "position": {
                 "x": 310,
                 "y": 100
             },
             "properties": {
-                "texture": "spikeSpriteSheet",
-                "group": "spikes",
+                "texture": "sparkSpriteSheet",
+                "group": "sparks",
                 "scale": {
                     "x": 2.0,
                     "y": 2.0
