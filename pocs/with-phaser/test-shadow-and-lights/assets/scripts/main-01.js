@@ -11,7 +11,7 @@ const config = {
             gravity: {
                 y: 0
             },
-            debug: false
+            debug: true
         }
     },
     scene: {
@@ -32,6 +32,8 @@ function preload() {
 }
 
 var light1 = null;
+var light2 = null;
+
 var character = null;
 function create() {
     //this.stage.backgroundColor = 0x4488cc;
@@ -39,29 +41,42 @@ function create() {
     
     //this.cameras.main.fadeIn(6000);
 
-    light1 = this.lights.addLight(180, 80, 200).setColor(0xffffff).setIntensity(2);
-    //var ellipse1 = new Phaser.Geom.Ellipse(light1.x, light1.y, 70, 100);
+    light1 = this.lights.addLight(700, 300, 500).setColor(0xffffff).setIntensity(2);
+    var ellipse1 = new Phaser.Geom.Ellipse(light1.x, light1.y, 70, 100);
+
+    light2 = this.lights.addLight(10, 600, 500).setColor(0xffffff).setIntensity(2);
+    var ellipse2 = new Phaser.Geom.Ellipse(light2.x, light2.y, 70, 1200);
 
     character.setPipeline('Light2D');
 
-    // this.time.addEvent({
-    //     delay: 100,
-    //     callback: function ()
-    //     {
-    //         Phaser.Geom.Ellipse.Random(ellipse1, light1);
-    //     },
-    //     callbackScope: this,
-    //     repeat: -1
-    // });
-
-    this.input.on('pointermove', function (pointer) {
-
-        light1.x = pointer.x;
-        light1.y = pointer.y;
-
-        console.log('pointer :', pointer);
-
+    this.time.addEvent({
+        delay: 50,
+        callback: function ()
+        {
+            Phaser.Geom.Ellipse.Random(ellipse1, light1);
+        },
+        callbackScope: this,
+        repeat: -1
     });
+
+    this.time.addEvent({
+        delay: 80,
+        callback: function ()
+        {
+            Phaser.Geom.Ellipse.Random(ellipse2, light2);
+        },
+        callbackScope: this,
+        repeat: -1
+    });
+
+    // this.input.on('pointermove', function (pointer) {
+
+    //     light1.x = pointer.x;
+    //     light1.y = pointer.y;
+
+    //     console.log('pointer :', pointer);
+
+    // });
 
     this.lights.enable().setAmbientColor(0x333333);
 
