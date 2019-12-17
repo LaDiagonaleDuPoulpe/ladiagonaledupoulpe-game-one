@@ -1,0 +1,419 @@
+{
+	"textures": [
+		{
+			"image": "001-down.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 869,
+				"h": 2018
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "octo3 down all_000.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 106,
+						"y": 52,
+						"w": 288,
+						"h": 336
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 288,
+						"h": 336
+					}
+				},
+				{
+					"filename": "octo3 down all_015.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 106,
+						"y": 52,
+						"w": 288,
+						"h": 336
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 288,
+						"h": 336
+					}
+				},
+				{
+					"filename": "octo3 down all_014.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 106,
+						"y": 53,
+						"w": 288,
+						"h": 335
+					},
+					"frame": {
+						"x": 291,
+						"y": 1,
+						"w": 288,
+						"h": 335
+					}
+				},
+				{
+					"filename": "octo3 down all_001.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 106,
+						"y": 53,
+						"w": 287,
+						"h": 335
+					},
+					"frame": {
+						"x": 581,
+						"y": 1,
+						"w": 287,
+						"h": 335
+					}
+				},
+				{
+					"filename": "octo3 down all_016.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 106,
+						"y": 53,
+						"w": 288,
+						"h": 335
+					},
+					"frame": {
+						"x": 291,
+						"y": 338,
+						"w": 288,
+						"h": 335
+					}
+				},
+				{
+					"filename": "octo3 down all_002.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 106,
+						"y": 53,
+						"w": 287,
+						"h": 335
+					},
+					"frame": {
+						"x": 581,
+						"y": 338,
+						"w": 287,
+						"h": 335
+					}
+				},
+				{
+					"filename": "octo3 down all_013.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 106,
+						"y": 54,
+						"w": 288,
+						"h": 334
+					},
+					"frame": {
+						"x": 1,
+						"y": 339,
+						"w": 288,
+						"h": 334
+					}
+				},
+				{
+					"filename": "octo3 down all_003.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 106,
+						"y": 54,
+						"w": 287,
+						"h": 335
+					},
+					"frame": {
+						"x": 1,
+						"y": 675,
+						"w": 287,
+						"h": 335
+					}
+				},
+				{
+					"filename": "octo3 down all_012.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 106,
+						"y": 54,
+						"w": 287,
+						"h": 335
+					},
+					"frame": {
+						"x": 290,
+						"y": 675,
+						"w": 287,
+						"h": 335
+					}
+				},
+				{
+					"filename": "octo3 down all_017.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 106,
+						"y": 53,
+						"w": 287,
+						"h": 335
+					},
+					"frame": {
+						"x": 579,
+						"y": 675,
+						"w": 287,
+						"h": 335
+					}
+				},
+				{
+					"filename": "octo3 down all_018.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 106,
+						"y": 54,
+						"w": 287,
+						"h": 335
+					},
+					"frame": {
+						"x": 1,
+						"y": 1012,
+						"w": 287,
+						"h": 335
+					}
+				},
+				{
+					"filename": "octo3 down all_004.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 106,
+						"y": 55,
+						"w": 287,
+						"h": 334
+					},
+					"frame": {
+						"x": 290,
+						"y": 1012,
+						"w": 287,
+						"h": 334
+					}
+				},
+				{
+					"filename": "octo3 down all_005.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 106,
+						"y": 55,
+						"w": 287,
+						"h": 334
+					},
+					"frame": {
+						"x": 579,
+						"y": 1012,
+						"w": 287,
+						"h": 334
+					}
+				},
+				{
+					"filename": "octo3 down all_011.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 106,
+						"y": 55,
+						"w": 287,
+						"h": 334
+					},
+					"frame": {
+						"x": 290,
+						"y": 1348,
+						"w": 287,
+						"h": 334
+					}
+				},
+				{
+					"filename": "octo3 down all_006.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 106,
+						"y": 56,
+						"w": 287,
+						"h": 333
+					},
+					"frame": {
+						"x": 1,
+						"y": 1349,
+						"w": 287,
+						"h": 333
+					}
+				},
+				{
+					"filename": "octo3 down all_007.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 106,
+						"y": 56,
+						"w": 287,
+						"h": 333
+					},
+					"frame": {
+						"x": 1,
+						"y": 1684,
+						"w": 287,
+						"h": 333
+					}
+				},
+				{
+					"filename": "octo3 down all_009.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 106,
+						"y": 56,
+						"w": 287,
+						"h": 333
+					},
+					"frame": {
+						"x": 290,
+						"y": 1684,
+						"w": 287,
+						"h": 333
+					}
+				},
+				{
+					"filename": "octo3 down all_010.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 106,
+						"y": 56,
+						"w": 287,
+						"h": 333
+					},
+					"frame": {
+						"x": 579,
+						"y": 1348,
+						"w": 287,
+						"h": 333
+					}
+				},
+				{
+					"filename": "octo3 down all_008.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 106,
+						"y": 57,
+						"w": 287,
+						"h": 332
+					},
+					"frame": {
+						"x": 579,
+						"y": 1683,
+						"w": 287,
+						"h": 332
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:cb181e951e452486fcdc08842bc96c7b:94b0ac95e6374c6df3bdc2d7ecf7b2ba:2c58eaf9289d93d12335698b88e7e52d$"
+	}
+}

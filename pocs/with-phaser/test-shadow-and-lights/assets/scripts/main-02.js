@@ -27,8 +27,8 @@ let texture = undefined;
 console.log('game.state :', game.state);
 
 function preload() {
-
-    this.load.image('character', ['assets/images/down/octo3 down walk_Spritesheet5x5.png', 'assets/images/down/octo3 down walk_Spritesheet5x5_n.png']);
+    this.load.setPath('assets/images/Octo2 PNGs/octo3 down all');
+    this.load.multiatlas('character_sheet_down', 'octo3-down-all.json');
 }
 
 var light1 = null;
@@ -39,20 +39,26 @@ function create() {
     //this.stage.backgroundColor = 0x4488cc;
     //character = this.add.image(200, 200, 'character');
 
-    character = this.add.sprite(500, 500, 'character');
+    //character = this.add.sprite(500, 500, 'character');
 
-    // this.anims.create({ key: 'walk', frames: frameNames, frameRate: 10, repeat: -1 });
-    // character.anims.play('walk');
+    var capguy_anim = this.add.sprite(500, 500, 'character_sheet_down');
+    capguy_anim.setPipeline('Light2D');
+
+
+    //var frameNames = this.anims.generateFrameNames('character_sheet', { start: 1, end: 5 });
+    var frameNames = this.anims.generateFrameNames('character_sheet_down', { zeroPad: 3, prefix: 'octo3 down all_', suffix: '.png', start: 0, end: 15 });
+    this.anims.create({ key: 'idle', frames: frameNames, frameRate: 15, repeat: -1 });
+    capguy_anim.anims.play('idle');
     
     //this.cameras.main.fadeIn(6000);
 
-    light1 = this.lights.addLight(700, 300, 500).setColor(0xffffff).setIntensity(2);
+    light1 = this.lights.addLight(1300, 300, 500).setColor(0xffffff).setIntensity(2);
     var ellipse1 = new Phaser.Geom.Ellipse(light1.x, light1.y, 70, 100);
 
     light2 = this.lights.addLight(10, 600, 500).setColor(0xffffff).setIntensity(2);
     var ellipse2 = new Phaser.Geom.Ellipse(light2.x, light2.y, 70, 1200);
 
-    character.setPipeline('Light2D');
+    capguy_anim.setPipeline('Light2D');
 
     this.time.addEvent({
         delay: 50,
