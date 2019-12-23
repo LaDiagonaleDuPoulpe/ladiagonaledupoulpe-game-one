@@ -1,8 +1,8 @@
 {
 	"textures": [
 		{
-			"image": "octo3-down-all.png",
-			"normalMap": "octo3-down-all_n.png",
+			"image": "octo3 down all/octo3-down-all.png",
+			"normalMap": "octo3 down all/octo3-down-all_n.png",
 			"format": "RGBA8888",
 			"size": {
 				"w": 4500,
