@@ -37,6 +37,7 @@ function preload() {
 var light1 = null;
 var light2 = null;
 var capguy_anim = null;
+let cursors = null;
 
 var character = null;
 function create() {
@@ -46,6 +47,8 @@ function create() {
     //character = this.add.sprite(500, 500, 'character');
 
     capguy_anim = this.physics.add.sprite(500, 500, 'character_sheet_all');
+    capguy_anim.setScale(0.2);
+
     capguy_anim.setPipeline('Light2D');
 
     this.physics.world.enable(capguy_anim);
@@ -80,7 +83,7 @@ function create() {
     frameNames = this.anims.generateFrameNames('character_sheet_all', { zeroPad: 3, prefix: 'octo3 up all_', suffix: '.png', start: 45, end: 69 });
     this.anims.create({ key: 'walk-top', frames: frameNames, frameRate: 25, repeat: -1 });
     
-    capguy_anim.anims.play('walk-down');
+    capguy_anim.anims.play('idle-down');
 
     //this.cameras.main.fadeIn(6000);
 
@@ -123,30 +126,54 @@ function create() {
 
     this.lights.enable().setAmbientColor(0x333333);
 
-    this.input.keyboard.on('keydown_W', function (event) {
-        capguy_anim.setVelocityY(15);
-        capguy_anim.anims.play('walk-down');
-    });
+    // this.input.keyboard.on('keydown_W', function (event) {
+    //     capguy_anim.setVelocityY(15);
+    //     capguy_anim.anims.play('walk-down');
+    // });
 
-    this.input.keyboard.on('keydown_Q', function (event) {
-        capguy_anim.setVelocityY(15);
-        capguy_anim.anims.play('walk-left');
-    });
+    // this.input.keyboard.on('keydown_Q', function (event) {
+    //     capguy_anim.setVelocityY(15);
+    //     capguy_anim.anims.play('walk-left');
+    // });
 
-    this.input.keyboard.on('keydown_Z', function (event) {
-        capguy_anim.setVelocityY(-15);
-        capguy_anim.anims.play('walk-top');
-    });
+    // this.input.keyboard.on('keydown_Z', function (event) {
+    //     capguy_anim.setVelocityY(-15);
+    //     capguy_anim.anims.play('walk-top');
+    // });
 
-    this.input.keyboard.on('keydown_D', function (event) {
-        capguy_anim.setVelocityY(-15);
-        capguy_anim.anims.play('walk-right');
-    });
+    // this.input.keyboard.on('keydown_D', function (event) {
+    //     capguy_anim.setVelocityY(-15);
+    //     capguy_anim.anims.play('walk-right');
+    // });
 
 
+    cursors = this.input.keyboard.createCursorKeys();
     this.cameras.main.startFollow(capguy_anim);
 }
 
 function update() {
+    if (cursors.left.isDown) {
+        capguy_anim.setVelocityX(-160);
+        
+        capguy_anim.anims.play('walk-left', true);
+    }
+    else if (cursors.right.isDown) {
+        capguy_anim.setVelocityX(160);
+        
+        capguy_anim.anims.play('walk-right', true);
+    }
+    else {
+
+        const currentAnimationKey = capguy_anim.anims.currentAnim.key;
+        const parts = currentAnimationKey.split('-');
+
+        capguy_anim.setVelocityX(0);
+        console.log('stop');
+        
+        capguy_anim.anims.play('idle' + '-' + parts[1]);
+    }
     
+    // if (cursors.up.isDown && player.body.touching.down) {
+    //     player.setVelocityY(-330);
+    // }
 }
