@@ -28,10 +28,10 @@ console.log('game.state :', game.state);
 
 function preload() {
     this.load.setPath('assets/images/Octo2 PNGs');
-    this.load.multiatlas('character_sheet_down', 'octo3 down all/octo3-down-all.json');
-    this.load.multiatlas('character_sheet_top', 'octo3 up all/octo3-top-all.json');
-    this.load.multiatlas('character_sheet_left', 'octo3 left all/octo3-left-all.json');
-    this.load.multiatlas('character_sheet_right', 'octo3 right all/octo3-right-all.json');
+    this.load.multiatlas('character_sheet_all', 'octo3 all/octo3-all.json');
+
+    // this.load.multiatlas('character_sheet_top', 'octo3 up all/octo3-top-all.json');
+    // this.load.multiatlas('character_sheet_right', 'octo3 right all/octo3-right-all.json');
 }
 
 var light1 = null;
@@ -45,42 +45,42 @@ function create() {
 
     //character = this.add.sprite(500, 500, 'character');
 
-    capguy_anim = this.physics.add.sprite(500, 500, 'character_sheet_down');
+    capguy_anim = this.physics.add.sprite(500, 500, 'character_sheet_all');
     capguy_anim.setPipeline('Light2D');
 
     this.physics.world.enable(capguy_anim);
 
     //var frameNames = this.anims.generateFrameNames('character_sheet', { start: 1, end: 5 });
-    var frameNames = this.anims.generateFrameNames('character_sheet_down', { zeroPad: 3, prefix: 'octo3 down all_', suffix: '.png', start: 0, end: 15 });
+    var frameNames = this.anims.generateFrameNames('character_sheet_all', { zeroPad: 3, prefix: 'octo3 down all_', suffix: '.png', start: 0, end: 15 });
     this.anims.create({ key: 'idle-down', frames: frameNames, frameRate: 15, repeat: -1 });
     //capguy_anim.anims.play('idle');
 
-    frameNames = this.anims.generateFrameNames('character_sheet_down', { zeroPad: 3, prefix: 'octo3 down all_', suffix: '.png', start: 45, end: 65 });
-    this.anims.create({ key: 'walk', frames: frameNames, frameRate: 25, repeat: -1 });
+    frameNames = this.anims.generateFrameNames('character_sheet_all', { zeroPad: 3, prefix: 'octo3 down all_', suffix: '.png', start: 45, end: 65 });
+    this.anims.create({ key: 'walk-down', frames: frameNames, frameRate: 25, repeat: -1 });
     
 
-    frameNames = this.anims.generateFrameNames('character_sheet_left', { zeroPad: 3, prefix: 'octo3 left all_', suffix: '.png', start: 0, end: 15 });
+    frameNames = this.anims.generateFrameNames('character_sheet_all', { zeroPad: 3, prefix: 'octo3 left all_', suffix: '.png', start: 0, end: 15 });
     this.anims.create({ key: 'idle-left', frames: frameNames, frameRate: 15, repeat: -1 });
     //capguy_anim.anims.play('idle');
 
-    frameNames = this.anims.generateFrameNames('character_sheet_left', { zeroPad: 3, prefix: 'octo3 left all_', suffix: '.png', start: 45, end: 69 });
+    frameNames = this.anims.generateFrameNames('character_sheet_all', { zeroPad: 3, prefix: 'octo3 left all_', suffix: '.png', start: 45, end: 69 });
     this.anims.create({ key: 'walk-left', frames: frameNames, frameRate: 25, repeat: -1 });
 
-    frameNames = this.anims.generateFrameNames('character_sheet_right', { zeroPad: 3, prefix: 'octo3 right all_', suffix: '.png', start: 0, end: 15 });
+    frameNames = this.anims.generateFrameNames('character_sheet_all', { zeroPad: 3, prefix: 'octo3 right all_', suffix: '.png', start: 0, end: 15 });
     this.anims.create({ key: 'idle-right', frames: frameNames, frameRate: 15, repeat: -1 });
-    //capguy_anim.anims.play('idle');
+    // //capguy_anim.anims.play('idle');
 
-    frameNames = this.anims.generateFrameNames('character_sheet_right', { zeroPad: 3, prefix: 'octo3 right all_', suffix: '.png', start: 45, end: 69 });
+    frameNames = this.anims.generateFrameNames('character_sheet_all', { zeroPad: 3, prefix: 'octo3 right all_', suffix: '.png', start: 45, end: 69 });
     this.anims.create({ key: 'walk-right', frames: frameNames, frameRate: 25, repeat: -1 });
 
-    frameNames = this.anims.generateFrameNames('character_sheet_top', { zeroPad: 3, prefix: 'octo3 up all_', suffix: '.png', start: 0, end: 15 });
+    frameNames = this.anims.generateFrameNames('character_sheet_all', { zeroPad: 3, prefix: 'octo3 up all_', suffix: '.png', start: 0, end: 15 });
     this.anims.create({ key: 'idle-top', frames: frameNames, frameRate: 15, repeat: -1 });
-    //capguy_anim.anims.play('idle');
+    // //capguy_anim.anims.play('idle');
 
-    frameNames = this.anims.generateFrameNames('character_sheet_top', { zeroPad: 3, prefix: 'octo3 up all_', suffix: '.png', start: 45, end: 69 });
+    frameNames = this.anims.generateFrameNames('character_sheet_all', { zeroPad: 3, prefix: 'octo3 up all_', suffix: '.png', start: 45, end: 69 });
     this.anims.create({ key: 'walk-top', frames: frameNames, frameRate: 25, repeat: -1 });
     
-    capguy_anim.anims.play('walk-top');
+    capguy_anim.anims.play('walk-down');
 
     //this.cameras.main.fadeIn(6000);
 
@@ -123,15 +123,25 @@ function create() {
 
     this.lights.enable().setAmbientColor(0x333333);
 
-    // this.input.keyboard.on('keydown_W', function (event) {
-    //     capguy_anim.setVelocityY(15);
-    //     capguy_anim.anims.play('walk-down');
-    // });
+    this.input.keyboard.on('keydown_W', function (event) {
+        capguy_anim.setVelocityY(15);
+        capguy_anim.anims.play('walk-down');
+    });
 
-    // this.input.keyboard.on('keydown_Z', function (event) {
-    //     capguy_anim.setVelocityY(-15);
-    //     capguy_anim.anims.play('walk-top');
-    // });
+    this.input.keyboard.on('keydown_Q', function (event) {
+        capguy_anim.setVelocityY(15);
+        capguy_anim.anims.play('walk-left');
+    });
+
+    this.input.keyboard.on('keydown_Z', function (event) {
+        capguy_anim.setVelocityY(-15);
+        capguy_anim.anims.play('walk-top');
+    });
+
+    this.input.keyboard.on('keydown_D', function (event) {
+        capguy_anim.setVelocityY(-15);
+        capguy_anim.anims.play('walk-right');
+    });
 
 
     this.cameras.main.startFollow(capguy_anim);
