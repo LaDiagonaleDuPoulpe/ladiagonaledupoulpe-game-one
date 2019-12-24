@@ -148,7 +148,7 @@ function create() {
 
 
     cursors = this.input.keyboard.createCursorKeys();
-    this.cameras.main.startFollow(capguy_anim);
+    //this.cameras.main.startFollow(capguy_anim);
 }
 
 function update() {
@@ -162,12 +162,25 @@ function update() {
         
         capguy_anim.anims.play('walk-right', true);
     }
+    else if (cursors.up.isDown) {
+        capguy_anim.setVelocityX(0);
+        capguy_anim.setVelocityY(-160);
+        
+        capguy_anim.anims.play('walk-top', true);
+    }
+    else if (cursors.down.isDown) {
+        capguy_anim.setVelocityX(0);
+        capguy_anim.setVelocityY(160);
+        
+        capguy_anim.anims.play('walk-down', true);
+    }
     else {
 
         const currentAnimationKey = capguy_anim.anims.currentAnim.key;
         const parts = currentAnimationKey.split('-');
 
         capguy_anim.setVelocityX(0);
+        capguy_anim.setVelocityY(0);
         console.log('stop');
         
         capguy_anim.anims.play('idle' + '-' + parts[1]);
