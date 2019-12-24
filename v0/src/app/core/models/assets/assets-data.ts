@@ -1,6 +1,7 @@
 import { AssetImage } from "./asset-image";
 import { AssetTileMap } from './asset-tile-map';
 import { AssetSpriteSheet } from './asset-spritesheet';
+import { AssetAtlas } from './asset-atlas';
 
 /**
  * Represents all assets in scene data
@@ -26,5 +27,10 @@ export class AssetsData {
      * List of sprite sheets to be loaded in current scene
      */
     public spritesheets: AssetSpriteSheet[];
+
+    /**
+     * List of the atlases to be loaded in current scene
+     */
+    public atlases: AssetAtlas[];
     //#endregion
 }

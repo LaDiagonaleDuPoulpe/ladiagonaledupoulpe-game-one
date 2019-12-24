@@ -57,6 +57,7 @@ export class LoadingScene extends BaseScene {
         if (this.levelConfig && this.levelConfig.data) {
             this.prepareImagesToBeLoaded();
             this.prepareVideosToBeLoaded();
+            this.prepareAtlases();
             this.prepareSpriteSheets();
             this.prepareTileMaps();
         }
@@ -73,6 +74,16 @@ export class LoadingScene extends BaseScene {
                     spacing: spritesheet.frame.spacing,
                     margin: spritesheet.frame.margin
                 });
+            }, this);
+        }
+    }
+
+    private prepareAtlases() {
+        this._logger.log('prepareAtlases', this.levelConfig.data);
+
+        if (this.levelConfig.data.assets.atlases) {
+            this.levelConfig.data.assets.atlases.forEach(atlas => {
+                this.load.multiatlas(atlas.key, atlas.url);
             }, this);
         }
     }

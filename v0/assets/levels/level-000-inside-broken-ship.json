@@ -12,8 +12,21 @@
                 "url": "assets/maps/000-level-0-ship.json"
             }
         ],
+        "atlases": [
+            {
+                "key": "octopus3SpriteSheet",
+                "url": "assets/images/default/octo3 all/octo3-all.json",
+                "frame": {
+                    "dimension": {
+                        "width": 500,
+                        "height": 500
+                    },
+                    "spacing": 0,
+                    "margin": 0
+                }
+            }
+        ],
         "spritesheets": [
-            
         ]
     },
     "map": {
