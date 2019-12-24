@@ -21,11 +21,15 @@ export abstract class BaseArcadeSprite extends Phaser.Physics.Arcade.Sprite {
             this.setDepth(_properties.depth);
         }
 
+        if (_properties.scale) {
+            this.setScale(_properties.scale.x, _properties.scale.y);
+        }
+
         if (typeof _properties.visible !== "undefined") {
             this.setVisible(_properties.visible);
         }
 
-        this.speed = Phaser.Math.Between(10, 100);
+        this.defineSpeed();
         
         _scene.add.existing(this);
     }
@@ -43,6 +47,12 @@ export abstract class BaseArcadeSprite extends Phaser.Physics.Arcade.Sprite {
         if (! isDestroy) {
             this.setVelocityX(this.speed);
         }
+    }
+    //#endregion
+
+    //#region internal methods
+    protected defineSpeed() {
+        this.speed = Phaser.Math.Between(10, 100);
     }
     //#endregion
 

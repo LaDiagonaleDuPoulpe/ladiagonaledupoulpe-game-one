@@ -13,6 +13,7 @@ import { StaticImageSprite } from './static-image.sprite';
 import { DefaultArcadeSprite } from './objects/default-arcade.sprite';
 import { StaticUnit } from './units/static.unit';
 import { WaveSprite } from './objects/wave.sprite';
+import { OctopusSprite } from './objects/octopus.sprite';
 
 /**
  * Factory to create custom sprite prefab
@@ -73,6 +74,10 @@ export class PrefabSpriteFactory {
 
             case PrefabType.wave: {
                 sprite = new WaveSprite(scene, name, position, properties);
+            } break;
+
+            case PrefabType.octopus: {
+                sprite = new OctopusSprite(scene, name, position, properties);
             } break;
         }
 

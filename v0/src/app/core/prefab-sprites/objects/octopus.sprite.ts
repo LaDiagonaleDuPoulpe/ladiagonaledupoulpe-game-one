@@ -16,6 +16,9 @@ export class OctopusSprite extends BaseArcadeSprite {
     }
 
     //#region public methods
+    update() {
+        
+    }
     //#endregion
 
     //#region properties

@@ -14,6 +14,8 @@ export enum PrefabType {
     video = 'video',
     /** Waves to animate */
     wave = 'wave',
+    /** Octopus sprite to animate */
+    octopus = 'octopus',
     /** Cloud to load, and animate */
     cloud = 'cloud',
     /** Static image to load */
