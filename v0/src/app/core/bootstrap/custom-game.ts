@@ -16,6 +16,7 @@ import { LevelService } from '../../shared/services/level.service';
 import { LevelManageService } from '../../shared/services/level-manager.service';
 import { MapScene } from '../scenes/map.scene';
 import { VideoScene } from '../scenes/video.scene';
+import { InsideSpaceShipMapScene } from '../scenes/inside-space-ship-map.scene';
 
 
 /**
@@ -37,10 +38,9 @@ export class CustomGame extends Phaser.Game {
                 private _loadingScene: LoadingScene,
                 private _titleScene: TitleScene,
                 private _videoScene: VideoScene,
-                private _mapScene: MapScene) {
+                private _mapScene: MapScene,
+                private _insideSPaceShipScene: InsideSpaceShipMapScene) {
         super(config.forRoot());
-
-        Phaser.GameObjects.Video
 
         this.init();
     }
@@ -57,6 +57,7 @@ export class CustomGame extends Phaser.Game {
     
     private addScenes() {
         this.scene.add(SceneType.map, this._mapScene);
+        this.scene.add(SceneType.insideSpaceShipMap, this._insideSPaceShipScene);
         this.scene.add(SceneType.loading, this._loadingScene);
         this.scene.add(SceneType.title, this._titleScene);
         this.scene.add(SceneType.video, this._videoScene);

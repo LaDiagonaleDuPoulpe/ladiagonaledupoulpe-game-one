@@ -7,6 +7,7 @@ export enum SceneType {
     boot = 'BootScene',
     loading = 'LoadingScene',
     title = 'TitleScene',
+    insideSpaceShipMap = 'InsideSpaceShipMapScene',
     map = 'MapScene',
     video = 'VideoScene'
 };
