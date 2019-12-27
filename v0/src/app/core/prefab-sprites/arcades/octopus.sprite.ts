@@ -10,7 +10,7 @@ import { AnimationsCreator } from '../animations/animations-creator';
  */
 export class OctopusSprite extends BaseArcadeSprite {
     constructor(protected _scene: BaseLevelScene, 
-        _name: string, 
+        protected _name: string, 
         _position: Position, 
         protected _properties: PropertiesSetting,
         _animationsCreator: AnimationsCreator) {

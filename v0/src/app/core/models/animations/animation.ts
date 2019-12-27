@@ -16,7 +16,7 @@ export class Animation {
     /**
      * List of frames in the sprite to animate
      */
-    public frames: number[];
+    public frames: number[] | null;
 
     /** 
      * Repat value : -1, infinite 
@@ -37,5 +37,20 @@ export class Animation {
      * Suffix of the frame animation
      */
     public suffix: string | null;
+
+    /**
+     * Number of the first frame
+     */
+    public frameStart: number | null;
+
+    /**
+     * Number of the end frame
+     */
+    public frameEnd: number | null;
+
+    /**
+     * Defines is we use generate by frame Number or Names
+     */
+    public byName: boolean;
     //#endregion
 }

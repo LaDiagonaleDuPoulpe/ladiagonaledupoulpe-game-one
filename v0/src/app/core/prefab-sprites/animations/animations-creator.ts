@@ -28,24 +28,32 @@ export class AnimationsCreator {
     //#endregion
 
     //#region Internal methods
-    private createAnimation(animation: Animation, 
+    private createAnimation(prefabAnimation: Animation, 
                             sprite: Phaser.GameObjects.Sprite, 
                             scene: BaseLevelScene,
                             properties: PropertiesSetting): string {
-        const animationKey = animation.key;
-        const finalAnimationKey = sprite.name + '_' + animation.key;
+        const animationKey = prefabAnimation.key;
+        const finalAnimationKey = sprite.name + '_' + prefabAnimation.key;
 
         if (! scene.anims.exists(finalAnimationKey)) {
             const animationObject = properties.animations.find((item) => item.key == animationKey);
 
-            const frameConfig = {
-                frames: animationObject.frames,
-                zeroPad: animationObject.zeroPad,
-                prefix: animationObject.prefix,
-                suffix: animationObject.suffix
-            };
-
-            const frames = scene.anims.generateFrameNumbers(properties.texture, frameConfig);
+            let frameConfig = null;
+            let frames = null;
+            if (prefabAnimation.frames) {
+                frameConfig = { frames: prefabAnimation.frames };
+                frames = scene.anims.generateFrameNumbers(properties.texture, frameConfig);
+            }
+            if (prefabAnimation.byName) {
+                frameConfig = { 
+                    prefix: prefabAnimation.prefix, 
+                    suffix: prefabAnimation.suffix, 
+                    zeroPad: prefabAnimation.zeroPad,
+                    start: prefabAnimation.frameStart,
+                    end: prefabAnimation.frameEnd
+                 };
+                frames = scene.anims.generateFrameNames(properties.texture, frameConfig);
+            }
             
             const animation = scene.anims.create({
                 key: finalAnimationKey,

@@ -13,9 +13,9 @@ export abstract class BaseArcadeSprite extends Phaser.Physics.Arcade.Sprite {
     //#endregion
 
     constructor(protected _scene: BaseLevelScene, 
-        _name: string, 
-        _position: Position, 
-        _properties: PropertiesSetting,
+        protected _name: string, 
+        protected _position: Position, 
+        protected _properties: PropertiesSetting,
         protected _animationsCreator: AnimationsCreator) {
         super(_scene, _position.x, _position.y, _properties.texture);        
 
@@ -46,6 +46,8 @@ export abstract class BaseArcadeSprite extends Phaser.Physics.Arcade.Sprite {
      * Could be overrided
      */
     protected initialize(properties: PropertiesSetting) {
+        this.name = this._name;
+
         if (properties.depth) {
             this.setDepth(properties.depth);
         }
