@@ -1,7 +1,7 @@
 import { PrefabType } from "../../shared/enums/prefab-type";
 import { Position } from "./position";
 import { Style } from "./style";
-import { animation } from './animations/animation';
+import { Animation } from './animations/animation';
 
 /**
  * Prefab properties setting
@@ -56,7 +56,7 @@ export class PropertiesSetting {
     /**
      * List of animations for the prefab
      */
-    public animations: animation[];
+    public animations: Animation[];
 
     /**
      * Visibility of the item

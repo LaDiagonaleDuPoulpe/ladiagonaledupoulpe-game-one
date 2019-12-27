@@ -63,7 +63,10 @@
                             0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
                         ],
                         "fps": 10,
-                        "repeat": 0
+                        "repeat": -1,
+                        "zeroPad": 3,
+                        "prefix": "octo3 down all_",
+                        "suffix": ".png"
                     }
                 ]
             }
