@@ -5,10 +5,10 @@ import { SceneType } from '../../shared/enums/scene-type';
 import { DefaultLogger } from '../../shared/services/default-logger';
 import { LevelManageService } from '../../shared/services/level-manager.service';
 import { LevelConfig } from '../models/levels/level-config';
-import { ObjectCreator } from '../prefab-sprites/objects/creators/object-creator';
+import { ObjectCreator } from '../prefab-sprites/arcades/creators/object-creator';
 import { BaseMapLevelScene } from './base-map-level.scene';
-import { CloudCreator } from '../prefab-sprites/objects/creators/clouds-creator';
-import { WavesCreator } from '../prefab-sprites/objects/creators/waves-creator';
+import { CloudCreator } from '../prefab-sprites/arcades/creators/clouds-creator';
+import { WavesCreator } from '../prefab-sprites/arcades/creators/waves-creator';
 
 @injectable()
 export class TitleScene extends BaseMapLevelScene {

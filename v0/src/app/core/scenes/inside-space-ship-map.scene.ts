@@ -1,7 +1,7 @@
 import { MapScene } from './map.scene';
 import { DefaultLogger } from '../../shared/services/default-logger';
 import { LevelManageService } from '../../shared/services/level-manager.service';
-import { ObjectCreator } from '../prefab-sprites/objects/creators/object-creator';
+import { ObjectCreator } from '../prefab-sprites/arcades/creators/object-creator';
 import { BaseMapLevelScene } from './base-map-level.scene';
 import { injectable } from 'tsyringe';
 

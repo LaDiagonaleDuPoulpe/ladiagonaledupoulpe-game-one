@@ -8,12 +8,12 @@ import { TextPrefabSprite } from "./text-prefab.sprite";
 import { ClickableImagePrefabSprite } from './clickable-image-prefab.sprite';
 import { ClickableTextPrefabSprite } from './clickable-text-prefab.sprite';
 import { VideoSprite } from './video.sprite';
-import { CloudSprite } from './objects/cloud.sprite';
+import { CloudSprite } from './arcades/cloud.sprite';
 import { StaticImageSprite } from './static-image.sprite';
-import { DefaultArcadeSprite } from './objects/default-arcade.sprite';
+import { DefaultArcadeSprite } from './arcades/default-arcade.sprite';
 import { StaticUnit } from './units/static.unit';
-import { WaveSprite } from './objects/wave.sprite';
-import { OctopusSprite } from './objects/octopus.sprite';
+import { WaveUnit } from './units/wave.unit';
+import { OctopusSprite } from './arcades/octopus.sprite';
 
 /**
  * Factory to create custom sprite prefab
@@ -73,7 +73,7 @@ export class PrefabSpriteFactory {
             } break;
 
             case PrefabType.wave: {
-                sprite = new WaveSprite(scene, name, position, properties);
+                sprite = new WaveUnit(scene, name, position, properties);
             } break;
 
             case PrefabType.octopus: {
