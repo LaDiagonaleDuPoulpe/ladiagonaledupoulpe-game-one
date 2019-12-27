@@ -59,7 +59,7 @@ export class PrefabSpriteFactory {
             } break;
 
             case PrefabType.cloud: {
-                sprite = new CloudSprite(scene, name, position, properties);
+                sprite = new CloudSprite(scene, name, position, properties, _animationsCreator);
             } break;
 
             case PrefabType.static: {
@@ -67,7 +67,7 @@ export class PrefabSpriteFactory {
             } break;
 
             case PrefabType.default: {
-                sprite = new DefaultArcadeSprite(scene, name, position, properties);
+                sprite = new DefaultArcadeSprite(scene, name, position, properties, _animationsCreator);
             } break;
 
             case PrefabType.animated: {
@@ -79,7 +79,7 @@ export class PrefabSpriteFactory {
             } break;
 
             case PrefabType.octopus: {
-                sprite = new OctopusSprite(scene, name, position, properties);
+                sprite = new OctopusSprite(scene, name, position, properties, _animationsCreator);
             } break;
         }
 

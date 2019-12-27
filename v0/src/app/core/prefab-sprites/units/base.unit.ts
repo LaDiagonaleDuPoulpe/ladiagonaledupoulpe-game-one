@@ -36,7 +36,11 @@ export abstract class BaseUnit extends PrefabSprite {
 
     //#region internal methods
     private prepareAnimations(properties: PropertiesSetting) {
-       // const animationKeys = 
+       const animationKeys = this._animationsCreator.createAll(this, this._scene, properties); 
+
+       if (animationKeys && animationKeys.length > 0) {
+           this.startingAnimationKey = animationKeys.find(item => item.endsWith('idle'));
+       }
     }
     //#endregion
 }

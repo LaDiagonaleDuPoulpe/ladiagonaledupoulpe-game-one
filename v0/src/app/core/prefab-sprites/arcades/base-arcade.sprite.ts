@@ -2,6 +2,7 @@ import { PrefabSprite } from '../prefab.sprite';
 import { BaseLevelScene } from '../../scenes/base-level.scene';
 import { PropertiesSetting } from '../../models/properties-setting';
 import { Position } from '../../models/position';
+import { AnimationsCreator } from '../animations/animations-creator';
 
 /**
  * It represents the parent arcade sprite
@@ -11,25 +12,14 @@ export abstract class BaseArcadeSprite extends Phaser.Physics.Arcade.Sprite {
     private _speed: number;
     //#endregion
 
-    constructor(_scene: BaseLevelScene, 
+    constructor(protected _scene: BaseLevelScene, 
         _name: string, 
         _position: Position, 
-        _properties: PropertiesSetting) {
+        _properties: PropertiesSetting,
+        protected _animationsCreator: AnimationsCreator) {
         super(_scene, _position.x, _position.y, _properties.texture);        
 
-        if (_properties.depth) {
-            this.setDepth(_properties.depth);
-        }
-
-        if (_properties.scale) {
-            this.setScale(_properties.scale.x, _properties.scale.y);
-        }
-
-        if (typeof _properties.visible !== "undefined") {
-            this.setVisible(_properties.visible);
-        }
-
-        this.defineSpeed();
+        this.initialize(_properties);
         
         _scene.add.existing(this);
     }
@@ -51,6 +41,26 @@ export abstract class BaseArcadeSprite extends Phaser.Physics.Arcade.Sprite {
     //#endregion
 
     //#region internal methods
+    /**
+     * Initialize all : speed, depth, scale, ...
+     * Could be overrided
+     */
+    protected initialize(properties: PropertiesSetting) {
+        if (properties.depth) {
+            this.setDepth(properties.depth);
+        }
+
+        if (properties.scale) {
+            this.setScale(properties.scale.x, properties.scale.y);
+        }
+
+        if (typeof properties.visible !== "undefined") {
+            this.setVisible(properties.visible);
+        }
+
+        this.defineSpeed();
+    }
+
     protected defineSpeed() {
         this.speed = Phaser.Math.Between(10, 100);
     }
