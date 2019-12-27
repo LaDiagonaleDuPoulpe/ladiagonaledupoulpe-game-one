@@ -7,12 +7,15 @@ import { BaseLevelScene } from '../../../scenes/base-level.scene';
 import { PrefabSpriteFactory } from '../../prefab-sprite-factory';
 import { Position } from '../../../models/position';
 import { timingSafeEqual } from 'crypto';
+import { AnimationsCreator } from '../../animations/animations-creator';
 
 /**
 * Allows you to create an object like a sprite
 */
 @injectable()
 export class ObjectCreator {
+    constructor(private _animationsCreator: AnimationsCreator) {}
+
     //#region Public methods
     /**
     * Creates one object from a sprite object 
@@ -71,7 +74,7 @@ export class ObjectCreator {
      * @param saveInSprite
      */
     public createObjectWithAllProperties(type: PrefabType, name: string, position: Position, scene: BaseLevelScene, properties: PropertiesSetting, saveInSprite: Function): Phaser.GameObjects.Sprite {
-        const sprite = PrefabSpriteFactory.create(type, scene, name, position, <PropertiesSetting> properties);
+        const sprite = PrefabSpriteFactory.create(type, scene, name, position, <PropertiesSetting> properties, this._animationsCreator);
         
         saveInSprite(sprite, properties.group, name);
 

@@ -14,6 +14,7 @@ import { DefaultArcadeSprite } from './arcades/default-arcade.sprite';
 import { StaticUnit } from './units/static.unit';
 import { WaveUnit } from './units/wave.unit';
 import { OctopusSprite } from './arcades/octopus.sprite';
+import { AnimationsCreator } from './animations/animations-creator';
 
 /**
  * Factory to create custom sprite prefab
@@ -28,7 +29,8 @@ export class PrefabSpriteFactory {
                         scene: BaseLevelScene, 
                         name: string, 
                         position: Position, 
-                        properties: PropertiesSetting): any {
+                        properties: PropertiesSetting,
+                        _animationsCreator: AnimationsCreator): any {
 
         let sprite = null;
 
@@ -37,7 +39,7 @@ export class PrefabSpriteFactory {
          */
         switch(type) {
             case PrefabType.background: {
-                sprite = new BackgroundPrefabSprite(scene, name, position, properties);
+                sprite = new BackgroundPrefabSprite(scene, name, position, properties, _animationsCreator);
             } break;
 
             case PrefabType.text: {
@@ -69,11 +71,11 @@ export class PrefabSpriteFactory {
             } break;
 
             case PrefabType.animated: {
-                sprite = new StaticUnit(scene, name, position, properties);
+                sprite = new StaticUnit(scene, name, position, properties, _animationsCreator);
             } break;
 
             case PrefabType.wave: {
-                sprite = new WaveUnit(scene, name, position, properties);
+                sprite = new WaveUnit(scene, name, position, properties, _animationsCreator);
             } break;
 
             case PrefabType.octopus: {

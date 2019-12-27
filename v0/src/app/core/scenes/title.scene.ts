@@ -9,6 +9,7 @@ import { ObjectCreator } from '../prefab-sprites/arcades/creators/object-creator
 import { BaseMapLevelScene } from './base-map-level.scene';
 import { CloudCreator } from '../prefab-sprites/arcades/creators/clouds-creator';
 import { WavesCreator } from '../prefab-sprites/arcades/creators/waves-creator';
+import { AnimationsCreator } from '../prefab-sprites/animations/animations-creator';
 
 @injectable()
 export class TitleScene extends BaseMapLevelScene {
@@ -20,8 +21,10 @@ export class TitleScene extends BaseMapLevelScene {
                 protected _levelManageService: LevelManageService,
                 protected _objectCreator: ObjectCreator,
                 private _cloudCreator: CloudCreator,
-                private _waveCreator: WavesCreator) {
-        super(TitleScene.name, _logger, _levelManageService, _objectCreator);
+                private _waveCreator: WavesCreator,
+                protected _animationsCreator: AnimationsCreator) {
+        super(TitleScene.name, _logger, _levelManageService, 
+              _objectCreator, _animationsCreator);
     }
     
     //#region public methods

@@ -4,6 +4,7 @@ import { LevelManageService } from '../../shared/services/level-manager.service'
 import { ObjectCreator } from '../prefab-sprites/arcades/creators/object-creator';
 import { BaseLevelScene } from './base-level.scene';
 import { PrefabType } from '../../shared/enums/prefab-type';
+import { AnimationsCreator } from '../prefab-sprites/animations/animations-creator';
 
 /**
 * Base map level scene : it's the mother class to represent all map scene
@@ -18,8 +19,9 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
     constructor(key: string, 
                 protected _logger: DefaultLogger, 
                 protected _levelManager: LevelManageService,
-                protected _objectCreator: ObjectCreator) {
-        super(key, _logger, _levelManager, _objectCreator);
+                protected _objectCreator: ObjectCreator,
+                protected _animationsCreator: AnimationsCreator) {
+        super(key, _logger, _levelManager, _objectCreator, _animationsCreator);
     }
     
     //#region public methods

@@ -4,6 +4,7 @@ import { LevelManageService } from '../../shared/services/level-manager.service'
 import { ObjectCreator } from '../prefab-sprites/arcades/creators/object-creator';
 import { PrefabSpriteFactory } from '../prefab-sprites/prefab-sprite-factory';
 import { BaseScene } from './base.scene';
+import { AnimationsCreator } from '../prefab-sprites/animations/animations-creator';
 
 /**
 * Base level scene : abstract class of all active map scenes
@@ -20,7 +21,8 @@ export abstract class BaseLevelScene extends BaseScene {
     constructor(key: string, 
                 protected _logger: DefaultLogger, 
                 protected _levelManager: LevelManageService,
-                protected _objectCreator: ObjectCreator) {
+                protected _objectCreator: ObjectCreator,
+                protected _animationsCreator: AnimationsCreator) {
         super(key, _logger, _levelManager);
     }
     
@@ -120,7 +122,7 @@ export abstract class BaseLevelScene extends BaseScene {
     private createAllPrefabSprites() {
         this.levelConfig.data.prefabs.forEach((prefab) => {
             console.log('prefab.key :', prefab.key);
-            const sprite = PrefabSpriteFactory.create(prefab.type, this, prefab.key, prefab.position, prefab.properties);
+            const sprite = PrefabSpriteFactory.create(prefab.type, this, prefab.key, prefab.position, prefab.properties, this._animationsCreator);
             this.saveSpriteInScene(sprite, prefab.properties.group, prefab.key);
         }, this);
     }

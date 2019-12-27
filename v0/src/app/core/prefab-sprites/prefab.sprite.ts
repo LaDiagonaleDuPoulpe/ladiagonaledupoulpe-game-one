@@ -1,6 +1,7 @@
 import { Position } from "../models/position";
 import { PropertiesSetting } from "../models/properties-setting";
 import { BaseLevelScene } from "../scenes/base-level.scene";
+import { AnimationsCreator } from './animations/animations-creator';
 
 /**
  * Sprite adding in scene : could be image or animated image
@@ -9,7 +10,8 @@ export abstract class PrefabSprite extends Phaser.GameObjects.Sprite {
     constructor(protected _scene: BaseLevelScene, 
                 private _name: string, 
                 private _position: Position, 
-                private _properties: PropertiesSetting) {
+                private _properties: PropertiesSetting,
+                protected _animationsCreator: AnimationsCreator) {
         super(_scene, _position.x, _position.y, _properties.texture);
 
         this.setActive(true);
