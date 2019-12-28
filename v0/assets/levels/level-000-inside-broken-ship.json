@@ -58,7 +58,7 @@
                 "visible": true,
                 "animations": [
                     {
-                        "key": "idle",
+                        "key": "idle-down",
                         "byName": true,
                         "frameStart": 0,
                         "frameEnd": 15,

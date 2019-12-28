@@ -18,22 +18,36 @@ export class InsideSpaceShipMapScene extends BaseMapLevelScene {
         protected _objectCreator: ObjectCreator,
         protected _animationsCreator: AnimationsCreator) {
             super(InsideSpaceShipMapScene.name, _logger, _levelManageService, 
-                  _objectCreator, _animationsCreator);
-    }    
-    
-    //#region Internal methods
-    /**
-    * Override this method to manage key up listener
-    */
-    protected onKeyUp(event: KeyboardEvent) {
-       
-    }
-    
-    /**
-    * Override this method to manage key down listener
-    */
-    protected onKeyDown(event: KeyboardEvent) {
-        
-    }
-    //#endregion
-}
+                _objectCreator, _animationsCreator);
+            }    
+            
+            //#region Internal methods
+            /**
+            * Override this method to manage key up listener
+            */
+            protected onArrowUp(event: KeyboardEvent) {
+                console.log('event :', event);
+            }
+            
+            /**
+            * Override this method to manage key down listener
+            */
+            protected onArrowDown(event: KeyboardEvent) {
+                console.log('event :', event);
+            }
+            
+            /**
+            * Override this method to manage key left listener
+            */
+            protected onArrowLeft(event: KeyboardEvent) {
+                // nothing to do here
+            }
+            
+            /**
+            * Override this method to manage key right listener
+            */
+            protected onArrowRight(event: KeyboardEvent) {
+                // nothing to do here
+            }
+            //#endregion
+        }
