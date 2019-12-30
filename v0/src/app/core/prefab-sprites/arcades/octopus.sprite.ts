@@ -20,6 +20,7 @@ export class OctopusSprite extends BaseArcadeSprite {
         _animationsCreator: AnimationsCreator) {
         super(_scene, _name, _position, _properties, _animationsCreator);   
         
+        this.setPipeline('Light2D');
         
     }
 

@@ -21,6 +21,16 @@ export class InsideSpaceShipMapScene extends BaseMapLevelScene {
             super(InsideSpaceShipMapScene.name, _logger, _levelManageService, 
                 _objectCreator, _animationsCreator);
             }    
+
+            //#region Public methods
+            create() {
+                super.create();
+                this.lights.enable().setAmbientColor(0x333333);
+                this.lights.addLight(100, 300, 10000).setColor(0xffffff).setIntensity(2);
+
+                this.cameras.main.startFollow(this.players[0]);
+            }
+            //#endregion
             
             //#region Internal methods
             /**

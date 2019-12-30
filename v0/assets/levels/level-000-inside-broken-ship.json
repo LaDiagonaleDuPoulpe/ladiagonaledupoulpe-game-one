@@ -37,7 +37,8 @@
     },
     "groups": [
         "players",
-        "doors"
+        "doors",
+        "ships"
     ],
     "prefabs": [
         {
@@ -147,6 +148,26 @@
                         "suffix": ".png"
                     }
                 ]
+            }
+        }
+    ],
+    "stages": [
+        {
+            "key": "light1",
+            "type": "ellipseLight",
+            "position": {
+                "x": 400,
+                "y": 400
+            },
+            "size": {
+                "width": 700,
+                "height": 1000,
+                "radius": 500
+            },
+            "properties": {
+                "delay": 500,
+                "color": "ffffff"
+
             }
         }
     ]
