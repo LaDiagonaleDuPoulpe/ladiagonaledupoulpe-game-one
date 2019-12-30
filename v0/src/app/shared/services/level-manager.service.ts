@@ -29,9 +29,10 @@ export class LevelManageService {
     public next(): string {
         this._previousLevelKey = this._currentLevelKey;
         
+        // TODO: 29/12/2019, see to change the level key calling with string to a beter way
         
         if (this._previousLevelKey == '') {
-            this._currentLevelKey = 'title';
+            this._currentLevelKey = '000-inside-broken-ship'; // title
         }
 
         if (this._previousLevelKey === 'title') {

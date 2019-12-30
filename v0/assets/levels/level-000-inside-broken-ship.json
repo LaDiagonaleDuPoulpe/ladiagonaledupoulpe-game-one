@@ -41,7 +41,8 @@
     ],
     "prefabs": [
         {
-            "key": "octo3",
+            "key": "player",
+            "playable": true,
             "type": "octopus",
             "position": {
                 "x": 400,
@@ -67,7 +68,54 @@
                         "zeroPad": 3,
                         "prefix": "octo3 down all_",
                         "suffix": ".png"
+                    },
+                    {
+                        "key": "idle-left",
+                        "byName": true,
+                        "frameStart": 0,
+                        "frameEnd": 15,
+                        "fps": 10,
+                        "repeat": -1,
+                        "zeroPad": 3,
+                        "prefix": "octo3 left all_",
+                        "suffix": ".png"
+                    },
+                    {
+                        "key": "idle-right",
+                        "byName": true,
+                        "frameStart": 0,
+                        "frameEnd": 15,
+                        "fps": 10,
+                        "repeat": -1,
+                        "zeroPad": 3,
+                        "prefix": "octo3 right all_",
+                        "suffix": ".png"
+                    },
+                    {
+                        "key": "walk-right",
+                        "byName": true,
+                        "frameStart": 45,
+                        "frameEnd": 69,
+                        "fps": 10,
+                        "repeat": -1,
+                        "zeroPad": 3,
+                        "prefix": "octo3 right all_",
+                        "suffix": ".png"
+                    },
+                    {
+                        "key": "idle-up",
+                        "byName": true,
+                        "frameStart": 0,
+                        "frameEnd": 15,
+                        "fps": 10,
+                        "repeat": -1,
+                        "zeroPad": 3,
+                        "prefix": "octo3 up all_",
+                        "suffix": ".png"
                     }
+                    
+                    
+                    
                 ]
             }
         }

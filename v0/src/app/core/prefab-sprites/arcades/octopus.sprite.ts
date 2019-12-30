@@ -9,6 +9,10 @@ import { AnimationsCreator } from '../animations/animations-creator';
  * Octopus can move up, down, left and right
  */
 export class OctopusSprite extends BaseArcadeSprite {
+    //#region Fields
+    private _animationKeys: string[];
+    //#endregion
+
     constructor(protected _scene: BaseLevelScene, 
         protected _name: string, 
         _position: Position, 
@@ -21,16 +25,23 @@ export class OctopusSprite extends BaseArcadeSprite {
     update() {
         
     }
+
+    /**
+     * Moves the octopus to the right, until player stop to press right key
+     */
+    moveRight() {
+        
+    }
     //#endregion
 
     //#region Internal methods
     protected initialize(properties: PropertiesSetting) {
         super.initialize(properties);
 
-        const animationKeys = this._animationsCreator.createAll(this, this._scene, properties);
+        this._animationKeys = this._animationsCreator.createAll(this, this._scene, properties);
 
-        if (animationKeys && animationKeys.length > 0) {
-            const idleKey = animationKeys.find(item => item.endsWith('idle'));
+        if (this._animationKeys && this._animationKeys.length > 0) {
+            const idleKey = this._animationKeys.find(item => item.includes('idle'));
             this.anims.play(idleKey);
         }
     }

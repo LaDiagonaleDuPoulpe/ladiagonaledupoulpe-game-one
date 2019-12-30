@@ -13,12 +13,14 @@ import { AnimationsCreator } from '../prefab-sprites/animations/animations-creat
 @injectable()
 export class InsideSpaceShipMapScene extends BaseMapLevelScene {
     constructor(
-        protected _logger: DefaultLogger,
-        protected _levelManageService: LevelManageService,
-        protected _objectCreator: ObjectCreator,
-        protected _animationsCreator: AnimationsCreator) {
+        _logger: DefaultLogger,
+        _levelManageService: LevelManageService,
+        _objectCreator: ObjectCreator,
+        _animationsCreator: AnimationsCreator) {
             super(InsideSpaceShipMapScene.name, _logger, _levelManageService, 
                 _objectCreator, _animationsCreator);
+
+                console.log('InsideSpaceShipMapScene:logger', _logger);
             }    
             
             //#region Internal methods
@@ -26,28 +28,31 @@ export class InsideSpaceShipMapScene extends BaseMapLevelScene {
             * Override this method to manage key up listener
             */
             protected onArrowUp(event: KeyboardEvent) {
-                console.log('event :', event);
+                console.log('InsideSpaceShipMapScene::onArrowUp=>this :', this);
+                this.logger.log('up :', event);
+                
+                this.logger.log('==> octopus ?', this.players);
             }
             
             /**
             * Override this method to manage key down listener
             */
             protected onArrowDown(event: KeyboardEvent) {
-                console.log('event :', event);
+                this.logger.log('down :', event);
             }
             
             /**
             * Override this method to manage key left listener
             */
             protected onArrowLeft(event: KeyboardEvent) {
-                // nothing to do here
+                this.logger.log('left :', event);
             }
             
             /**
             * Override this method to manage key right listener
             */
             protected onArrowRight(event: KeyboardEvent) {
-                // nothing to do here
+                this.logger.log('right :', event);
             }
             //#endregion
         }

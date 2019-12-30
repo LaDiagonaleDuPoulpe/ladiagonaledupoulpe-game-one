@@ -18,6 +18,11 @@ export class Prefab {
     public type: PrefabType;
 
     /**
+     * If true, this is a prefab the user can move
+     */
+    public playable: boolean;
+
+    /**
      * Position x, y of the prefab
      */
     public position: Position;

@@ -104,7 +104,7 @@ export abstract class BaseLevelScene extends BaseScene {
             const method = this[`on${event.key}`];
             
             if (method) {
-                method(event);
+                method.call(this, event);
             }
         }
         
@@ -144,7 +144,6 @@ export abstract class BaseLevelScene extends BaseScene {
         
         private createAllPrefabSprites() {
             this.levelConfig.data.prefabs.forEach((prefab) => {
-                console.log('prefab.key :', prefab.key);
                 const sprite = PrefabSpriteFactory.create(prefab.type, this, prefab.key, prefab.position, prefab.properties, this._animationsCreator);
                 this.saveSpriteInScene(sprite, prefab.properties.group, prefab.key);
             }, this);
@@ -177,6 +176,17 @@ export abstract class BaseLevelScene extends BaseScene {
         */
         public get prefabSprites(): Dictionary<Phaser.GameObjects.GameObject> {
             return this._prefabSprites;
+        }
+
+        /**
+         * Gets list of players in the game
+         */
+        public get players(): Phaser.GameObjects.GameObject[] {
+            const prefabs = [];
+
+            prefabs.push(this.prefabSprites["player"]);
+
+            return prefabs;
         }
         //#endregion
     }

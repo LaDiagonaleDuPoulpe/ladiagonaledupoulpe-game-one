@@ -76,14 +76,11 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
 
                 this._layers[layer.name] = staticLayer;
             }
-
-            this._logger.log('prepareLayer:properties', layer);
             
         }, this);
     }
 
     private prepareObjects() {
-        this._logger.log('prepareObjects', this._map.objects);
         this._map.objects.forEach(object => {
 
             object.objects.forEach(spriteObject => {
