@@ -5,6 +5,7 @@ import { ObjectCreator } from '../prefab-sprites/arcades/creators/object-creator
 import { BaseMapLevelScene } from './base-map-level.scene';
 import { injectable } from 'tsyringe';
 import { AnimationsCreator } from '../prefab-sprites/animations/animations-creator';
+import { OctopusSprite } from '../prefab-sprites/arcades/octopus.sprite';
 
 /**
 * Scene where octopuses are inside the spaceship
@@ -19,8 +20,6 @@ export class InsideSpaceShipMapScene extends BaseMapLevelScene {
         _animationsCreator: AnimationsCreator) {
             super(InsideSpaceShipMapScene.name, _logger, _levelManageService, 
                 _objectCreator, _animationsCreator);
-
-                console.log('InsideSpaceShipMapScene:logger', _logger);
             }    
             
             //#region Internal methods
@@ -28,10 +27,7 @@ export class InsideSpaceShipMapScene extends BaseMapLevelScene {
             * Override this method to manage key up listener
             */
             protected onArrowUp(event: KeyboardEvent) {
-                console.log('InsideSpaceShipMapScene::onArrowUp=>this :', this);
-                this.logger.log('up :', event);
-                
-                this.logger.log('==> octopus ?', this.players);
+                (<OctopusSprite> this.players[0]).moveUp();
             }
             
             /**
@@ -39,6 +35,7 @@ export class InsideSpaceShipMapScene extends BaseMapLevelScene {
             */
             protected onArrowDown(event: KeyboardEvent) {
                 this.logger.log('down :', event);
+                (<OctopusSprite> this.players[0]).moveDown();
             }
             
             /**
@@ -46,6 +43,7 @@ export class InsideSpaceShipMapScene extends BaseMapLevelScene {
             */
             protected onArrowLeft(event: KeyboardEvent) {
                 this.logger.log('left :', event);
+                (<OctopusSprite> this.players[0]).moveLeft();
             }
             
             /**
@@ -53,6 +51,7 @@ export class InsideSpaceShipMapScene extends BaseMapLevelScene {
             */
             protected onArrowRight(event: KeyboardEvent) {
                 this.logger.log('right :', event);
+                (<OctopusSprite> this.players[0]).moveRight();
             }
             //#endregion
         }

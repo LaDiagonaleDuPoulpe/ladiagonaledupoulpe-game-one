@@ -3,6 +3,7 @@ import { BaseLevelScene } from '../../scenes/base-level.scene';
 import { PropertiesSetting } from '../../models/properties-setting';
 import { Position } from '../../models/position';
 import { AnimationsCreator } from '../animations/animations-creator';
+import { DirectionItem } from '../../../shared/custom-types/direction-item';
 
 /**
  * It represents the parent arcade sprite
@@ -10,6 +11,7 @@ import { AnimationsCreator } from '../animations/animations-creator';
 export abstract class BaseArcadeSprite extends Phaser.Physics.Arcade.Sprite {
     //#region fields
     private _speed: number;
+    private _currentDirection = new DirectionItem();
     //#endregion
 
     constructor(protected _scene: BaseLevelScene, 
@@ -81,6 +83,14 @@ export abstract class BaseArcadeSprite extends Phaser.Physics.Arcade.Sprite {
      */
     protected set speed(value: number) {
         this._speed = value;
+    }
+
+    /**
+     * Gets the current direction of the sprite
+     * Default values are false
+     */
+    protected get currentDirection() {
+        return this._currentDirection;
     }
     //#endregion
 }

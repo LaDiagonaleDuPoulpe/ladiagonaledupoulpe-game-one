@@ -2,8 +2,8 @@
  * Directions for the player
  */
 export enum DirectionType {
-    up,
-    down,
-    left,
-    right
+    up = 'up',
+    down = 'down',
+    left = 'left',
+    right = 'right'
 }
