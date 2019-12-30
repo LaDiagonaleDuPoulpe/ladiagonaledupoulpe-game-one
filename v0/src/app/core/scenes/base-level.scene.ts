@@ -28,7 +28,6 @@ export abstract class BaseLevelScene extends BaseScene {
         
         //#region public methods
         create() {
-            this.manageKeyEvents();
             this.createCollisionGroups();
             this.createAllPrefabSprites();
         }
@@ -83,59 +82,7 @@ export abstract class BaseLevelScene extends BaseScene {
         }
         //#endregion
         
-        //#region internal methods
-        private manageKeyEvents() {
-            this._keyListeners.forEach((direction) => {
-                const realKey = 'key' + direction;
-                this.removeAllKeyboardListener(realKey);
-                this.configEventsToListen(realKey);
-            }, this);
-        }
-        
-        /**
-        * Override this method to add event listeners 
-        */
-        protected configEventsToListen(currentKeyEvent: string) {
-            this.attachActionToKeyboardEvent(currentKeyEvent, this.manageInput.bind(this));
-        }
-        
-        
-        private manageInput(event: KeyboardEvent) {
-            const method = this[`on${event.key}`];
-            
-            if (method) {
-                method.call(this, event);
-            }
-        }
-        
-        /**
-        * Overrides this method to manage key up listener
-        */
-        protected onArrowUp(event: KeyboardEvent) {
-            // nothing to do here
-        }
-        
-        /**
-        * Override this method to manage key down listener
-        */
-        protected onArrowDown(event: KeyboardEvent) {
-            // nothing to do here
-        }
-        
-        /**
-        * Override this method to manage key left listener
-        */
-        protected onArrowLeft(event: KeyboardEvent) {
-            // nothing to do here
-        }
-        
-        /**
-        * Override this method to manage key right listener
-        */
-        protected onArrowRight(event: KeyboardEvent) {
-            // nothing to do here
-        }
-        
+        //#region internal methods        
         private createCollisionGroups() {
             this.levelConfig.data.groups.forEach((groupName) => {
                 this.physicalGroups[groupName] = this.physics.add.group();

@@ -12,6 +12,7 @@ import { SceneData } from '../models/scenes/scene-data';
 export class BaseScene extends Phaser.Scene {
     //#region fields
     private _levelConfig: LevelConfig;
+    private _cursors: Phaser.Types.Input.Keyboard.CursorKeys;
     //#endregion
     
     constructor(key: string, protected _logger: DefaultLogger, protected _levelManager: LevelManageService) {
@@ -23,6 +24,10 @@ export class BaseScene extends Phaser.Scene {
     //#region public methods
     init(config: LevelConfig) {
         this.levelConfig = config;
+        this._cursors = this.input.keyboard.createCursorKeys();
+    }
+    
+    preload() {
     }
     
     /**
@@ -68,6 +73,13 @@ export class BaseScene extends Phaser.Scene {
      */
     protected get logger(): DefaultLogger {
         return this._logger;
+    }
+
+    /**
+     * Gets cursors to manage key press
+     */
+    public get cursors(): Phaser.Types.Input.Keyboard.CursorKeys {
+        return this._cursors;
     }
     //#endregion
 }

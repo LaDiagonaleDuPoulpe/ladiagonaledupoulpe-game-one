@@ -25,40 +25,44 @@ export class OctopusSprite extends BaseArcadeSprite {
 
     //#region public methods
     update() {
+        const firstPartAnimKey = this._name + '_';
+        const firstPartAnimWalkKey = firstPartAnimKey + 'walk';
+        let wholeAnimKey = firstPartAnimWalkKey;
 
-        if (this.currentDirection.up && this.body.velocity.y <= 0) {
-            this.setVelocityY(-100);
-            if (this.body.velocity.x === 0) {
-                this.anims.play(this._name + '_' + 'walk-up', true);
-            }
-        } else if (this.currentDirection.down && this.body.velocity.y >= 0) {
-            this.setVelocityY(100);
-            if (this.body.velocity.x === 0) {
-                this.anims.play(this._name + '_' + 'walk-down', true);
-            }
-        } else {
+        if (this._scene.cursors.left.isDown) {
+            this.setVelocityX(-160);
+            
+            wholeAnimKey += '-left';
+        }
+        else if (this._scene.cursors.right.isDown) {
+            this.setVelocityX(160);
+            
+            wholeAnimKey += '-right';
+        }
+        else if (this._scene.cursors.up.isDown) {
+            this.setVelocityX(0);
+            this.setVelocityY(-160);
+            
+            wholeAnimKey += '-up';
+        }
+        else if (this._scene.cursors.down.isDown) {
+            this.setVelocityX(0);
+            this.setVelocityY(160);
+            
+            wholeAnimKey += '-down';
+        }
+        else {
+    
+            const currentAnimationKey = this.anims.currentAnim.key;
+            const parts = currentAnimationKey.split('-');
+    
+            this.setVelocityX(0);
             this.setVelocityY(0);
+            
+            wholeAnimKey = firstPartAnimKey + 'idle' + '-' + parts[1];
         }
         
-        if (this.currentDirection.right && this.body.velocity.x >= 0) {   
-            this.setVelocityX(100);
-            if (this.body.velocity.y === 0) {         
-                this.anims.play(this._name + '_' + 'walk-right', true);
-            }
-        } 
-        else if (this.currentDirection.left && this.body.velocity.x <= 0) {  
-            this.setVelocityX(-100);
-            if (this.body.velocity.y === 0) {           
-                this.anims.play(this._name + '_' + 'walk-left', true);
-            }
-        } else {
-            this.setVelocityX(0);
-        }
-
-        this.reinitDirections();
-        if (this.body.velocity.x === 0 && this.body.velocity.y === 0) {
-            this.stopCurrentAnimation();
-        }
+        this.anims.play(wholeAnimKey, true);
     }
 
     /**
