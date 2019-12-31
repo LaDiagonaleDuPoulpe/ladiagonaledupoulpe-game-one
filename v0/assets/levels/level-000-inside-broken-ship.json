@@ -47,7 +47,7 @@
             "type": "octopus",
             "position": {
                 "x": 400,
-                "y": 400
+                "y": 500
             },
             "properties": {
                 "texture": "octopus3SpriteSheet",
