@@ -24,6 +24,7 @@ import { LightManager } from '../plugins/light-manager';
     }
 
     //#region public methods
+    applyCollisionDetection(sprite: Phaser.GameObjects.Sprite) {}
     //#endregion
         
 }

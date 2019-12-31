@@ -21,9 +21,8 @@ export abstract class BaseArcadeSprite extends Phaser.Physics.Arcade.Sprite {
         protected _animationsCreator: AnimationsCreator) {
         super(_scene, _position.x, _position.y, _properties.texture);        
 
+        _scene.addSprite(this, this._properties.group);
         this.initialize(_properties);
-        
-        _scene.add.existing(this);
     }
 
     //#region public methods

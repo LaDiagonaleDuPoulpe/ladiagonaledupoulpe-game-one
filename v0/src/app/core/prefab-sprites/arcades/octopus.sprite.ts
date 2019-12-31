@@ -18,10 +18,7 @@ export class OctopusSprite extends BaseArcadeSprite {
         _position: Position, 
         protected _properties: PropertiesSetting,
         _animationsCreator: AnimationsCreator) {
-        super(_scene, _name, _position, _properties, _animationsCreator);   
-        
-        this.setPipeline('Light2D');
-        
+        super(_scene, _name, _position, _properties, _animationsCreator); 
     }
 
     //#region public methods
@@ -105,6 +102,10 @@ export class OctopusSprite extends BaseArcadeSprite {
             const idleKey = this._animationKeys.find(item => item.includes('idle'));
             this.anims.play(idleKey);
         }
+
+        this.setPipeline('Light2D');
+        this.setCollideWorldBounds(true);
+        this._scene.applyCollisionDetection(this);
     }
 
     private stopCurrentAnimation() {

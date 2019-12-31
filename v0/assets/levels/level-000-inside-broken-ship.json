@@ -38,7 +38,7 @@
     "groups": [
         "players",
         "doors",
-        "ships"
+        "ship"
     ],
     "prefabs": [
         {
@@ -173,11 +173,31 @@
             }
         },
         {
-            "key": "light1",
+            "key": "light2",
             "type": "ellipseLight",
             "position": {
                 "x": 10,
                 "y": 600
+            },
+            "size": {
+                "width": 700,
+                "height": 1200,
+                "radius": 500
+            },
+            "properties": {
+                "delay": 80,
+                "style": {
+                    "fill": "#ffffff"
+                }
+
+            }
+        },
+        {
+            "key": "light3",
+            "type": "ellipseLight",
+            "position": {
+                "x": 2000,
+                "y": 100
             },
             "size": {
                 "width": 700,

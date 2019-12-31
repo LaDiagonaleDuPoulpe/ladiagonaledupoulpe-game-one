@@ -38,7 +38,20 @@ export abstract class BaseLevelScene extends BaseScene {
         update() {
             this.updateAllPrefabs();
         }
+
+        /**
+         * Adds collision detection to an sprite
+         */
+        abstract applyCollisionDetection(sprite: Phaser.GameObjects.Sprite);
         
+        /**
+         * Adds a sprite in the scene
+         */
+        addSprite(sprite: Phaser.GameObjects.Sprite, groupKey: string) {
+            this.add.existing(sprite);
+            this._physicalGroups[groupKey].add(sprite);
+        }
+
         /**
         * Attach an action from event
         * @param item Event key
@@ -113,7 +126,6 @@ export abstract class BaseLevelScene extends BaseScene {
         */
         protected saveSpriteInScene(sprite, group: string, key: string) {
             if (sprite) {
-                this.physicalGroups[group].add(sprite);
                 this.prefabSprites[key] = sprite;             
             }
         }
