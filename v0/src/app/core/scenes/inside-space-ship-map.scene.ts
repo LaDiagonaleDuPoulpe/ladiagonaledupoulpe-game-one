@@ -29,11 +29,6 @@ export class InsideSpaceShipMapScene extends BaseMapLevelScene {
             create() {
                 super.create();
 
-                this._logger.log('lights ? ', this.lights.active);
-                
-                this.lights.enable();//.setAmbientColor(0x333333);
-                this._logger.log('lights ? ', this.lights.active);
-
                 this.cameras.main.startFollow(this.players[0]);
             }
             //#endregion
