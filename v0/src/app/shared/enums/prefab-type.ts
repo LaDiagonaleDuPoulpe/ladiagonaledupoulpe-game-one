@@ -23,5 +23,7 @@ export enum PrefabType {
     /** Arcade sprite */
     default = 'arcade',
     /** Sprite sheet with frames animation */
-    animated = 'animsprite'
+    animated = 'animsprite',
+    /** Represents light with ellipse effect  */
+    ellipseLight = 'ellipseLight'
 }

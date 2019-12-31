@@ -1,9 +1,9 @@
+import { BaseObject } from '../base-object';
 /**
  * Map to load in current scene
  */
-export class AssetMap {
+export class AssetMap extends BaseObject {
     //#region fields
-    public key: string;
     public tilesets: string[];
     //#endregion
 }

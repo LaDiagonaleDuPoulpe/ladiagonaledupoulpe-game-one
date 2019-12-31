@@ -151,7 +151,7 @@
             }
         }
     ],
-    "stages": [
+    "stageItems": [
         {
             "key": "light1",
             "type": "ellipseLight",
@@ -166,7 +166,9 @@
             },
             "properties": {
                 "delay": 500,
-                "color": "ffffff"
+                "style": {
+                    "fill": "#ffffff"
+                }
 
             }
         }

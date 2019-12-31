@@ -9,11 +9,6 @@ import { Animation } from './animations/animation';
 export class PropertiesSetting {
     //#region fields
     /**
-     * Type of the prefab
-     */
-    public type: PrefabType;
-
-    /**
      * Group of the sprite (for collision management)
      */
     public group: string;
@@ -21,17 +16,17 @@ export class PropertiesSetting {
     /**
      * Where you put the prefab
      */
-    public anchor: Position;
+    public anchor: Position | null;
 
     /**
      * Scale ratio
      */
-    public scale: Position;
+    public scale: Position | null;
 
     /**
      * text to display
      */
-    public text: string;
+    public text: string | null;
 
     /**
      * Custom style of the prefab
@@ -41,17 +36,17 @@ export class PropertiesSetting {
     /**
      * Texture to apply to this sprite
      */
-    public texture: string;
+    public texture: string | null;
 
     /**
      * Frame of the sprite prefab
      */
-    public frame: string;
+    public frame: string | null;
 
     /**
      * Depth in the scene
      */
-    public depth: integer;
+    public depth: integer | null;
 
     /**
      * List of animations for the prefab
@@ -62,5 +57,10 @@ export class PropertiesSetting {
      * Visibility of the item
      */
     public visible: boolean;
+
+    /**
+     * Delay of a animation in prefab
+     */
+    public delay: number | null;
     //#endregion
 }

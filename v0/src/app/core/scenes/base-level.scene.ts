@@ -5,6 +5,7 @@ import { ObjectCreator } from '../prefab-sprites/arcades/creators/object-creator
 import { PrefabSpriteFactory } from '../prefab-sprites/prefab-sprite-factory';
 import { BaseScene } from './base.scene';
 import { AnimationsCreator } from '../prefab-sprites/animations/animations-creator';
+import { LightManager } from '../plugins/light-manager';
 
 /**
 * Base level scene : abstract class of all active map scenes
@@ -22,7 +23,8 @@ export abstract class BaseLevelScene extends BaseScene {
         protected _logger: DefaultLogger, 
         protected _levelManager: LevelManageService,
         protected _objectCreator: ObjectCreator,
-        protected _animationsCreator: AnimationsCreator) {
+        protected _animationsCreator: AnimationsCreator,
+        protected _lightManager: LightManager) {
             super(key, _logger, _levelManager);
         }
         
@@ -30,6 +32,7 @@ export abstract class BaseLevelScene extends BaseScene {
         create() {
             this.createCollisionGroups();
             this.createAllPrefabSprites();
+            this.createAllDataInStage();
         }
         
         update() {
@@ -82,7 +85,13 @@ export abstract class BaseLevelScene extends BaseScene {
         }
         //#endregion
         
-        //#region internal methods        
+        //#region internal methods 
+        private createAllDataInStage() {
+            this.levelConfig.data.stageItems.forEach(item => {
+                this._lightManager.create(this, item);
+            }, this);
+        }
+
         private createCollisionGroups() {
             this.levelConfig.data.groups.forEach((groupName) => {
                 this.physicalGroups[groupName] = this.physics.add.group();

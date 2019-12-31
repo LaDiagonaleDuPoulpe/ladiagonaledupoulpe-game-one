@@ -6,6 +6,8 @@ import { BaseMapLevelScene } from './base-map-level.scene';
 import { injectable } from 'tsyringe';
 import { AnimationsCreator } from '../prefab-sprites/animations/animations-creator';
 import { OctopusSprite } from '../prefab-sprites/arcades/octopus.sprite';
+import { LightManager } from '../plugins/light-manager';
+import { toHexaInt } from '../../shared/converters/string-converter';
 
 /**
 * Scene where octopuses are inside the spaceship
@@ -17,16 +19,20 @@ export class InsideSpaceShipMapScene extends BaseMapLevelScene {
         _logger: DefaultLogger,
         _levelManageService: LevelManageService,
         _objectCreator: ObjectCreator,
-        _animationsCreator: AnimationsCreator) {
+        _animationsCreator: AnimationsCreator,
+        _lightManager: LightManager) {
             super(InsideSpaceShipMapScene.name, _logger, _levelManageService, 
-                _objectCreator, _animationsCreator);
+                _objectCreator, _animationsCreator, _lightManager);
             }    
 
             //#region Public methods
             create() {
                 super.create();
-                this.lights.enable().setAmbientColor(0x333333);
-                this.lights.addLight(100, 300, 10000).setColor(0xffffff).setIntensity(2);
+
+                this._logger.log('lights ? ', this.lights.active);
+                
+                this.lights.enable();//.setAmbientColor(0x333333);
+                this._logger.log('lights ? ', this.lights.active);
 
                 this.cameras.main.startFollow(this.players[0]);
             }

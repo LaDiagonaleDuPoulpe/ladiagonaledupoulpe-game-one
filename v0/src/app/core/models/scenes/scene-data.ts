@@ -2,6 +2,7 @@ import { AssetImage } from "../assets/asset-image";
 import { AssetsData } from "../assets/assets-data";
 import { Prefab } from "../prefab";
 import { AssetMap } from '../assets/asset-map';
+import { EllipseLight } from '../stage/ellipse-light';
 
 /**
  * Data of the scene
@@ -22,6 +23,11 @@ export class SceneData {
      * Prefabs list of one scene
      */
     public prefabs: Prefab[];
+
+    /**
+     * Lights in the current stage
+     */
+    public stageItems: EllipseLight[];
 
     /**
      * Map to load in current scene
