@@ -18,7 +18,7 @@
                 "url": "assets/images/default/octo3 all/octo3-all.json",
                 "frame": {
                     "dimension": {
-                        "width": 500,
+                        "width": 250,
                         "height": 500
                     },
                     "spacing": 0,
