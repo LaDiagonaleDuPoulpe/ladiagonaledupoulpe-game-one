@@ -27,6 +27,30 @@
             }
         ],
         "spritesheets": [
+            {
+                "key": "sparkLeftSpriteSheet",
+                "url": "assets/images/ship/sparks/left/spark-left-all.png",
+                "frame": {
+                    "dimension": {
+                        "width": 133,
+                        "height": 203
+                    },
+                    "spacing": 0,
+                    "margin": 0
+                }
+            },
+            {
+                "key": "sparkRightSpriteSheet",
+                "url": "assets/images/ship/sparks/right/spark-right-all.png",
+                "frame": {
+                    "dimension": {
+                        "width": 133,
+                        "height": 203
+                    },
+                    "spacing": 0,
+                    "margin": 0
+                }
+            }
         ]
     },
     "map": {
@@ -38,7 +62,8 @@
     "groups": [
         "players",
         "doors",
-        "ship"
+        "ship",
+        "sparks"
     ],
     "prefabs": [
         {
@@ -146,6 +171,65 @@
                         "zeroPad": 3,
                         "prefix": "octo3 up all_",
                         "suffix": ".png"
+                    }
+                ]
+            }
+        },
+        {
+            "key": "spark1",
+            "type": "animsprite",
+            "position": {
+                "x": 200,
+                "y": 400
+            },
+            "properties": {
+                "texture": "sparkLeftSpriteSheet",
+                "group": "sparks",
+                "scale": {
+                    "x": 2.0,
+                    "y": 2.0
+                },
+                "depth": 3,
+                "visible": true,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22
+                        ],
+                        "fps": 5,
+                        "repeat": -1
+                    }
+                ]
+            }
+        },
+        {
+            "key": "spark2",
+            "type": "animsprite",
+            "position": {
+                "x": 1510,
+                "y": 200
+            },
+            "properties": {
+                "texture": "sparkRightSpriteSheet",
+                "group": "sparks",
+                "scale": {
+                    "x": 2.0,
+                    "y": 2.0
+                },
+                "depth": 3,
+                "visible": true,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            0,
+                            1,
+                            2,
+                            3
+                        ],
+                        "fps": 5,
+                        "repeat": -1
                     }
                 ]
             }
