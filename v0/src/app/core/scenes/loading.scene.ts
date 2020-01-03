@@ -31,7 +31,7 @@ export class LoadingScene extends BaseScene {
             this.scene.start(config.level.sceneName, config);
         }
     }
-
+    
     preload() {
         this._logger.log('preload');
         this.prepareAssets();

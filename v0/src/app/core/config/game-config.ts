@@ -1,4 +1,5 @@
 import "phaser";
+import { DialogModalPlugin } from '../plugins/dialog-modal.plugin';
 
 type scaleMode = 'FIT' | 'SMOOTH';
 
@@ -18,6 +19,11 @@ const defaultConfig =  {
     scale: {
         mode: Phaser.Scale.WIDTH_CONTROLS_HEIGHT ,
         autoCenter: Phaser.Scale.CENTER_BOTH
+    },
+    plugins: {
+        scene: [
+            { key: 'dialogModalPlugin', plugin: DialogModalPlugin, mapping: 'dialogModalPlugin' }
+        ]
     },
     physics: {
         default: 'arcade',
