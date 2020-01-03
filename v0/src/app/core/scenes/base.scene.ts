@@ -6,6 +6,7 @@ import { LevelConfig } from '../models/levels/level-config';
 import { Prefab } from '../models/prefab';
 import { SceneData } from '../models/scenes/scene-data';
 import { PropertiesSetting } from '../models/properties-setting';
+import { Style } from '../models/style';
 
 /**
 * Parent class of all custom scenes of the game
@@ -53,6 +54,13 @@ export class BaseScene extends Phaser.Scene {
      */
     public get defaultConfiguration(): PropertiesSetting {
         return this._levelConfig.data.defaultConfiguration;
+    }
+
+    /**
+     * Gets default style of the current scene (fill and font)
+     */
+    public get defaultStyle(): Style {
+        return this.defaultConfiguration.style;
     }
 
     /**

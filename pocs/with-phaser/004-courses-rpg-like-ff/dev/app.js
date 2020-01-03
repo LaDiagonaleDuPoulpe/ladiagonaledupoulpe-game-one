@@ -3387,6 +3387,9 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+/**
+ * NPC = Non Playable Character => PNJ (Personnage Non Joueur)
+ */
 
 var NPC =
 /*#__PURE__*/

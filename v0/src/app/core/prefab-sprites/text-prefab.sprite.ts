@@ -9,7 +9,7 @@ export class TextPrefabSprite extends Phaser.GameObjects.Text {
     constructor(protected _scene: BaseLevelScene,
         private _name: string,
         private _position: Position,
-        private _properties: PropertiesSetting) {
+        private _properties: Partial<PropertiesSetting>) {
         super(_scene, _position.x, _position.y, _properties.text, null);
 
         this.style.setFont(this._properties.style.font);
@@ -26,7 +26,7 @@ export class TextPrefabSprite extends Phaser.GameObjects.Text {
     /**
      * Gets properties setting
      */
-    protected get properties(): PropertiesSetting {
+    protected get properties(): Partial<PropertiesSetting> {
         return this._properties;
     }
     //#endregion

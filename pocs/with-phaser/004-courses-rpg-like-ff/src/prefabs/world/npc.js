@@ -2,6 +2,9 @@ import Prefab from '../prefab';
 import TitleScene from '../../scenes/title-scene';
 import MessageBox from '../hud/message-box';
 
+/**
+ * NPC = Non Playable Character => PNJ (Personnage Non Joueur)
+ */
 class NPC extends Prefab {
     
     constructor(scene, name, position, properties) {
