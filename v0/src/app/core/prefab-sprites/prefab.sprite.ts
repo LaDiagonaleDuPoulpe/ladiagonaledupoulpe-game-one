@@ -9,8 +9,8 @@ import { AnimationsCreator } from './animations/animations-creator';
 export abstract class PrefabSprite extends Phaser.GameObjects.Sprite {
     constructor(protected _scene: BaseLevelScene, 
                 private _name: string, 
-                private _position: Position, 
-                private _properties: PropertiesSetting,
+                protected _position: Position, 
+                protected _properties: PropertiesSetting,
                 protected _animationsCreator: AnimationsCreator) {
         super(_scene, _position.x, _position.y, _properties.texture);
 

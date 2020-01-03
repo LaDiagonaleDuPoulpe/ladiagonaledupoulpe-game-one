@@ -62,5 +62,10 @@ export class PropertiesSetting {
      * Delay of a animation in prefab
      */
     public delay: number | null;
+
+    /**
+     * Message to be display in box
+     */
+    public message: string | null;
     //#endregion
 }

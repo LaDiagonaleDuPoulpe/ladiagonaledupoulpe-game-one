@@ -1,4 +1,10 @@
 {
+    "defaultConfiguration": {
+        "style": {
+            "font": "14px Kells",
+            "fill": "#ffffff"
+        }
+    },
     "assets": {
         "images": [
             {
@@ -296,5 +302,8 @@
 
             }
         }
-    ]
+    ],
+    "npcMessages": {
+
+    }
 }

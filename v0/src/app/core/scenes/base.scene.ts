@@ -5,6 +5,7 @@ import { LevelManageService } from '../../shared/services/level-manager.service'
 import { LevelConfig } from '../models/levels/level-config';
 import { Prefab } from '../models/prefab';
 import { SceneData } from '../models/scenes/scene-data';
+import { PropertiesSetting } from '../models/properties-setting';
 
 /**
 * Parent class of all custom scenes of the game
@@ -47,6 +48,13 @@ export class BaseScene extends Phaser.Scene {
     //#endregion
     
     //#region properties
+    /**
+     * Gets default configuration of the scene
+     */
+    public get defaultConfiguration(): PropertiesSetting {
+        return this._levelConfig.data.defaultConfiguration;
+    }
+
     /**
     * Gets scene data (from json file)
     */
