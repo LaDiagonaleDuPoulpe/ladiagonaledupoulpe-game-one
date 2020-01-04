@@ -11,6 +11,7 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     private _systems: Phaser.Scenes.Systems;
     private _configuration: DialogModalConfiguration;
     private _graphicObject: Phaser.GameObjects.Graphics;
+    private _closeButton: Phaser.GameObjects.Text;
     //#endregion
     
     constructor(private _scene: BaseMapLevelScene, pluginManager: Phaser.Plugins.PluginManager) {
@@ -27,26 +28,34 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
      * Initializes the message box on the bottom of the screen
      */
     init(config: DialogModalConfiguration) {
-        this._configuration = config || new DialogModalConfiguration();
-        this.createWindow();
+        this._configuration = config;
+
+        if (config) {
+            this.createWindow();
+        }
     }
 
     /**
      * Show the message box
      */
     show() {
-        this._graphicObject.setVisible(true);
+        this.toggleWindow(true);
     }
 
     /**
      * Hides the message box
      */
     hide() {
-        this._graphicObject.setVisible(false);
+        this.toggleWindow(false);
     }
     //#endregion
     
     //#region Internal methods
+    private toggleWindow(visibility: boolean) {
+        this._graphicObject.setVisible(visibility);
+        this._closeButton.setVisible(visibility);
+    }
+
     private createWindow() {
         const gameHeight = this.getGameHeight();
         const gameWidth = this.getGameWidth();
@@ -58,12 +67,14 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         this.createOuterWindow(dimensions.x, dimensions.y, dimensions.rectWidth, dimensions.rectHeight);
         this.createInnerWindow(dimensions.x, dimensions.y, dimensions.rectWidth, dimensions.rectHeight);
 
+        this.createCloseModalButton();
+
         this.hide();
     }
     
-    private setFixed(object: Phaser.GameObjects.Graphics) {
+    private setFixed(object: Phaser.GameObjects.Graphics | Phaser.GameObjects.Text, depth: number = 100) {
         object.setScrollFactor(0);
-        object.setDepth(100);
+        object.setDepth(depth);
     }
     
     private createInnerWindow(x: number, y: number, rectWidth: number, rectHeight: number) {
@@ -97,6 +108,37 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
             rectHeight
         };
     }
+
+    private createCloseModalButton() {
+        var self = this;
+
+        const x = +this.getGameWidth() - this._configuration.padding - 30;
+        const y = +this.getGameHeight() - this._configuration.windowHeight - this._configuration.padding + 3;
+
+        this._closeButton = this.scene.make.text({
+          x: x,
+          y: y,
+          text: '[X]',
+          style: {
+            font: this._configuration.closeButtonStyle.font,
+            fill: this._configuration.closeButtonStyle.fill
+          }
+        });
+
+        this.setFixed(this._closeButton, 101);
+
+        this._closeButton.setInteractive();
+       
+        this._closeButton.on('pointerover', function () {
+          this.setTint(0xff0000);
+        });
+        this._closeButton.on('pointerout', function () {
+          this.clearTint();
+        });
+        this._closeButton.on('pointerdown', function () {
+          self.hide();
+        });
+      }
     //#endregion
 }
 

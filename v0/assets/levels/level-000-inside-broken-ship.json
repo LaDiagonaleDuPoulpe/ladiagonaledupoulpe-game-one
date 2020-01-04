@@ -7,7 +7,11 @@
         "messageBox": {
             "dialogSpeed": 15,
             "borderColor": "0xFAAA24",
-            "windowColor": "0x431f11",            
+            "windowColor": "0x431f11",   
+            "closeButtonStyle": {
+                "font": "bold 20px Arial",
+                "fill": "#ffffff"
+            },         
             "windowHeight": 200,            
             "padding": 0,            
             "borderThickness": 10

@@ -1,3 +1,4 @@
+import { Style } from './style';
 /**
  * Options to configure the dialog modal
  */ 
@@ -17,6 +18,11 @@
      * Color of the window
      */
     public windowColor = 0xffffff;
+
+    /**
+     * Defines style of the close button
+     */
+    public closeButtonStyle: Style;
 
     /**
      * Size of the box
