@@ -30,6 +30,8 @@ export class InsideSpaceShipMapScene extends BaseMapLevelScene {
                 super.create();
 
                 this.cameras.main.startFollow(this.players[0]);
+
+                this.displayModal.show();
             }
             //#endregion
             

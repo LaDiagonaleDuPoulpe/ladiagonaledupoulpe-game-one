@@ -24,6 +24,7 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     }
 
     show() {
+        this.createWindow();
         console.log('Here we will display the message');
     }
     //#endregion
@@ -34,6 +35,10 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         const gameWidth = this.getGameWidth();
         const dimensions = this.calculateWindowDimensions(gameWidth, gameHeight);
         this._graphicObject = this.scene.add.graphics();
+
+        this._graphicObject.setScrollFactor(0);
+        this._graphicObject.setDepth(100);
+
         
         this.createOuterWindow(dimensions.x, dimensions.y, dimensions.rectWidth, dimensions.rectHeight);
         this.createInnerWindow(dimensions.x, dimensions.y, dimensions.rectWidth, dimensions.rectHeight);

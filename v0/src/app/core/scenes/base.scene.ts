@@ -7,6 +7,7 @@ import { Prefab } from '../models/prefab';
 import { SceneData } from '../models/scenes/scene-data';
 import { PropertiesSetting } from '../models/properties-setting';
 import { Style } from '../models/style';
+import { DialogModalPlugin } from '../plugins/dialog-modal.plugin';
 
 /**
 * Parent class of all custom scenes of the game
@@ -97,6 +98,17 @@ export class BaseScene extends Phaser.Scene {
      */
     public get cursors(): Phaser.Types.Input.Keyboard.CursorKeys {
         return this._cursors;
+    }
+
+    /**
+     * Modal dialog to display text
+     */
+    public get displayModal(): DialogModalPlugin {
+        const item = <DialogModalPlugin> (this['dialogModalPlugin']);
+
+        console.log('item (modal) :', item);
+
+        return item;
     }
     //#endregion
 }
