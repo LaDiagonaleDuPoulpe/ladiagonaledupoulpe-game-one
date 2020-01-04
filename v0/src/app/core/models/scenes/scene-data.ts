@@ -4,6 +4,7 @@ import { Prefab } from "../prefab";
 import { AssetMap } from '../assets/asset-map';
 import { EllipseLight } from '../stage/ellipse-light';
 import { PropertiesSetting } from '../properties-setting';
+import { SceneConfigurationPropertiesSetting } from '../scene-configuration-properties-setting';
 
 /**
  * Data of the scene
@@ -14,7 +15,7 @@ export class SceneData {
      * Default configuration of the current scene
      * Configure default text style, color, ...
      */
-    public defaultConfiguration: PropertiesSetting;
+    public defaultConfiguration: SceneConfigurationPropertiesSetting;
 
     /**
      * Assets to be preloaded, before used in prefab loader

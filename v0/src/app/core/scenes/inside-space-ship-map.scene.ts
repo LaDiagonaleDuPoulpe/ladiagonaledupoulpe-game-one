@@ -24,14 +24,14 @@ export class InsideSpaceShipMapScene extends BaseMapLevelScene {
             super(InsideSpaceShipMapScene.name, _logger, _levelManageService, 
                 _objectCreator, _animationsCreator, _lightManager);
             }    
-
+            
             //#region Public methods
             create() {
                 super.create();
-
+                
                 this.cameras.main.startFollow(this.players[0]);
-
-                this.displayModal.show();
+                
+                this.messageBox.show();
             }
             //#endregion
             

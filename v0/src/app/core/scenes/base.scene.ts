@@ -28,6 +28,8 @@ export class BaseScene extends Phaser.Scene {
     init(config: LevelConfig) {
         this.levelConfig = config;
         this._cursors = this.input.keyboard.createCursorKeys();
+
+        this.prepareMessageBox();
     }
     
     preload() {
@@ -47,6 +49,12 @@ export class BaseScene extends Phaser.Scene {
     */
     public getOnePrefabByType(type: PrefabType): Prefab {
         return this.levelConfig.data.prefabs.find(item => item.type == type);
+    }
+    //#endregion
+
+    //#region Intrnal methods
+    private prepareMessageBox() {
+        this.messageBox.init(this.messageBoxConfiguration);
     }
     //#endregion
     
@@ -87,6 +95,13 @@ export class BaseScene extends Phaser.Scene {
     }
 
     /**
+     * Message box configuration (color, background color, ...)
+     */
+    public get messageBoxConfiguration() {
+        return (this.levelConfig && this.levelConfig.data ? this.levelConfig.data.defaultConfiguration.messageBox : null);
+    }
+
+    /**
      * Gets the logger service
      */
     protected get logger(): DefaultLogger {
@@ -101,14 +116,10 @@ export class BaseScene extends Phaser.Scene {
     }
 
     /**
-     * Modal dialog to display text
+     * Message box to display text
      */
-    public get displayModal(): DialogModalPlugin {
-        const item = <DialogModalPlugin> (this['dialogModalPlugin']);
-
-        console.log('item (modal) :', item);
-
-        return item;
+    public get messageBox(): DialogModalPlugin {
+        return <DialogModalPlugin> (this['dialogModalPlugin']);
     }
     //#endregion
 }

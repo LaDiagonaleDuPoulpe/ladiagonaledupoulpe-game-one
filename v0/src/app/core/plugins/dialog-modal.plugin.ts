@@ -1,6 +1,6 @@
 import { BaseLevelScene } from '../scenes/base-level.scene';
 import { BaseMapLevelScene } from '../scenes/base-map-level.scene';
-import { DialogModalConfiguration } from './dialog-modal-configuration';
+import { DialogModalConfiguration } from '../models/dialog-modal-configuration';
 
 /**
 * Plugin to display a message box in current scene
@@ -9,7 +9,7 @@ import { DialogModalConfiguration } from './dialog-modal-configuration';
 export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     //#region Fields
     private _systems: Phaser.Scenes.Systems;
-    private _configuration = new DialogModalConfiguration();
+    private _configuration: DialogModalConfiguration;
     private _graphicObject: Phaser.GameObjects.Graphics;
     //#endregion
     
@@ -22,10 +22,27 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     boot() {
         super.boot();
     }
-
-    show() {
+    
+    /**
+     * Initializes the message box on the bottom of the screen
+     */
+    init(config: DialogModalConfiguration) {
+        this._configuration = config || new DialogModalConfiguration();
         this.createWindow();
-        console.log('Here we will display the message');
+    }
+
+    /**
+     * Show the message box
+     */
+    show() {
+        this._graphicObject.setVisible(true);
+    }
+
+    /**
+     * Hides the message box
+     */
+    hide() {
+        this._graphicObject.setVisible(false);
     }
     //#endregion
     
@@ -36,12 +53,17 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         const dimensions = this.calculateWindowDimensions(gameWidth, gameHeight);
         this._graphicObject = this.scene.add.graphics();
 
-        this._graphicObject.setScrollFactor(0);
-        this._graphicObject.setDepth(100);
-
+        this.setFixed(this._graphicObject);
         
         this.createOuterWindow(dimensions.x, dimensions.y, dimensions.rectWidth, dimensions.rectHeight);
         this.createInnerWindow(dimensions.x, dimensions.y, dimensions.rectWidth, dimensions.rectHeight);
+
+        this.hide();
+    }
+    
+    private setFixed(object: Phaser.GameObjects.Graphics) {
+        object.setScrollFactor(0);
+        object.setDepth(100);
     }
     
     private createInnerWindow(x: number, y: number, rectWidth: number, rectHeight: number) {
