@@ -13,7 +13,7 @@
                 "fill": "#ffffff"
             },         
             "windowHeight": 200,            
-            "padding": 0,            
+            "padding": 50,            
             "borderThickness": 10
         }
     },

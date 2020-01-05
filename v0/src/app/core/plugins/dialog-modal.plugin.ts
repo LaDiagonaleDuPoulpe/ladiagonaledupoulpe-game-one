@@ -106,7 +106,7 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     private calculateWindowDimensions(width: string | number, height: string | number) {
         var x = this._configuration.padding;
         var y = +height - this._configuration.windowHeight - this._configuration.padding;
-        var rectWidth = +width - (this._configuration.padding * 2);
+        var rectWidth = +width  - (this._configuration.padding * 2);
         var rectHeight = this._configuration.windowHeight;
         
         return {
