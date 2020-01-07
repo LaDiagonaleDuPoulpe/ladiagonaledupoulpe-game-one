@@ -8,6 +8,7 @@ import { AnimationsCreator } from '../prefab-sprites/animations/animations-creat
 import { OctopusSprite } from '../prefab-sprites/arcades/octopus.sprite';
 import { LightManager } from '../plugins/light-manager';
 import { toHexaInt } from '../../shared/converters/string-converter';
+import { ModalText } from '../models/dialog-modal/modal-text';
 
 /**
 * Scene where octopuses are inside the spaceship
@@ -32,7 +33,13 @@ export class InsideSpaceShipMapScene extends BaseMapLevelScene {
                 this.cameras.main.startFollow(this.players[0]);
                 
                 this.messageBox.show();
-                this.messageBox.text = 'On est dans de beaux draps ... le vaisseau est en piteux état ... Cherchons d\'abord un moyen de prévenir la maison mère';
+
+                const message:ModalText = {
+                    message: 'On est dans de beaux draps ... le vaisseau est en piteux état ... Cherchons d\'abord un moyen de prévenir la maison mère',
+                    order: 0,
+                    callback: undefined
+                };
+                this.messageBox.text = message;
             }
             //#endregion
             

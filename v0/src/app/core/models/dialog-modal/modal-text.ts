@@ -7,9 +7,9 @@ export class ModalText {
     public message: string;
 
     /** Order of the message */
-    public order: number;
+    public order ?: number;
 
     /** Callback function after the end  */
-    public callback: Function;
+    public callback ?: Function | undefined;
     //#endregion
 }

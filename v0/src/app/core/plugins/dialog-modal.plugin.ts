@@ -4,6 +4,7 @@ import { DialogModalConfiguration } from '../models/dialog-modal/dialog-modal-co
 import { PrefabSpriteFactory } from '../prefab-sprites/prefab-sprite-factory';
 import { PrefabType } from '../../shared/enums/prefab-type';
 import { Prefab } from '../models/prefab';
+import { ModalText } from '../models/dialog-modal/modal-text';
 
 /**
 * Plugin to display a message box in current scene
@@ -16,6 +17,7 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     private _graphicObject: Phaser.GameObjects.Graphics;
     private _closeButton: Phaser.GameObjects.Text;
     private _contentMessage: Phaser.GameObjects.Text;
+    private _currentModalText: ModalText;
     private _messageInArray: string[];
     private _eventCounter = 0;
     private _timedEvent: Phaser.Time.TimerEvent;
@@ -230,9 +232,10 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     /**
     * Text to be displayed (with animation in eahc character)
     */
-    public set text(value: string) {
+    public set text(value: ModalText) {
         this._eventCounter = 0;
-        this._messageInArray = value.split('');
+        this._currentModalText = value;
+        this._messageInArray = value.message.split('');
         
         if (this._timedEvent) {
             this._timedEvent.remove();
