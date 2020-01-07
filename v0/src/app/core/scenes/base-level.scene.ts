@@ -49,7 +49,9 @@ export abstract class BaseLevelScene extends BaseScene {
          */
         addSprite(sprite: Phaser.GameObjects.Sprite, groupKey: string) {
             this.add.existing(sprite);
-            this._physicalGroups[groupKey].add(sprite);
+            if (groupKey) {
+                this._physicalGroups[groupKey].add(sprite);
+            }
         }
 
         /**

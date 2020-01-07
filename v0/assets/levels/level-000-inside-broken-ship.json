@@ -14,7 +14,10 @@
             },         
             "windowHeight": 200,            
             "padding": 50,            
-            "borderThickness": 10
+            "borderThickness": 10,
+            "spriteBox": {
+                "width": 200
+            }
         }
     },
     "assets": {
@@ -81,7 +84,8 @@
         "players",
         "doors",
         "ship",
-        "sparks"
+        "sparks",
+        "messageBoxs"
     ],
     "prefabs": [
         {
@@ -315,7 +319,35 @@
             }
         }
     ],
-    "npcMessages": {
-        
-    }
+    "messages": [
+        {
+            "time": 10,
+            "content": "Tout le monde va bien ?!",
+            "prefab": {
+                "key": "spark1",
+                "type": "animsprite",
+                "properties": {
+                    "texture": "sparkLeftSpriteSheet",
+                    "group": "sparks",
+                    "scale": {
+                        "x": 2.0,
+                        "y": 2.0
+                    },
+                    "depth": 3,
+                    "visible": true,
+                    "animations": [
+                        {
+                            "key": "idle",
+                            "frames": [
+                                0,1,2,3,4,5,6,7,8,9,10,11,12,20,21,22
+                            ],
+                            "fps": 5,
+                            "repeat": -1
+                        }
+                    ]
+                }
+            }
+                
+        }
+    ]
 }

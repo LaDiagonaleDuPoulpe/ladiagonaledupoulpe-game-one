@@ -6,6 +6,9 @@ import { BaseLevelScene } from './base-level.scene';
 import { PrefabType } from '../../shared/enums/prefab-type';
 import { AnimationsCreator } from '../prefab-sprites/animations/animations-creator';
 import { LightManager } from '../plugins/light-manager';
+import { PrefabSprite } from '../prefab-sprites/prefab.sprite';
+import { PrefabSpriteFactory } from '../prefab-sprites/prefab-sprite-factory';
+import { Prefab } from '../models/prefab';
 
 /**
 * Base map level scene : it's the mother class to represent all map scene
@@ -55,8 +58,26 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
         return item;
     }
 
+    /**
+     * Applys buildings collision detection to the sprite
+     * @param sprite Sprites that detects collision
+     */
     applyCollisionDetection(sprite: Phaser.GameObjects.Sprite) {
         this.physics.add.collider(sprite, this._layers.buildings);
+    }
+
+    /**
+     * Creates sprite thanks to prefab from json file
+     * @param prefab Prefab to get properties to create sprite
+     */
+    createSpriteByPrefabObject(prefab: Prefab): Phaser.GameObjects.Sprite {
+        let sprite = null;
+
+        if (prefab) {
+            sprite = PrefabSpriteFactory.create(prefab.type, this, prefab.key, prefab.position, prefab.properties, this._animationsCreator);
+        }
+
+        return sprite;
     }
     //#endregion
     

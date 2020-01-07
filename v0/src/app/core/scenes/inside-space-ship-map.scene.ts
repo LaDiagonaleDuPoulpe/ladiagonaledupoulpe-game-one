@@ -32,7 +32,7 @@ export class InsideSpaceShipMapScene extends BaseMapLevelScene {
                 this.cameras.main.startFollow(this.players[0]);
                 
                 this.messageBox.show();
-                this.messageBox.text = 'Me voilà perdu .. le vaisseau est en train de couler ...';
+                this.messageBox.text = 'On est dans de beaux draps ... le vaisseau est en piteux état ... Cherchons d\'abord un moyen de prévenir la maison mère';
             }
             //#endregion
             

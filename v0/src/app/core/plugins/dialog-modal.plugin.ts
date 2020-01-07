@@ -1,6 +1,9 @@
 import { BaseLevelScene } from '../scenes/base-level.scene';
 import { BaseMapLevelScene } from '../scenes/base-map-level.scene';
-import { DialogModalConfiguration } from '../models/dialog-modal-configuration';
+import { DialogModalConfiguration } from '../models/dialog-modal/dialog-modal-configuration';
+import { PrefabSpriteFactory } from '../prefab-sprites/prefab-sprite-factory';
+import { PrefabType } from '../../shared/enums/prefab-type';
+import { Prefab } from '../models/prefab';
 
 /**
 * Plugin to display a message box in current scene
@@ -16,6 +19,7 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     private _messageInArray: string[];
     private _eventCounter = 0;
     private _timedEvent: Phaser.Time.TimerEvent;
+    private _displayingPersonSprite: Phaser.GameObjects.Sprite;
     //#endregion
     
     constructor(private _scene: BaseMapLevelScene, pluginManager: Phaser.Plugins.PluginManager) {
@@ -58,9 +62,13 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     private toggleWindow(visibility: boolean) {
         this._graphicObject.setVisible(visibility);
         this._closeButton.setVisible(visibility);
-
+        
         if (this._contentMessage) {
             this._contentMessage.setVisible(visibility);
+        }
+        
+        if (this._displayingPersonSprite) {
+            this._displayingPersonSprite.setVisible(visibility);
         }
     }
     
@@ -74,13 +82,14 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         
         this.createOuterWindow(dimensions.x, dimensions.y, dimensions.rectWidth, dimensions.rectHeight);
         this.createInnerWindow(dimensions.x, dimensions.y, dimensions.rectWidth, dimensions.rectHeight);
+        this.createPeopleSpeakingBox(dimensions.x, dimensions.y, dimensions.rectWidth, dimensions.rectHeight);
         
         this.createCloseModalButton();
         
         this.hide();
     }
     
-    private setFixed(object: Phaser.GameObjects.Graphics | Phaser.GameObjects.Text, depth: number = 100) {
+    private setFixed(object: Phaser.GameObjects.Graphics | Phaser.GameObjects.Text | Phaser.GameObjects.Sprite, depth: number = 100) {
         object.setScrollFactor(0);
         object.setDepth(depth);
     }
@@ -93,6 +102,45 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     private createOuterWindow(x: number, y: number, rectWidth: number, rectHeight: number) {
         this._graphicObject.lineStyle(this._configuration.borderThickness, this._configuration.borderColor);
         this._graphicObject.strokeRect(x, y, rectWidth, rectHeight);
+    }
+    
+    private createPeopleSpeakingBox(x: number, y: number, rectWidth: number, rectHeight: number) {
+        console.log('dialog::sprite=>x :', x);
+        console.log('dialog::sprite=>y :', y);
+        
+        x = x + this._configuration.padding + 10;
+        y = y + this._configuration.padding + 10;
+        
+        const prefab = {
+            type: PrefabType.animated,
+            key: 'spikeOcotpus',
+            playable: false,
+            position: { x: x, y: y},
+            properties: {
+                texture: 'sparkLeftSpriteSheet',
+                depth: 103,
+                animations: [
+                    {
+                        key: 'idle',
+                        frames: [
+                            0,1,2,3,4,5,6,7,8,9,10,11,12,20,21,22
+                        ],
+                        fps: 5,
+                        repeat: -1
+                    }
+                ]
+            }
+        }
+        
+        if (prefab) {
+            this._displayingPersonSprite = this._scene.createSpriteByPrefabObject(<Prefab> prefab);
+            this.setFixed(this._displayingPersonSprite);
+            
+            console.log('createPeopleSpeakingBox=>y', y);
+            console.log('createPeopleSpeakingBox=>rectHeight', rectHeight);
+            
+            this._displayingPersonSprite.setPosition(x, y - this._configuration.padding + rectHeight / 2 );
+        }
     }
     
     private getGameWidth() {
@@ -153,7 +201,7 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
             this._contentMessage.destroy();
         }
         
-        const x = this._configuration.padding + 10;
+        const x = this._configuration.padding + this._displayingPersonSprite.width;
         const y = +this.getGameHeight() - this._configuration.windowHeight - this._configuration.padding + 10;
         
         this._contentMessage = this.scene.make.text({
@@ -161,7 +209,7 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
             y: y,
             text: value,
             style: {
-                wordWrap: { width: +this.getGameWidth() - (this._configuration.padding * 2) - 25 }
+                wordWrap: { width: +this.getGameWidth() - (this._configuration.padding * 2) - this._displayingPersonSprite.width }
             }
         });
         
@@ -171,7 +219,7 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     private animateText() {
         this._eventCounter++;
         this._contentMessage.setText(this._contentMessage.text + this._messageInArray[this._eventCounter - 1]);
-
+        
         if (this._eventCounter === this._messageInArray.length) {
             this._timedEvent.remove();
         }
@@ -180,7 +228,7 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     
     //#region Properties    
     /**
-    * Text to be displayed
+    * Text to be displayed (with animation in eahc character)
     */
     public set text(value: string) {
         this._eventCounter = 0;
@@ -198,8 +246,7 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
             callback: this.animateText,
             callbackScope: this,
             loop: true
-        });
-        
+        });        
     }
     //#endregion
 }
