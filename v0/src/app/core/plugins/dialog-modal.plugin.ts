@@ -18,6 +18,7 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     private _graphicObject: Phaser.GameObjects.Graphics;
     private _closeButton: Phaser.GameObjects.Text;
     private _displayedMessage: Phaser.GameObjects.Text;
+    private _nextPageButton: Phaser.GameObjects.Text;
     private _currentModalText: ModalText;
     private _modalContent: ModalContent;
     private _messageInArray: string[];
@@ -76,6 +77,10 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         if (this._displayingPersonSprite) {
             this._displayingPersonSprite.setVisible(visibility);
         }
+
+        if (this._nextPageButton) {
+            this._nextPageButton.setVisible(visibility);
+        }
     }
     
     private createWindow() {
@@ -92,6 +97,8 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         
         this.createCloseModalButton();
         
+        this.createNextPageButton();
+
         this.hide();
     }
     
@@ -100,6 +107,20 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         object.setDepth(depth);
     }
     
+    private createNextPageButton() {
+        this._nextPageButton = this.scene.make.text({
+            x: 300,
+            y: 1000,
+            text: '>> Suivant',
+            style: {
+                font: this._configuration.closeButtonStyle.font,
+                fill: this._configuration.closeButtonStyle.fill
+            }
+        });
+        this._nextPageButton.setInteractive();
+        this.setFixed(this._nextPageButton, 101);
+    }
+
     private createInnerWindow(x: number, y: number, rectWidth: number, rectHeight: number) {
         this._graphicObject.fillStyle(this._configuration.windowColor);
         this._graphicObject.fillRect(x + 1, y + 1, rectWidth - 1, rectHeight - 1);
@@ -164,6 +185,34 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
             rectHeight
         };
     }
+
+    private createTextAsButton(x: number, y: number, message: string, depth: number, callback: Function): Phaser.GameObjects.Text {
+        const button = this.scene.make.text({
+            x: x,
+            y: y,
+            text: message,
+            style: {
+                font: this._configuration.closeButtonStyle.font,
+                fill: this._configuration.closeButtonStyle.fill
+            }
+        });
+        
+        this.setFixed(button, depth);
+        
+        button.setInteractive();
+        
+        button.on('pointerover', function () {
+            this.setTint(0xff0000);
+        });
+        button.on('pointerout', function () {
+            this.clearTint();
+        });
+        button.on('pointerdown', function () {
+            callback();
+        });
+
+        return button;
+    }
     
     private createCloseModalButton() {
         var self = this;
@@ -171,29 +220,7 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         const x = +this.getGameWidth() - this._configuration.padding - 30;
         const y = +this.getGameHeight() - this._configuration.windowHeight - this._configuration.padding + 3;
         
-        this._closeButton = this.scene.make.text({
-            x: x,
-            y: y,
-            text: '[X]',
-            style: {
-                font: this._configuration.closeButtonStyle.font,
-                fill: this._configuration.closeButtonStyle.fill
-            }
-        });
-        
-        this.setFixed(this._closeButton, 101);
-        
-        this._closeButton.setInteractive();
-        
-        this._closeButton.on('pointerover', function () {
-            this.setTint(0xff0000);
-        });
-        this._closeButton.on('pointerout', function () {
-            this.clearTint();
-        });
-        this._closeButton.on('pointerdown', function () {
-            self.hide();
-        });
+        this._closeButton = this.createTextAsButton(x, y, '[X]', 101, self.hide.bind(self));
     }
     
     private setText(value: string) {
