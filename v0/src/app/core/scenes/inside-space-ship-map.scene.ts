@@ -30,16 +30,19 @@ export class InsideSpaceShipMapScene extends BaseMapLevelScene {
             create() {
                 super.create();
                 
-                this.cameras.main.startFollow(this.players[0]);
+                this.cameras.main.startFollow(this.players[0]);               
                 
-                this.messageBox.show();
 
-                const message:ModalText = {
+                this.messageBox.textList = [{
                     message: 'On est dans de beaux draps ... le vaisseau est en piteux état ... Cherchons d\'abord un moyen de prévenir la maison mère',
                     order: 0,
                     callback: undefined
-                };
-                this.messageBox.text = message;
+                },{
+                    message: 'Où se trouve notre émetteur ?! Il doit bien être quelque part ....',
+                    order: 1,
+                    callback: undefined
+                }];
+                this.messageBox.show();
             }
             //#endregion
             

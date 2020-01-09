@@ -5,6 +5,7 @@ import { PrefabSpriteFactory } from '../prefab-sprites/prefab-sprite-factory';
 import { PrefabType } from '../../shared/enums/prefab-type';
 import { Prefab } from '../models/prefab';
 import { ModalText } from '../models/dialog-modal/modal-text';
+import { ModalContent } from '../models/dialog-modal/modal-content';
 
 /**
 * Plugin to display a message box in current scene
@@ -16,8 +17,9 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     private _configuration: DialogModalConfiguration;
     private _graphicObject: Phaser.GameObjects.Graphics;
     private _closeButton: Phaser.GameObjects.Text;
-    private _contentMessage: Phaser.GameObjects.Text;
+    private _displayedMessage: Phaser.GameObjects.Text;
     private _currentModalText: ModalText;
+    private _modalContent: ModalContent;
     private _messageInArray: string[];
     private _eventCounter = 0;
     private _timedEvent: Phaser.Time.TimerEvent;
@@ -49,7 +51,9 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     * Show the message box
     */
     show() {
-        this.toggleWindow(true);
+        if (this._modalContent && this._modalContent.messageList && this._modalContent.messageList.length > 0) {
+            this.toggleWindow(true);
+        }
     }
     
     /**
@@ -65,8 +69,8 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         this._graphicObject.setVisible(visibility);
         this._closeButton.setVisible(visibility);
         
-        if (this._contentMessage) {
-            this._contentMessage.setVisible(visibility);
+        if (this._displayedMessage) {
+            this._displayedMessage.setVisible(visibility);
         }
         
         if (this._displayingPersonSprite) {
@@ -106,10 +110,7 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         this._graphicObject.strokeRect(x, y, rectWidth, rectHeight);
     }
     
-    private createPeopleSpeakingBox(x: number, y: number, rectWidth: number, rectHeight: number) {
-        console.log('dialog::sprite=>x :', x);
-        console.log('dialog::sprite=>y :', y);
-        
+    private createPeopleSpeakingBox(x: number, y: number, rectWidth: number, rectHeight: number) {        
         x = x + this._configuration.padding + 10;
         y = y + this._configuration.padding + 10;
         
@@ -137,9 +138,6 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         if (prefab) {
             this._displayingPersonSprite = this._scene.createSpriteByPrefabObject(<Prefab> prefab);
             this.setFixed(this._displayingPersonSprite);
-            
-            console.log('createPeopleSpeakingBox=>y', y);
-            console.log('createPeopleSpeakingBox=>rectHeight', rectHeight);
             
             this._displayingPersonSprite.setPosition(x, y - this._configuration.padding + rectHeight / 2 );
         }
@@ -199,14 +197,14 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     }
     
     private setText(value: string) {
-        if (this._contentMessage) {
-            this._contentMessage.destroy();
+        if (this._displayedMessage) {
+            this._displayedMessage.destroy();
         }
         
         const x = this._configuration.padding + this._displayingPersonSprite.width;
         const y = +this.getGameHeight() - this._configuration.windowHeight - this._configuration.padding + 10;
         
-        this._contentMessage = this.scene.make.text({
+        this._displayedMessage = this.scene.make.text({
             x: x,
             y: y,
             text: value,
@@ -215,26 +213,20 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
             }
         });
         
-        this.setFixed(this._contentMessage, 101);
+        this.setFixed(this._displayedMessage, 101);
     }
     
     private animateText() {
         this._eventCounter++;
-        this._contentMessage.setText(this._contentMessage.text + this._messageInArray[this._eventCounter - 1]);
+        this._displayedMessage.setText(this._displayedMessage.text + this._messageInArray[this._eventCounter - 1]);
         
         if (this._eventCounter === this._messageInArray.length) {
             this._timedEvent.remove();
         }
     }
-    //#endregion
-    
-    //#region Properties    
-    /**
-    * Text to be displayed (with animation in eahc character)
-    */
-    public set text(value: ModalText) {
+
+    private displayOnText(value: ModalText) {
         this._eventCounter = 0;
-        this._currentModalText = value;
         this._messageInArray = value.message.split('');
         
         if (this._timedEvent) {
@@ -249,7 +241,36 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
             callback: this.animateText,
             callbackScope: this,
             loop: true
-        });        
+        });   
+    }
+
+    private setModalContentByText(...texts: ModalText[]) {
+        this.modalContent = new ModalContent();
+        this._modalContent.messageList = texts
+    }
+
+    
+    //#endregion
+    
+    //#region Properties  
+    /**
+    * Text to be displayed (with animation in each character)
+    */
+    public set text(value: ModalText) {
+        this.setModalContentByText(value);
+        this.displayOnText(value); 
+    }
+
+    /**
+     * List of text message to display in 
+     */
+    public set textList(values: ModalText[]) {
+        this.setModalContentByText(...values);
+    }
+
+    /** Defines content with list of messages and ended callback */
+    public set modalContent(value: ModalContent) {
+        this._modalContent = value;
     }
     //#endregion
 }
