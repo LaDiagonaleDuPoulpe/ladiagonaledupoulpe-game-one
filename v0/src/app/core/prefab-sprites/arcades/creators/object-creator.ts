@@ -50,7 +50,8 @@ export class ObjectCreator {
     public createObjectWithDetails(config: SpriteConfig, saveInSprite: Function): Phaser.GameObjects.Sprite {
         const objectPosition = {
             x: config.x,
-            y: config.y
+            y: config.y,
+            width: 0, height: 0
         };
         
         const properties = {

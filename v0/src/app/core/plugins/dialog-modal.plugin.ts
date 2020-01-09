@@ -6,19 +6,23 @@ import { PrefabType } from '../../shared/enums/prefab-type';
 import { Prefab } from '../models/prefab';
 import { ModalText } from '../models/dialog-modal/modal-text';
 import { ModalContent } from '../models/dialog-modal/modal-content';
+import { Position } from '../models/position';
 
 /**
 * Plugin to display a message box in current scene
 */
 // https://phaser.io/examples/v3/view/plugins/scene-plugin-test-1
+// TODO: See if we can split this class in several small ones
 export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     //#region Fields
     private _systems: Phaser.Scenes.Systems;
     private _configuration: DialogModalConfiguration;
     private _graphicObject: Phaser.GameObjects.Graphics;
+    private _currentBoxDimensions: Position;
     private _closeButton: Phaser.GameObjects.Text;
     private _displayedMessage: Phaser.GameObjects.Text;
     private _nextPageButton: Phaser.GameObjects.Text;
+    private _currentMessageTextToDisplayIndex = 0;
     private _currentModalText: ModalText;
     private _modalContent: ModalContent;
     private _messageInArray: string[];
@@ -50,10 +54,17 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     
     /**
     * Show the message box
+    * Be careful : if isMessagesDisplayed is set to true, 
+    * you need to set message text list before calling this method
     */
-    show() {
+    show(isMessagesDisplayed: boolean = true) {
         if (this._modalContent && this._modalContent.messageList && this._modalContent.messageList.length > 0) {
             this.toggleWindow(true);
+
+            if (isMessagesDisplayed) {
+                this._currentMessageTextToDisplayIndex = -1;
+                this.displayNextMessage();
+            }
         }
     }
     
@@ -86,18 +97,16 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     private createWindow() {
         const gameHeight = this.getGameHeight();
         const gameWidth = this.getGameWidth();
-        const dimensions = this.calculateWindowDimensions(gameWidth, gameHeight);
+        this._currentBoxDimensions = this.calculateWindowDimensions(gameWidth, gameHeight);
         this._graphicObject = this.scene.add.graphics();
         
         this.setFixed(this._graphicObject);
         
-        this.createOuterWindow(dimensions.x, dimensions.y, dimensions.rectWidth, dimensions.rectHeight);
-        this.createInnerWindow(dimensions.x, dimensions.y, dimensions.rectWidth, dimensions.rectHeight);
-        this.createPeopleSpeakingBox(dimensions.x, dimensions.y, dimensions.rectWidth, dimensions.rectHeight);
+        this.createOuterWindow(this._currentBoxDimensions.x, this._currentBoxDimensions.y, this._currentBoxDimensions.width, this._currentBoxDimensions.height);
+        this.createInnerWindow(this._currentBoxDimensions.x, this._currentBoxDimensions.y, this._currentBoxDimensions.width, this._currentBoxDimensions.height);
+        this.createPeopleSpeakingBox(this._currentBoxDimensions.x, this._currentBoxDimensions.y, this._currentBoxDimensions.width, this._currentBoxDimensions.height);
         
         this.createCloseModalButton();
-        
-        this.createNextPageButton();
 
         this.hide();
     }
@@ -107,18 +116,19 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         object.setDepth(depth);
     }
     
-    private createNextPageButton() {
-        this._nextPageButton = this.scene.make.text({
-            x: 300,
-            y: 1000,
-            text: '>> Suivant',
-            style: {
-                font: this._configuration.closeButtonStyle.font,
-                fill: this._configuration.closeButtonStyle.fill
-            }
-        });
-        this._nextPageButton.setInteractive();
-        this.setFixed(this._nextPageButton, 101);
+    private createNextPageButton(text: string = '>> Suivant') {
+        const x = this._currentBoxDimensions.x + this._currentBoxDimensions.width - 120;
+        const y = this._currentBoxDimensions.y + this._currentBoxDimensions.height - 30;
+        this._nextPageButton = this.createTextAsButton(x, y, text, 101, this.displayNextMessage.bind(this));
+    }
+
+    private displayNextMessage() {
+        this._currentMessageTextToDisplayIndex ++;
+        const currentMessage = this._modalContent.messageList[this._currentMessageTextToDisplayIndex];
+
+        if (currentMessage) {
+            this.displayOnText(currentMessage);
+        }
     }
 
     private createInnerWindow(x: number, y: number, rectWidth: number, rectHeight: number) {
@@ -172,17 +182,17 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         return this.scene.sys.game.config.height;
     }
     
-    private calculateWindowDimensions(width: string | number, height: string | number) {
+    private calculateWindowDimensions(width: string | number, height: string | number): Position {
         var x = this._configuration.padding;
         var y = +height - this._configuration.windowHeight - this._configuration.padding;
         var rectWidth = +width  - (this._configuration.padding * 2);
         var rectHeight = this._configuration.windowHeight;
         
         return {
-            x,
-            y,
-            rectWidth,
-            rectHeight
+            x: x,
+            y: y,
+            width: rectWidth,
+            height: rectHeight
         };
     }
 
@@ -274,9 +284,7 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     private setModalContentByText(...texts: ModalText[]) {
         this.modalContent = new ModalContent();
         this._modalContent.messageList = texts
-    }
-
-    
+    }    
     //#endregion
     
     //#region Properties  
@@ -285,7 +293,6 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     */
     public set text(value: ModalText) {
         this.setModalContentByText(value);
-        this.displayOnText(value); 
     }
 
     /**

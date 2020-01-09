@@ -26,7 +26,8 @@ export class MessageBox extends PrefabSprite {
 
         const newPosition = {
             x: this.x + (this.width / 2),
-            y: this.y + 50
+            y: this.y + 50,
+            width: 0, height: 0
         };
 
         const newProperties = {
