@@ -135,10 +135,21 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     private displayNextMessage() {
         this._currentMessageTextToDisplayIndex ++;
         const currentMessage = this._modalContent.messageList[this._currentMessageTextToDisplayIndex];
-
+        let currentAction = undefined;
+        
         if (currentMessage) {
-            this.displayOnText(currentMessage);
+            currentAction = this.displayOnText.bind(this, currentMessage);
         }
+
+        if (! currentMessage && this._modalContent.endingCallBack) {
+            this._modalContent.endingCallBack();
+        }
+
+        if (! currentAction) {
+            currentAction = this.hide.bind(this);
+        }
+
+        currentAction();
     }
 
     private createInnerWindow(x: number, y: number, rectWidth: number, rectHeight: number) {
