@@ -124,7 +124,11 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
             if (this._currentMessageTextToDisplayIndex === this._modalContent.messageList.length -1) {
                 text = "[ Fermer ]";
             }
-            this._nextPageButton = this.createTextAsButton(x, y, text, 101, this.displayNextMessage.bind(this));
+
+            if (! this._nextPageButton) {
+                this._nextPageButton = this.createTextAsButton(x, y, text, 101, this.displayNextMessage.bind(this));
+            }
+            this._nextPageButton.setText(text);
         }
     }
 
