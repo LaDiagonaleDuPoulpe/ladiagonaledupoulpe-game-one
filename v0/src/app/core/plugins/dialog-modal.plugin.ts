@@ -117,9 +117,15 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     }
     
     private createNextPageButton(text: string = '>> Suivant') {
-        const x = this._currentBoxDimensions.x + this._currentBoxDimensions.width - 120;
-        const y = this._currentBoxDimensions.y + this._currentBoxDimensions.height - 30;
-        this._nextPageButton = this.createTextAsButton(x, y, text, 101, this.displayNextMessage.bind(this));
+        if (this._currentMessageTextToDisplayIndex <= this._modalContent.messageList.length -1) {
+            const x = this._currentBoxDimensions.x + this._currentBoxDimensions.width - 120;
+            const y = this._currentBoxDimensions.y + this._currentBoxDimensions.height - 30;
+
+            if (this._currentMessageTextToDisplayIndex === this._modalContent.messageList.length -1) {
+                text = "[ Fermer ]";
+            }
+            this._nextPageButton = this.createTextAsButton(x, y, text, 101, this.displayNextMessage.bind(this));
+        }
     }
 
     private displayNextMessage() {
@@ -253,12 +259,16 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         this.setFixed(this._displayedMessage, 101);
     }
     
-    private animateText() {
+    private animateText(nexAction: Function) {
         this._eventCounter++;
         this._displayedMessage.setText(this._displayedMessage.text + this._messageInArray[this._eventCounter - 1]);
         
         if (this._eventCounter === this._messageInArray.length) {
             this._timedEvent.remove();
+
+            if (nexAction) {
+                nexAction();
+            }
         }
     }
 
@@ -275,7 +285,7 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         
         this._timedEvent = this.scene.time.addEvent({
             delay: 300 - (this._configuration.dialogSpeed * 30),
-            callback: this.animateText,
+            callback: this.animateText.bind(this, this.createNextPageButton.bind(this)),
             callbackScope: this,
             loop: true
         });   
