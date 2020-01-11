@@ -1,3 +1,5 @@
+import { EventType } from "./event-type";
+
 /**
  * Text to display in modal text
  */
@@ -14,5 +16,8 @@ export class ModalText {
 
     /** Callback function after the end  */
     public callback ?: Function | undefined;
+
+    /** Event time to display the message */
+    public event: EventType;
     //#endregion
 }

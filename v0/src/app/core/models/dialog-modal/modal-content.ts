@@ -12,8 +12,5 @@ export class ModalContent {
 
     /** List of message to display */
     public messageList: ModalText[];
-
-    /** Event time to display the message */
-    public event: EventType;
     //#endregion
 }

@@ -6,6 +6,7 @@ import { PrefabSpriteFactory } from '../prefab-sprites/prefab-sprite-factory';
 import { BaseScene } from './base.scene';
 import { AnimationsCreator } from '../prefab-sprites/animations/animations-creator';
 import { LightManager } from '../plugins/light-manager';
+import { EventType } from '../models/dialog-modal/event-type';
 
 /**
 * Base level scene : abstract class of all active map scenes
@@ -33,27 +34,28 @@ export abstract class BaseLevelScene extends BaseScene {
             this.createCollisionGroups();
             this.createAllPrefabSprites();
             this.createAllDataInStage();
+            this.prepareMessageBoxContent();
         }
         
         update() {
             this.updateAllPrefabs();
         }
-
+        
         /**
-         * Adds collision detection to an sprite
-         */
+        * Adds collision detection to an sprite
+        */
         abstract applyCollisionDetection(sprite: Phaser.GameObjects.Sprite);
         
         /**
-         * Adds a sprite in the scene
-         */
+        * Adds a sprite in the scene
+        */
         addSprite(sprite: Phaser.GameObjects.Sprite, groupKey: string) {
             this.add.existing(sprite);
             if (groupKey) {
                 this._physicalGroups[groupKey].add(sprite);
             }
         }
-
+        
         /**
         * Attach an action from event
         * @param item Event key
@@ -106,7 +108,7 @@ export abstract class BaseLevelScene extends BaseScene {
                 this._lightManager.create(this, item);
             }, this);
         }
-
+        
         private createCollisionGroups() {
             this.levelConfig.data.groups.forEach((groupName) => {
                 this.physicalGroups[groupName] = this.physics.add.group();
@@ -131,6 +133,20 @@ export abstract class BaseLevelScene extends BaseScene {
                 this.prefabSprites[key] = sprite;             
             }
         }
+        
+        /**
+        * Sets all messages to the message box
+        * Manage events switch to load messages
+        * Allows you to overload it
+        */
+        protected prepareMessageBoxContent() {
+            this._logger.log('prepareMessageBoxContent', this.levelConfig.data.messagesContent);
+            this.messageBox.modalContent = this.levelConfig.data.messagesContent;
+            
+            
+            // TODO: 11/01/2020, you have to manage events trigger to display all message
+            this.messageBox.show();
+        }
         //#endregion
         
         //#region properties
@@ -147,15 +163,15 @@ export abstract class BaseLevelScene extends BaseScene {
         public get prefabSprites(): Dictionary<Phaser.GameObjects.GameObject> {
             return this._prefabSprites;
         }
-
+        
         /**
-         * Gets list of players in the game
-         */
+        * Gets list of players in the game
+        */
         public get players(): Phaser.GameObjects.GameObject[] {
             const prefabs = [];
-
+            
             prefabs.push(this.prefabSprites["player"]);
-
+            
             return prefabs;
         }
         //#endregion

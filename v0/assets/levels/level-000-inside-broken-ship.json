@@ -319,49 +319,71 @@
             }
         }
     ],
-    "messagesContent": [
-        {
-            "endingCallBack": null,
-            "messageList": [
-                {
-                    "event": "start",
-                    "time": 10,
-                    "message": "On est dans de beaux draps ... le vaisseau est en piteux état ... Cherchons d'abord un moyen de prévenir la maison mère",
-                    "order": 0,
-                    "faceDisplay": "left",
-                    "prefab": {
-                        "key": "spark1",
-                        "type": "animsprite",
-                        "properties": {
-                            "texture": "sparkLeftSpriteSheet",
-                            "group": "sparks",
-                            "scale": {
-                                "x": 2.0,
-                                "y": 2.0
-                            },
-                            "depth": 3,
-                            "visible": true,
-                            "animations": [
-                                {
-                                    "key": "idle",
-                                    "frames": [
-                                        0,1,2,3,4,5,6,7,8,9,10,11,12,20,21,22
-                                    ],
-                                    "fps": 5,
-                                    "repeat": -1
-                                }
-                            ]
-                        }
+    "messagesContent": {
+        "endingCallBack": null,
+        "messageList": [
+            {
+                "event": "start",
+                "time": 10,
+                "message": "On est dans de beaux draps ... le vaisseau est en piteux état ... Cherchons d'abord un moyen de prévenir la maison mère",
+                "order": 0,
+                "faceDisplay": "left",
+                "prefab": {
+                    "key": "spark1",
+                    "type": "animsprite",
+                    "properties": {
+                        "texture": "sparkLeftSpriteSheet",
+                        "group": "sparks",
+                        "scale": {
+                            "x": 2.0,
+                            "y": 2.0
+                        },
+                        "depth": 3,
+                        "visible": true,
+                        "animations": [
+                            {
+                                "key": "idle",
+                                "frames": [
+                                    0,1,2,3,4,5,6,7,8,9,10,11,12,20,21,22
+                                ],
+                                "fps": 5,
+                                "repeat": -1
+                            }
+                        ]
                     }
-                },
-                {
-                    "time": 0,
-                    "event": "start",
-                    "message": "Où se trouve notre émetteur ?! Il doit bien être quelque part ....",
-                    "faceDisplay": "left",
-                    "order": 1
                 }
-            ]                
-        }
-    ]
+            },
+            {
+                "time": 0,
+                "event": "start",
+                "message": "Où se trouve notre émetteur ?! Il doit bien être quelque part ....",
+                "faceDisplay": "left",
+                "order": 1,
+                "prefab": {
+                    "key": "spark1",
+                    "type": "animsprite",
+                    "properties": {
+                        "texture": "sparkLeftSpriteSheet",
+                        "group": "sparks",
+                        "scale": {
+                            "x": 2.0,
+                            "y": 2.0
+                        },
+                        "depth": 3,
+                        "visible": true,
+                        "animations": [
+                            {
+                                "key": "idle",
+                                "frames": [
+                                    0,1,2,3,4,5,6,7,8,9,10,11,12,20,21,22
+                                ],
+                                "fps": 5,
+                                "repeat": -1
+                            }
+                        ]
+                    }
+                }
+            }
+        ]                
+    }
 }
