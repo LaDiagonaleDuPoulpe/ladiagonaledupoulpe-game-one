@@ -1,4 +1,5 @@
 import { ModalText } from './modal-text';
+import { EventType } from './event-type';
 
 /**
  * Content to display in the modal box
@@ -11,5 +12,8 @@ export class ModalContent {
 
     /** List of message to display */
     public messageList: ModalText[];
+
+    /** Event time to display the message */
+    public event: EventType;
     //#endregion
 }

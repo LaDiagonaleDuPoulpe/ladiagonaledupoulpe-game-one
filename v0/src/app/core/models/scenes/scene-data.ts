@@ -5,6 +5,7 @@ import { AssetMap } from '../assets/asset-map';
 import { EllipseLight } from '../stage/ellipse-light';
 import { PropertiesSetting } from '../properties-setting';
 import { SceneConfigurationPropertiesSetting } from '../scene-configuration-properties-setting';
+import { ModalContent } from '../dialog-modal/modal-content';
 
 /**
  * Data of the scene
@@ -41,5 +42,10 @@ export class SceneData {
      * Map to load in current scene
      */
     public map: AssetMap;
+
+    /**
+     * Container about all messages to display in the scene
+     */
+    public messagesContent: ModalContent;
     //#endregion
 }
