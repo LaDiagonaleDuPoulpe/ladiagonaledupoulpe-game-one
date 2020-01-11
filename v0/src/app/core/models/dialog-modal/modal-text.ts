@@ -9,6 +9,9 @@ export class ModalText {
     /** Order of the message */
     public order ?: number;
 
+    /** Duration before we display the message */
+    public time: number;
+
     /** Callback function after the end  */
     public callback ?: Function | undefined;
     //#endregion

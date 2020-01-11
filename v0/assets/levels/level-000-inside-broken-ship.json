@@ -319,10 +319,21 @@
             }
         }
     ],
-    "messages": [
+    "modalContent": [
         {
-            "time": 10,
-            "content": "Tout le monde va bien ?!",
+            "endingCallBack": null,
+            "messageList": [
+                {
+                    "time": 10,
+                    "message": "On est dans de beaux draps ... le vaisseau est en piteux état ... Cherchons d'abord un moyen de prévenir la maison mère",
+                    "order": 0
+                },
+                {
+                    "time": 0,
+                    "message": "Où se trouve notre émetteur ?! Il doit bien être quelque part ....",
+                    "order": 1
+                }
+            ],
             "prefab": {
                 "key": "spark1",
                 "type": "animsprite",

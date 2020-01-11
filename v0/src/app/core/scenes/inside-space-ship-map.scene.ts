@@ -37,10 +37,12 @@ export class InsideSpaceShipMapScene extends BaseMapLevelScene {
                 const messageList = [{
                     message: 'On est dans de beaux draps ... le vaisseau est en piteux état ... Cherchons d\'abord un moyen de prévenir la maison mère',
                     order: 0,
+                    time: 0,
                     callback: undefined
                 },{
                     message: 'Où se trouve notre émetteur ?! Il doit bien être quelque part ....',
                     order: 1,
+                    time: 0,
                     callback: undefined
                 }];
 
