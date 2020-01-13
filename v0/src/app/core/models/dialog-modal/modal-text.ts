@@ -1,4 +1,5 @@
 import { EventType } from "./event-type";
+import { Prefab } from '../prefab';
 
 /**
  * Text to display in modal text
@@ -19,5 +20,8 @@ export class ModalText {
 
     /** Event time to display the message */
     public event: EventType;
+
+    /** Prefab to display in the message box */
+    public prefab: Prefab;
     //#endregion
 }

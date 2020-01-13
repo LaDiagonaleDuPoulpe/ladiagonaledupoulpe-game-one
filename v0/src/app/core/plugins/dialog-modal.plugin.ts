@@ -7,6 +7,7 @@ import { Prefab } from '../models/prefab';
 import { ModalText } from '../models/dialog-modal/modal-text';
 import { ModalContent } from '../models/dialog-modal/modal-content';
 import { Position } from '../models/position';
+import { Dictionary } from '../../shared/custom-types/dictionary';
 
 /**
 * Plugin to display a message box in current scene
@@ -29,6 +30,7 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     private _eventCounter = 0;
     private _timedEvent: Phaser.Time.TimerEvent;
     private _displayingPersonSprite: Phaser.GameObjects.Sprite;
+    private _listOfDisplayingSprites: Dictionary<Phaser.GameObjects.Sprite> = {};
     //#endregion
     
     constructor(private _scene: BaseMapLevelScene, pluginManager: Phaser.Plugins.PluginManager) {
@@ -104,7 +106,6 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         
         this.createOuterWindow(this._currentBoxDimensions.x, this._currentBoxDimensions.y, this._currentBoxDimensions.width, this._currentBoxDimensions.height);
         this.createInnerWindow(this._currentBoxDimensions.x, this._currentBoxDimensions.y, this._currentBoxDimensions.width, this._currentBoxDimensions.height);
-        this.createPeopleSpeakingBox(this._currentBoxDimensions.x, this._currentBoxDimensions.y, this._currentBoxDimensions.width, this._currentBoxDimensions.height);
         
         this.createCloseModalButton();
 
@@ -138,6 +139,10 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         let currentAction = undefined;
         
         if (currentMessage) {
+            this.createPeopleSpeakingBox(currentMessage,
+                                        this._currentBoxDimensions.x, this._currentBoxDimensions.y, 
+                                        this._currentBoxDimensions.width, this._currentBoxDimensions.height);
+
             currentAction = this.displayOnText.bind(this, currentMessage);
         }
 
@@ -162,36 +167,31 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         this._graphicObject.strokeRect(x, y, rectWidth, rectHeight);
     }
     
-    private createPeopleSpeakingBox(x: number, y: number, rectWidth: number, rectHeight: number) {        
-        x = x + this._configuration.padding + 10;
-        y = y + this._configuration.padding + 10;
-        
-        const prefab = {
-            type: PrefabType.animated,
-            key: 'spikeOcotpus',
-            playable: false,
-            position: { x: x, y: y},
-            properties: {
-                texture: 'sparkLeftSpriteSheet',
-                depth: 103,
-                animations: [
-                    {
-                        key: 'idle',
-                        frames: [
-                            0,1,2,3,4,5,6,7,8,9,10,11,12,20,21,22
-                        ],
-                        fps: 5,
-                        repeat: -1
-                    }
-                ]
-            }
-        }
-        
+    private createPeopleSpeakingBox(currentMessage: ModalText, x: number, y: number, rectWidth: number, rectHeight: number) {             
+        const prefab = currentMessage.prefab;
+    
         if (prefab) {
-            this._displayingPersonSprite = this._scene.createSpriteByPrefabObject(<Prefab> prefab);
-            this.setFixed(this._displayingPersonSprite);
+            this.setPrefabToDisplay(prefab);
             
-            this._displayingPersonSprite.setPosition(x, y - this._configuration.padding + rectHeight / 2 );
+            this.setFixed(this._displayingPersonSprite);            
+            this._displayingPersonSprite.setPosition(x + 10 + this._configuration.padding * 2, y + rectHeight / 2 );
+        }
+    }
+
+    private hideCurrentPrefabSprite() {
+        if (this._displayingPersonSprite) {
+            this._displayingPersonSprite.setVisible(false);
+        }
+    }
+
+    private setPrefabToDisplay(prefab: Prefab) {
+        this._displayingPersonSprite = this._listOfDisplayingSprites[prefab.key];
+
+        if (! this._displayingPersonSprite) {
+            this.hideCurrentPrefabSprite();
+
+            this._displayingPersonSprite = this._scene.createSpriteByPrefabObject(<Prefab> prefab);
+            this._listOfDisplayingSprites[prefab.key] = this._displayingPersonSprite;
         }
     }
     
