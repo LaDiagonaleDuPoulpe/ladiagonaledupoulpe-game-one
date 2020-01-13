@@ -258,8 +258,8 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         if (this._displayedMessage) {
             this._displayedMessage.destroy();
         }
-        
-        const x = this._configuration.padding + this._displayingPersonSprite.width;
+
+        const x = this._configuration.padding + this._displayingPersonSprite.displayWidth + 20;
         const y = +this.getGameHeight() - this._configuration.windowHeight - this._configuration.padding + 10;
         
         this._displayedMessage = this.scene.make.text({
