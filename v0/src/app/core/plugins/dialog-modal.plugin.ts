@@ -31,6 +31,7 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     private _timedEvent: Phaser.Time.TimerEvent;
     private _displayingPersonSprite: Phaser.GameObjects.Sprite;
     private _listOfDisplayingSprites: Dictionary<Phaser.GameObjects.Sprite> = {};
+    private  _positionByDirectionList: Dictionary<Position>;
     //#endregion
     
     constructor(private _scene: BaseMapLevelScene, pluginManager: Phaser.Plugins.PluginManager) {
@@ -188,7 +189,7 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         this._displayingPersonSprite = this._listOfDisplayingSprites[prefab.key];
 
         if (! this._displayingPersonSprite) {
-            this.hideCurrentPrefabSprite();
+            this.hideCurrentPrefabSprite(); 
 
             this._displayingPersonSprite = this._scene.createSpriteByPrefabObject(<Prefab> prefab);
             this._listOfDisplayingSprites[prefab.key] = this._displayingPersonSprite;

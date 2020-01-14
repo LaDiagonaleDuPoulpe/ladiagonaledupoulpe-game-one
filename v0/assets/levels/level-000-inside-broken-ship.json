@@ -339,7 +339,7 @@
                 "time": 10,
                 "message": "On est dans de beaux draps ... le vaisseau est en piteux état ... Cherchons d'abord un moyen de prévenir la maison mère",
                 "order": 0,
-                "faceDisplay": "left",
+                "faceDisplay": "right",
                 "prefab": {
                     "key": "octo3",
                     "type": "animsprite",

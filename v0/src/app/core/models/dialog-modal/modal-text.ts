@@ -1,5 +1,6 @@
 import { EventType } from "./event-type";
 import { Prefab } from '../prefab';
+import { DirectionItem } from '../../../shared/custom-types/direction-item';
 
 /**
  * Text to display in modal text
@@ -23,5 +24,8 @@ export class ModalText {
 
     /** Prefab to display in the message box */
     public prefab: Prefab;
+
+    /** Direction of the face boxgit status */
+    public direction: DirectionItem;
     //#endregion
 }
