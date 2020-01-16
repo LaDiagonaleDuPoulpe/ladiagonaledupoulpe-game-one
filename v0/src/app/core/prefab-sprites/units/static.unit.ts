@@ -15,4 +15,13 @@ export class StaticUnit extends BaseUnit {
         _animationsCreator: AnimationsCreator) {
         super(_scene, _name, _position, _properties, _animationsCreator);
     }
+
+    //#region Internal methods
+    protected initialize() {
+        super.initialize();
+
+        (<any>this.body).moves  = false;
+        this._scene.applyCollisionDetectionToPlayer(this);
+    }
+    //#endregion
 }

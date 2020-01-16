@@ -19,6 +19,9 @@ export class OctopusSprite extends BaseArcadeSprite {
         protected _properties: PropertiesSetting,
         _animationsCreator: AnimationsCreator) {
         super(_scene, _name, _position, _properties, _animationsCreator); 
+
+
+        console.log('>> octopus :: position', _position);
     }
 
     //#region public methods
@@ -104,8 +107,13 @@ export class OctopusSprite extends BaseArcadeSprite {
         }
 
         this.setPipeline('Light2D');
+
+        this.setAsCollisionObject();
+    }
+
+    private setAsCollisionObject() {
         this.setCollideWorldBounds(true);
-        this._scene.applyCollisionDetection(this);
+        this._scene.applyBuildingsCollisionDetection(this);
     }
 
     private stopCurrentAnimation() {

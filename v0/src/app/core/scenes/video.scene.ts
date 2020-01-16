@@ -24,7 +24,9 @@ import { LightManager } from '../plugins/light-manager';
     }
 
     //#region public methods
-    applyCollisionDetection(sprite: Phaser.GameObjects.Sprite) {}
+    applyBuildingsCollisionDetection(sprite: Phaser.GameObjects.Sprite) {}
+
+    applyCollisionDetectionToPlayer(sprite: Phaser.GameObjects.Sprite) {}
     //#endregion
         
 }

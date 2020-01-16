@@ -59,11 +59,23 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
     }
 
     /**
+     * Applys collision detection from the sprite to player groups
+     * @param sprite Sprites that detects collision
+     */
+    applyCollisionDetectionToPlayer(sprite: Phaser.GameObjects.Sprite) {
+        this.physics.add.collider(sprite, this.physicalGroups.players, this.activePlayerCollisions.bind(this), null, this);
+    }
+
+    private activePlayerCollisions(transmitter: Phaser.GameObjects.Sprite, receiver: Phaser.GameObjects.Sprite) {
+        this._logger.log('activePlayerCollisions::transmitter', transmitter);
+    }
+    
+    /**
      * Applys buildings collision detection to the sprite
      * @param sprite Sprites that detects collision
      */
-    applyCollisionDetection(sprite: Phaser.GameObjects.Sprite) {
-        this.physics.add.collider(sprite, this._layers.buildings);
+    applyBuildingsCollisionDetection(sprite: Phaser.GameObjects.Sprite) {
+        this.physics.add.collider(sprite, this._layers.buildings, null, null, this);
     }
 
     /**

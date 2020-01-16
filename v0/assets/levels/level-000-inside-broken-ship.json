@@ -106,7 +106,7 @@
             "type": "octopus",
             "position": {
                 "x": 400,
-                "y": 10
+                "y": 100
             },
             "properties": {
                 "texture": "octopus3SpriteSheet",
@@ -331,6 +331,13 @@
             }
         }
     ],
+    "actions": {
+        {
+            "transmitter": "",
+            "receiver": "",
+            "command": ""
+        }
+    },
     "messagesContent": {
         "endingCallBack": null,
         "messageList": [

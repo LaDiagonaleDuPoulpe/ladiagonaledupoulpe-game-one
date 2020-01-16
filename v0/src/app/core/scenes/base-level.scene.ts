@@ -42,9 +42,15 @@ export abstract class BaseLevelScene extends BaseScene {
         }
         
         /**
-        * Adds collision detection to an sprite
+        * Applys collision detection from the sprite to player groups
+        * @param sprite Sprites that detects collision
         */
-        abstract applyCollisionDetection(sprite: Phaser.GameObjects.Sprite);
+        abstract applyCollisionDetectionToPlayer(sprite: Phaser.GameObjects.Sprite);
+        
+        /**
+        * Adds buildings detection to an sprite
+        */
+        abstract applyBuildingsCollisionDetection(sprite: Phaser.GameObjects.Sprite);
         
         /**
         * Adds a sprite in the scene
