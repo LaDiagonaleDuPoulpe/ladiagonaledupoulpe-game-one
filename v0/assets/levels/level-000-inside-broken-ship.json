@@ -331,13 +331,15 @@
             }
         }
     ],
-    "actions": {
+    "colliderActions": [
         {
-            "transmitter": "",
-            "receiver": "",
-            "command": ""
+            "transmitterKey": "spark1",
+            "receiverKey": "player",
+            "actorKey":"player",
+            "commandName": "hit",
+            "argumentsAsString":"10"
         }
-    },
+    ],
     "messagesContent": {
         "endingCallBack": null,
         "messageList": [
