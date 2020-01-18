@@ -8,7 +8,7 @@ import { Dictionary } from '../custom-types/dictionary';
  * It decides wich action to launch, with valid arguments
  */
 @singleton()
-class ColliderManagerService {
+export class ColliderManagerService {
     //#region Fields
     private _actions: ColliderAction[];
     private _scene: BaseLevelScene;
@@ -40,5 +40,4 @@ class ColliderManagerService {
     }
     //#endregion
 }
-
-export default ColliderManagerService;
+;

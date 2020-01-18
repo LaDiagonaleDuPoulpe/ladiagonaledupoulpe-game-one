@@ -6,7 +6,7 @@ import { ObjectCreator } from '../prefab-sprites/arcades/creators/object-creator
 import { BaseMapLevelScene } from './base-map-level.scene';
 import { AnimationsCreator } from '../prefab-sprites/animations/animations-creator';
 import { LightManager } from '../plugins/light-manager';
-import ColliderManagerService from '../../shared/services/collider-manager.service';
+import { ColliderManagerService } from '../../shared/services/collider-manager.service';
 
 /**
 * Scene with map loading, (tile json loaded)

@@ -11,7 +11,7 @@ import { CloudCreator } from '../prefab-sprites/arcades/creators/clouds-creator'
 import { WavesCreator } from '../prefab-sprites/arcades/creators/waves-creator';
 import { AnimationsCreator } from '../prefab-sprites/animations/animations-creator';
 import { LightManager } from '../plugins/light-manager';
-import ColliderManagerService from '../../shared/services/collider-manager.service';
+import { ColliderManagerService } from '../../shared/services/collider-manager.service';
 
 @injectable()
 export class TitleScene extends BaseMapLevelScene {

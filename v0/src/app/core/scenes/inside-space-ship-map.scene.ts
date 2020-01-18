@@ -10,7 +10,7 @@ import { LightManager } from '../plugins/light-manager';
 import { toHexaInt } from '../../shared/converters/string-converter';
 import { ModalText } from '../models/dialog-modal/modal-text';
 import { ModalContent } from '../models/dialog-modal/modal-content';
-import ColliderManagerService from '../../shared/services/collider-manager.service';
+import { ColliderManagerService } from '../../shared/services/collider-manager.service';
 
 /**
 * Scene where octopuses are inside the spaceship

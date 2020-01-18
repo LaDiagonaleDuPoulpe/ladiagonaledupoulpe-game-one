@@ -17,7 +17,7 @@ import { LevelManageService } from '../../shared/services/level-manager.service'
 import { MapScene } from '../scenes/map.scene';
 import { VideoScene } from '../scenes/video.scene';
 import { InsideSpaceShipMapScene } from '../scenes/inside-space-ship-map.scene';
-import ColliderManagerService from '../../shared/services/collider-manager.service';
+import { ColliderManagerService } from '../../shared/services/collider-manager.service';
 
 
 /**

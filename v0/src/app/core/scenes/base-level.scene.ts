@@ -7,7 +7,8 @@ import { BaseScene } from './base.scene';
 import { AnimationsCreator } from '../prefab-sprites/animations/animations-creator';
 import { LightManager } from '../plugins/light-manager';
 import { EventType } from '../models/dialog-modal/event-type';
-import ColliderManagerService from '../../shared/services/collider-manager.service';
+import { ColliderManagerService } from '../../shared/services/collider-manager.service';
+import { LevelConfig } from '../models/levels/level-config';
 
 /**
 * Base level scene : abstract class of all active map scenes
@@ -41,6 +42,12 @@ export abstract class BaseLevelScene extends BaseScene {
         
         update() {
             this.updateAllPrefabs();
+        }
+
+        init(config: LevelConfig) {
+            super.init(config);
+
+            this._colliderManagerService.init(this, config.data.colliderActions);
         }
         
         /**
@@ -154,6 +161,10 @@ export abstract class BaseLevelScene extends BaseScene {
             
             // TODO: 11/01/2020, you have to manage events trigger to display all message
             this.messageBox.show();
+        }
+
+        protected executeColliderAction(transmitter: Phaser.GameObjects.Sprite, receiver: Phaser.GameObjects.Sprite) {
+            this._colliderManagerService.execute(transmitter, receiver);
         }
         //#endregion
         

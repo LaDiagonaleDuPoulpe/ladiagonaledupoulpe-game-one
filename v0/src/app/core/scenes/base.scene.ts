@@ -25,6 +25,10 @@ export class BaseScene extends Phaser.Scene {
     }
     
     //#region public methods
+    /**
+     * Initialize scene with json file (the json file is parsed and you get an object with all configuration)
+     * @param config Configuration from json file
+     */
     init(config: LevelConfig) {
         this.levelConfig = config;
         this._cursors = this.input.keyboard.createCursorKeys();

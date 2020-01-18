@@ -9,7 +9,7 @@ import { LightManager } from '../plugins/light-manager';
 import { PrefabSprite } from '../prefab-sprites/prefab.sprite';
 import { PrefabSpriteFactory } from '../prefab-sprites/prefab-sprite-factory';
 import { Prefab } from '../models/prefab';
-import ColliderManagerService from '../../shared/services/collider-manager.service';
+import { ColliderManagerService } from '../../shared/services/collider-manager.service';
 
 /**
 * Base map level scene : it's the mother class to represent all map scene
@@ -65,11 +65,7 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
      * @param sprite Sprites that detects collision
      */
     applyCollisionDetectionToPlayer(sprite: Phaser.GameObjects.Sprite) {
-        this.physics.add.collider(sprite, this.physicalGroups.players, this.activePlayerCollisions.bind(this), null, this);
-    }
-
-    private activePlayerCollisions(transmitter: Phaser.GameObjects.Sprite, receiver: Phaser.GameObjects.Sprite) {
-        this._logger.log('activePlayerCollisions::transmitter', transmitter);
+        this.physics.add.collider(sprite, this.physicalGroups.players, this.activatePlayerCollisions.bind(this), null, this);
     }
     
     /**
@@ -135,6 +131,10 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
                 this._objectCreator.createObject(spriteObject, this, this.saveSpriteInScene.bind(this));
             }, this);
         }, this);
+    }
+
+    private activatePlayerCollisions(transmitter: Phaser.GameObjects.Sprite, receiver: Phaser.GameObjects.Sprite) {
+        this.executeColliderAction(transmitter, receiver);
     }
     //#endregion
 }

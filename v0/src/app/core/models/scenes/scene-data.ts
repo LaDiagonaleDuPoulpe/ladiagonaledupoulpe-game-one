@@ -6,6 +6,7 @@ import { EllipseLight } from '../stage/ellipse-light';
 import { PropertiesSetting } from '../properties-setting';
 import { SceneConfigurationPropertiesSetting } from '../scene-configuration-properties-setting';
 import { ModalContent } from '../dialog-modal/modal-content';
+import ColliderAction from "../colliders/collider.action";
 
 /**
  * Data of the scene
@@ -47,5 +48,8 @@ export class SceneData {
      * Container about all messages to display in the scene
      */
     public messagesContent: ModalContent;
+
+    /** List of the actions that will be executed when one collision occurs */
+    public colliderActions: ColliderAction[];
     //#endregion
 }
