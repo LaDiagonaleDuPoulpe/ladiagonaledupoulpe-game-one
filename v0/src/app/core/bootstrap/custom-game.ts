@@ -17,6 +17,7 @@ import { LevelManageService } from '../../shared/services/level-manager.service'
 import { MapScene } from '../scenes/map.scene';
 import { VideoScene } from '../scenes/video.scene';
 import { InsideSpaceShipMapScene } from '../scenes/inside-space-ship-map.scene';
+import ColliderManagerService from '../../shared/services/collider-manager.service';
 
 
 /**
@@ -32,6 +33,7 @@ export class CustomGame extends Phaser.Game {
 
     constructor(config: GameConfig, 
                 private _sceneConfigService: SceneConfigService,
+                private _colliderManagerService: ColliderManagerService,
                 private _levelService: LevelService,
                 private _logger: DefaultLogger,
                 private _mainScene: MainScene,
