@@ -10,6 +10,7 @@ import { LightManager } from '../plugins/light-manager';
 import { toHexaInt } from '../../shared/converters/string-converter';
 import { ModalText } from '../models/dialog-modal/modal-text';
 import { ModalContent } from '../models/dialog-modal/modal-content';
+import ColliderManagerService from '../../shared/services/collider-manager.service';
 
 /**
 * Scene where octopuses are inside the spaceship
@@ -20,10 +21,11 @@ export class InsideSpaceShipMapScene extends BaseMapLevelScene {
     constructor(
         _logger: DefaultLogger,
         _levelManageService: LevelManageService,
+        _colliderManagerService: ColliderManagerService,
         _objectCreator: ObjectCreator,
         _animationsCreator: AnimationsCreator,
         _lightManager: LightManager) {
-            super(InsideSpaceShipMapScene.name, _logger, _levelManageService, 
+            super(InsideSpaceShipMapScene.name, _logger, _levelManageService, _colliderManagerService,
                 _objectCreator, _animationsCreator, _lightManager);
             }    
             

@@ -7,6 +7,7 @@ import { BaseScene } from './base.scene';
 import { AnimationsCreator } from '../prefab-sprites/animations/animations-creator';
 import { LightManager } from '../plugins/light-manager';
 import { EventType } from '../models/dialog-modal/event-type';
+import ColliderManagerService from '../../shared/services/collider-manager.service';
 
 /**
 * Base level scene : abstract class of all active map scenes
@@ -23,6 +24,7 @@ export abstract class BaseLevelScene extends BaseScene {
     constructor(key: string, 
         protected _logger: DefaultLogger, 
         protected _levelManager: LevelManageService,
+        protected _colliderManagerService: ColliderManagerService,
         protected _objectCreator: ObjectCreator,
         protected _animationsCreator: AnimationsCreator,
         protected _lightManager: LightManager) {

@@ -6,6 +6,7 @@ import { ObjectCreator } from '../prefab-sprites/arcades/creators/object-creator
 import { BaseLevelScene } from './base-level.scene';
 import { AnimationsCreator } from '../prefab-sprites/animations/animations-creator';
 import { LightManager } from '../plugins/light-manager';
+import ColliderManagerService from '../../shared/services/collider-manager.service';
 
 // https://github.com/yoeleven/phaser3-gameobject-video/blob/master/component/video.js
 
@@ -16,10 +17,11 @@ import { LightManager } from '../plugins/light-manager';
  export class VideoScene extends BaseLevelScene {
     constructor(protected _logger: DefaultLogger,
                 private _levelManageService: LevelManageService,
+                protected _colliderManagerService: ColliderManagerService,
                 protected _objectCreator: ObjectCreator,
                 protected _animationsCreator: AnimationsCreator,
                 protected _lightManager: LightManager) {
-        super(VideoScene.name, _logger, _levelManageService, 
+        super(VideoScene.name, _logger, _levelManageService, _colliderManagerService,
               _objectCreator, _animationsCreator, _lightManager);
     }
 
