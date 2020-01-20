@@ -1,0 +1,15 @@
+{
+    "players": [
+        {
+            "stats": {
+                "attack": 20,
+                "magicAttack": 0,
+                "electronicAttack": 10,
+                "defense": 10,
+                "health": 100,
+                "mana": 100,
+                "speed": 15
+            }
+        }
+    ]
+}

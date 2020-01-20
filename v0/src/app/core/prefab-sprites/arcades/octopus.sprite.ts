@@ -19,9 +19,6 @@ export class OctopusSprite extends BaseArcadeSprite {
         protected _properties: PropertiesSetting,
         _animationsCreator: AnimationsCreator) {
         super(_scene, _name, _position, _properties, _animationsCreator); 
-
-
-        console.log('>> octopus :: position', _position);
     }
 
     //#region public methods
@@ -92,6 +89,10 @@ export class OctopusSprite extends BaseArcadeSprite {
      */
     moveDown() {
         this.currentDirection.down = true;
+    }
+
+    hit(value) {
+        
     }
     //#endregion
 
