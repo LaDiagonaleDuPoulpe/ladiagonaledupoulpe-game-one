@@ -12,8 +12,6 @@ import { LevelConfig } from '../models/levels/level-config';
 @injectable()
 export default class PreloadFirstScene extends BaseScene {
     //#region Fields
-    private _gameData: GameData;
-    private  _globalDataKey = 'default-global-data';
     //#endregion
     
     constructor(protected _logger: DefaultLogger, 
@@ -48,26 +46,16 @@ export default class PreloadFirstScene extends BaseScene {
                 fill: this.levelConfig.sceneConfiguration.foreColor
             });
 
-            this.cameras.main.setBackgroundColor(Phaser.Display.Color.GetColor(67, 31, 17));
+        this.cameras.main.setBackgroundColor(Phaser.Display.Color.GetColor(67, 31, 17));
     }
         
     private loadGameData() {
         if (! this.gameData) {
-            this.load.json(this._globalDataKey, 'assets/global/global-settings.json');
+            this.load.json(this.__globalDataKey, 'assets/global/global-settings.json');
         }    
-    }
-    
-    private setGameData() {
-        if (! this.gameData) {
-            this._gameData = this.cache.json.get(this._globalDataKey);
-        }
     }
     //#endregion
     
     //#region Properties
-    /** Data of the game (all data of each player, ...) */
-    protected get gameData(): GameData {
-        return this._gameData;
-    }
     //#endregion
 } 

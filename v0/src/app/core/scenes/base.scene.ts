@@ -15,6 +15,8 @@ import GameData from '../models/game/game-data';
 */
 export class BaseScene extends Phaser.Scene {
     //#region fields
+    private _gameData: GameData;
+    protected __globalDataKey = 'default-global-data';
     private _levelConfig: LevelConfig;
     private _cursors: Phaser.Types.Input.Keyboard.CursorKeys;
     //#endregion
@@ -60,6 +62,14 @@ export class BaseScene extends Phaser.Scene {
     //#region Internal methods
     private prepareMessageBox() {
         this.messageBox.init(this.messageBoxConfiguration);
+    }
+
+    /** Loads game data from cache */
+    private setGameData() {
+        if (! this.gameData) {
+            this._gameData = this.cache.json.get(this.__globalDataKey);
+            this._logger.log('basescene::gameData', this.gameData);
+        }
     }
     //#endregion
     
@@ -125,6 +135,15 @@ export class BaseScene extends Phaser.Scene {
      */
     public get messageBox(): DialogModalPlugin {
         return <DialogModalPlugin> (this['dialogModalPlugin']);
+    }
+
+    /** Data of the game (all data of each player, ...) */
+    protected get gameData(): GameData {
+        if (! this._gameData) {
+            this.setGameData();
+        }
+
+        return this._gameData;
     }
     //#endregion
 }
