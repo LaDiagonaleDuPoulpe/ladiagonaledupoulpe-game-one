@@ -29,18 +29,18 @@ export class BaseScene extends Phaser.Scene {
     
     //#region public methods
     /**
-     * Initialize scene with json file (the json file is parsed and you get an object with all configuration)
-     * @param config Configuration from json file
-     */
+    * Initialize scene with json file (the json file is parsed and you get an object with all configuration)
+    * @param config Configuration from json file
+    */
     init(config: LevelConfig) {
         this.levelConfig = config;
         this._cursors = this.input.keyboard.createCursorKeys();
-
+        
         this.prepareMessageBox();
     }
     
     preload() {
-       
+        
     }
     
     /**
@@ -58,36 +58,33 @@ export class BaseScene extends Phaser.Scene {
         return this.levelConfig.data.prefabs.find(item => item.type == type);
     }
     //#endregion
-
+    
     //#region Internal methods
     private prepareMessageBox() {
         this.messageBox.init(this.messageBoxConfiguration);
     }
-
+    
     /** Loads game data from cache */
-    private setGameData() {
-        if (! this.gameData) {
-            this._gameData = this.cache.json.get(this.__globalDataKey);
-            this._logger.log('basescene::gameData', this.gameData);
-        }
+    private setGameData() {        
+        this._gameData = this.cache.json.get(this.__globalDataKey);
     }
     //#endregion
     
     //#region Properties
     /**
-     * Gets default configuration of the scene
-     */
+    * Gets default configuration of the scene
+    */
     public get defaultConfiguration(): PropertiesSetting {
         return this._levelConfig.data.defaultConfiguration;
     }
-
+    
     /**
-     * Gets default style of the current scene (fill and font)
-     */
+    * Gets default style of the current scene (fill and font)
+    */
     public get defaultStyle(): Style {
         return this.defaultConfiguration.style;
     }
-
+    
     /**
     * Gets scene data (from json file)
     */
@@ -108,41 +105,41 @@ export class BaseScene extends Phaser.Scene {
     public set levelConfig(value: LevelConfig) {
         this._levelConfig = value;
     }
-
+    
     /**
-     * Message box configuration (color, background color, ...)
-     */
+    * Message box configuration (color, background color, ...)
+    */
     public get messageBoxConfiguration() {
         return (this.levelConfig && this.levelConfig.data ? this.levelConfig.data.defaultConfiguration.messageBox : null);
     }
-
+    
     /**
-     * Gets the logger service
-     */
+    * Gets the logger service
+    */
     protected get logger(): DefaultLogger {
         return this._logger;
     }
-
+    
     /**
-     * Gets cursors to manage key press
-     */
+    * Gets cursors to manage key press
+    */
     public get cursors(): Phaser.Types.Input.Keyboard.CursorKeys {
         return this._cursors;
     }
-
+    
     /**
-     * Message box to display text
-     */
+    * Message box to display text
+    */
     public get messageBox(): DialogModalPlugin {
         return <DialogModalPlugin> (this['dialogModalPlugin']);
     }
-
+    
     /** Data of the game (all data of each player, ...) */
     protected get gameData(): GameData {
         if (! this._gameData) {
             this.setGameData();
         }
-
+        
         return this._gameData;
     }
     //#endregion
