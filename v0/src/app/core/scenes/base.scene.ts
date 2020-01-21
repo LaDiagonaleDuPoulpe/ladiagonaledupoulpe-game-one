@@ -8,6 +8,7 @@ import { SceneData } from '../models/scenes/scene-data';
 import { PropertiesSetting } from '../models/properties-setting';
 import { Style } from '../models/style';
 import { DialogModalPlugin } from '../plugins/dialog-modal.plugin';
+import GameData from '../models/game/game-data';
 
 /**
 * Parent class of all custom scenes of the game
@@ -37,7 +38,7 @@ export class BaseScene extends Phaser.Scene {
     }
     
     preload() {
-        
+       
     }
     
     /**
@@ -56,13 +57,13 @@ export class BaseScene extends Phaser.Scene {
     }
     //#endregion
 
-    //#region Intrnal methods
+    //#region Internal methods
     private prepareMessageBox() {
         this.messageBox.init(this.messageBoxConfiguration);
     }
     //#endregion
     
-    //#region properties
+    //#region Properties
     /**
      * Gets default configuration of the scene
      */

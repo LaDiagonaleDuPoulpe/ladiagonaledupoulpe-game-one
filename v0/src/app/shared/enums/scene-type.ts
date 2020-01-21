@@ -9,5 +9,6 @@ export enum SceneType {
     title = 'TitleScene',
     insideSpaceShipMap = 'InsideSpaceShipMapScene',
     map = 'MapScene',
-    video = 'VideoScene'
+    video = 'VideoScene',
+    initialize = 'PreloadFirstScene'
 };

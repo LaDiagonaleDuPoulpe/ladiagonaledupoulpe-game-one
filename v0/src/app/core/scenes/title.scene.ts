@@ -46,10 +46,8 @@ export class TitleScene extends BaseMapLevelScene {
      * Starts the game, gets next scene and starts it
      */
     startGame() {        
-        this._logger.log('startGame', this.levelConfig);
-        
-        this.levelConfig.nextLevelToLoadByKey = this._levelManageService.next();
-        this.scene.start(SceneType.loading, this.levelConfig);
+        this._logger.log('startGame', this.levelConfig);        
+        this.goToNextScene();
     }
 
     goToNextScene() {

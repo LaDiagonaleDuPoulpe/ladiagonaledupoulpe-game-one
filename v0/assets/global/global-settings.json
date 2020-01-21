@@ -1,6 +1,7 @@
 {
     "players": [
         {
+            "key": "player",
             "stats": {
                 "attack": 20,
                 "magicAttack": 0,

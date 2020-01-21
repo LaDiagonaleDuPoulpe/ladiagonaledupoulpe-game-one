@@ -32,7 +32,11 @@ export class LevelManageService {
         // TODO: 29/12/2019, see to change the level key calling with string to a beter way
         
         if (this._previousLevelKey == '') {
-            this._currentLevelKey = '000-inside-broken-ship'; // title
+            this._currentLevelKey = 'initialize';
+        }
+
+        if (this._previousLevelKey == 'initialize') {
+            this._currentLevelKey = '000-inside-broken-ship'; // when you're ready, replace it by 'title'
         }
 
         if (this._previousLevelKey === 'title') {
