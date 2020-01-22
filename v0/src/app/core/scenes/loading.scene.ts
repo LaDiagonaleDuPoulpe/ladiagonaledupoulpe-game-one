@@ -8,6 +8,7 @@ import { SceneType } from '../../shared/enums/scene-type';
 import { SceneData } from '../models/scenes/scene-data';
 import { LevelManageService } from '../../shared/services/level-manager.service';
 import { AssetImage } from '../models/assets/asset-image';
+import { GameDataManagerService } from '../../shared/services/game-data-manager.service';
 
 /**
 * Loads all assets of the game scene
@@ -16,8 +17,9 @@ import { AssetImage } from '../models/assets/asset-image';
 @injectable()
 export class LoadingScene extends BaseScene {
     constructor(protected _logger: DefaultLogger,
-                private _levelManageService: LevelManageService) {
-        super(LoadingScene.name, _logger, _levelManageService);
+                private _levelManageService: LevelManageService,
+                protected _gameDataManager: GameDataManagerService) {
+        super(LoadingScene.name, _logger, _levelManageService, _gameDataManager);
     }
 
     //#region internal methods

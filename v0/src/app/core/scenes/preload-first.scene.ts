@@ -4,6 +4,7 @@ import { LevelManageService } from '../../shared/services/level-manager.service'
 import { BaseScene } from './base.scene';
 import GameData from '../models/game/game-data';
 import { LevelConfig } from '../models/levels/level-config';
+import { GameDataManagerService } from '../../shared/services/game-data-manager.service';
 
 /** First scene of the game
 * It loads all global data of the scene
@@ -15,15 +16,15 @@ export default class PreloadFirstScene extends BaseScene {
     //#endregion
     
     constructor(protected _logger: DefaultLogger, 
-                protected _levelManager: LevelManageService) {
-        super(PreloadFirstScene.name, _logger, _levelManager);
+                protected _levelManager: LevelManageService,
+                protected _gameDataManager: GameDataManagerService) {
+        super(PreloadFirstScene.name, _logger, _levelManager, _gameDataManager);
     }
         
     //#region Public methods
     preload() {
-        this._logger.log('firstScene::preload');
-        
-        this.loadGameData();
+        super.preload();        
+        this.gameDataManager.load();
     }
     
     init(config: LevelConfig) {
@@ -47,12 +48,6 @@ export default class PreloadFirstScene extends BaseScene {
             });
 
         this.cameras.main.setBackgroundColor(Phaser.Display.Color.GetColor(67, 31, 17));
-    }
-        
-    private loadGameData() {
-        if (! this.gameData) {
-            this.load.json(this.__globalDataKey, 'assets/global/global-settings.json');
-        }    
     }
     //#endregion
     

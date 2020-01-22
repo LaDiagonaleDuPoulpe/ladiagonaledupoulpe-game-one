@@ -7,6 +7,7 @@ import { BaseLevelScene } from './base-level.scene';
 import { AnimationsCreator } from '../prefab-sprites/animations/animations-creator';
 import { LightManager } from '../plugins/light-manager';
 import { ColliderManagerService } from '../../shared/services/collider-manager.service';
+import { GameDataManagerService } from '../../shared/services/game-data-manager.service';
 
 // https://github.com/yoeleven/phaser3-gameobject-video/blob/master/component/video.js
 
@@ -20,9 +21,10 @@ import { ColliderManagerService } from '../../shared/services/collider-manager.s
                 protected _colliderManagerService: ColliderManagerService,
                 protected _objectCreator: ObjectCreator,
                 protected _animationsCreator: AnimationsCreator,
-                protected _lightManager: LightManager) {
+                protected _lightManager: LightManager,
+                protected _gameDataManager: GameDataManagerService) {
         super(VideoScene.name, _logger, _levelManageService, _colliderManagerService,
-              _objectCreator, _animationsCreator, _lightManager);
+              _objectCreator, _animationsCreator, _lightManager, _gameDataManager);
     }
 
     //#region public methods

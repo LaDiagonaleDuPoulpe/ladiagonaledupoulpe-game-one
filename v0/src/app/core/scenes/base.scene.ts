@@ -9,19 +9,20 @@ import { PropertiesSetting } from '../models/properties-setting';
 import { Style } from '../models/style';
 import { DialogModalPlugin } from '../plugins/dialog-modal.plugin';
 import GameData from '../models/game/game-data';
+import { GameDataManagerService } from '../../shared/services/game-data-manager.service';
 
 /**
 * Parent class of all custom scenes of the game
 */
 export class BaseScene extends Phaser.Scene {
     //#region fields
-    private _gameData: GameData;
-    protected __globalDataKey = 'default-global-data';
     private _levelConfig: LevelConfig;
     private _cursors: Phaser.Types.Input.Keyboard.CursorKeys;
     //#endregion
     
-    constructor(key: string, protected _logger: DefaultLogger, protected _levelManager: LevelManageService) {
+    constructor(key: string, protected _logger: DefaultLogger, 
+                protected _levelManager: LevelManageService,
+                protected _gameDataManager: GameDataManagerService) {
         super({
             key: key
         });
@@ -40,7 +41,7 @@ export class BaseScene extends Phaser.Scene {
     }
     
     preload() {
-        
+        this.gameDataManager.init(this.cache.json, this.load);
     }
     
     /**
@@ -64,10 +65,7 @@ export class BaseScene extends Phaser.Scene {
         this.messageBox.init(this.messageBoxConfiguration);
     }
     
-    /** Loads game data from cache */
-    private setGameData() {        
-        this._gameData = this.cache.json.get(this.__globalDataKey);
-    }
+    
     //#endregion
     
     //#region Properties
@@ -133,14 +131,10 @@ export class BaseScene extends Phaser.Scene {
     public get messageBox(): DialogModalPlugin {
         return <DialogModalPlugin> (this['dialogModalPlugin']);
     }
-    
-    /** Data of the game (all data of each player, ...) */
-    protected get gameData(): GameData {
-        if (! this._gameData) {
-            this.setGameData();
-        }
-        
-        return this._gameData;
+
+    /** Gets data manager for the game (player data, ...) */
+    protected get gameDataManager(): GameDataManagerService {
+        return this._gameDataManager;
     }
     //#endregion
 }

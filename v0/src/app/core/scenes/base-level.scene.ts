@@ -9,6 +9,7 @@ import { LightManager } from '../plugins/light-manager';
 import { EventType } from '../models/dialog-modal/event-type';
 import { ColliderManagerService } from '../../shared/services/collider-manager.service';
 import { LevelConfig } from '../models/levels/level-config';
+import { GameDataManagerService } from '../../shared/services/game-data-manager.service';
 
 /**
 * Base level scene : abstract class of all active map scenes
@@ -28,8 +29,9 @@ export abstract class BaseLevelScene extends BaseScene {
         protected _colliderManagerService: ColliderManagerService,
         protected _objectCreator: ObjectCreator,
         protected _animationsCreator: AnimationsCreator,
-        protected _lightManager: LightManager) {
-            super(key, _logger, _levelManager);
+        protected _lightManager: LightManager,
+        protected _gameDataManager: GameDataManagerService) {
+            super(key, _logger, _levelManager, _gameDataManager);
         }
         
         //#region public methods

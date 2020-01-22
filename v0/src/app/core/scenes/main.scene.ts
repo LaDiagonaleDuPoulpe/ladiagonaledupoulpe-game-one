@@ -9,6 +9,7 @@ import { LevelConfig } from '../models/levels/level-config';
 import { SceneType } from '../../shared/enums/scene-type';
 import { SceneData } from '../models/scenes/scene-data';
 import { LevelManageService } from '../../shared/services/level-manager.service';
+import { GameDataManagerService } from '../../shared/services/game-data-manager.service';
 
 /**
 * Boot scene : scene will be loaded to start the game
@@ -21,8 +22,9 @@ export class MainScene extends BaseScene {
 
     constructor(protected _logger: DefaultLogger, 
                 private _levelService: LevelService,
-                private _levelManageService: LevelManageService) {
-        super(MainScene.name, _logger, _levelManageService);
+                private _levelManageService: LevelManageService,
+                protected _gameDataManager: GameDataManagerService) {
+        super(MainScene.name, _logger, _levelManageService, _gameDataManager);
     }
 
     //#region public methods
