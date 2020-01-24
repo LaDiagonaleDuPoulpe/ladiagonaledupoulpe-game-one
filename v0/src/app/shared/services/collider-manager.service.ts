@@ -2,6 +2,7 @@ import { singleton } from "tsyringe";
 import ColliderAction from '../../core/models/colliders/collider.action';
 import { BaseLevelScene } from '../../core/scenes/base-level.scene';
 import { Dictionary } from '../custom-types/dictionary';
+import { GameDataManagerService } from './game-data-manager.service';
 
 /**
 * Service to manage calling collision action
@@ -22,7 +23,8 @@ export class ColliderManagerService {
     }
     
     /** Execute the valid action (if it exists) */
-    execute(transmitter: Phaser.GameObjects.Sprite, receiver: Phaser.GameObjects.Sprite) {
+    execute(transmitter: Phaser.GameObjects.Sprite, receiver: Phaser.GameObjects.Sprite,
+            gameDataManager: GameDataManagerService) {
         const action = this._actions.find(item => {
             return item.transmitterKey === transmitter.name &&
             item.receiverKey === receiver.name;
@@ -37,7 +39,7 @@ export class ColliderManagerService {
             if (activeActor) {
                 const method = activeActor[action.commandName];
                 if (method) {
-                    method();
+                    method.call(activeActor, transmitter, gameDataManager, receiver);
                 }
             }
         }

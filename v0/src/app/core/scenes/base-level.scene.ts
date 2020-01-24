@@ -166,7 +166,7 @@ export abstract class BaseLevelScene extends BaseScene {
         }
 
         protected executeColliderAction(transmitter: Phaser.GameObjects.Sprite, receiver: Phaser.GameObjects.Sprite) {
-            this._colliderManagerService.execute(transmitter, receiver);
+            this._colliderManagerService.execute(transmitter, receiver, this.gameDataManager);
         }
         //#endregion
         

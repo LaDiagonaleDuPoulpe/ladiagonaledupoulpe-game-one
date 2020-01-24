@@ -3,6 +3,7 @@ import { BaseLevelScene } from '../../scenes/base-level.scene';
 import { Position } from '../../models/position';
 import { PropertiesSetting } from '../../models/properties-setting';
 import { AnimationsCreator } from '../animations/animations-creator';
+import { GameDataManagerService } from '../../../shared/services/game-data-manager.service';
 
 /**
  * It represents one moving octopus
@@ -91,7 +92,10 @@ export class OctopusSprite extends BaseArcadeSprite {
         this.currentDirection.down = true;
     }
 
-    hit(value) {
+    /**  Executes this method when the sprite collide building layer */
+    hit(transmitter: Phaser.GameObjects.Sprite, 
+        gameDataManager: GameDataManagerService,
+        receiver?: Phaser.GameObjects.Sprite) {
         
     }
     //#endregion
