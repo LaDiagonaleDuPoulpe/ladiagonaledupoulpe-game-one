@@ -105,7 +105,7 @@
             "playable": true,
             "type": "octopus",
             "position": {
-                "x": 400,
+                "x": 600,
                 "y": 100
             },
             "properties": {
