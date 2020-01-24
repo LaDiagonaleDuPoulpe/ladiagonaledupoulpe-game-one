@@ -335,7 +335,7 @@
         {
             "transmitterKey": "spark1",
             "receiverKey": "player",
-            "commandName": "updatePlayerHealth",
+            "commandName": "hitFromCollision",
             "argumentsAsString":""
         }
     ],

@@ -34,7 +34,8 @@ export class ColliderManagerService {
         
         if (action) {
             // TODO: 24/01/20120, See how to get json properties from transmitter sprite, about health collision damage
-            gameDataManager[action.commandName].call(gameDataManager, (- (<PrefabSprite> transmitter).getDamage()));
+            gameDataManager.updatePlayerHealth, (- (<PrefabSprite> transmitter).getDamage());
+            receiver[action.commandName]();
         }
     }
     //#endregion
