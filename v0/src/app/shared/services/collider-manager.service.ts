@@ -3,6 +3,7 @@ import ColliderAction from '../../core/models/colliders/collider.action';
 import { BaseLevelScene } from '../../core/scenes/base-level.scene';
 import { Dictionary } from '../custom-types/dictionary';
 import { GameDataManagerService } from './game-data-manager.service';
+import { PrefabSprite } from '../../core/prefab-sprites/prefab.sprite';
 
 /**
 * Service to manage calling collision action
@@ -23,7 +24,8 @@ export class ColliderManagerService {
     }
     
     /** Execute the valid action (if it exists) */
-    execute(transmitter: Phaser.GameObjects.Sprite, receiver: Phaser.GameObjects.Sprite,
+    execute(transmitter: Phaser.GameObjects.Sprite | PrefabSprite, 
+            receiver: Phaser.GameObjects.Sprite,
             gameDataManager: GameDataManagerService) {
         const action = this._actions.find(item => {
             return item.transmitterKey === transmitter.name &&
@@ -31,17 +33,8 @@ export class ColliderManagerService {
         });
         
         if (action) {
-            const actors: Dictionary<Phaser.GameObjects.Sprite> = {};
-            actors[transmitter.name] = transmitter;
-            actors[receiver.name] = receiver;
-            
-            const activeActor = actors[action.actorKey];
-            if (activeActor) {
-                const method = activeActor[action.commandName];
-                if (method) {
-                    method.call(activeActor, transmitter, gameDataManager, receiver);
-                }
-            }
+            // TODO: 24/01/20120, See how to get json properties from transmitter sprite, about health collision damage
+            gameDataManager[action.commandName].call(gameDataManager, (- (<PrefabSprite> transmitter).getDamage()));
         }
     }
     //#endregion

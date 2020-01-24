@@ -91,13 +91,6 @@ export class OctopusSprite extends BaseArcadeSprite {
     moveDown() {
         this.currentDirection.down = true;
     }
-
-    /**  Executes this method when the sprite collide building layer */
-    hit(transmitter: Phaser.GameObjects.Sprite, 
-        gameDataManager: GameDataManagerService,
-        receiver?: Phaser.GameObjects.Sprite) {
-        
-    }
     //#endregion
 
     //#region Internal methods

@@ -1,5 +1,6 @@
 import { singleton } from "tsyringe";
 import GameData from '../../core/models/game/game-data';
+import PlayerData from '../../core/models/game/player-data';
 
 /** Services that manages game data : player stats, update of health, .. */
 @singleton()
@@ -9,6 +10,7 @@ export class GameDataManagerService {
     protected __globalDataKey = 'default-global-data';
     private _cacheManager: Phaser.Cache.BaseCache;
     private _jsonLoader: Phaser.Loader.LoaderPlugin;
+    private _currentPlayer: PlayerData;
     //#endregion
     
     //#region Public methods
@@ -22,12 +24,39 @@ export class GameDataManagerService {
     public load() {
         this.loadGameData();
     }
+
+    /** Updates the player data health value */
+    public updatePlayerHealth(value: number) {
+        const player = this.getActivePlayer();
+
+        if (player) {
+            player.updateHealth(value);
+        }
+    }
     //#endregion
     
     //#region Internal methods
     /** Loads game data from cache */
-    private setGameData() {        
+    private setGameData() {         
         this._gameData = this._cacheManager.get(this.__globalDataKey);
+    }
+    
+    private loadGameData() {
+        if (! this.gameData) {
+            this._jsonLoader.json(this.__globalDataKey, 'assets/global/global-settings.json');
+        }    
+    }
+    
+    // TODO: 24/01/2020: should be updated when multi player will arrive
+    /** Gets the data of the current player */
+    protected getActivePlayer(): PlayerData {
+        const gameData = this.gameData;
+
+        if (gameData && ! this._currentPlayer) {
+            this._currentPlayer = Object.assign(new PlayerData(), gameData.players[0]);
+        }
+
+        return this._currentPlayer;
     }
     //#endregion
     
@@ -39,12 +68,6 @@ export class GameDataManagerService {
         }
         
         return this._gameData;
-    }
-
-    private loadGameData() {
-        if (! this.gameData) {
-            this._jsonLoader.json(this.__globalDataKey, 'assets/global/global-settings.json');
-        }    
     }
     //#endregion
 }

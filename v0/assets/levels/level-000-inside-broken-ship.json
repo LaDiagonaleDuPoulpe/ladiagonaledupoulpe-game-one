@@ -335,9 +335,8 @@
         {
             "transmitterKey": "spark1",
             "receiverKey": "player",
-            "actorKey":"player",
-            "commandName": "hit",
-            "argumentsAsString":"10"
+            "commandName": "updatePlayerHealth",
+            "argumentsAsString":""
         }
     ],
     "messagesContent": {

@@ -22,6 +22,13 @@ export abstract class PrefabSprite extends Phaser.GameObjects.Sprite {
         this.initialize();
     }
 
+    //#region Public methods
+    /** Gets damage value */
+    public getDamage(): number {
+        return 0;
+    }
+    //#endregion
+
     //#region internal methods
     /**
      * Initializes the sprite prefab
