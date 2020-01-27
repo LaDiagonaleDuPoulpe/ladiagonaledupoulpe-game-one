@@ -3,7 +3,7 @@ import { BaseMapLevelScene } from '../scenes/base-map-level.scene';
 import { DialogModalConfiguration } from '../models/dialog-modal/dialog-modal-configuration';
 import { PrefabSpriteFactory } from '../prefab-sprites/prefab-sprite-factory';
 import { PrefabType } from '../../shared/enums/prefab-type';
-import { Prefab } from '../models/prefab';
+import { Prefab } from '../models/prefabs/prefab';
 import { ModalText } from '../models/dialog-modal/modal-text';
 import { ModalContent } from '../models/dialog-modal/modal-content';
 import { Position } from '../models/position';

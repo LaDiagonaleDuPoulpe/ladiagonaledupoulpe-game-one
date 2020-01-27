@@ -1,7 +1,7 @@
-import { PrefabType } from '../../shared/enums/prefab-type';
-import { BaseObject } from './base-object';
-import { Position } from './position';
-import { PropertiesSetting } from './properties-setting';
+import { PrefabType } from '../../../shared/enums/prefab-type';
+import { BaseObject } from '../base-object';
+import { Position } from '../position';
+import { PropertiesSetting } from '../properties-setting';
 
 /**
 * It represents prefab item

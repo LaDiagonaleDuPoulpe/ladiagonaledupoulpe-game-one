@@ -223,6 +223,12 @@
                     "x": 2.0,
                     "y": 2.0
                 },
+                "effects": [
+                    {
+                        "type": "collision",
+                        "value": 10
+                    }
+                ],
                 "depth": 3,
                 "visible": true,
                 "animations": [
@@ -334,6 +340,12 @@
     "colliderActions": [
         {
             "transmitterKey": "spark1",
+            "receiverKey": "player",
+            "commandName": "hitFromCollision",
+            "argumentsAsString":""
+        },
+        {
+            "transmitterKey": "spark2",
             "receiverKey": "player",
             "commandName": "hitFromCollision",
             "argumentsAsString":""

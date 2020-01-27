@@ -2,6 +2,7 @@ import { PrefabType } from "../../shared/enums/prefab-type";
 import { Position } from "./position";
 import { Style } from "./style";
 import { Animation } from './animations/animation';
+import { EffectItem } from './prefabs/effect-item';
 
 /**
  * Prefab properties setting
@@ -67,5 +68,10 @@ export class PropertiesSetting {
      * Message to be display in box
      */
     public message: string | null;
+
+    /**
+     * Effects from one prefab
+     */
+    public effects: EffectItem[] | null;
     //#endregion
 }

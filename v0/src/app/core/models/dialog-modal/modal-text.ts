@@ -1,5 +1,5 @@
 import { EventType } from "./event-type";
-import { Prefab } from '../prefab';
+import { Prefab } from '../prefabs/prefab';
 import { DirectionItem } from '../../../shared/custom-types/direction-item';
 
 /**

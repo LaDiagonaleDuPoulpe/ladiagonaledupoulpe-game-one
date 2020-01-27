@@ -8,7 +8,7 @@ import { AnimationsCreator } from '../prefab-sprites/animations/animations-creat
 import { LightManager } from '../plugins/light-manager';
 import { PrefabSprite } from '../prefab-sprites/prefab.sprite';
 import { PrefabSpriteFactory } from '../prefab-sprites/prefab-sprite-factory';
-import { Prefab } from '../models/prefab';
+import { Prefab } from '../models/prefabs/prefab';
 import { ColliderManagerService } from '../../shared/services/collider-manager.service';
 import { GameDataManagerService } from '../../shared/services/game-data-manager.service';
 

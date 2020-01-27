@@ -1,6 +1,6 @@
 import { AssetImage } from "../assets/asset-image";
 import { AssetsData } from "../assets/assets-data";
-import { Prefab } from "../prefab";
+import { Prefab } from "../prefabs/prefab";
 import { AssetMap } from '../assets/asset-map';
 import { EllipseLight } from '../stage/ellipse-light';
 import { PropertiesSetting } from '../properties-setting';

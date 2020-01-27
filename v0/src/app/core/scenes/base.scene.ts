@@ -3,7 +3,7 @@ import { SceneType } from '../../shared/enums/scene-type';
 import { DefaultLogger } from '../../shared/services/default-logger';
 import { LevelManageService } from '../../shared/services/level-manager.service';
 import { LevelConfig } from '../models/levels/level-config';
-import { Prefab } from '../models/prefab';
+import { Prefab } from '../models/prefabs/prefab';
 import { SceneData } from '../models/scenes/scene-data';
 import { PropertiesSetting } from '../models/properties-setting';
 import { Style } from '../models/style';
