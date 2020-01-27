@@ -2,6 +2,7 @@ import { Position } from "../models/position";
 import { PropertiesSetting } from "../models/properties-setting";
 import { BaseLevelScene } from "../scenes/base-level.scene";
 import { AnimationsCreator } from './animations/animations-creator';
+import { EffectType } from "../models/prefabs/effect-type";
 
 /**
  * Sprite adding in scene : could be image or animated image
@@ -23,10 +24,6 @@ export abstract class PrefabSprite extends Phaser.GameObjects.Sprite {
     }
 
     //#region Public methods
-    /** Gets damage value */
-    public getDamage(): number {
-        return 0;
-    }
     //#endregion
 
     //#region internal methods
@@ -52,7 +49,22 @@ export abstract class PrefabSprite extends Phaser.GameObjects.Sprite {
     }
     //#endregion
 
-    //#region properties
+    //#region Properties
+    /** Gets damage value */
+    public get collisionDamage(): number {
+        let value = 0;
+
+        if (this.properties.effects && this.properties.effects.length > 0) {
+            const effect = this.properties.effects.find(item => item.type === EffectType.collision);
+
+            if (effect) {
+                value = +effect.value; 
+            }
+        }
+
+        return value;
+    }
+
     /**
      * Gets the json properties of the prefab
      */
