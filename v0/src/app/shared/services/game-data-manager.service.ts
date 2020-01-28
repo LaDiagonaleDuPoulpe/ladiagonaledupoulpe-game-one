@@ -30,7 +30,6 @@ export class GameDataManagerService {
         const player = this.getActivePlayer();
 
         if (player) {
-            console.log('updatePlayerHealth::value', value);
             player.updateHealth(value);
         }
     }

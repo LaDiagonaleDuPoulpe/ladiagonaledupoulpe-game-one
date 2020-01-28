@@ -226,7 +226,7 @@
                 "effects": [
                     {
                         "type": "collision",
-                        "value": 10
+                        "value": 2
                     }
                 ],
                 "depth": 3,
@@ -259,6 +259,12 @@
                 },
                 "depth": 3,
                 "visible": true,
+                "effects": [
+                    {
+                        "type": "collision",
+                        "value": 1
+                    }
+                ],
                 "animations": [
                     {
                         "key": "idle",

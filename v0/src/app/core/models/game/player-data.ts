@@ -14,6 +14,8 @@ export default class PlayerData {
     /** Updates health of the player, and check if player is yet alive */
     public updateHealth(value: number) {
         this.stats.health += value;
+
+        console.log('PlayerData, health', this.stats.health);
     }
     //#endregion
 

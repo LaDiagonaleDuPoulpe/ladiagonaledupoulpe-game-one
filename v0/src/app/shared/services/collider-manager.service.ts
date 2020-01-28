@@ -14,6 +14,8 @@ export class ColliderManagerService {
     //#region Fields
     private _actions: ColliderAction[];
     private _scene: BaseLevelScene;
+    private _isAlreadyUpdateHealth: boolean;
+    private _delayBeforeUpdateStatus = 400;
     //#endregion
     
     //#region Public methods
@@ -33,10 +35,28 @@ export class ColliderManagerService {
         });
         
         if (action) {
-            // TODO: 24/01/20120, See how to get json properties from transmitter sprite, about health collision damage
-            gameDataManager.updatePlayerHealth(- (<PrefabSprite> transmitter).collisionDamage);
+            if (! this._isAlreadyUpdateHealth) {
+                this._isAlreadyUpdateHealth = true;
+
+                this._scene.time.addEvent({ 
+                    delay: this._delayBeforeUpdateStatus, 
+                    callback: this.updatePlayerHealth, 
+                    callbackScope: this,
+                    args: [- (<PrefabSprite> transmitter).collisionDamage, gameDataManager],
+                    repeat: 0
+                });
+            }
+            
             receiver[action.commandName]();
         }
+    }
+    //#endregion
+
+    //#region Internal methods
+    private updatePlayerHealth(damage: number, gameDataManager: GameDataManagerService) {
+        console.log('updatePlayerHealth>>damage', damage);
+        gameDataManager.updatePlayerHealth(damage);
+        this._isAlreadyUpdateHealth = false;
     }
     //#endregion
 }
