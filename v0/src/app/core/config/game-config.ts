@@ -1,5 +1,6 @@
 import "phaser";
 import { DialogModalPlugin } from '../plugins/dialog-modal.plugin';
+import { StatsPlayerBoxManagerPlugin } from '../plugins/stats-player-box-manager.plugin';
 
 type scaleMode = 'FIT' | 'SMOOTH';
 
@@ -22,7 +23,8 @@ const defaultConfig =  {
     },
     plugins: {
         scene: [
-            { key: 'dialogModalPlugin', plugin: DialogModalPlugin, mapping: 'dialogModalPlugin' }
+            { key: 'dialogModalPlugin', plugin: DialogModalPlugin, mapping: 'dialogModalPlugin' },
+            { key: 'playerStatModalManagerPlugin', plugin: StatsPlayerBoxManagerPlugin, mapping: 'playerStatModalManagerPlugin' }
         ]
     },
     physics: {
@@ -37,13 +39,13 @@ const defaultConfig =  {
 };
 
 /**
- * Gets default config for the game
- */
+* Gets default config for the game
+*/
 export class GameConfig {
     //#region public methods
     /**
-     * Returns singleton of the default real config for the game
-     */
+    * Returns singleton of the default real config for the game
+    */
     forRoot() {
         return defaultConfig;
     }

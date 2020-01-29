@@ -1,9 +1,11 @@
 import { BaseMapLevelScene } from '../scenes/base-map-level.scene';
 import { BaseModalPlugin } from './base-modal.plugin';
+import { StatsPlayerBoxPlugin } from './stats-player-box.plugin';
 
-/** Plugin to display one box with stats of one player */
-export class StatsPlayerBoxPlugin extends BaseModalPlugin {
+/** Plugin to display several box with stats of each player */
+export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
     //#region Fields
+    private _statsBoxList: StatsPlayerBoxPlugin[] = [];
     //#endregion
 
     constructor(_scene: BaseMapLevelScene, pluginManager: Phaser.Plugins.PluginManager) {
@@ -15,7 +17,7 @@ export class StatsPlayerBoxPlugin extends BaseModalPlugin {
 
     //#region Internal methods
     protected createWindow() {
-        super.createWindow(); 
+        super.createWindow();
 
 
     }

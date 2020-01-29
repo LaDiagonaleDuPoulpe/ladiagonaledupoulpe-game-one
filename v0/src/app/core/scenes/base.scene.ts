@@ -10,6 +10,7 @@ import { Style } from '../models/style';
 import { DialogModalPlugin } from '../plugins/dialog-modal.plugin';
 import GameData from '../models/game/game-data';
 import { GameDataManagerService } from '../../shared/services/game-data-manager.service';
+import { StatsPlayerBoxManagerPlugin } from '../plugins/stats-player-box-manager.plugin';
 
 /**
 * Parent class of all custom scenes of the game
@@ -130,6 +131,11 @@ export class BaseScene extends Phaser.Scene {
     */
     public get messageBox(): DialogModalPlugin {
         return <DialogModalPlugin> (this['dialogModalPlugin']);
+    }
+
+    /** Manager to create all player stats box for each player */
+    public get playerStatsBoxManager(): StatsPlayerBoxManagerPlugin {
+        return <StatsPlayerBoxManagerPlugin> (this['playerStatModalManagerPlugin']);
     }
 
     /** Gets data manager for the game (player data, ...) */
