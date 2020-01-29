@@ -18,6 +18,20 @@
             "spriteBox": {
                 "width": 200
             }
+        },
+        "statsPlayerBox": {
+            "borderColor": "0xFAAA24",
+            "windowColor": "0x431f11",   
+            "closeButtonStyle": {
+                "font": "bold 20px Arial",
+                "fill": "#ffffff"
+            },         
+            "windowHeight": 200,            
+            "padding": 50,            
+            "borderThickness": 10,
+            "spriteBox": {
+                "width": 200
+            }
         }
     },
     "assets": {

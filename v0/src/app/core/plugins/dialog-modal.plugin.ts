@@ -8,16 +8,15 @@ import { ModalText } from '../models/dialog-modal/modal-text';
 import { ModalContent } from '../models/dialog-modal/modal-content';
 import { Position } from '../models/position';
 import { Dictionary } from '../../shared/custom-types/dictionary';
+import { BaseModalPlugin } from './base-modal.plugin';
 
 /**
 * Plugin to display a message box in current scene
 */
 // https://phaser.io/examples/v3/view/plugins/scene-plugin-test-1
 // TODO: See if we can split this class in several small ones
-export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
+export class DialogModalPlugin extends BaseModalPlugin {
     //#region Fields
-    private _systems: Phaser.Scenes.Systems;
-    private _configuration: DialogModalConfiguration;
     private _graphicObject: Phaser.GameObjects.Graphics;
     private _currentBoxDimensions: Position;
     private _closeButton: Phaser.GameObjects.Text;
@@ -34,26 +33,11 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     private  _positionByDirectionList: Dictionary<Position>;
     //#endregion
     
-    constructor(private _scene: BaseMapLevelScene, pluginManager: Phaser.Plugins.PluginManager) {
+    constructor(_scene: BaseMapLevelScene, pluginManager: Phaser.Plugins.PluginManager) {
         super(_scene, pluginManager);
-        this._systems = this._scene.sys;
     }
     
-    //#region Public methods
-    boot() {
-        super.boot();
-    }
-    
-    /**
-    * Initializes the message box on the bottom of the screen
-    */
-    init(config: DialogModalConfiguration) {
-        this._configuration = config;
-        
-        if (config) {
-            this.createWindow();
-        }
-    }
+    //#region Public methods    
     
     /**
     * Show the message box
@@ -70,17 +54,10 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
             }
         }
     }
-    
-    /**
-    * Hides the message box
-    */
-    hide() {
-        this.toggleWindow(false);
-    }
     //#endregion
     
     //#region Internal methods
-    private toggleWindow(visibility: boolean) {
+    protected toggleWindow(visibility: boolean) {
         this._graphicObject.setVisible(visibility);
         this._closeButton.setVisible(visibility);
         
@@ -97,7 +74,7 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         }
     }
     
-    private createWindow() {
+    protected createWindow() {
         const gameHeight = this.getGameHeight();
         const gameWidth = this.getGameWidth();
         this._currentBoxDimensions = this.calculateWindowDimensions(gameWidth, gameHeight);
@@ -159,12 +136,12 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     }
 
     private createInnerWindow(x: number, y: number, rectWidth: number, rectHeight: number) {
-        this._graphicObject.fillStyle(this._configuration.windowColor);
+        this._graphicObject.fillStyle(this.configuration.windowColor);
         this._graphicObject.fillRect(x + 1, y + 1, rectWidth - 1, rectHeight - 1);
     }
     
     private createOuterWindow(x: number, y: number, rectWidth: number, rectHeight: number) {
-        this._graphicObject.lineStyle(this._configuration.borderThickness, this._configuration.borderColor);
+        this._graphicObject.lineStyle(this.configuration.borderThickness, this.configuration.borderColor);
         this._graphicObject.strokeRect(x, y, rectWidth, rectHeight);
     }
     
@@ -175,7 +152,7 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
             this.setPrefabToDisplay(prefab);
             
             this.setFixed(this._displayingPersonSprite);            
-            this._displayingPersonSprite.setPosition(x + 10 + this._configuration.padding * 2, y + rectHeight / 2 );
+            this._displayingPersonSprite.setPosition(x + 10 + this.configuration.padding * 2, y + rectHeight / 2 );
         }
     }
 
@@ -191,7 +168,7 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         if (! this._displayingPersonSprite) {
             this.hideCurrentPrefabSprite(); 
 
-            this._displayingPersonSprite = this._scene.createSpriteByPrefabObject(<Prefab> prefab);
+            this._displayingPersonSprite = this.scene.createSpriteByPrefabObject(<Prefab> prefab);
             this._listOfDisplayingSprites[prefab.key] = this._displayingPersonSprite;
         }
     }
@@ -205,10 +182,10 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     }
     
     private calculateWindowDimensions(width: string | number, height: string | number): Position {
-        var x = this._configuration.padding;
-        var y = +height - this._configuration.windowHeight - this._configuration.padding;
-        var rectWidth = +width  - (this._configuration.padding * 2);
-        var rectHeight = this._configuration.windowHeight;
+        var x = this.configuration.padding;
+        var y = +height - this.configuration.windowHeight - this.configuration.padding;
+        var rectWidth = +width  - (this.configuration.padding * 2);
+        var rectHeight = this.configuration.windowHeight;
         
         return {
             x: x,
@@ -224,8 +201,8 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
             y: y,
             text: message,
             style: {
-                font: this._configuration.closeButtonStyle.font,
-                fill: this._configuration.closeButtonStyle.fill
+                font: this.configuration.closeButtonStyle.font,
+                fill: this.configuration.closeButtonStyle.fill
             }
         });
         
@@ -249,8 +226,8 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
     private createCloseModalButton() {
         var self = this;
         
-        const x = +this.getGameWidth() - this._configuration.padding - 30;
-        const y = +this.getGameHeight() - this._configuration.windowHeight - this._configuration.padding + 3;
+        const x = +this.getGameWidth() - this.configuration.padding - 30;
+        const y = +this.getGameHeight() - this.configuration.windowHeight - this.configuration.padding + 3;
         
         this._closeButton = this.createTextAsButton(x, y, '[X]', 101, self.hide.bind(self));
     }
@@ -260,15 +237,15 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
             this._displayedMessage.destroy();
         }
 
-        const x = this._configuration.padding + this._displayingPersonSprite.displayWidth + 20;
-        const y = +this.getGameHeight() - this._configuration.windowHeight - this._configuration.padding + 10;
+        const x = this.configuration.padding + this._displayingPersonSprite.displayWidth + 20;
+        const y = +this.getGameHeight() - this.configuration.windowHeight - this.configuration.padding + 10;
         
         this._displayedMessage = this.scene.make.text({
             x: x,
             y: y,
             text: value,
             style: {
-                wordWrap: { width: +this.getGameWidth() - (this._configuration.padding * 2) - this._displayingPersonSprite.width }
+                wordWrap: { width: +this.getGameWidth() - (this.configuration.padding * 2) - this._displayingPersonSprite.width }
             }
         });
         
@@ -300,7 +277,7 @@ export class DialogModalPlugin extends Phaser.Plugins.ScenePlugin {
         this.setText(tempText);
         
         this._timedEvent = this.scene.time.addEvent({
-            delay: 300 - (this._configuration.dialogSpeed * 30),
+            delay: 300 - (this.configuration.dialogSpeed * 30),
             callback: this.animateText.bind(this, this.createNextPageButton.bind(this)),
             callbackScope: this,
             loop: true
