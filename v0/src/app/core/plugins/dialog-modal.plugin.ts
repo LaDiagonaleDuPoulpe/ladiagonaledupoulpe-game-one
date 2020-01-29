@@ -17,7 +17,6 @@ import { BaseModalPlugin } from './base-modal.plugin';
 // TODO: See if we can split this class in several small ones
 export class DialogModalPlugin extends BaseModalPlugin {
     //#region Fields
-    private _graphicObject: Phaser.GameObjects.Graphics;
     private _currentBoxDimensions: Position;
     private _closeButton: Phaser.GameObjects.Text;
     private _displayedMessage: Phaser.GameObjects.Text;
@@ -58,7 +57,7 @@ export class DialogModalPlugin extends BaseModalPlugin {
     
     //#region Internal methods
     protected toggleWindow(visibility: boolean) {
-        this._graphicObject.setVisible(visibility);
+        this.graphicObject.setVisible(visibility);
         this._closeButton.setVisible(visibility);
         
         if (this._displayedMessage) {
@@ -75,12 +74,11 @@ export class DialogModalPlugin extends BaseModalPlugin {
     }
     
     protected createWindow() {
+        super.createWindow();
+
         const gameHeight = this.getGameHeight();
         const gameWidth = this.getGameWidth();
         this._currentBoxDimensions = this.calculateWindowDimensions(gameWidth, gameHeight);
-        this._graphicObject = this.scene.add.graphics();
-        
-        this.setFixed(this._graphicObject);
         
         this.createOuterWindow(this._currentBoxDimensions.x, this._currentBoxDimensions.y, this._currentBoxDimensions.width, this._currentBoxDimensions.height);
         this.createInnerWindow(this._currentBoxDimensions.x, this._currentBoxDimensions.y, this._currentBoxDimensions.width, this._currentBoxDimensions.height);
@@ -88,11 +86,6 @@ export class DialogModalPlugin extends BaseModalPlugin {
         this.createCloseModalButton();
 
         this.hide();
-    }
-    
-    private setFixed(object: Phaser.GameObjects.Graphics | Phaser.GameObjects.Text | Phaser.GameObjects.Sprite, depth: number = 100) {
-        object.setScrollFactor(0);
-        object.setDepth(depth);
     }
     
     private createNextPageButton(text: string = '>> Suivant') {
@@ -136,13 +129,13 @@ export class DialogModalPlugin extends BaseModalPlugin {
     }
 
     private createInnerWindow(x: number, y: number, rectWidth: number, rectHeight: number) {
-        this._graphicObject.fillStyle(this.configuration.windowColor);
-        this._graphicObject.fillRect(x + 1, y + 1, rectWidth - 1, rectHeight - 1);
+        this.graphicObject.fillStyle(this.configuration.windowColor);
+        this.graphicObject.fillRect(x + 1, y + 1, rectWidth - 1, rectHeight - 1);
     }
     
     private createOuterWindow(x: number, y: number, rectWidth: number, rectHeight: number) {
-        this._graphicObject.lineStyle(this.configuration.borderThickness, this.configuration.borderColor);
-        this._graphicObject.strokeRect(x, y, rectWidth, rectHeight);
+        this.graphicObject.lineStyle(this.configuration.borderThickness, this.configuration.borderColor);
+        this.graphicObject.strokeRect(x, y, rectWidth, rectHeight);
     }
     
     private createPeopleSpeakingBox(currentMessage: ModalText, x: number, y: number, rectWidth: number, rectHeight: number) {             

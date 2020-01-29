@@ -6,6 +6,7 @@ export abstract class BaseModalPlugin extends Phaser.Plugins.ScenePlugin {
     //#region Fields
     private _systems: Phaser.Scenes.Systems;
     private _configuration: DialogModalConfiguration;
+    private _graphicObject: Phaser.GameObjects.Graphics;
     //#endregion
     
     constructor(private _scene: BaseMapLevelScene, pluginManager: Phaser.Plugins.PluginManager) {
@@ -31,11 +32,23 @@ export abstract class BaseModalPlugin extends Phaser.Plugins.ScenePlugin {
     //#endregion
     
     //#region Internal methods
-    /** Allows you to create window. Overrides it to create the window */
-    protected abstract createWindow(); 
+    /** 
+     * Allows you to create window. Overrides it to create the window
+     * Here, we initialize the graphic object of the modal box
+     */
+    protected createWindow() {
+        this._graphicObject = this.scene.add.graphics();
+        this.setFixed(this.graphicObject);
+    } 
 
     /** Allows you to manage visibility of the message box */
     protected abstract toggleWindow(visibility: boolean);
+
+    /** Sets modal box to a fixed mode (can't move, and before all game objects) */
+    protected setFixed(object: Phaser.GameObjects.Graphics | Phaser.GameObjects.Text | Phaser.GameObjects.Sprite, depth: number = 100) {
+        object.setScrollFactor(0);
+        object.setDepth(depth);
+    }
     //#endregion
     
     //#region Properties
@@ -47,6 +60,11 @@ export abstract class BaseModalPlugin extends Phaser.Plugins.ScenePlugin {
     /** Scene where the modal box is display */
     protected get scene(): BaseMapLevelScene {
         return this._scene;
+    }
+
+    /** Current graphic object that represents the modal box */
+    protected get graphicObject(): Phaser.GameObjects.Graphics {
+        return this._graphicObject;
     }
     //#endregion
 } 
