@@ -49,6 +49,16 @@ export abstract class BaseModalPlugin extends Phaser.Plugins.ScenePlugin {
         object.setScrollFactor(0);
         object.setDepth(depth);
     }
+
+    /** Gets the width of the game, based on system game config */
+    protected getGameWidth() {
+        return this.scene.sys.game.config.width;
+    }
+    
+    /** Gets the height of the game, based on system game config */
+    protected getGameHeight() {
+        return this.scene.sys.game.config.height;
+    }
     //#endregion
     
     //#region Properties

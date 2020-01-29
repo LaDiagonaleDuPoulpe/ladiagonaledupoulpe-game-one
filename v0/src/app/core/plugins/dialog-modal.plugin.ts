@@ -166,14 +166,6 @@ export class DialogModalPlugin extends BaseModalPlugin {
         }
     }
     
-    private getGameWidth() {
-        return this.scene.sys.game.config.width;
-    }
-    
-    private getGameHeight() {
-        return this.scene.sys.game.config.height;
-    }
-    
     private calculateWindowDimensions(width: string | number, height: string | number): Position {
         var x = this.configuration.padding;
         var y = +height - this.configuration.windowHeight - this.configuration.padding;
