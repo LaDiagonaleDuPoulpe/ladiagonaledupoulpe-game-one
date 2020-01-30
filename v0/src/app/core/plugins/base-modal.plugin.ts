@@ -37,9 +37,15 @@ export abstract class BaseModalPlugin extends Phaser.Plugins.ScenePlugin {
      * Here, we initialize the graphic object of the modal box
      */
     protected createWindow() {
-        this._graphicObject = this.scene.add.graphics();
-        this.setFixed(this.graphicObject);
+        this._graphicObject = this.prepareOneGraphicsObject();
     } 
+
+    protected prepareOneGraphicsObject(): Phaser.GameObjects.Graphics {
+        const object = this.scene.add.graphics();
+        this.setFixed(object);
+
+        return object;
+    }
 
     /** Allows you to manage visibility of the message box */
     protected abstract toggleWindow(visibility: boolean);
@@ -65,6 +71,11 @@ export abstract class BaseModalPlugin extends Phaser.Plugins.ScenePlugin {
     /** Gets configuration of the current modal */
     protected get configuration(): DialogModalConfiguration {
         return this._configuration;
+    }
+
+    /** Sets configuration of the current modal */
+    protected set configuration(value: DialogModalConfiguration) {
+        this._configuration = value;
     }
     
     /** Scene where the modal box is display */

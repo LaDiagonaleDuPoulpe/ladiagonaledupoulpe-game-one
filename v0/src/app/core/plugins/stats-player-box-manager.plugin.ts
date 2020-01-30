@@ -1,6 +1,7 @@
 import { BaseMapLevelScene } from '../scenes/base-map-level.scene';
 import { BaseModalPlugin } from './base-modal.plugin';
 import { StatsPlayerBoxPlugin } from './stats-player-box.plugin';
+import { DialogModalConfiguration } from '../models/dialog-modal/dialog-modal-configuration';
 
 /** Plugin to display several box with stats of each player */
 export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
@@ -13,11 +14,14 @@ export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
     }
 
     //#region Public methods
+    init(config: DialogModalConfiguration) {
+        this.configuration = config;
+    }
     //#endregion
 
     //#region Internal methods
     protected createWindow() {
-        super.createWindow();
+        
 
 
     }
