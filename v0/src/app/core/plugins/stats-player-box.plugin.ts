@@ -17,7 +17,7 @@ export class StatsPlayerBoxPlugin extends BaseModalPlugin {
     protected createWindow() {
         super.createWindow(); 
 
-
+    
     }
     protected toggleWindow(visibility: boolean) {
         throw new Error("Method not implemented.");

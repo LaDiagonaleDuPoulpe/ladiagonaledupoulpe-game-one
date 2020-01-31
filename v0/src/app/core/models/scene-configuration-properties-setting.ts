@@ -6,6 +6,10 @@ import { DialogModalConfiguration } from './dialog-modal/dialog-modal-configurat
  */
 export class SceneConfigurationPropertiesSetting extends PropertiesSetting {
     //#region Fields
-    public messageBox: DialogModalConfiguration
+    /** Configuration about the message box about message to display */
+    public messageBox: DialogModalConfiguration;
+
+    /** Configuration about each box for each player : box to display stats of each player */
+    public statsPlayerBox: DialogModalConfiguration;
     //#endregion
 }

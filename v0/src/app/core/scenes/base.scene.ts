@@ -11,6 +11,7 @@ import { DialogModalPlugin } from '../plugins/dialog-modal.plugin';
 import GameData from '../models/game/game-data';
 import { GameDataManagerService } from '../../shared/services/game-data-manager.service';
 import { StatsPlayerBoxManagerPlugin } from '../plugins/stats-player-box-manager.plugin';
+import { DialogModalConfiguration } from '../models/dialog-modal/dialog-modal-configuration';
 
 /**
 * Parent class of all custom scenes of the game
@@ -38,7 +39,8 @@ export class BaseScene extends Phaser.Scene {
         this.levelConfig = config;
         this._cursors = this.input.keyboard.createCursorKeys();
         
-        this.prepareMessageBox();
+        this.initializeGlobalMessageBox();
+        this.initializeStatsPlayerMessageBox();
     }
     
     preload() {
@@ -62,11 +64,13 @@ export class BaseScene extends Phaser.Scene {
     //#endregion
     
     //#region Internal methods
-    private prepareMessageBox() {
+    private initializeGlobalMessageBox() {
         this.messageBox.init(this.messageBoxConfiguration);
+    }   
+
+    private initializeStatsPlayerMessageBox() {
+        this.playerStatsBoxManager.init(this.statsPlayerBoxConfiguration);
     }
-    
-    
     //#endregion
     
     //#region Properties
@@ -108,8 +112,15 @@ export class BaseScene extends Phaser.Scene {
     /**
     * Message box configuration (color, background color, ...)
     */
-    public get messageBoxConfiguration() {
+    public get messageBoxConfiguration(): DialogModalConfiguration | null {
         return (this.levelConfig && this.levelConfig.data ? this.levelConfig.data.defaultConfiguration.messageBox : null);
+    }
+
+    /**
+     * Stats player box configuration (color, background color, ...)
+     */
+    public get statsPlayerBoxConfiguration(): DialogModalConfiguration | null {
+        return (this.levelConfig && this.levelConfig.data ? this.levelConfig.data.defaultConfiguration.statsPlayerBox : null);
     }
     
     /**

@@ -14,16 +14,14 @@ export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
     }
 
     //#region Public methods
-    init(config: DialogModalConfiguration) {
-        this.configuration = config;
-    }
     //#endregion
 
     //#region Internal methods
     protected createWindow() {
-        
-
-
+        this.scene.spritePlayers.forEach(player => {
+            const oneBox = new StatsPlayerBoxPlugin(this.scene, this.pluginManager);
+            this._statsBoxList.push(oneBox);
+        });
     }
     protected toggleWindow(visibility: boolean) {
         throw new Error("Method not implemented.");

@@ -21,6 +21,8 @@ export abstract class BaseLevelScene extends BaseScene {
     
     private _physicalGroups: Dictionary<Phaser.Physics.Arcade.Group> = {};
     private _prefabSprites: Dictionary<Phaser.GameObjects.GameObject> = {};
+
+    private _spritePlayers: Phaser.GameObjects.GameObject[] = [];
     //#endregion
     
     constructor(key: string, 
@@ -186,14 +188,14 @@ export abstract class BaseLevelScene extends BaseScene {
         }
         
         /**
-        * Gets list of players in the game
+        * Gets list of sprite as player in the game
         */
-        public get players(): Phaser.GameObjects.GameObject[] {
-            const prefabs = [];
+        public get spritePlayers(): Phaser.GameObjects.GameObject[] {
+            if (this._spritePlayers.findIndex(item => item.name == this.prefabSprites["player"].name) === -1) {
+                this._spritePlayers.push(this.prefabSprites["player"]);
+            }
             
-            prefabs.push(this.prefabSprites["player"]);
-            
-            return prefabs;
+            return this._spritePlayers;
         }
         //#endregion
     }
