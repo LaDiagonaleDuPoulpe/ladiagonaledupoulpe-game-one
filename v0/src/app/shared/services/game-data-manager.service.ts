@@ -11,6 +11,7 @@ export class GameDataManagerService {
     private _cacheManager: Phaser.Cache.BaseCache;
     private _jsonLoader: Phaser.Loader.LoaderPlugin;
     private _currentPlayer: PlayerData;
+    private _playerList: PlayerData[] = [];
     //#endregion
     
     //#region Public methods
@@ -52,11 +53,16 @@ export class GameDataManagerService {
     protected getActivePlayer(): PlayerData {
         const gameData = this.gameData;
 
-        if (gameData && ! this._currentPlayer) {
-            this._currentPlayer = Object.assign(new PlayerData(), gameData.players[0]);
-        }
+        this.fillPlayerList();
 
         return this._currentPlayer;
+    }
+
+    private fillPlayerList() {
+        if (this.gameData && ! this._currentPlayer) {
+            this._currentPlayer = Object.assign(new PlayerData(), this.gameData.players[0]);
+            this._playerList.push(this._currentPlayer);
+        }
     }
     //#endregion
     
@@ -68,6 +74,18 @@ export class GameDataManagerService {
         }
         
         return this._gameData;
+    }
+
+    /** 
+     * Gets list of the players in the game
+     * Note: now, there is only one player
+     */
+    public get playerList(): PlayerData[] {
+        if (this._playerList.length == 0) {
+            this.fillPlayerList();
+        }
+
+        return this._playerList;
     }
     //#endregion
 }

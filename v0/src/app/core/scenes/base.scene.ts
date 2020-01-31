@@ -12,6 +12,7 @@ import GameData from '../models/game/game-data';
 import { GameDataManagerService } from '../../shared/services/game-data-manager.service';
 import { StatsPlayerBoxManagerPlugin } from '../plugins/stats-player-box-manager.plugin';
 import { DialogModalConfiguration } from '../models/dialog-modal/dialog-modal-configuration';
+import PlayerData from '../models/game/player-data';
 
 /**
 * Parent class of all custom scenes of the game
@@ -152,6 +153,14 @@ export class BaseScene extends Phaser.Scene {
     /** Gets data manager for the game (player data, ...) */
     protected get gameDataManager(): GameDataManagerService {
         return this._gameDataManager;
+    }
+
+    /** 
+     * List of the player in the game (be careful, it's not the sprite player list !) 
+     * Here we can get stats as health, magic power, ...
+     * */
+    public get playerList(): PlayerData[] {
+        return this.gameDataManager.playerList;
     }
     //#endregion
 }

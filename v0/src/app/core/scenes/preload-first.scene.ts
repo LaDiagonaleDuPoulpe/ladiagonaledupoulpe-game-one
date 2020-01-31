@@ -33,7 +33,6 @@ export default class PreloadFirstScene extends BaseScene {
     }
     
     create() {
-        this._logger.log('firstScene::create');
         var timer = this.time.delayedCall(1500, () => { this.goToNextScene(); }, null, this);
     }
     //#endregion

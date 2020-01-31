@@ -18,7 +18,7 @@ export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
 
     //#region Internal methods
     protected createWindow() {
-        this.scene.spritePlayers.forEach(player => {
+        this.scene.playerList.forEach(player => {
             const oneBox = new StatsPlayerBoxPlugin(this.scene, this.pluginManager);
             this._statsBoxList.push(oneBox);
         });
