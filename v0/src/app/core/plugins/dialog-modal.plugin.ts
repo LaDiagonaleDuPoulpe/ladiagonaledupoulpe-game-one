@@ -45,7 +45,7 @@ export class DialogModalPlugin extends BaseModalPlugin {
     */
     show(isMessagesDisplayed: boolean = true) {
         if (this._modalContent && this._modalContent.messageList && this._modalContent.messageList.length > 0) {
-            this.toggleWindow(true);
+            super.show();
 
             if (isMessagesDisplayed) {
                 this._currentMessageTextToDisplayIndex = -1;
@@ -53,11 +53,9 @@ export class DialogModalPlugin extends BaseModalPlugin {
             }
         }
     }
-    //#endregion
-    
-    //#region Internal methods
-    protected toggleWindow(visibility: boolean) {
-        this.graphicObject.setVisible(visibility);
+
+    public toggleWindow(visibility: boolean) {
+        super.toggleWindow(visibility);
         this._closeButton.setVisible(visibility);
         
         if (this._displayedMessage) {
@@ -72,7 +70,9 @@ export class DialogModalPlugin extends BaseModalPlugin {
             this._nextPageButton.setVisible(visibility);
         }
     }
+    //#endregion
     
+    //#region Internal methods    
     protected createWindow() {
         super.createWindow();
 
@@ -131,11 +131,6 @@ export class DialogModalPlugin extends BaseModalPlugin {
     private createInnerWindow(x: number, y: number, rectWidth: number, rectHeight: number) {
         this.graphicObject.fillStyle(this.configuration.windowColor);
         this.graphicObject.fillRect(x + 1, y + 1, rectWidth - 1, rectHeight - 1);
-    }
-    
-    private createOuterWindow(x: number, y: number, rectWidth: number, rectHeight: number) {
-        this.graphicObject.lineStyle(this.configuration.borderThickness, this.configuration.borderColor);
-        this.graphicObject.strokeRect(x, y, rectWidth, rectHeight);
     }
     
     private createPeopleSpeakingBox(currentMessage: ModalText, x: number, y: number, rectWidth: number, rectHeight: number) {             

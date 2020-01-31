@@ -11,16 +11,16 @@ export class StatsPlayerBoxPlugin extends BaseModalPlugin {
     }
 
     //#region Public methods
+    public toggleWindow(visibility: boolean) {
+        super.toggleWindow(visibility);
+    }
     //#endregion
 
     //#region Internal methods
     protected createWindow() {
         super.createWindow(); 
 
-    
-    }
-    protected toggleWindow(visibility: boolean) {
-        throw new Error("Method not implemented.");
+        this.createOuterWindow(10, 50, 200, 100);
     }
     //#endregion
 }

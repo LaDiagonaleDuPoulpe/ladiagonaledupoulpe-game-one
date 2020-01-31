@@ -14,6 +14,10 @@ export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
     }
 
     //#region Public methods
+    public toggleWindow(visibility: boolean) {
+        this._statsBoxList.forEach(box => box.toggleWindow(visibility));
+    }
+    
     //#endregion
 
     //#region Internal methods
@@ -21,10 +25,12 @@ export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
         this.scene.playerList.forEach(player => {
             const oneBox = new StatsPlayerBoxPlugin(this.scene, this.pluginManager);
             this._statsBoxList.push(oneBox);
-        });
-    }
-    protected toggleWindow(visibility: boolean) {
-        throw new Error("Method not implemented.");
+
+            oneBox.init(this.configuration);
+
+            // INFO: 31/01/2020: For test only
+            oneBox.show();
+        });         
     }
     //#endregion
 }

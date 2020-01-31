@@ -22,12 +22,22 @@ export abstract class BaseModalPlugin extends Phaser.Plugins.ScenePlugin {
             this.createWindow();
         }
     }
+
+    /** Display the box with graphic object too */
+    show() {
+        this.toggleWindow(true);
+    }
     
     /**
     * Hides the message box
     */
     hide() {
         this.toggleWindow(false);
+    }
+
+    /** Allows you to manage visibility of the message box */
+    toggleWindow(visibility: boolean) {
+        this.graphicObject.setVisible(visibility);
     }
     //#endregion
     
@@ -47,8 +57,17 @@ export abstract class BaseModalPlugin extends Phaser.Plugins.ScenePlugin {
         return object;
     }
 
-    /** Allows you to manage visibility of the message box */
-    protected abstract toggleWindow(visibility: boolean);
+    /**
+     * Creates outer window inside the graphic object
+     * @param x Starting x position
+     * @param y Starting y position
+     * @param rectWidth Width of the box
+     * @param rectHeight Height of the box
+     */
+    protected createOuterWindow(x: number, y: number, rectWidth: number, rectHeight: number) {
+        this.graphicObject.lineStyle(this.configuration.borderThickness, this.configuration.borderColor);
+        this.graphicObject.strokeRect(x, y, rectWidth, rectHeight);
+    }
 
     /** Sets modal box to a fixed mode (can't move, and before all game objects) */
     protected setFixed(object: Phaser.GameObjects.Graphics | Phaser.GameObjects.Text | Phaser.GameObjects.Sprite, depth: number = 100) {
