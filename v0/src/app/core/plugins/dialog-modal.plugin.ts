@@ -54,6 +54,7 @@ export class DialogModalPlugin extends BaseModalPlugin {
         }
     }
 
+    /** Allows you to display or hide current box */
     public toggleWindow(visibility: boolean) {
         super.toggleWindow(visibility);
         this._closeButton.setVisible(visibility);
@@ -70,9 +71,12 @@ export class DialogModalPlugin extends BaseModalPlugin {
             this._nextPageButton.setVisible(visibility);
         }
     }
+
+    public refresh() {}
     //#endregion
     
     //#region Internal methods    
+    /** Allows you to create the window with borders, and inside box with real content */
     protected createWindow() {
         super.createWindow();
 

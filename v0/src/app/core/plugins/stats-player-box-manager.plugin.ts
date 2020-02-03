@@ -20,6 +20,9 @@ export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
         this._statsBoxList.forEach(box => box.toggleWindow(visibility));
     }
     
+    public refresh() {
+        this._statsBoxList.forEach(item => item.refresh());
+    }
     //#endregion
 
     //#region Internal methods

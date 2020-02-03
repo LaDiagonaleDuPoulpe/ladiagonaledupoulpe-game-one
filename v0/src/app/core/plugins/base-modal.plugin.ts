@@ -39,6 +39,13 @@ export abstract class BaseModalPlugin extends Phaser.Plugins.ScenePlugin {
     toggleWindow(visibility: boolean) {
         this.graphicObject.setVisible(visibility);
     }
+
+    
+    /** 
+     * Displays new content. 
+     * Overrides if to define how the refresh will be done
+     */
+    abstract refresh();
     //#endregion
     
     //#region Internal methods
