@@ -58,7 +58,7 @@ export abstract class BaseModalPlugin extends Phaser.Plugins.ScenePlugin {
     }
 
     /**
-     * Creates outer window inside the graphic object
+     * Creates outer window inside the graphic object (it's the box with limited borders)
      * @param x Starting x position
      * @param y Starting y position
      * @param rectWidth Width of the box
@@ -67,6 +67,18 @@ export abstract class BaseModalPlugin extends Phaser.Plugins.ScenePlugin {
     protected createOuterWindow(x: number, y: number, rectWidth: number, rectHeight: number) {
         this.graphicObject.lineStyle(this.configuration.borderThickness, this.configuration.borderColor);
         this.graphicObject.strokeRect(x, y, rectWidth, rectHeight);
+    }
+
+    /**
+     * Creates the inside box, where we can find data information
+     * @param x Top X position
+     * @param y Top Y position
+     * @param rectWidth Width of the inside box
+     * @param rectHeight Height of the inside box
+     */
+    protected createInnerWindow(x: number, y: number, rectWidth: number, rectHeight: number) {
+        this.graphicObject.fillStyle(this.configuration.windowColor);
+        this.graphicObject.fillRect(x + 1, y + 1, rectWidth - 1, rectHeight - 1);
     }
 
     /** Sets modal box to a fixed mode (can't move, and before all game objects) */

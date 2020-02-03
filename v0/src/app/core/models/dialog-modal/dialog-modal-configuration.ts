@@ -1,4 +1,5 @@
 import { Style } from '../style';
+import { Position } from '../position';
 /**
  * Options to configure the dialog modal
  */ 
@@ -43,5 +44,10 @@ import { Style } from '../style';
      * Texture to display as a spoken person
      */
     public displayingPersonTexture: string;
+
+    /** 
+     * Current position of the box
+     */
+    public position: Position | null;
     //#endregion
 }

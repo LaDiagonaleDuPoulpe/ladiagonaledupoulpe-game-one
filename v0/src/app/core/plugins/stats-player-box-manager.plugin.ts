@@ -2,6 +2,8 @@ import { BaseMapLevelScene } from '../scenes/base-map-level.scene';
 import { BaseModalPlugin } from './base-modal.plugin';
 import { StatsPlayerBoxPlugin } from './stats-player-box.plugin';
 import { DialogModalConfiguration } from '../models/dialog-modal/dialog-modal-configuration';
+import { Position } from '../models/position';
+import PlayerData from '../models/game/player-data';
 
 /** Plugin to display several box with stats of each player */
 export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
@@ -22,15 +24,32 @@ export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
 
     //#region Internal methods
     protected createWindow() {
+        let currentPosition = Object.assign({}, this.configuration.position);
+
+        // INFO: 03/02/2020: For test only
+        let secondPlayer = Object.assign({}, this.scene.playerList[0]);
+        this.scene.playerList.push(secondPlayer);
+
         this.scene.playerList.forEach(player => {
-            const oneBox = new StatsPlayerBoxPlugin(this.scene, this.pluginManager);
-            this._statsBoxList.push(oneBox);
+            this.createOneBox(player, currentPosition);
 
-            oneBox.init(this.configuration);
-
-            // INFO: 31/01/2020: For test only
-            oneBox.show();
+            currentPosition.x += this.configuration.position.width + 50;
         });         
+    }
+
+    private createOneBox(player: PlayerData, currentPosition: Position) {
+        const oneBox = new StatsPlayerBoxPlugin(player, this.scene, this.pluginManager);
+        this._statsBoxList.push(oneBox);
+
+        const position = Object.assign(new Position(), this.configuration.position);
+        position.x = currentPosition.x;
+        position.y = currentPosition.y;
+        this.configuration.position = position;
+
+        oneBox.init(this.configuration);
+
+        // INFO: 31/01/2020: For test only
+        oneBox.show();
     }
     //#endregion
 }

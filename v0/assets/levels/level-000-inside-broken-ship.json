@@ -26,6 +26,12 @@
                 "font": "bold 20px Arial",
                 "fill": "#ffffff"
             },         
+            "position": {
+                "x": 100,
+                "y": 10,
+                "width": 400,
+                "height": 130
+            },
             "windowHeight": 200,            
             "padding": 50,            
             "borderThickness": 10,

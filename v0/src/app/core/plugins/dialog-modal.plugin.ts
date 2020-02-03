@@ -80,8 +80,11 @@ export class DialogModalPlugin extends BaseModalPlugin {
         const gameWidth = this.getGameWidth();
         this._currentBoxDimensions = this.calculateWindowDimensions(gameWidth, gameHeight);
         
-        this.createOuterWindow(this._currentBoxDimensions.x, this._currentBoxDimensions.y, this._currentBoxDimensions.width, this._currentBoxDimensions.height);
-        this.createInnerWindow(this._currentBoxDimensions.x, this._currentBoxDimensions.y, this._currentBoxDimensions.width, this._currentBoxDimensions.height);
+        this.createOuterWindow(this._currentBoxDimensions.x, this._currentBoxDimensions.y, 
+                               this._currentBoxDimensions.width, this._currentBoxDimensions.height);
+
+        this.createInnerWindow(this._currentBoxDimensions.x, this._currentBoxDimensions.y, 
+                               this._currentBoxDimensions.width, this._currentBoxDimensions.height);
         
         this.createCloseModalButton();
 
@@ -126,11 +129,6 @@ export class DialogModalPlugin extends BaseModalPlugin {
         }
 
         currentAction();
-    }
-
-    private createInnerWindow(x: number, y: number, rectWidth: number, rectHeight: number) {
-        this.graphicObject.fillStyle(this.configuration.windowColor);
-        this.graphicObject.fillRect(x + 1, y + 1, rectWidth - 1, rectHeight - 1);
     }
     
     private createPeopleSpeakingBox(currentMessage: ModalText, x: number, y: number, rectWidth: number, rectHeight: number) {             
