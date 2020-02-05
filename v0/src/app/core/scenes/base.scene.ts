@@ -62,6 +62,11 @@ export class BaseScene extends Phaser.Scene {
     public getOnePrefabByType(type: PrefabType): Prefab {
         return this.levelConfig.data.prefabs.find(item => item.type == type);
     }
+
+    /** Launches a refresh to each stats player box */
+    public refreshPlayersStats() {
+        this.playerStatsBoxManager.refresh();
+    }
     //#endregion
     
     //#region Internal methods

@@ -45,6 +45,8 @@ export class ColliderManagerService {
                     args: [- (<PrefabSprite> transmitter).collisionDamage, gameDataManager],
                     repeat: 0
                 });
+
+                this._scene.refreshPlayersStats();
             }
             
             receiver[action.commandName]();
