@@ -20,7 +20,10 @@ export class StaticUnit extends BaseUnit {
     protected initialize() {
         super.initialize();
 
-        (<any>this.body).moves  = false;
+        const currentBody = (<any>this.body); 
+        if (currentBody) {
+            currentBody.moves  = false;
+        }
         this._scene.applyCollisionDetectionToPlayer(this);
     }
     //#endregion
