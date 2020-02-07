@@ -1,21 +1,17 @@
-import { BaseLevelScene } from '../scenes/base-level.scene';
-import { BaseMapLevelScene } from '../scenes/base-map-level.scene';
-import { DialogModalConfiguration } from '../models/dialog-modal/dialog-modal-configuration';
-import { PrefabSpriteFactory } from '../prefab-sprites/prefab-sprite-factory';
-import { PrefabType } from '../../shared/enums/prefab-type';
-import { Prefab } from '../models/prefabs/prefab';
-import { ModalText } from '../models/dialog-modal/modal-text';
-import { ModalContent } from '../models/dialog-modal/modal-content';
-import { Position } from '../models/position';
 import { Dictionary } from '../../shared/custom-types/dictionary';
-import { BaseModalPlugin } from './base-modal.plugin';
+import { ModalContent } from '../models/dialog-modal/modal-content';
+import { ModalText } from '../models/dialog-modal/modal-text';
+import { Position } from '../models/position';
+import { Prefab } from '../models/prefabs/prefab';
+import { BaseMapLevelScene } from '../scenes/base-map-level.scene';
+import { BaseModalWithPrefabPlugin } from './base-modal-with-prefab.plugin';
 
 /**
 * Plugin to display a message box in current scene
 */
 // https://phaser.io/examples/v3/view/plugins/scene-plugin-test-1
 // TODO: See if we can split this class in several small ones
-export class DialogModalPlugin extends BaseModalPlugin {
+export class DialogModalPlugin extends BaseModalWithPrefabPlugin {
     //#region Fields
     private _currentBoxDimensions: Position;
     private _closeButton: Phaser.GameObjects.Text;
@@ -27,8 +23,6 @@ export class DialogModalPlugin extends BaseModalPlugin {
     private _messageInArray: string[];
     private _eventCounter = 0;
     private _timedEvent: Phaser.Time.TimerEvent;
-    private _displayingPersonSprite: Phaser.GameObjects.Sprite;
-    private _listOfDisplayingSprites: Dictionary<Phaser.GameObjects.Sprite> = {};
     private  _positionByDirectionList: Dictionary<Position>;
     //#endregion
     
@@ -61,10 +55,6 @@ export class DialogModalPlugin extends BaseModalPlugin {
         
         if (this._displayedMessage) {
             this._displayedMessage.setVisible(visibility);
-        }
-        
-        if (this._displayingPersonSprite) {
-            this._displayingPersonSprite.setVisible(visibility);
         }
 
         if (this._nextPageButton) {
@@ -117,7 +107,7 @@ export class DialogModalPlugin extends BaseModalPlugin {
         let currentAction = undefined;
         
         if (currentMessage) {
-            this.createPeopleSpeakingBox(currentMessage,
+            this.createPeopleBox(currentMessage.prefab,
                                         this._currentBoxDimensions.x, this._currentBoxDimensions.y, 
                                         this._currentBoxDimensions.width, this._currentBoxDimensions.height);
 
@@ -133,34 +123,6 @@ export class DialogModalPlugin extends BaseModalPlugin {
         }
 
         currentAction();
-    }
-    
-    private createPeopleSpeakingBox(currentMessage: ModalText, x: number, y: number, rectWidth: number, rectHeight: number) {             
-        const prefab = currentMessage.prefab;
-    
-        if (prefab) {
-            this.setPrefabToDisplay(prefab);
-            
-            this.setFixed(this._displayingPersonSprite);            
-            this._displayingPersonSprite.setPosition(x + 10 + this.configuration.padding * 2, y + rectHeight / 2 );
-        }
-    }
-
-    private hideCurrentPrefabSprite() {
-        if (this._displayingPersonSprite) {
-            this._displayingPersonSprite.setVisible(false);
-        }
-    }
-
-    private setPrefabToDisplay(prefab: Prefab) {
-        this._displayingPersonSprite = this._listOfDisplayingSprites[prefab.key];
-
-        if (! this._displayingPersonSprite) {
-            this.hideCurrentPrefabSprite(); 
-
-            this._displayingPersonSprite = this.scene.createSpriteByPrefabObject(<Prefab> prefab);
-            this._listOfDisplayingSprites[prefab.key] = this._displayingPersonSprite;
-        }
     }
     
     private calculateWindowDimensions(width: string | number, height: string | number): Position {
@@ -219,7 +181,7 @@ export class DialogModalPlugin extends BaseModalPlugin {
             this._displayedMessage.destroy();
         }
 
-        const x = this.configuration.padding + this._displayingPersonSprite.displayWidth + 20;
+        const x = this.configuration.padding + this.currentPrefab.displayWidth + 20;
         const y = +this.getGameHeight() - this.configuration.windowHeight - this.configuration.padding + 10;
         
         this._displayedMessage = this.scene.make.text({
@@ -227,7 +189,7 @@ export class DialogModalPlugin extends BaseModalPlugin {
             y: y,
             text: value,
             style: {
-                wordWrap: { width: +this.getGameWidth() - (this.configuration.padding * 2) - this._displayingPersonSprite.width }
+                wordWrap: { width: +this.getGameWidth() - (this.configuration.padding * 2) - this.currentPrefab.width }
             }
         });
         

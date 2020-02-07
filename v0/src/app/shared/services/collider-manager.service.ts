@@ -56,7 +56,6 @@ export class ColliderManagerService {
 
     //#region Internal methods
     private updatePlayerHealth(damage: number, gameDataManager: GameDataManagerService) {
-        console.log('updatePlayerHealth>>damage', damage);
         gameDataManager.updatePlayerHealth(damage);
         this._isAlreadyUpdateHealth = false;
     }

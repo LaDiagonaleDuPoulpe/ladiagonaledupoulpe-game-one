@@ -1,10 +1,10 @@
-import { BaseMapLevelScene } from '../scenes/base-map-level.scene';
-import { BaseModalPlugin } from './base-modal.plugin';
 import PlayerData from '../models/game/player-data';
 import { Position } from '../models/position';
+import { BaseMapLevelScene } from '../scenes/base-map-level.scene';
+import { BaseModalWithPrefabPlugin } from './base-modal-with-prefab.plugin';
 
 /** Plugin to display one box with stats of one player */
-export class StatsPlayerBoxPlugin extends BaseModalPlugin {
+export class StatsPlayerBoxPlugin extends BaseModalWithPrefabPlugin {
     //#region Fields
     private _healthText: Phaser.GameObjects.Text;
     //#endregion
@@ -41,6 +41,11 @@ export class StatsPlayerBoxPlugin extends BaseModalPlugin {
                                 this.configuration.position.height);
 
         this.displayerStatsOf(this._player, this.configuration.position);
+        this.createPeopleBox(this._player.prefabAvatar, 
+                            this.configuration.position.x, 
+                            this.configuration.position.y, 
+                            this.configuration.position.width, 
+                            this.configuration.position.height);
     }
 
     private displayerStatsOf(player: PlayerData, currentPosition: Position) {

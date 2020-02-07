@@ -117,7 +117,8 @@
         "doors",
         "ship",
         "sparks",
-        "messageBoxs"
+        "messageBoxs",
+        "statsPlayers"
     ],
     "prefabs": [
         {
