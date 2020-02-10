@@ -13,8 +13,8 @@
                     "texture": "octo3FaceSpriteSheet",
                     "group": "statsPlayers",
                     "scale": {
-                        "x": 0.4,
-                        "y": 0.4
+                        "x": 0.3,
+                        "y": 0.3
                     },
                     "depth": 3,
                     "visible": true,
@@ -36,6 +36,7 @@
                 "electronicAttack": 10,
                 "defense": 10,
                 "health": 100,
+                "healthMax": 100,
                 "mana": 100,
                 "speed": 15
             }

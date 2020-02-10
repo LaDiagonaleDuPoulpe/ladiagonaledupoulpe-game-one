@@ -3,5 +3,8 @@ export default class PlayerStatisticData {
     //#region Fields
     /** Health of the player */
     public health: number;
+
+    /** Max of the health from the current level of the player */
+    public healthMax: number;
     //#endregion
 }

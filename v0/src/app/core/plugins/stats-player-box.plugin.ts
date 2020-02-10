@@ -22,7 +22,9 @@ export class StatsPlayerBoxPlugin extends BaseModalWithPrefabPlugin {
 
     /** Displays new values of stats of the current player */
     public refresh() {
-        this._healthText.setText(this._player.stats.health + "XP")
+        const healthContent = `XP: ${this._player.stats.health} / ${this._player.stats.healthMax}`;
+
+        this._healthText.setText(healthContent);
     }
     //#endregion
 
@@ -41,8 +43,9 @@ export class StatsPlayerBoxPlugin extends BaseModalWithPrefabPlugin {
                                 this.configuration.position.height);
 
         this.displayerStatsOf(this._player, this.configuration.position);
+
         this.createPeopleBox(this._player.prefabAvatar, 
-                            this.configuration.position.x, 
+                            this.configuration.position.x - 50, 
                             this.configuration.position.y, 
                             this.configuration.position.width, 
                             this.configuration.position.height);
@@ -50,7 +53,7 @@ export class StatsPlayerBoxPlugin extends BaseModalWithPrefabPlugin {
 
     private displayerStatsOf(player: PlayerData, currentPosition: Position) {
         this._healthText = this.scene.make.text({
-            x: currentPosition.x + 100,
+            x: currentPosition.x + 150,
             y: currentPosition.y + 20,
             text: "",
             style: {
