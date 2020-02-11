@@ -32,6 +32,8 @@ export class StatsPlayerBoxPlugin extends BaseModalWithPrefabPlugin {
     protected createWindow() {
         super.createWindow(); 
 
+        this.scene.statusBarManager.addOne();
+
         this.createOuterWindow(this.configuration.position.x, 
                                this.configuration.position.y, 
                                this.configuration.position.width, 

@@ -1,6 +1,7 @@
 import "phaser";
 import { DialogModalPlugin } from '../plugins/dialog-modal.plugin';
 import { StatsPlayerBoxManagerPlugin } from '../plugins/stats-player-box-manager.plugin';
+import { StatusBarPlugin } from '../plugins/status-bar.plugin';
 
 type scaleMode = 'FIT' | 'SMOOTH';
 
@@ -24,7 +25,8 @@ const defaultConfig =  {
     plugins: {
         scene: [
             { key: 'dialogModalPlugin', plugin: DialogModalPlugin, mapping: 'dialogModalPlugin' },
-            { key: 'playerStatModalManagerPlugin', plugin: StatsPlayerBoxManagerPlugin, mapping: 'playerStatModalManagerPlugin' }
+            { key: 'playerStatModalManagerPlugin', plugin: StatsPlayerBoxManagerPlugin, mapping: 'playerStatModalManagerPlugin' },
+            { key: 'statusBarPlugin', plugin: StatusBarPlugin, mapping: 'StatusBarPlugin'}
         ]
     },
     physics: {

@@ -13,6 +13,7 @@ import { GameDataManagerService } from '../../shared/services/game-data-manager.
 import { StatsPlayerBoxManagerPlugin } from '../plugins/stats-player-box-manager.plugin';
 import { DialogModalConfiguration } from '../models/dialog-modal/dialog-modal-configuration';
 import PlayerData from '../models/game/player-data';
+import { StatusBarPlugin } from '../plugins/status-bar.plugin';
 
 /**
 * Parent class of all custom scenes of the game
@@ -153,6 +154,11 @@ export class BaseScene extends Phaser.Scene {
     /** Manager to create all player stats box for each player */
     public get playerStatsBoxManager(): StatsPlayerBoxManagerPlugin {
         return <StatsPlayerBoxManagerPlugin> (this['playerStatModalManagerPlugin']);
+    }
+
+    /** Manager to create, show, hide status bar list */
+    public get statusBarManager(): StatusBarPlugin {
+        return <StatusBarPlugin> (this['StatusBarPlugin']);
     }
 
     /** Gets data manager for the game (player data, ...) */
