@@ -2,6 +2,7 @@ import PlayerData from '../models/game/player-data';
 import { Position } from '../models/position';
 import { BaseMapLevelScene } from '../scenes/base-map-level.scene';
 import { BaseModalWithPrefabPlugin } from './base-modal-with-prefab.plugin';
+import { StatusBarConfiguration } from '../models/statusBar/status-bar-configuration';
 
 /** Plugin to display one box with stats of one player */
 export class StatsPlayerBoxPlugin extends BaseModalWithPrefabPlugin {
@@ -32,7 +33,7 @@ export class StatsPlayerBoxPlugin extends BaseModalWithPrefabPlugin {
     protected createWindow() {
         super.createWindow(); 
 
-        this.scene.statusBarManager.addOne();
+        this.scene.statusBarManager.addOne(new StatusBarConfiguration());
 
         this.createOuterWindow(this.configuration.position.x, 
                                this.configuration.position.y, 
