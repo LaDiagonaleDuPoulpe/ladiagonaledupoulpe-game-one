@@ -3,6 +3,7 @@ import { Position } from '../models/position';
 import { BaseMapLevelScene } from '../scenes/base-map-level.scene';
 import { BaseModalWithPrefabPlugin } from './base-modal-with-prefab.plugin';
 import { StatusBarConfiguration } from '../models/statusBar/status-bar-configuration';
+import { StatusPlayerBoxConfiguration } from '../models/statusBar/status-player-box-configuration';
 
 /** Plugin to display one box with stats of one player */
 export class StatsPlayerBoxPlugin extends BaseModalWithPrefabPlugin {
@@ -33,7 +34,8 @@ export class StatsPlayerBoxPlugin extends BaseModalWithPrefabPlugin {
     protected createWindow() {
         super.createWindow(); 
 
-        this.scene.statusBarManager.addOne(new StatusBarConfiguration());
+        const statusConfiguration = (<StatusPlayerBoxConfiguration> this.configuration).healthBarBox;
+        this.scene.statusBarManager.addOne(statusConfiguration);
 
         this.createOuterWindow(this.configuration.position.x, 
                                this.configuration.position.y, 

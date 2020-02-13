@@ -37,6 +37,14 @@
             "borderThickness": 10,
             "spriteBox": {
                 "width": 200
+            },
+            "healthBarBox": {
+                "beginColor": "#8ED6FF",
+                "endColor": "#004CB3",
+                "position": {
+                    "width": 256,
+                    "height": 50
+                }
             }
         }
     },

@@ -18,7 +18,7 @@ export class StatusBarPlugin extends Phaser.Plugins.ScenePlugin {
     /** Adds new status bar */
     public addOne(configuration: StatusBarConfiguration) {
         this.createOuterBox(configuration);
-        // TODO: 12/02/2020: adds default configuration for status bar in a json file (maybe the global ?) 
+        // TODO: 12/02/2020: how to get the json configuration here for this status bar box
     }
     //#endregion
 
@@ -29,9 +29,7 @@ export class StatusBarPlugin extends Phaser.Plugins.ScenePlugin {
         const texture = this._scene.textures.createCanvas(textureKey, 
                                                           configuration.position.width, configuration.position.height);
         var grd = texture.context.createLinearGradient(0, 0, 100, 256);
-        
-        // grd.addColorStop(0, '#8ED6FF');
-        // grd.addColorStop(1, '#004CB3');
+    
 
         grd.addColorStop(0, configuration.beginColor);
         grd.addColorStop(1, configuration.endColor);
