@@ -9,8 +9,9 @@ export abstract class BaseModalPlugin extends Phaser.Plugins.ScenePlugin {
     private _graphicObject: Phaser.GameObjects.Graphics;
     //#endregion
     
-    constructor(private _scene: BaseMapLevelScene, pluginManager: Phaser.Plugins.PluginManager) {
-        super(_scene, pluginManager);
+    constructor(protected _scene: BaseMapLevelScene, 
+                protected _pluginManager: Phaser.Plugins.PluginManager) {
+        super(_scene, _pluginManager);
         this._systems = this._scene.sys;
     }
     

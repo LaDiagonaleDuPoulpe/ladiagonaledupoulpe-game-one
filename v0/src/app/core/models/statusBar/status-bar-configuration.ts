@@ -1,4 +1,7 @@
 import { Position } from '../position';
+import { Style } from '../style';
+import { StatusBarType } from '../../../shared/enums/status-bar-type';
+
 /** Configuration to custom each status bar of each status box */
 export class StatusBarConfiguration {
     //#region Fields
@@ -16,5 +19,17 @@ export class StatusBarConfiguration {
 
     /** Size of the current status value */
     public insideBoxWidth: number;
+
+    /** Current size of the inner box */
+    public currentValue: number;
+
+    /** Max size of the inner box */
+    public maxValue: number;
+
+    /** Style (font and fill) of the text */
+    public textStyle: Style;
+
+    /** Allows you to change, for example, text inside the status bar */
+    public type: StatusBarType;
     //#endregion
 }

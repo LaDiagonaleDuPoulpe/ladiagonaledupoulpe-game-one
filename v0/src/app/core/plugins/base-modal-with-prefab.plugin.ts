@@ -10,8 +10,9 @@ export abstract class BaseModalWithPrefabPlugin extends BaseModalPlugin {
     private _displayingPersonSprite: Phaser.GameObjects.Sprite;
     //#endregion
     
-    constructor(_scene: BaseMapLevelScene, pluginManager: Phaser.Plugins.PluginManager) {
-        super(_scene, pluginManager);
+    constructor(protected _scene: BaseMapLevelScene, 
+                protected _pluginManager: Phaser.Plugins.PluginManager) {
+        super(_scene, _pluginManager);
     }
 
     //#region Public methods
@@ -71,6 +72,7 @@ export abstract class BaseModalWithPrefabPlugin extends BaseModalPlugin {
     //#endregion
 
     //#region Properties
+    /** Current prefab reprenting face of current player */
     protected get currentPrefab(): Phaser.GameObjects.Sprite {
         return this._displayingPersonSprite;
     }

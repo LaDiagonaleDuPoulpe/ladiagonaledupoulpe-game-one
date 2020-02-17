@@ -31,6 +31,7 @@ export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
 
         // INFO: 03/02/2020: For test only
         let secondPlayer = Object.assign({}, this.scene.playerList[0]);
+        secondPlayer.key = 'player2';
         this.scene.playerList.push(secondPlayer);
 
         this.scene.playerList.forEach(player => {

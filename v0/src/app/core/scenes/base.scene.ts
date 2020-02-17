@@ -156,11 +156,6 @@ export class BaseScene extends Phaser.Scene {
         return <StatsPlayerBoxManagerPlugin> (this['playerStatModalManagerPlugin']);
     }
 
-    /** Manager to create, show, hide status bar list */
-    public get statusBarManager(): StatusBarPlugin {
-        return <StatusBarPlugin> (this['StatusBarPlugin']);
-    }
-
     /** Gets data manager for the game (player data, ...) */
     protected get gameDataManager(): GameDataManagerService {
         return this._gameDataManager;

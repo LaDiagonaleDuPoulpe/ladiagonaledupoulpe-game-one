@@ -43,7 +43,11 @@
                 "endColor": "#004CB3",
                 "position": {
                     "width": 256,
-                    "height": 50
+                    "height": 30
+                },
+                "textStyle": {
+                    "font": "bold 20px Arial",
+                    "fill": "#ffffff"
                 }
             }
         }
