@@ -189,6 +189,8 @@ export class DialogModalPlugin extends BaseModalWithPrefabPlugin {
             y: y,
             text: value,
             style: {
+                font: this.configuration.contentStyle.font,
+                fill: this.configuration.contentStyle.fill,
                 wordWrap: { width: +this.getGameWidth() - (this.configuration.padding * 2) - this.currentPrefab.width }
             }
         });

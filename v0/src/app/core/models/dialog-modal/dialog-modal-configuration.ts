@@ -25,6 +25,9 @@ import { Position } from '../position';
      */
     public closeButtonStyle: Style;
 
+    /** Defines style of the modal content text */
+    public contentStyle: Style;
+
     /**
      * Size of the box
      */

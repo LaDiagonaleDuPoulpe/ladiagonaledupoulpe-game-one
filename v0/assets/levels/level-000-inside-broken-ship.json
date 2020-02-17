@@ -1,7 +1,7 @@
 {
     "defaultConfiguration": {
         "style": {
-            "font": "14px Kells",
+            "font": "25px Kells",
             "fill": "#ffffff"
         },
         "messageBox": {
@@ -11,7 +11,11 @@
             "closeButtonStyle": {
                 "font": "bold 20px Arial",
                 "fill": "#ffffff"
-            },         
+            },    
+            "contentStyle": {
+                "font": "bold 30px Arial",
+                "fill": "#ffffff"
+            },     
             "windowHeight": 200,            
             "padding": 50,            
             "borderThickness": 10,
