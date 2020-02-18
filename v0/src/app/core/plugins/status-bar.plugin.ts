@@ -35,23 +35,31 @@ export class StatusBarPlugin extends BaseDisplayingDataBoxPlugin {
     }
 
     /** Allows you to refresh status bar value and text onside */
-    public update(currentValue: number, maxValue: number) {        
-        this.updateProgressBar(currentValue, maxValue);
-        this.updateContentText(currentValue, maxValue);
+    public update(currentValue: number, maxValue: number) {  
+        const pourcent = (currentValue / maxValue);
+
+        if (pourcent >= 0) {
+            this.updateProgressBar(pourcent);
+            this.updateContentText(currentValue, maxValue);
+        }
         
     }
     //#endregion    
     
     //#region Internal methods
-    private updateProgressBar(currentValue: number, maxValue: number) {
+    private updateProgressBar(pourcent: number) {
         if (this._progressBar) {
             this._progressBar.clear();
-            const pourcent = (currentValue / maxValue);
             const currentWidth = pourcent * this._configuration.position.width;
 
             if (currentWidth > 0) {
                 this._progressBar.fillStyle(this.getProgressBarStyle(pourcent *  100));
-                this._progressBar.fillRoundedRect(0, 0, currentWidth, this._configuration.position.height);
+
+                if (currentWidth > 10) {
+                    this._progressBar.fillRoundedRect(0, 0, currentWidth, this._configuration.position.height);
+                } else {
+                    this._progressBar.fillRect(0, 0, currentWidth, this._configuration.position.height);
+                }
             }
         }
     }
