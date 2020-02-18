@@ -39,7 +39,7 @@ export class StatusBarPlugin extends BaseDisplayingDataBoxPlugin {
     public update(currentValue: number, maxValue: number) {  
         const pourcent = (currentValue / maxValue);
 
-        if (pourcent >= 0) {
+        if (currentValue >= -1) {
             this.updateProgressBar(pourcent);
             this.updateContentText(currentValue, maxValue);
         }
