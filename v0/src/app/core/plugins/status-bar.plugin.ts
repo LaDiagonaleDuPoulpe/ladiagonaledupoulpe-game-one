@@ -7,7 +7,7 @@ import { BaseDisplayingDataBoxPlugin } from "./base-displaying-data-box.plugin";
 /** Plugin to add one or more status bar on the game scene, and save all in cache */
 export class StatusBarPlugin extends BaseDisplayingDataBoxPlugin {
     //#region Fields
-    private _textureInnerBox: Phaser.Textures.CanvasTexture;
+    private _progressBar: Phaser.GameObjects.Graphics;
     private _statusValueAsText: Phaser.GameObjects.Text;
     private _configuration: StatusBarConfiguration;
     private _type: StatusBarType;
@@ -25,11 +25,12 @@ export class StatusBarPlugin extends BaseDisplayingDataBoxPlugin {
         this._configuration = configuration;
         this._type = configuration.type;
 
-        this.createOuterBox(this._configuration);
         this.createInnerBox(this._configuration.position.x,
-                            this._configuration.position.y,
-                            this._configuration.position.width,
-                            this._configuration.position.height);
+            this._configuration.position.y,
+            this._configuration.position.width,
+            this._configuration.position.height);
+            
+        this.createOuterBox(this._configuration);
         this.createTextBox(this._configuration);
     }
 
@@ -37,7 +38,9 @@ export class StatusBarPlugin extends BaseDisplayingDataBoxPlugin {
     public update(currentValue: number, maxValue: number) {
         const content = `${this._type}: ${currentValue} / ${maxValue}`;
 
-        this._statusValueAsText.setText(content);
+        if (this._statusValueAsText) {
+            this._statusValueAsText.setText(content);
+        }
     }
     //#endregion    
 
@@ -51,6 +54,7 @@ export class StatusBarPlugin extends BaseDisplayingDataBoxPlugin {
             width: configuration.position.width,
             height: configuration.position.height
         };
+
         this.createBoxAsRectangle(this.graphicObject,
                                  currentPosition,
                                  configuration.borderSize,
@@ -58,25 +62,15 @@ export class StatusBarPlugin extends BaseDisplayingDataBoxPlugin {
     }
 
     protected createInnerBox(x: number, y: number, rectWidth: number, rectHeight: number) {
-        const textureKey = `${this._configuration.key}_InnerBox`;
+        this._progressBar = this.scene.add.graphics();
+        this._progressBar.fillStyle(this._configuration.beginColor);
 
-        const texture = this._scene.textures.createCanvas(textureKey, 
-                                                          rectWidth, rectHeight);
-        var grd = texture.context.createLinearGradient(0, 0, rectWidth / 2, rectHeight);
-    
+        this._progressBar.fillRoundedRect(0, 0, rectWidth, rectHeight);
 
-        grd.addColorStop(0, this._configuration.beginColor);
-        grd.addColorStop(1, this._configuration.endColor);
+        this._progressBar.setX(x);
+        this._progressBar.setY(y);
         
-        texture.context.fillStyle = grd;
-        texture.context.fillRect(0, 0, rectWidth, rectHeight);
-
-        this._textureInnerBox = texture;
-
-        var image = this.scene.add.image(x, y, textureKey);
-        this.setFixed(image);
-
-        texture.refresh();
+        this.setFixed(this._progressBar); 
     }
 
     private createTextBox(configuration: StatusBarConfiguration) {

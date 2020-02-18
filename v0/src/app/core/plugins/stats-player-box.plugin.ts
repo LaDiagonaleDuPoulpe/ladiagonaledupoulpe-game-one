@@ -64,7 +64,7 @@ export class StatsPlayerBoxPlugin extends BaseModalWithPrefabPlugin {
     }
 
     private displayHealthStatus(player: PlayerData, currentPosition: Position) {
-        const statusPositionX = currentPosition.x + this.currentPrefab.displayWidth + 150;
+        const statusPositionX = currentPosition.x + this.currentPrefab.displayWidth;
         const statusPositionY = currentPosition.y + 40;
 
         const statusConfiguration = (<StatusPlayerBoxConfiguration> this.configuration).healthBarBox;

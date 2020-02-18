@@ -28,7 +28,8 @@ export abstract class BaseDisplayingDataBoxPlugin extends Phaser.Plugins.ScenePl
 
     protected prepareOneGraphicsObject(): Phaser.GameObjects.Graphics {
         const object = this.scene.add.graphics();
-        this.setFixed(object);
+
+        this.setFixed(object);        
 
         return object;
     }

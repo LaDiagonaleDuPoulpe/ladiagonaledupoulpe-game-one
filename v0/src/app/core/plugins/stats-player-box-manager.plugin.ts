@@ -26,7 +26,7 @@ export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
     //#endregion
 
     //#region Internal methods
-    protected createWindow() {
+    protected createBox() {
         let currentPosition = Object.assign({}, this.configuration.position);
 
         // INFO: 03/02/2020: For test only

@@ -15,10 +15,10 @@ export class StatusBarConfiguration {
     public borderColor: number;
 
     /** Color of the status bar at the beginning */
-    public beginColor: string;
+    public beginColor: number;
 
     /** Color of the status bar at the end */
-    public endColor: string;
+    public endColor: number;
 
     /** Position of the status bar in the box */
     public position: Position;
