@@ -11,6 +11,7 @@ export class StatusBarPlugin extends BaseDisplayingDataBoxPlugin {
     private _statusValueAsText: Phaser.GameObjects.Text;
     private _configuration: StatusBarConfiguration;
     private _type: StatusBarType;
+    private _timedEvent: Phaser.Time.TimerEvent;
     //#endregion
     
     constructor(_scene: BaseMapLevelScene, pluginManager: Phaser.Plugins.PluginManager) {
@@ -53,15 +54,14 @@ export class StatusBarPlugin extends BaseDisplayingDataBoxPlugin {
             const currentWidth = pourcent * this._configuration.position.width;
 
             if (currentWidth > 0) {
-                this._progressBar.fillStyle(this.getProgressBarStyle(pourcent *  100));
-
-                if (currentWidth > 10) {
-                    this._progressBar.fillRoundedRect(0, 0, currentWidth, this._configuration.position.height);
-                } else {
-                    this._progressBar.fillRect(0, 0, currentWidth, this._configuration.position.height);
-                }
+                this.displayStyleByPourcent(pourcent);
+                this._progressBar.fillRect(0, 0, currentWidth, this._configuration.position.height);
             }
         }
+    }
+
+    private displayStyleByPourcent(value: number) {
+        this._progressBar.fillStyle(this.getProgressBarStyle(value *  100));
     }
 
     // TODO: 19/02/2020, create a custom progress bar class ?
