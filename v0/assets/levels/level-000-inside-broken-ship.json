@@ -45,6 +45,8 @@
             "healthBarBox": {
                 "beginColor": "#8ED6FF",
                 "endColor": "#004CB3",
+                "borderColor": "0xFFFFFF",
+                "borderSize": 3,
                 "position": {
                     "width": 256,
                     "height": 30

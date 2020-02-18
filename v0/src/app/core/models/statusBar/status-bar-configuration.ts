@@ -8,6 +8,12 @@ export class StatusBarConfiguration {
     /** Key of the status bar */
     public key: string;
 
+    /** Size of the borders of the outer box */
+    public borderSize: number;
+
+    /** Color of the borders of the outer box */
+    public borderColor: number;
+
     /** Color of the status bar at the beginning */
     public beginColor: string;
 

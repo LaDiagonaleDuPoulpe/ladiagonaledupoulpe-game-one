@@ -21,6 +21,12 @@ export abstract class BaseModalWithPrefabPlugin extends BaseModalPlugin {
 
         this.setVisibilityOfCurrentPrefabBox(visibility);
     }
+
+    /** 
+     * Displays new content. 
+     * Overrides if to define how the refresh will be done
+     */
+    abstract refresh();
     //#endregion
 
     //#region Internal methods

@@ -29,21 +29,21 @@ export class StatsPlayerBoxPlugin extends BaseModalWithPrefabPlugin {
     public refresh() {
         for (const key in this._statusBarList) {
             // TODO: 17/02/2020, see how to pass the values for each statusType (xp, mp, ...)
-            this._statusBarList[key].refresh(this._player.stats.health, this._player.stats.healthMax);
+            this._statusBarList[key].update(this._player.stats.health, this._player.stats.healthMax);
         }
     }
     //#endregion
 
     //#region Internal methods
-    protected createWindow() {
-        super.createWindow(); 
+    protected createBox() {
+        super.createBox(); 
 
-        this.createOuterWindow(this.configuration.position.x, 
+        this.createOuterBox(this.configuration.position.x, 
                                this.configuration.position.y, 
                                this.configuration.position.width, 
                                this.configuration.position.height);
 
-        this.createInnerWindow(this.configuration.position.x, 
+        this.createInnerBox(this.configuration.position.x, 
                                 this.configuration.position.y, 
                                 this.configuration.position.width, 
                                 this.configuration.position.height);

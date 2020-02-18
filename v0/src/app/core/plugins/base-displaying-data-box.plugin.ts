@@ -15,11 +15,6 @@ export abstract class BaseDisplayingDataBoxPlugin extends Phaser.Plugins.ScenePl
     }
     
     //#region Public methods
-    /** 
-     * Displays new content. 
-     * Overrides if to define how the refresh will be done
-     */
-    abstract refresh();
     //#endregion
 
     //#region Internal methods
@@ -27,7 +22,7 @@ export abstract class BaseDisplayingDataBoxPlugin extends Phaser.Plugins.ScenePl
      * Allows you to create window. Overrides it to create the window
      * Here, we initialize the graphic object of the modal box
      */
-    protected createWindow() {
+    protected createBox() {
         this._graphicObject = this.prepareOneGraphicsObject();
     } 
 
@@ -57,10 +52,11 @@ export abstract class BaseDisplayingDataBoxPlugin extends Phaser.Plugins.ScenePl
      * @param rectWidth Width of the inside box
      * @param rectHeight Height of the inside box
      */
-    protected abstract createInnerWindow(x: number, y: number, rectWidth: number, rectHeight: number);
+    protected abstract createInnerBox(x: number, y: number, rectWidth: number, rectHeight: number);
 
     /** Sets modal box to a fixed mode (can't move, and before all game objects) */
-    protected setFixed(object: Phaser.GameObjects.Graphics | Phaser.GameObjects.Text | Phaser.GameObjects.Sprite, depth: number = 100) {
+    protected setFixed(object: Phaser.GameObjects.Graphics | Phaser.GameObjects.Text | Phaser.GameObjects.Sprite | Phaser.GameObjects.Image, 
+                       depth: number = 100) {
         object.setScrollFactor(0);
         object.setDepth(depth);
     }

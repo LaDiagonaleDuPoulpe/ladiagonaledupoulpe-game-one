@@ -18,7 +18,7 @@ export abstract class BaseModalPlugin extends BaseDisplayingDataBoxPlugin {
         this._configuration = config;
         
         if (config) {
-            this.createWindow();
+            this.createBox();
         }
     }
 
@@ -48,7 +48,7 @@ export abstract class BaseModalPlugin extends BaseDisplayingDataBoxPlugin {
      * @param rectWidth Width of the box
      * @param rectHeight Height of the box
      */
-    protected createOuterWindow(x: number, y: number, rectWidth: number, rectHeight: number) {
+    protected createOuterBox(x: number, y: number, rectWidth: number, rectHeight: number) {
         this.createBoxAsRectangle(this.graphicObject,
                                   { x: x, y: y, width: rectWidth, height: rectHeight},
                                   this.configuration.borderThickness,
@@ -62,7 +62,7 @@ export abstract class BaseModalPlugin extends BaseDisplayingDataBoxPlugin {
      * @param rectWidth Width of the inside box
      * @param rectHeight Height of the inside box
      */
-    protected createInnerWindow(x: number, y: number, rectWidth: number, rectHeight: number) {
+    protected createInnerBox(x: number, y: number, rectWidth: number, rectHeight: number) {
         this.graphicObject.fillStyle(this.configuration.windowColor);
         this.graphicObject.fillRect(x + 1, y + 1, rectWidth - 1, rectHeight - 1);
     }

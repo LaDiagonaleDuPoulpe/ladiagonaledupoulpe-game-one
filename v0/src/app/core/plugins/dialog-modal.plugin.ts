@@ -67,17 +67,17 @@ export class DialogModalPlugin extends BaseModalWithPrefabPlugin {
     
     //#region Internal methods    
     /** Allows you to create the window with borders, and inside box with real content */
-    protected createWindow() {
-        super.createWindow();
+    protected createBox() {
+        super.createBox();
 
         const gameHeight = this.getGameHeight();
         const gameWidth = this.getGameWidth();
         this._currentBoxDimensions = this.calculateWindowDimensions(gameWidth, gameHeight);
         
-        this.createOuterWindow(this._currentBoxDimensions.x, this._currentBoxDimensions.y, 
+        this.createOuterBox(this._currentBoxDimensions.x, this._currentBoxDimensions.y, 
                                this._currentBoxDimensions.width, this._currentBoxDimensions.height);
 
-        this.createInnerWindow(this._currentBoxDimensions.x, this._currentBoxDimensions.y, 
+        this.createInnerBox(this._currentBoxDimensions.x, this._currentBoxDimensions.y, 
                                this._currentBoxDimensions.width, this._currentBoxDimensions.height);
         
         this.createCloseModalButton();
