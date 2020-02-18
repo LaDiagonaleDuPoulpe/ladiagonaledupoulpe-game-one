@@ -43,8 +43,8 @@
                 "width": 200
             },
             "healthBarBox": {
-                "beginColor": "0x8ED6FF",
-                "endColor": "0x004CB3",
+                "beginColor": "0x1500FF",
+                "endColor": "0x004CB0",
                 "borderColor": "0xFFFFFF",
                 "borderSize": 3,
                 "position": {

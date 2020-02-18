@@ -35,16 +35,32 @@ export class StatusBarPlugin extends BaseDisplayingDataBoxPlugin {
     }
 
     /** Allows you to refresh status bar value and text onside */
-    public update(currentValue: number, maxValue: number) {
-        const content = `${this._type}: ${currentValue} / ${maxValue}`;
+    public update(currentValue: number, maxValue: number) {        
+        this.updateProgressBar(currentValue, maxValue);
+        this.updateContentText(currentValue, maxValue);
+        
+    }
+    //#endregion    
+    
+    //#region Internal methods
+    private updateProgressBar(currentValue: number, maxValue: number) {
+        if (this._progressBar) {
+            this._progressBar.clear();
+            const currentWidth = (currentValue / maxValue) * this._configuration.position.width;
 
+            
+            this._progressBar.fillStyle(this._configuration.beginColor);
+            this._progressBar.fillRoundedRect(0, 0, currentWidth, this._configuration.position.height);
+        }
+    }
+    
+    private updateContentText(currentValue: number, maxValue: number) {
         if (this._statusValueAsText) {
+            const content = `${this._type}: ${currentValue} / ${maxValue}`;
             this._statusValueAsText.setText(content);
         }
     }
-    //#endregion    
 
-    //#region Internal methods
     private createOuterBox(configuration: StatusBarConfiguration) {
         this.createBox();
 
@@ -63,9 +79,6 @@ export class StatusBarPlugin extends BaseDisplayingDataBoxPlugin {
 
     protected createInnerBox(x: number, y: number, rectWidth: number, rectHeight: number) {
         this._progressBar = this.scene.add.graphics();
-        this._progressBar.fillStyle(this._configuration.beginColor);
-
-        this._progressBar.fillRoundedRect(0, 0, rectWidth, rectHeight);
 
         this._progressBar.setX(x);
         this._progressBar.setY(y);
@@ -76,7 +89,7 @@ export class StatusBarPlugin extends BaseDisplayingDataBoxPlugin {
     private createTextBox(configuration: StatusBarConfiguration) {
         this._statusValueAsText = this.scene.make.text({
             x: configuration.position.x,
-            y: configuration.position.y - 10,
+            y: configuration.position.y,
             text: "",
             style: {
                 font: this._configuration.textStyle.font,
