@@ -46,12 +46,29 @@ export class StatusBarPlugin extends BaseDisplayingDataBoxPlugin {
     private updateProgressBar(currentValue: number, maxValue: number) {
         if (this._progressBar) {
             this._progressBar.clear();
-            const currentWidth = (currentValue / maxValue) * this._configuration.position.width;
+            const pourcent = (currentValue / maxValue);
+            const currentWidth = pourcent * this._configuration.position.width;
 
-            
-            this._progressBar.fillStyle(this._configuration.beginColor);
-            this._progressBar.fillRoundedRect(0, 0, currentWidth, this._configuration.position.height);
+            if (currentWidth > 0) {
+                this._progressBar.fillStyle(this.getProgressBarStyle(pourcent *  100));
+                this._progressBar.fillRoundedRect(0, 0, currentWidth, this._configuration.position.height);
+            }
         }
+    }
+
+    // TODO: 19/02/2020, create a custom progress bar class ?
+    private getProgressBarStyle(value: number): number {
+        let style = this._configuration.beginColor;
+
+        if (value >= 30 && value < 50) {
+            style = 0xFFB347;
+        } else if (value >= 10 && value < 30) {
+            style = 0xCC5500;
+        } else if(value < 10) {
+            style = 0xFF0000;
+        }
+
+        return style;
     }
     
     private updateContentText(currentValue: number, maxValue: number) {
