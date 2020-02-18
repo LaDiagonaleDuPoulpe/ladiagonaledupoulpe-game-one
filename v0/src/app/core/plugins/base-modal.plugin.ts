@@ -1,18 +1,16 @@
 import { BaseMapLevelScene } from '../scenes/base-map-level.scene';
 import { DialogModalConfiguration } from '../models/dialog-modal/dialog-modal-configuration';
+import { BaseDisplayingDataBoxPlugin } from './base-displaying-data-box.plugin';
 
 /** Base of all modal window in the game */
-export abstract class BaseModalPlugin extends Phaser.Plugins.ScenePlugin {
+export abstract class BaseModalPlugin extends BaseDisplayingDataBoxPlugin {
     //#region Fields
-    private _systems: Phaser.Scenes.Systems;
     private _configuration: DialogModalConfiguration;
-    private _graphicObject: Phaser.GameObjects.Graphics;
     //#endregion
     
     constructor(protected _scene: BaseMapLevelScene, 
                 protected _pluginManager: Phaser.Plugins.PluginManager) {
         super(_scene, _pluginManager);
-        this._systems = this._scene.sys;
     }
     
     //#region Public methods
@@ -40,31 +38,9 @@ export abstract class BaseModalPlugin extends Phaser.Plugins.ScenePlugin {
     toggleWindow(visibility: boolean) {
         this.graphicObject.setVisible(visibility);
     }
-
-    
-    /** 
-     * Displays new content. 
-     * Overrides if to define how the refresh will be done
-     */
-    abstract refresh();
     //#endregion
     
     //#region Internal methods
-    /** 
-     * Allows you to create window. Overrides it to create the window
-     * Here, we initialize the graphic object of the modal box
-     */
-    protected createWindow() {
-        this._graphicObject = this.prepareOneGraphicsObject();
-    } 
-
-    protected prepareOneGraphicsObject(): Phaser.GameObjects.Graphics {
-        const object = this.scene.add.graphics();
-        this.setFixed(object);
-
-        return object;
-    }
-
     /**
      * Creates outer window inside the graphic object (it's the box with limited borders)
      * @param x Starting x position
@@ -73,8 +49,10 @@ export abstract class BaseModalPlugin extends Phaser.Plugins.ScenePlugin {
      * @param rectHeight Height of the box
      */
     protected createOuterWindow(x: number, y: number, rectWidth: number, rectHeight: number) {
-        this.graphicObject.lineStyle(this.configuration.borderThickness, this.configuration.borderColor);
-        this.graphicObject.strokeRect(x, y, rectWidth, rectHeight);
+        this.createBoxAsRectangle(this.graphicObject,
+                                  { x: x, y: y, width: rectWidth, height: rectHeight},
+                                  this.configuration.borderThickness,
+                                  this.configuration.borderColor);
     }
 
     /**
@@ -88,22 +66,6 @@ export abstract class BaseModalPlugin extends Phaser.Plugins.ScenePlugin {
         this.graphicObject.fillStyle(this.configuration.windowColor);
         this.graphicObject.fillRect(x + 1, y + 1, rectWidth - 1, rectHeight - 1);
     }
-
-    /** Sets modal box to a fixed mode (can't move, and before all game objects) */
-    protected setFixed(object: Phaser.GameObjects.Graphics | Phaser.GameObjects.Text | Phaser.GameObjects.Sprite, depth: number = 100) {
-        object.setScrollFactor(0);
-        object.setDepth(depth);
-    }
-
-    /** Gets the width of the game, based on system game config */
-    protected getGameWidth() {
-        return this.scene.sys.game.config.width;
-    }
-    
-    /** Gets the height of the game, based on system game config */
-    protected getGameHeight() {
-        return this.scene.sys.game.config.height;
-    }
     //#endregion
     
     //#region Properties
@@ -115,16 +77,6 @@ export abstract class BaseModalPlugin extends Phaser.Plugins.ScenePlugin {
     /** Sets configuration of the current modal */
     protected set configuration(value: DialogModalConfiguration) {
         this._configuration = value;
-    }
-    
-    /** Scene where the modal box is display */
-    protected get scene(): BaseMapLevelScene {
-        return this._scene;
-    }
-
-    /** Current graphic object that represents the modal box */
-    protected get graphicObject(): Phaser.GameObjects.Graphics {
-        return this._graphicObject;
     }
     //#endregion
 } 

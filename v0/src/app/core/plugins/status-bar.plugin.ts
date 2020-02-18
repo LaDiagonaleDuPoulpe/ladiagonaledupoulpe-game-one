@@ -7,7 +7,7 @@ import { StatusBarType } from '../../shared/enums/status-bar-type';
 export class StatusBarPlugin extends Phaser.Plugins.ScenePlugin {
     //#region Fields
     private _systems: Phaser.Scenes.Systems;
-    private _texture: Phaser.Textures.CanvasTexture;
+    private _textureInnerBox: Phaser.Textures.CanvasTexture;
     private _statusValueAsText: Phaser.GameObjects.Text;
     private _configuration: StatusBarConfiguration;
     private _type: StatusBarType;
@@ -27,24 +27,35 @@ export class StatusBarPlugin extends Phaser.Plugins.ScenePlugin {
         this._type = configuration.type;
 
         this.createOuterBox(this._configuration);
+        this.createInnerBox(this._configuration);
         this.createTextBox(this._configuration);
     }
 
     /** Allows you to refresh status bar value and text onside */
     public refresh(currentValue: number, maxValue: number) {
-        const healthContent = `${this._type}: ${currentValue} / ${maxValue}`;
+        const content = `${this._type}: ${currentValue} / ${maxValue}`;
 
-        this._statusValueAsText.setText(healthContent);
+        this._statusValueAsText.setText(content);
     }
     //#endregion
 
     //#region Internal methods
     private createOuterBox(configuration: StatusBarConfiguration) {
-        const textureKey = configuration.key;
+        const textureKey = `${configuration.key}_OuterBox`;
+
+        const texture = this._scene.textures.createCanvas(textureKey, 
+                                                        configuration.position.width + 2, 
+                                                        configuration.position.height + 2);
+
+        texture.context.fillRect(0, 0, configuration.position.width, configuration.position.height);
+    }
+
+    private createInnerBox(configuration: StatusBarConfiguration) {
+        const textureKey = `${configuration.key}_InnerBox`;
 
         const texture = this._scene.textures.createCanvas(textureKey, 
                                                           configuration.position.width, configuration.position.height);
-        var grd = texture.context.createLinearGradient(0, 0, 100, 256);
+        var grd = texture.context.createLinearGradient(0, 0, configuration.position.width / 2, configuration.position.height);
     
 
         grd.addColorStop(0, configuration.beginColor);
@@ -53,7 +64,7 @@ export class StatusBarPlugin extends Phaser.Plugins.ScenePlugin {
         texture.context.fillStyle = grd;
         texture.context.fillRect(0, 0, configuration.position.width, configuration.position.height);
 
-        this._texture = texture;
+        this._textureInnerBox = texture;
 
         var image = this.scene.add.image(configuration.position.x, configuration.position.y, textureKey);
         this.setFixed(image);
@@ -64,7 +75,7 @@ export class StatusBarPlugin extends Phaser.Plugins.ScenePlugin {
     private createTextBox(configuration: StatusBarConfiguration) {
         this._statusValueAsText = this.scene.make.text({
             x: configuration.position.x,
-            y: configuration.position.y,
+            y: configuration.position.y - 10,
             text: "",
             style: {
                 font: this._configuration.textStyle.font,
