@@ -16,6 +16,7 @@ import { GameDataManagerService } from '../../shared/services/game-data-manager.
 /**
 * Scene where octopuses are inside the spaceship
 * All is broken, shadow scene, with spikes
+* todo: 25/02/2020, See how to put the start following camera inside the base classe (with json option ?)
 */
 @injectable()
 export class InsideSpaceShipMapScene extends BaseMapLevelScene {
