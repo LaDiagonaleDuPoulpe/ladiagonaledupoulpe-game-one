@@ -15,8 +15,6 @@ export class LevelManageService {
     constructor(private _logger: Logger) {
         this._previousLevelKey = '';
         this._currentLevelKey = '';
-        
-        this._logger.log('LevelManageService', 'constructor');
     }
     
     //#region public methods
@@ -47,6 +45,20 @@ export class LevelManageService {
             this._currentLevelKey = '000-inside-broken-ship';
         }
         
+        return this._currentLevelKey;
+    }
+
+    /** Sets the scene when player is dying */
+    public goToDying() {
+        this._currentLevelKey = '-100-dying-player';
+
+        return this._currentLevelKey;
+    }
+
+    /** Sets the scene when player is died and game is over */
+    public goToEndGame() {
+        this._currentLevelKey = '-200-end-game';
+
         return this._currentLevelKey;
     }
     //#endregion

@@ -19,7 +19,7 @@ export class LevelService {
         levels.push(new Level('000-video-intro', SceneType.video));
         levels.push(new Level('000-inside-broken-ship', SceneType.insideSpaceShipMap));
         levels.push(new Level('-100-dying-player', SceneType.dying));
-        levels.push(new Level('-200-dying-player', SceneType.end));
+        levels.push(new Level('-200-end-game', SceneType.end));
 
         return of(levels);
     }
