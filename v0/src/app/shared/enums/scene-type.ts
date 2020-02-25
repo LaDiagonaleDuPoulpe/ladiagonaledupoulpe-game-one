@@ -5,7 +5,7 @@
 export enum SceneType {
     main = 'MainScene',
     dying = 'DyingScene',
-    end = '',
+    end = 'EndGameScene',
     boot = 'BootScene',
     loading = 'LoadingScene',
     title = 'TitleScene',
