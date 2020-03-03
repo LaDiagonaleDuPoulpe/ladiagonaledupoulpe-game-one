@@ -19,6 +19,8 @@ import { VideoScene } from '../scenes/video.scene';
 import { InsideSpaceShipMapScene } from '../scenes/inside-space-ship-map.scene';
 import { ColliderManagerService } from '../../shared/services/collider-manager.service';
 import PreloadFirstScene from '../scenes/preload-first.scene';
+import { DyingScene } from '../scenes/dying.scene';
+import { EndGameScene } from '../scenes/end-game.scene';
 
 
 /**
@@ -31,7 +33,7 @@ export class CustomGame extends Phaser.Game {
     private _levels: Level[];
     
     //#endregion
-    
+    // TODO: 03/03/2020, See to split injecting scenes
     constructor(config: GameConfig, 
         private _sceneConfigService: SceneConfigService,
         private _colliderManagerService: ColliderManagerService,
@@ -43,6 +45,8 @@ export class CustomGame extends Phaser.Game {
         private _titleScene: TitleScene,
         private _videoScene: VideoScene,
         private _mapScene: MapScene,
+        private _dyingScene: DyingScene,
+        private _endGameScene: EndGameScene,
         private _insideSPaceShipScene: InsideSpaceShipMapScene) {
             super(config.forRoot());
             
@@ -66,6 +70,8 @@ export class CustomGame extends Phaser.Game {
             this.scene.add(SceneType.title, this._titleScene);
             this.scene.add(SceneType.initialize, this._firstScene);
             this.scene.add(SceneType.video, this._videoScene);
+            this.scene.add(SceneType.dying, this._dyingScene);
+            this.scene.add(SceneType.end, this._endGameScene);
             this.scene.add(SceneType.main, this._mainScene);
         }
         
