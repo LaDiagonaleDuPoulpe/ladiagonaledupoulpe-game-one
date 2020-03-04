@@ -1,6 +1,7 @@
 import { singleton } from "tsyringe";
 import GameData from '../../core/models/game/game-data';
 import PlayerData from '../../core/models/game/player-data';
+import { BaseScene } from '../../core/scenes/base.scene';
 
 /** Services that manages game data : player stats, update of health, .. */
 @singleton()
@@ -12,13 +13,16 @@ export class GameDataManagerService {
     private _jsonLoader: Phaser.Loader.LoaderPlugin;
     private _currentPlayer: PlayerData;
     private _playerList: PlayerData[] = [];
+    private _currentScene: BaseScene;
     //#endregion
     
     //#region Public methods
     /** You have to call this method first to set the json cache loader */
-    public init(cache: Phaser.Cache.BaseCache, jsonLoader: Phaser.Loader.LoaderPlugin) {
+    public init(cache: Phaser.Cache.BaseCache, jsonLoader: Phaser.Loader.LoaderPlugin,
+                currentScene: BaseScene) {
         this._cacheManager = cache;
         this._jsonLoader = jsonLoader;
+        this._currentScene = currentScene;
     }
 
     /** Loads data in cache */

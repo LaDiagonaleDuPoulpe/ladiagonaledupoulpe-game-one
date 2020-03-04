@@ -10,6 +10,7 @@ import { EventType } from '../models/dialog-modal/event-type';
 import { ColliderManagerService } from '../../shared/services/collider-manager.service';
 import { LevelConfig } from '../models/levels/level-config';
 import { GameDataManagerService } from '../../shared/services/game-data-manager.service';
+import { CustomEventType } from '../../shared/enums/custom-events-type';
 
 /**
 * Base level scene : abstract class of all active map scenes
@@ -52,6 +53,7 @@ export abstract class BaseLevelScene extends BaseScene {
             super.init(config);
 
             this._colliderManagerService.init(this, config.data.colliderActions);
+            this.defineEventsListeners();
         }
         
         /**
@@ -122,6 +124,15 @@ export abstract class BaseLevelScene extends BaseScene {
         //#endregion
         
         //#region internal methods 
+        private defineEventsListeners() {
+            this.events.on(CustomEventType.dying, this.launchDyingScene, this);
+        }
+
+        /** Launch dying scene, and reactive the last scene if player can do it */
+        protected launchDyingScene() {
+            // TODO: 04/03/2020, finish managing dying scene
+        }
+
         private createAllDataInStage() {
             this.levelConfig.data.stageItems.forEach(item => {
                 this._lightManager.create(this, item);
@@ -198,4 +209,4 @@ export abstract class BaseLevelScene extends BaseScene {
             return this._spritePlayers;
         }
         //#endregion
-    }
+}
