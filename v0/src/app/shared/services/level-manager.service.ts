@@ -49,14 +49,14 @@ export class LevelManageService {
     }
 
     /** Sets the scene when player is dying */
-    public goToDying() {
+    public setDyingStep() {
         this._currentLevelKey = '-100-dying-player';
 
         return this._currentLevelKey;
     }
 
     /** Sets the scene when player is died and game is over */
-    public goToEndGame() {
+    public setEndGameStep() {
         this._currentLevelKey = '-200-end-game';
 
         return this._currentLevelKey;

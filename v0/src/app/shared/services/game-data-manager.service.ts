@@ -2,6 +2,7 @@ import { singleton } from "tsyringe";
 import GameData from '../../core/models/game/game-data';
 import PlayerData from '../../core/models/game/player-data';
 import { BaseScene } from '../../core/scenes/base.scene';
+import { CustomEventType } from "../enums/custom-events-type";
 
 /** Services that manages game data : player stats, update of health, .. */
 @singleton()
@@ -36,6 +37,9 @@ export class GameDataManagerService {
 
         if (player) {
             player.updateHealth(value);
+
+            // TODO: 04/03/2020, just for test, we will update with true rules about death
+            this._currentScene.events.emit(CustomEventType.dying);
         }
     }
     //#endregion

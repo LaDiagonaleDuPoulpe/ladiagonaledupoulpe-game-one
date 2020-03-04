@@ -130,7 +130,8 @@ export abstract class BaseLevelScene extends BaseScene {
 
         /** Launch dying scene, and reactive the last scene if player can do it */
         protected launchDyingScene() {
-            // TODO: 04/03/2020, finish managing dying scene
+            const levelKey = this._levelManager.setDyingStep();
+            this.goToNextScene(levelKey);
         }
 
         private createAllDataInStage() {

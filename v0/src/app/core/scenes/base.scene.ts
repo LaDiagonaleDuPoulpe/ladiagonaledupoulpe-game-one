@@ -44,17 +44,23 @@ export class BaseScene extends Phaser.Scene {
         
         this.initializeGlobalMessageBox();
         this.initializeStatsPlayerMessageBox();
+        
+        this.gameDataManager.init(this.cache.json, this.load, this);
     }
     
     preload() {
-        this.gameDataManager.init(this.cache.json, this.load, this);
     }
     
     /**
     * Calls next scene and starts it
+    * @param nextLevelKey You can force the next level to go to next scene
     */
-    public goToNextScene() {
-        this.levelConfig.nextLevelToLoadByKey = this._levelManager.next();
+    public goToNextScene(nextLevelKey: string = '') {
+        if (nextLevelKey === '') {
+            nextLevelKey = this._levelManager.next();
+        }
+        this.levelConfig.nextLevelToLoadByKey = nextLevelKey;
+
         this.scene.start(SceneType.loading, this.levelConfig);
     }
     
