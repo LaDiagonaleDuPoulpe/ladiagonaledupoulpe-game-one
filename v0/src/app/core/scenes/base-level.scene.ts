@@ -52,7 +52,9 @@ export abstract class BaseLevelScene extends BaseScene {
         init(config: LevelConfig) {
             super.init(config);
 
-            this._colliderManagerService.init(this, config.data.colliderActions);
+            if (config.data.colliderActions) {
+                this._colliderManagerService.init(this, config.data.colliderActions);
+            }
             this.defineEventsListeners();
         }
         

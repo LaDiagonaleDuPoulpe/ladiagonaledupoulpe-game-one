@@ -16,6 +16,12 @@ export class GameDataManagerService {
     private _playerList: PlayerData[] = [];
     private _currentScene: BaseScene;
     //#endregion
+
+    //#region Constructors
+    constructor() {
+        
+    }
+    //#endregion
     
     //#region Public methods
     /** You have to call this method first to set the json cache loader */

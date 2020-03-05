@@ -14,6 +14,7 @@ import { StatsPlayerBoxManagerPlugin } from '../plugins/stats-player-box-manager
 import { DialogModalConfiguration } from '../models/dialog-modal/dialog-modal-configuration';
 import PlayerData from '../models/game/player-data';
 import { StatusBarPlugin } from '../plugins/status-bar.plugin';
+import { SceneConfigurationPropertiesSetting } from '../models/scene-configuration-properties-setting';
 
 /**
 * Parent class of all custom scenes of the game
@@ -44,7 +45,7 @@ export class BaseScene extends Phaser.Scene {
         
         this.initializeGlobalMessageBox();
         this.initializeStatsPlayerMessageBox();
-        
+
         this.gameDataManager.init(this.cache.json, this.load, this);
     }
     
@@ -91,15 +92,16 @@ export class BaseScene extends Phaser.Scene {
     /**
     * Gets default configuration of the scene
     */
-    public get defaultConfiguration(): PropertiesSetting {
-        return this._levelConfig.data.defaultConfiguration;
+    public get defaultConfiguration(): SceneConfigurationPropertiesSetting {
+        return this.levelConfig && this.levelConfig.data && this.levelConfig.data.defaultConfiguration ? 
+                this._levelConfig.data.defaultConfiguration : null;
     }
     
     /**
     * Gets default style of the current scene (fill and font)
     */
     public get defaultStyle(): Style {
-        return this.defaultConfiguration.style;
+        return this.defaultConfiguration ? this.defaultConfiguration.style : null;
     }
     
     /**
@@ -127,14 +129,16 @@ export class BaseScene extends Phaser.Scene {
     * Message box configuration (color, background color, ...)
     */
     public get messageBoxConfiguration(): DialogModalConfiguration | null {
-        return (this.levelConfig && this.levelConfig.data ? this.levelConfig.data.defaultConfiguration.messageBox : null);
+        return (this.defaultConfiguration ? 
+            this.defaultConfiguration.messageBox : null);
     }
 
     /**
      * Stats player box configuration (color, background color, ...)
      */
     public get statsPlayerBoxConfiguration(): DialogModalConfiguration | null {
-        return (this.levelConfig && this.levelConfig.data ? this.levelConfig.data.defaultConfiguration.statsPlayerBox : null);
+        return (this.defaultConfiguration ? 
+            this.defaultConfiguration.statsPlayerBox : null);
     }
     
     /**
