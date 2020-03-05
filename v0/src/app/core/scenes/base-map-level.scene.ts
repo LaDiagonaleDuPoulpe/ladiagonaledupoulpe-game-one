@@ -131,7 +131,7 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
     }
 
     private prepareObjects() {
-        if (this._map.objects) {
+        if (this._map.objects && Array.isArray(this._map.objects)) {
             this._map.objects.forEach(object => {
     
                 object.objects.forEach(spriteObject => {
