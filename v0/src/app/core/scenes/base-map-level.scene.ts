@@ -95,7 +95,7 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
     
     //#region internal methods
     private prepareTileSets() {
-        if (this._map.tilesets) {
+        if (this._map.tilesets && Array.isArray(this._map.tilesets)) {
             this._map.tilesets.forEach((tileset, index) => {
                 const tilesetContent = this.levelConfig.data.map.tilesets[index];
                 const mapTileset = this._map.addTilesetImage(tileset.name, tilesetContent);
@@ -109,7 +109,7 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
     private prepareLayers() {
         let i = 1;
         
-        if (this._map.layers) {
+        if (this._map.layers && Array.isArray(this._map.layers)) {
             this._map.layers.forEach((layer, index) => {
                 const properties = (<Array<any>> layer.properties);
                 const property = properties.find(item => item.name === 'tileset');
