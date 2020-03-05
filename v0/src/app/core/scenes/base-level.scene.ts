@@ -137,22 +137,28 @@ export abstract class BaseLevelScene extends BaseScene {
         }
 
         private createAllDataInStage() {
-            this.levelConfig.data.stageItems.forEach(item => {
-                this._lightManager.create(this, item);
-            }, this);
+            if (this.levelConfig.data.stageItems && Array.isArray(this.levelConfig.data.stageItems)) {
+                this.levelConfig.data.stageItems.forEach(item => {
+                    this._lightManager.create(this, item);
+                }, this);
+            }
         }
         
         private createCollisionGroups() {
-            this.levelConfig.data.groups.forEach((groupName) => {
-                this.physicalGroups[groupName] = this.physics.add.group();
-            }, this);
+            if (this.levelConfig.data.groups && Array.isArray(this.levelConfig.data.groups)) {
+                this.levelConfig.data.groups.forEach((groupName) => {
+                    this.physicalGroups[groupName] = this.physics.add.group();
+                }, this);
+            }
         }
         
         private createAllPrefabSprites() {
-            this.levelConfig.data.prefabs.forEach((prefab) => {
-                const sprite = PrefabSpriteFactory.create(prefab.type, this, prefab.key, prefab.position, prefab.properties, this._animationsCreator);
-                this.saveSpriteInScene(sprite, prefab.properties.group, prefab.key);
-            }, this);
+            if (this.levelConfig.data.prefabs && Array.isArray(this.levelConfig.data.prefabs)) {
+                this.levelConfig.data.prefabs.forEach((prefab) => {
+                    const sprite = PrefabSpriteFactory.create(prefab.type, this, prefab.key, prefab.position, prefab.properties, this._animationsCreator);
+                    this.saveSpriteInScene(sprite, prefab.properties.group, prefab.key);
+                }, this);
+            }
         }
         
         /**
