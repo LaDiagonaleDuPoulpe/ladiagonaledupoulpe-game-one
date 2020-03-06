@@ -89,10 +89,9 @@ export class BaseScene extends Phaser.Scene {
     }
 
     private applyMainConfiguration() {
-        if (this.levelConfig && this.levelConfig.data.defaultConfiguration &&
-            this.levelConfig.data.defaultConfiguration.backgroudStyle) {
+        if (this.defaultConfiguration) {
 
-            this.cameras.main.setBackgroundColor(this.levelConfig.data.defaultConfiguration.backgroudStyle.fill);
+            this.cameras.main.setBackgroundColor(this.defaultConfiguration.backgroudStyle.fill);
         }
     }
     //#endregion

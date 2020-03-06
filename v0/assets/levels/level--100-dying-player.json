@@ -11,9 +11,135 @@
     "assets": {
         "images": [],
         "tilemaps": [],
+        "atlases": [
+            {
+                "key": "octopus4SpriteSheet",
+                "url": "assets/images/default/octo3 all/octo3-all.json",
+                "frame": {
+                    "dimension": {
+                        "width": 250,
+                        "height": 500
+                    },
+                    "spacing": 0,
+                    "margin": 0
+                }
+            }
+        ],
         "spritesheets": []
     },
-    "groups": [],
+    "groups": [
+        "players"
+    ],
     "map": {},
-    "prefabs": []
+    "prefabs": [
+        {
+            "key": "player",
+            "playable": true,
+            "type": "octopus",
+            "position": {
+                "x": 600,
+                "y": 100
+            },
+            "properties": {
+                "texture": "octopus4SpriteSheet",
+                "group": "players",
+                "scale": {
+                    "x": 0.5,
+                    "y": 0.5
+                },
+                "depth": 1,
+                "visible": true,
+                "animations": [
+                    {
+                        "key": "idle-down",
+                        "byName": true,
+                        "frameStart": 0,
+                        "frameEnd": 15,
+                        "fps": 10,
+                        "repeat": -1,
+                        "zeroPad": 3,
+                        "prefix": "octo3 down all_",
+                        "suffix": ".png"
+                    },
+                    {
+                        "key": "walk-down",
+                        "byName": true,
+                        "frameStart": 45,
+                        "frameEnd": 65,
+                        "fps": 10,
+                        "repeat": -1,
+                        "zeroPad": 3,
+                        "prefix": "octo3 down all_",
+                        "suffix": ".png"
+                    },
+                    {
+                        "key": "idle-left",
+                        "byName": true,
+                        "frameStart": 0,
+                        "frameEnd": 15,
+                        "fps": 10,
+                        "repeat": -1,
+                        "zeroPad": 3,
+                        "prefix": "octo3 left all_",
+                        "suffix": ".png"
+                    },
+                    {
+                        "key": "walk-left",
+                        "byName": true,
+                        "frameStart": 45,
+                        "frameEnd": 65,
+                        "fps": 10,
+                        "repeat": -1,
+                        "zeroPad": 3,
+                        "prefix": "octo3 left all_",
+                        "suffix": ".png"
+                    },
+                    {
+                        "key": "idle-right",
+                        "byName": true,
+                        "frameStart": 0,
+                        "frameEnd": 15,
+                        "fps": 10,
+                        "repeat": -1,
+                        "zeroPad": 3,
+                        "prefix": "octo3 right all_",
+                        "suffix": ".png"
+                    },
+                    {
+                        "key": "walk-right",
+                        "byName": true,
+                        "frameStart": 45,
+                        "frameEnd": 69,
+                        "fps": 10,
+                        "repeat": -1,
+                        "zeroPad": 3,
+                        "prefix": "octo3 right all_",
+                        "suffix": ".png"
+                    },
+                    {
+                        "key": "idle-up",
+                        "byName": true,
+                        "frameStart": 0,
+                        "frameEnd": 15,
+                        "fps": 10,
+                        "repeat": -1,
+                        "zeroPad": 3,
+                        "prefix": "octo3 up all_",
+                        "suffix": ".png"
+                    },
+                    {
+                        "key": "walk-up",
+                        "byName": true,
+                        "frameStart": 45,
+                        "frameEnd": 65,
+                        "fps": 10,
+                        "repeat": -1,
+                        "zeroPad": 3,
+                        "prefix": "octo3 up all_",
+                        "suffix": ".png"
+                    }
+                ]
+            }
+        }
+    ]
 }
