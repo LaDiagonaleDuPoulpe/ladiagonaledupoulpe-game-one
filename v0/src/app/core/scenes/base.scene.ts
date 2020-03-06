@@ -45,6 +45,7 @@ export class BaseScene extends Phaser.Scene {
         
         this.initializeGlobalMessageBox();
         this.initializeStatsPlayerMessageBox();
+        this.applyMainConfiguration();
 
         this.gameDataManager.init(this.cache.json, this.load, this);
     }
@@ -85,6 +86,14 @@ export class BaseScene extends Phaser.Scene {
 
     private initializeStatsPlayerMessageBox() {
         this.playerStatsBoxManager.init(this.statsPlayerBoxConfiguration);
+    }
+
+    private applyMainConfiguration() {
+        if (this.levelConfig && this.levelConfig.data.defaultConfiguration &&
+            this.levelConfig.data.defaultConfiguration.backgroudStyle) {
+
+            this.cameras.main.setBackgroundColor(this.levelConfig.data.defaultConfiguration.backgroudStyle.fill);
+        }
     }
     //#endregion
     

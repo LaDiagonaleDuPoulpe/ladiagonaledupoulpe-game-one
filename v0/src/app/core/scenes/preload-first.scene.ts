@@ -45,8 +45,6 @@ export default class PreloadFirstScene extends BaseScene {
                 font: "90px " + this.levelConfig.sceneConfiguration.font,
                 fill: this.levelConfig.sceneConfiguration.foreColor
             });
-
-        this.cameras.main.setBackgroundColor(Phaser.Display.Color.GetColor(67, 31, 17));
     }
     //#endregion
     
