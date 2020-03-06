@@ -4,6 +4,9 @@
             "font": "25px Kells",
             "fill": "#ffffff"
         },
+        "backgroudStyle": {
+            "fill": "#103040"
+        },
         "messageBox": {
             "dialogSpeed": 15,
             "borderColor": "0xFAAA24",

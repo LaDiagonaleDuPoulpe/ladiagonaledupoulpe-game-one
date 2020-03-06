@@ -1,4 +1,13 @@
 {
+    "defaultConfiguration": {
+        "style": {
+            "font": "25px Kells",
+            "fill": "#ffffff"
+        },
+        "backgroudStyle": {
+            "fill": "#103040"
+        }
+    },
     "assets": {
         "images": [],
         "tilemaps": [],
