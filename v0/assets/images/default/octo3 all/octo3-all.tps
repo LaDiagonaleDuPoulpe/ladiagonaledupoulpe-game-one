@@ -861,6 +861,106 @@
             <key type="filename">octo3 up all_083_n.png</key>
             <key type="filename">octo3 up all_084.png</key>
             <key type="filename">octo3 up all_084_n.png</key>
+            <key type="filename">octopus3 die down_000.png</key>
+            <key type="filename">octopus3 die down_000_n.png</key>
+            <key type="filename">octopus3 die down_001.png</key>
+            <key type="filename">octopus3 die down_001_n.png</key>
+            <key type="filename">octopus3 die down_002.png</key>
+            <key type="filename">octopus3 die down_002_n.png</key>
+            <key type="filename">octopus3 die down_003.png</key>
+            <key type="filename">octopus3 die down_003_n.png</key>
+            <key type="filename">octopus3 die down_004.png</key>
+            <key type="filename">octopus3 die down_004_n.png</key>
+            <key type="filename">octopus3 die down_005.png</key>
+            <key type="filename">octopus3 die down_005_n.png</key>
+            <key type="filename">octopus3 die down_006.png</key>
+            <key type="filename">octopus3 die down_006_n.png</key>
+            <key type="filename">octopus3 die down_007.png</key>
+            <key type="filename">octopus3 die down_007_n.png</key>
+            <key type="filename">octopus3 die down_008.png</key>
+            <key type="filename">octopus3 die down_008_n.png</key>
+            <key type="filename">octopus3 die down_009.png</key>
+            <key type="filename">octopus3 die down_009_n.png</key>
+            <key type="filename">octopus3 die down_010.png</key>
+            <key type="filename">octopus3 die down_010_n.png</key>
+            <key type="filename">octopus3 die down_011.png</key>
+            <key type="filename">octopus3 die down_011_n.png</key>
+            <key type="filename">octopus3 die down_012.png</key>
+            <key type="filename">octopus3 die down_012_n.png</key>
+            <key type="filename">octopus3 die down_013.png</key>
+            <key type="filename">octopus3 die down_013_n.png</key>
+            <key type="filename">octopus3 die down_014.png</key>
+            <key type="filename">octopus3 die down_014_n.png</key>
+            <key type="filename">octopus3 die down_015.png</key>
+            <key type="filename">octopus3 die down_015_n.png</key>
+            <key type="filename">octopus3 die down_016.png</key>
+            <key type="filename">octopus3 die down_016_n.png</key>
+            <key type="filename">octopus3 die down_017.png</key>
+            <key type="filename">octopus3 die down_017_n.png</key>
+            <key type="filename">octopus3 die down_018.png</key>
+            <key type="filename">octopus3 die down_018_n.png</key>
+            <key type="filename">octopus3 die down_019.png</key>
+            <key type="filename">octopus3 die down_019_n.png</key>
+            <key type="filename">octopus3 revive down_000.png</key>
+            <key type="filename">octopus3 revive down_000_n.png</key>
+            <key type="filename">octopus3 revive down_001.png</key>
+            <key type="filename">octopus3 revive down_001_n.png</key>
+            <key type="filename">octopus3 revive down_002.png</key>
+            <key type="filename">octopus3 revive down_002_n.png</key>
+            <key type="filename">octopus3 revive down_003.png</key>
+            <key type="filename">octopus3 revive down_003_n.png</key>
+            <key type="filename">octopus3 revive down_004.png</key>
+            <key type="filename">octopus3 revive down_004_n.png</key>
+            <key type="filename">octopus3 revive down_005.png</key>
+            <key type="filename">octopus3 revive down_005_n.png</key>
+            <key type="filename">octopus3 revive down_006.png</key>
+            <key type="filename">octopus3 revive down_006_n.png</key>
+            <key type="filename">octopus3 revive down_007.png</key>
+            <key type="filename">octopus3 revive down_007_n.png</key>
+            <key type="filename">octopus3 revive down_008.png</key>
+            <key type="filename">octopus3 revive down_008_n.png</key>
+            <key type="filename">octopus3 revive down_009.png</key>
+            <key type="filename">octopus3 revive down_009_n.png</key>
+            <key type="filename">octopus3 revive down_010.png</key>
+            <key type="filename">octopus3 revive down_010_n.png</key>
+            <key type="filename">octopus3 revive down_011.png</key>
+            <key type="filename">octopus3 revive down_011_n.png</key>
+            <key type="filename">octopus3 revive down_012.png</key>
+            <key type="filename">octopus3 revive down_012_n.png</key>
+            <key type="filename">octopus3 revive down_013.png</key>
+            <key type="filename">octopus3 revive down_013_n.png</key>
+            <key type="filename">octopus3 revive down_014.png</key>
+            <key type="filename">octopus3 revive down_014_n.png</key>
+            <key type="filename">octopus3 revive down_015.png</key>
+            <key type="filename">octopus3 revive down_015_n.png</key>
+            <key type="filename">octopus3 revive down_016.png</key>
+            <key type="filename">octopus3 revive down_016_n.png</key>
+            <key type="filename">octopus3 revive down_017.png</key>
+            <key type="filename">octopus3 revive down_017_n.png</key>
+            <key type="filename">octopus3 revive down_018.png</key>
+            <key type="filename">octopus3 revive down_018_n.png</key>
+            <key type="filename">octopus3 revive down_019.png</key>
+            <key type="filename">octopus3 revive down_019_n.png</key>
+            <key type="filename">octopus3 revive down_020.png</key>
+            <key type="filename">octopus3 revive down_020_n.png</key>
+            <key type="filename">octopus3 revive down_021.png</key>
+            <key type="filename">octopus3 revive down_021_n.png</key>
+            <key type="filename">octopus3 revive down_022.png</key>
+            <key type="filename">octopus3 revive down_022_n.png</key>
+            <key type="filename">octopus3 revive down_023.png</key>
+            <key type="filename">octopus3 revive down_023_n.png</key>
+            <key type="filename">octopus3 revive down_024.png</key>
+            <key type="filename">octopus3 revive down_024_n.png</key>
+            <key type="filename">octopus3 revive down_025.png</key>
+            <key type="filename">octopus3 revive down_025_n.png</key>
+            <key type="filename">octopus3 revive down_026.png</key>
+            <key type="filename">octopus3 revive down_026_n.png</key>
+            <key type="filename">octopus3 revive down_027.png</key>
+            <key type="filename">octopus3 revive down_027_n.png</key>
+            <key type="filename">octopus3 revive down_028.png</key>
+            <key type="filename">octopus3 revive down_028_n.png</key>
+            <key type="filename">octopus3 revive down_029.png</key>
+            <key type="filename">octopus3 revive down_029_n.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -1558,6 +1658,106 @@
             <filename>octo3 up all_083_n.png</filename>
             <filename>octo3 up all_084.png</filename>
             <filename>octo3 up all_084_n.png</filename>
+            <filename>octopus3 revive down_029_n.png</filename>
+            <filename>octopus3 die down_000.png</filename>
+            <filename>octopus3 die down_000_n.png</filename>
+            <filename>octopus3 die down_001.png</filename>
+            <filename>octopus3 die down_001_n.png</filename>
+            <filename>octopus3 die down_002.png</filename>
+            <filename>octopus3 die down_002_n.png</filename>
+            <filename>octopus3 die down_003.png</filename>
+            <filename>octopus3 die down_003_n.png</filename>
+            <filename>octopus3 die down_004.png</filename>
+            <filename>octopus3 die down_004_n.png</filename>
+            <filename>octopus3 die down_005.png</filename>
+            <filename>octopus3 die down_005_n.png</filename>
+            <filename>octopus3 die down_006.png</filename>
+            <filename>octopus3 die down_006_n.png</filename>
+            <filename>octopus3 die down_007.png</filename>
+            <filename>octopus3 die down_007_n.png</filename>
+            <filename>octopus3 die down_008.png</filename>
+            <filename>octopus3 die down_008_n.png</filename>
+            <filename>octopus3 die down_009.png</filename>
+            <filename>octopus3 die down_009_n.png</filename>
+            <filename>octopus3 die down_010.png</filename>
+            <filename>octopus3 die down_010_n.png</filename>
+            <filename>octopus3 die down_011.png</filename>
+            <filename>octopus3 die down_011_n.png</filename>
+            <filename>octopus3 die down_012.png</filename>
+            <filename>octopus3 die down_012_n.png</filename>
+            <filename>octopus3 die down_013.png</filename>
+            <filename>octopus3 die down_013_n.png</filename>
+            <filename>octopus3 die down_014.png</filename>
+            <filename>octopus3 die down_014_n.png</filename>
+            <filename>octopus3 die down_015.png</filename>
+            <filename>octopus3 die down_015_n.png</filename>
+            <filename>octopus3 die down_016.png</filename>
+            <filename>octopus3 die down_016_n.png</filename>
+            <filename>octopus3 die down_017.png</filename>
+            <filename>octopus3 die down_017_n.png</filename>
+            <filename>octopus3 die down_018.png</filename>
+            <filename>octopus3 die down_018_n.png</filename>
+            <filename>octopus3 die down_019.png</filename>
+            <filename>octopus3 die down_019_n.png</filename>
+            <filename>octopus3 revive down_000.png</filename>
+            <filename>octopus3 revive down_000_n.png</filename>
+            <filename>octopus3 revive down_001.png</filename>
+            <filename>octopus3 revive down_001_n.png</filename>
+            <filename>octopus3 revive down_002.png</filename>
+            <filename>octopus3 revive down_002_n.png</filename>
+            <filename>octopus3 revive down_003.png</filename>
+            <filename>octopus3 revive down_003_n.png</filename>
+            <filename>octopus3 revive down_004.png</filename>
+            <filename>octopus3 revive down_004_n.png</filename>
+            <filename>octopus3 revive down_005.png</filename>
+            <filename>octopus3 revive down_005_n.png</filename>
+            <filename>octopus3 revive down_006.png</filename>
+            <filename>octopus3 revive down_006_n.png</filename>
+            <filename>octopus3 revive down_007.png</filename>
+            <filename>octopus3 revive down_007_n.png</filename>
+            <filename>octopus3 revive down_008.png</filename>
+            <filename>octopus3 revive down_008_n.png</filename>
+            <filename>octopus3 revive down_009.png</filename>
+            <filename>octopus3 revive down_009_n.png</filename>
+            <filename>octopus3 revive down_010.png</filename>
+            <filename>octopus3 revive down_010_n.png</filename>
+            <filename>octopus3 revive down_011.png</filename>
+            <filename>octopus3 revive down_011_n.png</filename>
+            <filename>octopus3 revive down_012.png</filename>
+            <filename>octopus3 revive down_012_n.png</filename>
+            <filename>octopus3 revive down_013.png</filename>
+            <filename>octopus3 revive down_013_n.png</filename>
+            <filename>octopus3 revive down_014.png</filename>
+            <filename>octopus3 revive down_014_n.png</filename>
+            <filename>octopus3 revive down_015.png</filename>
+            <filename>octopus3 revive down_015_n.png</filename>
+            <filename>octopus3 revive down_016.png</filename>
+            <filename>octopus3 revive down_016_n.png</filename>
+            <filename>octopus3 revive down_017.png</filename>
+            <filename>octopus3 revive down_017_n.png</filename>
+            <filename>octopus3 revive down_018.png</filename>
+            <filename>octopus3 revive down_018_n.png</filename>
+            <filename>octopus3 revive down_019.png</filename>
+            <filename>octopus3 revive down_019_n.png</filename>
+            <filename>octopus3 revive down_020.png</filename>
+            <filename>octopus3 revive down_020_n.png</filename>
+            <filename>octopus3 revive down_021.png</filename>
+            <filename>octopus3 revive down_021_n.png</filename>
+            <filename>octopus3 revive down_022.png</filename>
+            <filename>octopus3 revive down_022_n.png</filename>
+            <filename>octopus3 revive down_023.png</filename>
+            <filename>octopus3 revive down_023_n.png</filename>
+            <filename>octopus3 revive down_024.png</filename>
+            <filename>octopus3 revive down_024_n.png</filename>
+            <filename>octopus3 revive down_025.png</filename>
+            <filename>octopus3 revive down_025_n.png</filename>
+            <filename>octopus3 revive down_026.png</filename>
+            <filename>octopus3 revive down_026_n.png</filename>
+            <filename>octopus3 revive down_027.png</filename>
+            <filename>octopus3 revive down_027_n.png</filename>
+            <filename>octopus3 revive down_028.png</filename>
+            <filename>octopus3 revive down_028_n.png</filename>
+            <filename>octopus3 revive down_029.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
