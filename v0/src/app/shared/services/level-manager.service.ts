@@ -34,6 +34,7 @@ export class LevelManageService {
         }
 
         if (this._previousLevelKey == 'initialize') {
+            //this._currentLevelKey = 'title'; // when you're ready, replace it by 'title'
             this._currentLevelKey = '000-inside-broken-ship'; // when you're ready, replace it by 'title'
         }
 

@@ -31,5 +31,5 @@ adding config, and resize event
 ## 3. creating logger, environment class, searching to use a di injector with typescript
 environment class is ready
 searching for di motor 
-essai de : https://github.com/microsoft/tsyringe
-besoin de : https://www.npmjs.com/package/reflect-metadata
+trying: https://github.com/microsoft/tsyringe
+needs : https://www.npmjs.com/package/reflect-metadata

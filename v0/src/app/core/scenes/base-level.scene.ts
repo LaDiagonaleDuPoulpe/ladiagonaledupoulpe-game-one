@@ -127,12 +127,17 @@ export abstract class BaseLevelScene extends BaseScene {
         
         //#region internal methods 
         private defineEventsListeners() {
-            this.events.on(CustomEventType.dying, this.launchDyingScene, this);
+            this.events.on(CustomEventType.dying, this.launchDyingAnimation, this);
+            this.events.on(CustomEventType.died, this.launchDiedScene, this);
         }
 
         /** Launch dying scene, and reactive the last scene if player can do it */
-        protected launchDyingScene() {
-            const levelKey = this._levelManager.setDyingStep();
+        protected launchDyingAnimation() {
+            
+        }
+
+        protected launchDiedScene() {
+            const levelKey = this._levelManager.setEndGameStep();
             this.goToNextScene(levelKey);
         }
 
