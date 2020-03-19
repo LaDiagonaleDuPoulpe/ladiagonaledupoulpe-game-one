@@ -12,6 +12,8 @@ import { GameDataManagerService } from '../../../shared/services/game-data-manag
 export class OctopusSprite extends BaseArcadeSprite {
     //#region Fields
     private _animationKeys: string[];
+    private _currentPosition = '';
+    private _currentAction = '';
     //#endregion
 
     constructor(protected _scene: BaseLevelScene, 
@@ -24,44 +26,51 @@ export class OctopusSprite extends BaseArcadeSprite {
 
     //#region public methods
     update() {
-        const firstPartAnimKey = this._name + '_';
-        const firstPartAnimWalkKey = firstPartAnimKey + 'walk';
-        let wholeAnimKey = firstPartAnimWalkKey;
-
+        const firstPartAnimKey = this._name;
+        this._currentAction = 'walk';
+        
+        this._currentPosition = 'idle';
         if (this._scene.cursors.left.isDown) {
             this.setVelocityX(-160);
             
-            wholeAnimKey += '-left';
+            this._currentPosition = 'left';
         }
         else if (this._scene.cursors.right.isDown) {
             this.setVelocityX(160);
             
-            wholeAnimKey += '-right';
+            this._currentPosition = 'right';
         }
         else if (this._scene.cursors.up.isDown) {
             this.setVelocityX(0);
             this.setVelocityY(-160);
             
-            wholeAnimKey += '-up';
+            this._currentPosition = 'up';
         }
         else if (this._scene.cursors.down.isDown) {
             this.setVelocityX(0);
             this.setVelocityY(160);
             
-            wholeAnimKey += '-down';
+            this._currentPosition = 'down';
         }
         else {
-    
+            
             const currentAnimationKey = this.anims.currentAnim.key;
             const parts = currentAnimationKey.split('-');
-    
+            
             this.setVelocityX(0);
             this.setVelocityY(0);
             
-            wholeAnimKey = firstPartAnimKey + 'idle' + '-' + parts[1];
+            this._currentPosition = parts[1];
+            this._currentAction = 'idle';
         }
+        let wholeAnimKey = `${firstPartAnimKey}_${this._currentAction}-${this._currentPosition}`;
         
         this.anims.play(wholeAnimKey, true);
+    }
+
+    die() {
+        let animationKey = '';
+        this.anims.play(animationKey);
     }
 
     /**

@@ -247,6 +247,17 @@
                         "zeroPad": 3,
                         "prefix": "octo3 up all_",
                         "suffix": ".png"
+                    },
+                    {
+                        "key": "diying-down",
+                        "byName": true,
+                        "frameStart": 0,
+                        "frameEnd": 19,
+                        "fps": 10,
+                        "repeat": -1,
+                        "zeroPad": 3,
+                        "prefix": "octopus3 die down_",
+                        "suffix": ".png"
                     }
                 ]
             }
