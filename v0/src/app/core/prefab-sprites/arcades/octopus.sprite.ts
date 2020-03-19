@@ -14,6 +14,8 @@ export class OctopusSprite extends BaseArcadeSprite {
     private _animationKeys: string[];
     private _currentPosition = '';
     private _currentAction = '';
+    private _isAlive = true;
+    private _isStopped = false;
     //#endregion
 
     constructor(protected _scene: BaseLevelScene, 
@@ -28,49 +30,21 @@ export class OctopusSprite extends BaseArcadeSprite {
     update() {
         const firstPartAnimKey = this._name;
         this._currentAction = 'walk';
+        this._currentPosition = 'left';
+
+        if (this._isAlive) {
+            this.setPositionAndCurrentAction();
+        } else if (! this._isStopped) {
+            this._currentAction = 'diying';
+        }
         
-        this._currentPosition = 'idle';
-        if (this._scene.cursors.left.isDown) {
-            this.setVelocityX(-160);
-            
-            this._currentPosition = 'left';
-        }
-        else if (this._scene.cursors.right.isDown) {
-            this.setVelocityX(160);
-            
-            this._currentPosition = 'right';
-        }
-        else if (this._scene.cursors.up.isDown) {
-            this.setVelocityX(0);
-            this.setVelocityY(-160);
-            
-            this._currentPosition = 'up';
-        }
-        else if (this._scene.cursors.down.isDown) {
-            this.setVelocityX(0);
-            this.setVelocityY(160);
-            
-            this._currentPosition = 'down';
-        }
-        else {
-            
-            const currentAnimationKey = this.anims.currentAnim.key;
-            const parts = currentAnimationKey.split('-');
-            
-            this.setVelocityX(0);
-            this.setVelocityY(0);
-            
-            this._currentPosition = parts[1];
-            this._currentAction = 'idle';
-        }
         let wholeAnimKey = `${firstPartAnimKey}_${this._currentAction}-${this._currentPosition}`;
-        
         this.anims.play(wholeAnimKey, true);
     }
 
+    /** Current player is dying : playing the dying animation */
     die() {
-        let animationKey = '';
-        this.anims.play(animationKey);
+        this._isAlive = false;
     }
 
     /**
@@ -114,6 +88,42 @@ export class OctopusSprite extends BaseArcadeSprite {
     //#endregion
 
     //#region Internal methods
+    private setPositionAndCurrentAction() {
+        if (this._scene.cursors.left.isDown) {
+            this.setVelocityX(-160);
+            
+            this._currentPosition = 'left';
+        }
+        else if (this._scene.cursors.right.isDown) {
+            this.setVelocityX(160);
+            
+            this._currentPosition = 'right';
+        }
+        else if (this._scene.cursors.up.isDown) {
+            this.setVelocityX(0);
+            this.setVelocityY(-160);
+            
+            this._currentPosition = 'up';
+        }
+        else if (this._scene.cursors.down.isDown) {
+            this.setVelocityX(0);
+            this.setVelocityY(160);
+            
+            this._currentPosition = 'down';
+        }
+        else {
+            
+            const currentAnimationKey = this.anims.currentAnim.key;
+            const parts = currentAnimationKey.split('-');
+            
+            this.setVelocityX(0);
+            this.setVelocityY(0);
+            
+            this._currentPosition = parts[1];
+            this._currentAction = 'idle';
+        }
+    }
+
     protected initialize(properties: PropertiesSetting) {
         super.initialize(properties);
 

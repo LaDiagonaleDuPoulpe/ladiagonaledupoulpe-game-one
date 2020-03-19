@@ -249,7 +249,51 @@
                         "suffix": ".png"
                     },
                     {
+                        "key": "diying-left",
+                        "byName": true,
+                        "frameStart": 0,
+                        "frameEnd": 19,
+                        "fps": 10,
+                        "repeat": -1,
+                        "zeroPad": 3,
+                        "prefix": "octopus3 die down_",
+                        "suffix": ".png"
+                    },
+                    {
+                        "key": "diying-idle",
+                        "byName": true,
+                        "frameStart": 0,
+                        "frameEnd": 19,
+                        "fps": 10,
+                        "repeat": -1,
+                        "zeroPad": 3,
+                        "prefix": "octopus3 die down_",
+                        "suffix": ".png"
+                    },
+                    {
+                        "key": "diying-right",
+                        "byName": true,
+                        "frameStart": 0,
+                        "frameEnd": 19,
+                        "fps": 10,
+                        "repeat": -1,
+                        "zeroPad": 3,
+                        "prefix": "octopus3 die down_",
+                        "suffix": ".png"
+                    },
+                    {
                         "key": "diying-down",
+                        "byName": true,
+                        "frameStart": 0,
+                        "frameEnd": 19,
+                        "fps": 10,
+                        "repeat": -1,
+                        "zeroPad": 3,
+                        "prefix": "octopus3 die down_",
+                        "suffix": ".png"
+                    },
+                    {
+                        "key": "diying-up",
                         "byName": true,
                         "frameStart": 0,
                         "frameEnd": 19,

@@ -47,6 +47,7 @@ export class GameDataManagerService {
             // TODO: 04/03/2020, just for test, we will update with true rules about death
             this._currentScene.events.emit(CustomEventType.dying);
             if (! player.isAlive) {
+                
             }
         }
     }

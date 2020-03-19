@@ -11,6 +11,7 @@ import { ColliderManagerService } from '../../shared/services/collider-manager.s
 import { LevelConfig } from '../models/levels/level-config';
 import { GameDataManagerService } from '../../shared/services/game-data-manager.service';
 import { CustomEventType } from '../../shared/enums/custom-events-type';
+import { OctopusSprite } from '../prefab-sprites/arcades/octopus.sprite';
 
 /**
 * Base level scene : abstract class of all active map scenes
@@ -133,7 +134,8 @@ export abstract class BaseLevelScene extends BaseScene {
 
         /** Launch dying scene, and reactive the last scene if player can do it */
         protected launchDyingAnimation() {
-            
+            const octopus = <OctopusSprite> this.spritePlayers[0];
+            octopus.die();
         }
 
         protected launchDiedScene() {
