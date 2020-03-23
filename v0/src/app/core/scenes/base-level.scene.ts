@@ -128,7 +128,7 @@ export abstract class BaseLevelScene extends BaseScene {
         
         //#region internal methods 
         private defineEventsListeners() {
-            this.events.on(CustomEventType.dying, this.launchDyingAnimation, this);
+            this.events.on(CustomEventType.diying, this.launchDyingAnimation, this);
             this.events.on(CustomEventType.died, this.launchDiedScene, this);
         }
 
