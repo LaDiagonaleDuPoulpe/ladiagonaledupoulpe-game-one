@@ -44,13 +44,8 @@ export class GameDataManagerService {
         if (player) {
             player.updateHealth(value);
 
-            // TODO: 04/03/2020, just for test, we will update with true rules about death
-            this._currentScene.events.emit(CustomEventType.diying);
-
-
-
             if (! player.isAlive) {
-                
+                this._currentScene.emitDiyingEvent();
             }
         }
     }

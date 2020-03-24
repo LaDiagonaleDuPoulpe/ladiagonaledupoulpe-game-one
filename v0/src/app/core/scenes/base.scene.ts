@@ -15,6 +15,7 @@ import { DialogModalConfiguration } from '../models/dialog-modal/dialog-modal-co
 import PlayerData from '../models/game/player-data';
 import { StatusBarPlugin } from '../plugins/status-bar.plugin';
 import { SceneConfigurationPropertiesSetting } from '../models/scene-configuration-properties-setting';
+import { CustomEventType } from '../../shared/enums/custom-events-type';
 
 /**
 * Parent class of all custom scenes of the game
@@ -76,6 +77,11 @@ export class BaseScene extends Phaser.Scene {
     /** Launches a refresh to each stats player box */
     public refreshPlayersStats() {
         this.playerStatsBoxManager.refresh();
+    }
+
+    /** Emits diying event */
+    public emitDiyingEvent() {
+        this.events.emit(CustomEventType.diying);
     }
     //#endregion
     
