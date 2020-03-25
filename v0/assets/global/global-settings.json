@@ -38,7 +38,11 @@
                 "health": 100,
                 "healthMax": 100,
                 "mana": 100,
-                "speed": 15
+                "speed": 15,
+                "synalePower": {
+                    "quantity": 100
+                }
+
             }
         }
     ]
