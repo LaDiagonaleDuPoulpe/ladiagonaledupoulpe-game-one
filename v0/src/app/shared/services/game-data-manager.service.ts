@@ -47,7 +47,6 @@ export class GameDataManagerService {
             if (! player.isAlive) {
                 this._currentScene.emitDiyingEvent();
                 // TODO: 24/03/2020, if synale power is ok, we can reborn
-                
             }
         }
     }
