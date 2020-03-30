@@ -46,8 +46,16 @@ export class GameDataManagerService {
 
             if (! player.isAlive) {
                 this._currentScene.emitDiyingEvent();
-                // TODO: 24/03/2020, if synale power is ok, we can reborn
             }
+        }
+    }
+    
+    public verifyHealthStatusOfPlayer() {
+        const player = this.getActivePlayer();
+
+        // TODO: 24/03/2020, if synale power is ok, we can reborn
+        if (! player.isAlive) {
+            this._currentScene.emitEnfOfGameEvent();
         }
     }
     //#endregion

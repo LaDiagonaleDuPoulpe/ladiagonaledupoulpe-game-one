@@ -83,6 +83,16 @@ export class BaseScene extends Phaser.Scene {
     public emitDiyingEvent() {
         this.events.emit(CustomEventType.diying);
     }
+
+    /** Emits end of dying event */
+    public emitEndOfDyingEvent() {
+        this.events.emit(CustomEventType.endOfDying);
+    }
+
+    /** Player is dead, game is gone */
+    public emitEnfOfGameEvent() {
+        this.events.emit(CustomEventType.died);
+    }
     //#endregion
     
     //#region Internal methods

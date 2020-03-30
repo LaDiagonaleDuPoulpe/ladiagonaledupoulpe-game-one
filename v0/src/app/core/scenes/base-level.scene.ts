@@ -129,6 +129,7 @@ export abstract class BaseLevelScene extends BaseScene {
         //#region internal methods 
         private defineEventsListeners() {
             this.events.on(CustomEventType.diying, this.launchDyingAnimation, this);
+            this.events.on(CustomEventType.endOfDying, this.launchEndOfDying, this);
             this.events.on(CustomEventType.died, this.launchDiedScene, this);
         }
 
@@ -136,6 +137,10 @@ export abstract class BaseLevelScene extends BaseScene {
         protected launchDyingAnimation() {
             const octopus = <OctopusSprite> this.spritePlayers[0];
             octopus.die();
+        }
+
+        protected launchEndOfDying() {
+            this.gameDataManager.verifyHealthStatusOfPlayer();
         }
 
         protected launchDiedScene() {
