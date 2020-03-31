@@ -50,7 +50,11 @@ export class GameDataManagerService {
         }
     }
     
-    public verifyHealthStatusOfPlayer() {
+    /** 
+     * Player can reborn. But there are some rules to be able to do it.
+     * If all rules are ok, player can reborn, otherwise, player really dies
+     */
+    public tryToReborn() {
         const player = this.getActivePlayer();
 
         // TODO: 24/03/2020, if synale power is ok, we can reborn

@@ -140,7 +140,7 @@ export abstract class BaseLevelScene extends BaseScene {
         }
 
         protected launchEndOfDying() {
-            this.gameDataManager.verifyHealthStatusOfPlayer();
+            this.gameDataManager.tryToReborn();
         }
 
         protected launchDiedScene() {

@@ -19,6 +19,8 @@ export default class PlayerData {
     public updateHealth(value: number) {
         this.stats.health += value;
     }
+
+    
     //#endregion
 
     //#region Properties
