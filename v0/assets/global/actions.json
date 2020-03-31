@@ -1,0 +1,9 @@
+[
+    {
+        "name": "reborn",
+        "costImpact": {
+            "statPartKey": "synalePower.quantity",
+            "value": 30
+        }
+    }
+]
