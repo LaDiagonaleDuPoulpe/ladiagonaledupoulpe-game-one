@@ -110,11 +110,8 @@ export class CustomGame extends Phaser.Game {
         /**
         * Resize game
         */
-        resize(gameSize, baseSize, displaySize, resolution) {
-            
+        resize(gameSize, baseSize, displaySize, resolution) {            
             this._logger.log('resize', gameSize);
-            // //this.scale.resize(window.innerWidth, window.innerHeight);
-            // this.scale.refresh();
         }
         //#endregion
         
