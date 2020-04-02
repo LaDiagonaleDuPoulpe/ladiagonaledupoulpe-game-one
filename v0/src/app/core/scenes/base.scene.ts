@@ -16,6 +16,7 @@ import PlayerData from '../models/game/player-data';
 import { StatusBarPlugin } from '../plugins/status-bar.plugin';
 import { SceneConfigurationPropertiesSetting } from '../models/scene-configuration-properties-setting';
 import { CustomEventType } from '../../shared/enums/custom-events-type';
+import { GameDataLoaderService } from '../../shared/services/game-data-loader.service';
 
 /**
 * Parent class of all custom scenes of the game
@@ -29,7 +30,8 @@ export class BaseScene extends Phaser.Scene {
     constructor(key: string, 
                 protected _logger: DefaultLogger, 
                 protected _levelManager: LevelManageService,
-                protected _gameDataManager: GameManagerService) {
+                protected _gameDataManager: GameManagerService,
+                protected _gameDataLoaderManager: GameDataLoaderService) {
         super({
             key: key
         });
@@ -43,15 +45,16 @@ export class BaseScene extends Phaser.Scene {
     init(config: LevelConfig) {
         this.levelConfig = config;
         this._cursors = this.input.keyboard.createCursorKeys();
-        
+
         this.initializeGlobalMessageBox();
         this.initializeStatsPlayerMessageBox();
         this.applyMainConfiguration();
 
-        this.gameDataManager.init(this.cache.json, this.load, this);
+        this._gameDataLoaderManager.init(this.cache.json, this.load);
     }
     
     preload() {
+        this.gameDataManager.init(this);
     }
     
     /**
@@ -106,7 +109,6 @@ export class BaseScene extends Phaser.Scene {
 
     private applyMainConfiguration() {
         if (this.defaultConfiguration) {
-
             this.cameras.main.setBackgroundColor(this.defaultConfiguration.backgroudStyle.fill);
         }
     }

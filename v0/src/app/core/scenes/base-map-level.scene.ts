@@ -11,6 +11,7 @@ import { PrefabSpriteFactory } from '../prefab-sprites/prefab-sprite-factory';
 import { Prefab } from '../models/prefabs/prefab';
 import { ColliderManagerService } from '../../shared/services/collider-manager.service';
 import { GameManagerService } from '../../shared/services/game-manager.service';
+import { GameDataLoaderService } from '../../shared/services/game-data-loader.service';
 
 /**
 * Base map level scene : it's the mother class to represent all map scene
@@ -29,9 +30,10 @@ export abstract class BaseMapLevelScene extends BaseLevelScene {
                 protected _objectCreator: ObjectCreator,
                 protected _animationsCreator: AnimationsCreator,
                 protected _lightManager: LightManager,
-                protected _gameDataManager: GameManagerService) {
+                protected _gameDataManager: GameManagerService,
+                protected _gameDataLoaderManager: GameDataLoaderService) {
         super(key, _logger, _levelManager, _colliderManagerService, _objectCreator, 
-              _animationsCreator, _lightManager, _gameDataManager);
+              _animationsCreator, _lightManager, _gameDataManager, _gameDataLoaderManager);
     }
     
     //#region public methods

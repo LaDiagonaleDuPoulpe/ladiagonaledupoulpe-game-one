@@ -3,6 +3,7 @@ import GameData from '../../core/models/game/game-data';
 import PlayerData from '../../core/models/game/player-data';
 import { BaseScene } from '../../core/scenes/base.scene';
 import { CustomEventType } from "../enums/custom-events-type";
+import { GameDataLoaderService } from './game-data-loader.service';
 
 /** Services that manages game rules: player stats, update of health, .. */
 @singleton()
@@ -10,31 +11,22 @@ export class GameManagerService {
     //#region Fields
     private _gameData: GameData;
     protected __globalDataKey = 'default-global-data';
-    private _cacheManager: Phaser.Cache.BaseCache;
-    private _jsonLoader: Phaser.Loader.LoaderPlugin;
     private _currentPlayer: PlayerData;
     private _playerList: PlayerData[] = [];
     private _currentScene: BaseScene;
     //#endregion
 
     //#region Constructors
-    constructor() {
+    constructor(private _gameDataLoader: GameDataLoaderService) {
         console.log('-----> gamedata new');
     }
     //#endregion
     
     //#region Public methods
     /** You have to call this method first to set the json cache loader */
-    public init(cache: Phaser.Cache.BaseCache, jsonLoader: Phaser.Loader.LoaderPlugin,
-                currentScene: BaseScene) {
-        this._cacheManager = cache;
-        this._jsonLoader = jsonLoader;
+    public init(currentScene: BaseScene) {
         this._currentScene = currentScene;
-    }
-
-    /** Loads data in cache */
-    public load() {
-        this.loadGameData();
+        this.gameData = this._gameDataLoader.gameData;
     }
 
     /** Updates the player data health value */
@@ -65,17 +57,6 @@ export class GameManagerService {
     //#endregion
     
     //#region Internal methods
-    /** Loads game data from cache */
-    private setGameData() {         
-        this._gameData = this._cacheManager.get(this.__globalDataKey);
-    }
-    
-    private loadGameData() {
-        if (! this.gameData) {
-            this._jsonLoader.json(this.__globalDataKey, 'assets/global/global-settings.json');
-        }    
-    }
-    
     // TODO: 24/01/2020: should be updated when multi player will arrive
     /** Gets the data of the current player */
     protected getActivePlayer(): PlayerData {
@@ -97,11 +78,12 @@ export class GameManagerService {
     //#region Properties
     /** Data of the game (all data of each player, ...) */
     protected get gameData(): GameData {
-        if (! this._gameData) {
-            this.setGameData();
-        }
-        
         return this._gameData;
+    }
+
+    /** Data of the game (all data of each player, ...) */
+    protected set gameData(value: GameData) {
+        this._gameData = value;
     }
 
     /** 
