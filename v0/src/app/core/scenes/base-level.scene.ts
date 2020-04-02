@@ -9,7 +9,7 @@ import { LightManager } from '../plugins/light-manager';
 import { EventType } from '../models/dialog-modal/event-type';
 import { ColliderManagerService } from '../../shared/services/collider-manager.service';
 import { LevelConfig } from '../models/levels/level-config';
-import { GameDataManagerService } from '../../shared/services/game-data-manager.service';
+import { GameManagerService } from '../../shared/services/game-manager.service';
 import { CustomEventType } from '../../shared/enums/custom-events-type';
 import { OctopusSprite } from '../prefab-sprites/arcades/octopus.sprite';
 
@@ -34,7 +34,7 @@ export abstract class BaseLevelScene extends BaseScene {
         protected _objectCreator: ObjectCreator,
         protected _animationsCreator: AnimationsCreator,
         protected _lightManager: LightManager,
-        protected _gameDataManager: GameDataManagerService) {
+        protected _gameDataManager: GameManagerService) {
             super(key, _logger, _levelManager, _gameDataManager);
         }
         

@@ -2,7 +2,7 @@ import { singleton } from "tsyringe";
 import ColliderAction from '../../core/models/colliders/collider.action';
 import { BaseLevelScene } from '../../core/scenes/base-level.scene';
 import { Dictionary } from '../custom-types/dictionary';
-import { GameDataManagerService } from './game-data-manager.service';
+import { GameManagerService } from './game-manager.service';
 import { PrefabSprite } from '../../core/prefab-sprites/prefab.sprite';
 
 /**
@@ -28,7 +28,7 @@ export class ColliderManagerService {
     /** Execute the valid action (if it exists) */
     execute(transmitter: Phaser.GameObjects.Sprite | PrefabSprite, 
             receiver: Phaser.GameObjects.Sprite,
-            gameDataManager: GameDataManagerService) {
+            gameDataManager: GameManagerService) {
         const action = this._actions.find(item => {
             return item.transmitterKey === transmitter.name &&
             item.receiverKey === receiver.name;
@@ -55,7 +55,7 @@ export class ColliderManagerService {
     //#endregion
 
     //#region Internal methods
-    private updatePlayerHealth(damage: number, gameDataManager: GameDataManagerService) {
+    private updatePlayerHealth(damage: number, gameDataManager: GameManagerService) {
         gameDataManager.updatePlayerHealth(damage);
         this._isAlreadyUpdateHealth = false;
     }

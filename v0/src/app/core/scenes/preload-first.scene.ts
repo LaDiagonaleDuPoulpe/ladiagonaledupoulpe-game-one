@@ -4,7 +4,7 @@ import { LevelManageService } from '../../shared/services/level-manager.service'
 import { BaseScene } from './base.scene';
 import GameData from '../models/game/game-data';
 import { LevelConfig } from '../models/levels/level-config';
-import { GameDataManagerService } from '../../shared/services/game-data-manager.service';
+import { GameManagerService } from '../../shared/services/game-manager.service';
 
 /** First scene of the game
 * It loads all global data of the scene
@@ -17,7 +17,7 @@ export default class PreloadFirstScene extends BaseScene {
     
     constructor(protected _logger: DefaultLogger, 
                 protected _levelManager: LevelManageService,
-                protected _gameDataManager: GameDataManagerService) {
+                protected _gameDataManager: GameManagerService) {
         super(PreloadFirstScene.name, _logger, _levelManager, _gameDataManager);
     }
         

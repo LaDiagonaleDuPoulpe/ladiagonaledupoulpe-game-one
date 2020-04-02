@@ -11,7 +11,7 @@ import { toHexaInt } from '../../shared/converters/string-converter';
 import { ModalText } from '../models/dialog-modal/modal-text';
 import { ModalContent } from '../models/dialog-modal/modal-content';
 import { ColliderManagerService } from '../../shared/services/collider-manager.service';
-import { GameDataManagerService } from '../../shared/services/game-data-manager.service';
+import { GameManagerService } from '../../shared/services/game-manager.service';
 
 /**
 * Scene where octopuses are inside the spaceship
@@ -27,7 +27,7 @@ export class InsideSpaceShipMapScene extends BaseMapLevelScene {
         _objectCreator: ObjectCreator,
         _animationsCreator: AnimationsCreator,
         _lightManager: LightManager,
-        _gameDataManager: GameDataManagerService) {
+        _gameDataManager: GameManagerService) {
     super(InsideSpaceShipMapScene.name, _logger, _levelManageService, 
         _colliderManagerService, _objectCreator, _animationsCreator, 
         _lightManager, _gameDataManager);

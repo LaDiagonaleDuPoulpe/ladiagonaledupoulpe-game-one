@@ -8,7 +8,7 @@ import { SceneType } from '../../shared/enums/scene-type';
 import { SceneData } from '../models/scenes/scene-data';
 import { LevelManageService } from '../../shared/services/level-manager.service';
 import { AssetImage } from '../models/assets/asset-image';
-import { GameDataManagerService } from '../../shared/services/game-data-manager.service';
+import { GameManagerService } from '../../shared/services/game-manager.service';
 
 /**
 * Loads all assets of the game scene
@@ -18,7 +18,7 @@ import { GameDataManagerService } from '../../shared/services/game-data-manager.
 export class LoadingScene extends BaseScene {
     constructor(protected _logger: DefaultLogger,
                 private _levelManageService: LevelManageService,
-                protected _gameDataManager: GameDataManagerService) {
+                protected _gameDataManager: GameManagerService) {
         super(LoadingScene.name, _logger, _levelManageService, _gameDataManager);
     }
 

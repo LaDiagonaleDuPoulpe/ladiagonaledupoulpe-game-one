@@ -9,7 +9,7 @@ import { PropertiesSetting } from '../models/properties-setting';
 import { Style } from '../models/style';
 import { DialogModalPlugin } from '../plugins/dialog-modal.plugin';
 import GameData from '../models/game/game-data';
-import { GameDataManagerService } from '../../shared/services/game-data-manager.service';
+import { GameManagerService } from '../../shared/services/game-manager.service';
 import { StatsPlayerBoxManagerPlugin } from '../plugins/stats-player-box-manager.plugin';
 import { DialogModalConfiguration } from '../models/dialog-modal/dialog-modal-configuration';
 import PlayerData from '../models/game/player-data';
@@ -29,7 +29,7 @@ export class BaseScene extends Phaser.Scene {
     constructor(key: string, 
                 protected _logger: DefaultLogger, 
                 protected _levelManager: LevelManageService,
-                protected _gameDataManager: GameDataManagerService) {
+                protected _gameDataManager: GameManagerService) {
         super({
             key: key
         });
@@ -192,7 +192,7 @@ export class BaseScene extends Phaser.Scene {
     }
 
     /** Gets data manager for the game (player data, ...) */
-    protected get gameDataManager(): GameDataManagerService {
+    protected get gameDataManager(): GameManagerService {
         return this._gameDataManager;
     }
 

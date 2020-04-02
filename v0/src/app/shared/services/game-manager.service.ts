@@ -4,9 +4,9 @@ import PlayerData from '../../core/models/game/player-data';
 import { BaseScene } from '../../core/scenes/base.scene';
 import { CustomEventType } from "../enums/custom-events-type";
 
-/** Services that manages game data : player stats, update of health, .. */
+/** Services that manages game rules: player stats, update of health, .. */
 @singleton()
-export class GameDataManagerService {
+export class GameManagerService {
     //#region Fields
     private _gameData: GameData;
     protected __globalDataKey = 'default-global-data';
@@ -19,7 +19,7 @@ export class GameDataManagerService {
 
     //#region Constructors
     constructor() {
-        
+        console.log('-----> gamedata new');
     }
     //#endregion
     

@@ -12,7 +12,7 @@ import { WavesCreator } from '../prefab-sprites/arcades/creators/waves-creator';
 import { AnimationsCreator } from '../prefab-sprites/animations/animations-creator';
 import { LightManager } from '../plugins/light-manager';
 import { ColliderManagerService } from '../../shared/services/collider-manager.service';
-import { GameDataManagerService } from '../../shared/services/game-data-manager.service';
+import { GameManagerService } from '../../shared/services/game-manager.service';
 
 @injectable()
 export class TitleScene extends BaseMapLevelScene {
@@ -28,7 +28,7 @@ export class TitleScene extends BaseMapLevelScene {
                 private _waveCreator: WavesCreator,
                 protected _animationsCreator: AnimationsCreator,
                 protected _lightManager: LightManager,
-                protected _gameDataManager: GameDataManagerService) {
+                protected _gameDataManager: GameManagerService) {
         super(TitleScene.name, _logger, _levelManageService, _colliderManagerService, 
               _objectCreator, _animationsCreator, _lightManager, _gameDataManager);
     }

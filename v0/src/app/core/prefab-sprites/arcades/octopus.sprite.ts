@@ -3,7 +3,6 @@ import { BaseLevelScene } from '../../scenes/base-level.scene';
 import { Position } from '../../models/position';
 import { PropertiesSetting } from '../../models/properties-setting';
 import { AnimationsCreator } from '../animations/animations-creator';
-import { GameDataManagerService } from '../../../shared/services/game-data-manager.service';
 import { ActionType } from '../../../shared/enums/action-type';
 import { DirectionType } from '../../../shared/enums/direction-type';
 

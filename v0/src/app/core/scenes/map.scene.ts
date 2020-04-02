@@ -7,7 +7,7 @@ import { BaseMapLevelScene } from './base-map-level.scene';
 import { AnimationsCreator } from '../prefab-sprites/animations/animations-creator';
 import { LightManager } from '../plugins/light-manager';
 import { ColliderManagerService } from '../../shared/services/collider-manager.service';
-import { GameDataManagerService } from '../../shared/services/game-data-manager.service';
+import { GameManagerService } from '../../shared/services/game-manager.service';
 
 /**
 * Scene with map loading, (tile json loaded)
@@ -21,7 +21,7 @@ export class MapScene extends BaseMapLevelScene {
         protected _objectCreator: ObjectCreator,
         protected _animationsCreator: AnimationsCreator,
         protected _lightManager: LightManager,
-        protected _gameDataManager: GameDataManagerService) {
+        protected _gameDataManager: GameManagerService) {
             super(MapScene.name, _logger, _levelManageService, _colliderManagerService,
                   _objectCreator, _animationsCreator, _lightManager, _gameDataManager);
         }        
