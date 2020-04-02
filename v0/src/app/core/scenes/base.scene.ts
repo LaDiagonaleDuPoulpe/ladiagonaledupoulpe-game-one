@@ -43,18 +43,20 @@ export class BaseScene extends Phaser.Scene {
     * @param config Configuration from json file
     */
     init(config: LevelConfig) {
+        console.log('---- base scene : init');
         this.levelConfig = config;
         this._cursors = this.input.keyboard.createCursorKeys();
-
+        
         this.initializeGlobalMessageBox();
         this.initializeStatsPlayerMessageBox();
         this.applyMainConfiguration();
-
+        
         this._gameDataLoaderManager.init(this.cache.json, this.load);
+        this.gameDataManager.init(this);
     }
     
     preload() {
-        this.gameDataManager.init(this);
+        console.log('---- base scene : preload');
     }
     
     /**

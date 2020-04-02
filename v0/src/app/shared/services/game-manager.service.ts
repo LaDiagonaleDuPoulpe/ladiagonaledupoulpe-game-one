@@ -26,7 +26,6 @@ export class GameManagerService {
     /** You have to call this method first to set the json cache loader */
     public init(currentScene: BaseScene) {
         this._currentScene = currentScene;
-        this.gameData = this._gameDataLoader.gameData;
     }
 
     /** Updates the player data health value */
@@ -78,12 +77,7 @@ export class GameManagerService {
     //#region Properties
     /** Data of the game (all data of each player, ...) */
     protected get gameData(): GameData {
-        return this._gameData;
-    }
-
-    /** Data of the game (all data of each player, ...) */
-    protected set gameData(value: GameData) {
-        this._gameData = value;
+        return this._gameDataLoader.gameData;
     }
 
     /** 
