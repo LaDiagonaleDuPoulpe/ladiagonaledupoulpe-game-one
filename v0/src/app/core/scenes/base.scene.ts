@@ -43,7 +43,6 @@ export class BaseScene extends Phaser.Scene {
     * @param config Configuration from json file
     */
     init(config: LevelConfig) {
-        console.log('---- base scene : init');
         this.levelConfig = config;
         this._cursors = this.input.keyboard.createCursorKeys();
         
@@ -56,7 +55,6 @@ export class BaseScene extends Phaser.Scene {
     }
     
     preload() {
-        console.log('---- base scene : preload');
     }
     
     /**
