@@ -96,6 +96,11 @@ export class BaseScene extends Phaser.Scene {
     public emitEnfOfGameEvent() {
         this.events.emit(CustomEventType.died);
     }
+
+    /** Player is reborn ! */
+    public emitRebornEvent() {
+        this.events.emit(CustomEventType.reborn);
+    }
     //#endregion
     
     //#region Internal methods

@@ -9,5 +9,5 @@ export enum CustomEventType {
     /** Use id when the player is dead : end game */
     died = 'diedPlayer',
     /** Use it when the player is reborn */
-    revival = 'revivalPlayer'
+    reborn = 'rebornPlayer'
 };

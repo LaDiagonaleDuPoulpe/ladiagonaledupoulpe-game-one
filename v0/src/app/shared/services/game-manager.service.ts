@@ -4,6 +4,8 @@ import PlayerData from '../../core/models/game/player-data';
 import { BaseScene } from '../../core/scenes/base.scene';
 import { CustomEventType } from "../enums/custom-events-type";
 import { GameDataLoaderService } from './game-data-loader.service';
+import { RebornRulesManager } from './reborn-rules-manager';
+import { LifeStateType } from "../enums/life-state-type";
 
 /** Services that manages game rules: player stats, update of health, .. */
 @singleton()
@@ -17,8 +19,8 @@ export class GameManagerService {
     //#endregion
 
     //#region Constructors
-    constructor(private _gameDataLoader: GameDataLoaderService) {
-        console.log('-----> gamedata new');
+    constructor(private _gameDataLoader: GameDataLoaderService,
+                private _rebornRulesManager: RebornRulesManager) {
     }
     //#endregion
     
@@ -47,10 +49,17 @@ export class GameManagerService {
      */
     public tryToReborn() {
         const player = this.getActivePlayer();
+        let canReborn = false;
+        let emitAction = this._currentScene.emitEnfOfGameEvent;
 
-        // TODO: 24/03/2020, if synale power is ok, we can reborn
         if (! player.isAlive) {
-            this._currentScene.emitEnfOfGameEvent();
+            canReborn = this._rebornRulesManager.isEnable(player, this._gameDataLoader.actionsData) == LifeStateType.reborn;
+
+            if (canReborn) {
+                emitAction = this._currentScene.emitRebornEvent;
+            }
+            
+            emitAction.call(this._currentScene);
         }
     }
     //#endregion

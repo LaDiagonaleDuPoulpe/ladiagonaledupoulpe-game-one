@@ -1,8 +1,9 @@
 [
     {
-        "name": "revival",
+        "name": "reborn",
         "costImpact": {
-            "statPartKey": "synalePower.quantity",
+            "methodToVerif": "getEnoughSynalePower",
+            "methodToUpdate": "updateSynalePower",
             "value": 30
         }
     }

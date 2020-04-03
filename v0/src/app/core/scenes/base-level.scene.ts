@@ -133,21 +133,29 @@ export abstract class BaseLevelScene extends BaseScene {
             this.events.on(CustomEventType.diying, this.launchDyingAnimation, this);
             this.events.on(CustomEventType.endOfDying, this.launchEndOfDying, this);
             this.events.on(CustomEventType.died, this.launchDiedScene, this);
+            this.events.on(CustomEventType.reborn, this.launchRebornPlayer, this);
         }
 
-        /** Launch dying scene, and reactive the last scene if player can do it */
+        /** Launches dying scene, and reactive the last scene if player can do it */
         protected launchDyingAnimation() {
             const octopus = <OctopusSprite> this.spritePlayers[0];
             octopus.die();
         }
 
+        /** Launches end of diying event : to check if player can reborn */
         protected launchEndOfDying() {
             this.gameDataManager.tryToReborn();
         }
 
+        /** Launches end of the game */
         protected launchDiedScene() {
             const levelKey = this._levelManager.setEndGameStep();
             this.goToNextScene(levelKey);
+        }
+
+        /** Launches ability to reborn of the player */
+        protected launchRebornPlayer() {
+            throw new Error('03/04/2020, reborn of the player (play animation)');
         }
 
         private createAllDataInStage() {
