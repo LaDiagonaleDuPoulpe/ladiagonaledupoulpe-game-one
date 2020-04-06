@@ -155,7 +155,8 @@ export abstract class BaseLevelScene extends BaseScene {
 
         /** Launches ability to reborn of the player */
         protected launchRebornPlayer() {
-            throw new Error('03/04/2020, reborn of the player (play animation)');
+            const octopus = <OctopusSprite> this.spritePlayers[0];
+            octopus.reborn();
         }
 
         private createAllDataInStage() {

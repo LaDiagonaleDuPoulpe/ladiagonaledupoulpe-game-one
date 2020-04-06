@@ -9,7 +9,7 @@ export enum ActionType {
     /** Action when the player is dying, he is not dead yet */
     diying = 'diying',
     /** Action when the player was dead, and he is reborn */
-    revival = 'revival',
+    reborn = 'reborn',
     /** End of the game */
     died = 'died'
 }

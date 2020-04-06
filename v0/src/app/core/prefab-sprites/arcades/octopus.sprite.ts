@@ -17,6 +17,7 @@ export class OctopusSprite extends BaseArcadeSprite {
     private _currentAction = '';
     private _isAlive = true;
     private _isStopped = false;
+    private _isReborn = false;
     //#endregion
 
     constructor(protected _scene: BaseLevelScene, 
@@ -32,13 +33,16 @@ export class OctopusSprite extends BaseArcadeSprite {
     //#region public methods
     update() {
         const firstPartAnimKey = this._name;
-        this._currentAction = ActionType.walk;
         this._currentPosition = DirectionType.left;
 
         if (this._isAlive) {
             this.setPositionAndCurrentAction();
         } else if (! this._isStopped) {
-            this._currentAction = ActionType.diying;
+            if (this._isReborn) {
+                this._currentAction = ActionType.reborn;
+            } else {
+                this._currentAction = ActionType.diying;
+            }
         }
         
         if (! this._isStopped) {
@@ -50,6 +54,12 @@ export class OctopusSprite extends BaseArcadeSprite {
     /** Current player is dying : playing the dying animation */
     die() {
         this._isAlive = false;
+    }
+
+    /** Current player is reborn : playing the reborn animation */
+    reborn() {
+        this._isStopped = false;
+        this._isReborn = true;
     }
 
     /**
@@ -116,6 +126,8 @@ export class OctopusSprite extends BaseArcadeSprite {
     }
 
     private setPositionAndCurrentAction() {
+        this._currentAction = ActionType.walk;
+
         if (this._scene.cursors.left.isDown) {
             this.setVelocityX(-160);
             
