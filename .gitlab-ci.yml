@@ -1,14 +1,5 @@
 build:
     stage: build
     script:
-        - npm i gulp -g
         - npm i
-        - gulp
-    cache:
-        policy: push
-        paths:
-        - node_modules
-    artifacts:
-        paths:
-        - built
 
