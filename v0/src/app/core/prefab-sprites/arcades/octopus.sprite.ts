@@ -83,16 +83,20 @@ export class OctopusSprite extends BaseArcadeSprite {
 
     private completeAnimation(anim) {
         if (this._currentAction == ActionType.diying) {
-            this._isStopped = true;            
-            this.off('animationcomplete', this.completeAnimation);
-            
-            this.scene.time.addEvent({
-                delay: 1000,
-                callback: () => { this.callSceneEndOfDying(); },
-                callbackScope: this,
-                loop: false
-            });
+            this.completeDyingAction();
         }
+    }
+
+    private completeDyingAction() {
+        this._isStopped = true;            
+        this.off('animationcomplete', this.completeAnimation);
+        
+        this.scene.time.addEvent({
+            delay: 1000,
+            callback: () => { this.callSceneEndOfDying(); },
+            callbackScope: this,
+            loop: false
+        });
     }
 
     private callSceneEndOfDying() {
