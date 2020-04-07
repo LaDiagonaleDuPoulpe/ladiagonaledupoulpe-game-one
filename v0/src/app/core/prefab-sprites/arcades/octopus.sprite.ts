@@ -92,13 +92,15 @@ export class OctopusSprite extends BaseArcadeSprite {
     
     /** The current sprite is in collision with other sprite */
     hitFromCollision() {
-        this.setTint(0xFF3300);
-        this.scene.time.addEvent({
-            delay: 500,
-            callback: () => { this.clearTint() },
-            callbackScope: this,
-            loop: false
-        });
+        if (! this._isReborn) {
+            this.setTint(0xFF3300);
+            this.scene.time.addEvent({
+                delay: 500,
+                callback: () => { this.clearTint() },
+                callbackScope: this,
+                loop: false
+            });
+        }
     }
     //#endregion
     
