@@ -61,34 +61,6 @@ export class OctopusSprite extends BaseArcadeSprite {
         this._isStopped = false;
         this._isReborn = true;
     }
-
-    /**
-     * Moves the octopus to the right, until player stop to press right key
-     */
-    moveRight() {
-        this.currentDirection.right = true;
-    }
-
-    /**
-     * Moves the octopus to the left, until player stop to press right key
-     */
-    moveLeft() {
-        this.currentDirection.left = true;
-    }
-
-    /**
-     * Moves the octopus to the up, until player stop to press right key
-     */
-    moveUp() {
-        this.currentDirection.up = true;
-    }
-    
-    /**
-     * Moves the octopus to the down, until player stop to press right key
-     */
-    moveDown() {
-        this.currentDirection.down = true;
-    }
     
     /** The current sprite is in collision with other sprite */
     hitFromCollision() {

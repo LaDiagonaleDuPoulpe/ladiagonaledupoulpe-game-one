@@ -46,33 +46,5 @@ export class InsideSpaceShipMapScene extends BaseMapLevelScene {
     //#region Internal methods
     private activateNextAction(){
     }
-
-    /**
-    * Override this method to manage key up listener
-    */
-    protected onArrowUp(event: KeyboardEvent) {
-        (<OctopusSprite> this.spritePlayers[0]).moveUp();
-    }
-    
-    /**
-    * Override this method to manage key down listener
-    */
-    protected onArrowDown(event: KeyboardEvent) {
-        (<OctopusSprite> this.spritePlayers[0]).moveDown();
-    }
-    
-    /**
-    * Override this method to manage key left listener
-    */
-    protected onArrowLeft(event: KeyboardEvent) {
-        (<OctopusSprite> this.spritePlayers[0]).moveLeft();
-    }
-    
-    /**
-    * Override this method to manage key right listener
-    */
-    protected onArrowRight(event: KeyboardEvent) {
-        (<OctopusSprite> this.spritePlayers[0]).moveRight();
-    }
     //#endregion
 }
