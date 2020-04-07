@@ -302,6 +302,61 @@
                         "zeroPad": 3,
                         "prefix": "octopus3 die down_",
                         "suffix": ".png"
+                    },
+                    {
+                        "key": "reborn-left",
+                        "byName": true,
+                        "frameStart": 0,
+                        "frameEnd": 29,
+                        "fps": 10,
+                        "repeat": 0,
+                        "zeroPad": 3,
+                        "prefix": "octopus3 revive down_",
+                        "suffix": ".png"
+                    },
+                    {
+                        "key": "reborn-idle",
+                        "byName": true,
+                        "frameStart": 0,
+                        "frameEnd": 29,
+                        "fps": 10,
+                        "repeat": 0,
+                        "zeroPad": 3,
+                        "prefix": "octopus3 revive down_",
+                        "suffix": ".png"
+                    },
+                    {
+                        "key": "reborn-right",
+                        "byName": true,
+                        "frameStart": 0,
+                        "frameEnd": 29,
+                        "fps": 10,
+                        "repeat": 0,
+                        "zeroPad": 3,
+                        "prefix": "octopus3 revive down_",
+                        "suffix": ".png"
+                    },
+                    {
+                        "key": "reborn-down",
+                        "byName": true,
+                        "frameStart": 0,
+                        "frameEnd": 29,
+                        "fps": 10,
+                        "repeat": 0,
+                        "zeroPad": 3,
+                        "prefix": "octopus3 revive down_",
+                        "suffix": ".png"
+                    },
+                    {
+                        "key": "reborn-up",
+                        "byName": true,
+                        "frameStart": 0,
+                        "frameEnd": 29,
+                        "fps": 10,
+                        "repeat": 0,
+                        "zeroPad": 3,
+                        "prefix": "octopus3 revive down_",
+                        "suffix": ".png"
                     }
                 ]
             }
