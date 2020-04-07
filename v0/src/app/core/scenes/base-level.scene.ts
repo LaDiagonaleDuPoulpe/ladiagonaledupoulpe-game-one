@@ -134,6 +134,7 @@ export abstract class BaseLevelScene extends BaseScene {
             this.events.on(CustomEventType.endOfDying, this.launchEndOfDying, this);
             this.events.on(CustomEventType.died, this.launchDiedScene, this);
             this.events.on(CustomEventType.reborn, this.launchRebornPlayer, this);
+            this.events.on(CustomEventType.endOfReborn, this.launchEndOfRebornPlayer, this);
         }
 
         /** Launches dying scene, and reactive the last scene if player can do it */
@@ -157,6 +158,12 @@ export abstract class BaseLevelScene extends BaseScene {
         protected launchRebornPlayer() {
             const octopus = <OctopusSprite> this.spritePlayers[0];
             octopus.reborn();
+        }
+
+        /** Launches the reinitialization of player data */
+        protected launchEndOfRebornPlayer() {
+            const octopus = <OctopusSprite> this.spritePlayers[0];
+            octopus.reinit();
         }
 
         private createAllDataInStage() {

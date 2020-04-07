@@ -61,6 +61,13 @@ export class OctopusSprite extends BaseArcadeSprite {
         this._isStopped = false;
         this._isReborn = true;
     }
+
+    /** Calls it after reborn animation */
+    reinit() {
+        this._isReborn = false;
+        this._isAlive = true;
+        this._isStopped = false;
+    }
     
     /** The current sprite is in collision with other sprite */
     hitFromCollision() {
@@ -82,25 +89,46 @@ export class OctopusSprite extends BaseArcadeSprite {
     }
 
     private completeAnimation(anim) {
+        let action = null;
+
         if (this._currentAction == ActionType.diying) {
-            this.completeDyingAction();
+            action = this.completeDyingAction;
+        }
+
+        if (this._currentAction == ActionType.reborn) {
+            action = this.completeRebornAction;
+        }
+
+        if (action) {
+            action.call(this);
         }
     }
 
+    private completeRebornAction() {
+        this.completeAction(this.callSceneEndOfReborn);
+    }
+
     private completeDyingAction() {
-        this._isStopped = true;            
-        this.off('animationcomplete', this.completeAnimation);
-        
-        this.scene.time.addEvent({
-            delay: 1000,
-            callback: () => { this.callSceneEndOfDying(); },
-            callbackScope: this,
-            loop: false
-        });
+        this.completeAction(this.callSceneEndOfDying);
     }
 
     private callSceneEndOfDying() {
         (<BaseLevelScene> this.scene).emitEndOfDyingEvent();
+    }
+
+    private callSceneEndOfReborn() {
+        (<BaseLevelScene> this.scene).emitEndOfRebornEvent();
+    }
+
+    private completeAction(callback) {
+        this._isStopped = true;            
+        
+        this.scene.time.addEvent({
+            delay: 1000,
+            callback: callback,
+            callbackScope: this,
+            loop: false
+        });
     }
 
     private setPositionAndCurrentAction() {

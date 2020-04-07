@@ -92,6 +92,10 @@ export class BaseScene extends Phaser.Scene {
         this.events.emit(CustomEventType.endOfDying);
     }
 
+    public emitEndOfRebornEvent() {
+        this.events.emit(CustomEventType.endOfReborn);
+    }
+
     /** Player is dead, game is gone */
     public emitEnfOfGameEvent() {
         this.events.emit(CustomEventType.died);
