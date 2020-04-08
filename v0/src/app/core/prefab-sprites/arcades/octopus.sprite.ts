@@ -35,10 +35,10 @@ export class OctopusSprite extends BaseArcadeSprite {
         const firstPartAnimKey = this._name;
         this._currentPosition = DirectionType.left;
 
-        if (this._isAlive) {
-            this.setPositionAndCurrentAction();
-        } else if (! this._isStopped) {
-            if (this._isReborn) {
+        if (! this._isStopped) {
+            if (this._isAlive) {
+                this.setPositionAndCurrentAction();
+            } else if(this._isReborn) {
                 this._currentAction = ActionType.reborn;
             } else {
                 this._currentAction = ActionType.diying;
@@ -105,7 +105,7 @@ export class OctopusSprite extends BaseArcadeSprite {
     }
 
     private completeRebornAction() {
-        this.completeAction(this.callSceneEndOfReborn);
+        this.completeAction(this.callSceneEndOfReborn, 2300);
     }
 
     private completeDyingAction() {
@@ -120,11 +120,11 @@ export class OctopusSprite extends BaseArcadeSprite {
         (<BaseLevelScene> this.scene).emitEndOfRebornEvent();
     }
 
-    private completeAction(callback) {
+    private completeAction(callback, duration: number = 1000) {
         this._isStopped = true;            
         
         this.scene.time.addEvent({
-            delay: 1000,
+            delay: duration,
             callback: callback,
             callbackScope: this,
             loop: false

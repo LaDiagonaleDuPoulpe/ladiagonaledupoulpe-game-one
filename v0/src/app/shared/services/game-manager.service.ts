@@ -46,6 +46,7 @@ export class GameManagerService {
     /** 
      * Player can reborn. But there are some rules to be able to do it.
      * If all rules are ok, player can reborn, otherwise, player really dies
+     * It will call emit event from current scene
      */
     public tryToReborn() {
         const player = this.getActivePlayer();
@@ -61,6 +62,13 @@ export class GameManagerService {
             
             emitAction.call(this._currentScene);
         }
+    }
+
+    /** Reinit data to their default values */
+    public reinitData() {
+        const player = this.getActivePlayer();
+
+        player.updateHealth(100);
     }
     //#endregion
     

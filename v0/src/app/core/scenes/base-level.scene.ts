@@ -163,6 +163,8 @@ export abstract class BaseLevelScene extends BaseScene {
         /** Launches the reinitialization of player data */
         protected launchEndOfRebornPlayer() {
             const octopus = <OctopusSprite> this.spritePlayers[0];
+            
+            this.gameDataManager.reinitData();
             octopus.reinit();
         }
 
