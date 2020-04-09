@@ -2,7 +2,7 @@ import { singleton } from "tsyringe";
 import GameData from '../../core/models/game/game-data';
 import PlayerData from '../../core/models/game/player-data';
 import { BaseScene } from '../../core/scenes/base.scene';
-import { CustomEventType } from "../enums/custom-events-type";
+import { CustomPlayerEventType } from "../enums/custom-player-events-type";
 import { GameDataLoaderService } from './game-data-loader.service';
 import { RebornRulesManager } from './reborn-rules-manager';
 import { LifeStateType } from "../enums/life-state-type";

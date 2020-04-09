@@ -10,7 +10,7 @@ import { EventType } from '../models/dialog-modal/event-type';
 import { ColliderManagerService } from '../../shared/services/collider-manager.service';
 import { LevelConfig } from '../models/levels/level-config';
 import { GameManagerService } from '../../shared/services/game-manager.service';
-import { CustomEventType } from '../../shared/enums/custom-events-type';
+import { CustomPlayerEventType } from '../../shared/enums/custom-player-events-type';
 import { OctopusSprite } from '../prefab-sprites/arcades/octopus.sprite';
 import { GameDataLoaderService } from '../../shared/services/game-data-loader.service';
 
@@ -130,11 +130,11 @@ export abstract class BaseLevelScene extends BaseScene {
         
         //#region internal methods 
         private defineEventsListeners() {
-            this.events.on(CustomEventType.diying, this.launchDyingAnimation, this);
-            this.events.on(CustomEventType.endOfDying, this.launchEndOfDying, this);
-            this.events.on(CustomEventType.died, this.launchDiedScene, this);
-            this.events.on(CustomEventType.reborn, this.launchRebornPlayer, this);
-            this.events.on(CustomEventType.endOfReborn, this.launchEndOfRebornPlayer, this);
+            this.events.on(CustomPlayerEventType.diying, this.launchDyingAnimation, this);
+            this.events.on(CustomPlayerEventType.endOfDying, this.launchEndOfDying, this);
+            this.events.on(CustomPlayerEventType.died, this.launchDiedScene, this);
+            this.events.on(CustomPlayerEventType.reborn, this.launchRebornPlayer, this);
+            this.events.on(CustomPlayerEventType.endOfReborn, this.launchEndOfRebornPlayer, this);
         }
 
         /** Launches dying scene, and reactive the last scene if player can do it */

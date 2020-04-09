@@ -15,8 +15,9 @@ import { DialogModalConfiguration } from '../models/dialog-modal/dialog-modal-co
 import PlayerData from '../models/game/player-data';
 import { StatusBarPlugin } from '../plugins/status-bar.plugin';
 import { SceneConfigurationPropertiesSetting } from '../models/scene-configuration-properties-setting';
-import { CustomEventType } from '../../shared/enums/custom-events-type';
+import { CustomPlayerEventType } from '../../shared/enums/custom-player-events-type';
 import { GameDataLoaderService } from '../../shared/services/game-data-loader.service';
+import { CustomStatusBarEventType } from '../../shared/enums/custom-status-bar-event-type';
 
 /**
 * Parent class of all custom scenes of the game
@@ -79,31 +80,31 @@ export class BaseScene extends Phaser.Scene {
 
     /** Launches a refresh to each stats player box */
     public refreshPlayersStats() {
-        this.playerStatsBoxManager.refresh();
+        this.events.emit(CustomStatusBarEventType.updateStats, this.playerList[0]);
     }
 
     /** Emits diying event */
     public emitDiyingEvent() {
-        this.events.emit(CustomEventType.diying);
+        this.events.emit(CustomPlayerEventType.diying);
     }
 
     /** Emits end of dying event */
     public emitEndOfDyingEvent() {
-        this.events.emit(CustomEventType.endOfDying);
+        this.events.emit(CustomPlayerEventType.endOfDying);
     }
 
     public emitEndOfRebornEvent() {
-        this.events.emit(CustomEventType.endOfReborn);
+        this.events.emit(CustomPlayerEventType.endOfReborn);
     }
 
     /** Player is dead, game is gone */
     public emitEnfOfGameEvent() {
-        this.events.emit(CustomEventType.died);
+        this.events.emit(CustomPlayerEventType.died);
     }
 
     /** Player is reborn ! */
     public emitRebornEvent() {
-        this.events.emit(CustomEventType.reborn);
+        this.events.emit(CustomPlayerEventType.reborn);
     }
     //#endregion
     

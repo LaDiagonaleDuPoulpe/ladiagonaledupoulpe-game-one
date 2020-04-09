@@ -1,7 +1,7 @@
 /**
  * Type of event that scene could be listened
  */
-export enum CustomEventType {
+export enum CustomPlayerEventType {
     /** Use it when the player is dying, not really dead */
     diying = 'diyingPlayer',
     /** Use it when the player stop to die and you want to verify he can reborn */

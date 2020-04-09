@@ -4,35 +4,39 @@ import { StatsPlayerBoxPlugin } from './stats-player-box.plugin';
 import { DialogModalConfiguration } from '../models/dialog-modal/dialog-modal-configuration';
 import { Position } from '../models/position';
 import PlayerData from '../models/game/player-data';
+import { Dictionary } from '../../shared/custom-types/dictionary';
+import { CustomStatusBarEventType } from '../../shared/enums/custom-status-bar-event-type';
 
 /** Plugin to display several box with stats of each player */
 export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
     //#region Fields
-    private _statsBoxList: StatsPlayerBoxPlugin[] = [];
+    private _statsBoxList: Dictionary<StatsPlayerBoxPlugin> = {};
     //#endregion
 
     constructor(_scene: BaseMapLevelScene, pluginManager: Phaser.Plugins.PluginManager) {
         super(_scene, pluginManager);
-    }
-
-    //#region Public methods
-    public toggleWindow(visibility: boolean) {
-        this._statsBoxList.forEach(box => box.toggleWindow(visibility));
+        this.defineEventListeners();
     }
     
-    public refresh() {
-        this._statsBoxList.forEach(item => item.refresh());
+    //#region Public methods
+    public toggleWindow(visibility: boolean) {
+        //this._statsBoxList.forEach(box => box.toggleWindow(visibility));
     }
     //#endregion
-
+    
     //#region Internal methods
+    private defineEventListeners() {
+        this._scene.events.on(CustomStatusBarEventType.updateStats, this.refreshStatValues, this);
+        //this._scene.events.on('toggle', this.refresh, this);
+    }
+
+    private refreshStatValues(player: PlayerData) {
+        const box = this._statsBoxList[player.key];
+        box.refresh();
+    }
+
     protected createBox() {
         let currentPosition = Object.assign({}, this.configuration.position);
-
-        // INFO: 03/02/2020: For test only
-        let secondPlayer = Object.assign({}, this.scene.playerList[0]);
-        secondPlayer.key = 'player2';
-        this.scene.playerList.push(secondPlayer);
 
         this.scene.playerList.forEach(player => {
             this.createOneBox(player, currentPosition);
@@ -43,7 +47,7 @@ export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
 
     private createOneBox(player: PlayerData, currentPosition: Position) {
         const oneBox = new StatsPlayerBoxPlugin(player, this.scene, this.pluginManager);
-        this._statsBoxList.push(oneBox);
+        this._statsBoxList[player.key] = oneBox;
 
         const position = Object.assign(new Position(), this.configuration.position);
         position.x = currentPosition.x;
@@ -51,9 +55,6 @@ export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
         this.configuration.position = position;
 
         oneBox.init(this.configuration);
-
-        // INFO: 31/01/2020: For test only
-        oneBox.show();
     }
     //#endregion
 }
