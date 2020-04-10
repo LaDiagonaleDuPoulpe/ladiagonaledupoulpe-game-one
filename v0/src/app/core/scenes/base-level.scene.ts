@@ -166,6 +166,7 @@ export abstract class BaseLevelScene extends BaseScene {
             
             this.gameDataManager.reinitData();
             octopus.reinit();
+            this.displayReinitHealthData();
         }
 
         private createAllDataInStage() {

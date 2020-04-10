@@ -38,9 +38,8 @@ export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
 
     private reinitValuesWithAnimation(player: PlayerData) {
         const box = this._statsBoxList[player.key];
-
-
-    }
+        box.reinitData(this.getContentFromPlayer(player), true);
+    }    
 
     private getContentFromPlayer(player: PlayerData): StatusBarContent {
         return { 

@@ -12,6 +12,9 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
     //#region Fields
     private _statusBarList: Dictionary<StatusBarPlugin> = {};
     private _content: StatusBarContent = null;
+    private _timedEvent: Phaser.Time.TimerEvent;
+    private _currentDisplayingHealth = 0;
+    private _updateStepValue = 5;
     //#endregion
 
     constructor(data: StatusBarContent,
@@ -35,6 +38,21 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
         }
     }
 
+    /** 
+     * Reinit all data in the box 
+     * @param withAnimation True if you want to animate the reinit data
+     */
+    public reinitData(data: StatusBarContent, withAnimation: boolean = true) {
+        let action = this.updateValues;
+
+        this._currentDisplayingHealth = 0;
+        if (withAnimation) {
+            action = this.displayReinitData;
+        }
+
+        action.call(this, data);
+    }
+
     /** Updates values in the status bar box */
     public updateValues(data: StatusBarContent) {
         this._content = Object.assign({}, data);
@@ -43,6 +61,28 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
     //#endregion
 
     //#region Internal methods
+    private displayReinitData(data: StatusBarContent) {
+        if (this._timedEvent) {
+            this._timedEvent.remove();
+        } 
+
+        this._timedEvent = this.scene.time.addEvent({
+            delay: 50,
+            callback: this.animateData.bind(this, data),
+            callbackScope: this,
+            loop: true
+        }); 
+    }
+
+    private animateData(data: StatusBarContent) {
+        this._currentDisplayingHealth += this._updateStepValue;
+        this._statusBarList[StatusBarType.xp].update(this._currentDisplayingHealth, data.healthMaxValue);
+
+        if (this._currentDisplayingHealth >= data.healthMaxValue) {
+            this._timedEvent.remove();
+        }
+    }
+
     protected createBox() {
         super.createBox(); 
 
@@ -55,7 +95,6 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
                                 this.configuration.position.y, 
                                 this.configuration.position.width, 
                                 this.configuration.position.height);
-
                                 
         this.createPeopleBox(this._content.prefabAvatar, 
                             this.configuration.position.x - 50, 
@@ -66,8 +105,8 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
         this.displayerStatsOf(this._content, this.configuration.position);
     }
 
-    private displayerStatsOf(player: StatusBarContent, currentPosition: Position) {
-        this.displayHealthStatus(player, currentPosition);
+    private displayerStatsOf(data: StatusBarContent, currentPosition: Position) {
+        this.displayHealthStatus(data, currentPosition);
         this.refresh();
     }
 

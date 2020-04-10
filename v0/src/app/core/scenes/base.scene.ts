@@ -83,6 +83,11 @@ export class BaseScene extends Phaser.Scene {
         this.events.emit(CustomStatusBarEventType.updateStats, this.playerList[0]);
     }
 
+    /** Emits event to reinit data of the player */
+    public displayReinitHealthData() {
+        this.events.emit(CustomStatusBarEventType.reinit, this.playerList[0]);
+    }
+
     /** Emits diying event */
     public emitDiyingEvent() {
         this.events.emit(CustomPlayerEventType.diying);
