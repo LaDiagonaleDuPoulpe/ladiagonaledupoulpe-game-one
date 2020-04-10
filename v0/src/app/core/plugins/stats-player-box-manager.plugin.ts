@@ -1,16 +1,17 @@
 import { BaseMapLevelScene } from '../scenes/base-map-level.scene';
 import { BaseModalPlugin } from './base-modal.plugin';
-import { StatsPlayerBoxPlugin } from './stats-player-box.plugin';
+import { StatsUnitBoxPlugin } from './stats-unit-box.plugin';
 import { DialogModalConfiguration } from '../models/dialog-modal/dialog-modal-configuration';
 import { Position } from '../models/position';
 import PlayerData from '../models/game/player-data';
 import { Dictionary } from '../../shared/custom-types/dictionary';
 import { CustomStatusBarEventType } from '../../shared/enums/custom-status-bar-event-type';
+import { StatusBarContent } from '../models/statusBar/status-bar-content';
 
 /** Plugin to display several box with stats of each player */
 export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
     //#region Fields
-    private _statsBoxList: Dictionary<StatsPlayerBoxPlugin> = {};
+    private _statsBoxList: Dictionary<StatsUnitBoxPlugin> = {};
     //#endregion
 
     constructor(_scene: BaseMapLevelScene, pluginManager: Phaser.Plugins.PluginManager) {
@@ -32,13 +33,22 @@ export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
 
     private refreshStatValues(player: PlayerData) {
         const box = this._statsBoxList[player.key];
-        box.updateValues(player);
+        box.updateValues(this.getContentFromPlayer(player));
     }
 
     private reinitValuesWithAnimation(player: PlayerData) {
         const box = this._statsBoxList[player.key];
 
 
+    }
+
+    private getContentFromPlayer(player: PlayerData): StatusBarContent {
+        return { 
+            key: player.key,
+            healthValue: player.stats.health,
+            healthMaxValue: player.stats.healthMax,
+            prefabAvatar: player.prefabAvatar
+        };
     }
 
     protected createBox() {
@@ -52,7 +62,7 @@ export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
     }
 
     private createOneBox(player: PlayerData, currentPosition: Position) {
-        const oneBox = new StatsPlayerBoxPlugin(player, this.scene, this.pluginManager);
+        const oneBox = new StatsUnitBoxPlugin(this.getContentFromPlayer(player), this.scene, this.pluginManager);
         this._statsBoxList[player.key] = oneBox;
 
         const position = Object.assign(new Position(), this.configuration.position);
