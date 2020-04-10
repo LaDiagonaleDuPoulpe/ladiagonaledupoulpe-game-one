@@ -47,6 +47,7 @@ export class ColliderManagerService {
                 });
 
                 this._scene.refreshPlayersStats();
+                this._scene.cameras.main.shake(200);
             }
             
             receiver[action.commandName]();
