@@ -12,12 +12,15 @@ import { Dictionary } from '../../shared/custom-types/dictionary';
 export class StatsPlayerBoxPlugin extends BaseModalWithPrefabPlugin {
     //#region Fields
     private _statusBarList: Dictionary<StatusBarPlugin> = {};
+    private _playerData: PlayerData = null;
     //#endregion
 
-    constructor(private _player: PlayerData,
+    constructor(player: PlayerData,
                 protected _scene: BaseMapLevelScene, 
                 protected _pluginManager: Phaser.Plugins.PluginManager) {
         super(_scene, _pluginManager);
+
+        this._playerData = Object.assign({}, player);
     }
 
     //#region Public methods
@@ -29,8 +32,14 @@ export class StatsPlayerBoxPlugin extends BaseModalWithPrefabPlugin {
     public refresh() {
         for (const key in this._statusBarList) {
             // TODO: 17/02/2020, see how to pass the values for each statusType (xp, mp, ...)
-            this._statusBarList[key].update(this._player.stats.health, this._player.stats.healthMax);
+            this._statusBarList[key].update(this._playerData.stats.health, this._playerData.stats.healthMax);
         }
+    }
+
+    /** Updates values in the status bar box */
+    public updateValues(data: PlayerData) {
+        this._playerData = Object.assign({}, data);
+        this.refresh();
     }
     //#endregion
 
@@ -49,13 +58,13 @@ export class StatsPlayerBoxPlugin extends BaseModalWithPrefabPlugin {
                                 this.configuration.position.height);
 
                                 
-        this.createPeopleBox(this._player.prefabAvatar, 
+        this.createPeopleBox(this._playerData.prefabAvatar, 
                             this.configuration.position.x - 50, 
                             this.configuration.position.y, 
                             this.configuration.position.width, 
                             this.configuration.position.height);
 
-        this.displayerStatsOf(this._player, this.configuration.position);
+        this.displayerStatsOf(this._playerData, this.configuration.position);
     }
 
     private displayerStatsOf(player: PlayerData, currentPosition: Position) {
@@ -69,7 +78,7 @@ export class StatsPlayerBoxPlugin extends BaseModalWithPrefabPlugin {
 
         const statusConfiguration = (<StatusPlayerBoxConfiguration> this.configuration).healthBarBox;
 
-        statusConfiguration.key = 'healthBarBox_' + this._player.key; 
+        statusConfiguration.key = 'healthBarBox_' + this._playerData.key; 
         statusConfiguration.position.x = statusPositionX;
         statusConfiguration.position.y = statusPositionY;
 

@@ -20,19 +20,25 @@ export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
     
     //#region Public methods
     public toggleWindow(visibility: boolean) {
-        //this._statsBoxList.forEach(box => box.toggleWindow(visibility));
+        // 10/04/2020, Nothing to do here, for now
     }
     //#endregion
     
     //#region Internal methods
     private defineEventListeners() {
         this._scene.events.on(CustomStatusBarEventType.updateStats, this.refreshStatValues, this);
-        //this._scene.events.on('toggle', this.refresh, this);
+        this._scene.events.on(CustomStatusBarEventType.reinit, this.reinitValuesWithAnimation, this);
     }
 
     private refreshStatValues(player: PlayerData) {
         const box = this._statsBoxList[player.key];
-        box.refresh();
+        box.updateValues(player);
+    }
+
+    private reinitValuesWithAnimation(player: PlayerData) {
+        const box = this._statsBoxList[player.key];
+
+
     }
 
     protected createBox() {
