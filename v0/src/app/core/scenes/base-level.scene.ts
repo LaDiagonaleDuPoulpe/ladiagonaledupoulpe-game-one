@@ -135,6 +135,19 @@ export abstract class BaseLevelScene extends BaseScene {
             this.events.on(CustomPlayerEventType.died, this.launchDiedScene, this);
             this.events.on(CustomPlayerEventType.reborn, this.launchRebornPlayer, this);
             this.events.on(CustomPlayerEventType.endOfReborn, this.launchEndOfRebornPlayer, this);
+            this.events.on(CustomPlayerEventType.beginHitByCollision, this.launchBeginHitByCollision, this);
+            this.events.on(CustomPlayerEventType.endHitByCollision, this.launchHitByCollision, this);
+        }
+
+        /** Launches begin hit by collision, and prepare from collision action */
+        protected launchBeginHitByCollision(damage: number) {
+            this.cameras.main.shake(200);
+        }
+
+        /** Launches hit by collision action, update health and some specific more actions */
+        protected launchHitByCollision(damage: number) {
+            this.refreshPlayersStats();
+            this.gameDataManager.updatePlayerHealth(damage);
         }
 
         /** Launches dying scene, and reactive the last scene if player can do it */

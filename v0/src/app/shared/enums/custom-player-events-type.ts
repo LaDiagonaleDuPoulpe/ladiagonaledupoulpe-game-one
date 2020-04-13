@@ -11,5 +11,9 @@ export enum CustomPlayerEventType {
     /** Use it when the player is reborn */
     reborn = 'rebornPlayer',
     /** Use if when the player has been reborn and you want to do something later */
-    endOfReborn = 'endOfRebornPlayer'
+    endOfReborn = 'endOfRebornPlayer',
+    /** Use if when the player starts to hit an object and you want to init collision action */
+    beginHitByCollision = 'beginHitByCollisionPlayer',
+    /** Use it when the player hits an object and you want to update the health */
+    endHitByCollision = 'endHitCollisionPlayer'
 };

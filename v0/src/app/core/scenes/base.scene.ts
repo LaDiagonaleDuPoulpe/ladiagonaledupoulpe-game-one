@@ -93,6 +93,16 @@ export class BaseScene extends Phaser.Scene {
         this.events.emit(CustomPlayerEventType.diying);
     }
 
+    /** Emits the initi of hitting by collision event */
+    public emitBeginHitByCollision(damage: number) {
+        this.events.emit(CustomPlayerEventType.beginHitByCollision, damage);
+    }
+
+    /** Emits hit by collision event */
+    public emitHitByCollision(damage: number) {
+        this.events.emit(CustomPlayerEventType.endHitByCollision, damage);
+    }
+
     /** Emits end of dying event */
     public emitEndOfDyingEvent() {
         this.events.emit(CustomPlayerEventType.endOfDying);

@@ -38,16 +38,16 @@ export class ColliderManagerService {
             if (! this._isAlreadyUpdateHealth) {
                 this._isAlreadyUpdateHealth = true;
 
+                const damageValue = -(<PrefabSprite> transmitter).collisionDamage;
+                this._scene.emitBeginHitByCollision(damageValue);
+
                 this._scene.time.addEvent({ 
                     delay: this._delayBeforeUpdateStatus, 
                     callback: this.updatePlayerHealth, 
                     callbackScope: this,
-                    args: [- (<PrefabSprite> transmitter).collisionDamage, gameDataManager],
+                    args: [damageValue, gameDataManager],
                     repeat: 0
                 });
-
-                this._scene.refreshPlayersStats();
-                this._scene.cameras.main.shake(200);
             }
             
             receiver[action.commandName]();
@@ -57,7 +57,7 @@ export class ColliderManagerService {
 
     //#region Internal methods
     private updatePlayerHealth(damage: number, gameDataManager: GameManagerService) {
-        gameDataManager.updatePlayerHealth(damage);
+        this._scene.emitHitByCollision(damage);
         this._isAlreadyUpdateHealth = false;
     }
     //#endregion
