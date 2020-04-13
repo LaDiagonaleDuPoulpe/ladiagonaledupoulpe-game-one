@@ -146,8 +146,11 @@ export abstract class BaseLevelScene extends BaseScene {
 
         /** Launches hit by collision action, update health and some specific more actions */
         protected launchHitByCollision(damage: number) {
-            this.refreshPlayersStats();
             this.gameDataManager.updatePlayerHealth(damage);
+            this.refreshPlayersStats();
+
+            const octopus = <OctopusSprite> this.spritePlayers[0];
+            octopus.avoidCollision();
         }
 
         /** Launches dying scene, and reactive the last scene if player can do it */

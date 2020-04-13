@@ -13,11 +13,12 @@ import { DirectionType } from '../../../shared/enums/direction-type';
 export class OctopusSprite extends BaseArcadeSprite {
     //#region Fields
     private _animationKeys: string[];
-    private _currentPosition = '';
+    private _currentDirection = '';
     private _currentAction = '';
     private _isAlive = true;
     private _isStopped = false;
     private _isReborn = false;
+    private _stepValue = 160;
     //#endregion
 
     constructor(protected _scene: BaseLevelScene, 
@@ -33,7 +34,7 @@ export class OctopusSprite extends BaseArcadeSprite {
     //#region public methods
     update() {
         const firstPartAnimKey = this._name;
-        this._currentPosition = DirectionType.left;
+        this._currentDirection = DirectionType.left;
 
         if (! this._isStopped) {
             if (this._isAlive) {
@@ -46,9 +47,35 @@ export class OctopusSprite extends BaseArcadeSprite {
         }
         
         if (! this._isStopped) {
-            let wholeAnimKey = `${firstPartAnimKey}_${this._currentAction}-${this._currentPosition}`;
+            let wholeAnimKey = `${firstPartAnimKey}_${this._currentAction}-${this._currentDirection}`;
             const animation = this.anims.play(wholeAnimKey, true);        
         }
+    }
+
+    /** Avoids collision by moving outside object from collision */
+    avoidCollision() {
+        const action = 'move';
+        let direction = ''; 
+
+        switch (this._currentDirection) {
+            case DirectionType.down:
+                direction = DirectionType.up;
+                break;
+
+            case DirectionType.up:
+                direction = DirectionType.down;
+                break;
+
+            case DirectionType.left:
+                direction = DirectionType.right;
+                break;
+
+            case DirectionType.right:
+                direction = DirectionType.left;
+                break;
+        }
+
+        this[action + direction[0].toUpperCase() + direction.substring(1)]();
     }
 
     /** Current player is dying : playing the dying animation */
@@ -80,6 +107,30 @@ export class OctopusSprite extends BaseArcadeSprite {
                 loop: false
             });
         }
+    }
+
+    moveRight() {
+        this.setVelocityX(this._stepValue);            
+        this._currentDirection = DirectionType.right;
+    }
+
+    moveLeft() {
+        this.setVelocityX(- this._stepValue);            
+        this._currentDirection = DirectionType.left;
+    }
+
+    moveUp() {
+        this.setVelocityX(0);
+        this.setVelocityY(- this._stepValue);
+        
+        this._currentDirection = DirectionType.up;
+    }
+
+    moveDown() {
+        this.setVelocityX(0);
+        this.setVelocityY(this._stepValue);
+        
+        this._currentDirection = DirectionType.down;
     }
     //#endregion
     
@@ -135,26 +186,16 @@ export class OctopusSprite extends BaseArcadeSprite {
         this._currentAction = ActionType.walk;
 
         if (this._scene.cursors.left.isDown) {
-            this.setVelocityX(-160);
-            
-            this._currentPosition = DirectionType.left;
+            this.moveLeft();
         }
         else if (this._scene.cursors.right.isDown) {
-            this.setVelocityX(160);
-            
-            this._currentPosition = DirectionType.right;
+            this.moveRight();
         }
         else if (this._scene.cursors.up.isDown) {
-            this.setVelocityX(0);
-            this.setVelocityY(-160);
-            
-            this._currentPosition = DirectionType.up;
+            this.moveUp();
         }
         else if (this._scene.cursors.down.isDown) {
-            this.setVelocityX(0);
-            this.setVelocityY(160);
-            
-            this._currentPosition = DirectionType.down;
+            this.moveDown();
         }
         else {
             
@@ -164,7 +205,7 @@ export class OctopusSprite extends BaseArcadeSprite {
             this.setVelocityX(0);
             this.setVelocityY(0);
             
-            this._currentPosition = parts[1];
+            this._currentDirection = parts[1];
             this._currentAction = ActionType.idle;
         }
     }
@@ -191,14 +232,6 @@ export class OctopusSprite extends BaseArcadeSprite {
 
     private stopCurrentAnimation() {
         this.anims.stop();        
-    }
-    
-    private reinitDirections() {
-        for (const key in this.currentDirection) {
-            if (this.currentDirection.hasOwnProperty(key)) {
-                this.currentDirection[key] = false;
-            }
-        }
     }
     //#endregion
 
