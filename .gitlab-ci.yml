@@ -5,6 +5,7 @@ build:
     script:
         - cd v0
         - npm i
+        - npm run build
 
 deploy:
   stage: deploy
