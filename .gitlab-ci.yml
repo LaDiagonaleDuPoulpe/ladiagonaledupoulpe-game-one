@@ -1,5 +1,18 @@
+image: node:latest
+
 build:
     stage: build
     script:
+        - cd v0
         - npm i
 
+deploy:
+  stage: deploy
+  before_script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$DEPLOYMENT_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  script:
+    - scp -rp v0 "$LOGINDEPLOY"@lddp.site:"$DIRDEV"
