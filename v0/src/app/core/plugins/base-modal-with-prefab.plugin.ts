@@ -26,7 +26,7 @@ export abstract class BaseModalWithPrefabPlugin extends BaseModalPlugin {
      * Displays new content. 
      * Overrides if to define how the refresh will be done
      */
-    abstract refresh();
+    abstract refresh(): void;
     //#endregion
 
     //#region Internal methods
@@ -38,7 +38,7 @@ export abstract class BaseModalWithPrefabPlugin extends BaseModalPlugin {
      * @param rectWidth Width of the box to display the prefab
      * @param rectHeight Height of the box to display the prefab
      */
-    protected createPeopleBox(prefab: Prefab, x: number, y: number, rectWidth: number, rectHeight: number) {     
+    protected createPeopleBox(prefab: Prefab, x: number, y: number, rectWidth: number, rectHeight: number): void {     
         if (prefab) {
             this.setPrefabToDisplay(prefab);
             

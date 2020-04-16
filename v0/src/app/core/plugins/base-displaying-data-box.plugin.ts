@@ -53,7 +53,7 @@ export abstract class BaseDisplayingDataBoxPlugin extends Phaser.Plugins.ScenePl
      * @param rectWidth Width of the inside box
      * @param rectHeight Height of the inside box
      */
-    protected abstract createInnerBox(x: number, y: number, rectWidth: number, rectHeight: number);
+    protected abstract createInnerBox(x: number, y: number, rectWidth: number, rectHeight: number): void;
 
     /** Sets modal box to a fixed mode (can't move, and before all game objects) */
     protected setFixed(object: Phaser.GameObjects.Graphics | Phaser.GameObjects.Text | Phaser.GameObjects.Sprite | Phaser.GameObjects.Image, 

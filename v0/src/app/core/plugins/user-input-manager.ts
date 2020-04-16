@@ -22,7 +22,7 @@ export class UserInputManager {
         }, this);
     }
 
-    private processAction(event) {
+    private processAction(event): void {
         if (this._enabled) {
             
         }

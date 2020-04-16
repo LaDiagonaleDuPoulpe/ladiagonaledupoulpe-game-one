@@ -49,6 +49,8 @@ export class CustomGame extends Phaser.Game {
         private _endGameScene: EndGameScene,
         private _insideSPaceShipScene: InsideSpaceShipMapScene) {
             super(config.forRoot());
+
+            this._logger.log('customgame::constructor', this._mainScene);
             
             this.init();
         }
@@ -58,9 +60,11 @@ export class CustomGame extends Phaser.Game {
         * initialize all data, adding scenes
         */
         private init() {
+            this._logger.log('customgame::init');
             this.addScenes();
             this.loadConfigurations();
             this.attachEvents();
+            this._logger.log('customgame::init//end');
         }
         
         private addScenes() {
@@ -102,7 +106,9 @@ export class CustomGame extends Phaser.Game {
             const config = new LevelConfig();
             config.sceneConfiguration = this._sceneConfig;
             
+            this._logger.log('before start 1 scene', config);
             this.scene.start(SceneType.main, config);
+            this._logger.log('after start 1 scene');
             
             this.scale.resize(window.innerWidth, window.innerHeight);
         }
@@ -110,7 +116,7 @@ export class CustomGame extends Phaser.Game {
         /**
         * Resize game
         */
-        resize(gameSize, baseSize, displaySize, resolution) {            
+        resize(gameSize: number, baseSize: number, displaySize: number, resolution: number) {            
             this._logger.log('resize', gameSize);
         }
         //#endregion

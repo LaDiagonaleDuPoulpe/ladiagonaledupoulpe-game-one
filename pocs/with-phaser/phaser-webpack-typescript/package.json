@@ -1,0 +1,41 @@
+{
+  "name": "ladiagonale",
+  "version": "0.1.0",
+  "description": "octopuses saves their planet ?",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --watch --config webpack.config.dev.js",
+    "build": "webpack --config webpack.config.prod.js",
+    "prod": "webpack-dev-server --config webpack.config.prod.js"
+  },
+  "author": "evan boissonnot",
+  "license": "ISC",
+  "dependencies": {
+    "phaser": "^3.20.1",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.5.3",
+    "tsyringe": "^3.4.0"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "expose-loader": "0.7.5",
+    "ts-loader": "6.2.0",
+    "typescript": "^3.6.3",
+    "webpack": "4.35.2",
+    "webpack-cli": "3.3.5",
+    "webpack-dev-server": "3.7.2",
+    "@typescript-eslint/eslint-plugin": "^1.6.0",
+    "@typescript-eslint/parser": "^1.6.0",
+    "awesome-typescript-loader": "^5.2.1",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-import": "^2.17.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eventemitter3": "^3.1.2",
+    "hard-source-webpack-plugin": "^0.13.1",
+    "prettier": "^1.17.0",
+    "querystringify": "^2.1.1",
+    "terser-webpack-plugin": "^1.3.0"
+  }
+}

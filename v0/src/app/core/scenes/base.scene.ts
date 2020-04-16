@@ -44,6 +44,7 @@ export class BaseScene extends Phaser.Scene {
     * @param config Configuration from json file
     */
     init(config: LevelConfig) {
+        this._logger.log('basscene::init)');
         this.levelConfig = config;
         this._cursors = this.input.keyboard.createCursorKeys();
         

@@ -27,6 +27,8 @@ export class MainScene extends BaseScene {
                 protected _gameDataManager: GameManagerService,
                 protected _gameDataLoaderManager: GameDataLoaderService) {
         super(MainScene.name, _logger, _levelManageService, _gameDataManager, _gameDataLoaderManager);
+
+        this._logger.log('MainScene::constructor');
     }
 
     //#region public methods
@@ -36,6 +38,7 @@ export class MainScene extends BaseScene {
     }
     
     create(config: LevelConfig) {
+        this._logger.log('MainScene:create::0');
         this.levelConfig = config;
         this.levelConfig.levels = this._levels;
 
