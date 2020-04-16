@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --watch --config webpack.config.dev.js",
     "build": "webpack --config webpack.config.prod.js",
-    "prod": "webpack --mode production && webpack-dev-server --mode production"
+    "prod": "webpack-dev-server --watch --config webpack.config.prod.js"
   },
   "author": "evan boissonnot",
   "license": "ISC",

@@ -20,7 +20,7 @@ export default class PreloadFirstScene extends BaseScene {
                 protected _levelManager: LevelManageService,
                 protected _gameDataManager: GameManagerService,
                 protected _gameDataLoaderManager: GameDataLoaderService) {
-        super(PreloadFirstScene.name, _logger, _levelManager, _gameDataManager, _gameDataLoaderManager);
+        super('PreloadFirstScene', _logger, _levelManager, _gameDataManager, _gameDataLoaderManager);
     }
         
     //#region Public methods

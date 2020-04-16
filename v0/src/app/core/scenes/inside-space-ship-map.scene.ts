@@ -30,7 +30,7 @@ export class InsideSpaceShipMapScene extends BaseMapLevelScene {
         _lightManager: LightManager,
         _gameDataManager: GameManagerService,
         _gameDataLoaderManager: GameDataLoaderService) {
-    super(InsideSpaceShipMapScene.name, _logger, _levelManageService, 
+    super('InsideSpaceShipMapScene', _logger, _levelManageService, 
         _colliderManagerService, _objectCreator, _animationsCreator, 
         _lightManager, _gameDataManager, _gameDataLoaderManager);
     }    

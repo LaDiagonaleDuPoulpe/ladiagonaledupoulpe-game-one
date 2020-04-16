@@ -25,7 +25,7 @@ import { GameDataLoaderService } from '../../shared/services/game-data-loader.se
                 protected _lightManager: LightManager,
                 protected _gameDataManager: GameManagerService,
                 protected _gameDataLoaderManager: GameDataLoaderService) {
-        super(VideoScene.name, _logger, _levelManageService, _colliderManagerService,
+        super('VideoScene', _logger, _levelManageService, _colliderManagerService,
               _objectCreator, _animationsCreator, _lightManager, _gameDataManager,
               _gameDataLoaderManager);
     }

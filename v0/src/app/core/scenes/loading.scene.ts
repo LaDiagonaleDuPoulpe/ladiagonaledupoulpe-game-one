@@ -21,7 +21,7 @@ export class LoadingScene extends BaseScene {
                 private _levelManageService: LevelManageService,
                 protected _gameDataManager: GameManagerService,
                 protected _gameDataLoaderManager: GameDataLoaderService) {
-        super(LoadingScene.name, _logger, _levelManageService, _gameDataManager, _gameDataLoaderManager);
+        super('LoadingScene', _logger, _levelManageService, _gameDataManager, _gameDataLoaderManager);
     }
 
     //#region internal methods

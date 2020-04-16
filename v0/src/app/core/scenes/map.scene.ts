@@ -24,7 +24,7 @@ export class MapScene extends BaseMapLevelScene {
         protected _lightManager: LightManager,
         protected _gameDataManager: GameManagerService,
         protected _gameDataLoaderManager: GameDataLoaderService) {
-            super(MapScene.name, _logger, _levelManageService, _colliderManagerService,
+            super('MapScene', _logger, _levelManageService, _colliderManagerService,
                   _objectCreator, _animationsCreator, _lightManager, _gameDataManager,
                   _gameDataLoaderManager);
         }        

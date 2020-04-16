@@ -26,7 +26,7 @@ export class MainScene extends BaseScene {
                 private _levelManageService: LevelManageService,
                 protected _gameDataManager: GameManagerService,
                 protected _gameDataLoaderManager: GameDataLoaderService) {
-        super(MainScene.name, _logger, _levelManageService, _gameDataManager, _gameDataLoaderManager);
+        super('MainScene', _logger, _levelManageService, _gameDataManager, _gameDataLoaderManager);
 
         this._logger.log('MainScene::constructor');
     }
