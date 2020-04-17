@@ -2,5 +2,6 @@
  * Defines environment configuration
  */
 export const environment = {
-    production: false
+    production: false,
+    version: 0.3
 };
