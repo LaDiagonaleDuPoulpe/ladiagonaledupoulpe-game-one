@@ -16,4 +16,4 @@ deploy:
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
   script:
-    - scp -rp v0 "$LOGINDEPLOY"@lddp.site:"$DIRDEV"
+    - scp -rp v0/dist "$LOGINDEPLOY"@lddp.site:"$DIRDEV"
