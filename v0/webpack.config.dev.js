@@ -10,9 +10,7 @@ module.exports = {
   mode: 'development',
   entry: './src/main.ts',
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist/scripts/'),
-    publicPath: 'scripts/'
+    filename: 'bundle.js'
   },
   module: {
     rules: [
@@ -21,11 +19,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({  
-      filename: path.resolve(__dirname, 'dist/index.html'),
-      template: 'src/index.html'
-    })
   ],
   devServer: {
     contentBase: path.resolve(__dirname, './'),

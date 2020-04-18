@@ -25,7 +25,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({  
       filename: path.resolve(__dirname, 'dist/index.html'),
-      template: 'index.html'
+      template: 'index.prod.html'
     })
   ],
   devServer: {
