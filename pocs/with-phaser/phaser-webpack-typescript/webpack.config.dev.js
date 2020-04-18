@@ -3,6 +3,7 @@ var path = require('path');
 var pathToPhaser = path.join(__dirname, '/node_modules/phaser/');
 var phaser = path.join(pathToPhaser, 'dist/phaser.js');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -17,7 +18,13 @@ module.exports = {
       { test: /phaser\.js$/, loader: 'expose-loader?Phaser' }
     ]
   },
-  plugins: [new CleanWebpackPlugin()],
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({  
+      filename: 'index.html',
+      template: 'src/index.html'
+    })
+  ],
   devServer: {
     contentBase: path.resolve(__dirname, './'),
     publicPath: '/dist/',

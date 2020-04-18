@@ -4,13 +4,15 @@ var pathToPhaser = path.join(__dirname, '/node_modules/phaser/');
 var phaser = path.join(pathToPhaser, 'dist/phaser.js');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'production',
   entry: './src/main.ts',
   output: {
-    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist/scripts/'),
+    publicPath: 'scripts/'
   },
   devtool: false,
   module: {
@@ -19,7 +21,13 @@ module.exports = {
       { test: /phaser\.js$/, loader: 'expose-loader?Phaser' }
     ]
   },
-  plugins: [new CleanWebpackPlugin()],
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({  
+      filename: path.resolve(__dirname, 'dist/index.html'),
+      template: 'index.html'
+    })
+  ],
   devServer: {
     contentBase: path.resolve(__dirname, './'),
     publicPath: '/dist/',
