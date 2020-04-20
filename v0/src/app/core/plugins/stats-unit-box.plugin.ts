@@ -111,21 +111,25 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
     }
 
     private displayHealthStatus(data: StatusBarContent, currentPosition: Position) {
+        this.displayOneStatusBar(StatusBarType.xp, data, currentPosition);
+    }
+
+    private displayOneStatusBar(type: StatusBarType, data: StatusBarContent, currentPosition: Position) {
         const statusPositionX = currentPosition.x + this.currentPrefab.displayWidth;
         const statusPositionY = currentPosition.y + 40;
 
         const statusConfiguration = (<StatusPlayerBoxConfiguration> this.configuration).healthBarBox;
 
-        statusConfiguration.key = 'healthBarBox_' + data.key; 
+        statusConfiguration.key = type + '_box_' + data.key; 
         statusConfiguration.position.x = statusPositionX;
         statusConfiguration.position.y = statusPositionY;
 
-        statusConfiguration.type = StatusBarType.xp;
+        statusConfiguration.type = type;
 
         const bar = new StatusBarPlugin(this._scene, this._pluginManager);
         bar.init(statusConfiguration);
 
-        this._statusBarList[StatusBarType.xp] = bar;
+        this._statusBarList[type] = bar;
     }
     //#endregion
 }

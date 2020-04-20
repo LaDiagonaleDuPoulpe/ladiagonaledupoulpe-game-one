@@ -9,8 +9,8 @@
         },
         "messageBox": {
             "dialogSpeed": 15,
-            "borderColor": "0xFAAA24",
-            "windowColor": "0x431f11",   
+            "borderColor": "0xC6FFFF",
+            "windowColor": "0x2C4A55",   
             "closeButtonStyle": {
                 "font": "bold 20px Arial",
                 "fill": "#ffffff"
@@ -28,7 +28,7 @@
         },
         "statsPlayerBox": {
             "borderColor": "0xFAAA24",
-            "windowColor": "0x431f11",   
+            "windowColor": "0x2A5376",   
             "closeButtonStyle": {
                 "font": "bold 20px Arial",
                 "fill": "#ffffff"
@@ -39,7 +39,7 @@
                 "width": 400,
                 "height": 130
             },
-            "windowHeight": 200,            
+            "windowHeight": 100,            
             "padding": 50,            
             "borderThickness": 10,
             "spriteBox": {
