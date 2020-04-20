@@ -107,6 +107,8 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
 
     private displayerStatsOf(data: StatusBarContent, currentPosition: Position) {
         this.displayHealthStatus(data, currentPosition);
+        
+
         this.refresh();
     }
 
@@ -114,11 +116,13 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
         this.displayOneStatusBar(StatusBarType.xp, data, currentPosition);
     }
 
+
+
     private displayOneStatusBar(type: StatusBarType, data: StatusBarContent, currentPosition: Position) {
         const statusPositionX = currentPosition.x + this.currentPrefab.displayWidth;
-        const statusPositionY = currentPosition.y + 40;
+        const statusPositionY = currentPosition.y + 10;
 
-        const statusConfiguration = (<StatusPlayerBoxConfiguration> this.configuration).healthBarBox;
+        const statusConfiguration = (<StatusPlayerBoxConfiguration> this.configuration)['statusBoxes'][type];
 
         statusConfiguration.key = type + '_box_' + data.key; 
         statusConfiguration.position.x = statusPositionX;

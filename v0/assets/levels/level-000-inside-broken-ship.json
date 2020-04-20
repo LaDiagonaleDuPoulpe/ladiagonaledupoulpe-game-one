@@ -35,9 +35,9 @@
             },         
             "position": {
                 "x": 100,
-                "y": 10,
+                "y": 20,
                 "width": 400,
-                "height": 130
+                "height": 80
             },
             "windowHeight": 100,            
             "padding": 50,            
@@ -45,18 +45,20 @@
             "spriteBox": {
                 "width": 200
             },
-            "healthBarBox": {
-                "beginColor": "0x1500FF",
-                "endColor": "0x004CB0",
-                "borderColor": "0xFFFFFF",
-                "borderSize": 3,
-                "position": {
-                    "width": 256,
-                    "height": 30
-                },
-                "textStyle": {
-                    "font": "bold 20px Arial",
-                    "fill": "#ffffff"
+            "statusBoxes": {
+                "XP": {
+                    "beginColor": "0x1500FF",
+                    "endColor": "0x004CB0",
+                    "borderColor": "0xFFFFFF",
+                    "borderSize": 2,
+                    "position": {
+                        "width": 256,
+                        "height": 22
+                    },
+                    "textStyle": {
+                        "font": "bold 20px Arial",
+                        "fill": "#ffffff"
+                    }
                 }
             }
         }
