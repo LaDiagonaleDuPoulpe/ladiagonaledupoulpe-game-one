@@ -17,10 +17,10 @@ export default class PlayerData {
     //#region Public methods
     /** Updates health of the player, and check if player is yet alive */
     public updateHealth(value: number) {
-        this.stats.health += value;
+        this.stats.health.quantity += value;
 
-        if (this.stats.health < 0) {
-            this.stats.health = 0;
+        if (this.stats.health.quantity < 0) {
+            this.stats.health.quantity = 0;
         }
     }
 
@@ -42,7 +42,7 @@ export default class PlayerData {
     //#region Properties
     /** Health value is > 0 */
     public get isAlive(): boolean {
-        return this.stats.health > 0;
+        return this.stats.health.quantity > 0;
     }
 
     /** True if synale power is more than 0 */

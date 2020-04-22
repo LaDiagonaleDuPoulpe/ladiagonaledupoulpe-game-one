@@ -1,13 +1,15 @@
 import { Prefab } from "../prefabs/prefab";
+import QuantityStatisticItem from '../game/quantity-statistic-item';
+import { Dictionary } from '../../../shared/custom-types/dictionary';
 
 /** Content of the status bar */
 export class StatusBarContent {
     /** Identity */
-    key: string
-    /** Value in the health box */
-    healthValue: number;
-    /** Max of the health bar */
-    healthMaxValue: number;
+    key: string;
+
+    /** List of the values to display on the status bars box */
+    contents: Dictionary<QuantityStatisticItem>;
+
     /** Avatar sprite of the current item */
-    prefabAvatar: Prefab    
+    prefabAvatar: Prefab;
 }

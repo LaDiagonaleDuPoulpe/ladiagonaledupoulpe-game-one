@@ -7,6 +7,8 @@ import PlayerData from '../models/game/player-data';
 import { Dictionary } from '../../shared/custom-types/dictionary';
 import { CustomStatusBarEventType } from '../../shared/enums/custom-status-bar-event-type';
 import { StatusBarContent } from '../models/statusBar/status-bar-content';
+import QuantityStatisticItem from '../models/game/quantity-statistic-item';
+import { StatusBarType } from '../../shared/enums/status-bar-type';
 
 /** Plugin to display several box with stats of each player */
 export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
@@ -42,10 +44,14 @@ export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
     }    
 
     private getContentFromPlayer(player: PlayerData): StatusBarContent {
+        const stats: Dictionary<QuantityStatisticItem> = {};
+
+        stats[StatusBarType.xp] = {...player.stats.health};
+        stats[StatusBarType.synal] = {...player.stats.synalePower};
+
         return { 
             key: player.key,
-            healthValue: player.stats.health,
-            healthMaxValue: player.stats.healthMax,
+            contents: stats,
             prefabAvatar: player.prefabAvatar
         };
     }

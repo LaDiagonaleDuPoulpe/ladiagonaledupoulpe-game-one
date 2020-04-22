@@ -32,9 +32,11 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
 
     /** Displays new values of stats of the current player */
     public refresh() {
+        // TODO: 22/04/2020, finish here: generic iterate of each status 
+
         for (const key in this._statusBarList) {
             // TODO: 17/02/2020, see how to pass the values for each statusType (xp, mp, ...)
-            this._statusBarList[key].update(this._content.healthValue, this._content.healthMaxValue);
+            //this._statusBarList[key].update(this._content.healthValue, this._content.healthMaxValue);
         }
     }
 
@@ -75,12 +77,13 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
     }
 
     private animateData(data: StatusBarContent) {
-        this._currentDisplayingHealth += this._updateStepValue;
-        this._statusBarList[StatusBarType.xp].update(this._currentDisplayingHealth, data.healthMaxValue);
+// TODO: 22/04/2020, finish here: generic iterate of each status
+        // this._currentDisplayingHealth += this._updateStepValue;
+        // this._statusBarList[StatusBarType.xp].update(this._currentDisplayingHealth, data.healthMaxValue);
 
-        if (this._currentDisplayingHealth >= data.healthMaxValue) {
-            this._timedEvent.remove();
-        }
+        // if (this._currentDisplayingHealth >= data.healthMaxValue) {
+        //     this._timedEvent.remove();
+        // }
     }
 
     protected createBox() {
@@ -106,25 +109,28 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
     }
 
     private displayerStatsOf(data: StatusBarContent, currentPosition: Position) {
-        this.displayHealthStatus(data, currentPosition);
+        const statKeys = Object.keys(data.contents);
+
+        // TODO: 22/04/2020, finish here: generic iterate of each status
+        for(var key in statKeys) {
+            
+            //this.displayOneStatusBar(key, data, currentPosition);
+        }
+
+
+        //this.displayHealthStatus(data, currentPosition);
         
 
         this.refresh();
     }
 
-    private displayHealthStatus(data: StatusBarContent, currentPosition: Position) {
-        this.displayOneStatusBar(StatusBarType.xp, data, currentPosition);
-    }
-
-
-
-    private displayOneStatusBar(type: StatusBarType, data: StatusBarContent, currentPosition: Position) {
+    private displayOneStatusBar(type: StatusBarType, key: string, currentPosition: Position) {
         const statusPositionX = currentPosition.x + this.currentPrefab.displayWidth;
         const statusPositionY = currentPosition.y + 10;
 
         const statusConfiguration = (<StatusPlayerBoxConfiguration> this.configuration)['statusBoxes'][type];
 
-        statusConfiguration.key = type + '_box_' + data.key; 
+        statusConfiguration.key = type + '_box_' + key; 
         statusConfiguration.position.x = statusPositionX;
         statusConfiguration.position.y = statusPositionY;
 
