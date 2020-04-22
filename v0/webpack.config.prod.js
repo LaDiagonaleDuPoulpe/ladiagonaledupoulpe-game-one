@@ -5,6 +5,7 @@ var phaser = path.join(pathToPhaser, 'dist/phaser.js');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -23,6 +24,9 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new CopyPlugin([
+      { from: 'assets', to: path.resolve(__dirname, 'dist/assets'), toType: 'dir' }
+    ]),
     new HtmlWebpackPlugin({  
       filename: path.resolve(__dirname, 'dist/index.html'),
       template: 'index.prod.html'

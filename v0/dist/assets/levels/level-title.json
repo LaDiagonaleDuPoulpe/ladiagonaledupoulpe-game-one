@@ -1,0 +1,649 @@
+{
+    "assets": {
+        "images": [
+            {
+                "key": "buttonNew",
+                "url": "assets/images/menu/button-test.png"
+            },
+            {
+                "key": "mapTileSet",
+                "url": "assets/images/default/000-title/tileset.png"
+            },
+            {
+                "key": "cloud1Image",
+                "url": "assets/images/default/000-title/cloud-1.png"
+            },
+            {
+                "key": "tube1Image",
+                "url": "assets/images/default/000-title/tube.png"
+            },
+            {
+                "key": "tube2Image",
+                "url": "assets/images/default/000-title/tube2.png"
+            },
+            {
+                "key": "tube3Image",
+                "url": "assets/images/default/000-title/tube3.png"
+            },
+            {
+                "key": "vague1Image",
+                "url": "assets/images/default/000-title/vague-tube.png"
+            },
+            {
+                "key": "pipeRightTopImage",
+                "url": "assets/images/default/000-title/pipe-right-part.png"
+            },
+            {
+                "key": "pipeLong1Image",
+                "url": "assets/images/default/000-title/pipe-long-front.png"
+            },
+            {
+                "key": "pipeWide1Image",
+                "url": "assets/images/default/000-title/pipe-long-wide.png"
+            }            
+        ],
+        "tilemaps": [
+            {
+                "key": "animate-intro",
+                "url": "assets/maps/000-level-title.json"
+            }
+        ],
+        "spritesheets": [
+            {
+                "key": "waveTubeSpriteSheet",
+                "url": "assets/images/default/000-title/waves-tubes.png",
+                "frame": {
+                    "dimension": {
+                        "width": 526,
+                        "height": 225
+                    },
+                    "spacing": 0,
+                    "margin": 0
+                }
+            },
+            {
+                "key": "pipeRightSpriteSheet",
+                "url": "assets/images/default/000-title/pipes-right.png",
+                "frame": {
+                    "dimension": {
+                        "width": 431,
+                        "height": 942
+                    },
+                    "spacing": 0,
+                    "margin": 0
+                }
+            },
+            {
+                "key": "sparkSpriteSheet",
+                "url": "assets/images/default/000-title/spikes-1.png",
+                "frame": {
+                    "dimension": {
+                        "width": 100,
+                        "height": 100
+                    },
+                    "spacing": 0,
+                    "margin": 0
+                }
+            },
+            {
+                "key": "wavesSpriteSheet",
+                "url": "assets/images/default/000-title/waves.png",
+                "frame": {
+                    "dimension": {
+                        "width": 100,
+                        "height": 100
+                    },
+                    "spacing": 0,
+                    "margin": 0
+                }
+            }
+        ]
+    },
+    "groups": [
+        "backgrounds",
+        "texts",
+        "waves",
+        "clouds",
+        "tubes",
+        "waveTubes",
+        "sparks",
+        "pipes"
+    ],
+    "map": {
+        "key": "animate-intro",
+        "tilesets": [
+            "mapTileSet"
+        ]
+    },
+    "prefabs": [  
+        {
+            "key": "pipe1",
+            "type": "staticImage",
+            "position": {
+                "x": 1750,
+                "y": 100
+            },
+            "properties": {
+                "texture": "pipeRightTopImage",
+                "group": "pipes",
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "depth": 5,
+                "visible": true
+            }
+        },
+        {
+            "key": "pipe2",
+            "type": "staticImage",
+            "position": {
+                "x": 1150,
+                "y": 100
+            },
+            "properties": {
+                "texture": "pipeLong1Image",
+                "group": "pipes",
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "depth": 5,
+                "visible": true
+            }
+        }, 
+        {
+            "key": "pipe3",
+            "type": "staticImage",
+            "position": {
+                "x": 280,
+                "y": 200
+            },
+            "properties": {
+                "texture": "pipeWide1Image",
+                "group": "pipes",
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "depth": 4,
+                "visible": true
+            }
+        }, 
+        {
+            "key": "cloud1",
+            "type": "cloud",
+            "position": {
+                "x": 410,
+                "y": 400
+            },
+            "properties": {
+                "texture": "cloud1Image",
+                "group": "clouds",
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "depth": 0,
+                "visible": true
+            }
+        }, 
+        {
+            "key": "pipeRight1",
+            "type": "animsprite",
+            "position": {
+                "x": 1000,
+                "y": 200
+            },
+            "properties": {
+                "texture": "pipeRightSpriteSheet",
+                "group": "pipes",
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "depth": 2,
+                "visible": true,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            0,1,2,3
+                        ],
+                        "fps": 10,
+                        "repeat": -1
+                    }
+                ]
+            }
+        }, 
+        {
+            "key": "wave1",
+            "type": "wave",
+            "position": {
+                "x": 400,
+                "y": 800
+            },
+            "properties": {
+                "texture": "wavesSpriteSheet",
+                "group": "waves",
+                "scale": {
+                    "x": 2.0,
+                    "y": 2.0
+                },
+                "depth": 1,
+                "visible": true,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            11,
+                            10,
+                            9,
+                            8,
+                            7,
+                            6,
+                            5,
+                            4,
+                            3,
+                            2,
+                            1,
+                            0
+                        ],
+                        "fps": 10,
+                        "repeat": 0
+                    }
+                ]
+            }
+        },     
+        {
+            "key": "tube1",
+            "type": "staticImage",
+            "position": {
+                "x": 410,
+                "y": 400
+            },
+            "properties": {
+                "texture": "tube1Image",
+                "group": "tubes",
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "depth": 4,
+                "visible": true,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            0,
+                            1,
+                            2
+                        ],
+                        "fps": 2,
+                        "repeat": -1
+                    }
+                ]
+            }
+        }, 
+        {
+            "key": "tube10",
+            "type": "staticImage",
+            "position": {
+                "x": 210,
+                "y": 450
+            },
+            "properties": {
+                "texture": "tube1Image",
+                "group": "tubes",
+                "scale": {
+                    "x": 0.2,
+                    "y": 0.2
+                },
+                "depth": 3,
+                "visible": false,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            0,
+                            1,
+                            2
+                        ],
+                        "fps": 2,
+                        "repeat": -1
+                    }
+                ]
+            }
+        }, 
+        {
+            "key": "tube2",
+            "type": "staticImage",
+            "position": {
+                "x": 810,
+                "y": 400
+            },
+            "properties": {
+                "texture": "tube2Image",
+                "group": "tubes",
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "depth": 3,
+                "visible": true,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            0,
+                            1,
+                            2
+                        ],
+                        "fps": 2,
+                        "repeat": -1
+                    }
+                ]
+            }
+        }, 
+        {
+            "key": "tube3",
+            "type": "staticImage",
+            "position": {
+                "x": 1410,
+                "y": 300
+            },
+            "properties": {
+                "texture": "tube3Image",
+                "group": "tubes",
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "depth": 3,
+                "visible": true,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            0,
+                            1,
+                            2
+                        ],
+                        "fps": 2,
+                        "repeat": -1
+                    }
+                ]
+            }
+        }, 
+        {
+            "key": "waveTube1",
+            "type": "animsprite",
+            "position": {
+                "x": 400,
+                "y": 850
+            },
+            "properties": {
+                "texture": "waveTubeSpriteSheet",
+                "group": "waveTubes",
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "depth": 3,
+                "visible": true,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            0,
+                            1,
+                            2
+                        ],
+                        "fps": 2,
+                        "repeat": -1
+                    }
+                ]
+            }
+        }, 
+        {
+            "key": "waveTube2",
+            "type": "animsprite",
+            "position": {
+                "x": 800,
+                "y": 800
+            },
+            "properties": {
+                "texture": "waveTubeSpriteSheet",
+                "group": "waveTubes",
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "depth": 3,
+                "visible": true,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            3,
+                            4,
+                            5
+                        ],
+                        "fps": 2,
+                        "repeat": -1
+                    }
+                ]
+            }
+        },   
+        {
+            "key": "waveTube3",
+            "type": "animsprite",
+            "position": {
+                "x": 1400,
+                "y": 800
+            },
+            "properties": {
+                "texture": "waveTubeSpriteSheet",
+                "group": "waveTubes",
+                "scale": {
+                    "x": 1.0,
+                    "y": 1.0
+                },
+                "depth": 3,
+                "visible": true,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            3,
+                            4,
+                            5
+                        ],
+                        "fps": 2,
+                        "repeat": -1
+                    }
+                ]
+            }
+        },
+        {
+            "key": "spark1",
+            "type": "animsprite",
+            "position": {
+                "x": 1350,
+                "y": 200
+            },
+            "properties": {
+                "texture": "sparkSpriteSheet",
+                "group": "sparks",
+                "scale": {
+                    "x": 2.0,
+                    "y": 2.0
+                },
+                "depth": 3,
+                "visible": true,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            0,
+                            1,
+                            2,
+                            3
+                        ],
+                        "fps": 5,
+                        "repeat": -1
+                    }
+                ]
+            }
+        }, 
+        {
+            "key": "spark2",
+            "type": "animsprite",
+            "position": {
+                "x": 750,
+                "y": 300
+            },
+            "properties": {
+                "texture": "sparkSpriteSheet",
+                "group": "sparks",
+                "scale": {
+                    "x": 2.0,
+                    "y": 2.0
+                },
+                "depth": 3,
+                "visible": true,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            0,
+                            1,
+                            2,
+                            3
+                        ],
+                        "fps": 5,
+                        "repeat": -1
+                    }
+                ]
+            }
+        },
+        {
+            "key": "spark3",
+            "type": "animsprite",
+            "position": {
+                "x": 310,
+                "y": 100
+            },
+            "properties": {
+                "texture": "sparkSpriteSheet",
+                "group": "sparks",
+                "scale": {
+                    "x": 2.0,
+                    "y": 2.0
+                },
+                "depth": 3,
+                "visible": true,
+                "animations": [
+                    {
+                        "key": "idle",
+                        "frames": [
+                            0,
+                            1,
+                            2,
+                            3
+                        ],
+                        "fps": 5,
+                        "repeat": -1
+                    }
+                ]
+            }
+        }, 
+        {
+            "key": "title",
+            "type": "text",
+            "position": {
+                "x": 10,
+                "y": 100
+            },
+            "properties": {
+                "group": "texts",
+                "style": {
+                    "font": "40px Kells", 
+                    "fill": "#FFFFFF"
+                },
+                "text": "La diagonale du poulpe",
+                "depth": 10,
+                "visible": true
+            }
+        },
+        {
+            "key": "new-game",
+            "type": "clickableText",
+            "position": {
+                "x": 20,
+                "y": 200
+            },
+            "properties": {
+                "texture": "buttonNew",
+                "group": "texts",
+                "style": {
+                    "font": "20px Kells", 
+                    "fill": "#FFFFF0"
+                },
+                "text": "Nouvelle partie",
+                "scale": {
+                    "x": 0.2,
+                    "y": 0.2
+                },
+                "depth": 10,
+                "visible": true
+            }
+        },
+        {
+            "key": "existing-game",
+            "type": "clickableText",
+            "position": {
+                "x": 20,
+                "y": 250
+            },
+            "properties": {
+                "texture": "buttonNew",
+                "group": "texts",
+                "style": {
+                    "font": "20px Kells", 
+                    "fill": "#FFFFF0"
+                },
+                "text": "Charger une partie existante",
+                "scale": {
+                    "x": 0.2,
+                    "y": 0.2
+                },
+                "depth": 10,
+                "visible": true
+            }
+        },
+        {
+            "key": "credits",
+            "type": "clickableText",
+            "position": {
+                "x": 20,
+                "y": 350
+            },
+            "properties": {
+                "texture": "buttonNew",
+                "group": "texts",
+                "style": {
+                    "font": "20px Kells", 
+                    "fill": "#FFFFF0"
+                },
+                "text": "Crédits",
+                "scale": {
+                    "x": 0.2,
+                    "y": 0.2
+                },
+                "depth": 10,
+                "visible": true
+            }
+        }
+    ]
+}

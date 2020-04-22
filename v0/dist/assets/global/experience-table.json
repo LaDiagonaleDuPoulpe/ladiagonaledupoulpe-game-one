@@ -1,0 +1,15 @@
+[
+    {
+        "level": 1,
+        "required": 200,
+        "statsToIncrease": {
+            "health": 150,
+            "synalePower": {
+                "quantity": 110
+            }
+        },
+        "actionCostsToIncrease": [
+
+        ]
+    }
+]

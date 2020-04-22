@@ -1,0 +1,10 @@
+[
+    {
+        "name": "reborn",
+        "costImpact": {
+            "methodToVerif": "getEnoughSynalePower",
+            "methodToUpdate": "updateSynalePower",
+            "value": 30
+        }
+    }
+]
