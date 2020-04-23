@@ -66,7 +66,7 @@ export class GameManagerService {
 
     /** Reinit data to their default values */
     public reinitData() {
-        this.updatePlayerHealth(this._gameDataLoader.gameData.players[0].stats.healthMax);
+        this.updatePlayerHealth(this._gameDataLoader.gameData.players[0].stats.health.quantity);
     }
     //#endregion
     
