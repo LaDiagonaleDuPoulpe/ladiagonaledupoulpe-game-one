@@ -6,6 +6,14 @@ build:
         - cd v0
         - npm i
         - npm run build
+    cache:
+        policy: push
+        paths:
+        - node_modules
+    artifacts:
+        paths:
+           - built
+        expire_in: 1 week
 
 deploy:
   stage: deploy
@@ -16,4 +24,4 @@ deploy:
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
   script:
-    - scp -rp v0/dist "$LOGINDEPLOY"@lddp.site:"$DIRDEV"
+    - scp -rp ./built "$LOGINDEPLOY"@lddp.site:"$DIRDEV"
