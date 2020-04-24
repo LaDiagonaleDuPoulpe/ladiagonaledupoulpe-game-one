@@ -6,14 +6,15 @@ import { StatusBarType } from '../../shared/enums/status-bar-type';
 import { StatusBarPlugin } from './status-bar.plugin';
 import { Dictionary } from '../../shared/custom-types/dictionary';
 import { StatusBarContent } from '../models/statusBar/status-bar-content';
+import QuantityStatisticItem from '../models/game/quantity-statistic-item';
 
 /** Plugin to display one box with stats of one player */
 export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
     //#region Fields
     private _statusBarList: Dictionary<StatusBarPlugin> = {};
     private _content: StatusBarContent = null;
-    private _timedEvent: Phaser.Time.TimerEvent;
-    private _currentDisplayingHealth = 0;
+    private _timedEvents: Dictionary<Phaser.Time.TimerEvent> = {};
+    private _currentDisplayingValues: Dictionary<number> = {};
     private _updateStepValue = 5;
     //#endregion
 
@@ -47,12 +48,19 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
     public reinitData(data: StatusBarContent, withAnimation: boolean = true) {
         let action = this.updateValues;
 
-        this._currentDisplayingHealth = 0;
+        this.reinitValuesFromTimers();
+
         if (withAnimation) {
             action = this.displayReinitData;
         }
 
         action.call(this, data);
+    }
+
+    private reinitValuesFromTimers() {
+        for (const key in this._currentDisplayingValues) {
+            this._currentDisplayingValues[key] = 0;
+        }
     }
 
     /** Updates values in the status bar box */
@@ -64,26 +72,30 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
 
     //#region Internal methods
     private displayReinitData(data: StatusBarContent) {
-        if (this._timedEvent) {
-            this._timedEvent.remove();
-        } 
+        for(var key in data.contents) {
+            const event = this._timedEvents[key];
+            if (event) {
+                event.remove();
+            }
 
-        this._timedEvent = this.scene.time.addEvent({
-            delay: 50,
-            callback: this.animateData.bind(this, data),
-            callbackScope: this,
-            loop: true
-        }); 
+            this._timedEvents[key] = this.scene.time.addEvent({
+                delay: 50,
+                callback: this.animateData.bind(this, key, data.contents[key]),
+                callbackScope: this,
+                loop: true
+            }); 
+        }
     }
 
-    private animateData(data: StatusBarContent) {
-        
-        // this._currentDisplayingHealth += this._updateStepValue;
-        // this._statusBarList[StatusBarType.xp].update(this._currentDisplayingHealth, data.healthMaxValue);
+    private animateData(key: string, data: QuantityStatisticItem) {
+        this._currentDisplayingValues[key] = this._updateStepValue;
 
-        // if (this._currentDisplayingHealth >= data.healthMaxValue) {
-        //     this._timedEvent.remove();
-        // }
+        const type = key as StatusBarType;
+        this._statusBarList[type].update(this._currentDisplayingValues[key], data.max);
+
+        if (this._currentDisplayingValues[key] >= data.max) {
+            this._timedEvents[key].remove();
+        }
     }
 
     protected createBox() {
