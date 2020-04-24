@@ -36,7 +36,7 @@
                 "electronicAttack": 10,
                 "defense": 10,
                 "health": {
-                    "quantity": 100,
+                    "quantity": 2,
                     "max": 100
                 },
                 "mana": 100,

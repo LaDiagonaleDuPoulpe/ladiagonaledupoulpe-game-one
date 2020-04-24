@@ -48,7 +48,7 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
     public reinitData(data: StatusBarContent, withAnimation: boolean = true) {
         let action = this.updateValues;
 
-        this.reinitValuesFromTimers();
+        this.reinitValuesFromTimers(data);
 
         if (withAnimation) {
             action = this.displayReinitData;
@@ -57,8 +57,8 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
         action.call(this, data);
     }
 
-    private reinitValuesFromTimers() {
-        for (const key in this._currentDisplayingValues) {
+    private reinitValuesFromTimers(data: StatusBarContent) {
+        for (const key in data.contents) {
             this._currentDisplayingValues[key] = 0;
         }
     }
@@ -88,7 +88,7 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
     }
 
     private animateData(key: string, data: QuantityStatisticItem) {
-        this._currentDisplayingValues[key] = this._updateStepValue;
+        this._currentDisplayingValues[key] += this._updateStepValue;
 
         const type = key as StatusBarType;
         this._statusBarList[type].update(this._currentDisplayingValues[key], data.max);

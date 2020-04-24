@@ -66,7 +66,7 @@ export class GameManagerService {
 
     /** Reinit data to their default values */
     public reinitData() {
-        this._gameDataLoader.gameData.players[0].reinitData();
+        this.playerList[0].reinitData();
     }
     //#endregion
     
