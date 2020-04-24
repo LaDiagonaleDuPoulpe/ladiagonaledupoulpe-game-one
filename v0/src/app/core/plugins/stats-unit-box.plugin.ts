@@ -32,11 +32,11 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
 
     /** Displays new values of stats of the current player */
     public refresh() {
-        // TODO: 22/04/2020, finish here: generic iterate of each status 
-
         for (const key in this._statusBarList) {
-            // TODO: 17/02/2020, see how to pass the values for each statusType (xp, mp, ...)
-            //this._statusBarList[key].update(this._content.healthValue, this._content.healthMaxValue);
+            const type = key as StatusBarType;
+            const currentContent = this._content.contents[type];
+
+            this._statusBarList[key].update(currentContent.quantity, currentContent.max);
         }
     }
 
@@ -111,15 +111,16 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
     private displayerStatsOf(data: StatusBarContent, currentPosition: Position) {
         const statKeys = Object.keys(data.contents);
 
-        // TODO: 22/04/2020, finish here: generic iterate of each status
-        for(var key in statKeys) {
+        let positionY = currentPosition.y;
+        for(var key of statKeys) {
+            const statusBarPosition = {...currentPosition};
+
+            statusBarPosition.y = positionY;
             
-            //this.displayOneStatusBar(key, data, currentPosition);
+            this.displayOneStatusBar(key as StatusBarType, data.key, statusBarPosition);
+            
+            positionY += currentPosition.height;
         }
-
-
-        //this.displayHealthStatus(data, currentPosition);
-        
 
         this.refresh();
     }

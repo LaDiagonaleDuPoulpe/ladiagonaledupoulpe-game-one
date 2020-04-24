@@ -15,6 +15,12 @@ export default class PlayerData {
     //#endregion
 
     //#region Public methods
+    /** Réinitialize all data of the current player */
+    public reinitData() {
+        this.updateHealth(this.stats.health.max);
+        this.updateSynalePower(this.stats.synalePower.max);
+    }
+
     /** Updates health of the player, and check if player is yet alive */
     public updateHealth(value: number) {
         this.stats.health.quantity += value;
