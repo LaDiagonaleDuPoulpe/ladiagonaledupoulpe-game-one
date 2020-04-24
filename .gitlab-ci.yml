@@ -12,7 +12,7 @@ build:
         - node_modules
     artifacts:
         paths:
-           - built
+           - v0/dist
         expire_in: 1 week
 
 deploy:
@@ -24,4 +24,4 @@ deploy:
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
   script:
-    - scp -rp ./built "$LOGINDEPLOY"@lddp.site:"$DIRDEV"
+    - scp -rp ./v0/dist "$LOGINDEPLOY"@lddp.site:"$DIRDEV"
