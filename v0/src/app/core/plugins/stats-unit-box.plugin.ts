@@ -77,7 +77,7 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
     }
 
     private animateData(data: StatusBarContent) {
-// TODO: 22/04/2020, finish here: generic iterate of each status
+        
         // this._currentDisplayingHealth += this._updateStepValue;
         // this._statusBarList[StatusBarType.xp].update(this._currentDisplayingHealth, data.healthMaxValue);
 

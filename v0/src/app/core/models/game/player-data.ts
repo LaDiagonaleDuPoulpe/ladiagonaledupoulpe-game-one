@@ -32,10 +32,6 @@ export default class PlayerData {
         this.stats.synalePower.update(value);
     }
 
-    private updateStatPart(item: QuantityStatisticItem) {
-
-    }
-
     /** Can we use the power from now */
     public getEnoughSynalePower(cost: number): boolean {
         return this.stats.synalePower.quantity >= cost;
