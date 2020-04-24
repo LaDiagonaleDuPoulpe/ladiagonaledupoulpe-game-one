@@ -4,6 +4,17 @@ import QuantityStatisticItem from './quantity-statistic-item';
 
 /** Player of the game */
 export default class PlayerData {
+    //#region Constructors
+    constructor(fromItem?: PlayerData) {
+        if (fromItem) {
+            Object.assign(this, fromItem);
+
+            this.stats.health = new QuantityStatisticItem(fromItem.stats.health);
+            this.stats.synalePower = new QuantityStatisticItem(fromItem.stats.synalePower);
+        }
+    }
+    //#endregion
+
     //#region Fields
     /** Key to find the player */
     public key: string;

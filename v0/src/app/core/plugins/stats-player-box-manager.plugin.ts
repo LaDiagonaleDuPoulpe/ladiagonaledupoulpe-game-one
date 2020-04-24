@@ -46,8 +46,8 @@ export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
     private getContentFromPlayer(player: PlayerData): StatusBarContent {
         const stats: Dictionary<QuantityStatisticItem> = {};
 
-        stats[StatusBarType.xp] = {...player.stats.health};
-        stats[StatusBarType.synal] = {...player.stats.synalePower};
+        stats[StatusBarType.xp] = new QuantityStatisticItem(player.stats.health);
+        stats[StatusBarType.synal] = new QuantityStatisticItem(player.stats.synalePower);
 
         return { 
             key: player.key,

@@ -3,6 +3,14 @@
  * (for example, health value quantity and its max value)
  */
 export default class QuantityStatisticItem {
+    //#region Constructors
+    constructor(fromItem?: QuantityStatisticItem) {
+        if (fromItem) {
+            Object.assign(this, fromItem);
+        }
+    }
+    //#endregion
+
     //#region Public methods
     /** 
      * Update value of the quantity item.

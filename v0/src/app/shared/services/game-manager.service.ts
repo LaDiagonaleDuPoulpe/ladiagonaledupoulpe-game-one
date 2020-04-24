@@ -83,7 +83,7 @@ export class GameManagerService {
 
     private fillPlayerList() {
         if (this.gameData && ! this._currentPlayer) {
-            this._currentPlayer = Object.assign(new PlayerData(), this.gameData.players[0]);
+            this._currentPlayer = new PlayerData(this.gameData.players[0]);
             this._playerList.push(this._currentPlayer);
         }
     }
