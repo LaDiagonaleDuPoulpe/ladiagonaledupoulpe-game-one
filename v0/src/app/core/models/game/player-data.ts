@@ -1,5 +1,6 @@
 import PlayerStatisticData from "./player-statistic-data";
 import { Prefab } from '../prefabs/prefab';
+import QuantityStatisticItem from './quantity-statistic-item';
 
 /** Player of the game */
 export default class PlayerData {
@@ -23,20 +24,16 @@ export default class PlayerData {
 
     /** Updates health of the player, and check if player is yet alive */
     public updateHealth(value: number) {
-        this.stats.health.quantity += value;
-
-        if (this.stats.health.quantity < 0) {
-            this.stats.health.quantity = 0;
-        }
+        this.stats.health.update(value);
     }
 
     /** Updates synale power */
     public updateSynalePower(value: number) {
-        this.stats.synalePower.quantity += value;
+        this.stats.synalePower.update(value);
+    }
 
-        if (this.stats.synalePower.quantity < 0) {
-            this.stats.synalePower.quantity = 0;
-        }
+    private updateStatPart(item: QuantityStatisticItem) {
+
     }
 
     /** Can we use the power from now */

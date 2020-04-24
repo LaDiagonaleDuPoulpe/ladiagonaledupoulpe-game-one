@@ -3,6 +3,24 @@
  * (for example, health value quantity and its max value)
  */
 export default class QuantityStatisticItem {
+    //#region Public methods
+    /** 
+     * Update value of the quantity item.
+     * Checks limit of the update value [0..max]
+     */
+    public update(value: number) {
+        this.quantity += value;
+
+        if (this.quantity < 0) {
+            this.quantity = 0;
+        }
+
+        if (this.quantity > this.max) {
+            this.quantity = this.max;
+        }
+    }
+    //#endregion
+
     //#region Fields
     /** Current value of the statistic item */
     public quantity: number;
