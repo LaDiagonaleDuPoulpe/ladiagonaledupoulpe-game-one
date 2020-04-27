@@ -63,6 +63,20 @@ export abstract class BaseArcadeSprite extends Phaser.Physics.Arcade.Sprite {
         this.defineSpeed();
     }
 
+    /**
+     * Disallows sprite to move
+     */
+    protected stopMoving() {
+        (<any>this.body).moves = false;
+    }
+
+    /**
+     * Allows sprite to move
+     */
+    protected allowMoving() {
+        (<any>this.body).moves = true;
+    }
+
     protected defineSpeed() {
         this.speed = Phaser.Math.Between(10, 100);
     }

@@ -81,6 +81,7 @@ export class OctopusSprite extends BaseArcadeSprite {
     /** Current player is dying : playing the dying animation */
     die() {
         this._isAlive = false;
+        this.stopMoving();
     }
 
     /** Current player is reborn : playing the reborn animation */
@@ -94,6 +95,7 @@ export class OctopusSprite extends BaseArcadeSprite {
         this._isReborn = false;
         this._isAlive = true;
         this._isStopped = false;
+        this.allowMoving();
     }
     
     /** The current sprite is in collision with other sprite */
