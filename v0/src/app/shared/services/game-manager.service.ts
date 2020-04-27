@@ -6,6 +6,7 @@ import { CustomPlayerEventType } from "../enums/custom-player-events-type";
 import { GameDataLoaderService } from './game-data-loader.service';
 import { RebornRulesManager } from './reborn-rules-manager';
 import { LifeStateType } from "../enums/life-state-type";
+import { StatusBarType } from "../enums/status-bar-type";
 
 /** Services that manages game rules: player stats, update of health, .. */
 @singleton()
@@ -35,7 +36,7 @@ export class GameManagerService {
         const player = this.getActivePlayer();
 
         if (player) {
-            player.updateHealth(value);
+            player.updateStatPart(value, StatusBarType.xp);
 
             if (! player.isAlive) {
                 this._currentScene.emitDiyingEvent();

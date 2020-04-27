@@ -1,6 +1,7 @@
 import PlayerStatisticData from "./player-statistic-data";
 import { Prefab } from '../prefabs/prefab';
 import QuantityStatisticItem from './quantity-statistic-item';
+import { StatusBarType } from '../../../shared/enums/status-bar-type';
 
 /** Player of the game */
 export default class PlayerData {
@@ -9,8 +10,9 @@ export default class PlayerData {
         if (fromItem) {
             Object.assign(this, fromItem);
 
-            this.stats.xp = new QuantityStatisticItem(fromItem.stats.xp);
-            this.stats.synale = new QuantityStatisticItem(fromItem.stats.synale);
+            for(var key in StatusBarType) {
+                this.stats[key] = new QuantityStatisticItem(fromItem.stats[key]);    
+            }
         }
     }
     //#endregion
@@ -27,25 +29,31 @@ export default class PlayerData {
     //#endregion
 
     //#region Public methods
-    /** Réinitialize all data of the current player */
-    public reinitData() {
-        this.updateHealth(this.stats.xp.max);
-        this.updateSynalePower(this.stats.synale.max);
+    /** Updates part (found with part value) of the statistic list */
+    public updateStatPart(value: number, part: StatusBarType) {
+        this.stats[part].quantity += value;
     }
 
-    /** Updates health of the player, and check if player is yet alive */
-    public updateHealth(value: number) {
-        this.stats.xp.update(value);
-    }
-
-    /** Updates synale power */
-    public updateSynalePower(value: number) {
-        this.stats.synale.update(value);
+    /** Reinitialize all data of the current player */
+    public reinitData(part?: StatusBarType) {   
+        if (part) {
+            this.reinitOneStat(part);
+        } else {
+            for (var key in StatusBarType) {
+               this.reinitOneStat(key);
+            }
+        }
     }
 
     /** Can we use the power from now */
     public getEnoughSynalePower(cost: number): boolean {
         return this.stats.synale.quantity >= cost;
+    }
+    //#endregion
+
+    //#region Internal methods
+    private reinitOneStat(key: string) {
+        this.stats[key].quantity = this.stats[key].max;
     }
     //#endregion
 
