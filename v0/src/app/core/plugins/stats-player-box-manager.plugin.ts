@@ -30,7 +30,17 @@ export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
     //#region Internal methods
     private defineEventListeners() {
         this._scene.events.on(CustomStatusBarEventType.updateStats, this.refreshStatValues, this);
+        this._scene.events.on(CustomStatusBarEventType.updatePartOfStat, this.refreshOneStatValue, this);
         this._scene.events.on(CustomStatusBarEventType.reinit, this.reinitValuesWithAnimation, this);
+    }
+
+    private refreshOneStatValue(player: PlayerData, type: StatusBarType) {
+        const box = this._statsBoxList[player.key];
+        const stats: Dictionary<QuantityStatisticItem> = {};
+
+        stats[type] = player.stats[type];
+
+        box.updateValues(this.prepareStatusBar(player, stats));
     }
 
     private refreshStatValues(player: PlayerData) {
@@ -43,17 +53,22 @@ export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
         box.reinitData(this.getContentFromPlayer(player), true);
     }    
 
-    private getContentFromPlayer(player: PlayerData): StatusBarContent {
-        const stats: Dictionary<QuantityStatisticItem> = {};
-
-        stats[StatusBarType.xp] = new QuantityStatisticItem(player.stats.health);
-        stats[StatusBarType.synal] = new QuantityStatisticItem(player.stats.synalePower);
-
+    private prepareStatusBar(player: PlayerData, stats: Dictionary<QuantityStatisticItem>): StatusBarContent {
         return { 
             key: player.key,
             contents: stats,
             prefabAvatar: player.prefabAvatar
         };
+    }
+
+    private getContentFromPlayer(player: PlayerData): StatusBarContent {
+        const stats: Dictionary<QuantityStatisticItem> = {};
+
+        for(var key in StatusBarType) {
+            stats[key] = new QuantityStatisticItem(player.stats[key]);
+        }
+
+        return this.prepareStatusBar(player, stats);
     }
 
     protected createBox() {

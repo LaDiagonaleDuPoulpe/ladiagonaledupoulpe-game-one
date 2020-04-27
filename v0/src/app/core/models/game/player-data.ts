@@ -9,8 +9,8 @@ export default class PlayerData {
         if (fromItem) {
             Object.assign(this, fromItem);
 
-            this.stats.health = new QuantityStatisticItem(fromItem.stats.health);
-            this.stats.synalePower = new QuantityStatisticItem(fromItem.stats.synalePower);
+            this.stats.xp = new QuantityStatisticItem(fromItem.stats.xp);
+            this.stats.synale = new QuantityStatisticItem(fromItem.stats.synale);
         }
     }
     //#endregion
@@ -29,35 +29,35 @@ export default class PlayerData {
     //#region Public methods
     /** Réinitialize all data of the current player */
     public reinitData() {
-        this.updateHealth(this.stats.health.max);
-        this.updateSynalePower(this.stats.synalePower.max);
+        this.updateHealth(this.stats.xp.max);
+        this.updateSynalePower(this.stats.synale.max);
     }
 
     /** Updates health of the player, and check if player is yet alive */
     public updateHealth(value: number) {
-        this.stats.health.update(value);
+        this.stats.xp.update(value);
     }
 
     /** Updates synale power */
     public updateSynalePower(value: number) {
-        this.stats.synalePower.update(value);
+        this.stats.synale.update(value);
     }
 
     /** Can we use the power from now */
     public getEnoughSynalePower(cost: number): boolean {
-        return this.stats.synalePower.quantity >= cost;
+        return this.stats.synale.quantity >= cost;
     }
     //#endregion
 
     //#region Properties
     /** Health value is > 0 */
     public get isAlive(): boolean {
-        return this.stats.health.quantity > 0;
+        return this.stats.xp.quantity > 0;
     }
 
     /** True if synale power is more than 0 */
     public get isSynalePowerAlive(): boolean {
-        return this.stats.synalePower.quantity > 0;
+        return this.stats.synale.quantity > 0;
     }
     //#endregion
 }

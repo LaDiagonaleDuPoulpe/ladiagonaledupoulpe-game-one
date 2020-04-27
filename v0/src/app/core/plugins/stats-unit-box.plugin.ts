@@ -57,12 +57,6 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
         action.call(this, data);
     }
 
-    private reinitValuesFromTimers(data: StatusBarContent) {
-        for (const key in data.contents) {
-            this._currentDisplayingValues[key] = 0;
-        }
-    }
-
     /** Updates values in the status bar box */
     public updateValues(data: StatusBarContent) {
         this._content = Object.assign({}, data);
@@ -71,6 +65,12 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
     //#endregion
 
     //#region Internal methods
+    private reinitValuesFromTimers(data: StatusBarContent) {
+        for (const key in data.contents) {
+            this._currentDisplayingValues[key] = 0;
+        }
+    }
+
     private displayReinitData(data: StatusBarContent) {
         for(var key in data.contents) {
             const event = this._timedEvents[key];

@@ -5,6 +5,6 @@ import QuantityStatisticItem from './quantity-statistic-item';
 export class StatisticData {
     //#region Fields
         /** Health of the player */
-        public health: QuantityStatisticItem;
+        public xp: QuantityStatisticItem;
     //#endregion
 }

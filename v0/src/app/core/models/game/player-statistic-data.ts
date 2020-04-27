@@ -5,6 +5,6 @@ import { StatisticData } from './statistic-data';
 export default class PlayerStatisticData extends StatisticData {
     //#region Fields
     /** Power synale : a quantity of energy to use */
-    public synalePower: SynalePowerData;
+    public synale: SynalePowerData;
     //#endregion
 }

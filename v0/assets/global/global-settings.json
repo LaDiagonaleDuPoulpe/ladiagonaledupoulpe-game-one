@@ -35,13 +35,13 @@
                 "magicAttack": 0,
                 "electronicAttack": 10,
                 "defense": 10,
-                "health": {
+                "xp": {
                     "quantity": 2,
                     "max": 100
                 },
                 "mana": 100,
                 "speed": 15,
-                "synalePower": {
+                "synale": {
                     "quantity": 95,
                     "max": 95
                 }
