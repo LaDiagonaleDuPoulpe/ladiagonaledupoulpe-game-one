@@ -13,6 +13,7 @@ import { GameManagerService } from '../../shared/services/game-manager.service';
 import { CustomPlayerEventType } from '../../shared/enums/custom-player-events-type';
 import { OctopusSprite } from '../prefab-sprites/arcades/octopus.sprite';
 import { GameDataLoaderService } from '../../shared/services/game-data-loader.service';
+import { StatusBarType } from '../../shared/enums/status-bar-type';
 
 /**
 * Base level scene : abstract class of all active map scenes
@@ -180,7 +181,7 @@ export abstract class BaseLevelScene extends BaseScene {
         protected launchEndOfRebornPlayer() {
             const octopus = <OctopusSprite> this.spritePlayers[0];
             
-            this.gameDataManager.reinitData();
+            this.gameDataManager.reinitData(StatusBarType.xp);
             octopus.reinit();
             this.displayReinitHealthData();
         }

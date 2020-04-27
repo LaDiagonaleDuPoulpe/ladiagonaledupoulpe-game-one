@@ -66,8 +66,8 @@ export class GameManagerService {
     }
 
     /** Reinit data to their default values */
-    public reinitData() {
-        this.playerList[0].reinitData();
+    public reinitData(part: StatusBarType) {
+        this.playerList[0].reinitData(part);
     }
     //#endregion
     
