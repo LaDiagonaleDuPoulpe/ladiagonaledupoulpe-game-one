@@ -1,7 +1,7 @@
 import { Position } from '../models/position';
 import { BaseMapLevelScene } from '../scenes/base-map-level.scene';
 import { BaseModalWithPrefabPlugin } from './base-modal-with-prefab.plugin';
-import { StatusPlayerBoxConfiguration } from '../models/statusBar/status-player-box-configuration';
+import { StatusUnitBoxConfiguration } from '../models/statusBar/status-unit-box-configuration';
 import { StatusBarType } from '../../shared/enums/status-bar-type';
 import { StatusBarPlugin } from './status-bar.plugin';
 import { Dictionary } from '../../shared/custom-types/dictionary';
@@ -117,21 +117,22 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
                             this.configuration.position.width, 
                             this.configuration.position.height);
 
-        this.displayerStatsOf(this._content, this.configuration.position);
+        this.displayerStatsOf(this._content, this.configuration as StatusUnitBoxConfiguration);
     }
 
-    private displayerStatsOf(data: StatusBarContent, currentPosition: Position) {
+    private displayerStatsOf(data: StatusBarContent, configuration: StatusUnitBoxConfiguration) {
         const statKeys = Object.keys(data.contents);
 
-        let positionY = currentPosition.y;
+        let positionY = configuration.position.y;
         for(var key of statKeys) {
-            const statusBarPosition = {...currentPosition};
+            const statusBarPosition = {...configuration.statusBoxes[key].position};
 
             statusBarPosition.y = positionY;
+            statusBarPosition.x = configuration.position.x;
             
             this.displayOneStatusBar(key as StatusBarType, data.key, statusBarPosition);
             
-            positionY += currentPosition.height;
+            positionY += configuration.statusBoxes[key].position.height + 15;
         }
 
         this.refresh();
@@ -141,7 +142,7 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
         const statusPositionX = currentPosition.x + this.currentPrefab.displayWidth;
         const statusPositionY = currentPosition.y + 10;
 
-        const statusConfiguration = (<StatusPlayerBoxConfiguration> this.configuration)['statusBoxes'][type];
+        const statusConfiguration = (<StatusUnitBoxConfiguration> this.configuration)['statusBoxes'][type];
 
         statusConfiguration.key = type + '_box_' + key; 
         statusConfiguration.position.x = statusPositionX;

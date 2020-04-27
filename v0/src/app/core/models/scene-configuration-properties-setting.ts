@@ -1,6 +1,6 @@
 import { PropertiesSetting } from './properties-setting';
 import { DialogModalConfiguration } from './dialog-modal/dialog-modal-configuration';
-import { StatusPlayerBoxConfiguration } from './statusBar/status-player-box-configuration';
+import { StatusUnitBoxConfiguration } from './statusBar/status-unit-box-configuration';
 import { Style } from './style';
 
 /**
@@ -12,7 +12,7 @@ export class SceneConfigurationPropertiesSetting extends PropertiesSetting {
     public messageBox: DialogModalConfiguration;
 
     /** Configuration about each box for each player : box to display stats of each player */
-    public statsPlayerBox: StatusPlayerBoxConfiguration;
+    public statsPlayerBox: StatusUnitBoxConfiguration;
 
     /** Style of the background of the scene */
     public backgroudStyle: Style;
