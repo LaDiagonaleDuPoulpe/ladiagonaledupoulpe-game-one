@@ -4,6 +4,5 @@
  */
 export enum StatusBarType {
     xp = 'xp',
-    mp = 'mp',
     synale = 'synale'
 }

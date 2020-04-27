@@ -46,7 +46,7 @@
                 "width": 200
             },
             "statusBoxes": {
-                "XP": {
+                "xp": {
                     "beginColor": "0x1500FF",
                     "endColor": "0x004CB0",
                     "borderColor": "0xFFFFFF",
@@ -60,7 +60,7 @@
                         "fill": "#ffffff"
                     }
                 },
-                "SYNAL": {
+                "synale": {
                     "beginColor": "0x1500FF",
                     "endColor": "0x004CB0",
                     "borderColor": "0xFFFFFF",

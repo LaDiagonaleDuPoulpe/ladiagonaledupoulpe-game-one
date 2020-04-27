@@ -30,17 +30,17 @@ export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
     //#region Internal methods
     private defineEventListeners() {
         this._scene.events.on(CustomStatusBarEventType.updateStats, this.refreshStatValues, this);
-        this._scene.events.on(CustomStatusBarEventType.updatePartOfStat, this.refreshOneStatValue, this);
         this._scene.events.on(CustomStatusBarEventType.reinit, this.reinitValuesWithAnimation, this);
+        this._scene.events.on(CustomStatusBarEventType.reinitPartOfStat, this.reinitOneValueWithAnimation, this);
     }
 
-    private refreshOneStatValue(player: PlayerData, type: StatusBarType) {
+    private reinitOneValueWithAnimation(player: PlayerData, type: StatusBarType) {
         const box = this._statsBoxList[player.key];
         const stats: Dictionary<QuantityStatisticItem> = {};
 
         stats[type] = player.stats[type];
 
-        box.updateValues(this.prepareStatusBar(player, stats));
+        box.reinitData(this.prepareStatusBar(player, stats));
     }
 
     private refreshStatValues(player: PlayerData) {

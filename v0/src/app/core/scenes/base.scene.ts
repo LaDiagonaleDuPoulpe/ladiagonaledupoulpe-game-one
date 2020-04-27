@@ -18,6 +18,7 @@ import { SceneConfigurationPropertiesSetting } from '../models/scene-configurati
 import { CustomPlayerEventType } from '../../shared/enums/custom-player-events-type';
 import { GameDataLoaderService } from '../../shared/services/game-data-loader.service';
 import { CustomStatusBarEventType } from '../../shared/enums/custom-status-bar-event-type';
+import { StatusBarType } from '../../shared/enums/status-bar-type';
 
 /**
 * Parent class of all custom scenes of the game
@@ -86,7 +87,7 @@ export class BaseScene extends Phaser.Scene {
 
     /** Emits event to reinit data of the player */
     public displayReinitHealthData() {
-        this.events.emit(CustomStatusBarEventType.reinit, this.playerList[0]);
+        this.events.emit(CustomStatusBarEventType.reinitPartOfStat, this.playerList[0], StatusBarType.xp);
     }
 
     /** Emits diying event */
