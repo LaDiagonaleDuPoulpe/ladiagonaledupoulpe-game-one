@@ -34,6 +34,11 @@ export default class PlayerData {
         this.stats[part].quantity += value;
     }
 
+    /** Updates synale power value */
+    public updateSynalePower(value: number) {
+        this.updateStatPart(value, StatusBarType.synale);
+    }
+
     /** Reinitialize all data of the current player */
     public reinitData(part?: StatusBarType) {   
         if (part) {
