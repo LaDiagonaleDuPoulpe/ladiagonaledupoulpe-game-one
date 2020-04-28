@@ -30,15 +30,16 @@ export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
     //#region Internal methods
     private defineEventListeners() {
         this._scene.events.on(CustomStatusBarEventType.updateStats, this.refreshStatValues, this);
+        this._scene.events.on(CustomStatusBarEventType.updatePartOfStat, this.refreshOneStatValue, this);
         this._scene.events.on(CustomStatusBarEventType.reinit, this.reinitValuesWithAnimation, this);
         this._scene.events.on(CustomStatusBarEventType.reinitPartOfStat, this.reinitOneValueWithAnimation, this);
     }
 
     private reinitOneValueWithAnimation(player: PlayerData, type: StatusBarType) {
+        let stats: Dictionary<QuantityStatisticItem> = null;
         const box = this._statsBoxList[player.key];
-        const stats: Dictionary<QuantityStatisticItem> = {};
 
-        stats[type] = player.stats[type];
+        stats = this.initStatListToUpdate(type, player);
 
         box.reinitData(this.prepareStatusBar(player, stats));
     }
@@ -48,10 +49,27 @@ export class StatsPlayerBoxManagerPlugin extends BaseModalPlugin {
         box.updateValues(this.getContentFromPlayer(player));
     }
 
+    private refreshOneStatValue(key: StatusBarType, player: PlayerData) {
+        let stats: Dictionary<QuantityStatisticItem> = null;
+        const box = this._statsBoxList[player.key];
+
+        stats = this.initStatListToUpdate(key, player);
+
+        box.updateValues(this.prepareStatusBar(player, stats));
+    }
+
     private reinitValuesWithAnimation(player: PlayerData) {
         const box = this._statsBoxList[player.key];
         box.reinitData(this.getContentFromPlayer(player), true);
-    }    
+    }   
+    
+    private initStatListToUpdate(key: StatusBarType, player: PlayerData): Dictionary<QuantityStatisticItem> {
+        const stats: Dictionary<QuantityStatisticItem> = {};
+
+        stats[key] = player.stats[key];
+
+        return stats;
+    }
 
     private prepareStatusBar(player: PlayerData, stats: Dictionary<QuantityStatisticItem>): StatusBarContent {
         return { 

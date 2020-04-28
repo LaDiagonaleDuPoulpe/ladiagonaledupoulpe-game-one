@@ -37,7 +37,9 @@ export class StatsUnitBoxPlugin extends BaseModalWithPrefabPlugin {
             const type = key as StatusBarType;
             const currentContent = this._content.contents[type];
 
-            this._statusBarList[key].update(currentContent.quantity, currentContent.max);
+            if (currentContent) {
+                this._statusBarList[key].update(currentContent.quantity, currentContent.max);
+            }
         }
     }
 

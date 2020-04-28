@@ -122,6 +122,7 @@ export class BaseScene extends Phaser.Scene {
     /** Player is reborn ! */
     public emitRebornEvent() {
         this.events.emit(CustomPlayerEventType.reborn);
+        this.events.emit(CustomStatusBarEventType.updatePartOfStat, StatusBarType.synale, this.playerList[0]);
     }
     //#endregion
     

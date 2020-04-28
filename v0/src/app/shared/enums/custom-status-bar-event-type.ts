@@ -6,7 +6,9 @@ export enum CustomStatusBarEventType {
     refresh = 'refreshEvent',
     /** Updates whole stats values in status bar */
     updateStats = 'updateStatsEvent',
-    /** Reinits one stat in status bar (not the whole status bar list) */
+    /** Updates one part of the stats (you must precise the part key to update) */
+    updatePartOfStat = 'updatePartOfStatEvent',
+    /** Reinits one stat in status bar (not the whole status bar list) (you must precise the part key to update) */
     reinitPartOfStat = 'reinitPartOfStatEvent',
     /** Reinits all the status bar */
     reinit = 'reinitEvent',
