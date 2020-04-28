@@ -47,7 +47,7 @@
             },
             "statusBoxes": {
                 "xp": {
-                    "beginColor": "0x1500FF",
+                    "beginColor": "0xFFFFFF",
                     "endColor": "0x004CB0",
                     "borderColor": "0xFFFFFF",
                     "borderSize": 2,
@@ -57,11 +57,11 @@
                     },
                     "textStyle": {
                         "font": "bold 20px Arial",
-                        "fill": "#ffffff"
+                        "fill": "#000000"
                     }
                 },
                 "synale": {
-                    "beginColor": "0x1500FF",
+                    "beginColor": "0x1FFFFF",
                     "endColor": "0x004CB0",
                     "borderColor": "0xFFFFFF",
                     "borderSize": 2,
@@ -71,7 +71,7 @@
                     },
                     "textStyle": {
                         "font": "bold 20px Arial",
-                        "fill": "#ffffff"
+                        "fill": "#000000"
                     }
                 }
             }
