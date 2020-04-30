@@ -9,8 +9,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: './src/main.ts',
+  devtool: 'source-map',
   output: {
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    devtoolModuleFilenameTemplate        : '[absolute-resource-path]', //https://stackoverflow.com/questions/36470946/debug-webpack-bundled-node-ts-with-visual-studio-code
+    devtoolFallbackModuleFilenameTemplate: '[absolute-resource-path]?[hash]'
   },
   module: {
     rules: [

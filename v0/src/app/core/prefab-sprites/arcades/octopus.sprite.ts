@@ -122,16 +122,12 @@ export class OctopusSprite extends BaseArcadeSprite {
     }
 
     moveUp() {
-        this.setVelocityX(0);
-        this.setVelocityY(- this._stepValue);
-        
+        this.setVelocityY(- this._stepValue);        
         this._currentDirection = DirectionType.up;
     }
 
     moveDown() {
-        this.setVelocityX(0);
-        this.setVelocityY(this._stepValue);
-        
+        this.setVelocityY(this._stepValue);        
         this._currentDirection = DirectionType.down;
     }
     //#endregion
@@ -186,21 +182,27 @@ export class OctopusSprite extends BaseArcadeSprite {
 
     private setPositionAndCurrentAction() {
         this._currentAction = ActionType.walk;
+        let isMoving = false;
 
         if (this._scene.cursors.left.isDown) {
+            isMoving = true;
             this.moveLeft();
         }
         else if (this._scene.cursors.right.isDown) {
+            isMoving = true;
             this.moveRight();
         }
-        else if (this._scene.cursors.up.isDown) {
+        
+        if (this._scene.cursors.up.isDown) {
+            isMoving = true;
             this.moveUp();
         }
         else if (this._scene.cursors.down.isDown) {
+            isMoving = true;
             this.moveDown();
         }
-        else {
-            
+        
+        if (! isMoving) {            
             const currentAnimationKey = this.anims.currentAnim.key;
             const parts = currentAnimationKey.split('-');
             
