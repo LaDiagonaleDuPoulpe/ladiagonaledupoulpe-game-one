@@ -3,6 +3,7 @@ import { Position } from "./position";
 import { Style } from "./style";
 import { Animation } from './animations/animation';
 import { EffectItem } from './prefabs/effect-item';
+import Action from './actions/action';
 
 /**
  * Prefab properties setting
@@ -73,5 +74,8 @@ export class PropertiesSetting {
      * Effects from one prefab
      */
     public effects: EffectItem[] | null;
+
+    /** Default action of a prefab (example, click on prefab button) */
+    public defaultAction: Action | null;
     //#endregion
 }

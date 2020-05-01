@@ -20,7 +20,9 @@ export class ClickableTextPrefabSprite extends TextPrefabSprite {
     private initialize() {
         this.setInteractive();
         this.on("pointerdown", () => {
-            this._scene.goToNextScene();
+            if (this.properties.defaultAction) {
+                this._scene[this.properties.defaultAction.commandName](this.properties.defaultAction.argumentsAsString);
+            }
         });
 
         this.on('pointerover', () => {
@@ -30,7 +32,6 @@ export class ClickableTextPrefabSprite extends TextPrefabSprite {
         });
 
         this.on('pointerout', () => {
-
             this.setStyle({
                 fill: this.properties.style.fill
             });

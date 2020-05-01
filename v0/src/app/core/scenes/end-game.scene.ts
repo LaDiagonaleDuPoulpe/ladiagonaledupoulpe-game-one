@@ -8,6 +8,7 @@ import { AnimationsCreator } from '../prefab-sprites/animations/animations-creat
 import { LightManager } from '../plugins/light-manager';
 import { GameManagerService } from '../../shared/services/game-manager.service';
 import { GameDataLoaderService } from '../../shared/services/game-data-loader.service';
+import { SceneKeyType } from '../../shared/enums/scene-key-type';
 
 /**
 * Scene to activate when player dies, it's the end of the game
@@ -27,5 +28,13 @@ export class EndGameScene extends BaseMapLevelScene {
                   _objectCreator, _animationsCreator, _lightManager, _gameDataManager, 
                   _gameDataLoaderManager);
         }        
-        
+    
+    //#region Public methods
+    /**
+     * Go back to the main scene (menu)
+     */
+    public goToMainScene() {
+        this.goToNextScene(SceneKeyType.title);
+    }
+    //#endregion
 }
