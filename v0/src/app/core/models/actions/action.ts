@@ -1,9 +1,7 @@
-import Action from '../actions/action';
-
 /**
- * Action to execute when there was a collision
+ * Action to execute 
  */
-class ColliderAction extends Action {
+class Action {
     //#region Fields
     /**
      * Key of the emitter of the collision
@@ -17,7 +15,13 @@ class ColliderAction extends Action {
 
     /** Key of the sprite that will execute the command (found by commandName attribute) */
     public actorKey: string;
+
+    /** Name of the mthod thos execute in actor sprite */
+    public commandName: string;
+
+    /** Content of all arguments, sperated by comma */
+    public argumentsAsString: string;
     //#endregion
 }
 
-export default ColliderAction;
+export default Action;
