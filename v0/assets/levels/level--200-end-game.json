@@ -5,7 +5,7 @@
             "fill": "#ffffff"
         },
         "backgroudStyle": {
-            "fill": "#103040"
+            "fill": "#373E3C"
         }
     },
     "assets": {
@@ -33,112 +33,44 @@
     "map": {},
     "prefabs": [
         {
-            "key": "player",
-            "playable": true,
-            "type": "octopus",
+            "key": "title",
+            "type": "text",
             "position": {
-                "x": 600,
-                "y": 100
+                "x": 700,
+                "y": 950
             },
             "properties": {
-                "texture": "octopus4SpriteSheet",
-                "group": "players",
-                "scale": {
-                    "x": 0.5,
-                    "y": 0.5
+                "group": "texts",
+                "style": {
+                    "font": "90px Kells", 
+                    "fill": "#FFFFFF"
                 },
-                "depth": 1,
-                "visible": true,
-                "animations": [
-                    {
-                        "key": "idle-down",
-                        "byName": true,
-                        "frameStart": 0,
-                        "frameEnd": 15,
-                        "fps": 10,
-                        "repeat": -1,
-                        "zeroPad": 3,
-                        "prefix": "octo3 down all_",
-                        "suffix": ".png"
-                    },
-                    {
-                        "key": "walk-down",
-                        "byName": true,
-                        "frameStart": 45,
-                        "frameEnd": 65,
-                        "fps": 10,
-                        "repeat": -1,
-                        "zeroPad": 3,
-                        "prefix": "octo3 down all_",
-                        "suffix": ".png"
-                    },
-                    {
-                        "key": "idle-left",
-                        "byName": true,
-                        "frameStart": 0,
-                        "frameEnd": 15,
-                        "fps": 10,
-                        "repeat": -1,
-                        "zeroPad": 3,
-                        "prefix": "octo3 left all_",
-                        "suffix": ".png"
-                    },
-                    {
-                        "key": "walk-left",
-                        "byName": true,
-                        "frameStart": 45,
-                        "frameEnd": 65,
-                        "fps": 10,
-                        "repeat": -1,
-                        "zeroPad": 3,
-                        "prefix": "octo3 left all_",
-                        "suffix": ".png"
-                    },
-                    {
-                        "key": "idle-right",
-                        "byName": true,
-                        "frameStart": 0,
-                        "frameEnd": 15,
-                        "fps": 10,
-                        "repeat": -1,
-                        "zeroPad": 3,
-                        "prefix": "octo3 right all_",
-                        "suffix": ".png"
-                    },
-                    {
-                        "key": "walk-right",
-                        "byName": true,
-                        "frameStart": 45,
-                        "frameEnd": 69,
-                        "fps": 10,
-                        "repeat": -1,
-                        "zeroPad": 3,
-                        "prefix": "octo3 right all_",
-                        "suffix": ".png"
-                    },
-                    {
-                        "key": "idle-up",
-                        "byName": true,
-                        "frameStart": 0,
-                        "frameEnd": 15,
-                        "fps": 10,
-                        "repeat": -1,
-                        "zeroPad": 3,
-                        "prefix": "octo3 up all_",
-                        "suffix": ".png"
-                    },
-                    {
-                        "key": "walk-up",
-                        "byName": true,
-                        "frameStart": 45,
-                        "frameEnd": 65,
-                        "fps": 10,
-                        "repeat": -1,
-                        "zeroPad": 3,
-                        "prefix": "octo3 up all_",
-                        "suffix": ".png"
-                    }
-                ]
+                "text": "GAME OVER",
+                "depth": 10,
+                "visible": true
+            }
+        },
+        {
+            "key": "main-menu",
+            "type": "clickableText",
+            "position": {
+                "x": 750,
+                "y": 400
+            },
+            "properties": {
+                "texture": "buttonNew",
+                "group": "texts",
+                "style": {
+                    "font": "40px Kells", 
+                    "fill": "#B8FCE2"
+                },
+                "text": "Retour au menu principal",
+                "scale": {
+                    "x": 0.2,
+                    "y": 0.2
+                },
+                "depth": 10,
+                "visible": true
             }
         }
     ]

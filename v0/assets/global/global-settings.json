@@ -42,7 +42,7 @@
                 "mana": 100,
                 "speed": 15,
                 "synale": {
-                    "quantity": 95,
+                    "quantity": 5,
                     "max": 95
                 }
             }
