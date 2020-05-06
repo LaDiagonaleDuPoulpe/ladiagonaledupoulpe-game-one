@@ -1,0 +1,965 @@
+{
+	"textures": [
+		{
+			"image": "octo3-down-camo-cut.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 4000,
+				"h": 3000
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "octo3 down camo cut_000.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_001.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 500,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_002.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 1000,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_003.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 1500,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_004.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 2000,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_005.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 2500,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_006.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 3000,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_007.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 3500,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_008.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 0,
+						"y": 500,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_009.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 500,
+						"y": 500,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_010.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 1000,
+						"y": 500,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_011.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 1500,
+						"y": 500,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_012.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 2000,
+						"y": 500,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_013.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 2500,
+						"y": 500,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_014.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 3000,
+						"y": 500,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_015.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 3500,
+						"y": 500,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_016.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 0,
+						"y": 1000,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_017.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 500,
+						"y": 1000,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_018.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 1000,
+						"y": 1000,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_019.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 1500,
+						"y": 1000,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_020.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 2000,
+						"y": 1000,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_021.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 2500,
+						"y": 1000,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_022.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 3000,
+						"y": 1000,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_023.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 3500,
+						"y": 1000,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_024.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 0,
+						"y": 1500,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_025.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 500,
+						"y": 1500,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_026.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 1000,
+						"y": 1500,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_027.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 1500,
+						"y": 1500,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_028.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 2000,
+						"y": 1500,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_029.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 2500,
+						"y": 1500,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_030.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 3000,
+						"y": 1500,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_031.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 3500,
+						"y": 1500,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_032.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 0,
+						"y": 2000,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_033.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 500,
+						"y": 2000,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_034.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 1000,
+						"y": 2000,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_035.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 1500,
+						"y": 2000,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_036.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 2000,
+						"y": 2000,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_037.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 2500,
+						"y": 2000,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_038.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 3000,
+						"y": 2000,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_039.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 3500,
+						"y": 2000,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_040.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 0,
+						"y": 2500,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_041.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 500,
+						"y": 2500,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_042.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 1000,
+						"y": 2500,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_043.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 1500,
+						"y": 2500,
+						"w": 500,
+						"h": 500
+					}
+				},
+				{
+					"filename": "octo3 down camo cut_044.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 500,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 500,
+						"h": 500
+					},
+					"frame": {
+						"x": 2000,
+						"y": 2500,
+						"w": 500,
+						"h": 500
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:56284e063235c5f769dff4eb61e53b99:2eb677d5e707c47d93a04074d6c90d2a:81b565ee7bcb67519b76255ef0bf5750$"
+	}
+}

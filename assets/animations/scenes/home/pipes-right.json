@@ -1,0 +1,104 @@
+{
+	"textures": [
+		{
+			"image": "pipes-right.png",
+			"format": "RGBA4444",
+			"size": {
+				"w": 1724,
+				"h": 942
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "pipe-long-front-right-1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 431,
+						"h": 942
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 431,
+						"h": 942
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 431,
+						"h": 942
+					}
+				},
+				{
+					"filename": "pipe-long-front-right-2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 431,
+						"h": 942
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 431,
+						"h": 942
+					},
+					"frame": {
+						"x": 431,
+						"y": 0,
+						"w": 431,
+						"h": 942
+					}
+				},
+				{
+					"filename": "pipe-long-front-right-3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 431,
+						"h": 942
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 431,
+						"h": 942
+					},
+					"frame": {
+						"x": 862,
+						"y": 0,
+						"w": 431,
+						"h": 942
+					}
+				},
+				{
+					"filename": "pipe-long-front-right-4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 431,
+						"h": 942
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 431,
+						"h": 942
+					},
+					"frame": {
+						"x": 1293,
+						"y": 0,
+						"w": 431,
+						"h": 942
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:2830dd19384384d8c8eef27818111f9d:7fb22583faa532861fbd38fb4717fd0d:8cc24b58ebb95f11ded152fab0c6fd8f$"
+	}
+}
