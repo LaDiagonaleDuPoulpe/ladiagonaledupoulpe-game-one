@@ -1,0 +1,43 @@
+[gd_scene format=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Title" type="RichTextLabel" parent="."]
+margin_left = 24.0
+margin_top = 32.0
+margin_right = 174.0
+margin_bottom = 52.0
+rect_scale = Vector2( 3, 3 )
+text = "La diagonale du poulpe"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="Node2D" parent="."]
+position = Vector2( 52, 116 )
+
+[node name="BtnNewParty" type="MenuButton" parent="Menu"]
+margin_right = 110.0
+margin_bottom = 20.0
+text = "Nouvelle partie"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnLoadParty" type="MenuButton" parent="Menu"]
+margin_top = 30.0
+margin_right = 192.0
+margin_bottom = 50.0
+text = "Charger une partie existante"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnCredential" type="MenuButton" parent="Menu"]
+margin_top = 90.0
+margin_right = 57.0
+margin_bottom = 110.0
+text = "Crédits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
