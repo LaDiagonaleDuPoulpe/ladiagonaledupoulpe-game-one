@@ -1,17 +1,84 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Sources/App/Core/Models/Players/Player.cs" type="Script" id=1]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_054.png" type="Texture" id=21]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_058.png" type="Texture" id=22]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_048.png" type="Texture" id=23]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_062.png" type="Texture" id=24]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_050.png" type="Texture" id=26]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_064.png" type="Texture" id=27]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_055.png" type="Texture" id=29]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_065.png" type="Texture" id=30]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_049.png" type="Texture" id=31]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_061.png" type="Texture" id=34]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_063.png" type="Texture" id=35]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_045.png" type="Texture" id=37]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_051.png" type="Texture" id=38]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_057.png" type="Texture" id=41]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_059.png" type="Texture" id=42]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_060.png" type="Texture" id=43]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_047.png" type="Texture" id=48]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_056.png" type="Texture" id=49]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_046.png" type="Texture" id=50]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_053.png" type="Texture" id=51]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_052.png" type="Texture" id=52]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 down all_000.png" type="Texture" id=82]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 down all_004.png" type="Texture" id=83]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 down all_008.png" type="Texture" id=88]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 down all_010.png" type="Texture" id=94]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 down all_002.png" type="Texture" id=97]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 down all_006.png" type="Texture" id=102]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 down all_012.png" type="Texture" id=106]
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 down all_014.png" type="Texture" id=108]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 37 ), ExtResource( 27 ), ExtResource( 35 ), ExtResource( 24 ), ExtResource( 22 ), ExtResource( 34 ), ExtResource( 51 ), ExtResource( 50 ), ExtResource( 23 ), ExtResource( 48 ), ExtResource( 31 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 49 ), ExtResource( 41 ), ExtResource( 26 ), ExtResource( 38 ), ExtResource( 29 ), ExtResource( 52 ), ExtResource( 21 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "up",
+"speed": 10.0
+}, {
 "frames": [  ],
 "loop": true,
-"name": "default",
+"name": "left",
+"speed": 10.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "idle_up",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 82 ), ExtResource( 108 ), ExtResource( 106 ), ExtResource( 97 ), ExtResource( 83 ), ExtResource( 102 ), ExtResource( 88 ), ExtResource( 94 ) ],
+"loop": true,
+"name": "idle_down",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "idle_left",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "down",
+"speed": 10.0
 } ]
 
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 93.0
+
 [node name="Player" type="Area2D"]
+position = Vector2( 212, 211 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -1 )
+scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
+animation = "idle_up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
