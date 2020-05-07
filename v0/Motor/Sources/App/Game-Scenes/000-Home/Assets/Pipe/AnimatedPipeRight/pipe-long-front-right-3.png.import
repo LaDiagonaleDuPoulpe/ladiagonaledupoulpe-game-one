@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pipe-long-front-right-4.png-25ccf86b22f08333d692af0be5822db3.stex"
+path="res://.import/pipe-long-front-right-3.png-abc4940a0360a60d727b8e0510317a1e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sources/App/Game-Scenes/000-Home/Assets/Pipe/pipe-long-front-right-4.png"
-dest_files=[ "res://.import/pipe-long-front-right-4.png-25ccf86b22f08333d692af0be5822db3.stex" ]
+source_file="res://Sources/App/Game-Scenes/000-Home/Assets/Pipe/AnimatedPipeRight/pipe-long-front-right-3.png"
+dest_files=[ "res://.import/pipe-long-front-right-3.png-abc4940a0360a60d727b8e0510317a1e.stex" ]
 
 [params]
 
