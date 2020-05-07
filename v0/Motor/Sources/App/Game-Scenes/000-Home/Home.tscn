@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/background.png" type="Texture" id=1]
 [ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Tube/tube3.png" type="Texture" id=2]
@@ -13,7 +13,6 @@
 [ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pipe/AnimatedPipeRight/pipe-long-front-right-2.png" type="Texture" id=11]
 [ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pipe/AnimatedPipeRight/pipe-long-front-right-1.png" type="Texture" id=12]
 [ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pipe/AnimatedPipeRight/pipe-long-front-right-4.png" type="Texture" id=13]
-[ext_resource path="res://Sources/App/Shared/Plugins/SpriteAnimation.cs" type="Script" id=14]
 [ext_resource path="res://Sources/App/Shared/Assets/Particles/Spark/spark-left-all.png" type="Texture" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -22,6 +21,152 @@ animations = [ {
 "loop": true,
 "name": "default",
 "speed": 8.0
+} ]
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 100, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 200, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 300, 0, 100, 100 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 133, 0, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 266, 0, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 399, 0, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 532, 0, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 665, 0, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 798, 0, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 931, 0, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 1064, 0, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 1197, 0, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 1330, 0, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 0, 203, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 133, 203, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 266, 203, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 399, 203, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 532, 203, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 665, 203, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 798, 203, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 931, 203, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 1064, 203, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 1197, 203, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 1330, 203, 133, 203 )
+
+[sub_resource type="SpriteFrames" id=29]
+animations = [ {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
 } ]
 
 [node name="Node2D" type="Node2D"]
@@ -57,7 +202,7 @@ texture = ExtResource( 4 )
 position = Vector2( 584.835, 151.222 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="pipe-long-front" type="Sprite" parent="Image/Pipe"]
@@ -83,30 +228,25 @@ texture = ExtResource( 2 )
 
 [node name="Spike" type="Node2D" parent="Image"]
 
-[node name="spikes-left" type="Sprite" parent="Image/Spike"]
-position = Vector2( 94.5884, 108.816 )
-texture = ExtResource( 10 )
-hframes = 4
-script = ExtResource( 14 )
+[node name="SpikeLeft" type="AnimatedSprite" parent="Image/Spike"]
+position = Vector2( 98.8062, 108.83 )
+frames = SubResource( 6 )
+playing = true
 
 [node name="Sparks" type="Node2D" parent="Image"]
 
-[node name="spark-right" type="Sprite" parent="Image/Sparks"]
-position = Vector2( 830.623, 93.0645 )
-texture = ExtResource( 15 )
-vframes = 2
-hframes = 11
-frame = 17
-script = ExtResource( 14 )
+[node name="spark-right" type="AnimatedSprite" parent="Image/Sparks"]
+position = Vector2( 832.277, 94.342 )
+frames = SubResource( 29 )
+frame = 21
+playing = true
 
-[node name="spark-middle" type="Sprite" parent="Image/Sparks"]
-position = Vector2( 433.967, 91.6326 )
+[node name="spark-middle" type="AnimatedSprite" parent="Image/Sparks"]
+position = Vector2( 444.57, 77.5414 )
 rotation = 3.14159
-texture = ExtResource( 15 )
-vframes = 2
-hframes = 11
-frame = 17
-script = ExtResource( 14 )
+frames = SubResource( 29 )
+frame = 20
+playing = true
 
 [node name="Menu" type="Node2D" parent="."]
 position = Vector2( 52, 116 )
