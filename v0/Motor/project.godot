@@ -17,7 +17,13 @@ _global_script_class_icons={
 
 config/name="la-diagonale-du-poulpe"
 run/main_scene="res://Sources/App/Game-Scenes/002-Inside-Crash-Ship/InsideCrashShip.tscn"
-config/icon="res://icon.png"
+
+[display]
+
+window/size/width=1920
+window/size/height=844
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [rendering]
 

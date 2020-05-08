@@ -110,25 +110,25 @@ animations = [ {
 "name": "up",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 90 ), ExtResource( 95 ), ExtResource( 92 ), ExtResource( 84 ), ExtResource( 86 ), ExtResource( 78 ), ExtResource( 89 ), ExtResource( 75 ), ExtResource( 81 ), ExtResource( 76 ), ExtResource( 79 ) ],
-"loop": true,
-"name": "idle_up",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 71 ), ExtResource( 32 ), ExtResource( 57 ), ExtResource( 53 ), ExtResource( 33 ), ExtResource( 62 ), ExtResource( 72 ), ExtResource( 58 ), ExtResource( 45 ), ExtResource( 73 ), ExtResource( 55 ) ],
 "loop": true,
 "name": "idle_left",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 82 ), ExtResource( 2 ), ExtResource( 97 ), ExtResource( 6 ), ExtResource( 83 ), ExtResource( 3 ), ExtResource( 102 ), ExtResource( 4 ), ExtResource( 88 ), ExtResource( 5 ), ExtResource( 94 ) ],
-"loop": true,
-"name": "idle_down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 18 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 7 ), ExtResource( 14 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 17 ), ExtResource( 25 ), ExtResource( 19 ), ExtResource( 8 ), ExtResource( 47 ), ExtResource( 70 ), ExtResource( 60 ), ExtResource( 65 ), ExtResource( 68 ), ExtResource( 64 ) ],
 "loop": true,
 "name": "down",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 82 ), ExtResource( 2 ), ExtResource( 97 ), ExtResource( 6 ), ExtResource( 83 ), ExtResource( 3 ), ExtResource( 102 ), ExtResource( 4 ), ExtResource( 88 ), ExtResource( 5 ), ExtResource( 94 ) ],
+"loop": true,
+"name": "idle_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 90 ), ExtResource( 95 ), ExtResource( 92 ), ExtResource( 84 ), ExtResource( 86 ), ExtResource( 78 ), ExtResource( 89 ), ExtResource( 75 ), ExtResource( 81 ), ExtResource( 76 ), ExtResource( 79 ) ],
+"loop": true,
+"name": "idle_up",
+"speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
@@ -145,7 +145,7 @@ __meta__ = {
 position = Vector2( 0, -1 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
-animation = "idle_up"
+animation = "idle_left"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
