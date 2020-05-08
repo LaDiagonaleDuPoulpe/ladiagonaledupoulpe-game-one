@@ -10,7 +10,10 @@ public class InsideCrashShip : Node2D
 	#region Public methods
 	public override void _Ready()
 	{
-		//this._player = (PackedScene) ResourceLoader.Load("res://Sources/App/Core/Models/Players/Player.tscn");
+		ColorRect node = GetNode<ColorRect>("");
+
+		
+		//node.RectPosition.Set()
 	}
 	#endregion
 
