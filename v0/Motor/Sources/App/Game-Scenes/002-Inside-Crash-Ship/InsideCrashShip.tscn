@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/inside-ship.png" type="Texture" id=1]
+[ext_resource path="res://Sources/App/Game-Scenes/002-Inside-Crash-Ship/InsideCrashShip.cs" type="Script" id=2]
+[ext_resource path="res://Sources/App/Core/Models/Players/Player.tscn" type="PackedScene" id=3]
+
+[node name="InsideCrashShip" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -929.0
+margin_top = -782.0
+margin_right = 2840.0
+margin_bottom = 1655.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.0352941, 0.0352941, 0.0352941, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 963.24, 423.858 )
+texture = ExtResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 762.264, 560.336 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( 0, 1 )
+current = true
+zoom = Vector2( 0.8, 0.8 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+margin_left = 90.6826
+margin_top = 22.299
+margin_right = 130.683
+margin_bottom = 62.299
+bbcode_text = "hello"
+text = "hello"
+scroll_following = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
