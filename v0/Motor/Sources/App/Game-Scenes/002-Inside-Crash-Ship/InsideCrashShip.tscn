@@ -8,10 +8,10 @@
 script = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -748.386
-margin_top = -781.765
-margin_right = 2646.61
-margin_bottom = 1655.24
+margin_left = -929.0
+margin_top = -782.0
+margin_right = 2840.0
+margin_bottom = 1655.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.0352941, 0.0352941, 0.0352941, 1 )
@@ -30,3 +30,18 @@ position = Vector2( 762.264, 560.336 )
 position = Vector2( 0, 1 )
 current = true
 zoom = Vector2( 0.8, 0.8 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+margin_left = 90.6826
+margin_top = 22.299
+margin_right = 130.683
+margin_bottom = 62.299
+bbcode_text = "hello"
+text = "hello"
+scroll_following = true
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}

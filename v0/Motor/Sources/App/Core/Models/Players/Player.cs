@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class Player : Area2D
+public class Player : KinematicBody2D
 {
 	#region Fields
 	private Vector2 _screenSize;
