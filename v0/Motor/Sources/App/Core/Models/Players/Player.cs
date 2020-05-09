@@ -52,11 +52,13 @@ public class Player : KinematicBody2D
 			prefix = "idle_";
 		}
 
-		this.Position += velocity * delta;
-		this.Position = new Vector2(
-			x: Mathf.Clamp(Position.x, 0, _screenSize.x),
-			y: Mathf.Clamp(Position.y, 0, _screenSize.y)
-		);
+		//this.Position += velocity * delta;
+		//this.Position = new Vector2(
+		//	x: Mathf.Clamp(Position.x, 0, _screenSize.x),
+		//	y: Mathf.Clamp(Position.y, 0, _screenSize.y)
+		//);
+
+		this.MoveAndCollide(velocity * delta);
 
 		if (velocity.x != 0)
 		{
