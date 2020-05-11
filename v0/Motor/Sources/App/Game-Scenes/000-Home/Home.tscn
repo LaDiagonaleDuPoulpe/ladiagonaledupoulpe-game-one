@@ -202,7 +202,6 @@ texture = ExtResource( 4 )
 position = Vector2( 584.835, 151.222 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
-frame = 3
 playing = true
 
 [node name="pipe-long-front" type="Sprite" parent="Image/Pipe"]
@@ -231,6 +230,7 @@ texture = ExtResource( 2 )
 [node name="SpikeLeft" type="AnimatedSprite" parent="Image/Spike"]
 position = Vector2( 98.8062, 108.83 )
 frames = SubResource( 6 )
+frame = 1
 playing = true
 
 [node name="Sparks" type="Node2D" parent="Image"]
@@ -238,14 +238,14 @@ playing = true
 [node name="spark-right" type="AnimatedSprite" parent="Image/Sparks"]
 position = Vector2( 832.277, 94.342 )
 frames = SubResource( 29 )
-frame = 21
+frame = 12
 playing = true
 
 [node name="spark-middle" type="AnimatedSprite" parent="Image/Sparks"]
 position = Vector2( 444.57, 77.5414 )
 rotation = 3.14159
 frames = SubResource( 29 )
-frame = 20
+frame = 11
 playing = true
 
 [node name="Menu" type="Node2D" parent="."]
