@@ -47,7 +47,7 @@ height = 389.699
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 21
+frame = 26
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
