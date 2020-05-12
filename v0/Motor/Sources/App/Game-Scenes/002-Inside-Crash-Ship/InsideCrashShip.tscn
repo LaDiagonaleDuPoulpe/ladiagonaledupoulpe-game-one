@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/inside-ship/main/inside-ship.png" type="Texture" id=1]
 [ext_resource path="res://Sources/App/Game-Scenes/002-Inside-Crash-Ship/InsideCrashShip.cs" type="Script" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://Sources/App/Shared/Scenes/Sparks/Spark001/Spark001.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Sources/App/Shared/Scenes/Sparks/Spark002/Spark002.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Sources/App/Shared/Scenes/Sparks/LightSparks/LightSpark001/LightSpark001.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Sources/App/Shared/Scenes/Sparks/LightSparks/LightSpark002/LightSpark002.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Sources/App/Shared/Scenes/Sparks/LightSparks/LightSpark003/LightSpark003.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Sources/App/Shared/Scenes/Sparks/LightSparks/LightSpark004/LightSpark004.tscn" type="PackedScene" id=12]
 
 [node name="InsideCrashShip" type="Node2D"]
 script = ExtResource( 2 )
@@ -85,6 +88,16 @@ position = Vector2( 1298.91, 135.391 )
 [node name="Spark001" parent="." instance=ExtResource( 7 )]
 position = Vector2( 228.473, 87.4403 )
 
-[node name="LightSpark001" parent="." instance=ExtResource( 9 )]
+[node name="LightSparks" type="Node2D" parent="."]
+
+[node name="LightSpark3" parent="LightSparks" instance=ExtResource( 9 )]
 position = Vector2( 218.601, 575.414 )
-collision_layer = 8
+
+[node name="LightSpark1" parent="LightSparks" instance=ExtResource( 10 )]
+position = Vector2( 1713.55, 538.745 )
+
+[node name="LightSpark2" parent="LightSparks" instance=ExtResource( 11 )]
+position = Vector2( 627.596, 187.574 )
+
+[node name="LightSpark4" parent="LightSparks" instance=ExtResource( 12 )]
+position = Vector2( 1384.94, 135.391 )
