@@ -15,12 +15,16 @@ public class InstantiateCloud : Node2D
 		AddChild(_timer);
 
 
-		_timer.Connect("timeout", this, "InstantiateNewWaveSea");
+		_timer.Connect("timeout", this, "InstantiateNewCloud");
 		_timer.WaitTime = 1f;
 		_timer.OneShot = false;
 		_timer.Start();
 	}
-	private void InstantiateNewWaveSea()
+
+	/// <summary>
+	/// Instanciation d'un nuage 
+	/// </summary>
+	private void InstantiateNewCloud()
 	{
 			var node = (Node2D)_cloud.Instance();
 			var posY = ((Sprite)GetParent()).Texture.GetSize().y;

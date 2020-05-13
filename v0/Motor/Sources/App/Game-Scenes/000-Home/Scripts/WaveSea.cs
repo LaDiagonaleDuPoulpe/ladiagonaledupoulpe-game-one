@@ -25,7 +25,9 @@ public class WaveSea : Sprite
 		_timer.Start();
 	}
 
-	//  // Called every frame. 'delta' is the elapsed time since the previous frame.
+	/// <summary>
+	/// Instanciation de 10 vagues
+	/// </summary>
 	private void InstantiateNewWaveSea()
 	{
 		for (var i = 0; i < 10; i++)

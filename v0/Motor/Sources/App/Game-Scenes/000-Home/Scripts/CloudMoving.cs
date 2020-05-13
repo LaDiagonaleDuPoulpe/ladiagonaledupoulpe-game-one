@@ -17,6 +17,9 @@ public class CloudMoving : Sprite
 		Task.Run(MoveCloud);
 	}
 
+	/// <summary>
+	/// Deplace le srite du nuage de gauche a droite
+	/// </summary>
 	public async void MoveCloud()
 	{
 		while(Position.x  < _maxPosition)
@@ -27,5 +30,4 @@ public class CloudMoving : Sprite
 	
 		GetParent().QueueFree();
 	}
-
 }
