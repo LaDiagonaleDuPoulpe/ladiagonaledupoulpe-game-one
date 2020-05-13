@@ -13,10 +13,10 @@
 [ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pipe/AnimatedPipeRight/pipe-long-front-right-2.png" type="Texture" id=11]
 [ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pipe/AnimatedPipeRight/pipe-long-front-right-1.png" type="Texture" id=12]
 [ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pipe/AnimatedPipeRight/pipe-long-front-right-4.png" type="Texture" id=13]
-[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds2.png" type="Texture" id=14]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Scripts/InstantiateCloud.cs" type="Script" id=14]
 [ext_resource path="res://Sources/App/Shared/Assets/Particles/Spark/spark-left-all.png" type="Texture" id=15]
-[ext_resource path="res://Sources/App/Game-Scenes/000-Home/WaveSea.cs" type="Script" id=16]
-[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds (2).png" type="Texture" id=17]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Scripts/WaveSea.cs" type="Script" id=16]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Cloud.tscn" type="PackedScene" id=17]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -174,17 +174,46 @@ animations = [ {
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Image" type="Node" parent="."]
+[node name="Image" type="Node2D" parent="."]
 
-[node name="background" type="Sprite" parent="Image"]
-position = Vector2( 515.298, 301.136 )
-scale = Vector2( 0.535, 0.56 )
+[node name="Sky" type="Node2D" parent="Image"]
+
+[node name="background" type="Sprite" parent="Image/Sky"]
+scale = Vector2( 0.535, 0.345 )
 texture = ExtResource( 1 )
+centered = false
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Sea" type="Node" parent="Image"]
+[node name="Cloud" type="Node2D" parent="Image/Sky/background"]
+script = ExtResource( 14 )
+
+[node name="Node2D" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
+position = Vector2( 820.464, 103.738 )
+
+[node name="Node2D2" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
+position = Vector2( 694.542, 338.674 )
+
+[node name="Node2D3" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
+position = Vector2( 1452.04, 271.549 )
+
+[node name="Node2D6" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
+position = Vector2( 981.803, 723.114 )
+
+[node name="Node2D5" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
+position = Vector2( 1778.66, 628.529 )
+
+[node name="Node2D4" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
+position = Vector2( 1882.94, 51.869 )
+
+[node name="Node2D8" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
+position = Vector2( 212.494, 720.063 )
+
+[node name="Node2D7" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
+position = Vector2( 316.774, 143.402 )
+
+[node name="Sea" type="Node2D" parent="Image"]
 
 [node name="HomeSea" type="Sprite" parent="Image/Sea"]
 position = Vector2( -1.3792, 365.001 )
@@ -193,17 +222,7 @@ texture = ExtResource( 6 )
 centered = false
 script = ExtResource( 16 )
 
-[node name="Cloud" type="Node" parent="Image"]
-
-[node name="Sprite" type="Sprite" parent="Image/Cloud"]
-texture = ExtResource( 14 )
-centered = false
-
-[node name="Sprite2" type="Sprite" parent="Image/Cloud"]
-texture = ExtResource( 17 )
-centered = false
-
-[node name="Pipe" type="Node" parent="Image"]
+[node name="Pipe" type="Node2D" parent="Image"]
 
 [node name="pipe-right-part" type="Sprite" parent="Image/Pipe"]
 position = Vector2( 975.418, 89.8688 )
@@ -219,6 +238,7 @@ texture = ExtResource( 4 )
 position = Vector2( 584.835, 151.222 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
+frame = 2
 playing = true
 
 [node name="pipe-long-front" type="Sprite" parent="Image/Pipe"]
@@ -226,7 +246,7 @@ position = Vector2( 696.875, 126.198 )
 scale = Vector2( 0.535, 0.56 )
 texture = ExtResource( 5 )
 
-[node name="Tube" type="Node" parent="Image"]
+[node name="Tube" type="Node2D" parent="Image"]
 
 [node name="tube1" type="Sprite" parent="Image/Tube"]
 position = Vector2( 161.531, 289.529 )
@@ -243,15 +263,15 @@ position = Vector2( 822.441, 263.812 )
 scale = Vector2( 0.535, 0.56 )
 texture = ExtResource( 2 )
 
-[node name="Spike" type="Node" parent="Image"]
+[node name="Spike" type="Node2D" parent="Image"]
 
 [node name="SpikeLeft" type="AnimatedSprite" parent="Image/Spike"]
 position = Vector2( 98.8062, 108.83 )
 frames = SubResource( 6 )
-frame = 3
+frame = 1
 playing = true
 
-[node name="Sparks" type="Node" parent="Image"]
+[node name="Sparks" type="Node2D" parent="Image"]
 
 [node name="spark-right" type="AnimatedSprite" parent="Image/Sparks"]
 position = Vector2( 832.277, 94.342 )
@@ -267,41 +287,44 @@ frame = 19
 playing = true
 
 [node name="Menu" type="Node2D" parent="."]
-position = Vector2( 52, 116 )
 
-[node name="BtnNewParty" type="MenuButton" parent="Menu"]
-margin_right = 110.0
-margin_bottom = 20.0
-text = "Nouvelle partie"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BtnLoadParty" type="MenuButton" parent="Menu"]
-margin_top = 30.0
-margin_right = 192.0
-margin_bottom = 50.0
-text = "Charger une partie existante"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BtnCredential" type="MenuButton" parent="Menu"]
-margin_top = 90.0
-margin_right = 57.0
-margin_bottom = 110.0
-text = "Crédits"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Title" type="RichTextLabel" parent="."]
+[node name="Title" type="RichTextLabel" parent="Menu"]
 margin_left = 24.0
 margin_top = 32.0
 margin_right = 174.0
 margin_bottom = 52.0
 rect_scale = Vector2( 2, 2 )
 text = "La diagonale du poulpe"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnNewParty" type="MenuButton" parent="Menu"]
+margin_left = 52.0
+margin_top = 116.0
+margin_right = 162.0
+margin_bottom = 136.0
+text = "Nouvelle partie"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnLoadParty" type="MenuButton" parent="Menu"]
+margin_left = 52.0
+margin_top = 146.0
+margin_right = 244.0
+margin_bottom = 166.0
+text = "Charger une partie existante"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnCredential" type="MenuButton" parent="Menu"]
+margin_left = 52.0
+margin_top = 206.0
+margin_right = 109.0
+margin_bottom = 226.0
+text = "Crédits"
 __meta__ = {
 "_edit_use_anchors_": false
 }

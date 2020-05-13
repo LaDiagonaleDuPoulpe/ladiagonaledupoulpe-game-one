@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/cloud-1.png" type="Texture" id=1]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Scripts/CloudMoving.cs" type="Script" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CloudSprite" type="Sprite" parent="."]
+position = Vector2( -665.622, 0 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 1 )
+centered = false
+script = ExtResource( 2 )

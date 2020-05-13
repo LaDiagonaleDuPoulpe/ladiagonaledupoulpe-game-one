@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/clouds (2).png-0b04bd158da74de4e3a51cc3d5b0fb9a.stex"
+path="res://.import/cloud-1.png-c69f5f46e85bba224b329fa20bac2b83.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds (2).png"
-dest_files=[ "res://.import/clouds (2).png-0b04bd158da74de4e3a51cc3d5b0fb9a.stex" ]
+source_file="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/cloud-1.png"
+dest_files=[ "res://.import/cloud-1.png-c69f5f46e85bba224b329fa20bac2b83.stex" ]
 
 [params]
 
