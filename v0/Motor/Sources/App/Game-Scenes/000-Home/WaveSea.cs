@@ -7,25 +7,22 @@ public class WaveSea : Sprite
 	// private int a = 2;
 	// private string b = "text";
 	private PackedScene _waveSeaScene;
-	private Timer _timer;
+	private Timer _timer1;
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_waveSeaScene = (PackedScene)ResourceLoader.Load("res://Sources/App/Game-Scenes/000-Home/WaveSea.tscn"); // Will load when the script is instanced.
 
-		_timer = new Timer();
+		_timer1 = new Timer();
 
-		AddChild(_timer);
+		AddChild(_timer1);
 
 
-		_timer.Connect("timeout", this, "InstantiateNewWaveSea");
-
-		_timer.WaitTime = 2f;
-
-		_timer.OneShot = false;
-		_timer.Start();
-
+		_timer1.Connect("timeout", this, "InstantiateNewWaveSea");
+		_timer1.WaitTime = 0.4f;
+		_timer1.OneShot = false;
+		_timer1.Start();
 	}
 
 	//  // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,8 +34,6 @@ public class WaveSea : Sprite
 
 			var animatedSprite = (AnimatedSprite)node.GetChild(0);
 
-			GD.Print(this.Texture.GetSize().y);
-			GD.Print(this.Transform.Scale.y);
 			var sizeX = Convert.ToInt32(this.Texture.GetSize().x) ; 
 			var sizeY = Convert.ToInt32(this.Texture.GetSize().y ) ;
 

@@ -17,6 +17,8 @@ _global_script_class_icons={
 
 config/name="la-diagonale-du-poulpe"
 run/main_scene="res://Sources/App/Game-Scenes/000-Home/Home.tscn"
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 
 [display]
 
