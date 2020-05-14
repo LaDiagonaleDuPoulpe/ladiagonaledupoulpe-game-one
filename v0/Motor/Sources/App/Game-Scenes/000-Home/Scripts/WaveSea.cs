@@ -36,10 +36,13 @@ public class WaveSea : Sprite
 
 			var animatedSprite = (AnimatedSprite)node.GetChild(0);
 
-			var sizeX = Convert.ToInt32(this.Texture.GetSize().x) ; 
-			var sizeY = Convert.ToInt32(this.Texture.GetSize().y ) ;
+			var seaSizeX = Convert.ToInt32(this.Texture.GetSize().x) ; 
+			var seaSizeY = Convert.ToInt32(this.Texture.GetSize().y ) ;
 
-			animatedSprite.Position = new Vector2(new Random().Next(0,sizeX), new Random().Next(0, sizeY));
+			var positionY = new Random().Next(0, seaSizeY);
+			var scale = 1f  * positionY / 300f;
+			animatedSprite.Position = new Vector2(new Random().Next(0,seaSizeX), positionY);
+			animatedSprite.Scale = new Vector2(scale, scale);
 			animatedSprite.Play();
 			AddChild(node);
 		}

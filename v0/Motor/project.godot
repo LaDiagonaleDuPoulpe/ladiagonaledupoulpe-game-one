@@ -20,6 +20,10 @@ run/main_scene="res://Sources/App/Game-Scenes/000-Home/Home.tscn"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 
+[autoload]
+
+LoadSettings="*res://Sources/App/Core/LoadSettings.cs"
+
 [display]
 
 window/size/resizable=false

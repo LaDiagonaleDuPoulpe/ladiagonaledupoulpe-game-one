@@ -25,7 +25,7 @@ animations = [ {
 [node name="Node2D" type="Node2D"]
 
 [node name="WaveSeaAnimated" type="AnimatedSprite" parent="."]
-position = Vector2( 51.565, 52.7927 )
+position = Vector2( 52.7313, 53.9591 )
 frames = SubResource( 1 )
 frame = 1
 
