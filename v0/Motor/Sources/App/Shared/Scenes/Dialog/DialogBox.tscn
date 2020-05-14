@@ -1,0 +1,25 @@
+[gd_scene format=2]
+
+[node name="DialogBox" type="Node"]
+
+[node name="Borders" type="Polygon2D" parent="."]
+polygon = PoolVector2Array( 0, 0, 0, 320, 1032, 320, 1032, 0 )
+
+[node name="Inside" type="Polygon2D" parent="."]
+color = Color( 0.0352941, 0.0705882, 0.419608, 1 )
+polygon = PoolVector2Array( 16, 16, 24, 304, 1008, 304, 1024, 16 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_left = 0.07
+anchor_top = 0.12
+anchor_right = 0.937
+anchor_bottom = 0.427
+margin_left = -7.68
+margin_right = 0.511963
+margin_bottom = -0.200012
+bbcode_enabled = true
+bbcode_text = "Test"
+text = "Test"
+__meta__ = {
+"_edit_use_anchors_": false
+}
