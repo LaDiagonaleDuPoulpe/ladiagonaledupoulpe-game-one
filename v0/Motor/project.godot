@@ -19,6 +19,18 @@ config/name="la-diagonale-du-poulpe"
 run/main_scene="res://Sources/App/Shared/Scenes/Dialog/DialogBox.tscn"
 config/icon="res://icon.png"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "MonoDebuggerQM-1.0.1" )
+
+[logging]
+
+file_logging/enable_file_logging=true
+
+[mono]
+
+project/auto_update_project=false
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
