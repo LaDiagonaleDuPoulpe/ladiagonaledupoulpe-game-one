@@ -15,6 +15,7 @@ public class DialogBox : Node2D
     };
     private RichTextLabel _label = null;
     private Timer _currentTimer = null;
+    private Button _nextOrCloseButton = null;
     private int _currentPartOfMessage = 0;
     #endregion
 
@@ -23,21 +24,24 @@ public class DialogBox : Node2D
     {
         this._label = this.GetNode("Content") as RichTextLabel;
         this._currentTimer  = this.GetNode("Timer") as Timer;
+        this._nextOrCloseButton = this.GetNode("NextOrClose") as Button;
         this.Initialize();
     }
 
     public void OnTimerTimeout()
     {
         this.CurrentVisibleCharacters++;
+        if (this.CurrentPartOfMessage >= this.Message.Length)
+        {
+            this._currentTimer.Stop();
+        }
     }
 
     public void OnNextOrClosePressed()
     {        
         this.CurrentPartOfMessage++;
-        this._currentTimer.Stop();
 
-        bool visible = this.CurrentPartOfMessage < this.MessageList.Count;
-        this.Visible = visible;
+        this.Visible = this.CurrentPartOfMessage < this.MessageList.Count;
         if (this.Visible)
         {
             this.Initialize();
@@ -51,6 +55,17 @@ public class DialogBox : Node2D
     {
         this.CurrentVisibleCharacters = 0;
         this._label.BbcodeText = this.Message;
+
+        this.SetTextFromNextOrCloseButton();
+    }
+
+    private void SetTextFromNextOrCloseButton()
+    {
+        this._nextOrCloseButton.Text = "Fermer";
+        if (this.CurrentPartOfMessage < this.MessageList.Count - 1)
+        {
+            this._nextOrCloseButton.Text = "Suivant";
+        }
     }
     #endregion
 
@@ -58,7 +73,14 @@ public class DialogBox : Node2D
     /// <summary>
     /// Defines the number of characters to show in the label content
     /// </summary>
-    public int CurrentVisibleCharacters { get => this._label.VisibleCharacters; set => this._label.VisibleCharacters = value; }
+    public int CurrentVisibleCharacters 
+    { 
+        get => this._label.VisibleCharacters; 
+        set 
+        {
+            this._label.VisibleCharacters = value; 
+        }
+    }
 
     /// <summary>
     /// Content message to display
