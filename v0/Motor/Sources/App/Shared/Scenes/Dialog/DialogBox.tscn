@@ -29,7 +29,6 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.05
-autostart = true
 
 [node name="NextOrClose" type="Button" parent="."]
 margin_left = 832.0

@@ -8,11 +8,7 @@ using System.Collections.Generic;
 public class DialogBox : Node2D
 {
     #region Fields
-    private List<string> _messageList = new List<string>()
-    {
-        "Hello, ca va ?",
-        "Yes et toi ?"
-    };
+    private List<string> _messageList = new List<string>();
     private RichTextLabel _label = null;
     private Timer _currentTimer = null;
     private Button _nextOrCloseButton = null;
@@ -26,6 +22,22 @@ public class DialogBox : Node2D
         this._currentTimer  = this.GetNode("Timer") as Timer;
         this._nextOrCloseButton = this.GetNode("NextOrClose") as Button;
         this.Initialize();
+    }
+
+    /// <summary>
+    /// Begins the display of the message list
+    /// </summary>
+    public void Start()
+    {
+        this._currentTimer.Start();
+    }
+
+    /// <summary>
+    /// Stops displaying text
+    /// </summary>
+    public void Stop()
+    {
+        this._currentTimer.Stop();
     }
 
     public void OnTimerTimeout()
@@ -108,6 +120,7 @@ public class DialogBox : Node2D
     /// <summary>
     /// List of message text as one full message to be displayed in X steps
     /// </summary>
+    [Export]
     public List<string> MessageList { get => this._messageList; set => this._messageList = value; }
     #endregion
 }

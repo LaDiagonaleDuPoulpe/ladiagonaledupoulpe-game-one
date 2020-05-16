@@ -55,5 +55,9 @@
   <ItemGroup>
     <Compile Include="**\*.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Sources\App\Core\Container-Scenes\README.md" />
+    <None Include="Sources\App\Core\Container-Scenes\RootScene.tscn" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

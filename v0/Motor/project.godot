@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="la-diagonale-du-poulpe"
-run/main_scene="res://Sources/App/Shared/Scenes/Dialog/DialogBox.tscn"
+run/main_scene="res://Sources/App/Core/Container-Scenes/RootScene.tscn"
 config/icon="res://icon.png"
 
 [editor_plugins]
