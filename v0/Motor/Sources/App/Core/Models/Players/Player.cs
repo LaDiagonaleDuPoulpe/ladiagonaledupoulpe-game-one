@@ -1,6 +1,9 @@
 using Godot;
 using System;
 
+/// <summary>
+/// Current player with animated sprite in the game
+/// </summary>
 public class Player : KinematicBody2D
 {
 	#region Fields
@@ -39,15 +42,10 @@ public class Player : KinematicBody2D
 	
 		var animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
 
-		if (this._velocity.Length() > 0)
-		{
-			prefix = string.Empty;
-		}
-		else
+		if (this._velocity.Length() <= 0)
 		{
 			prefix = "idle_";
 		}
-
 
 		if (this._velocity.x != 0)
 		{
