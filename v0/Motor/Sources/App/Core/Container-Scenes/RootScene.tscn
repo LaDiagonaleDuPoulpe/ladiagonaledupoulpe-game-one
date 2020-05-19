@@ -8,4 +8,3 @@ script = ExtResource( 2 )
 
 [node name="DialogBox" parent="." instance=ExtResource( 1 )]
 position = Vector2( 16, 144 )
-MessageList = [ "Helo !", "ca va ti ?", "yes !" ]

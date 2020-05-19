@@ -1,5 +1,5 @@
 using Godot;
-using System;
+using ladiagonaledupoulpe.Sources.App.Shared.Services;
 
 public class RootScene : Node2D
 {
@@ -11,13 +11,13 @@ public class RootScene : Node2D
     public override void _Ready()
     {
         DialogBox box = this.GetNode("DialogBox") as DialogBox;
+        
+        box.MessageList.Add("Hello !");
+        box.MessageList.Add("Ca va ti ?");
+
+        DialoxBoxManager manager = new DialoxBoxManager();
+        manager.Preload();
 
         box.Start();
     }
-
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
 }

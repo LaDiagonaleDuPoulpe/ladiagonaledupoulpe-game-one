@@ -1,4 +1,5 @@
 using Godot;
+using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -13,7 +14,22 @@ public class DialogBox : Node2D
     private RichTextLabel _label = null;
     private Timer _currentTimer = null;
     private Button _nextOrCloseButton = null;
+    private AnimatedSprite _animatedSprite = null;
     private int _currentPartOfMessage = 0;
+
+    #region Events
+    /// <summary>
+    /// Occurs when one message is ended
+    /// </summary>
+    [Signal]
+    public delegate void EndOfOneMessage();
+
+    /// <summary>
+    /// Occurs when all of the message are ended
+    /// </summary>
+    [Signal]
+    public delegate void EndOfAllMessages();
+    #endregion
     #endregion
 
     #region Public methods
@@ -22,7 +38,7 @@ public class DialogBox : Node2D
         this._label = this.GetNode("Content") as RichTextLabel;
         this._currentTimer  = this.GetNode("Timer") as Timer;
         this._nextOrCloseButton = this.GetNode("NextOrClose") as Button;
-        this.Initialize();
+        this._animatedSprite = this.GetNode("AnimatedSprite") as AnimatedSprite;
     }
 
     /// <summary>
@@ -30,7 +46,9 @@ public class DialogBox : Node2D
     /// </summary>
     public void Start()
     {
+        this.Initialize();
         this._currentTimer.Start();
+        this._animatedSprite.Play(DialogBoxSpriteStatus.Idle.ToString().ToLower());
     }
 
     /// <summary>
@@ -39,6 +57,7 @@ public class DialogBox : Node2D
     public void Stop()
     {
         this._currentTimer.Stop();
+        this.Reset();
     }
 
     public void OnTimerTimeout()
@@ -46,6 +65,7 @@ public class DialogBox : Node2D
         this.CurrentVisibleCharacters++;
         if (this.CurrentPartOfMessage >= this.Message.Length)
         {
+            this.EmitSignal(nameof(EndOfOneMessage));
             this._currentTimer.Stop();
         }
     }
@@ -60,6 +80,12 @@ public class DialogBox : Node2D
             this.Initialize();
             this._currentTimer.Start();
         }
+
+        if (! this.Visible)
+        {
+            this.MessageList.Clear();
+            this.EmitSignal(nameof(EndOfAllMessages));
+        }
     }
     #endregion
 
@@ -70,6 +96,12 @@ public class DialogBox : Node2D
         this._label.BbcodeText = this.Message;
 
         this.SetTextFromNextOrCloseButton();
+    }
+
+    private void Reset()
+    {
+        this.CurrentVisibleCharacters = 0;
+        this.CurrentPartOfMessage = 0;
     }
 
     private void SetTextFromNextOrCloseButton()
@@ -121,7 +153,15 @@ public class DialogBox : Node2D
     /// <summary>
     /// List of message text as one full message to be displayed in X steps
     /// </summary>
-    [Export]
     public List<string> MessageList { get => this._messageList; set => this._messageList = value; }
+
+    /// <summary>
+    /// Sprite frames to display animated sprite
+    /// </summary>
+    public SpriteFrames AnimatedSpriteFrames
+    {
+        get => this._animatedSprite.Frames;
+        set => this._animatedSprite.Frames = value;
+    }
     #endregion
 }

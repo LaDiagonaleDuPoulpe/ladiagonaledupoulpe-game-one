@@ -18,9 +18,9 @@ color = Color( 0.0784314, 0.0980392, 0.301961, 1 )
 polygon = PoolVector2Array( 16, 16, 24, 304, 1008, 304, 1024, 16, 1008, 16, 1000, 56, 824, 56, 787.751, 16 )
 
 [node name="Content" type="RichTextLabel" parent="."]
-margin_left = 64.0
+margin_left = 104.0
 margin_top = 72.0
-margin_right = 960.0
+margin_right = 952.0
 margin_bottom = 264.0
 bbcode_enabled = true
 __meta__ = {
@@ -41,5 +41,11 @@ text = "Fermer"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 48, 16 )
+scale = Vector2( 0.36, 0.32 )
+animation = "idle"
+speed_scale = 2.0
 [connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]
 [connection signal="pressed" from="NextOrClose" to="." method="OnNextOrClosePressed"]
