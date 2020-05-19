@@ -1,5 +1,7 @@
 using Godot;
+using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog;
 using ladiagonaledupoulpe.Sources.App.Shared.Services;
+using System.Collections.Generic;
 
 public class RootScene : Node2D
 {
@@ -11,13 +13,14 @@ public class RootScene : Node2D
     public override void _Ready()
     {
         DialogBox box = this.GetNode("DialogBox") as DialogBox;
-        
-        box.MessageList.Add("Hello !");
-        box.MessageList.Add("Ca va ti ?");
 
         DialoxBoxManager manager = new DialoxBoxManager();
         manager.Preload();
 
-        box.Start();
+        box.Start(new List<MessageContent>()
+        {
+            new MessageContent() { Content = "Hello !" },
+            new MessageContent() { Content = "Ca va ?" }
+        });
     }
 }

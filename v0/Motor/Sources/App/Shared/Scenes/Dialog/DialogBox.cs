@@ -9,8 +9,12 @@ using System.Runtime.InteropServices;
 /// </summary>
 public class DialogBox : Node2D
 {
+    #region Constants
+    private const string BASE_RESOURCE_PATH = "res://Sources/App/Shared/Assets/Animations";
+    #endregion
+
     #region Fields
-    private List<string> _messageList = new List<string>();
+    private List<MessageContent> _messageContents;
     private RichTextLabel _label = null;
     private Timer _currentTimer = null;
     private Button _nextOrCloseButton = null;
@@ -44,8 +48,10 @@ public class DialogBox : Node2D
     /// <summary>
     /// Begins the display of the message list
     /// </summary>
-    public void Start()
+    public void Start(List<MessageContent> messageContents)
     {
+        this._messageContents = messageContents;
+
         this.Initialize();
         this._currentTimer.Start();
         this._animatedSprite.Play(DialogBoxSpriteStatus.Idle.ToString().ToLower());
@@ -63,7 +69,7 @@ public class DialogBox : Node2D
     public void OnTimerTimeout()
     {
         this.CurrentVisibleCharacters++;
-        if (this.CurrentPartOfMessage >= this.Message.Length)
+        if (this.CurrentPartOfMessage >= this.Message.Content.Length)
         {
             this.EmitSignal(nameof(EndOfOneMessage));
             this._currentTimer.Stop();
@@ -74,7 +80,7 @@ public class DialogBox : Node2D
     {        
         this.CurrentPartOfMessage++;
 
-        this.Visible = this.CurrentPartOfMessage < this.MessageList.Count;
+        this.Visible = this.CurrentPartOfMessage < this.MessageContents.Count;
         if (this.Visible)
         {
             this.Initialize();
@@ -83,7 +89,7 @@ public class DialogBox : Node2D
 
         if (! this.Visible)
         {
-            this.MessageList.Clear();
+            this.MessageContents.Clear();
             this.EmitSignal(nameof(EndOfAllMessages));
         }
     }
@@ -93,7 +99,7 @@ public class DialogBox : Node2D
     private void Initialize()
     {
         this.CurrentVisibleCharacters = 0;
-        this._label.BbcodeText = this.Message;
+        this._label.BbcodeText = this.Message.Content;
 
         this.SetTextFromNextOrCloseButton();
     }
@@ -107,7 +113,7 @@ public class DialogBox : Node2D
     private void SetTextFromNextOrCloseButton()
     {
         this._nextOrCloseButton.Text = "Fermer";
-        if (this.CurrentPartOfMessage < this.MessageList.Count - 1)
+        if (this.CurrentPartOfMessage < this.MessageContents.Count - 1)
         {
             this._nextOrCloseButton.Text = "Suivant";
         }
@@ -130,15 +136,15 @@ public class DialogBox : Node2D
     /// <summary>
     /// Content message to display
     /// </summary>
-    public string Message
+    public MessageContent Message
     {
         get
         {
-            string content = string.Empty;
+            MessageContent content = null;
 
-            if (this.CurrentPartOfMessage < this.MessageList.Count)
+            if (this.CurrentPartOfMessage < this.MessageContents.Count)
             {
-                content = this.MessageList[this.CurrentPartOfMessage];
+                content = this.MessageContents[this.CurrentPartOfMessage];
             }
 
             return content;
@@ -153,7 +159,7 @@ public class DialogBox : Node2D
     /// <summary>
     /// List of message text as one full message to be displayed in X steps
     /// </summary>
-    public List<string> MessageList { get => this._messageList; set => this._messageList = value; }
+    public List<MessageContent> MessageContents { get => this._messageContents; private set => this._messageContents = value; }
 
     /// <summary>
     /// Sprite frames to display animated sprite

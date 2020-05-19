@@ -56,8 +56,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sources\App\Core\Container-Scenes\RootScene.cs" />
     <Compile Include="Sources\App\Core\Models\Players\Player.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Dialog\AnimatedSpriteDirection.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Dialog\DialogBox.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Dialog\DialogBoxSpriteStatus.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Dialog\MessageContent.cs" />
     <Compile Include="Sources\App\Shared\Services\DialoxBoxManager.cs" />
   </ItemGroup>
   <ItemGroup>
