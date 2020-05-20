@@ -16,24 +16,29 @@ _global_script_class_icons={
 [application]
 
 config/name="la-diagonale-du-poulpe"
-run/main_scene="res://Sources/App/Game-Scenes/002-Inside-Crash-Ship/InsideCrashShip.tscn"
+run/main_scene="res://Sources/App/Core/Container-Scenes/RootScene.tscn"
+config/icon="res://icon.png"
 
 [display]
 
-window/size/width=1920
-window/size/height=844
 window/stretch/mode="viewport"
-window/stretch/aspect="keep"
+window/stretch/aspect="keep_width"
 
-[layer_names]
+[editor_plugins]
 
-2d_physics/layer_1="walls"
-2d_physics/layer_2="player"
-2d_physics/layer_3="enemies"
-2d_physics/layer_4="objects"
+enabled=PoolStringArray( "MonoDebuggerQM-1.0.1" )
+
+[logging]
+
+file_logging/enable_file_logging=true
+
+[mono]
+
+project/auto_update_project=false
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_environment="res://default_env.tres"
