@@ -58,7 +58,6 @@ public class DialogBox : Node2D
 
         this.Initialize();
         this._currentTimer.Start();
-        this._animatedSprite.Play(DialogBoxSpriteStatus.Idle.ToString().ToLower());
     }
 
     /// <summary>
@@ -110,6 +109,13 @@ public class DialogBox : Node2D
     {
         this.CurrentVisibleCharacters = 0;
         this._label.BbcodeText = this.Message.Content;
+
+        this._animatedSprite.Frames = null; 
+        if (this.Message.SpriteFrames != null)
+        {
+            this._animatedSprite.Frames = this.Message.SpriteFrames;
+            this._animatedSprite.Play(DialogBoxSpriteStatus.Idle.ToString().ToLower());
+        }
 
         this.SetTextFromNextOrCloseButton();
     }

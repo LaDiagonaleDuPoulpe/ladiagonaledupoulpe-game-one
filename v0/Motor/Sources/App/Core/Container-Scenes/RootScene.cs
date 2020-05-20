@@ -14,13 +14,16 @@ public class RootScene : Node2D
     {
         DialogBox box = this.GetNode("DialogBox") as DialogBox;
 
+        Resource resource = ResourceLoader.Load("res://Sources/App/Shared/Assets/Animations/Characters/Speaking/player3.tres");
+        SpriteFrames spriteFrames = resource as SpriteFrames;
+
         DialoxBoxManager manager = new DialoxBoxManager();
         manager.Preload();
 
         box.Start(new List<MessageContent>()
         {
-            new MessageContent() { Content = "Hello !" },
-            new MessageContent() { Content = "Ca va ?" }
+            new MessageContent() { Content = "Hello !", SpriteFrames = spriteFrames },
+            new MessageContent() { Content = "Ca va ?", SpriteFrames = null }
         });
     }
 }

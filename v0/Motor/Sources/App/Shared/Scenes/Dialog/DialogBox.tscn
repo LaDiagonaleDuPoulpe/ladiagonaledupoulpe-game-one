@@ -22,7 +22,7 @@ color = Color( 0.0784314, 0.0980392, 0.301961, 1 )
 polygon = PoolVector2Array( 16, 16, 32.1301, 240, 975.74, 240, 983.805, 16, 967.675, 16, 959.61, 48, 782.179, 48, 766.049, 16 )
 
 [node name="Content" type="RichTextLabel" parent="."]
-margin_left = 104.0
+margin_left = 152.0
 margin_top = 72.0
 margin_right = 952.0
 margin_bottom = 208.0
@@ -47,7 +47,7 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 48, 16 )
+position = Vector2( 64, 40 )
 scale = Vector2( 0.36, 0.32 )
 speed_scale = 2.0
 [connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]
