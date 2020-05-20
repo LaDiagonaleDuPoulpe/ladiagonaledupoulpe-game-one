@@ -11,6 +11,7 @@ public class DialogBox : Node2D
 {
     #region Constants
     private const string BASE_RESOURCE_PATH = "res://Sources/App/Shared/Assets/Animations";
+    private const float DEFAULT_HEIGHT = 200;
     #endregion
 
     #region Fields
@@ -43,6 +44,9 @@ public class DialogBox : Node2D
         this._currentTimer  = this.GetNode("Timer") as Timer;
         this._nextOrCloseButton = this.GetNode("NextOrClose") as Button;
         this._animatedSprite = this.GetNode("AnimatedSprite") as AnimatedSprite;
+
+        this.GetTree().Root.Connect("size_changed", this, nameof(Resize));
+        this.PutAtTheBottom();
     }
 
     /// <summary>
@@ -66,16 +70,22 @@ public class DialogBox : Node2D
         this.Reset();
     }
 
+    /// <summary>
+    /// One tick to display new character
+    /// </summary>
     public void OnTimerTimeout()
     {
         this.CurrentVisibleCharacters++;
-        if (this.CurrentPartOfMessage >= this.Message.Content.Length)
+        if (this.Message != null && this.CurrentPartOfMessage >= this.Message.Content.Length)
         {
             this.EmitSignal(nameof(EndOfOneMessage));
             this._currentTimer.Stop();
         }
     }
 
+    /// <summary>
+    /// Manage the next display message : if there isnt new essage close the display box
+    /// </summary>
     public void OnNextOrClosePressed()
     {        
         this.CurrentPartOfMessage++;
@@ -102,6 +112,17 @@ public class DialogBox : Node2D
         this._label.BbcodeText = this.Message.Content;
 
         this.SetTextFromNextOrCloseButton();
+    }
+
+    private void PutAtTheBottom()
+    {
+        Rect2 windowPosition = this.GetViewportRect();
+        this.Position = new Vector2(0, windowPosition.Size.y - DEFAULT_HEIGHT);
+    }
+
+    private void Resize()
+    {
+        GD.Print("resize me");
     }
 
     private void Reset()
