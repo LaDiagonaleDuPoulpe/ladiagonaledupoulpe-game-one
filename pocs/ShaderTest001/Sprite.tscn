@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+void vertex() {
+	VERTEX.x = VERTEX.x + cos(TIME * 5.0) * 5.0;
+	VERTEX.y = VERTEX.y + sin(TIME * 5.0) * 5.0;
+}
+
+void fragment() {
+	
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+
+[sub_resource type="Shader" id=3]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+void vertex() {
+	VERTEX.x += cos(TIME * 5.0);
+}
+
+void fragment() {
+	vec2 offset = UV;
+	
+	offset = vec2(sin(offset.x * 50.0), 0);
+	
+	COLOR = vec4(offset, 0, 1.0);
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = SubResource( 3 )
+
+[node name="Sprite" type="Node2D"]
+material = SubResource( 2 )
+position = Vector2( 57, 77 )
+
+[node name="Sprite4" type="Sprite" parent="."]
+material = SubResource( 4 )
+position = Vector2( 214.821, 235.547 )
+scale = Vector2( 6.00629, 4.68804 )
+texture = ExtResource( 1 )
