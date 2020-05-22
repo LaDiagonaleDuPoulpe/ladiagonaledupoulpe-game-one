@@ -6,5 +6,4 @@ using System.Threading.Tasks;
 
 public class DefaultConfiguration
 {
-    public Style Style { get; set; }
 }

@@ -1,13 +1,3 @@
 {
-	"Style": {
-		"Title" : {
-			"Font": "Audiowide-Regular.ttf",
-			"FontSize" : 25
-		},
-		"Label" : {
-			"Font": "Audiowide-Regular.ttf",
-			"FontSize" : 45
-		}
-		
-	}
+	
 }
