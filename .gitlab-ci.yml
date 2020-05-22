@@ -20,8 +20,6 @@ linux:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
       - build/linux
-  only:
-      - release
 
 windows:
   stage: export
@@ -33,8 +31,6 @@ windows:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
       - build/windows
-  only:
-      - release
 
 mac:
   stage: export
@@ -46,8 +42,6 @@ mac:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
       - build/mac
-  only:
-      - release
 
 web:
   stage: export
@@ -59,5 +53,3 @@ web:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
       - build/web
-  only:
-      - release
