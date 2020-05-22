@@ -2,11 +2,11 @@
 	"Style": {
 		"Title" : {
 			"Font": "Audiowide-Regular.ttf",
-			"FontSize" : "25px"
+			"FontSize" : 25
 		},
 		"Label" : {
 			"Font": "Audiowide-Regular.ttf",
-			"FontSize" : "15px"
+			"FontSize" : 45
 		}
 		
 	}

@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="addons\CustomNode\AddCustomNode.gd" />
     <None Include="packages.config" />
     <None Include="Sources\App\Assets\Settings\Audiowide-Regular.ttf" />
     <None Include="Sources\App\Assets\Settings\GlobalSettings.json" />

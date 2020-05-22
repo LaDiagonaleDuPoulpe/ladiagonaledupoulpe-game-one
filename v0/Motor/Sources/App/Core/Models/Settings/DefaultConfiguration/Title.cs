@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 public  class Title
 {
-    public string FontSize { get; set; }
+    public int FontSize { get; set; }
     public string Font { get; set; }
 }
