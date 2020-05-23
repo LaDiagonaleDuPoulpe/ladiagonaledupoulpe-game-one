@@ -22,7 +22,7 @@ web:
   artifacts:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
-      - build/web
+      - ./build/web
 
 linux:
   stage: export
@@ -31,7 +31,7 @@ linux:
   artifacts:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
-      - build/linux
+      - ./build/linux
 
 windows:
   stage: export
@@ -40,7 +40,7 @@ windows:
   artifacts:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
-      - build/windows
+      - ./build/windows
 
 mac:
   stage: export
@@ -49,7 +49,7 @@ mac:
   artifacts:
     name: $EXPORT_NAME-$CI_JOB_NAME
     paths:
-      - build/mac
+      - ./build/mac
 
 # GitHub Pages Deploy
 deploy-github-pages:
