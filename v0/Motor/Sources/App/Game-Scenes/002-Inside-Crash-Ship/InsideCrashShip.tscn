@@ -60,7 +60,6 @@ position = Vector2( 1510.46, 363.865 )
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 762.264, 560.336 )
 z_index = 1
-Speed = 10
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 0, 1 )
