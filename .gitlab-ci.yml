@@ -8,6 +8,7 @@ variables:
   EXPORT_NAME: game-off
 
 before_script:
+  - echo $CI_PROJECT_DIR
   - mkdir -v -p v0/Motor/build/linux
   - mkdir -v -p v0/Motor/build/windows
   - mkdir -v -p v0/Motor/build/mac
