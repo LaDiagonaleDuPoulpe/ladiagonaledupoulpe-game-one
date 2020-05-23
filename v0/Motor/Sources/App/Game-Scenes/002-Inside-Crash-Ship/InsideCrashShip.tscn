@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/inside-ship/main/inside-ship.png" type="Texture" id=1]
 [ext_resource path="res://Sources/App/Game-Scenes/002-Inside-Crash-Ship/InsideCrashShip.cs" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Sources/App/Shared/Scenes/Smokes/Smoke003/Smoke003.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Sources/App/Shared/Scenes/Fogs/Fog002/Fog002.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Sources/App/Shared/Scenes/Fogs/Fog001/Fog001.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Sources/App/Shared/Scenes/Clouds/grey-cloud.tscn" type="PackedScene" id=18]
 
 [node name="InsideCrashShip" type="Node2D"]
 script = ExtResource( 2 )
@@ -37,6 +38,9 @@ __meta__ = {
 position = Vector2( 957.115, 281.855 )
 scale = Vector2( 0.99743, 1 )
 texture = ExtResource( 4 )
+
+[node name="grey-cloud" parent="." instance=ExtResource( 18 )]
+position = Vector2( 1648.93, 112.961 )
 
 [node name="Ship" type="Sprite" parent="."]
 position = Vector2( 958.305, 420.568 )
@@ -60,7 +64,7 @@ z_index = 1
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 0, 1 )
 current = true
-zoom = Vector2( 0.8, 0.8 )
+zoom = Vector2( 0.85, 0.85 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
