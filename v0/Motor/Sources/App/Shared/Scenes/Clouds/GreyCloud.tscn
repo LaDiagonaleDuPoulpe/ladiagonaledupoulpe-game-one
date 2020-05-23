@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Sources/App/Shared/Assets/Scenes/Outsides/cloud4/clouds_011.png" type="Texture" id=1]
 [ext_resource path="res://Sources/App/Shared/Assets/Scenes/Outsides/cloud4/clouds_012.png" type="Texture" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://Sources/App/Shared/Assets/Scenes/Outsides/cloud4/clouds_028.png" type="Texture" id=28]
 [ext_resource path="res://Sources/App/Shared/Assets/Scenes/Outsides/cloud4/clouds_017.png" type="Texture" id=29]
 [ext_resource path="res://Sources/App/Shared/Assets/Scenes/Outsides/cloud4/clouds_025.png" type="Texture" id=30]
+[ext_resource path="res://Sources/App/Shared/Scenes/Clouds/GreyCloud.cs" type="Script" id=31]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -39,9 +40,10 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="grey-cloud" type="Node2D"]
+[node name="GreyCloud" type="Node2D"]
+script = ExtResource( 31 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 3
+frame = 16
 playing = true

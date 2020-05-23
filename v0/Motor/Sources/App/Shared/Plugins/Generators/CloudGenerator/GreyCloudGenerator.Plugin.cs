@@ -1,4 +1,5 @@
 using Godot;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes;
 using System;
 
 namespace ddp.Plugins.Generators.CloudGenerator
@@ -6,17 +7,30 @@ namespace ddp.Plugins.Generators.CloudGenerator
     /// <summary>
     /// Uses it to generate a random list of clouds in a scene
     /// </summary>
-    public class GreyCloudGenerator 
+    public class GreyCloudGenerator : IGreyCloudGenerator
     {
         #region Fields
-        private CloudGeneratorSetting _setting;
+        private readonly CloudGeneratorSetting _setting;
+        private readonly IWithClouds _scene;
         #endregion
 
         #region Consructors
-        public GreyCloudGenerator(CloudGeneratorSetting setting)
+        public GreyCloudGenerator(IWithClouds scene, CloudGeneratorSetting setting)
         {
             this._setting = setting;
+            this._scene = scene;
         }
+        #endregion
+
+        #region Public methods
+        public void Generate()
+        {
+
+        }
+        #endregion
+
+        #region Properties
+        public CloudGeneratorSetting Setting => this._setting;
         #endregion
     }
 }

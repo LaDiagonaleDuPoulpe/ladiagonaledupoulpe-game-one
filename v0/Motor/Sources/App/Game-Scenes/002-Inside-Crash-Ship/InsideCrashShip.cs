@@ -1,25 +1,21 @@
 using Godot;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes;
 using System;
 
-public class InsideCrashShip : Node2D
+public class InsideCrashShip : Node2D, IWithClouds
 {
-	#region Fields
-	private PackedScene _player;
-	#endregion
+    #region Fields
+    private ICloudSprite _cloudSprite;
+    #endregion
 
-	#region Public methods
-	public override void _Ready()
+    #region Public methods
+    public override void _Ready()
 	{
-		ColorRect node = GetNode<ColorRect>("");
+        this._cloudSprite = this.GetNode("GreyCloud") as ICloudSprite;
+    }
+    #endregion
 
-		
-		//node.RectPosition.Set()
-	}
-	#endregion
-
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+    #region Properties
+    public ICloudSprite CloudSprite { get => this._cloudSprite; }
+    #endregion
 }

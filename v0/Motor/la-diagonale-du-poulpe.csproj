@@ -56,6 +56,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sources\App\Core\Models\Players\Player.cs" />
     <Compile Include="Sources\App\Game-Scenes\002-Inside-Crash-Ship\InsideCrashShip.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Scenes\ICloudSprite.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Scenes\IWithClouds.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Generators\CloudGenerator\CloudGeneratorSetting.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Generators\CloudGenerator\GreyCloudGenerator.Plugin.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Generators\CloudGenerator\IGreyCloudGenerator.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Clouds\GreyCloud.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Sources\App\Shared\Plugins\README.md" />
+    <None Include="Sources\App\Shared\Scenes\Clouds\grey-cloud.tscn" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -17,7 +17,7 @@
 [ext_resource path="res://Sources/App/Shared/Scenes/Smokes/Smoke003/Smoke003.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Sources/App/Shared/Scenes/Fogs/Fog002/Fog002.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Sources/App/Shared/Scenes/Fogs/Fog001/Fog001.tscn" type="PackedScene" id=17]
-[ext_resource path="res://Sources/App/Shared/Scenes/Clouds/grey-cloud.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Sources/App/Shared/Scenes/Clouds/GreyCloud.tscn" type="PackedScene" id=18]
 
 [node name="InsideCrashShip" type="Node2D"]
 script = ExtResource( 2 )
@@ -39,7 +39,7 @@ position = Vector2( 957.115, 281.855 )
 scale = Vector2( 0.99743, 1 )
 texture = ExtResource( 4 )
 
-[node name="grey-cloud" parent="." instance=ExtResource( 18 )]
+[node name="GreyCloud" parent="." instance=ExtResource( 18 )]
 position = Vector2( 1648.93, 112.961 )
 
 [node name="Ship" type="Sprite" parent="."]
@@ -60,11 +60,11 @@ position = Vector2( 1510.46, 363.865 )
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 762.264, 560.336 )
 z_index = 1
+Speed = 10
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 0, 1 )
 current = true
-zoom = Vector2( 0.85, 0.85 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
