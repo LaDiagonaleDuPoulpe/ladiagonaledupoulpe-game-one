@@ -113,7 +113,7 @@ position = Vector2( 228.473, 87.4403 )
 position = Vector2( 218.601, 575.414 )
 
 [node name="LightSpark1" parent="LightSparks" instance=ExtResource( 10 )]
-position = Vector2( 1713.55, 538.745 )
+position = Vector2( 1686.75, 542.976 )
 
 [node name="LightSpark2" parent="LightSparks" instance=ExtResource( 11 )]
 position = Vector2( 627.596, 187.574 )
@@ -124,7 +124,7 @@ position = Vector2( 1384.94, 135.391 )
 [node name="Fogs" type="Node2D" parent="."]
 
 [node name="Fog" parent="Fogs" instance=ExtResource( 17 )]
-position = Vector2( 1558.41, 705.164 )
+position = Vector2( 1723.42, 719.267 )
 z_index = 2
 
 [node name="Fog2" parent="Fogs" instance=ExtResource( 16 )]
