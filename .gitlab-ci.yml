@@ -1,4 +1,4 @@
-image: image: davidwesst/godot-mono
+image: davidwesst/godot-mono
 
 stages:
   - export
