@@ -1,11 +1,16 @@
 using Godot;
 using System;
 
+/// <summary>
+/// Current player with animated sprite in the game
+/// </summary>
 public class Player : KinematicBody2D
 {
 	#region Fields
 	private Vector2 _screenSize;
 	private string _lastAnimation = "";
+
+	private Vector2 _velocity = Vector2.Zero;
 	#endregion
 
 	#region Public methods
@@ -14,62 +19,44 @@ public class Player : KinematicBody2D
 		this.ScreenSize = this.GetViewport().Size;
 	}
 
+	public override void _PhysicsProcess(float delta)
+	{
+		Vector2 vector = Vector2.Zero;
+
+		vector.x = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
+		vector.y = Input.GetActionStrength("ui_down") - Input.GetActionStrength("ui_up");
+		
+		this._velocity = Vector2.Zero;
+		if (vector != Vector2.Zero) 
+		{
+			this._velocity = vector;
+		}
+
+		this.MoveAndCollide(this._velocity.Normalized() * this.Speed);
+	}
+
 	public override void _Process(float delta)
 	{
-		var velocity = new Vector2();
 		string animation = string.Empty;
 		string prefix = string.Empty;
-
-		if (Input.IsActionPressed("ui_right"))
-		{
-			velocity.x += 1;
-		}
-
-		if (Input.IsActionPressed("ui_left"))
-		{
-			velocity.x -= 1;
-		}
-
-		if (Input.IsActionPressed("ui_down"))
-		{
-			velocity.y += 1;
-		}
-
-		if (Input.IsActionPressed("ui_up"))
-		{
-			velocity.y -= 1;
-		}
-
+	
 		var animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
 
-		if (velocity.Length() > 0)
-		{
-			prefix = string.Empty;
-			velocity = velocity.Normalized() * Speed;			
-		}
-		else
+		if (this._velocity.Length() <= 0)
 		{
 			prefix = "idle_";
 		}
 
-		//this.Position += velocity * delta;
-		//this.Position = new Vector2(
-		//	x: Mathf.Clamp(Position.x, 0, _screenSize.x),
-		//	y: Mathf.Clamp(Position.y, 0, _screenSize.y)
-		//);
-
-		this.MoveAndCollide(velocity * delta);
-
-		if (velocity.x != 0)
+		if (this._velocity.x != 0)
 		{
 			this._lastAnimation = "left";
 			animatedSprite.FlipV = false;
-			animatedSprite.FlipH = velocity.x > 0;
+			animatedSprite.FlipH = this._velocity.x > 0;
 		}
-		else if (velocity.y != 0)
+		else if (this._velocity.y != 0)
 		{
 			this._lastAnimation = "up";
-			if (velocity.y > 0)
+			if (this._velocity.y > 0)
 			{
 				this._lastAnimation = "down";
 			}
