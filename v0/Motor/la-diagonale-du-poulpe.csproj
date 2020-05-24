@@ -60,12 +60,11 @@
     <Compile Include="Sources\App\Shared\Interfaces\Scenes\IWithClouds.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Generators\CloudGenerator\CloudGeneratorSetting.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Generators\CloudGenerator\GreyCloudGenerator.Plugin.cs" />
-    <Compile Include="Sources\App\Shared\Plugins\Generators\CloudGenerator\IGreyCloudGenerator.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Generators\ICloudGenerator.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Clouds\GreyCloud.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Sources\App\Shared\Plugins\README.md" />
-    <None Include="Sources\App\Shared\Scenes\Clouds\grey-cloud.tscn" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

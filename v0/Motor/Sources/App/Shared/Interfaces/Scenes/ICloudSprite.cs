@@ -10,11 +10,21 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes
     /// <summary>
     /// Contract to define the rules of the cloud sprite
     /// </summary>
-    public interface ICloudSprite
+    public interface ICloudSprite : ICloneable
     {
         /// <summary>
         /// Animated sprite, representing the animated cloud
         /// </summary>
         AnimatedSprite AnimatedSprite { get; }
+
+        /// <summary>
+        /// Position of the item
+        /// </summary>
+        Vector2 Position { get; set; }
+
+        /// <summary>
+        /// Position of the sprite in the Z axis
+        /// </summary>
+        int ZIndex { get; set; }
     }
 }

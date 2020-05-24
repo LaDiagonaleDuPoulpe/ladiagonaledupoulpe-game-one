@@ -26,7 +26,7 @@ window/stretch/aspect="keep_width"
 
 [editor_plugins]
 
-enabled=PoolStringArray(  )
+enabled=PoolStringArray( "MonoDebuggerQM-1.0.1" )
 
 [logging]
 

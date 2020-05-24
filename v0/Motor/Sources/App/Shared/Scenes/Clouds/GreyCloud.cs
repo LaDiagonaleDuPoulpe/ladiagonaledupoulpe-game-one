@@ -14,6 +14,11 @@ public class GreyCloud : Node2D, ICloudSprite
     {
         this._animatedSprite = this.GetNode("AnimatedSprite") as AnimatedSprite;
     }
+
+    public object Clone()
+    {
+        return new GreyCloud();
+    }
     #endregion
 
     #region Properties

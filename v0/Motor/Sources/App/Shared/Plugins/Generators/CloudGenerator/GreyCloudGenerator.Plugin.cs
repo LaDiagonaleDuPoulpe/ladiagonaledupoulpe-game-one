@@ -1,4 +1,5 @@
 using Godot;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes;
 using System;
 
@@ -25,7 +26,20 @@ namespace ddp.Plugins.Generators.CloudGenerator
         #region Public methods
         public void Generate()
         {
+            this.PrepareAllClouds();
+        }
+        #endregion
 
+        #region Internal methods
+        private void PrepareAllClouds()
+        {
+            for (int i = 0; i < this._setting.InitialNumber; i++)
+            {
+                ICloudSprite sprite = this._scene.CloudSprite.Clone() as ICloudSprite;
+
+                sprite.Position = new Vector2(50, 50);
+                sprite.ZIndex = this._setting.ZIndex;
+            }
         }
         #endregion
 

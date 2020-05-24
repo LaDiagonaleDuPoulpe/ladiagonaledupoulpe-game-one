@@ -7,10 +7,15 @@ namespace ddp.Plugins.Generators.CloudGenerator
     {
         #region Properties
         /// <summary>
-        /// THe default number of clouds 
+        /// The default number of clouds 
         /// </summary>
         /// <value></value>
         public int InitialNumber {get;set;}
+
+        /// <summary>
+        /// Z index of the clouds
+        /// </summary>
+        public int ZIndex { get; set; } = 0;
         #endregion
     }
 }

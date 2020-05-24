@@ -37,29 +37,35 @@ __meta__ = {
 [node name="OutSideNoCloud" type="Sprite" parent="."]
 position = Vector2( 957.115, 281.855 )
 scale = Vector2( 0.99743, 1 )
+z_index = 1
 texture = ExtResource( 4 )
 
 [node name="GreyCloud" parent="." instance=ExtResource( 18 )]
 position = Vector2( 1648.93, 112.961 )
+z_index = 2
 
 [node name="Ship" type="Sprite" parent="."]
 position = Vector2( 958.305, 420.568 )
+z_index = 3
 texture = ExtResource( 1 )
 
 [node name="SmokesBack" type="Node" parent="."]
 
 [node name="Smoke" parent="SmokesBack" instance=ExtResource( 13 )]
 position = Vector2( 1173.39, 229.883 )
+z_index = 4
 
 [node name="Smoke2" parent="SmokesBack" instance=ExtResource( 14 )]
 position = Vector2( 486.563, 291.938 )
+z_index = 4
 
 [node name="Smoke3" parent="SmokesBack" instance=ExtResource( 15 )]
 position = Vector2( 1510.46, 363.865 )
+z_index = 4
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 762.264, 560.336 )
-z_index = 1
+z_index = 4
 Speed = 10
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -84,6 +90,7 @@ __meta__ = {
 [node name="Borders" type="Node" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Borders"]
+z_index = 4
 collision_layer = 14
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/StaticBody2D"]
@@ -95,23 +102,26 @@ polygon = PoolVector2Array( 191.493, 842.97, 1685.74, 853.089, 1662.13, 893.565,
 
 [node name="BlocRight" type="Sprite" parent="."]
 position = Vector2( 388.718, 770.208 )
-z_index = 2
+z_index = 5
 texture = ExtResource( 6 )
 flip_h = true
 
 [node name="BlocLeft" type="Sprite" parent="."]
 position = Vector2( 1529.79, 766.54 )
-z_index = 2
+z_index = 5
 texture = ExtResource( 5 )
 flip_h = true
 
 [node name="Spark002" parent="." instance=ExtResource( 8 )]
 position = Vector2( 1298.91, 135.391 )
+z_index = 4
 
 [node name="Spark001" parent="." instance=ExtResource( 7 )]
 position = Vector2( 228.473, 87.4403 )
+z_index = 4
 
 [node name="LightSparks" type="Node2D" parent="."]
+z_index = 4
 
 [node name="LightSpark3" parent="LightSparks" instance=ExtResource( 9 )]
 position = Vector2( 218.601, 575.414 )
@@ -126,9 +136,10 @@ position = Vector2( 627.596, 187.574 )
 position = Vector2( 1384.94, 135.391 )
 
 [node name="Fogs" type="Node2D" parent="."]
+z_index = 4
 
 [node name="Fog" parent="Fogs" instance=ExtResource( 17 )]
-position = Vector2( 1723.42, 719.267 )
+position = Vector2( 1597.9, 676.957 )
 z_index = 2
 
 [node name="Fog2" parent="Fogs" instance=ExtResource( 16 )]
