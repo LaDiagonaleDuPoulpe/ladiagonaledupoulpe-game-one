@@ -16,6 +16,11 @@ namespace ddp.Plugins.Generators.CloudGenerator
         /// Z index of the clouds
         /// </summary>
         public int ZIndex { get; set; } = 0;
+
+        /// <summary>
+        /// Path to the resource to load
+        /// </summary>
+        public string ResourcePath { get; set; }
         #endregion
     }
 }

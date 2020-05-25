@@ -2,6 +2,7 @@ using Godot;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes;
 using System;
+using System.Collections.Generic;
 
 namespace ddp.Plugins.Generators.CloudGenerator
 {
@@ -13,6 +14,10 @@ namespace ddp.Plugins.Generators.CloudGenerator
         #region Fields
         private readonly CloudGeneratorSetting _setting;
         private readonly IWithClouds _scene;
+        private PackedScene _packedSceneToGenerate = null;
+        private static Random __random = new Random();
+        private List<ICloudSprite> _cloudSprites = new List<ICloudSprite>();
+        private Timer _timer = new Timer();
         #endregion
 
         #region Consructors
@@ -24,9 +29,20 @@ namespace ddp.Plugins.Generators.CloudGenerator
         #endregion
 
         #region Public methods
+        public void Initialize()
+        {
+            this._packedSceneToGenerate = this.LoadOne();
+            this._scene.AddChild(this._timer);
+        }
+
         public void Generate()
         {
             this.PrepareAllClouds();
+        }
+
+        public PackedScene LoadOne()
+        {
+            return (PackedScene)ResourceLoader.Load("res://Sources/App/" + this._setting.ResourcePath);
         }
         #endregion
 
@@ -35,11 +51,19 @@ namespace ddp.Plugins.Generators.CloudGenerator
         {
             for (int i = 0; i < this._setting.InitialNumber; i++)
             {
-                ICloudSprite sprite = this._scene.CloudSprite.Clone() as ICloudSprite;
-
-                sprite.Position = new Vector2(50, 50);
-                sprite.ZIndex = this._setting.ZIndex;
+                this.PrepareOneCloud();
             }
+        }
+
+        private void PrepareOneCloud()
+        {
+            ICloudSprite node = this._packedSceneToGenerate.Instance() as ICloudSprite;
+
+            node.Position = new Vector2(__random.Next(0, 1000), __random.Next(0, 200));
+            node.ZIndex = this._setting.ZIndex;
+
+            this._scene.AddChild(node as Node);
+            this._cloudSprites.Add(node);
         }
         #endregion
 

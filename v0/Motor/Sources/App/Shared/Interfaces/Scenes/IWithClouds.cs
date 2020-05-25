@@ -9,11 +9,8 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes
     /// <summary>
     /// Uses this interface to specify you will display clouds in the scene
     /// </summary>
-    public interface IWithClouds
+    public interface IWithClouds : IWithChilds
     {
-        /// <summary>
-        /// One cloud sprite to use to generate all clouds
-        /// </summary>
-        ICloudSprite CloudSprite { get; }
+        
     }
 }

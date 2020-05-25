@@ -57,6 +57,7 @@
     <Compile Include="Sources\App\Core\Models\Players\Player.cs" />
     <Compile Include="Sources\App\Game-Scenes\002-Inside-Crash-Ship\InsideCrashShip.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Scenes\ICloudSprite.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Scenes\IWithChilds.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Scenes\IWithClouds.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Generators\CloudGenerator\CloudGeneratorSetting.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Generators\CloudGenerator\GreyCloudGenerator.Plugin.cs" />
