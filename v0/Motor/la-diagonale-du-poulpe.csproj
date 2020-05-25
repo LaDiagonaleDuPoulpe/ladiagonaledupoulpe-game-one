@@ -60,9 +60,6 @@
     <Compile Include="Sources\App\Core\LoadSettings.cs" />
     <Compile Include="Sources\App\Core\Models\Players\Player.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\DefaultConfiguration\DefaultConfiguration.cs" />
-    <Compile Include="Sources\App\Core\Models\Settings\DefaultConfiguration\Style.cs" />
-    <Compile Include="Sources\App\Core\Models\Settings\DefaultConfiguration\Label.cs" />
-    <Compile Include="Sources\App\Core\Models\Settings\DefaultConfiguration\Title.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Motor.cs" />
     <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\CloudMoving.cs" />
     <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\InstantiateCloud.cs" />

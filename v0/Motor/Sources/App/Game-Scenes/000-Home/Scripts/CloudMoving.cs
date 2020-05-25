@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-public class CloudMoving : Sprite
+public class CloudMoving : AnimatedSprite
 {
 	private int _speed;
 	private float _maxPosition;
@@ -22,9 +22,11 @@ public class CloudMoving : Sprite
 	/// </summary>
 	public async void MoveCloud()
 	{
-		while(Position.x  < _maxPosition)
+		GD.Print(this.Frames.GetFrame("default", 0).GetSize().x);
+		GD.Print(Position.x);
+		while (Position.x  < this.Frames.GetFrame("default",0).GetSize().x)
 		{
-			this.Position = new Vector2(this.Position.x + _speed, this.Position.y);
+			this.Position = new Vector2(this.Position.x - _speed, this.Position.y);
 			await Task.Delay(10);
 		}
 	

@@ -40,7 +40,7 @@ public class WaveSea : Sprite
 			var seaSizeY = Convert.ToInt32(this.Texture.GetSize().y ) ;
 
 			var positionY = new Random().Next(0, seaSizeY);
-			var scale = 1f  * positionY / 300f;
+			var scale = 1f  * positionY / 200f;
 			animatedSprite.Position = new Vector2(new Random().Next(0,seaSizeX), positionY);
 			animatedSprite.Scale = new Vector2(scale, scale);
 			animatedSprite.Play();

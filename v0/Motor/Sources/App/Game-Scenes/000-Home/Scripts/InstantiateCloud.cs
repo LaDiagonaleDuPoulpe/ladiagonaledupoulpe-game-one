@@ -30,7 +30,7 @@ public class InstantiateCloud : Node2D
 			var posY = ((Sprite)GetParent()).Texture.GetSize().y;
 			node.Position = new Vector2(node.Position.x, new Random().Next(0, Convert.ToInt32(posY)));
 
-			var scale = new Random().Next(2, 15) / 10f;
+			var scale = new Random().Next(2, 15) / 5f;
 			node.Scale = new Vector2(scale, scale);
 			AddChild(node);
 	}

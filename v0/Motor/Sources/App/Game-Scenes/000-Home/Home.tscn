@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=144 format=2]
 
 [ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/background.png" type="Texture" id=1]
 [ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Tube/tube3.png" type="Texture" id=2]
@@ -19,6 +19,110 @@
 [ext_resource path="res://Sources/App/Game-Scenes/000-Home/Cloud.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Sources/App/Assets/Settings/TitleFont.tres" type="DynamicFont" id=18]
 [ext_resource path="res://Sources/App/Assets/Settings/LabelFont.tres" type="DynamicFont" id=19]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/mountains.png" type="Texture" id=20]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave1/pillar wave1_001.png" type="Texture" id=21]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave1/pillar wave1_002.png" type="Texture" id=22]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave1/pillar wave1_000.png" type="Texture" id=23]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave1/pillar wave1_003.png" type="Texture" id=24]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave3/pillar wave3_007.png" type="Texture" id=25]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave1/pillar wave1_008.png" type="Texture" id=26]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave1/pillar wave1_006.png" type="Texture" id=27]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave2/pillar wave2_003.png" type="Texture" id=28]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave3/pillar wave3_006.png" type="Texture" id=29]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave1/pillar wave1_005.png" type="Texture" id=30]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave2/pillar wave2_008.png" type="Texture" id=31]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave1/pillar wave1_007.png" type="Texture" id=32]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave3/pillar wave3_009.png" type="Texture" id=33]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave2/pillar wave2_002.png" type="Texture" id=34]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave2/pillar wave2_007.png" type="Texture" id=35]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave2/pillar wave2_005.png" type="Texture" id=36]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave3/pillar wave3_008.png" type="Texture" id=37]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave2/pillar wave2_009.png" type="Texture" id=38]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave2/pillar wave2_006.png" type="Texture" id=39]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave3/pillar wave3_000.png" type="Texture" id=40]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave1/pillar wave1_009.png" type="Texture" id=41]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave3/pillar wave3_002.png" type="Texture" id=42]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave1/pillar wave1_004.png" type="Texture" id=43]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave3/pillar wave3_004.png" type="Texture" id=44]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave3/pillar wave3_005.png" type="Texture" id=45]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave2/pillar wave2_004.png" type="Texture" id=46]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave3/pillar wave3_001.png" type="Texture" id=47]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave3/pillar wave3_003.png" type="Texture" id=48]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_013.png" type="Texture" id=49]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_009.png" type="Texture" id=50]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_010.png" type="Texture" id=51]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_003.png" type="Texture" id=52]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_008.png" type="Texture" id=53]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_004.png" type="Texture" id=54]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_005.png" type="Texture" id=55]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_002.png" type="Texture" id=56]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_001.png" type="Texture" id=57]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_006.png" type="Texture" id=58]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_007.png" type="Texture" id=59]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_000.png" type="Texture" id=60]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_011.png" type="Texture" id=61]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_012.png" type="Texture" id=62]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_009.png" type="Texture" id=63]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_004.png" type="Texture" id=64]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_010.png" type="Texture" id=65]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_006.png" type="Texture" id=66]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_011.png" type="Texture" id=67]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_000.png" type="Texture" id=68]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_014.png" type="Texture" id=69]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_008.png" type="Texture" id=70]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_007.png" type="Texture" id=71]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_012.png" type="Texture" id=72]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_003.png" type="Texture" id=73]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_005.png" type="Texture" id=74]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_013.png" type="Texture" id=75]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_001.png" type="Texture" id=76]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_002.png" type="Texture" id=77]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_003.png" type="Texture" id=78]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_000.png" type="Texture" id=79]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_005.png" type="Texture" id=80]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_007.png" type="Texture" id=81]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_006.png" type="Texture" id=82]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_004.png" type="Texture" id=83]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_008.png" type="Texture" id=84]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_009.png" type="Texture" id=85]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_002.png" type="Texture" id=86]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_001.png" type="Texture" id=87]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_024.png" type="Texture" id=88]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_026.png" type="Texture" id=89]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_027.png" type="Texture" id=90]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_025.png" type="Texture" id=91]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_016.png" type="Texture" id=92]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_017.png" type="Texture" id=93]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_013.png" type="Texture" id=94]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_011.png" type="Texture" id=95]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_014.png" type="Texture" id=96]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_015.png" type="Texture" id=97]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_019.png" type="Texture" id=98]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_023.png" type="Texture" id=99]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_022.png" type="Texture" id=100]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_020.png" type="Texture" id=101]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_021.png" type="Texture" id=102]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_029.png" type="Texture" id=103]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_028.png" type="Texture" id=104]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_012.png" type="Texture" id=105]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_018.png" type="Texture" id=106]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_010.png" type="Texture" id=107]
+
+[sub_resource type="SpriteFrames" id=35]
+animations = [ {
+"frames": [ null, null, null, null, ExtResource( 68 ), ExtResource( 76 ), ExtResource( 77 ), ExtResource( 73 ), ExtResource( 64 ), ExtResource( 74 ), ExtResource( 66 ), ExtResource( 71 ), ExtResource( 70 ), ExtResource( 63 ), ExtResource( 65 ), ExtResource( 67 ), ExtResource( 72 ), ExtResource( 75 ), ExtResource( 69 ), null, null, null, null ],
+"loop": true,
+"name": "default",
+"speed": 11.0
+} ]
+
+[sub_resource type="SpriteFrames" id=36]
+animations = [ {
+"frames": [ ExtResource( 79 ), ExtResource( 87 ), ExtResource( 86 ), ExtResource( 78 ), ExtResource( 83 ), ExtResource( 80 ), ExtResource( 82 ), ExtResource( 81 ), ExtResource( 84 ), ExtResource( 85 ), ExtResource( 107 ), ExtResource( 95 ), ExtResource( 105 ), ExtResource( 94 ), ExtResource( 96 ), ExtResource( 97 ), ExtResource( 92 ), ExtResource( 93 ), ExtResource( 106 ), ExtResource( 98 ), ExtResource( 101 ), ExtResource( 102 ), ExtResource( 100 ), ExtResource( 99 ), ExtResource( 88 ), ExtResource( 91 ), ExtResource( 89 ), ExtResource( 90 ), ExtResource( 104 ), ExtResource( 103 ) ],
+"loop": true,
+"name": "default",
+"speed": 9.0
+} ]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -26,6 +130,38 @@ animations = [ {
 "loop": true,
 "name": "default",
 "speed": 8.0
+} ]
+
+[sub_resource type="SpriteFrames" id=31]
+animations = [ {
+"frames": [ null, null, null, null, ExtResource( 23 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 24 ), ExtResource( 43 ), ExtResource( 30 ), ExtResource( 27 ), ExtResource( 32 ), ExtResource( 26 ), ExtResource( 41 ), null, null, null, null ],
+"loop": true,
+"name": "default",
+"speed": 11.0
+} ]
+
+[sub_resource type="SpriteFrames" id=34]
+animations = [ {
+"frames": [ null, null, null, null, ExtResource( 60 ), ExtResource( 57 ), ExtResource( 56 ), ExtResource( 52 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 53 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 49 ) ],
+"loop": true,
+"name": "default",
+"speed": 11.0
+} ]
+
+[sub_resource type="SpriteFrames" id=32]
+animations = [ {
+"frames": [ null, null, ExtResource( 34 ), ExtResource( 28 ), ExtResource( 46 ), ExtResource( 36 ), ExtResource( 39 ), ExtResource( 35 ), ExtResource( 31 ), null, null, null, null, null, null, null, null, null, ExtResource( 38 ) ],
+"loop": true,
+"name": "default",
+"speed": 11.0
+} ]
+
+[sub_resource type="SpriteFrames" id=33]
+animations = [ {
+"frames": [ null, null, null, null, ExtResource( 40 ), ExtResource( 47 ), ExtResource( 42 ), ExtResource( 48 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 29 ), ExtResource( 25 ), ExtResource( 37 ), null, null, null, ExtResource( 33 ) ],
+"loop": true,
+"name": "default",
+"speed": 11.0
 } ]
 
 [sub_resource type="AtlasTexture" id=2]
@@ -203,35 +339,42 @@ __meta__ = {
 }
 
 [node name="Cloud" type="Node2D" parent="Image/Sky/background"]
+position = Vector2( 1920.79, 3.55866 )
 script = ExtResource( 14 )
 
 [node name="Node2D" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
-position = Vector2( 820.464, 103.738 )
+position = Vector2( -777.041, 178.013 )
 
 [node name="Node2D2" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
-position = Vector2( 694.542, 338.674 )
+position = Vector2( -902.963, 412.949 )
 scale = Vector2( 0.8, 0.8 )
 
 [node name="Node2D3" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
-position = Vector2( 1452.04, 271.549 )
+position = Vector2( -145.465, 345.824 )
 
 [node name="Node2D6" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
-position = Vector2( 981.803, 723.114 )
+position = Vector2( -615.702, 797.389 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Node2D5" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
-position = Vector2( 1778.66, 628.529 )
+position = Vector2( 181.155, 702.804 )
 scale = Vector2( 0.7, 0.7 )
 
 [node name="Node2D4" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
-position = Vector2( 1882.94, 51.869 )
+position = Vector2( 285.435, 126.144 )
 
 [node name="Node2D8" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
-position = Vector2( 498.305, 720.063 )
+position = Vector2( -1099.2, 794.338 )
 scale = Vector2( 1.2, 1.2 )
 
 [node name="Node2D7" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
-position = Vector2( 316.774, 143.402 )
+position = Vector2( -1280.73, 217.677 )
+
+[node name="Mountains" type="Sprite" parent="Image/Sky/background"]
+position = Vector2( -1.86916, 20.2899 )
+scale = Vector2( 1.88, 3 )
+texture = ExtResource( 20 )
+centered = false
 
 [node name="Sea" type="Node2D" parent="Image"]
 
@@ -241,6 +384,66 @@ scale = Vector2( 0.685, 0.3 )
 texture = ExtResource( 6 )
 centered = false
 script = ExtResource( 16 )
+
+[node name="Wave" type="Node2D" parent="Image/Sea"]
+
+[node name="Wave" type="AnimatedSprite" parent="Image/Sea/Wave"]
+position = Vector2( 220.994, 445.671 )
+frames = SubResource( 35 )
+playing = true
+centered = false
+
+[node name="Up" type="Node2D" parent="Image/Sea/Wave"]
+
+[node name="Wave1" type="AnimatedSprite" parent="Image/Sea/Wave/Up"]
+position = Vector2( -20.8717, 331.49 )
+frames = SubResource( 35 )
+frame = 22
+playing = true
+centered = false
+
+[node name="Wave2" type="AnimatedSprite" parent="Image/Sea/Wave/Up"]
+position = Vector2( 337.629, 326.58 )
+frames = SubResource( 35 )
+playing = true
+centered = false
+
+[node name="Wave3" type="AnimatedSprite" parent="Image/Sea/Wave/Up"]
+position = Vector2( 654.387, 327.807 )
+frames = SubResource( 35 )
+playing = true
+centered = false
+
+[node name="Down" type="Node2D" parent="Image/Sea/Wave"]
+
+[node name="Wave1" type="AnimatedSprite" parent="Image/Sea/Wave/Down"]
+position = Vector2( 9.82187, 518.107 )
+frames = SubResource( 35 )
+frame = 21
+playing = true
+centered = false
+
+[node name="Wave2" type="AnimatedSprite" parent="Image/Sea/Wave/Down"]
+position = Vector2( 360.956, 513.197 )
+frames = SubResource( 35 )
+frame = 22
+playing = true
+centered = false
+
+[node name="Wave3" type="AnimatedSprite" parent="Image/Sea/Wave/Down"]
+position = Vector2( 715.774, 518.107 )
+frames = SubResource( 35 )
+frame = 22
+playing = true
+centered = false
+
+[node name="BigWave" type="AnimatedSprite" parent="Image/Sea"]
+position = Vector2( -5.17755, 322.175 )
+scale = Vector2( 1.01, 1 )
+frames = SubResource( 36 )
+frame = 3
+playing = true
+centered = false
 
 [node name="Pipe" type="Node2D" parent="Image"]
 
@@ -258,7 +461,7 @@ texture = ExtResource( 4 )
 position = Vector2( 584.835, 151.222 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="pipe-long-front" type="Sprite" parent="Image/Pipe"]
@@ -283,12 +486,55 @@ position = Vector2( 822.441, 263.812 )
 scale = Vector2( 0.535, 0.56 )
 texture = ExtResource( 2 )
 
+[node name="PillarWave" type="Node2D" parent="Image/Tube"]
+
+[node name="PillarWave1" type="AnimatedSprite" parent="Image/Tube/PillarWave"]
+position = Vector2( 74.7174, 383.086 )
+frames = SubResource( 31 )
+frame = 15
+playing = true
+centered = false
+
+[node name="Wave" type="AnimatedSprite" parent="Image/Tube/PillarWave/PillarWave1"]
+position = Vector2( -12.9236, 162.837 )
+scale = Vector2( 1, 2 )
+frames = SubResource( 34 )
+frame = 14
+playing = true
+
+[node name="PillarWave2" type="AnimatedSprite" parent="Image/Tube/PillarWave"]
+position = Vector2( 459.841, 380.501 )
+frames = SubResource( 32 )
+frame = 13
+playing = true
+centered = false
+
+[node name="Wave" type="AnimatedSprite" parent="Image/Tube/PillarWave/PillarWave2"]
+position = Vector2( -58.1562, 54.2792 )
+scale = Vector2( 0.8, 1 )
+frames = SubResource( 34 )
+frame = 14
+playing = true
+
+[node name="PillarWave3" type="AnimatedSprite" parent="Image/Tube/PillarWave"]
+position = Vector2( 741.576, 414.102 )
+frames = SubResource( 33 )
+frame = 10
+playing = true
+centered = false
+
+[node name="Wave" type="AnimatedSprite" parent="Image/Tube/PillarWave/PillarWave3"]
+position = Vector2( -6.46179, 95.6347 )
+scale = Vector2( 1, 1.8 )
+frames = SubResource( 34 )
+frame = 14
+playing = true
+
 [node name="Spike" type="Node2D" parent="Image"]
 
 [node name="SpikeLeft" type="AnimatedSprite" parent="Image/Spike"]
 position = Vector2( 98.8062, 108.83 )
 frames = SubResource( 6 )
-frame = 1
 playing = true
 
 [node name="Particles2D" type="Particles2D" parent="Image/Spike"]
@@ -304,14 +550,14 @@ process_material = SubResource( 7 )
 [node name="spark-right" type="AnimatedSprite" parent="Image/Sparks"]
 position = Vector2( 832.277, 94.342 )
 frames = SubResource( 30 )
-frame = 2
+frame = 7
 playing = true
 
 [node name="spark-middle" type="AnimatedSprite" parent="Image/Sparks"]
 position = Vector2( 444.57, 77.5414 )
 rotation = 3.14159
 frames = SubResource( 30 )
-frame = 1
+frame = 6
 playing = true
 
 [node name="Menu" type="Node2D" parent="."]
