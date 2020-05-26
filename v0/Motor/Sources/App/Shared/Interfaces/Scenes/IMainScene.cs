@@ -13,6 +13,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes
     public interface IMainScene
     {
         /// <summary>
+        /// Converts scene to Godot object
+        /// </summary>
+        Godot.Object ToObject { get; }
+
+        /// <summary>
         /// Size of the window
         /// </summary>
         Vector2 WindowSize { get; }

@@ -26,6 +26,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Generators
         PackedScene LoadOne();
 
         /// <summary>
+        /// Move all sprites
+        /// </summary>
+        void MoveSprites();
+
+        /// <summary>
         /// Setting to configure clouds generation
         /// </summary>
         GeneratorSetting Setting { get; }

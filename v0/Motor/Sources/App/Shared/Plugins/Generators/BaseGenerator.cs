@@ -13,7 +13,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Generators
     /// <summary>
     /// Uses it to generate a random list of sprites in a scene
     /// </summary>
-    public abstract class BaseGenerator : ISpriteGenerator
+    public abstract class BaseGenerator : Godot.Object, ISpriteGenerator
     {
         #region Constants
         private const string DEFAULT_RESOURCE_PATH = "res://Sources/App/";
@@ -48,15 +48,32 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Generators
         public void Generate()
         {
             this.PrepareAllSprites();
+            this.ConfigureTimer();
         }
 
         public PackedScene LoadOne()
         {
             return (PackedScene)ResourceLoader.Load(DEFAULT_RESOURCE_PATH + this._setting.ResourcePath);
         }
+
+        public void MoveSprites()
+        {
+            this._movingSprites.ForEach((sprite) =>
+            {
+                sprite.Position = new Vector2(sprite.Position.x -1, sprite.Position.y);
+            });
+        }
         #endregion
 
         #region Internal methods
+        private void ConfigureTimer()
+        {
+            this._timer.Connect("timeout", this, nameof(MoveSprites));
+            this._timer.WaitTime = 1f;
+            this._timer.OneShot = false;
+            this._timer.Start();
+        }
+
         private void DefineArea()
         {
             float x = this.Setting.Size.x;
@@ -85,12 +102,17 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Generators
         {
             IMovingSprite node = this._packedSceneToGenerate.Instance() as IMovingSprite;
 
-            node.Position = new Vector2(__random.Next(0, (int)this.Setting.Size.x),
-                                        __random.Next(0, (int)this.Setting.Size.y));
+            node.Position = this.RandomizeNewPosition();
             node.ZIndex = this._setting.ZIndex;
 
             this._scene.AddChild(node as Node);
             this._movingSprites.Add(node);
+        }
+
+        private Vector2 RandomizeNewPosition()
+        {
+            return new Vector2(__random.Next(0, (int)this.Setting.Size.x),
+                               __random.Next(0, (int)this.Setting.Size.y));
         }
         #endregion
 

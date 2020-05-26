@@ -29,5 +29,7 @@ public class InsideCrashShip : Node2D, IWithClouds
 
     #region Properties
     public Vector2 WindowSize => this.GetViewport().Size;
+
+    public Godot.Object ToObject { get => this; }
     #endregion
 }

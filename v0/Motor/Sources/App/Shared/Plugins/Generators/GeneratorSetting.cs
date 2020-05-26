@@ -28,6 +28,11 @@ namespace ddp.Plugins.Generators
         /// Area to generate items
         /// </summary>
         public Vector2 Size { get; set; }
+
+        /// <summary>
+        /// Sets to true to allow sprite s to move 
+        /// </summary>
+        public bool IsAutoMoving { get; set; }
         #endregion
     }
 }
