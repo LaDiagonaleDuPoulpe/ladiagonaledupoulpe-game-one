@@ -2,12 +2,12 @@
 using ddp.Plugins.Generators.CloudGenerator;
 using Godot;
 
-namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces
+namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Generators
 {
     /// <summary>
-    /// Uses it to generate a random list of clouds in a scene
+    /// Uses it to generate a random list of sprites in a scene
     /// </summary>
-    public interface IGreyCloudGenerator
+    public interface ISpriteGenerator
     {
         /// <summary>
         /// Defines it to initialize the generator

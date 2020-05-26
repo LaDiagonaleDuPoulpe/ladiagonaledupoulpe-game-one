@@ -56,13 +56,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sources\App\Core\Models\Players\Player.cs" />
     <Compile Include="Sources\App\Game-Scenes\002-Inside-Crash-Ship\InsideCrashShip.cs" />
-    <Compile Include="Sources\App\Shared\Interfaces\Scenes\ICloudSprite.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Scenes\IMovingSprite.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Scenes\IMainScene.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Scenes\IWithChilds.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Scenes\IWithClouds.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Generators\BaseGenerator.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Generators\GeneratorSetting.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Generators\CloudGenerator\GreyCloudGenerator.Plugin.cs" />
-    <Compile Include="Sources\App\Shared\Interfaces\Generators\ICloudGenerator.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Generators\ISpriteGenerator.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Clouds\GreyCloud.cs" />
   </ItemGroup>
   <ItemGroup>

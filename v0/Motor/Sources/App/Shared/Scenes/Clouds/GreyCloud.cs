@@ -2,7 +2,7 @@ using Godot;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes;
 using System;
 
-public class GreyCloud : Node2D, ICloudSprite
+public class GreyCloud : Node2D, IMovingSprite
 {
     #region Fields
     private AnimatedSprite _animatedSprite;

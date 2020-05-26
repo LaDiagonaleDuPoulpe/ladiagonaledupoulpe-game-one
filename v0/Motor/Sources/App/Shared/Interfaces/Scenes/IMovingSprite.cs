@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes
 {
     /// <summary>
-    /// Contract to define the rules of the cloud sprite
+    /// Contract to define the rules of the sprite
     /// </summary>
-    public interface ICloudSprite : ICloneable
+    public interface IMovingSprite : ICloneable
     {
         /// <summary>
-        /// Animated sprite, representing the animated cloud
+        /// Animated sprite, representing the animated sprite
         /// </summary>
         AnimatedSprite AnimatedSprite { get; }
 

@@ -2,13 +2,14 @@ using ddp.Plugins.Generators;
 using ddp.Plugins.Generators.CloudGenerator;
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Generators;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes;
 using System;
 
 public class InsideCrashShip : Node2D, IWithClouds
 {
     #region Fields
-    private IGreyCloudGenerator _cloudGenerator = null;
+    private ISpriteGenerator _cloudGenerator = null;
     #endregion
 
     #region Public methods        
@@ -18,11 +19,8 @@ public class InsideCrashShip : Node2D, IWithClouds
         {
             InitialNumber = 10,
             ZIndex = 2,
-            Size = new Vector2(0, 200),
-            ResourcePath = "Shared/Scenes/Clouds/GreyCloud.tscn"
+            Size = new Vector2(0, 200)
         });
-
-        
 
         this._cloudGenerator.Initialize();
         this._cloudGenerator.Generate();
