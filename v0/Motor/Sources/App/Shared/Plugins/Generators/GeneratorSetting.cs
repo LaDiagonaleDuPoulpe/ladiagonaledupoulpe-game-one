@@ -33,6 +33,11 @@ namespace ddp.Plugins.Generators
         /// Sets to true to allow sprite s to move 
         /// </summary>
         public bool IsAutoMoving { get; set; }
+
+        /// <summary>
+        /// True to go toleft, false to right
+        /// </summary>
+        public bool LeftDirection { get; set; }
         #endregion
     }
 }

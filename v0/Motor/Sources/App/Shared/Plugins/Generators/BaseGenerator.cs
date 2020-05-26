@@ -48,7 +48,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Generators
         public void Generate()
         {
             this.PrepareAllSprites();
-            this.ConfigureTimer();
+
+            if (this.Setting.IsAutoMoving)
+            {
+                this.ConfigureTimer();
+            }
         }
 
         public PackedScene LoadOne()
@@ -58,9 +62,17 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Generators
 
         public void MoveSprites()
         {
+            const int MAX_X = 50;
+            int stepX = __random.Next(0, MAX_X);
+
+            if (this.Setting.LeftDirection)
+            {
+                stepX = -stepX;
+            }
+
             this._movingSprites.ForEach((sprite) =>
             {
-                sprite.Position = new Vector2(sprite.Position.x -1, sprite.Position.y);
+                sprite.Position = new Vector2(sprite.Position.x + stepX, sprite.Position.y);
             });
         }
         #endregion
