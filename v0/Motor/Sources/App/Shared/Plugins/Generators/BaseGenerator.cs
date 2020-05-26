@@ -24,7 +24,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Generators
         private readonly IWithChilds _scene;
         private PackedScene _packedSceneToGenerate = null;
         private static Random __random = new Random();
-        private List<IMovingSprite> _cloudSprites = new List<IMovingSprite>();
+        private List<IMovingSprite> _movingSprites = new List<IMovingSprite>();
         private Timer _timer = new Timer();
         #endregion
 
@@ -47,7 +47,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Generators
 
         public void Generate()
         {
-            this.PrepareAllClouds();
+            this.PrepareAllSprites();
         }
 
         public PackedScene LoadOne()
@@ -73,15 +73,15 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Generators
             this.Setting.Size = new Vector2(x, y);
         }
 
-        private void PrepareAllClouds()
+        private void PrepareAllSprites()
         {
             for (int i = 0; i < this._setting.InitialNumber; i++)
             {
-                this.PrepareOneCloud();
+                this.PrepareOneSprite();
             }
         }
 
-        private void PrepareOneCloud()
+        private void PrepareOneSprite()
         {
             IMovingSprite node = this._packedSceneToGenerate.Instance() as IMovingSprite;
 
@@ -90,7 +90,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Generators
             node.ZIndex = this._setting.ZIndex;
 
             this._scene.AddChild(node as Node);
-            this._cloudSprites.Add(node);
+            this._movingSprites.Add(node);
         }
         #endregion
 
