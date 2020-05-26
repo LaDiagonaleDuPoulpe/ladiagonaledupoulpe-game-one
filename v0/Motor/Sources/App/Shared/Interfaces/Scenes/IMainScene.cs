@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Godot;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,14 +8,13 @@ using System.Threading.Tasks;
 namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes
 {
     /// <summary>
-    /// Scene or node with cilds
+    /// Uses it to precise scene or node is a main scene
     /// </summary>
-    public interface IWithChilds : IMainScene
+    public interface IMainScene
     {
         /// <summary>
-        /// Add child
+        /// Size of the window
         /// </summary>
-        /// <param name="node"></param>
-        void AddChild(Godot.Node node, bool legibleUniqueName = false);
+        Vector2 WindowSize { get; }
     }
 }

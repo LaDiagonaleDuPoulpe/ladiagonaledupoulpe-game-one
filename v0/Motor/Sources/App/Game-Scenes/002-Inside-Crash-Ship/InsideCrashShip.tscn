@@ -66,6 +66,7 @@ Speed = 10
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2( 0, 1 )
 current = true
+zoom = Vector2( 0.7, 0.7 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -140,3 +141,46 @@ z_index = 2
 [node name="Fog2" parent="Fogs" instance=ExtResource( 16 )]
 position = Vector2( 652.982, 750.294 )
 z_index = 2
+
+[node name="Borders2" type="Node2D" parent="."]
+z_index = 4
+
+[node name="ColorRect" type="ColorRect" parent="Borders2"]
+margin_left = -729.0
+margin_top = 3.0
+margin_right = 4.0
+margin_bottom = 1646.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="Borders2"]
+margin_left = -6.0
+margin_top = 823.466
+margin_right = 1972.0
+margin_bottom = 1627.47
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="Borders2"]
+margin_left = 1908.0
+margin_top = -71.0
+margin_right = 3886.0
+margin_bottom = 1623.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect4" type="ColorRect" parent="Borders2"]
+margin_left = -81.0
+margin_top = -1119.0
+margin_right = 2617.0
+margin_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

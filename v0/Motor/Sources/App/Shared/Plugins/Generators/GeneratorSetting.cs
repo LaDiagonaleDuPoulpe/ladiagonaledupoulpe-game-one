@@ -1,9 +1,11 @@
-namespace ddp.Plugins.Generators.CloudGenerator
+using Godot;
+
+namespace ddp.Plugins.Generators
 {
     /// <summary>
-    /// Setting proprties to configuration the cloud generator
+    /// Setting proprties to configuration the generator
     /// </summary>
-    public class CloudGeneratorSetting
+    public class GeneratorSetting
     {
         #region Properties
         /// <summary>
@@ -21,6 +23,11 @@ namespace ddp.Plugins.Generators.CloudGenerator
         /// Path to the resource to load
         /// </summary>
         public string ResourcePath { get; set; }
+
+        /// <summary>
+        /// Area to generate items
+        /// </summary>
+        public Vector2 Size { get; set; }
         #endregion
     }
 }

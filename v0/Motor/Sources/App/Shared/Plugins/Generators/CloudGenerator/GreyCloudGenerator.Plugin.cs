@@ -11,8 +11,12 @@ namespace ddp.Plugins.Generators.CloudGenerator
     /// </summary>
     public class GreyCloudGenerator : IGreyCloudGenerator
     {
+        #region Constants
+        private const string DEFAULT_RESOURCE_PATH = "res://Sources/App/";
+        #endregion
+
         #region Fields
-        private readonly CloudGeneratorSetting _setting;
+        private readonly GeneratorSetting _setting;
         private readonly IWithClouds _scene;
         private PackedScene _packedSceneToGenerate = null;
         private static Random __random = new Random();
@@ -21,7 +25,7 @@ namespace ddp.Plugins.Generators.CloudGenerator
         #endregion
 
         #region Consructors
-        public GreyCloudGenerator(IWithClouds scene, CloudGeneratorSetting setting)
+        public GreyCloudGenerator(IWithClouds scene, GeneratorSetting setting)
         {
             this._setting = setting;
             this._scene = scene;
@@ -33,6 +37,8 @@ namespace ddp.Plugins.Generators.CloudGenerator
         {
             this._packedSceneToGenerate = this.LoadOne();
             this._scene.AddChild(this._timer);
+
+            this.DefineArea();
         }
 
         public void Generate()
@@ -42,11 +48,27 @@ namespace ddp.Plugins.Generators.CloudGenerator
 
         public PackedScene LoadOne()
         {
-            return (PackedScene)ResourceLoader.Load("res://Sources/App/" + this._setting.ResourcePath);
+            return (PackedScene)ResourceLoader.Load(DEFAULT_RESOURCE_PATH + this._setting.ResourcePath);
         }
         #endregion
 
         #region Internal methods
+        private void DefineArea()
+        {
+            float x = this.Setting.Size.x;
+            float y = this.Setting.Size.y;
+
+            if (x == 0)
+            {
+                x = this._scene.WindowSize.x;
+            }
+            if (y == 0)
+            {
+                y = this._scene.WindowSize.y;
+            }
+            this.Setting.Size = new Vector2(x, y);
+        }
+        
         private void PrepareAllClouds()
         {
             for (int i = 0; i < this._setting.InitialNumber; i++)
@@ -59,7 +81,8 @@ namespace ddp.Plugins.Generators.CloudGenerator
         {
             ICloudSprite node = this._packedSceneToGenerate.Instance() as ICloudSprite;
 
-            node.Position = new Vector2(__random.Next(0, 1000), __random.Next(0, 200));
+            node.Position = new Vector2(__random.Next(0, (int) this.Setting.Size.x), 
+                                        __random.Next(0, (int) this.Setting.Size.y));
             node.ZIndex = this._setting.ZIndex;
 
             this._scene.AddChild(node as Node);
@@ -68,7 +91,7 @@ namespace ddp.Plugins.Generators.CloudGenerator
         #endregion
 
         #region Properties
-        public CloudGeneratorSetting Setting => this._setting;
+        public GeneratorSetting Setting => this._setting;
         #endregion
     }
 }

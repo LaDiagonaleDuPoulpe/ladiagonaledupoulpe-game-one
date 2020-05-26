@@ -1,4 +1,5 @@
-﻿using ddp.Plugins.Generators.CloudGenerator;
+﻿using ddp.Plugins.Generators;
+using ddp.Plugins.Generators.CloudGenerator;
 using Godot;
 
 namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces
@@ -27,6 +28,6 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces
         /// <summary>
         /// Setting to configure clouds generation
         /// </summary>
-        CloudGeneratorSetting Setting { get; }
+        GeneratorSetting Setting { get; }
     }
 }
