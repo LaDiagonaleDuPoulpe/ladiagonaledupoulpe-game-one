@@ -2,6 +2,9 @@ using Godot;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes;
 using System;
 
+/// <summary>
+/// Node with animated sprite as a grey cloud
+/// </summary>
 public class GreyCloud : Node2D, IMovingSprite
 {
     #region Fields
