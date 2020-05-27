@@ -23,5 +23,7 @@ public class GreyCloud : Node2D, IMovingSprite
 
     #region Properties
     public AnimatedSprite AnimatedSprite => this._animatedSprite;
+
+    public Vector2 Size => ((Sprite)this.GetParent()).Texture.GetSize();
     #endregion
 }

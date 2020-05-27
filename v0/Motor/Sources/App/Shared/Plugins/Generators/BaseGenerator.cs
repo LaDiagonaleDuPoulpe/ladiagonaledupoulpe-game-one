@@ -60,7 +60,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Generators
             return (PackedScene)ResourceLoader.Load(DEFAULT_RESOURCE_PATH + this._setting.ResourcePath);
         }
 
-        public void MoveSprites()
+        public virtual void MoveSprites()
         {
             const int MAX_X = 50;
             int stepX = __random.Next(0, MAX_X);
@@ -72,12 +72,35 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Generators
 
             this._movingSprites.ForEach((sprite) =>
             {
-                sprite.Position = new Vector2(sprite.Position.x + stepX, sprite.Position.y);
+                this.MoveOneSprite(sprite, stepX);
             });
         }
         #endregion
 
         #region Internal methods
+        /// <summary>
+        /// Default movment of one sprite (node)
+        /// </summary>
+        /// <param name="sprite"></param>
+        /// <param name="stepX">Adding step to the next position</param>
+        protected virtual void MoveOneSprite(IMovingSprite sprite, int stepX)
+        {
+            sprite.Position = new Vector2(sprite.Position.x + stepX, sprite.Position.y);
+
+            bool haveToBeReplaced = sprite.Position.x <= -sprite.Size.x ||
+                                    sprite.Position.x >= this._scene.WindowSize.x;
+
+            if (haveToBeReplaced)
+            {
+                float newX = 0;
+                if (this.Setting.LeftDirection)
+                {
+                    newX = this._scene.WindowSize.x;
+                }
+                sprite.Position = new Vector2(newX, sprite.Position.y);
+            }
+        }
+
         private void ConfigureTimer()
         {
             this._timer.Connect("timeout", this, nameof(MoveSprites));
