@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Tools</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D7BAC461-683E-4BB9-AAD5-B5A6C74F72EA}</ProjectGuid>
+    <ProjectGuid>{2155A7C8-11C6-4D17-93E6-4353677DC844}</ProjectGuid>
     <OutputType>Library</OutputType>
     <OutputPath>.mono\temp\bin\$(Configuration)</OutputPath>
-    <RootNamespace>ladiagonaledupoulpe</RootNamespace>
-    <AssemblyName>la-diagonale-du-poulpe</AssemblyName>
+    <RootNamespace>TestFireLight</RootNamespace>
+    <AssemblyName>TestFireLight</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <GodotProjectGeneratorVersion>1.0.7374.16792</GodotProjectGeneratorVersion>
     <BaseIntermediateOutputPath>.mono\temp\obj</BaseIntermediateOutputPath>
@@ -53,22 +53,9 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Light2D.cs" />
+    <Compile Include="Node2D.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sources\App\Core\Models\Players\Player.cs" />
-    <Compile Include="Sources\App\Game-Scenes\002-Inside-Crash-Ship\InsideCrashShip.cs" />
-    <Compile Include="Sources\App\Shared\Interfaces\Scenes\IMovingSprite.cs" />
-    <Compile Include="Sources\App\Shared\Interfaces\Scenes\IMainScene.cs" />
-    <Compile Include="Sources\App\Shared\Interfaces\Scenes\IWithChilds.cs" />
-    <Compile Include="Sources\App\Shared\Interfaces\Scenes\IWithClouds.cs" />
-    <Compile Include="Sources\App\Shared\Plugins\Generators\BaseGenerator.cs" />
-    <Compile Include="Sources\App\Shared\Plugins\Generators\GeneratorSetting.cs" />
-    <Compile Include="Sources\App\Shared\Plugins\Generators\CloudGenerator\GreyCloudGenerator.Plugin.cs" />
-    <Compile Include="Sources\App\Shared\Interfaces\Generators\ISpriteGenerator.cs" />
-    <Compile Include="Sources\App\Shared\Scenes\Clouds\GreyCloud.cs" />
-    <Compile Include="Sources\App\Shared\Scenes\Sparks\LightSparks\Scripts\LightSpark.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Sources\App\Shared\Plugins\README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

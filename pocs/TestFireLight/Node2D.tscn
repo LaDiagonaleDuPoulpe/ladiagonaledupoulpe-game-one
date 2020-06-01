@@ -1,0 +1,119 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/environment/layers/middleground.png" type="Texture" id=1]
+[ext_resource path="res://assets/environment/layers/background.png" type="Texture" id=2]
+[ext_resource path="res://assets/environment/props-sliced/house-a.png" type="Texture" id=3]
+[ext_resource path="res://assets/environment/props-sliced/house-a_n.png" type="Texture" id=4]
+[ext_resource path="res://assets/environment/layers/tileset.png" type="Texture" id=5]
+[ext_resource path="res://Node2D.cs" type="Script" id=6]
+[ext_resource path="res://assets/environment/layers/tileset_n.png" type="Texture" id=7]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+background_energy = 1.18
+ambient_light_energy = 0.0
+fog_sun_color = Color( 0.854902, 0.662745, 0.27451, 1 )
+fog_sun_amount = 0.27
+fog_depth_begin = 0.0
+fog_depth_curve = 0.812252
+tonemap_mode = 2
+auto_exposure_enabled = true
+auto_exposure_min_luma = 0.34
+auto_exposure_max_luma = 4.55
+auto_exposure_speed = 15.26
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/2 = true
+glow_intensity = 1.33
+glow_strength = 1.74
+glow_hdr_luminance_cap = 65.45
+glow_hdr_scale = 1.3
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+position = Vector2( 9.04648, 10.3388 )
+color = Color( 0.27451, 0.27451, 0.27451, 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 513.711, 300.473 )
+scale = Vector2( 2.6592, 2.07248 )
+texture = ExtResource( 2 )
+
+[node name="middleground" type="Sprite" parent="."]
+position = Vector2( 512.672, 297.623 )
+scale = Vector2( 2.6592, 2.07248 )
+texture = ExtResource( 1 )
+
+[node name="tileset" type="Sprite" parent="."]
+position = Vector2( 36.6531, 574.187 )
+scale = Vector2( 2.28915, 1 )
+texture = ExtResource( 5 )
+normal_map = ExtResource( 7 )
+offset = Vector2( -7.5, -16.3089 )
+region_enabled = true
+region_rect = Rect2( 99, 9, 15, 69 )
+
+[node name="tileset2" type="Sprite" parent="."]
+position = Vector2( 36.6531, 574.187 )
+scale = Vector2( 2.28915, 1 )
+texture = ExtResource( 5 )
+normal_map = ExtResource( 7 )
+offset = Vector2( -7.5, -16.3089 )
+region_enabled = true
+region_rect = Rect2( 99, 9, 15, 69 )
+
+[node name="tileset3" type="Sprite" parent="."]
+position = Vector2( 36.6531, 574.187 )
+scale = Vector2( 2.28915, 1 )
+texture = ExtResource( 5 )
+normal_map = ExtResource( 7 )
+offset = Vector2( -7.5, -16.3089 )
+region_enabled = true
+region_rect = Rect2( 99, 9, 15, 69 )
+
+[node name="tileset4" type="Sprite" parent="."]
+position = Vector2( 36.6531, 574.187 )
+scale = Vector2( 2.28915, 1 )
+texture = ExtResource( 5 )
+normal_map = ExtResource( 7 )
+offset = Vector2( -7.5, -16.3089 )
+region_enabled = true
+region_rect = Rect2( 99, 9, 15, 69 )
+
+[node name="tileset5" type="Sprite" parent="."]
+position = Vector2( 118.071, 578.064 )
+scale = Vector2( 2.28915, 1 )
+texture = ExtResource( 5 )
+normal_map = ExtResource( 7 )
+offset = Vector2( -7.5, -16.3089 )
+region_enabled = true
+region_rect = Rect2( 99, 9, 15, 69 )
+
+[node name="tileset6" type="Sprite" parent="."]
+position = Vector2( 92.2244, 575.479 )
+scale = Vector2( 2.28915, 1 )
+texture = ExtResource( 5 )
+normal_map = ExtResource( 7 )
+offset = Vector2( -7.5, -16.3089 )
+region_enabled = true
+region_rect = Rect2( 99, 9, 15, 69 )
+
+[node name="tileset7" type="Sprite" parent="."]
+position = Vector2( 63.7926, 575.479 )
+scale = Vector2( 2.28915, 1 )
+texture = ExtResource( 5 )
+normal_map = ExtResource( 7 )
+offset = Vector2( -7.5, -16.3089 )
+region_enabled = true
+region_rect = Rect2( 99, 9, 15, 69 )
+
+[node name="house-a" type="Sprite" parent="."]
+position = Vector2( 61.6405, 439.782 )
+texture = ExtResource( 3 )
+normal_map = ExtResource( 4 )
