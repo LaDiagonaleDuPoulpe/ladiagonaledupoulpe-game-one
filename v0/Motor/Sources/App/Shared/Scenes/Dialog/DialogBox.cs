@@ -75,7 +75,7 @@ public class DialogBox : Node2D
     public void OnTimerTimeout()
     {
         this.CurrentVisibleCharacters++;
-        if (this.Message != null && this.CurrentPartOfMessage >= this.Message.Content.Length)
+        if (this.CurrentMessage != null && this.CurrentPartOfMessage >= this.CurrentMessage.Content.Length)
         {
             this.EmitSignal(nameof(EndOfOneMessage));
             this._currentTimer.Stop();
@@ -108,16 +108,23 @@ public class DialogBox : Node2D
     private void Initialize()
     {
         this.CurrentVisibleCharacters = 0;
-        this._label.BbcodeText = this.Message.Content;
+        this._label.BbcodeText = this.CurrentMessage.Content;
 
         this._animatedSprite.Frames = null; 
-        if (this.Message.SpriteFrames != null)
+        if (this.CurrentMessage.SpriteFrames != null)
         {
-            this._animatedSprite.Frames = this.Message.SpriteFrames;
+            this._animatedSprite.Frames = this.CurrentMessage.SpriteFrames;
             this._animatedSprite.Play(DialogBoxSpriteStatus.Idle.ToString().ToLower());
+
+            this.DefineAnimatedSpritePosition();
         }
 
         this.SetTextFromNextOrCloseButton();
+    }
+
+    private void DefineAnimatedSpritePosition()
+    {
+        throw new NotImplementedException();
     }
 
     private void PutAtTheBottom()
@@ -163,7 +170,7 @@ public class DialogBox : Node2D
     /// <summary>
     /// Content message to display
     /// </summary>
-    public MessageContent Message
+    public MessageContent CurrentMessage
     {
         get
         {
@@ -175,6 +182,17 @@ public class DialogBox : Node2D
             }
 
             return content;
+        }
+    }
+
+    /// <summary>
+    /// Gets the current displayed direction of the animated sprite
+    /// </summary>
+    public AnimatedSpriteDirection DisplayedDirection
+    {
+        get 
+        {
+            return this.CurrentMessage != null ? this.CurrentMessage.SpriteDirection : AnimatedSpriteDirection.Left;
         }
     }
 
