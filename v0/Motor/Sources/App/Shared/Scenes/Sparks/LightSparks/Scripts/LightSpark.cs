@@ -1,6 +1,9 @@
 using Godot;
 using System;
 
+/// <summary>
+/// Uses it to randomize energy of a light spark
+/// </summary>
 public class LightSpark : StaticBody2D
 {
     #region Fields
@@ -13,11 +16,9 @@ public class LightSpark : StaticBody2D
     #region Public methods
     public override void _Ready()
     {
-        GD.Print("pickle !!");
         this._light = this.GetNode("Light2D") as Light2D;
 
         this.InitRandomLight();
-
     }
     #endregion
 
