@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Sources/App/Shared/Scenes/Dialog/DialogBox.cs" type="Script" id=1]
+[ext_resource path="res://Sources/App/Shared/Scenes/Dialog/Scripts/DialogBox.cs" type="Script" id=1]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.345098, 0.533333, 0.796078, 1 )
