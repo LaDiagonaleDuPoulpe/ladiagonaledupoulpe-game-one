@@ -124,7 +124,13 @@ public class DialogBox : Node2D
 
     private void DefineAnimatedSpritePosition()
     {
-        throw new NotImplementedException();
+        if (this.CurrentMessage.SpriteDirection == AnimatedSpriteDirection.Right)
+        {
+            Sprite background = this.GetNode("Background") as Sprite;
+            Vector2 size = background.Texture.GetSize();
+
+            this._animatedSprite.Position = size;
+        }
     }
 
     private void PutAtTheBottom()

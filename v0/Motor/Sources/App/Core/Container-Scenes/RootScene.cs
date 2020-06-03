@@ -23,7 +23,7 @@ public class RootScene : Node2D
         box.Start(new List<MessageContent>()
         {
             new MessageContent() { Content = "Hello !", SpriteFrames = spriteFrames },
-            new MessageContent() { Content = "Ca va ?", SpriteFrames = null }
+            new MessageContent() { Content = "Ca va ?", SpriteFrames = null, SpriteDirection = AnimatedSpriteDirection.Right }
         });
     }
 }
