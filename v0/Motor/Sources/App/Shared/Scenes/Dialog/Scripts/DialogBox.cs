@@ -20,6 +20,7 @@ public class DialogBox : Node2D
     private Timer _currentTimer = null;
     private Button _nextOrCloseButton = null;
     private AnimatedSprite _animatedSprite = null;
+    private ColorRect _borderRectangle = null;
     private int _currentPartOfMessage = 0;
 
     #region Events
@@ -44,6 +45,7 @@ public class DialogBox : Node2D
         this._currentTimer  = this.GetNode("Timer") as Timer;
         this._nextOrCloseButton = this.GetNode("NextOrClose") as Button;
         this._animatedSprite = this.GetNode("AnimatedSprite") as AnimatedSprite;
+        this._borderRectangle = this.GetNode("BorderRect") as ColorRect;
 
         this.GetTree().Root.Connect("size_changed", this, nameof(Resize));
         this.PutAtTheBottom();
@@ -126,10 +128,14 @@ public class DialogBox : Node2D
     {
         if (this.CurrentMessage.SpriteDirection == AnimatedSpriteDirection.Right)
         {
+            Vector2 animatedSpriteSize = new Vector2(70, 70);
             Sprite background = this.GetNode("Background") as Sprite;
-            Vector2 size = background.Texture.GetSize();
 
-            this._animatedSprite.Position = size;
+            Vector2 newPosition = new Vector2(this._animatedSprite.Position.x + this._borderRectangle.RectSize.x - animatedSpriteSize.x,
+                                              this._animatedSprite.Position.y + this._borderRectangle.RectSize.y - animatedSpriteSize.y);
+
+            this._animatedSprite.Position = newPosition;
+            GD.Print(this._animatedSprite.Position);
         }
     }
 
