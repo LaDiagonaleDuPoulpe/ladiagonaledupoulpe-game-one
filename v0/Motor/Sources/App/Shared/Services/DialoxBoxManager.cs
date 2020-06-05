@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 {
-    public class DialoxBoxManager
+    public class DialoxBoxManager : Node
     {
         #region Fields
         #endregion
