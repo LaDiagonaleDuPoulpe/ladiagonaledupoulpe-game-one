@@ -1,12 +1,26 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Sources/App/Shared/Scenes/Dialog/Scripts/DialogBox.cs" type="Script" id=1]
 [ext_resource path="res://Sources/App/Shared/Assets/Objects/DialogBox/background.png" type="Texture" id=2]
+[ext_resource path="res://Sources/App/Shared/Assets/Fonts/ShadowsIntoLight-Regular.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.345098, 0.533333, 0.796078, 1 )
+bg_color = Color( 0.376471, 0.607843, 0.929412, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
 shadow_size = 2
 shadow_offset = Vector2( 2, 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 50
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = ExtResource( 3 )
 
 [node name="DialogBox" type="Node2D"]
 position = Vector2( 0, 8 )
@@ -36,6 +50,7 @@ margin_top = 8.0
 margin_right = 1464.0
 margin_bottom = 40.0
 custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.0431373, 0.0470588, 0.0470588, 1 )
 text = "Fermer"
 __meta__ = {
@@ -49,9 +64,10 @@ speed_scale = 2.0
 
 [node name="Content" type="RichTextLabel" parent="."]
 margin_left = 144.0
-margin_top = 112.0
+margin_top = 88.0
 margin_right = 1320.0
-margin_bottom = 288.0
+margin_bottom = 264.0
+custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false

@@ -16,7 +16,7 @@ public class DialogBox : Node2D
 
     #region Fields
     private List<MessageContent> _messageContents;
-    private RichTextLabel _label = null;
+    private RichTextLabel _content = null;
     private Timer _currentTimer = null;
     private Button _nextOrCloseButton = null;
     private AnimatedSprite _animatedSprite = null;
@@ -41,7 +41,7 @@ public class DialogBox : Node2D
     #region Public methods
     public override void _Ready()
     {
-        this._label = this.GetNode("Content") as RichTextLabel;
+        this._content = this.GetNode("Content") as RichTextLabel;
         this._currentTimer  = this.GetNode("Timer") as Timer;
         this._nextOrCloseButton = this.GetNode("NextOrClose") as Button;
         this._animatedSprite = this.GetNode("AnimatedSprite") as AnimatedSprite;
@@ -110,7 +110,7 @@ public class DialogBox : Node2D
     private void Initialize()
     {
         this.CurrentVisibleCharacters = 0;
-        this._label.BbcodeText = this.CurrentMessage.Content;
+        this._content.BbcodeText = this.DefineAlignement(this.CurrentMessage.Content);
 
         this._animatedSprite.Frames = null; 
         if (this.CurrentMessage.SpriteFrames != null)
@@ -128,14 +128,13 @@ public class DialogBox : Node2D
     {
         if (this.CurrentMessage.SpriteDirection == AnimatedSpriteDirection.Right)
         {
-            Vector2 animatedSpriteSize = new Vector2(70, 70);
+            Vector2 animatedSpriteSize = new Vector2(130, 70);
             Sprite background = this.GetNode("Background") as Sprite;
 
             Vector2 newPosition = new Vector2(this._animatedSprite.Position.x + this._borderRectangle.RectSize.x - animatedSpriteSize.x,
                                               this._animatedSprite.Position.y + this._borderRectangle.RectSize.y - animatedSpriteSize.y);
 
             this._animatedSprite.Position = newPosition;
-            GD.Print(this._animatedSprite.Position);
         }
     }
 
@@ -164,6 +163,16 @@ public class DialogBox : Node2D
             this._nextOrCloseButton.Text = "Suivant";
         }
     }
+
+    private string DefineAlignement(string content)
+    {
+        if (this.CurrentMessage.SpriteDirection == AnimatedSpriteDirection.Right)
+        {
+            content = string.Format("[right]{0}[/right]", content);
+        }
+
+        return content;
+}
     #endregion
 
     #region Properties
@@ -172,10 +181,10 @@ public class DialogBox : Node2D
     /// </summary>
     public int CurrentVisibleCharacters 
     { 
-        get => this._label.VisibleCharacters; 
+        get => this._content.VisibleCharacters; 
         set 
         {
-            this._label.VisibleCharacters = value; 
+            this._content.VisibleCharacters = value; 
         }
     }
 

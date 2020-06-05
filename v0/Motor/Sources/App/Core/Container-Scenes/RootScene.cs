@@ -22,8 +22,8 @@ public class RootScene : Node2D
 
         box.Start(new List<MessageContent>()
         {
-            new MessageContent() { Content = "Hello !", SpriteFrames = spriteFrames },
-            new MessageContent() { Content = "Ca va ?", SpriteFrames = spriteFrames, SpriteDirection = AnimatedSpriteDirection.Right }
+            new MessageContent() { Content = "Le vaisseau ne va vraiment pas bien ! Comment s'en sortir ?", SpriteFrames = spriteFrames },
+            new MessageContent() { Content = "Et si nous trouvions deja un moyen de déclencher l'auto-reparation ?", SpriteFrames = spriteFrames, SpriteDirection = AnimatedSpriteDirection.Right }
         });
     }
 }
