@@ -128,10 +128,7 @@ public class DialogBox : Node2D
     {
         if (this.CurrentMessage.SpriteDirection == AnimatedSpriteDirection.Right)
         {
-            var animation = this.CurrentMessage.SpriteFrames.GetFrame("idle", 0) as StreamTexture;
-            GD.Print(animation.GetSize());
-
-            Vector2 animatedSpriteSize = animation.GetSize();
+            Vector2 animatedSpriteSize = new Vector2(130, 70); 
             Sprite background = this.GetNode("Background") as Sprite;
 
             Vector2 newPosition = new Vector2(this._animatedSprite.Position.x + this._borderRectangle.RectSize.x - animatedSpriteSize.x,
