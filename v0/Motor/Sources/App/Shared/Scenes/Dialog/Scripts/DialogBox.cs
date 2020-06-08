@@ -141,12 +141,15 @@ public class DialogBox : Node2D
     private void PutAtTheBottom()
     {
         Rect2 windowPosition = this.GetViewportRect();
+
+        
+
         this.Position = new Vector2(0, windowPosition.Size.y - DEFAULT_HEIGHT);
     }
 
     private void Resize()
     {
-        GD.Print("resize me");
+        this.PutAtTheBottom();
     }
 
     private void Reset()
