@@ -1,8 +1,10 @@
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+
 
 /// <summary>
 /// Dialog box : display content text and a texture animated sprite
@@ -172,7 +174,7 @@ public class DialogBox : Node2D
     {
         if (this.CurrentMessage.SpriteDirection == AnimatedSpriteDirection.Right)
         {
-            content = string.Format("[right]{0}[/right]", content);
+            content = content.AlignRightToBBContent();
         }
 
         return content;
