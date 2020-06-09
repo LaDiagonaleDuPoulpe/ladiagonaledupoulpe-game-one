@@ -7,4 +7,4 @@
 script = ExtResource( 2 )
 
 [node name="DialogBox" parent="." instance=ExtResource( 1 )]
-position = Vector2( 320, 680 )
+position = Vector2( 336, 288 )
