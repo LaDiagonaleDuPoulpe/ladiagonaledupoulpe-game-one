@@ -5,6 +5,34 @@
 [node name="Root" type="Node2D"]
 
 [node name="LoadingScene-Background" type="Sprite" parent="."]
-position = Vector2( 996, 508 )
+position = Vector2( 1000, 384 )
 scale = Vector2( 1.0375, 0.970371 )
 texture = ExtResource( 1 )
+
+[node name="Bars-Background" type="ColorRect" parent="."]
+margin_left = -8.0
+margin_top = 912.0
+margin_right = 1984.0
+margin_bottom = 1024.0
+color = Color( 0.0235294, 0.0235294, 0.0235294, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OneFileLoading" type="ColorRect" parent="."]
+margin_left = 24.0
+margin_top = 928.0
+margin_right = 32.0
+margin_bottom = 952.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AllFilesLoading" type="ColorRect" parent="."]
+margin_left = 24.0
+margin_top = 976.0
+margin_right = 32.0
+margin_bottom = 1000.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
