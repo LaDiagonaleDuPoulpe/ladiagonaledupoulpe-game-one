@@ -58,12 +58,16 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sources\App\Core\Container-Scenes\RootScene.cs" />
+    <Compile Include="Sources\App\Core\Interfaces\Configurations\LevelConfiguration.cs" />
+    <Compile Include="Sources\App\Core\Interfaces\Scenes\IWithJson.cs" />
     <Compile Include="Sources\App\Core\Models\Players\Player.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\AnimatedSpriteDirection.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\DialogBox.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\DialogBoxSpriteStatus.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\MessageContent.cs" />
-    <Compile Include="Sources\App\Shared\Services\DialoxBoxManager.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\LoadingScene\Scripts\LoadingScene.cs" />
+    <Compile Include="Sources\App\Shared\Services\UI\DialoxBoxManager.cs" />
+    <Compile Include="Sources\App\Shared\Services\Resources\ResourcesLoader.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\StringExtensionMethod.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -72,8 +76,6 @@
     <None Include="Sources\App\Core\Container-Scenes\RootScene.tscn" />
     <None Include="Sources\App\Shared\Services\README.md" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Sources\App\Shared\Scenes\LoadingScene\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
