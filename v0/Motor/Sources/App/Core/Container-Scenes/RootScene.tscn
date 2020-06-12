@@ -1,10 +1,30 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Sources/App/Shared/Scenes/Dialog/DialogBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sources/App/Core/Container-Scenes/RootScene.cs" type="Script" id=2]
+[ext_resource path="res://Sources/App/Shared/Scenes/LoadingScene/LoadingScene.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sources/App/Shared/Assets/Fonts/ShadowsIntoLight-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 4 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
 
+[node name="LoadingScene" parent="." instance=ExtResource( 3 )]
+visible = false
+
 [node name="DialogBox" parent="." instance=ExtResource( 1 )]
+visible = false
 position = Vector2( 336, 288 )
+
+[node name="Button" type="Button" parent="."]
+margin_right = 480.0
+margin_bottom = 144.0
+custom_fonts/font = SubResource( 1 )
+text = "Load scene"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

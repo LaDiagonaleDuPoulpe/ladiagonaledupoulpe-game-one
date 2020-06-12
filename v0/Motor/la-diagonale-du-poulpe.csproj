@@ -59,8 +59,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sources\App\Core\Container-Scenes\RootScene.cs" />
     <Compile Include="Sources\App\Core\Interfaces\Configurations\LevelConfiguration.cs" />
+    <Compile Include="Sources\App\Core\Interfaces\Scenes\ILevelConfiguration.cs" />
     <Compile Include="Sources\App\Core\Interfaces\Scenes\IWithJson.cs" />
     <Compile Include="Sources\App\Core\Models\Players\Player.cs" />
+    <Compile Include="Sources\App\Shared\Enums\LoadingActionsType.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\AnimatedSpriteDirection.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\DialogBox.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\DialogBoxSpriteStatus.cs" />

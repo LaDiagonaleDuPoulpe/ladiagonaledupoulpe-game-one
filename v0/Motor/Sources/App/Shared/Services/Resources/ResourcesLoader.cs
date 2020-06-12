@@ -36,7 +36,13 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         #region Internal methods
         private void LoadJson()
         {
-            GD.Print("loadjson");
+            using (var file = new Godot.File())
+            {
+                string resourcePath = string.Format("res://Data/Scenes/{0}.json", this._configuration.Key);
+                var error = file.Open(resourcePath, File.ModeFlags.Read);
+
+                string content = file.GetAsText();
+            }
         }
         #endregion
 
