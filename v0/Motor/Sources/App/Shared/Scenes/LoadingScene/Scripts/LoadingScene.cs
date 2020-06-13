@@ -9,6 +9,7 @@ using System;
 /// </summary>
 public class LoadingScene : Node2D
 {
+    #region Fields
     #region Signals
     /// <summary>
     /// Uses this signal to know when loading scene starts to load resources
@@ -21,6 +22,12 @@ public class LoadingScene : Node2D
     /// </summary>
     [Signal]
     public delegate void End();
+    #endregion
+
+    private ProgressBar _oneFileProgressBar = null;
+    private ProgressBar _allFilesProgressBar = null;
+
+    private int _filesNumber = 0;
     #endregion
 
     #region Public methods
@@ -36,7 +43,6 @@ public class LoadingScene : Node2D
     /// <param name="configuration">Data to load next scene</param>
     public void Launch(ILevelConfiguration configuration)
     {
-        this.Visible = true;
         ResourcesLoader.Instance.Start(configuration);
     }
     #endregion
@@ -44,7 +50,17 @@ public class LoadingScene : Node2D
     #region Internal methods
     private void Initialize()
     {
+        this._oneFileProgressBar = this.GetNode<ProgressBar>("OneFileProgressBar");
+        this._allFilesProgressBar = this.GetNode<ProgressBar>("AllFilesProgressBar");
+        this.AttachSignals();
+    }
+
+    private void AttachSignals()
+    {
         ResourcesLoader.Instance.Connect(LoadingActionsType.Begin.ToString(), this, nameof(BeginLoadingResources));
+        ResourcesLoader.Instance.Connect(LoadingActionsType.BeginLoadingResource.ToString(), this, nameof(BeginLoadingOneResource));
+        ResourcesLoader.Instance.Connect(LoadingActionsType.End.ToString(), this, nameof(EndLoadingResources));
+        ResourcesLoader.Instance.Connect(LoadingActionsType.EndLoadingResource.ToString(), this, nameof(EndLoadingOneResource));
     }
 
     private void EndLoadingOneResource()
@@ -59,12 +75,21 @@ public class LoadingScene : Node2D
 
     private void EndLoadingResources()
     {
+        this.Visible = false;
         this.EmitSignal(LoadingActionsType.End.ToString());
     }
 
     private void BeginLoadingResources()
     {
+        this.Visible = true;
         this.EmitSignal(LoadingActionsType.Begin.ToString());
     }
+    #endregion
+
+    #region Properties
+    /// <summary>
+    /// Number of files to load
+    /// </summary>
+    public int FilesNumber { get => this._filesNumber; private set => this._filesNumber = value; }
     #endregion
 }
