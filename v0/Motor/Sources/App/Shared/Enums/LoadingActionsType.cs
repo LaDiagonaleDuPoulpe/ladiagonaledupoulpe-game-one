@@ -15,17 +15,20 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Enums
         /// Starting loading for all files
         /// </summary>
         Begin,
+
         /// <summary>
         /// End loading all resources
         /// </summary>
         End,
+
         /// <summary>
         /// Begin loading one resource
         /// </summary>
-        BeginResource,
+        BeginLoadingResource,
+
         /// <summary>
         /// End loading one resource
         /// </summary>
-        EndResource
+        EndLoadingResource
     }
 }

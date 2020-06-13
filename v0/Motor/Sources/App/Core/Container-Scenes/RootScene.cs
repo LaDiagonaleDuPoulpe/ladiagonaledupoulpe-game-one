@@ -44,7 +44,6 @@ public class RootScene : Node2D
     #region Internal methods
     private void Initialize()
     {
-        this.LoadingScene.Visible = false;
         this.LoadingScene.Connect(LoadingActionsType.Begin.ToString(), this, nameof(LoadingScene_Start));
         this.LoadingScene.Connect(LoadingActionsType.End.ToString(), this, nameof(LoadingScene_End));
     }

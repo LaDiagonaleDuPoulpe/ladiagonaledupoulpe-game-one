@@ -26,7 +26,7 @@ public class LoadingScene : Node2D
     #region Public methods
     public override void _Ready()
     {
-        
+        this.Initialize();
     }
 
     /// <summary>
@@ -37,8 +37,34 @@ public class LoadingScene : Node2D
     public void Launch(ILevelConfiguration configuration)
     {
         this.Visible = true;
-        this.EmitSignal(LoadingActionsType.Begin.ToString());
         ResourcesLoader.Instance.Start(configuration);
+    }
+    #endregion
+
+    #region Internal methods
+    private void Initialize()
+    {
+        ResourcesLoader.Instance.Connect(LoadingActionsType.Begin.ToString(), this, nameof(BeginLoadingResources));
+    }
+
+    private void EndLoadingOneResource()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void BeginLoadingOneResource()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void EndLoadingResources()
+    {
+        this.EmitSignal(LoadingActionsType.End.ToString());
+    }
+
+    private void BeginLoadingResources()
+    {
+        this.EmitSignal(LoadingActionsType.Begin.ToString());
     }
     #endregion
 }
