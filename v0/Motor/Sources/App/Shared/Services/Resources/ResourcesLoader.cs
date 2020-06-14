@@ -1,5 +1,6 @@
 ﻿using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Scenes;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
 using System.Collections.Generic;
@@ -51,10 +52,13 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         private static Lazy<ResourcesLoader> __instance = new Lazy<ResourcesLoader>(() => new ResourcesLoader());
         private ILevelConfiguration _configuration = null;
         private System.Threading.Thread _maintThread = null;
+        private SceneConfigurationSetting _currentSetting = null;
         #endregion
 
         #region Constructors
-        private ResourcesLoader() { }
+        private ResourcesLoader()
+        {
+        }
         #endregion
 
         #region Public methods
@@ -76,6 +80,12 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
                 throw new System.IO.FileLoadException();
             }
 
+            this.WaitTimeBeforeLoadResources();
+        }
+
+        private void WaitTimeBeforeLoadResources()
+        {
+            // TODO: 14/05/2020, see to add a timer to wait a bit of time before load real resources, but timer must be added inside the SceneTree 
             this.LoadResourcesFromJson();
         }
 
@@ -93,16 +103,15 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
                     var error = file.Open(resourcePath, File.ModeFlags.Read);
 
                     string content = file.GetAsText();
+                    this._currentSetting = Newtonsoft.Json.JsonConvert.DeserializeObject<SceneConfigurationSetting>(content);
 
                     this.EmitSignal(LoadingActionsType.EndLoadingResource.ToString());
-                    this.EmitSignal(LoadingActionsType.Reinit.ToString());
-
                     isOk = true;
                 }
                 finally
                 {
                     file.Close();
-                }                
+                }
             }
 
             return isOk;
@@ -110,7 +119,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 
         private void LoadResourcesFromJson()
         {
+            this.EmitSignal(LoadingActionsType.Reinit.ToString());
 
+
+
+            this.EmitSignal(LoadingActionsType.End.ToString());
         }
         #endregion
 

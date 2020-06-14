@@ -84,6 +84,9 @@ public class LoadingScene : Node2D
     {
         this.FilesNumber = 0;
         this.CurrentFilesLoadingNumber = 0;
+
+        this._allFilesProgressBar.Value = 0;
+        this._oneFileProgressBar.Value = 0;
     }
 
     private void BeginLoadingOneResource()
