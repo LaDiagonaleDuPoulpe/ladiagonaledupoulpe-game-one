@@ -20,8 +20,8 @@ _global_script_class_icons={
 
 [WAT]
 
-Test_Directory="res://tests"
-Results_Directory="res://tests/results/WAT"
+Test_Directory="res://Tests"
+Results_Directory="res://Tests/results/WAT"
 Minimize_Window_When_Running_Tests=false
 TestStrategy={
 "repeat": 1,
@@ -50,10 +50,6 @@ window/stretch/mode="2d"
 [editor_plugins]
 
 enabled=PoolStringArray( "WAT", "mono_debugger" )
-
-[gui]
-
-theme/custom_font="res://addons/CustomNode/new_dynamicfont.tres"
 
 [mono]
 
