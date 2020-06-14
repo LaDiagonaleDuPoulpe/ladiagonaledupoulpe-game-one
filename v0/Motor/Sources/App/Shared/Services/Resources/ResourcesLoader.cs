@@ -21,17 +21,26 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         /// Starting loading resources
         /// </summary>
         [Signal]
-        public delegate void Begin();
+        public delegate void Begin(int nbResources);
+
         /// <summary>
         /// End of the loading of all resources
         /// </summary>
         [Signal]
         public delegate void End();
+
+        /// <summary>
+        /// Reinit the loading actions but not stop it
+        /// </summary>
+        [Signal]
+        public delegate void Reinit();
+
         /// <summary>
         /// Just before starting loading resource
         /// </summary>
         [Signal]
         public delegate void BeginLoadingResource();
+
         /// <summary>
         /// Just after loading one resource
         /// </summary>
@@ -52,23 +61,56 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         public void Start(ILevelConfiguration configuration)
         {
             this._configuration = configuration;
-            this._maintThread = new System.Threading.Thread(new System.Threading.ThreadStart(this.LoadJson));
+            this._maintThread = new System.Threading.Thread(new System.Threading.ThreadStart(this.LoadResources));
 
-            this.EmitSignal(LoadingActionsType.Begin.ToString());
+            this.EmitSignal(LoadingActionsType.Begin.ToString(), 1);
             this._maintThread.Start();
         }
         #endregion
 
         #region Internal methods
-        private void LoadJson()
+        private void LoadResources()
         {
+            if (! this.LoadJson())
+            {
+                throw new System.IO.FileLoadException();
+            }
+
+            this.LoadResourcesFromJson();
+        }
+
+        private bool LoadJson()
+        {
+            bool isOk = false;
+
             using (var file = new Godot.File())
             {
-                string resourcePath = string.Format("res://Data/Scenes/{0}.json", this._configuration.Key);
-                var error = file.Open(resourcePath, File.ModeFlags.Read);
+                try
+                {
+                    this.EmitSignal(LoadingActionsType.BeginLoadingResource.ToString());
 
-                string content = file.GetAsText();
+                    string resourcePath = string.Format("res://Data/Scenes/{0}.json", this._configuration.Key);
+                    var error = file.Open(resourcePath, File.ModeFlags.Read);
+
+                    string content = file.GetAsText();
+
+                    this.EmitSignal(LoadingActionsType.EndLoadingResource.ToString());
+                    this.EmitSignal(LoadingActionsType.Reinit.ToString());
+
+                    isOk = true;
+                }
+                finally
+                {
+                    file.Close();
+                }                
             }
+
+            return isOk;
+        }
+
+        private void LoadResourcesFromJson()
+        {
+
         }
         #endregion
 

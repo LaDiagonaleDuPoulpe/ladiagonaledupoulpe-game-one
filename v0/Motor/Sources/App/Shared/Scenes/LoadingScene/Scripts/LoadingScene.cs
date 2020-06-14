@@ -28,6 +28,7 @@ public class LoadingScene : Node2D
     private ProgressBar _allFilesProgressBar = null;
 
     private int _filesNumber = 0;
+    private int _currentFilesLoadingNumber = 0;
     #endregion
 
     #region Public methods
@@ -61,35 +62,53 @@ public class LoadingScene : Node2D
         ResourcesLoader.Instance.Connect(LoadingActionsType.BeginLoadingResource.ToString(), this, nameof(BeginLoadingOneResource));
         ResourcesLoader.Instance.Connect(LoadingActionsType.End.ToString(), this, nameof(EndLoadingResources));
         ResourcesLoader.Instance.Connect(LoadingActionsType.EndLoadingResource.ToString(), this, nameof(EndLoadingOneResource));
+        ResourcesLoader.Instance.Connect(LoadingActionsType.Reinit.ToString(), this, nameof(ReinitProgressBars));
     }
 
-    private void EndLoadingOneResource()
+    private void BeginLoadingResources(int nbResources)
     {
-        throw new NotImplementedException();
-    }
-
-    private void BeginLoadingOneResource()
-    {
-        throw new NotImplementedException();
+        this.Visible = true;
+        this.FilesNumber = nbResources;
+        this.CurrentFilesLoadingNumber = 0;
+        this.EmitSignal(LoadingActionsType.Begin.ToString());
     }
 
     private void EndLoadingResources()
     {
         this.Visible = false;
+        this.ReinitProgressBars();
         this.EmitSignal(LoadingActionsType.End.ToString());
     }
 
-    private void BeginLoadingResources()
+    private void ReinitProgressBars()
     {
-        this.Visible = true;
-        this.EmitSignal(LoadingActionsType.Begin.ToString());
+        this.FilesNumber = 0;
+        this.CurrentFilesLoadingNumber = 0;
+    }
+
+    private void BeginLoadingOneResource()
+    {
+        this._oneFileProgressBar.Value = 0;
+    }
+
+    private void EndLoadingOneResource()
+    {
+        this._oneFileProgressBar.Value = 100;
+
+        GD.Print(this._allFilesProgressBar.Value);
+        this._allFilesProgressBar.Value = (++this._currentFilesLoadingNumber / this.FilesNumber) * 100;
     }
     #endregion
 
     #region Properties
     /// <summary>
-    /// Number of files to load
+    /// Number of files (resources) to load
     /// </summary>
     public int FilesNumber { get => this._filesNumber; private set => this._filesNumber = value; }
+
+    /// <summary>
+    /// Number of files (resources) that are currently loaded
+    /// </summary>
+    public int CurrentFilesLoadingNumber { get => this._currentFilesLoadingNumber; private set => this._currentFilesLoadingNumber = value; }
     #endregion
 }

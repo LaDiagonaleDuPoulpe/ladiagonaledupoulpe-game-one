@@ -22,6 +22,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Enums
         End,
 
         /// <summary>
+        /// Reinit the loading resources 
+        /// </summary>
+        Reinit,
+
+        /// <summary>
         /// Begin loading one resource
         /// </summary>
         BeginLoadingResource,
