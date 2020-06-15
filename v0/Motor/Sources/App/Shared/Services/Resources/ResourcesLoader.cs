@@ -121,9 +121,20 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         {
             this.EmitSignal(LoadingActionsType.Reinit.ToString());
 
-
+            this.LoadScene();
 
             this.EmitSignal(LoadingActionsType.End.ToString());
+        }
+
+        private void LoadScene()
+        {
+            if (! string.IsNullOrEmpty(this._currentSetting.Path))
+            {
+                this.EmitSignal(LoadingActionsType.Begin.ToString(), 1);
+
+                Resource scene = ResourceLoader.Load(this._currentSetting.Path);
+                GD.Print(scene.GetType().FullName);
+            }
         }
         #endregion
 
