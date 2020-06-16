@@ -4,6 +4,7 @@ using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog;
 using ladiagonaledupoulpe.Sources.App.Shared.Services;
 using System.Collections.Generic;
+using System.Linq;
 
 public class RootScene : Node2D
 {
@@ -50,13 +51,15 @@ public class RootScene : Node2D
 
     private void LoadingScene_Start()
     {
-        GD.Print("LoadingScene_Start");
         this.GetNode<Button>("Button").Visible = false;
     }
 
-    private void LoadingScene_End()
+    private void LoadingScene_End(IEnumerable<Resource> resources)
     {
         this.GetNode<Button>("Button").Visible = false;
+
+        PackedScene nextScene = resources.Where(item => item is PackedScene).Cast<PackedScene>().First();
+        this.AddChild(nextScene.Instance());
     }
     #endregion
 

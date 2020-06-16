@@ -28,7 +28,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         /// End of the loading of all resources
         /// </summary>
         [Signal]
-        public delegate void End();
+        public delegate void End(IEnumerable<Resource> resources);
 
         /// <summary>
         /// Reinit the loading actions but not stop it
@@ -53,6 +53,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         private ILevelConfiguration _configuration = null;
         private System.Threading.Thread _maintThread = null;
         private SceneConfigurationSetting _currentSetting = null;
+        private List<Resource> _loadedResources = new List<Resource>();
         #endregion
 
         #region Constructors
@@ -65,6 +66,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         public void Start(ILevelConfiguration configuration)
         {
             this._configuration = configuration;
+            this._loadedResources.Clear();
             this._maintThread = new System.Threading.Thread(new System.Threading.ThreadStart(this.LoadResources));
 
             this.EmitSignal(LoadingActionsType.Begin.ToString(), 1);
@@ -123,7 +125,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 
             this.LoadScene();
 
-            this.EmitSignal(LoadingActionsType.End.ToString());
+            this.EmitSignal(LoadingActionsType.End.ToString(), this._loadedResources);
         }
 
         private void LoadScene()
@@ -133,7 +135,9 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
                 this.EmitSignal(LoadingActionsType.Begin.ToString(), 1);
 
                 Resource scene = ResourceLoader.Load(this._currentSetting.Path);
-                GD.Print(scene.GetType().FullName);
+                this._loadedResources.Add(scene);
+
+                this.EmitSignal(LoadingActionsType.EndLoadingResource.ToString());
             }
         }
         #endregion

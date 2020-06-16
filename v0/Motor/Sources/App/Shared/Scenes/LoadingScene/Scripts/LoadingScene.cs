@@ -3,6 +3,7 @@ using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Scenes;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Services;
 using System;
+using System.Collections.Generic;
 
 /// <summary>
 /// Loading scene to load all resource file
@@ -21,7 +22,7 @@ public class LoadingScene : Node2D
     /// Uses this signal to know when all resources are loaded
     /// </summary>
     [Signal]
-    public delegate void End();
+    public delegate void End(IEnumerable<Resource> resources);
     #endregion
 
     private ProgressBar _oneFileProgressBar = null;
@@ -73,11 +74,11 @@ public class LoadingScene : Node2D
         this.EmitSignal(LoadingActionsType.Begin.ToString());
     }
 
-    private void EndLoadingResources()
+    private void EndLoadingResources(IEnumerable<Resource> resources)
     {
         this.Visible = false;
         this.ReinitProgressBars();
-        this.EmitSignal(LoadingActionsType.End.ToString());
+        this.EmitSignal(LoadingActionsType.End.ToString(), resources);
     }
 
     private void ReinitProgressBars()
@@ -97,9 +98,9 @@ public class LoadingScene : Node2D
     private void EndLoadingOneResource()
     {
         this._oneFileProgressBar.Value = 100;
-
-        GD.Print(this._allFilesProgressBar.Value);
         this._allFilesProgressBar.Value = (++this._currentFilesLoadingNumber / this.FilesNumber) * 100;
+
+        //GD.Print("resource", resource);
     }
     #endregion
 
