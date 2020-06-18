@@ -1,3 +1,24 @@
 {
+  "dialoxBox": {
+    "messages": [
+      {
+        "key": "begin",
+        "next": null,
+        "autoLoad": true,
+        "timeBeforeStart": 500,
+        "exchange": [
+          {
+            "content": "Le vaisseau ne va vraiment pas bien ! Comment s'en sortir ?",
+            "spriteFramesPath": "res://Sources/App/Shared/Assets/Animations/Characters/Speaking/player3.tres"
+          },
+          {
+            "content": "Et si nous trouvions deja un moyen de déclencher l'auto-reparation ?",
+            "spriteFramesPath": "res://Sources/App/Shared/Assets/Animations/Characters/Speaking/player3.tres",
+            "spriteDirection": "Right"
+          }
+        ]
+      }
+    ]
+  },
   "path": "res://Sources/App/Game-Scenes/Test-Scene/test-scene-to-be-loaded.tscn"
 }

@@ -63,7 +63,7 @@ public class RootScene : Node2D
     }
     #endregion
 
-        #region Properties
+    #region Properties
         /// <summary>
         /// Scene that loads other scene.
         /// It prepare all resources before loading scene

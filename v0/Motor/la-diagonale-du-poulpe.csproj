@@ -74,6 +74,7 @@
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\StringExtensionMethod.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\Scenes\inside-broken-space-ship.json" />
     <None Include="packages.config" />
     <None Include="Sources\App\Core\Container-Scenes\README.md" />
     <None Include="Sources\App\Core\Container-Scenes\RootScene.tscn" />
