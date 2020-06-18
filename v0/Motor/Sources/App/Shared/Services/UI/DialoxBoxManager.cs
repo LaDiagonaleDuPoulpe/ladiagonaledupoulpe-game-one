@@ -11,10 +11,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
     public class DialoxBoxManager : Node
     {
         #region Fields
+        private static Lazy<DialoxBoxManager> __instance = new Lazy<DialoxBoxManager>(() => new DialoxBoxManager());
         #endregion
 
         #region Constructors
-        public DialoxBoxManager() 
+        private DialoxBoxManager() 
         {
             
         }
@@ -31,6 +32,13 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 
             
         }
+        #endregion
+
+        #region Properties
+        /// <summary>
+        /// Single instance of the class
+        /// </summary>
+        public static DialoxBoxManager Instance { get => __instance.Value; }
         #endregion
     }
 }
