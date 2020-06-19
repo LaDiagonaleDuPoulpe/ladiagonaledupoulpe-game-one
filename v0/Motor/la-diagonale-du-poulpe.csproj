@@ -62,6 +62,9 @@
     <Compile Include="Sources\App\Core\Interfaces\Scenes\ILevelConfiguration.cs" />
     <Compile Include="Sources\App\Core\Interfaces\Scenes\IWithJson.cs" />
     <Compile Include="Sources\App\Core\Models\Players\Player.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxExchangesItemSetting.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxMessageContentSetting.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\SceneConfigurationSetting.cs" />
     <Compile Include="Sources\App\Shared\Enums\LoadingActionsType.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\AnimatedSpriteDirection.cs" />

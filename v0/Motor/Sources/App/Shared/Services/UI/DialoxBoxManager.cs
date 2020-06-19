@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 {
+    /// <summary>
+    /// Manager of the dialogbox of one scene.
+    /// Allows you to command dialog box of the scene : some messages will be auto launched, some others will be load by signal or key.
+    /// </summary>
     public class DialoxBoxManager : Node
     {
         #region Fields

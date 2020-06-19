@@ -23,9 +23,7 @@ public class RootScene : Node2D
         Resource resource = ResourceLoader.Load("res://Sources/App/Shared/Assets/Animations/Characters/Speaking/player3.tres");
         SpriteFrames spriteFrames = resource as SpriteFrames;
 
-        DialoxBoxManager manager = new DialoxBoxManager();
-        manager.Preload();
-
+        
         box.Start(new List<MessageContent>()
         {
             new MessageContent() { Content = "Le vaisseau ne va vraiment pas bien ! Comment s'en sortir ?", SpriteFrames = spriteFrames },

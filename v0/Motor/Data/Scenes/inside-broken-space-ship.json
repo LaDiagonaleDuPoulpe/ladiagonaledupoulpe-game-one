@@ -1,12 +1,12 @@
 {
   "dialoxBox": {
-    "messages": [
+    "items": [
       {
         "key": "begin",
         "next": null,
         "autoLoad": true,
         "timeBeforeStart": 500,
-        "exchange": [
+        "messages": [
           {
             "content": "Le vaisseau ne va vraiment pas bien ! Comment s'en sortir ?",
             "spriteFramesPath": "res://Sources/App/Shared/Assets/Animations/Characters/Speaking/player3.tres"
