@@ -45,7 +45,7 @@ public class LoadingScene : Node2D
     /// <param name="configuration">Data to load next scene</param>
     public void Launch(ILevelConfiguration configuration)
     {
-        ResourcesLoader.Instance.Start(configuration);
+        ResourcesSceneLoader.Instance.Start(configuration);
     }
     #endregion
 
@@ -59,11 +59,11 @@ public class LoadingScene : Node2D
 
     private void AttachSignals()
     {
-        ResourcesLoader.Instance.Connect(LoadingActionsType.Begin.ToString(), this, nameof(BeginLoadingResources));
-        ResourcesLoader.Instance.Connect(LoadingActionsType.BeginLoadingResource.ToString(), this, nameof(BeginLoadingOneResource));
-        ResourcesLoader.Instance.Connect(LoadingActionsType.End.ToString(), this, nameof(EndLoadingResources));
-        ResourcesLoader.Instance.Connect(LoadingActionsType.EndLoadingResource.ToString(), this, nameof(EndLoadingOneResource));
-        ResourcesLoader.Instance.Connect(LoadingActionsType.Reinit.ToString(), this, nameof(ReinitProgressBars));
+        ResourcesSceneLoader.Instance.Connect(LoadingActionsType.Begin.ToString(), this, nameof(BeginLoadingResources));
+        ResourcesSceneLoader.Instance.Connect(LoadingActionsType.BeginLoadingResource.ToString(), this, nameof(BeginLoadingOneResource));
+        ResourcesSceneLoader.Instance.Connect(LoadingActionsType.End.ToString(), this, nameof(EndLoadingResources));
+        ResourcesSceneLoader.Instance.Connect(LoadingActionsType.EndLoadingResource.ToString(), this, nameof(EndLoadingOneResource));
+        ResourcesSceneLoader.Instance.Connect(LoadingActionsType.Reinit.ToString(), this, nameof(ReinitProgressBars));
     }
 
     private void BeginLoadingResources(int nbResources)

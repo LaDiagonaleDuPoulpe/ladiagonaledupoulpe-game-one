@@ -21,7 +21,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.DialogBox
         /// <summary>
         /// Direction to display sprite of the message
         /// </summary>
-        public AnimatedSpriteDirection SpriteDirection { get; set; }
+        public string SpriteDirection { get; set; }
 
         /// <summary>
         /// Path of the sprite animation to load

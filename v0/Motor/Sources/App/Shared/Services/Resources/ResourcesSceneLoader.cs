@@ -14,7 +14,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
     /// Loads all resources about one scene
     /// It uses background loading with signals to know the steps during loading
     /// </summary>
-    public class ResourcesLoader : Node
+    public class ResourcesSceneLoader : Node
     {
         #region Fields
         #region Events
@@ -49,7 +49,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         public delegate void EndLoadingResource();
         #endregion
 
-        private static Lazy<ResourcesLoader> __instance = new Lazy<ResourcesLoader>(() => new ResourcesLoader());
+        private static Lazy<ResourcesSceneLoader> __instance = new Lazy<ResourcesSceneLoader>(() => new ResourcesSceneLoader());
         private ILevelConfiguration _configuration = null;
         private System.Threading.Thread _maintThread = null;
         private SceneConfigurationSetting _currentSetting = null;
@@ -57,7 +57,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         #endregion
 
         #region Constructors
-        private ResourcesLoader()
+        private ResourcesSceneLoader()
         {
         }
         #endregion
@@ -154,7 +154,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         /// <summary>
         /// Returns the singleton
         /// </summary>
-        public static ResourcesLoader Instance { get => __instance.Value; }
+        public static ResourcesSceneLoader Instance { get => __instance.Value; }
         #endregion
     }
 }
