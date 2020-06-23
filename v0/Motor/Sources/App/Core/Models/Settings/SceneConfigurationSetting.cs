@@ -16,6 +16,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings
         /// Path of the scene to load
         /// </summary>
         public string Path { get; set; }
+
+        /// <summary>
+        /// Settings for the dialog box exchanges
+        /// </summary>
+        public DialogBox.DialogBoxSetting DialogBox { get; set; }
         #endregion
     }
 }

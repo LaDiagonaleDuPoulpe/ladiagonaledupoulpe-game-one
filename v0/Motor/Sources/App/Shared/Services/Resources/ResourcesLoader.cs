@@ -105,7 +105,8 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
                     var error = file.Open(resourcePath, File.ModeFlags.Read);
 
                     string content = file.GetAsText();
-                    this._currentSetting = Newtonsoft.Json.JsonConvert.DeserializeObject<SceneConfigurationSetting>(content);
+
+                    this._currentSetting = Newtonsoft.Json.JsonConvert.DeserializeObject<SceneConfigurationSetting>(content, new Newtonsoft.Json.JsonSerializerSettings());
 
                     this.EmitSignal(LoadingActionsType.EndLoadingResource.ToString());
                     isOk = true;
@@ -132,7 +133,14 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         {
             if (! string.IsNullOrEmpty(this._currentSetting.Path))
             {
-                this.EmitSignal(LoadingActionsType.Begin.ToString(), 1);
+                int nbMessages = 0;
+
+                if (this._currentSetting.DialogBox != null && this._currentSetting.DialogBox.Items != null)
+                {
+                    nbMessages = this._currentSetting.DialogBox.Items.Sum(item => item.Messages.Count);
+                }
+
+                this.EmitSignal(LoadingActionsType.Begin.ToString(), 1 + nbMessages);
 
                 Resource scene = ResourceLoader.Load(this._currentSetting.Path);
                 this._loadedResources.Add(scene);

@@ -12,7 +12,7 @@
             "spriteFramesPath": "res://Sources/App/Shared/Assets/Animations/Characters/Speaking/player3.tres"
           },
           {
-            "content": "Et si nous trouvions deja un moyen de déclencher l'auto-reparation ?",
+            "content": "Et si nous trouvions deja un moyen de dÃ©clencher l'auto-reparation ?",
             "spriteFramesPath": "res://Sources/App/Shared/Assets/Animations/Characters/Speaking/player3.tres",
             "spriteDirection": "Right"
           }

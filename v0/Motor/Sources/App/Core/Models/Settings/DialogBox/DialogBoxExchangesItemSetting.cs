@@ -33,7 +33,10 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.DialogBox
         /// </summary>
         public int TimeBeforeStart { get; set; }
 
-
+        /// <summary>
+        /// List of messages for one 
+        /// </summary>
+        public List<DialogBoxMessageContentSetting> Messages { get; set; }
         #endregion
     }
 }
