@@ -59,13 +59,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sources\App\Core\Container-Scenes\RootScene.cs" />
     <Compile Include="Sources\App\Core\Interfaces\Configurations\LevelConfiguration.cs" />
+    <Compile Include="Sources\App\Core\Interfaces\Scenes\IDataInit.cs" />
     <Compile Include="Sources\App\Core\Interfaces\Scenes\ILevelConfiguration.cs" />
-    <Compile Include="Sources\App\Core\Interfaces\Scenes\IWithJson.cs" />
     <Compile Include="Sources\App\Core\Models\Players\Player.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxExchangesItemSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxMessageContentSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\SceneConfigurationSetting.cs" />
+    <Compile Include="Sources\App\Game-Scenes\Test-Scene\TestSceneToBeLoaded.cs" />
     <Compile Include="Sources\App\Shared\Enums\LoadingActionsType.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\AnimatedSpriteDirection.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\DialogBox.cs" />
@@ -81,6 +82,7 @@
     <None Include="packages.config" />
     <None Include="Sources\App\Core\Container-Scenes\README.md" />
     <None Include="Sources\App\Core\Container-Scenes\RootScene.tscn" />
+    <None Include="Sources\App\Game-Scenes\Test-Scene\test-scene-to-be-loaded.tscn" />
     <None Include="Sources\App\Shared\Services\README.md" />
   </ItemGroup>
   <ItemGroup />

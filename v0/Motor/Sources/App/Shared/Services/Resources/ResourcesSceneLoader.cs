@@ -2,6 +2,7 @@
 using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Scenes;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
+using Motor.Sources.App.Core.Interfaces.Scenes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -77,7 +78,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         #region Internal methods
         private void LoadResources()
         {
-            if (! this.LoadJson())
+            if (!this.LoadJson())
             {
                 throw new System.IO.FileLoadException();
             }
@@ -105,8 +106,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
                     var error = file.Open(resourcePath, File.ModeFlags.Read);
 
                     string content = file.GetAsText();
-
-                    this._currentSetting = Newtonsoft.Json.JsonConvert.DeserializeObject<SceneConfigurationSetting>(content, new Newtonsoft.Json.JsonSerializerSettings());
+                    this._currentSetting = Newtonsoft.Json.JsonConvert.DeserializeObject<SceneConfigurationSetting>(content);
 
                     this.EmitSignal(LoadingActionsType.EndLoadingResource.ToString());
                     isOk = true;
@@ -126,12 +126,12 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 
             this.LoadScene();
 
-            this.EmitSignal(LoadingActionsType.End.ToString(), this._loadedResources);
+            this.EmitSignal(LoadingActionsType.End.ToString(), this._loadedResources); //TODO: 24/06/2020, changing to send instance of scene
         }
 
         private void LoadScene()
         {
-            if (! string.IsNullOrEmpty(this._currentSetting.Path))
+            if (!string.IsNullOrEmpty(this._currentSetting.Path))
             {
                 int nbMessages = 0;
 
@@ -142,8 +142,14 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 
                 this.EmitSignal(LoadingActionsType.Begin.ToString(), 1 + nbMessages);
 
-                Resource scene = ResourceLoader.Load(this._currentSetting.Path);
-                this._loadedResources.Add(scene);
+                Resource resourceScene = ResourceLoader.Load(this._currentSetting.Path);
+
+                PackedScene scene = resourceScene as PackedScene;
+                Node instanceOfScene = scene.Instance();
+
+                GD.Print((instanceOfScene as IDataInit) != null);
+
+                this._loadedResources.Add(resourceScene);
 
                 this.EmitSignal(LoadingActionsType.EndLoadingResource.ToString());
             }
