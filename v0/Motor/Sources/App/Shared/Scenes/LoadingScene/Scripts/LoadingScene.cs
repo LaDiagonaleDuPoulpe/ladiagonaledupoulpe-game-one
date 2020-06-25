@@ -21,8 +21,9 @@ public class LoadingScene : Node2D
     /// <summary>
     /// Uses this signal to know when all resources are loaded
     /// </summary>
+    /// <param name="nextScene">Loaded scene with its resources</param>
     [Signal]
-    public delegate void End(IEnumerable<Resource> resources);
+    public delegate void End(Node nextScene);
     #endregion
 
     private ProgressBar _oneFileProgressBar = null;
@@ -74,11 +75,11 @@ public class LoadingScene : Node2D
         this.EmitSignal(LoadingActionsType.Begin.ToString());
     }
 
-    private void EndLoadingResources(IEnumerable<Resource> resources)
+    private void EndLoadingResources(Node nextScene)
     {
         this.Visible = false;
         this.ReinitProgressBars();
-        this.EmitSignal(LoadingActionsType.End.ToString(), resources);
+        this.EmitSignal(LoadingActionsType.End.ToString(), nextScene);
     }
 
     private void ReinitProgressBars()
@@ -99,8 +100,6 @@ public class LoadingScene : Node2D
     {
         this._oneFileProgressBar.Value = 100;
         this._allFilesProgressBar.Value = (++this._currentFilesLoadingNumber / this.FilesNumber) * 100;
-
-        //GD.Print("resource", resource);
     }
     #endregion
 

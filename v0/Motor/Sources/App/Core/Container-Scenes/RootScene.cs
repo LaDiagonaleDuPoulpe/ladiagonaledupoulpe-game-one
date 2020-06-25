@@ -52,12 +52,10 @@ public class RootScene : Node2D
         this.GetNode<Button>("Button").Visible = false;
     }
 
-    private void LoadingScene_End(IEnumerable<Resource> resources)
+    private void LoadingScene_End(Node2D nextScene)
     {
         this.GetNode<Button>("Button").Visible = false;
-
-        PackedScene nextScene = resources.Where(item => item is PackedScene).Cast<PackedScene>().First();
-        this.AddChild(nextScene.Instance());
+        this.AddChild(nextScene);
     }
     #endregion
 

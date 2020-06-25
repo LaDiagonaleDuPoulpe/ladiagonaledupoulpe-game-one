@@ -29,7 +29,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         /// End of the loading of all resources
         /// </summary>
         [Signal]
-        public delegate void End(IEnumerable<Resource> resources);
+        public delegate void End(Node scene);
 
         /// <summary>
         /// Reinit the loading actions but not stop it
@@ -124,13 +124,15 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         {
             this.EmitSignal(LoadingActionsType.Reinit.ToString());
 
-            this.LoadScene();
+            Node nextScene = this.LoadScene();
 
-            this.EmitSignal(LoadingActionsType.End.ToString(), this._loadedResources); //TODO: 24/06/2020, changing to send instance of scene
+            this.EmitSignal(LoadingActionsType.End.ToString(), nextScene); 
         }
 
-        private void LoadScene()
+        private Node LoadScene()
         {
+            Node instanceOfScene = null;
+
             if (!string.IsNullOrEmpty(this._currentSetting.Path))
             {
                 int nbMessages = 0;
@@ -143,16 +145,15 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
                 this.EmitSignal(LoadingActionsType.Begin.ToString(), 1 + nbMessages);
 
                 Resource resourceScene = ResourceLoader.Load(this._currentSetting.Path);
-
                 PackedScene scene = resourceScene as PackedScene;
-                Node instanceOfScene = scene.Instance();
-
-                GD.Print((instanceOfScene as IDataInit) != null);
-
                 this._loadedResources.Add(resourceScene);
+
+                instanceOfScene = scene.Instance();
 
                 this.EmitSignal(LoadingActionsType.EndLoadingResource.ToString());
             }
+
+            return instanceOfScene;
         }
         #endregion
 

@@ -19,6 +19,10 @@ config/name="la-diagonale-du-poulpe"
 run/main_scene="res://Sources/App/Core/Container-Scenes/RootScene.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+ResourcesSceneLoader="*res://Sources/App/Shared/Services/Resources/ResourcesSceneLoader.cs"
+
 [display]
 
 window/size/width=1980
