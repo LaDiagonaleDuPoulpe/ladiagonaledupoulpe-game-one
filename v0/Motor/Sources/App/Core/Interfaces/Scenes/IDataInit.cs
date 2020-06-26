@@ -1,3 +1,5 @@
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
+
 namespace Motor.Sources.App.Core.Interfaces.Scenes
 {
     /// <summary>
@@ -9,6 +11,6 @@ namespace Motor.Sources.App.Core.Interfaces.Scenes
         /// <summary>
         /// Initializes one scene
         /// </summary>
-         void Initialize();
+         void Initialize(SceneConfigurationSetting setting);
     }
 }

@@ -149,11 +149,17 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
                 this._loadedResources.Add(resourceScene);
 
                 instanceOfScene = scene.Instance();
+                this.InitializeScene(instanceOfScene as IDataInit, this._currentSetting);
 
                 this.EmitSignal(LoadingActionsType.EndLoadingResource.ToString());
             }
 
             return instanceOfScene;
+        }
+
+        private void InitializeScene(IDataInit scene, SceneConfigurationSetting settings)
+        {
+            
         }
         #endregion
 
