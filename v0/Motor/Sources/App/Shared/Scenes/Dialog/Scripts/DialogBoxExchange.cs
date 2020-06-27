@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.DialogBox
+namespace ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog.Scripts
 {
     /// <summary>
-    /// Settings for one item dialogbox.
-    /// Item contains several exchanges between people, or exchanges could be one people speaking to himself
+    /// Exchange contains list of message 
     /// </summary>
-    public class DialogBoxExchangesItemSetting
+    public class DialogBoxExchange
     {
-        #region MyRegion
+        #region Properties
         /// <summary>
         /// Key of the exchange
         /// </summary>
@@ -21,7 +20,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.DialogBox
         /// <summary>
         /// Next exchange after this one
         /// </summary>
-        public string Next { get; set; }
+        public DialogBoxExchange Next { get; set; }
 
         /// <summary>
         /// True to active the exchange in dialog box without manual launching
@@ -36,7 +35,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.DialogBox
         /// <summary>
         /// List of messages for one exchange
         /// </summary>
-        public List<DialogBoxMessageContentSetting> Messages { get; set; }
+        public List<MessageContent> Messages { get; set; }
         #endregion
     }
 }

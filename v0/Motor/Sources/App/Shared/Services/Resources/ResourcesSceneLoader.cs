@@ -2,6 +2,9 @@
 using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Scenes;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
+using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog;
+using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog.Scripts;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 using Motor.Sources.App.Core.Interfaces.Scenes;
 using System;
 using System.Collections.Generic;
@@ -159,7 +162,14 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 
         private void InitializeScene(IDataInit scene, SceneConfigurationSetting settings)
         {
-            
+            List<DialogBoxExchange> contents = new List<DialogBoxExchange>();
+
+            settings.DialogBox.Items.ForEach(item =>
+            {
+                contents.Add(item.Convert(ResourceLoader.Load));
+            });
+
+            scene.Initialize(contents);
         }
         #endregion
 

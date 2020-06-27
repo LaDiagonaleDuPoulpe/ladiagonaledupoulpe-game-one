@@ -1,5 +1,6 @@
 ﻿using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
+using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog.Scripts;
 using Motor.Sources.App.Core.Interfaces.Scenes;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
     public abstract class BaseScene : Node2D, IDataInit
     {
         #region Public methods
-        public void Initialize(SceneConfigurationSetting setting)
+        public void Initialize(List<DialogBoxExchange> contents)
         {
             throw new NotImplementedException();
         }

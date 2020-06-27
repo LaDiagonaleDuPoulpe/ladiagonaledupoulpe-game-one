@@ -71,11 +71,13 @@
     <Compile Include="Sources\App\Shared\Enums\LoadingActionsType.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\AnimatedSpriteDirection.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\DialogBox.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\DialogBoxExchange.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\DialogBoxSpriteStatus.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\MessageContent.cs" />
     <Compile Include="Sources\App\Shared\Scenes\LoadingScene\Scripts\LoadingScene.cs" />
     <Compile Include="Sources\App\Shared\Services\UI\DialoxBoxManager.cs" />
     <Compile Include="Sources\App\Shared\Services\Resources\ResourcesSceneLoader.cs" />
+    <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\ExchangeSettingExtensionMethod.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\StringExtensionMethod.cs" />
   </ItemGroup>
   <ItemGroup>
