@@ -15,11 +15,19 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
     /// </summary>
     public abstract class BaseScene : Node2D, IDataInit
     {
+        #region Fields
+        private List<DialogBoxExchange> _exchanges = null; 
+        #endregion
+
         #region Public methods
         public void Initialize(List<DialogBoxExchange> contents)
         {
-            throw new NotImplementedException();
+            this._exchanges = contents;
         }
+        #endregion
+
+        #region Properties
+        public List<DialogBoxExchange> Exchanges { get => this._exchanges; }
         #endregion
     }
 }
