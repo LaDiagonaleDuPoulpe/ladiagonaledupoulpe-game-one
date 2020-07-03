@@ -28,6 +28,7 @@ public class LoadingScene : Node2D
 
     private ProgressBar _oneFileProgressBar = null;
     private ProgressBar _allFilesProgressBar = null;
+    private Node2D _progressBarsGroup = null;
 
     private int _filesNumber = 0;
     private int _currentFilesLoadingNumber = 0;
@@ -53,8 +54,9 @@ public class LoadingScene : Node2D
     #region Internal methods
     private void Initialize()
     {
-        this._oneFileProgressBar = this.GetNode<ProgressBar>("OneFileProgressBar");
-        this._allFilesProgressBar = this.GetNode<ProgressBar>("AllFilesProgressBar");
+        this._progressBarsGroup = this.GetNode<Node2D>("Bloc-ProgressBars");
+        this._oneFileProgressBar = this._progressBarsGroup.GetNode<ProgressBar>("OneFileProgressBar");
+        this._allFilesProgressBar = this._progressBarsGroup.GetNode<ProgressBar>("AllFilesProgressBar");
         this.AttachSignals();
     }
 
@@ -78,6 +80,7 @@ public class LoadingScene : Node2D
     private void EndLoadingResources(Node nextScene)
     {
         this.Visible = false;
+
         this.ReinitProgressBars();
         this.EmitSignal(LoadingActionsType.End.ToString(), nextScene);
     }

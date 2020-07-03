@@ -19,25 +19,27 @@ font_data = ExtResource( 3 )
 script = ExtResource( 2 )
 
 [node name="LoadingScene-Background" type="Sprite" parent="."]
-position = Vector2( 1000, 384 )
-scale = Vector2( 1.0375, 0.970371 )
+position = Vector2( 456, 208 )
+scale = Vector2( 0.587736, 0.554413 )
 texture = ExtResource( 1 )
 
-[node name="Bars-Background" type="ColorRect" parent="."]
-margin_left = -8.0
-margin_top = 912.0
-margin_right = 1984.0
-margin_bottom = 1024.0
+[node name="Bloc-ProgressBars" type="Node2D" parent="."]
+
+[node name="Bars-Background" type="ColorRect" parent="Bloc-ProgressBars"]
+margin_left = -112.0
+margin_top = 504.0
+margin_right = 1021.0
+margin_bottom = 600.0
 color = Color( 0.0235294, 0.0235294, 0.0235294, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OneFileProgressBar" type="ProgressBar" parent="."]
-margin_left = 16.0
-margin_top = 928.0
-margin_right = 1960.0
-margin_bottom = 971.0
+[node name="OneFileProgressBar" type="ProgressBar" parent="Bloc-ProgressBars"]
+margin_left = -96.0
+margin_top = 504.0
+margin_right = 992.0
+margin_bottom = 547.0
 size_flags_horizontal = 3
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
@@ -49,11 +51,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AllFilesProgressBar" type="ProgressBar" parent="."]
-margin_left = 16.0
-margin_top = 984.0
-margin_right = 1960.0
-margin_bottom = 1027.0
+[node name="AllFilesProgressBar" type="ProgressBar" parent="Bloc-ProgressBars"]
+margin_left = -96.0
+margin_top = 552.0
+margin_right = 992.0
+margin_bottom = 595.0
 size_flags_horizontal = 3
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )

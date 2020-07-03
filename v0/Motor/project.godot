@@ -19,28 +19,11 @@ config/name="la-diagonale-du-poulpe"
 run/main_scene="res://Sources/App/Core/Container-Scenes/RootScene.tscn"
 config/icon="res://icon.png"
 
-[autoload]
-
-ResourcesSceneLoader="*res://Sources/App/Shared/Services/Resources/ResourcesSceneLoader.cs"
-
 [display]
 
-window/size/width=1980
-window/size/height=1024
+window/size/fullscreen=true
 window/stretch/mode="viewport"
-window/stretch/aspect="keep"
-
-[editor_plugins]
-
-enabled=PoolStringArray( "MonoDebuggerQM-1.0.1" )
-
-[logging]
-
-file_logging/enable_file_logging=true
-
-[mono]
-
-project/auto_update_project=false
+window/stretch/aspect="keep_height"
 
 [rendering]
 
