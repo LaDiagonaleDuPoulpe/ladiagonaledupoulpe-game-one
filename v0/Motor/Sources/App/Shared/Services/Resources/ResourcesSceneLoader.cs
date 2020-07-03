@@ -138,14 +138,10 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 
             if (!string.IsNullOrEmpty(this._currentSetting.Path))
             {
-                int nbMessages = 0;
+                int? nbMessages = 0;
 
-                if (this._currentSetting.DialogBox != null && this._currentSetting.DialogBox.Items != null)
-                {
-                    nbMessages = this._currentSetting.DialogBox.Items.Sum(item => item.Messages.Count);
-                }
-
-                this.EmitSignal(LoadingActionsType.Begin.ToString(), 1 + nbMessages);
+                nbMessages = this._currentSetting.DialogBox?.Items?.Count;
+                this.EmitSignal(LoadingActionsType.Begin.ToString(), 1 + nbMessages.GetValueOrDefault(0));
 
                 Resource resourceScene = ResourceLoader.Load(this._currentSetting.Path);
                 PackedScene scene = resourceScene as PackedScene;
