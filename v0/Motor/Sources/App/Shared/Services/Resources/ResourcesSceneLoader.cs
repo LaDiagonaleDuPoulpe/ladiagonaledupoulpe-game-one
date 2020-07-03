@@ -148,9 +148,9 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
                 this._loadedResources.Add(resourceScene);
 
                 instanceOfScene = scene.Instance();
-                this.InitializeScene(instanceOfScene as IDataInit, this._currentSetting);
-
                 this.EmitSignal(LoadingActionsType.EndLoadingResource.ToString());
+
+                this.InitializeScene(instanceOfScene as IDataInit, this._currentSetting);
             }
 
             return instanceOfScene;
@@ -163,6 +163,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
             settings.DialogBox.Items.ForEach(item =>
             {
                 contents.Add(item.Convert(ResourceLoader.Load));
+                this.EmitSignal(LoadingActionsType.EndLoadingResource.ToString());
             });
 
             scene.Initialize(contents);

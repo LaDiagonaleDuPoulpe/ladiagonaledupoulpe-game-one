@@ -102,7 +102,12 @@ public class LoadingScene : Node2D
     private void EndLoadingOneResource()
     {
         this._oneFileProgressBar.Value = 100;
-        this._allFilesProgressBar.Value = (++this._currentFilesLoadingNumber / this.FilesNumber) * 100;
+        this._currentFilesLoadingNumber++;
+        this._allFilesProgressBar.Value = (this._currentFilesLoadingNumber / this.FilesNumber) * 100;
+
+        GD.Print("-- this._currentFilesLoadingNumber ", this._currentFilesLoadingNumber);
+        GD.Print("-- this.FilesNumber ", this.FilesNumber);
+        GD.Print("this._allFilesProgressBar.Value => ", this._allFilesProgressBar.Value);
     }
     #endregion
 
