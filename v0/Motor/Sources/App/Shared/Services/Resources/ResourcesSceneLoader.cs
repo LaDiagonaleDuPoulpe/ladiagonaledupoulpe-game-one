@@ -53,11 +53,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         public delegate void EndLoadingResource();
         #endregion
 
-        private static Lazy<ResourcesSceneLoader> __instance = new Lazy<ResourcesSceneLoader>(() => new ResourcesSceneLoader());
+        private static readonly Lazy<ResourcesSceneLoader> __instance = new Lazy<ResourcesSceneLoader>(() => new ResourcesSceneLoader());
         private ILevelConfiguration _configuration = null;
         private System.Threading.Thread _maintThread = null;
         private SceneConfigurationSetting _currentSetting = null;
-        private List<Resource> _loadedResources = new List<Resource>();
+        private readonly List<Resource> _loadedResources = new List<Resource>();
         #endregion
 
         #region Constructors

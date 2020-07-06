@@ -5,6 +5,7 @@
         "key": "begin",
         "next": null,
         "autoLoad": true,
+        "signal":  "seeifusefull",
         "timeBeforeStart": 500,
         "messages": [
           {

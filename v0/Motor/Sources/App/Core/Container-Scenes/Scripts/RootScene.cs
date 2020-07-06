@@ -6,6 +6,9 @@ using ladiagonaledupoulpe.Sources.App.Shared.Services;
 using System.Collections.Generic;
 using System.Linq;
 
+/// <summary>
+/// Parent scene of all scenes. The scene will load other scenes inside it.
+/// </summary>
 public class RootScene : Node2D
 {
     #region Fields
@@ -20,15 +23,6 @@ public class RootScene : Node2D
 
         this.Initialize();
 
-        Resource resource = ResourceLoader.Load("res://Sources/App/Shared/Assets/Animations/Characters/Speaking/player3.tres");
-        SpriteFrames spriteFrames = resource as SpriteFrames;
-
-        
-        box.Start(new List<MessageContent>()
-        {
-            new MessageContent() { Content = "Le vaisseau ne va vraiment pas bien ! Comment s'en sortir ?", SpriteFrames = spriteFrames },
-            new MessageContent() { Content = "Et si nous trouvions deja un moyen de déclencher l'auto-reparation ?", SpriteFrames = spriteFrames, SpriteDirection = AnimatedSpriteDirection.Right }
-        });
     }
 
     public void _on_Button_pressed()
