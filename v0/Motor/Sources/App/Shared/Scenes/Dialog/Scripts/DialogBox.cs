@@ -17,6 +17,15 @@ public class DialogBox : Node2D
     #endregion
 
     #region Fields
+    #region Signals
+    /// <summary>
+    /// Signal to display one exchange in the displaybox
+    /// </summary>
+    /// <param name="key">Key of one exchange</param>
+    [Signal]
+    public delegate void DisplayExchange(string key);
+    #endregion
+
     private List<MessageContent> _messageContents;
     private RichTextLabel _content = null;
     private Timer _currentTimer = null;

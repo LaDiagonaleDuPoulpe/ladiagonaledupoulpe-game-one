@@ -12,7 +12,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.DialogBox
     /// </summary>
     public class DialogBoxExchangesItemSetting
     {
-        #region MyRegion
+        #region Properties
         /// <summary>
         /// Key of the exchange
         /// </summary>
@@ -27,6 +27,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.DialogBox
         /// True to active the exchange in dialog box without manual launching
         /// </summary>
         public bool AutoLoad { get; set; }
+
+        /// <summary>
+        /// Order index to launch exchange
+        /// </summary>
+        public int Order { get; set; }
 
         /// <summary>
         /// Time before the autoload exchange will be displayed

@@ -65,6 +65,7 @@
     <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\SceneConfigurationSetting.cs" />
     <Compile Include="Sources\App\Game-Scenes\Test-Scene\TestSceneToBeLoaded.cs" />
+    <Compile Include="Sources\App\Shared\Enums\DialogBoxActionType.cs" />
     <Compile Include="Sources\App\Shared\Enums\LoadingActionsType.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\AnimatedSpriteDirection.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\DialogBox.cs" />

@@ -13,13 +13,14 @@ public class RootScene : Node2D
 {
     #region Fields
     private LoadingScene _loadingScene = null;
+    private DialogBox _dialogBox = null;
     #endregion
 
     #region Public methods
     public override void _Ready()
     {
         this.LoadingScene = this.GetNode<LoadingScene>("LoadingScene");
-        DialogBox box = this.GetNode("DialogBox") as DialogBox;
+        this._dialogBox = this.GetNode("DialogBox") as DialogBox;
 
         this.Initialize();
 

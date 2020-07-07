@@ -18,6 +18,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog.Scripts
         public string Key { get; set; }
 
         /// <summary>
+        /// Order index to launch exchange
+        /// </summary>
+        public int Order { get; set; }
+
+        /// <summary>
         /// Next exchange after this one
         /// </summary>
         public DialogBoxExchange Next { get; set; }

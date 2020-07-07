@@ -26,6 +26,20 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         }
         #endregion
 
+        #region Internal methods
+        private void RunAutoLoadMessages()
+        {
+            var list = this._exchanges.Where(item => item.AutoLoad)
+                                      .OrderBy(item => item.Order);
+
+            foreach (var exchange in list)
+            {
+                // 07/07/2020 => A qui est la responsabilité de garder la liste des exchanges ?
+                //            => DialogBox ? Ou bien la scene ?
+            }
+        }
+        #endregion
+
         #region Properties
         public List<DialogBoxExchange> Exchanges { get => this._exchanges; }
         #endregion

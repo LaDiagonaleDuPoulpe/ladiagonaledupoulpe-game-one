@@ -5,7 +5,7 @@
         "key": "begin",
         "next": null,
         "autoLoad": true,
-        "signal":  "seeifusefull",
+        "order": 0,
         "timeBeforeStart": 500,
         "messages": [
           {
@@ -21,9 +21,10 @@
         ]
       },
       {
-        "key": "begin",
+        "key": "begin_2",
         "next": null,
         "autoLoad": true,
+        "order": 1,
         "timeBeforeStart": 500,
         "messages": [
           {
