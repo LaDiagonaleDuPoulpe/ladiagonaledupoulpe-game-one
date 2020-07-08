@@ -14,6 +14,7 @@ public class RootScene : Node2D
     #region Fields
     private LoadingScene _loadingScene = null;
     private DialogBox _dialogBox = null;
+    private Node2D _lastScene = null;
     #endregion
 
     #region Public methods
@@ -49,8 +50,15 @@ public class RootScene : Node2D
 
     private void LoadingScene_End(Node2D nextScene)
     {
+        if (this._lastScene != null)
+        {
+            this.RemoveChild(this._lastScene);
+        }
+
         this.GetNode<Button>("Button").Visible = false;
         this.AddChild(nextScene);
+
+        this._lastScene = nextScene;
     }
     #endregion
 
