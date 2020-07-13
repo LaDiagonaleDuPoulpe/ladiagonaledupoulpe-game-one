@@ -24,6 +24,7 @@ config/icon="res://icon.png"
 DialoxBoxManager="*res://Sources/App/Shared/Services/UI/DialoxBoxManager.cs"
 DialogBox="*res://Sources/App/Shared/Scenes/Dialog/DialogBox.tscn"
 LoadingScene="*res://Sources/App/Shared/Scenes/LoadingScene/LoadingScene.tscn"
+GlobalDataService="*res://Sources/App/Shared/Services/Data/GlobalDataService.cs"
 
 [display]
 

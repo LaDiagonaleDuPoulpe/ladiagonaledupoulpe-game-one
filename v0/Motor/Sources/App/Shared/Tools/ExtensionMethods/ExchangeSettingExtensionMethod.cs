@@ -1,7 +1,8 @@
 ﻿using Godot;
+using ladiagonaledupoulpe.Sources.App.Core.Models.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.DialogBox;
+using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog;
-using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog.Scripts;
 using System;
 using System.Collections.Generic;
 
