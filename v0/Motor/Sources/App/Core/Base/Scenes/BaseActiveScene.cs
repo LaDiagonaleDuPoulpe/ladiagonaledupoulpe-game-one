@@ -18,7 +18,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
     public abstract class BaseActiveScene : BaseScene, IDataInit
     {
         #region Fields
-        private DialoxBoxManager _dialoxBoxManager = null;
         private GlobalDataService _globalDataService = null;
         #endregion
 
@@ -34,7 +33,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         {
             base._Ready();
 
-            this.DialoxBoxManager = this.GetNode<DialoxBoxManager>("/root/DialoxBoxManager");
             this.GlobalDataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
 
             this.Initialize(this.GlobalDataService.CurrentExchanges);
@@ -50,11 +48,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         #endregion
 
         #region Properties
-        /// <summary>
-        /// Manager of the dialog box (autoload singleton)
-        /// </summary>
-        public DialoxBoxManager DialoxBoxManager { get => this._dialoxBoxManager; private set => this._dialoxBoxManager = value; }
-
         /// <summary>
         /// Service to get global project data
         /// </summary>

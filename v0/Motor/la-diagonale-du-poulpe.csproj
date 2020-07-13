@@ -77,6 +77,7 @@
     <Compile Include="Sources\App\Shared\Services\Data\GlobalDataService.cs" />
     <Compile Include="Sources\App\Shared\Services\UI\DialoxBoxManager.cs" />
     <Compile Include="Sources\App\Shared\Services\Resources\ResourcesSceneLoader.cs" />
+    <Compile Include="Sources\App\Core\Interfaces\DialogBox\IDialoxBoxManager.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\ExchangeSettingExtensionMethod.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\StringExtensionMethod.cs" />
   </ItemGroup>

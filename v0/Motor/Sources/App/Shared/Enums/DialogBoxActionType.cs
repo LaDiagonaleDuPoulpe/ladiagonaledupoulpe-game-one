@@ -16,6 +16,10 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Enums
         /// </summary>
         Start = 0,
         /// <summary>
+        /// Show the dialog box
+        /// </summary>
+        ShowBox = 1,
+        /// <summary>
         /// End of one exchange
         /// </summary>
         End = 100,

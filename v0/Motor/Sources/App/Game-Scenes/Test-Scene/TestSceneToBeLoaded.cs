@@ -1,6 +1,7 @@
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Base.Scenes;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
+using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using Motor.Sources.App.Core.Interfaces.Scenes;
 using System;
 
@@ -11,9 +12,7 @@ public class TestSceneToBeLoaded : BaseActiveScene
     {
         base._Ready();
 
-        GD.Print("TestSceneToBeLoaded");
-
-        this.EmitSignal("ShowBox");
+        this.EmitSignal(DialogBoxActionType.ShowBox.ToString());
     }
     #endregion
 }
