@@ -1,5 +1,5 @@
+using ladiagonaledupoulpe.Sources.App.Core.Models.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
-using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog.Scripts;
 using System.Collections.Generic;
 
 namespace Motor.Sources.App.Core.Interfaces.Scenes

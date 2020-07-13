@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog.Scripts
+namespace ladiagonaledupoulpe.Sources.App.Core.Models.DialogBox
 {
     /// <summary>
     /// Exchange contains list of message 

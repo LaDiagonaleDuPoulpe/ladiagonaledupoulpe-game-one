@@ -1,5 +1,5 @@
 ﻿using Godot;
-using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog.Scripts;
+using ladiagonaledupoulpe.Sources.App.Core.Models.DialogBox;
 using System;
 using System.Collections.Generic;
 using System.Linq;

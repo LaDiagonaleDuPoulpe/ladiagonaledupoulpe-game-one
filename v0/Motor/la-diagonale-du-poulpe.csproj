@@ -67,11 +67,11 @@
     <Compile Include="Sources\App\Game-Scenes\Test-Scene\TestSceneToBeLoaded.cs" />
     <Compile Include="Sources\App\Shared\Enums\DialogBoxActionType.cs" />
     <Compile Include="Sources\App\Shared\Enums\LoadingActionsType.cs" />
-    <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\AnimatedSpriteDirection.cs" />
+    <Compile Include="Sources\App\Shared\Enums\AnimatedSpriteDirection.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\DialogBox.cs" />
-    <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\DialogBoxExchange.cs" />
-    <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\DialogBoxSpriteStatus.cs" />
-    <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\MessageContent.cs" />
+    <Compile Include="Sources\App\Core\Models\Scenes\DialogBox\DialogBoxExchange.cs" />
+    <Compile Include="Sources\App\Shared\Enums\DialogBoxSpriteStatus.cs" />
+    <Compile Include="Sources\App\Core\Models\Scenes\DialogBox\MessageContent.cs" />
     <Compile Include="Sources\App\Shared\Scenes\LoadingScene\Scripts\LoadingScene.cs" />
     <Compile Include="Sources\App\Shared\Services\UI\DialoxBoxManager.cs" />
     <Compile Include="Sources\App\Shared\Services\Resources\ResourcesSceneLoader.cs" />
@@ -86,9 +86,7 @@
     <None Include="Sources\App\Game-Scenes\Test-Scene\test-scene-to-be-loaded.tscn" />
     <None Include="Sources\App\Shared\Services\README.md" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Sources\App\Core\Models\Scenes\DialogBox\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies">
       <Version>1.0.0</Version>

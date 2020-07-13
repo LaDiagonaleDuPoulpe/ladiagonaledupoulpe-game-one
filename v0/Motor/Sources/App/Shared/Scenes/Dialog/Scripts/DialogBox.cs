@@ -1,4 +1,5 @@
 using Godot;
+using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog;
 using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 using System;

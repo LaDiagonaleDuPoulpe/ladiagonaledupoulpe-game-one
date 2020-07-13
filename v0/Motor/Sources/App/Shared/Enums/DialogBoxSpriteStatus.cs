@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog
+namespace ladiagonaledupoulpe.Sources.App.Shared.Enums
 {
     /// <summary>
     /// Status of the animated sprite for player in dialog box

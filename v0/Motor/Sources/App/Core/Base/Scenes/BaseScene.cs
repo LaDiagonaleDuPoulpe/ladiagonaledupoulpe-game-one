@@ -1,6 +1,6 @@
 ﻿using Godot;
+using ladiagonaledupoulpe.Sources.App.Core.Models.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
-using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog.Scripts;
 using ladiagonaledupoulpe.Sources.App.Shared.Services;
 using Motor.Sources.App.Core.Interfaces.Scenes;
 using System;
