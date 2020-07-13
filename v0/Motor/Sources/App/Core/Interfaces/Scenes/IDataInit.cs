@@ -14,10 +14,5 @@ namespace Motor.Sources.App.Core.Interfaces.Scenes
         /// Initializes one scene
         /// </summary>
          void Initialize(List<DialogBoxExchange> contents);
-
-        /// <summary>
-        /// Exchanges during the scene
-        /// </summary>
-        List<DialogBoxExchange> Exchanges { get; }
     }
 }

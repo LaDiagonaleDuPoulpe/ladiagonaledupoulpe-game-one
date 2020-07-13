@@ -138,10 +138,10 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 
             if (!string.IsNullOrEmpty(this._currentSetting.Path))
             {
-                int? nbMessages = 0;
+                int? nbExchanges = 0;
 
-                nbMessages = this._currentSetting.DialogBox?.Items?.Count;
-                this.EmitSignal(LoadingActionsType.Begin.ToString(), 1 + nbMessages.GetValueOrDefault(0));
+                nbExchanges = this._currentSetting.DialogBox?.Items?.Count;
+                this.EmitSignal(LoadingActionsType.Begin.ToString(), 1 + nbExchanges.GetValueOrDefault(0));
 
                 Resource resourceScene = ResourceLoader.Load(this._currentSetting.Path);
                 PackedScene scene = resourceScene as PackedScene;
@@ -156,6 +156,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
             return instanceOfScene;
         }
 
+        // TODO: 09/07/2020, See to use a factory
         private void InitializeScene(IDataInit scene, SceneConfigurationSetting settings)
         {
             List<DialogBoxExchange> contents = new List<DialogBoxExchange>();

@@ -1,4 +1,5 @@
 ﻿using Godot;
+using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog.Scripts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,26 +16,36 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
     public class DialoxBoxManager : Node
     {
         #region Fields
+        #region Signals
+        [Signal]
+        public delegate void ShowBox();
+        #endregion
         private static Lazy<DialoxBoxManager> __instance = new Lazy<DialoxBoxManager>(() => new DialoxBoxManager());
+        private List<DialogBoxExchange> _exchanges;
         #endregion
 
         #region Constructors
-        private DialoxBoxManager() 
-        {
-            
-        }
+        private DialoxBoxManager() {}
         #endregion
 
         #region Public methods
         /// <summary>
         /// Preloads data about the dialog box
         /// </summary>
-        public void Preload()
+        public void Preload(List<DialogBoxExchange> contents)
         {
-            Resource resource = ResourceLoader.Load("res://Sources/App/Shared/Assets/Animations/Characters/Speaking/player3.tres");
-            SpriteFrames spriteFrames = resource as SpriteFrames;
+            this._exchanges = contents;
 
-            
+            // this.dialog = this.GetNode<DialogBox>(); TODO: 09/07/2020, Get dialog box node
+
+            this.Connect("ShowBox", this, nameof(ShowDialog));
+        }
+        #endregion
+
+        #region Internal methods
+        private void ShowDialog()
+        {
+            GD.Print("ShowDialog");
         }
         #endregion
 

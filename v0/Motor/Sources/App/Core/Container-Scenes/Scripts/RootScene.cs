@@ -20,11 +20,16 @@ public class RootScene : Node2D
     #region Public methods
     public override void _Ready()
     {
-        this.LoadingScene = this.GetNode<LoadingScene>("LoadingScene");
-        this._dialogBox = this.GetNode("DialogBox") as DialogBox;
+        this.LoadingScene = this.GetNode<LoadingScene>("/root/LoadingScene");
+        this._dialogBox = this.GetNode<DialogBox>("/root/DialogBox");
 
         this.Initialize();
 
+        Resource resource = ResourceLoader.Load("res://Sources/App/Shared/Assets/Animations/Characters/Speaking/player3.tres");
+        SpriteFrames spriteFrames = resource as SpriteFrames;
+
+
+        
     }
 
     public void _on_Button_pressed()
@@ -41,6 +46,13 @@ public class RootScene : Node2D
     {
         this.LoadingScene.Connect(LoadingActionsType.Begin.ToString(), this, nameof(LoadingScene_Start));
         this.LoadingScene.Connect(LoadingActionsType.End.ToString(), this, nameof(LoadingScene_End));
+
+        
+    }
+
+    private void ShowDialog()
+    {
+        
     }
 
     private void LoadingScene_Start()

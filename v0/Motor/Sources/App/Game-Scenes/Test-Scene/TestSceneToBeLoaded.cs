@@ -10,6 +10,8 @@ public class TestSceneToBeLoaded : BaseScene
     public override void _Ready()
     {
         GD.Print("TestSceneToBeLoaded");
+
+        this.EmitSignal("ShowBox");
     }
     #endregion
 }

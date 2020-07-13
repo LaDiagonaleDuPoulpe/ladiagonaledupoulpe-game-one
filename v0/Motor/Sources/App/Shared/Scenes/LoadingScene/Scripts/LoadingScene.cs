@@ -54,6 +54,8 @@ public class LoadingScene : Node2D
     #region Internal methods
     private void Initialize()
     {
+        this.Visible = false;
+
         this._progressBarsGroup = this.GetNode<Node2D>("Bloc-ProgressBars");
         this._oneFileProgressBar = this._progressBarsGroup.GetNode<ProgressBar>("OneFileProgressBar");
         this._allFilesProgressBar = this._progressBarsGroup.GetNode<ProgressBar>("AllFilesProgressBar");
@@ -103,15 +105,8 @@ public class LoadingScene : Node2D
     {
         this._oneFileProgressBar.Value = 100;
         this._currentFilesLoadingNumber++;
-
         decimal loadedPourcent = ((decimal)this._currentFilesLoadingNumber / this.FilesNumber) * 100;
-        GD.Print("-- this._currentFilesLoadingNumber ", loadedPourcent);
-
         this._allFilesProgressBar.Value = (int) loadedPourcent;
-
-        GD.Print("-- this._currentFilesLoadingNumber ", this._currentFilesLoadingNumber);
-        GD.Print("-- this.FilesNumber ", this.FilesNumber);
-        GD.Print("this._allFilesProgressBar.Value => ", this._allFilesProgressBar.Value);
     }
     #endregion
 

@@ -17,15 +17,6 @@ public class DialogBox : Node2D
     #endregion
 
     #region Fields
-    #region Signals
-    /// <summary>
-    /// Signal to display one exchange in the displaybox
-    /// </summary>
-    /// <param name="key">Key of one exchange</param>
-    [Signal]
-    public delegate void DisplayExchange(string key);
-    #endregion
-
     private List<MessageContent> _messageContents;
     private RichTextLabel _content = null;
     private Timer _currentTimer = null;
@@ -34,7 +25,7 @@ public class DialogBox : Node2D
     private ColorRect _borderRectangle = null;
     private int _currentPartOfMessage = 0;
 
-    #region Events
+    #region Signals
     /// <summary>
     /// Occurs when one message is ended
     /// </summary>
@@ -46,12 +37,21 @@ public class DialogBox : Node2D
     /// </summary>
     [Signal]
     public delegate void EndOfAllMessages();
+
+    /// <summary>
+    /// Signal to display one exchange in the displaybox
+    /// </summary>
+    /// <param name="key">Key of one exchange</param>
+    [Signal]
+    public delegate void DisplayExchange(string key);
     #endregion
     #endregion
 
     #region Public methods
     public override void _Ready()
     {
+        this.Visible = false;
+
         this._content = this.GetNode("Content") as RichTextLabel;
         this._currentTimer  = this.GetNode("Timer") as Timer;
         this._nextOrCloseButton = this.GetNode("NextOrClose") as Button;
