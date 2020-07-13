@@ -121,6 +121,7 @@ public class DialogBox : Node2D
     #region Internal methods
     private void Initialize()
     {
+        this.Visible = true;
         this.CurrentVisibleCharacters = 0;
         this._content.BbcodeText = this.DefineAlignement(this.CurrentMessage.Content);
 

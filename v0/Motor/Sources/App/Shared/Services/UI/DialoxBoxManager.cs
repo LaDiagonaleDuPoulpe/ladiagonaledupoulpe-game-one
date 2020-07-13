@@ -50,7 +50,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         /// <param name="key">Key of exchange</param>
         public void Start(string key)
         {
-            this.DialogBox.Visible = true;
+            this.DialogBox.Start(this._exchanges.First(item => item.Key == key).Messages);
         }
 
         public void ShowDialog()

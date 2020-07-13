@@ -12,7 +12,7 @@ public class TestSceneToBeLoaded : BaseActiveScene
     {
         base._Ready();
 
-        this.EmitSignal(DialogBoxActionType.ShowBox.ToString());
+        this.DialoxBoxManager.Start("begin");
     }
     #endregion
 }
