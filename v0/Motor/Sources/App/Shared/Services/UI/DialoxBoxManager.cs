@@ -16,11 +16,6 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
     public class DialoxBoxManager : Node
     {
         #region Fields
-        #region Signals
-        [Signal]
-        public delegate void ShowBox();
-        #endregion
-
         private List<DialogBoxExchange> _exchanges;
         #endregion
 
@@ -29,6 +24,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         #endregion
 
         #region Public methods
+        public override void _Ready()
+        {
+            base._Ready();
+        }
+
         /// <summary>
         /// Preloads data about the dialog box
         /// </summary>
@@ -36,14 +36,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         {
             this._exchanges = contents;
 
-            // this.dialog = this.GetNode<DialogBox>(); TODO: 09/07/2020, Get dialog box node
-
-            this.Connect("ShowBox", this, nameof(ShowDialog));
         }
         #endregion
 
         #region Internal methods
-        private void ShowDialog()
+        public void ShowDialog()
         {
             GD.Print("ShowDialog");
         }

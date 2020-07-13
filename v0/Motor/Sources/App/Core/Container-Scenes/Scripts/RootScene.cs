@@ -1,4 +1,5 @@
 using Godot;
+using ladiagonaledupoulpe.Sources.App.Core.Base.Scenes;
 using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Configurations;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog;
@@ -9,19 +10,21 @@ using System.Linq;
 /// <summary>
 /// Parent scene of all scenes. The scene will load other scenes inside it.
 /// </summary>
-public class RootScene : Node2D
+public class RootScene : BaseScene
 {
     #region Fields
     private LoadingScene _loadingScene = null;
-    private DialogBox _dialogBox = null;
+    private DialoxBoxManager _dialoxBoxManager = null;
     private Node2D _lastScene = null;
     #endregion
 
     #region Public methods
     public override void _Ready()
     {
+        base._Ready();
+
         this.LoadingScene = this.GetNode<LoadingScene>("/root/LoadingScene");
-        this._dialogBox = this.GetNode<DialogBox>("/root/DialogBox");
+        this._dialoxBoxManager = this.GetNode<DialoxBoxManager>("/root/DialoxBoxManager");
 
         this.Initialize();
     }
@@ -44,11 +47,6 @@ public class RootScene : Node2D
         
     }
 
-    private void ShowDialog()
-    {
-        
-    }
-
     private void LoadingScene_Start()
     {
         this.GetNode<Button>("Button").Visible = false;
@@ -63,6 +61,8 @@ public class RootScene : Node2D
 
         this.GetNode<Button>("Button").Visible = false;
         this.AddChild(nextScene);
+
+        nextScene.Connect("ShowBox", this._dialoxBoxManager, "ShowDialog");
 
         this._lastScene = nextScene;
     }
