@@ -20,7 +20,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         [Signal]
         public delegate void ShowBox();
         #endregion
-        private static Lazy<DialoxBoxManager> __instance = new Lazy<DialoxBoxManager>(() => new DialoxBoxManager());
+
         private List<DialogBoxExchange> _exchanges;
         #endregion
 
@@ -50,10 +50,6 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         #endregion
 
         #region Properties
-        /// <summary>
-        /// Single instance of the class
-        /// </summary>
-        public static DialoxBoxManager Instance { get => __instance.Value; }
         #endregion
     }
 }

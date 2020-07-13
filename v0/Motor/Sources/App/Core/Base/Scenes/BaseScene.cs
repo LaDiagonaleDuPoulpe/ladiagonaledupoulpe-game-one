@@ -17,13 +17,25 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
     public abstract class BaseScene : Node2D, IDataInit
     {
         #region Fields
+        private DialoxBoxManager _dialoxBoxManager = null;
+        #endregion
+
+        #region Constructors
+        public BaseScene(): base()
+        {
+            this.DialoxBoxManager = this.GetNode<DialoxBoxManager>("/root/DialoxBoxManager");
+
+        }
         #endregion
 
         #region Public methods
+        public override void _Ready()
+        {
+        }
+
         public void Initialize(List<DialogBoxExchange> contents)
         {
-            GD.Print("Initialize");
-            DialoxBoxManager.Instance.Preload(contents);
+            this.DialoxBoxManager.Preload(contents);
         }
         #endregion
 
@@ -31,6 +43,10 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Manager of the dialog box (autoload singleton)
+        /// </summary>
+        public DialoxBoxManager DialoxBoxManager { get => this._dialoxBoxManager; private set => this._dialoxBoxManager = value; }
         #endregion
     }
 }
