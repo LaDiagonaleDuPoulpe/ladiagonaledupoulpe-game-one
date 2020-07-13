@@ -23,7 +23,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         #region Constructors
         public BaseScene(): base()
         {
-            this.DialoxBoxManager = this.GetNode<DialoxBoxManager>("/root/DialoxBoxManager");
 
         }
         #endregion
@@ -31,6 +30,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         #region Public methods
         public override void _Ready()
         {
+            this.DialoxBoxManager = this.GetNode<DialoxBoxManager>("/root/DialoxBoxManager");
         }
 
         public void Initialize(List<DialogBoxExchange> contents)
