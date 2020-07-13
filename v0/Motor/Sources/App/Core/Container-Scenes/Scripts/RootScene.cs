@@ -24,12 +24,6 @@ public class RootScene : Node2D
         this._dialogBox = this.GetNode<DialogBox>("/root/DialogBox");
 
         this.Initialize();
-
-        Resource resource = ResourceLoader.Load("res://Sources/App/Shared/Assets/Animations/Characters/Speaking/player3.tres");
-        SpriteFrames spriteFrames = resource as SpriteFrames;
-
-
-        
     }
 
     public void _on_Button_pressed()
