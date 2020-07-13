@@ -2,6 +2,7 @@
 using ladiagonaledupoulpe.Sources.App.Core.Models.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
 using ladiagonaledupoulpe.Sources.App.Shared.Services;
+using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
 using Motor.Sources.App.Core.Interfaces.Scenes;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
     {
         #region Fields
         private DialoxBoxManager _dialoxBoxManager = null;
+        private GlobalDataService _globalDataService = null;
         #endregion
 
         #region Constructors
@@ -31,6 +33,9 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         public override void _Ready()
         {
             this.DialoxBoxManager = this.GetNode<DialoxBoxManager>("/root/DialoxBoxManager");
+            this.GlobalDataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
+
+            this.Initialize(this.GlobalDataService.CurrentExchanges);
         }
 
         public void Initialize(List<DialogBoxExchange> contents)
@@ -47,6 +52,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         /// Manager of the dialog box (autoload singleton)
         /// </summary>
         public DialoxBoxManager DialoxBoxManager { get => this._dialoxBoxManager; private set => this._dialoxBoxManager = value; }
+
+        /// <summary>
+        /// Service to get global project data
+        /// </summary>
+        public GlobalDataService GlobalDataService { get => this._globalDataService; private set => this._globalDataService = value; }
         #endregion
     }
 }

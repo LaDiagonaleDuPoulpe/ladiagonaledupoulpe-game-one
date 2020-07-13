@@ -4,6 +4,7 @@ using ladiagonaledupoulpe.Sources.App.Core.Models.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog;
+using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
 using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 using Motor.Sources.App.Core.Interfaces.Scenes;
 using System;
@@ -53,7 +54,6 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         public delegate void EndLoadingResource();
         #endregion
 
-        private static readonly Lazy<ResourcesSceneLoader> __instance = new Lazy<ResourcesSceneLoader>(() => new ResourcesSceneLoader());
         private ILevelConfiguration _configuration = null;
         private System.Threading.Thread _maintThread = null;
         private SceneConfigurationSetting _currentSetting = null;
@@ -61,9 +61,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         #endregion
 
         #region Constructors
-        private ResourcesSceneLoader()
-        {
-        }
+        private ResourcesSceneLoader() {}
         #endregion
 
         #region Public methods
@@ -167,15 +165,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
                 this.EmitSignal(LoadingActionsType.EndLoadingResource.ToString());
             });
 
-            scene.Initialize(contents);
+            this.GetNode<GlobalDataService>("/root/GlobalDataService").CurrentExchanges = contents;
         }
         #endregion
 
         #region Properties
-        /// <summary>
-        /// Returns the singleton
-        /// </summary>
-        public static ResourcesSceneLoader Instance { get => __instance.Value; }
         #endregion
     }
 }

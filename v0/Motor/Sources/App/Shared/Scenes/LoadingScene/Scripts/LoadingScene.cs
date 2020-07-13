@@ -29,6 +29,7 @@ public class LoadingScene : Node2D
     private ProgressBar _oneFileProgressBar = null;
     private ProgressBar _allFilesProgressBar = null;
     private Node2D _progressBarsGroup = null;
+    private ResourcesSceneLoader _resourcesSceneLoader = null;
 
     private int _filesNumber = 0;
     private int _currentFilesLoadingNumber = 0;
@@ -47,7 +48,7 @@ public class LoadingScene : Node2D
     /// <param name="configuration">Data to load next scene</param>
     public void Launch(ILevelConfiguration configuration)
     {
-        ResourcesSceneLoader.Instance.Start(configuration);
+        this._resourcesSceneLoader.Start(configuration);
     }
     #endregion
 
@@ -59,16 +60,18 @@ public class LoadingScene : Node2D
         this._progressBarsGroup = this.GetNode<Node2D>("Bloc-ProgressBars");
         this._oneFileProgressBar = this._progressBarsGroup.GetNode<ProgressBar>("OneFileProgressBar");
         this._allFilesProgressBar = this._progressBarsGroup.GetNode<ProgressBar>("AllFilesProgressBar");
+        this._resourcesSceneLoader = this.GetNode<ResourcesSceneLoader>("/root/ResourcesSceneLoader");
+
         this.AttachSignals();
     }
 
     private void AttachSignals()
     {
-        ResourcesSceneLoader.Instance.Connect(LoadingActionsType.Begin.ToString(), this, nameof(BeginLoadingResources));
-        ResourcesSceneLoader.Instance.Connect(LoadingActionsType.BeginLoadingResource.ToString(), this, nameof(BeginLoadingOneResource));
-        ResourcesSceneLoader.Instance.Connect(LoadingActionsType.End.ToString(), this, nameof(EndLoadingResources));
-        ResourcesSceneLoader.Instance.Connect(LoadingActionsType.EndLoadingResource.ToString(), this, nameof(EndLoadingOneResource));
-        ResourcesSceneLoader.Instance.Connect(LoadingActionsType.Reinit.ToString(), this, nameof(ReinitProgressBars));
+        this._resourcesSceneLoader.Connect(LoadingActionsType.Begin.ToString(), this, nameof(BeginLoadingResources));
+        this._resourcesSceneLoader.Connect(LoadingActionsType.BeginLoadingResource.ToString(), this, nameof(BeginLoadingOneResource));
+        this._resourcesSceneLoader.Connect(LoadingActionsType.End.ToString(), this, nameof(EndLoadingResources));
+        this._resourcesSceneLoader.Connect(LoadingActionsType.EndLoadingResource.ToString(), this, nameof(EndLoadingOneResource));
+        this._resourcesSceneLoader.Connect(LoadingActionsType.Reinit.ToString(), this, nameof(ReinitProgressBars));
     }
 
     private void BeginLoadingResources(int nbResources)
