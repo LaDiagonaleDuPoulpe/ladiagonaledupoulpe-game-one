@@ -110,9 +110,6 @@ public class DialogBox : Node2D
     {
         Action nextAtion = this.DisplayFullMessage;
 
-        GD.Print("this.CurrentVisibleCharacters => ", this.CurrentVisibleCharacters);
-        GD.Print("this.CurrentMessage?.Content.Length => ", this.CurrentMessage?.Content.Length);
-
         if (this.CurrentVisibleCharacters >= this.CurrentMessage?.Content.Length - 1)
         {
             nextAtion = this.OnNextOrClosePressed;
