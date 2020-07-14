@@ -26,7 +26,9 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         public delegate void EndOfOneExchange();
         #endregion
 
-        private List<DialogBoxExchange> _exchanges;
+        private Timer _timer = null;
+        private List<DialogBoxExchange> _exchanges = null;
+        private DialogBoxExchange _currentExchange = null;
         private DialogBox _dialogBox = null;
         #endregion
 
@@ -41,6 +43,8 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 
             this.DialogBox = this.GetNode<DialogBox>("/root/DialogBox");
             this.DialogBox.Connect(DialogBoxActionType.EndOfAllMessages.ToString(), this, nameof(StopDisplayMessagesOfOneExchange));
+
+            this.CreateTimer();
         }
 
         /// <summary>
@@ -50,18 +54,40 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         {
             this._exchanges = contents;
         }
-        
+
         /// <summary>
         /// Starts a dialog box exchange
         /// </summary>
         /// <param name="key">Key of exchange</param>
         public void Start(string key)
         {
-            this.DialogBox.Start(this._exchanges.First(item => item.Key == key).Messages);
+            this._currentExchange = this._exchanges.First(item => item.Key == key);
+            this._timer.Start(this._currentExchange.TimeBeforeStart / 1000);
         }
         #endregion
 
         #region Internal methods
+        private void CreateTimer()
+        {
+            this._timer = new Timer();
+            this._timer.Autostart = false;
+            this.AddChild(this._timer);
+
+            this._timer.Connect("timeout", this, nameof(ActiveMethodAfterTimeOut));
+        }
+
+        private void ActiveMethodAfterTimeOut()
+        {
+            GD.Print("ActiveMethodAfterTimeOut");
+
+            this._timer.Stop();
+            if (this._currentExchange != null)
+            {
+                this.DialogBox.Start(this._currentExchange.Messages);
+                this._currentExchange = null;
+            }
+        }
+
         private void StopDisplayMessagesOfOneExchange()
         {
             this.EmitSignal(DialogBoxActionType.EndOfOneExchange.ToString());
