@@ -73,4 +73,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]
-[connection signal="pressed" from="NextOrClose" to="." method="OnNextOrClosePressed"]
+[connection signal="pressed" from="NextOrClose" to="." method="DisplayFullMessageOrGoToNextOne"]

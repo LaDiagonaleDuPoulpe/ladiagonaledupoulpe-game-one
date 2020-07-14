@@ -1,4 +1,5 @@
 using Godot;
+using ladiagonaledupoulpe.Sources.App.Shared.Constants;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog;
 using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
@@ -54,13 +55,22 @@ public class DialogBox : Node2D
         this.Visible = false;
 
         this._content = this.GetNode("Content") as RichTextLabel;
-        this._currentTimer  = this.GetNode("Timer") as Timer;
+        this._currentTimer = this.GetNode("Timer") as Timer;
         this._nextOrCloseButton = this.GetNode("NextOrClose") as Button;
         this._animatedSprite = this.GetNode("AnimatedSprite") as AnimatedSprite;
         this._borderRectangle = this.GetNode("BorderRect") as ColorRect;
 
         this.GetTree().Root.Connect("size_changed", this, nameof(Resize));
         this.PutAtTheBottom();
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+        if (@event.IsActionPressed(KeyPressActionKeys.PressEnter))
+        {
+            this.DisplayFullMessageOrGoToNextOne();
+        }
     }
 
     /// <summary>
@@ -96,25 +106,19 @@ public class DialogBox : Node2D
         }
     }
 
-    /// <summary>
-    /// Manage the next display message : if there isnt new essage close the display box
-    /// </summary>
-    public void OnNextOrClosePressed()
-    {        
-        this.CurrentPartOfMessage++;
+    public void DisplayFullMessageOrGoToNextOne()
+    {
+        Action nextAtion = this.DisplayFullMessage;
 
-        this.Visible = this.CurrentPartOfMessage < this.MessageContents.Count;
-        if (this.Visible)
+        GD.Print("this.CurrentVisibleCharacters => ", this.CurrentVisibleCharacters);
+        GD.Print("this.CurrentMessage?.Content.Length => ", this.CurrentMessage?.Content.Length);
+
+        if (this.CurrentVisibleCharacters >= this.CurrentMessage?.Content.Length - 1)
         {
-            this.Initialize();
-            this._currentTimer.Start();
+            nextAtion = this.OnNextOrClosePressed;
         }
 
-        if (! this.Visible)
-        {
-            this.MessageContents.Clear();
-            this.EmitSignal(nameof(EndOfAllMessages));
-        }
+        nextAtion.Invoke();
     }
     #endregion
 
@@ -125,7 +129,7 @@ public class DialogBox : Node2D
         this.CurrentVisibleCharacters = 0;
         this._content.BbcodeText = this.DefineAlignement(this.CurrentMessage.Content);
 
-        this._animatedSprite.Frames = null; 
+        this._animatedSprite.Frames = null;
         if (this.CurrentMessage.SpriteFrames != null)
         {
             this._animatedSprite.Frames = this.CurrentMessage.SpriteFrames;
@@ -137,12 +141,39 @@ public class DialogBox : Node2D
         this.SetTextFromNextOrCloseButton();
     }
 
+    /// <summary>
+    /// Manage the next display message : if there isnt new message close the display box
+    /// </summary>
+    private void OnNextOrClosePressed()
+    {
+        this.CurrentPartOfMessage++;
+
+        this.Visible = this.CurrentPartOfMessage < this.MessageContents.Count;
+        if (this.Visible)
+        {
+            this.Initialize();
+            this._currentTimer.Start();
+        }
+
+        if (!this.Visible)
+        {
+            this.MessageContents.Clear();
+            this.EmitSignal(nameof(EndOfAllMessages));
+        }
+
+    }
+
+    private void DisplayFullMessage()
+    {
+        this.CurrentVisibleCharacters = (this.CurrentMessage?.Content.Length).GetValueOrDefault(0);
+        this._currentTimer.Stop();
+    }
+
     private void DefineAnimatedSpritePosition()
     {
         if (this.CurrentMessage.SpriteDirection == AnimatedSpriteDirection.Right)
         {
             Vector2 animatedSpriteSize = new Vector2(130, 70); // TODO: 08/06/2020, see to get real size
-            Sprite background = this.GetNode("Background") as Sprite;
 
             Vector2 newPosition = new Vector2(this._animatedSprite.Position.x + this._borderRectangle.RectSize.x - animatedSpriteSize.x,
                                               this._animatedSprite.Position.y + this._borderRectangle.RectSize.y - animatedSpriteSize.y);
@@ -189,19 +220,19 @@ public class DialogBox : Node2D
         }
 
         return content;
-}
+    }
     #endregion
 
     #region Properties
     /// <summary>
     /// Defines the number of characters to show in the label content
     /// </summary>
-    public int CurrentVisibleCharacters 
-    { 
-        get => this._content.VisibleCharacters; 
-        set 
+    public int CurrentVisibleCharacters
+    {
+        get => this._content.VisibleCharacters;
+        set
         {
-            this._content.VisibleCharacters = value; 
+            this._content.VisibleCharacters = value;
         }
     }
 
@@ -228,7 +259,7 @@ public class DialogBox : Node2D
     /// </summary>
     public AnimatedSpriteDirection DisplayedDirection
     {
-        get 
+        get
         {
             return this.CurrentMessage != null ? this.CurrentMessage.SpriteDirection : AnimatedSpriteDirection.Left;
         }
