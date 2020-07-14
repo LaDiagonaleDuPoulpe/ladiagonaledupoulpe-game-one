@@ -1,6 +1,7 @@
 ﻿using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Interfaces.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Core.Models.DialogBox;
+using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,16 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
     public class DialoxBoxManager : Node, IDialoxBoxManager
     {
         #region Fields
+        #region Signals
+        /// <summary>
+        /// Occurs when all messages of one exchange in dialogbox are done
+        /// </summary>
+        [Signal]
+        public delegate void EndOfOneExchange();
+        #endregion
+
         private List<DialogBoxExchange> _exchanges;
         private DialogBox _dialogBox = null;
-
         #endregion
 
         #region Constructors
@@ -32,6 +40,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
             base._Ready();
 
             this.DialogBox = this.GetNode<DialogBox>("/root/DialogBox");
+            this.DialogBox.Connect(DialogBoxActionType.EndOfAllMessages.ToString(), this, nameof(StopDisplayMessagesOfOneExchange));
         }
 
         /// <summary>
@@ -41,9 +50,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         {
             this._exchanges = contents;
         }
-        #endregion
-
-        #region Internal methods
+        
         /// <summary>
         /// Starts a dialog box exchange
         /// </summary>
@@ -52,8 +59,15 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         {
             this.DialogBox.Start(this._exchanges.First(item => item.Key == key).Messages);
         }
+        #endregion
 
-        public void ShowDialog()
+        #region Internal methods
+        private void StopDisplayMessagesOfOneExchange()
+        {
+            this.EmitSignal(DialogBoxActionType.EndOfOneExchange.ToString());
+        }
+
+        private void ShowDialog()
         {
             GD.Print("ShowDialog event, 13:07/2020, seems to not run ... for now, don't now why ...");
         }

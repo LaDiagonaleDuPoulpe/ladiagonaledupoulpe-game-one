@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Godot;
+using Godot.Collections;
 using ladiagonaledupoulpe.Sources.App.Core.Models.DialogBox;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Interfaces.DialogBox
@@ -20,5 +22,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Interfaces.DialogBox
         /// </summary>
         /// <param name="key">Key of the exchange</param>
         void Start(string key);
+
+        /// <summary>
+        /// Connects one signal to one method
+        /// </summary>
+        /// <returns></returns>
+        Error Connect(string signal, Object target, string method, Array binds = null, uint flags = 0);
     }
 }

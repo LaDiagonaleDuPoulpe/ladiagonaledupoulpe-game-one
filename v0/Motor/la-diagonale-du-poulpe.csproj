@@ -68,7 +68,6 @@
     <Compile Include="Sources\App\Game-Scenes\Test-Scene\TestSceneToBeLoaded.cs" />
     <Compile Include="Sources\App\Shared\Constants\KeyPressActionKeys.cs" />
     <Compile Include="Sources\App\Shared\Enums\DialogBox\DialogBoxActionType.cs" />
-    <Compile Include="Sources\App\Shared\Enums\DialogBox\DialogBoxMessageStep.cs" />
     <Compile Include="Sources\App\Shared\Enums\LoadingActionsType.cs" />
     <Compile Include="Sources\App\Shared\Enums\AnimatedSpriteDirection.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\DialogBox.cs" />

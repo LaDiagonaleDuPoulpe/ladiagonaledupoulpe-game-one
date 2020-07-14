@@ -4,7 +4,7 @@
       {
         "key": "begin",
         "next": null,
-        "autoLoad": true,
+        "autoLoad": false,
         "order": 0,
         "timeBeforeStart": 500,
         "messages": [
@@ -12,16 +12,6 @@
             "content": "Le vaisseau ne va vraiment pas bien ! Comment s'en sortir ?",
             "spriteFramesPath": "res://Sources/App/Shared/Assets/Animations/Characters/Speaking/player3.tres",
             "spriteDirection": "Left"
-          },
-          {
-            "content": "Le vaisseau ne va vraiment pas bien ! Comment s'en sortir ?",
-            "spriteFramesPath": "res://Sources/App/Shared/Assets/Animations/Characters/Speaking/player3.tres",
-            "spriteDirection": "Left"
-          },
-          {
-            "content": "Et si nous trouvions deja un moyen de déclencher l'auto-reparation ?",
-            "spriteFramesPath": "res://Sources/App/Shared/Assets/Animations/Characters/Speaking/player3.tres",
-            "spriteDirection": "Right"
           },
           {
             "content": "Et si nous trouvions deja un moyen de déclencher l'auto-reparation ?",
@@ -34,7 +24,7 @@
       {
         "key": "begin_2",
         "next": null,
-        "autoLoad": true,
+        "autoLoad": false,
         "order": 1,
         "timeBeforeStart": 500,
         "messages": [

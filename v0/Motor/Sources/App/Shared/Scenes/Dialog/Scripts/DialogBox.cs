@@ -39,13 +39,6 @@ public class DialogBox : Node2D
     /// </summary>
     [Signal]
     public delegate void EndOfAllMessages();
-
-    /// <summary>
-    /// Signal to display one exchange in the displaybox
-    /// </summary>
-    /// <param name="key">Key of one exchange</param>
-    [Signal]
-    public delegate void DisplayExchange(string key);
     #endregion
     #endregion
 

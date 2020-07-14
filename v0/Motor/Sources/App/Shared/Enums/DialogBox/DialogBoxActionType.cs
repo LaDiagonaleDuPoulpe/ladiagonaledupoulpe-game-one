@@ -15,21 +15,30 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Enums
         /// Starting to display one exchange
         /// </summary>
         Start = 0,
+
         /// <summary>
         /// Show the dialog box
         /// </summary>
         ShowBox = 1,
-        /// <summary>
-        /// End of one exchange
-        /// </summary>
-        End = 100,
+
         /// <summary>
         /// One message of the current exchange is starting to be displayed
         /// </summary>
         StartOneMessage = 1,
+
         /// <summary>
         /// One message of the current exchange is stopped to be displayed
         /// </summary>
-        EndOneMessage = 10
+        EndOneMessage = 10,
+
+        /// <summary>
+        /// All messages are displayed
+        /// </summary>
+        EndOfAllMessages = 99,
+
+        /// <summary>
+        /// End of one exchange
+        /// </summary>
+        EndOfOneExchange = 100
     }
 }
