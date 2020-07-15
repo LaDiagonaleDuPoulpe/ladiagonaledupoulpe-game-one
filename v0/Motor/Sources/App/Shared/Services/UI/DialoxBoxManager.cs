@@ -78,8 +78,6 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 
         private void ActiveMethodAfterTimeOut()
         {
-            GD.Print("ActiveMethodAfterTimeOut");
-
             this._timer.Stop();
             if (this._currentExchange != null)
             {
