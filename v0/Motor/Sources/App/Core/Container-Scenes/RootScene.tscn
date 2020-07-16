@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sources/App/Core/Container-Scenes/Scripts/RootScene.cs" type="Script" id=2]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Sources/App/Shared/Assets/Fonts/A001ff.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 50
+font_data = SubResource( 1 )
+
+[node name="Root" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Button" type="Button" parent="."]
+margin_right = 480.0
+margin_bottom = 144.0
+custom_fonts/font = SubResource( 2 )
+text = "Load scene"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
