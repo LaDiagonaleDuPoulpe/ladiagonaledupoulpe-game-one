@@ -61,7 +61,7 @@
     <Compile Include="Sources\App\Core\Interfaces\Scenes\IDataInit.cs" />
     <Compile Include="Sources\App\Core\Interfaces\Scenes\ILevelConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Players\Player.cs" />
-    <Compile Include="Sources\App\Game-Scenes\002-Inside-Crash-Ship\InsideCrashShip.cs" />
+    <Compile Include="Sources\App\Game-Scenes\002-Inside-Crash-Ship\Scripts\InsideCrashShip.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Scenes\IMovingSprite.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Scenes\IMainScene.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Scenes\IWithChilds.cs" />
@@ -71,7 +71,8 @@
     <Compile Include="Sources\App\Shared\Plugins\Generators\CloudGenerator\GreyCloudGenerator.Plugin.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Generators\ISpriteGenerator.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Clouds\GreyCloud.cs" />
-    <Compile Include="Sources\App\Shared\Scenes\Sparks\LightSparks\Scripts\LightSpark.cs" />    <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxExchangesItemSetting.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Sparks\LightSparks\Scripts\LightSpark.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxExchangesItemSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxMessageContentSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\SceneConfigurationSetting.cs" />

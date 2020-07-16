@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/inside-ship/main/inside-ship.png" type="Texture" id=1]
-[ext_resource path="res://Sources/App/Game-Scenes/002-Inside-Crash-Ship/InsideCrashShip.cs" type="Script" id=2]
+[ext_resource path="res://Sources/App/Game-Scenes/002-Inside-Crash-Ship/Scripts/InsideCrashShip.cs" type="Script" id=2]
 [ext_resource path="res://Sources/App/Core/Models/Players/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Sources/App/Shared/Assets/Scenes/Outsides/alien ship sky no clouds.png" type="Texture" id=4]
 [ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/inside-ship/main/bloc-left.png" type="Texture" id=5]
