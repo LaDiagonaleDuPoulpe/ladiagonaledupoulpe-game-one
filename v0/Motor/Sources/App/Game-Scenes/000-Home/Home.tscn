@@ -1,0 +1,743 @@
+[gd_scene load_steps=199 format=2]
+
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/background.png" type="Texture" id=1]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Tube/tube3.png" type="Texture" id=2]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Tube/tube.png" type="Texture" id=3]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable1/cable1_000.png" type="Texture" id=4]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable1/cable1_001.png" type="Texture" id=5]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/HomeSea.png" type="Texture" id=6]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Tube/tube2.png" type="Texture" id=7]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable1/cable1_002.png" type="Texture" id=8]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable1/cable1_006.png" type="Texture" id=9]
+[ext_resource path="res://Sources/App/Shared/Assets/Particles/Spike/spikes-1.png" type="Texture" id=10]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable2/cable2_004.png" type="Texture" id=11]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable2/cable2_006.png" type="Texture" id=12]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable2/cable2_009.png" type="Texture" id=13]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Scripts/InstantiateCloud.cs" type="Script" id=14]
+[ext_resource path="res://Sources/App/Shared/Assets/Particles/Spark/spark-left-all.png" type="Texture" id=15]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Scripts/WaveSea.cs" type="Script" id=16]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Cloud.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Sources/App/Assets/Settings/TitleFont.tres" type="DynamicFont" id=18]
+[ext_resource path="res://Sources/App/Assets/Settings/LabelFont.tres" type="DynamicFont" id=19]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/mountains.png" type="Texture" id=20]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave1/pillar wave1_001.png" type="Texture" id=21]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave1/pillar wave1_002.png" type="Texture" id=22]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave1/pillar wave1_000.png" type="Texture" id=23]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave1/pillar wave1_003.png" type="Texture" id=24]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave3/pillar wave3_007.png" type="Texture" id=25]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave1/pillar wave1_008.png" type="Texture" id=26]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave1/pillar wave1_006.png" type="Texture" id=27]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave2/pillar wave2_003.png" type="Texture" id=28]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave3/pillar wave3_006.png" type="Texture" id=29]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave1/pillar wave1_005.png" type="Texture" id=30]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave2/pillar wave2_008.png" type="Texture" id=31]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave1/pillar wave1_007.png" type="Texture" id=32]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave3/pillar wave3_009.png" type="Texture" id=33]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave2/pillar wave2_002.png" type="Texture" id=34]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave2/pillar wave2_007.png" type="Texture" id=35]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave2/pillar wave2_005.png" type="Texture" id=36]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave3/pillar wave3_008.png" type="Texture" id=37]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave2/pillar wave2_009.png" type="Texture" id=38]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave2/pillar wave2_006.png" type="Texture" id=39]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave3/pillar wave3_000.png" type="Texture" id=40]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave1/pillar wave1_009.png" type="Texture" id=41]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave3/pillar wave3_002.png" type="Texture" id=42]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave1/pillar wave1_004.png" type="Texture" id=43]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave3/pillar wave3_004.png" type="Texture" id=44]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave3/pillar wave3_005.png" type="Texture" id=45]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave2/pillar wave2_004.png" type="Texture" id=46]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave3/pillar wave3_001.png" type="Texture" id=47]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/pillar wave3/pillar wave3_003.png" type="Texture" id=48]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_013.png" type="Texture" id=49]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_009.png" type="Texture" id=50]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_010.png" type="Texture" id=51]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_003.png" type="Texture" id=52]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_008.png" type="Texture" id=53]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_004.png" type="Texture" id=54]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_005.png" type="Texture" id=55]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_002.png" type="Texture" id=56]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_001.png" type="Texture" id=57]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_006.png" type="Texture" id=58]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_007.png" type="Texture" id=59]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_000.png" type="Texture" id=60]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_011.png" type="Texture" id=61]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Pillar wave/Wave/wave5_012.png" type="Texture" id=62]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_009.png" type="Texture" id=63]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_004.png" type="Texture" id=64]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_010.png" type="Texture" id=65]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_006.png" type="Texture" id=66]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_011.png" type="Texture" id=67]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_000.png" type="Texture" id=68]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_014.png" type="Texture" id=69]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_008.png" type="Texture" id=70]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_007.png" type="Texture" id=71]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_012.png" type="Texture" id=72]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_003.png" type="Texture" id=73]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_005.png" type="Texture" id=74]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_013.png" type="Texture" id=75]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_001.png" type="Texture" id=76]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/WhiteWave/wave1_002.png" type="Texture" id=77]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_003.png" type="Texture" id=78]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_000.png" type="Texture" id=79]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_005.png" type="Texture" id=80]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_007.png" type="Texture" id=81]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_006.png" type="Texture" id=82]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_004.png" type="Texture" id=83]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_008.png" type="Texture" id=84]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_009.png" type="Texture" id=85]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_002.png" type="Texture" id=86]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_001.png" type="Texture" id=87]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_024.png" type="Texture" id=88]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_026.png" type="Texture" id=89]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_027.png" type="Texture" id=90]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_025.png" type="Texture" id=91]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_016.png" type="Texture" id=92]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_017.png" type="Texture" id=93]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_013.png" type="Texture" id=94]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_011.png" type="Texture" id=95]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_014.png" type="Texture" id=96]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_015.png" type="Texture" id=97]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_019.png" type="Texture" id=98]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_023.png" type="Texture" id=99]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_022.png" type="Texture" id=100]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_020.png" type="Texture" id=101]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_021.png" type="Texture" id=102]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_029.png" type="Texture" id=103]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_028.png" type="Texture" id=104]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_012.png" type="Texture" id=105]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_018.png" type="Texture" id=106]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Sea/BigWave/wave3_010.png" type="Texture" id=107]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable3/cable3_002.png" type="Texture" id=108]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable2/cable2_003.png" type="Texture" id=109]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable3/cable3_000.png" type="Texture" id=110]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable1/cable1_008.png" type="Texture" id=111]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable3/cable3_004.png" type="Texture" id=112]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable2/cable2_005.png" type="Texture" id=113]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable3/cable3_005.png" type="Texture" id=114]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable3/cable3_006.png" type="Texture" id=115]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable3/cable3_007.png" type="Texture" id=116]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable3/cable3_008.png" type="Texture" id=117]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable3/cable3_009.png" type="Texture" id=118]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable4/cable4_000.png" type="Texture" id=119]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable2/cable2_007.png" type="Texture" id=120]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable1/cable1_009.png" type="Texture" id=121]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable2/cable2_002.png" type="Texture" id=122]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable1/cable1_003.png" type="Texture" id=123]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable1/cable1_005.png" type="Texture" id=124]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable2/cable2_001.png" type="Texture" id=125]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable2/cable2_008.png" type="Texture" id=126]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable1/cable1_007.png" type="Texture" id=127]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable3/cable3_003.png" type="Texture" id=128]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable2/cable2_000.png" type="Texture" id=129]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable3/cable3_001.png" type="Texture" id=130]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable1/cable1_004.png" type="Texture" id=131]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable4/cable4_004.png" type="Texture" id=132]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable4/cable4_008.png" type="Texture" id=133]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable4/cable4_012.png" type="Texture" id=134]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable5/cable5_003.png" type="Texture" id=135]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable5/cable5_001.png" type="Texture" id=136]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable5/cable5_004.png" type="Texture" id=137]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable4/cable4_003.png" type="Texture" id=138]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable5/cable5_005.png" type="Texture" id=139]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable5/cable5_006.png" type="Texture" id=140]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable4/cable4_006.png" type="Texture" id=141]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable4/cable4_009.png" type="Texture" id=142]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable4/cable4_007.png" type="Texture" id=143]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable5/cable5_002.png" type="Texture" id=144]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable4/cable4_001.png" type="Texture" id=145]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable4/cable4_014.png" type="Texture" id=146]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable4/cable4_002.png" type="Texture" id=147]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable4/cable4_013.png" type="Texture" id=148]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable4/cable4_011.png" type="Texture" id=149]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable4/cable4_005.png" type="Texture" id=150]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable4/cable4_010.png" type="Texture" id=151]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable5/cable5_000.png" type="Texture" id=152]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable5/cable5_007.png" type="Texture" id=153]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable5/cable5_008.png" type="Texture" id=154]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cable/Cable5/cable5_009.png" type="Texture" id=155]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ null, null, null, null, ExtResource( 68 ), ExtResource( 76 ), ExtResource( 77 ), ExtResource( 73 ), ExtResource( 64 ), ExtResource( 74 ), ExtResource( 66 ), ExtResource( 71 ), ExtResource( 70 ), ExtResource( 63 ), ExtResource( 65 ), ExtResource( 67 ), ExtResource( 72 ), ExtResource( 75 ), ExtResource( 69 ), null, null, null, null ],
+"loop": true,
+"name": "default",
+"speed": 11.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 79 ), ExtResource( 87 ), ExtResource( 86 ), ExtResource( 78 ), ExtResource( 83 ), ExtResource( 80 ), ExtResource( 82 ), ExtResource( 81 ), ExtResource( 84 ), ExtResource( 85 ), ExtResource( 107 ), ExtResource( 95 ), ExtResource( 105 ), ExtResource( 94 ), ExtResource( 96 ), ExtResource( 97 ), ExtResource( 92 ), ExtResource( 93 ), ExtResource( 106 ), ExtResource( 98 ), ExtResource( 101 ), ExtResource( 102 ), ExtResource( 100 ), ExtResource( 99 ), ExtResource( 88 ), ExtResource( 91 ), ExtResource( 89 ), ExtResource( 90 ), ExtResource( 104 ), ExtResource( 103 ) ],
+"loop": true,
+"name": "default",
+"speed": 9.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 123 ), ExtResource( 131 ), ExtResource( 124 ), ExtResource( 9 ), ExtResource( 127 ), ExtResource( 111 ), ExtResource( 121 ) ],
+"loop": true,
+"name": "default",
+"speed": 13.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 129 ), ExtResource( 125 ), ExtResource( 122 ), ExtResource( 109 ), ExtResource( 11 ), ExtResource( 113 ), ExtResource( 12 ), ExtResource( 120 ), ExtResource( 126 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "default",
+"speed": 13.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 110 ), ExtResource( 130 ), ExtResource( 108 ), ExtResource( 128 ), ExtResource( 112 ), ExtResource( 114 ), ExtResource( 115 ), ExtResource( 116 ), ExtResource( 117 ), ExtResource( 118 ) ],
+"loop": true,
+"name": "default",
+"speed": 13.0
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 119 ), ExtResource( 145 ), ExtResource( 147 ), ExtResource( 138 ), ExtResource( 132 ), ExtResource( 150 ), ExtResource( 141 ), ExtResource( 143 ), ExtResource( 133 ), ExtResource( 142 ), ExtResource( 151 ), ExtResource( 149 ), ExtResource( 134 ), ExtResource( 148 ), ExtResource( 146 ) ],
+"loop": true,
+"name": "default",
+"speed": 13.0
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 152 ), ExtResource( 136 ), ExtResource( 144 ), ExtResource( 135 ), ExtResource( 137 ), ExtResource( 139 ), ExtResource( 140 ), ExtResource( 153 ), ExtResource( 154 ), ExtResource( 155 ) ],
+"loop": true,
+"name": "default",
+"speed": 13.0
+} ]
+
+[sub_resource type="Shader" id=45]
+code = "shader_type canvas_item;
+
+uniform float blur_amount : hint_range(0, 5);
+
+void fragment() {
+	COLOR = textureLod(SCREEN_TEXTURE, SCREEN_UV, 1);
+}"
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 45 )
+shader_param/blur_amount = null
+
+[sub_resource type="ImageTexture" id=44]
+size = Vector2( 400, 60 )
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ null, null, null, null, ExtResource( 23 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 24 ), ExtResource( 43 ), ExtResource( 30 ), ExtResource( 27 ), ExtResource( 32 ), ExtResource( 26 ), ExtResource( 41 ), null, null, null, null ],
+"loop": true,
+"name": "default",
+"speed": 11.0
+} ]
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [ null, null, null, null, ExtResource( 60 ), ExtResource( 57 ), ExtResource( 56 ), ExtResource( 52 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 53 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 49 ) ],
+"loop": true,
+"name": "default",
+"speed": 11.0
+} ]
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ null, null, ExtResource( 34 ), ExtResource( 28 ), ExtResource( 46 ), ExtResource( 36 ), ExtResource( 39 ), ExtResource( 35 ), ExtResource( 31 ), null, null, null, null, null, null, null, null, null, ExtResource( 38 ) ],
+"loop": true,
+"name": "default",
+"speed": 11.0
+} ]
+
+[sub_resource type="SpriteFrames" id=14]
+animations = [ {
+"frames": [ null, null, null, null, ExtResource( 40 ), ExtResource( 47 ), ExtResource( 42 ), ExtResource( 48 ), ExtResource( 44 ), ExtResource( 45 ), ExtResource( 29 ), ExtResource( 25 ), ExtResource( 37 ), null, null, null, ExtResource( 33 ) ],
+"loop": true,
+"name": "default",
+"speed": 11.0
+} ]
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 100, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 200, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 300, 0, 100, 100 )
+
+[sub_resource type="SpriteFrames" id=19]
+animations = [ {
+"frames": [ SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="ParticlesMaterial" id=20]
+lifetime_randomness = 1.0
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 45.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = -30.0
+angle = 45.0
+angle_random = 1.0
+scale = 3.0
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 0, 0, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 133, 0, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 266, 0, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 399, 0, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 532, 0, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 665, 0, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 798, 0, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 931, 0, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 1064, 0, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 1197, 0, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 1330, 0, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=32]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 0, 203, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=33]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 133, 203, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=34]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 266, 203, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=35]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 399, 203, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=36]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 532, 203, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=37]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 665, 203, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=38]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 798, 203, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=39]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 931, 203, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=40]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 1064, 203, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=41]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 1197, 203, 133, 203 )
+
+[sub_resource type="AtlasTexture" id=42]
+flags = 4
+atlas = ExtResource( 15 )
+region = Rect2( 1330, 203, 133, 203 )
+
+[sub_resource type="SpriteFrames" id=43]
+animations = [ {
+"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Image" type="Node2D" parent="."]
+
+[node name="Sky" type="Node2D" parent="Image"]
+
+[node name="background" type="Sprite" parent="Image/Sky"]
+scale = Vector2( 0.535, 0.345 )
+texture = ExtResource( 1 )
+centered = false
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Cloud" type="Node2D" parent="Image/Sky/background"]
+position = Vector2( 1920.79, 3.55866 )
+script = ExtResource( 14 )
+
+[node name="Node2D" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
+position = Vector2( -777.041, 178.013 )
+
+[node name="Node2D2" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
+position = Vector2( -902.963, 412.949 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="Node2D3" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
+position = Vector2( -145.465, 345.824 )
+
+[node name="Node2D6" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
+position = Vector2( -615.702, 797.389 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Node2D5" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
+position = Vector2( 181.155, 702.804 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="Node2D4" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
+position = Vector2( 285.435, 126.144 )
+
+[node name="Node2D8" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
+position = Vector2( -1099.2, 794.338 )
+scale = Vector2( 1.2, 1.2 )
+
+[node name="Node2D7" parent="Image/Sky/background/Cloud" instance=ExtResource( 17 )]
+position = Vector2( -1280.73, 217.677 )
+
+[node name="Mountains" type="Sprite" parent="Image/Sky/background"]
+position = Vector2( -1.86916, 20.2899 )
+scale = Vector2( 1.88, 3 )
+texture = ExtResource( 20 )
+centered = false
+
+[node name="Sea" type="Node2D" parent="Image"]
+
+[node name="HomeSea" type="Sprite" parent="Image/Sea"]
+position = Vector2( -1.3792, 365.001 )
+scale = Vector2( 0.685, 0.3 )
+texture = ExtResource( 6 )
+centered = false
+script = ExtResource( 16 )
+
+[node name="Wave" type="Node2D" parent="Image/Sea"]
+
+[node name="Wave" type="AnimatedSprite" parent="Image/Sea/Wave"]
+position = Vector2( 220.994, 445.671 )
+frames = SubResource( 1 )
+frame = 9
+playing = true
+centered = false
+
+[node name="Up" type="Node2D" parent="Image/Sea/Wave"]
+
+[node name="Wave1" type="AnimatedSprite" parent="Image/Sea/Wave/Up"]
+position = Vector2( -20.8717, 331.49 )
+frames = SubResource( 1 )
+frame = 8
+playing = true
+centered = false
+
+[node name="Wave2" type="AnimatedSprite" parent="Image/Sea/Wave/Up"]
+position = Vector2( 337.629, 326.58 )
+frames = SubResource( 1 )
+frame = 9
+playing = true
+centered = false
+
+[node name="Wave3" type="AnimatedSprite" parent="Image/Sea/Wave/Up"]
+position = Vector2( 654.387, 327.807 )
+frames = SubResource( 1 )
+frame = 9
+playing = true
+centered = false
+
+[node name="Down" type="Node2D" parent="Image/Sea/Wave"]
+
+[node name="Wave1" type="AnimatedSprite" parent="Image/Sea/Wave/Down"]
+position = Vector2( 9.82187, 518.107 )
+frames = SubResource( 1 )
+frame = 7
+playing = true
+centered = false
+
+[node name="Wave2" type="AnimatedSprite" parent="Image/Sea/Wave/Down"]
+position = Vector2( 360.956, 513.197 )
+frames = SubResource( 1 )
+frame = 8
+playing = true
+centered = false
+
+[node name="Wave3" type="AnimatedSprite" parent="Image/Sea/Wave/Down"]
+position = Vector2( 715.774, 518.107 )
+frames = SubResource( 1 )
+frame = 8
+playing = true
+centered = false
+
+[node name="BigWave" type="AnimatedSprite" parent="Image/Sea"]
+position = Vector2( -5.17755, 322.175 )
+scale = Vector2( 1.01, 1 )
+frames = SubResource( 2 )
+frame = 19
+playing = true
+centered = false
+
+[node name="Cable" type="Node2D" parent="Image"]
+
+[node name="cable1" type="AnimatedSprite" parent="Image/Cable"]
+position = Vector2( -165.264, 6.31583 )
+scale = Vector2( 1.3, 1.1 )
+frames = SubResource( 3 )
+frame = 7
+playing = true
+centered = false
+
+[node name="cable2" type="AnimatedSprite" parent="Image/Cable"]
+position = Vector2( 81.053, 82.1057 )
+frames = SubResource( 4 )
+frame = 1
+playing = true
+centered = false
+
+[node name="cable3" type="AnimatedSprite" parent="Image/Cable"]
+position = Vector2( 553.687, 168.422 )
+frames = SubResource( 5 )
+frame = 3
+playing = true
+centered = false
+
+[node name="cable4" type="AnimatedSprite" parent="Image/Cable"]
+position = Vector2( 506.318, 34.737 )
+rotation = 0.588929
+frames = SubResource( 6 )
+frame = 12
+playing = true
+centered = false
+flip_v = true
+
+[node name="cable5" type="AnimatedSprite" parent="Image/Cable"]
+position = Vector2( 854.741, -50.5266 )
+frames = SubResource( 7 )
+frame = 5
+playing = true
+centered = false
+
+[node name="Tube" type="Node2D" parent="Image"]
+
+[node name="Node2D" type="Node2D" parent="Image/Tube"]
+
+[node name="tube1" type="Sprite" parent="Image/Tube/Node2D"]
+position = Vector2( 161.531, 289.529 )
+scale = Vector2( 0.535, 0.56 )
+texture = ExtResource( 3 )
+
+[node name="tube2" type="Sprite" parent="Image/Tube/Node2D"]
+position = Vector2( 465.515, 215.611 )
+scale = Vector2( 0.535, 0.56 )
+texture = ExtResource( 7 )
+
+[node name="tube3" type="Sprite" parent="Image/Tube/Node2D"]
+position = Vector2( 822.441, 263.812 )
+scale = Vector2( 0.535, 0.56 )
+texture = ExtResource( 2 )
+
+[node name="Blur" type="Sprite" parent="Image/Tube/Node2D"]
+material = SubResource( 9 )
+position = Vector2( 159.18, 549.863 )
+scale = Vector2( 0.535, 0.56 )
+texture = SubResource( 44 )
+
+[node name="Blur2" type="Sprite" parent="Image/Tube/Node2D"]
+material = SubResource( 9 )
+position = Vector2( 468.547, 435.15 )
+scale = Vector2( 0.535, 0.56 )
+texture = SubResource( 44 )
+
+[node name="Blur3" type="Sprite" parent="Image/Tube/Node2D"]
+material = SubResource( 9 )
+position = Vector2( 828.407, 503.55 )
+scale = Vector2( 0.535, 0.56 )
+texture = SubResource( 44 )
+
+[node name="PillarWave" type="Node2D" parent="Image/Tube"]
+
+[node name="PillarWave1" type="AnimatedSprite" parent="Image/Tube/PillarWave"]
+position = Vector2( 74.7174, 383.086 )
+frames = SubResource( 11 )
+playing = true
+centered = false
+
+[node name="Wave" type="AnimatedSprite" parent="Image/Tube/PillarWave/PillarWave1"]
+position = Vector2( -12.9236, 162.837 )
+scale = Vector2( 1, 2 )
+frames = SubResource( 12 )
+frame = 17
+playing = true
+
+[node name="PillarWave2" type="AnimatedSprite" parent="Image/Tube/PillarWave"]
+position = Vector2( 459.841, 380.501 )
+frames = SubResource( 13 )
+frame = 6
+playing = true
+centered = false
+
+[node name="Wave" type="AnimatedSprite" parent="Image/Tube/PillarWave/PillarWave2"]
+position = Vector2( -58.1562, 54.2792 )
+scale = Vector2( 0.8, 1 )
+frames = SubResource( 12 )
+frame = 17
+playing = true
+
+[node name="PillarWave3" type="AnimatedSprite" parent="Image/Tube/PillarWave"]
+position = Vector2( 741.576, 414.102 )
+frames = SubResource( 14 )
+frame = 5
+playing = true
+centered = false
+
+[node name="Wave" type="AnimatedSprite" parent="Image/Tube/PillarWave/PillarWave3"]
+position = Vector2( -6.46179, 95.6347 )
+scale = Vector2( 1, 1.8 )
+frames = SubResource( 12 )
+frame = 17
+playing = true
+
+[node name="Spike" type="Node2D" parent="Image"]
+
+[node name="SpikeLeft" type="AnimatedSprite" parent="Image/Spike"]
+position = Vector2( 98.8062, 108.83 )
+frames = SubResource( 19 )
+playing = true
+
+[node name="Particles2D" type="Particles2D" parent="Image/Spike"]
+visible = false
+position = Vector2( 366.701, 205.201 )
+amount = 12
+lifetime = 0.8
+explosiveness = 0.82
+process_material = SubResource( 20 )
+
+[node name="Sparks" type="Node2D" parent="Image"]
+
+[node name="spark-right" type="AnimatedSprite" parent="Image/Sparks"]
+position = Vector2( 832.277, 94.342 )
+frames = SubResource( 43 )
+frame = 9
+playing = true
+
+[node name="spark-middle" type="AnimatedSprite" parent="Image/Sparks"]
+position = Vector2( 444.57, 77.5414 )
+rotation = 3.14159
+frames = SubResource( 43 )
+frame = 8
+playing = true
+
+[node name="Menu" type="Node2D" parent="."]
+
+[node name="Title" type="Label" parent="Menu"]
+margin_left = 368.782
+margin_top = 462.209
+margin_right = 680.782
+margin_bottom = 498.209
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 18 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "La diagonale du poulpe"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnNewParty" type="ToolButton" parent="Menu"]
+margin_left = 108.0
+margin_top = 480.0
+margin_right = 218.0
+margin_bottom = 500.0
+custom_fonts/font = ExtResource( 19 )
+text = "Nouvelle partie"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnLoadParty" type="ToolButton" parent="Menu"]
+margin_left = 66.0
+margin_top = 502.0
+margin_right = 258.0
+margin_bottom = 522.0
+custom_fonts/font = ExtResource( 19 )
+text = "Charger une partie existante"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnCredential" type="ToolButton" parent="Menu"]
+margin_left = 132.0
+margin_top = 529.0
+margin_right = 189.0
+margin_bottom = 549.0
+custom_fonts/font = ExtResource( 19 )
+text = "Crédits"
+__meta__ = {
+"_edit_use_anchors_": false
+}

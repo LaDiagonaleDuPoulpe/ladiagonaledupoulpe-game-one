@@ -8,19 +8,38 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "WATTest",
+"language": "GDScript",
+"path": "res://addons/WAT/core/test/test.gd"
+} ]
 _global_script_class_icons={
-
+"WATTest": ""
 }
+
+[WAT]
+
+Test_Directory="res://Tests"
+Results_Directory="res://Tests/results/WAT"
+Minimize_Window_When_Running_Tests=false
+TestStrategy={
+"repeat": 1,
+"strategy": "RunAll"
+}
+Tags=PoolStringArray(  )
+Display=8
 
 [application]
 
 config/name="la-diagonale-du-poulpe"
 run/main_scene="res://Sources/App/Core/Container-Scenes/RootScene.tscn"
 config/icon="res://icon.png"
-
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 [autoload]
 
+LoadSettings="*res://Sources/App/Core/LoadSettings.cs"
 DialoxBoxManager="*res://Sources/App/Shared/Services/UI/DialoxBoxManager.cs"
 DialogBox="*res://Sources/App/Shared/Scenes/Dialog/DialogBox.tscn"
 LoadingScene="*res://Sources/App/Shared/Scenes/LoadingScene/LoadingScene.tscn"
@@ -37,6 +56,7 @@ window/stretch/aspect="keep"
 [editor_plugins]
 
 enabled=PoolStringArray( "MonoDebuggerQM-1.0.1" )
+enabled=PoolStringArray( "WAT", "mono_debugger" )
 
 [logging]
 
@@ -48,7 +68,6 @@ project/auto_update_project=false
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_environment="res://default_env.tres"

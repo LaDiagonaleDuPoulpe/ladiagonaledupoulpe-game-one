@@ -46,22 +46,35 @@
       <Private>False</Private>
       <HintPath>$(ProjectDir)/.mono/assemblies/$(ApiConfiguration)/GodotSharp.dll</HintPath>
     </Reference>
-    <Reference Include="GodotSharpEditor" Condition=" '$(Configuration)' == 'Debug' ">
+    <Reference Include="GodotSharpEditor" Condition=" '$(Configuration)' == 'Tools' ">
       <Private>False</Private>
       <HintPath>$(ProjectDir)/.mono/assemblies/$(ApiConfiguration)/GodotSharpEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addons\WAT\core\assertions\Assertions.cs" />
+    <Compile Include="addons\WAT\core\test\Recorder.cs" />
+    <Compile Include="addons\WAT\core\test\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sources\App\Core\Base\Scenes\BaseScene.cs" />
+    <Compile Include="Sources\App\Core\LoadSettings.cs" />    <Compile Include="Sources\App\Core\Base\Scenes\BaseScene.cs" />
     <Compile Include="Sources\App\Core\Base\Scenes\BaseActiveScene.cs" />
     <Compile Include="Sources\App\Core\Container-Scenes\Scripts\RootScene.cs" />
     <Compile Include="Sources\App\Core\Interfaces\Configurations\LevelConfiguration.cs" />
     <Compile Include="Sources\App\Core\Interfaces\Scenes\IDataInit.cs" />
     <Compile Include="Sources\App\Core\Interfaces\Scenes\ILevelConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Players\Player.cs" />
-    <Compile Include="Sources\App\Game-Scenes\002-Inside-Crash-Ship\Scripts\InsideCrashShip.cs" />
+<Compile Include="Sources\App\Core\Models\Settings\DefaultConfiguration\DefaultConfiguration.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\Motor.cs" />
+    <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\CloudMoving.cs" />
+    <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\InstantiateCloud.cs" />
+    <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\WaveSea.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\DestroyOnAnimationFinished.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\SpriteAnimation.cs" />
+    <Compile Include="Tests\Node2DTest.cs" />    <Compile Include="Sources\App\Game-Scenes\002-Inside-Crash-Ship\Scripts\InsideCrashShip.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Scenes\IMovingSprite.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Scenes\IMainScene.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Scenes\IWithChilds.cs" />
@@ -98,6 +111,8 @@
     <None Include="packages.config" />
     <None Include="Sources\App\Core\Container-Scenes\README.md" />
     <None Include="Sources\App\Core\Container-Scenes\RootScene.tscn" />
+<None Include="Sources\App\Assets\Settings\Audiowide-Regular.ttf" />
+    <None Include="Sources\App\Assets\Settings\GlobalSettings.json" />
     <None Include="Sources\App\Game-Scenes\Test-Scene\test-scene-to-be-loaded.tscn" />
     <None Include="Sources\App\Shared\Services\README.md" />
   </ItemGroup>

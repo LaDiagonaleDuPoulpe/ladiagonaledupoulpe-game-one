@@ -1,0 +1,50 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Scripts/CloudMoving.cs" type="Script" id=2]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_021.png" type="Texture" id=3]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_010.png" type="Texture" id=4]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_020.png" type="Texture" id=5]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_029.png" type="Texture" id=6]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_005.png" type="Texture" id=7]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_006.png" type="Texture" id=8]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_028.png" type="Texture" id=9]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_002.png" type="Texture" id=10]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_013.png" type="Texture" id=11]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_014.png" type="Texture" id=12]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_019.png" type="Texture" id=13]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_011.png" type="Texture" id=14]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_001.png" type="Texture" id=15]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_016.png" type="Texture" id=16]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_017.png" type="Texture" id=17]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_008.png" type="Texture" id=18]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_024.png" type="Texture" id=19]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_025.png" type="Texture" id=20]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_026.png" type="Texture" id=21]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_003.png" type="Texture" id=22]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_022.png" type="Texture" id=23]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_027.png" type="Texture" id=24]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_007.png" type="Texture" id=25]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_015.png" type="Texture" id=26]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_009.png" type="Texture" id=27]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_012.png" type="Texture" id=28]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_018.png" type="Texture" id=29]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_023.png" type="Texture" id=30]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_004.png" type="Texture" id=31]
+[ext_resource path="res://Sources/App/Game-Scenes/000-Home/Assets/Cloud/clouds_000.png" type="Texture" id=32]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 32 ), ExtResource( 15 ), ExtResource( 10 ), ExtResource( 22 ), ExtResource( 31 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 25 ), ExtResource( 18 ), ExtResource( 27 ), ExtResource( 4 ), ExtResource( 14 ), ExtResource( 28 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 26 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 29 ), ExtResource( 13 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 23 ), ExtResource( 30 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 24 ), ExtResource( 9 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 9.0
+} ]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Cloud" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+frame = 17
+playing = true
+centered = false
+script = ExtResource( 2 )
