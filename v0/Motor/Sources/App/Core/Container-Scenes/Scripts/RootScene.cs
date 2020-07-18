@@ -37,7 +37,7 @@ public class RootScene : BaseScene
     {
         this.LoadingScene.Launch(new LevelConfiguration()
         {
-            Key = "inside-broken-space-ship"
+            Key = "home"
         });
     }
     #endregion

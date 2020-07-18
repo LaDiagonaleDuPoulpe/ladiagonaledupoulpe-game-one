@@ -40,7 +40,6 @@ config/icon="res://icon.png"
 
 [autoload]
 
-LoadSettings="*res://Sources/App/Core/LoadSettings.cs"
 DialoxBoxManager="*res://Sources/App/Shared/Services/UI/DialoxBoxManager.cs"
 DialogBox="*res://Sources/App/Shared/Scenes/Dialog/DialogBox.tscn"
 LoadingScene="*res://Sources/App/Shared/Scenes/LoadingScene/LoadingScene.tscn"

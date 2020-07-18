@@ -140,7 +140,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
                 nbExchanges = this._currentSetting.DialogBox?.Items?.Count;
                 this.EmitSignal(LoadingActionsType.Begin.ToString(), 1 + nbExchanges.GetValueOrDefault(0));
 
-                Resource resourceScene = ResourceLoader.Load(this._currentSetting.Path);
+                Resource resourceScene = ResourceLoader.Load("res://" + this._currentSetting.Path);
                 PackedScene scene = resourceScene as PackedScene;
                 this._loadedResources.Add(resourceScene);
 
@@ -158,7 +158,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
         {
             List<DialogBoxExchange> contents = new List<DialogBoxExchange>();
 
-            settings.DialogBox.Items.ForEach(item =>
+            settings.DialogBox?.Items.ForEach(item =>
             {
                 contents.Add(item.Convert(ResourceLoader.Load));
                 this.EmitSignal(LoadingActionsType.EndLoadingResource.ToString());
