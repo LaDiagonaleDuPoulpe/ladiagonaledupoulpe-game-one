@@ -34,9 +34,10 @@ Display=8
 
 config/name="la-diagonale-du-poulpe"
 run/main_scene="res://Sources/App/Core/Container-Scenes/RootScene.tscn"
-config/icon="res://icon.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
+config/icon="res://icon.png"
+
 [autoload]
 
 LoadSettings="*res://Sources/App/Core/LoadSettings.cs"
@@ -55,7 +56,6 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "MonoDebuggerQM-1.0.1" )
 enabled=PoolStringArray( "WAT", "mono_debugger" )
 
 [logging]

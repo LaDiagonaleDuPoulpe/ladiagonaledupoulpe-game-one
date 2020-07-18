@@ -2,7 +2,7 @@ using ladiagonaledupoulpe.Sources.App.Core.Models.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
 using System.Collections.Generic;
 
-namespace Motor.Sources.App.Core.Interfaces.Scenes
+namespace ladiagonaledupoulpe.Sources.App.Core.Interfaces.Scenes
 {
     /// <summary>
     /// Uses this interface to set a class to get the initialize method 
