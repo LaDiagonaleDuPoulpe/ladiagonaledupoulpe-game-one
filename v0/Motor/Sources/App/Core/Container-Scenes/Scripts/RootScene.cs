@@ -30,11 +30,6 @@ public class RootScene : BaseScene
     {
         base._Input(@event);
 
-        
-    }
-
-    public void _on_Button_pressed()
-    {
         this.LoadingScene.Launch(new LevelConfiguration()
         {
             Key = "home"
