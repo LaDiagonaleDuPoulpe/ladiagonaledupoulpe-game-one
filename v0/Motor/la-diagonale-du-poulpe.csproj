@@ -78,6 +78,7 @@
     <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\Home.cs" />
     <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\InstantiateCloud.cs" />
     <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\WaveSea.cs" />
+    <Compile Include="Sources\App\Game-Scenes\001-Video-Intro\Scripts\VideoIntro.cs" />
     <Compile Include="Sources\App\Shared\Plugins\DestroyOnAnimationFinished.cs" />
     <Compile Include="Sources\App\Shared\Plugins\SpriteAnimation.cs" />
     <Compile Include="Tests\Node2DTest.cs" />
@@ -96,7 +97,6 @@
     <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxMessageContentSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\SceneConfigurationSetting.cs" />
-    <Compile Include="Sources\App\Game-Scenes\Test-Scene\TestSceneToBeLoaded.cs" />
     <Compile Include="Sources\App\Shared\Constants\KeyPressActionKeys.cs" />
     <Compile Include="Sources\App\Shared\Enums\DialogBox\DialogBoxActionType.cs" />
     <Compile Include="Sources\App\Shared\Enums\LoadingActionsType.cs" />
@@ -116,12 +116,12 @@
   <ItemGroup>
     <None Include="Data\Scenes\home.json" />
     <None Include="Data\Scenes\inside-broken-space-ship.json" />
+    <None Include="Data\Scenes\video-intro.json" />
     <None Include="packages.config" />
     <None Include="Sources\App\Core\Container-Scenes\README.md" />
     <None Include="Sources\App\Core\Container-Scenes\RootScene.tscn" />
     <None Include="Sources\App\Assets\Settings\Audiowide-Regular.ttf" />
     <None Include="Sources\App\Assets\Settings\GlobalSettings.json" />
-    <None Include="Sources\App\Game-Scenes\Test-Scene\test-scene-to-be-loaded.tscn" />
     <None Include="Sources\App\Shared\Services\README.md" />
   </ItemGroup>
   <ItemGroup />

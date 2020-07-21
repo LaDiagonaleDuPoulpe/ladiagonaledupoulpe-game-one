@@ -6,6 +6,9 @@ using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Generators;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes;
 using System;
 
+/// <summary>
+/// Inside crash ship scene, launching just after video scene
+/// </summary>
 public class InsideCrashShip : Node2D, IWithClouds
 {
     #region Fields
