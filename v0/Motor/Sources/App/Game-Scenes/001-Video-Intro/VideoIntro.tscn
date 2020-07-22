@@ -14,4 +14,4 @@ autoplay = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="finished" from="VideoPlayer" to="." method="OnVideoPlayerFinished"]
+[connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]

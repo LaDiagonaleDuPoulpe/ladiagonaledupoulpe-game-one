@@ -1,5 +1,6 @@
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Base.Scenes;
+using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Configurations;
 using System;
 
 /// <summary>
@@ -8,9 +9,12 @@ using System;
 public class VideoIntro : BaseActiveScene
 {
     #region Internal methods
-    private void OnVideoPlayerFinished()
+    private void _on_VideoPlayer_finished()
     {
-        GD.Print("OnVideoPlayerFinished");
+        this.LoadingScene.Launch(new LevelConfiguration()
+        {
+            Key = "inside-broken-space-ship"
+        });
     }
     #endregion
 }
