@@ -48,7 +48,7 @@ public class RootScene : BaseScene
 
     private void LoadingScene_Start()
     {
-        this.GetNode<Button>("Button").Visible = false;
+        
     }
 
     private void LoadingScene_End(Node2D nextScene)
@@ -57,8 +57,6 @@ public class RootScene : BaseScene
         {
             this.RemoveChild(this._lastScene);
         }
-
-        this.GetNode<Button>("Button").Visible = false;
         this.AddChild(nextScene);
 
         this._lastScene = nextScene;
