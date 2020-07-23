@@ -14,55 +14,56 @@ using System.Linq;
 /// </summary>
 public class RootScene : BaseScene
 {
-    #region Fields
-    private Node2D _lastScene = null;
-    #endregion
+	#region Fields
+	private Node2D _lastScene = null;
+	#endregion
 
-    #region Public methods
-    public override void _Ready()
-    {
-        base._Ready();
+	#region Public methods
+	public override void _Ready()
+	{
+		base._Ready();
 
-        this.Initialize();
-    }
+		this.Initialize();
+		this.LoadingScene.Launch(new LevelConfiguration()
+		{
+			Key = "home"
+		});
+	}
 
-    public override void _Input(InputEvent @event)
-    {
-        base._Input(@event);
+	public override void _Input(InputEvent @event)
+	{
+		base._Input(@event);
 
-        this.LoadingScene.Launch(new LevelConfiguration()
-        {
-            Key = "home"
-        });
-    }
-    #endregion
+	   
+	}
+	#endregion
 
-    #region Internal methods
-    private void Initialize()
-    {
-        this.LoadingScene.Connect(LoadingActionsType.Begin.ToString(), this, nameof(LoadingScene_Start));
-        this.LoadingScene.Connect(LoadingActionsType.End.ToString(), this, nameof(LoadingScene_End));
+	#region Internal methods
+	private void Initialize()
+	{
+		this.LoadingScene.Connect(LoadingActionsType.Begin.ToString(), this, nameof(LoadingScene_Start));
+		this.LoadingScene.Connect(LoadingActionsType.End.ToString(), this, nameof(LoadingScene_End));
 
 
-    }
+	}
 
-    private void LoadingScene_Start()
-    {
-        
-    }
+	private void LoadingScene_Start()
+	{
+		
+	}
 
-    private void LoadingScene_End(Node2D nextScene)
-    {
-        if (this._lastScene != null)
-        {
-            this.RemoveChild(this._lastScene);
-        }
-        this.AddChild(nextScene);
+	private void LoadingScene_End(Node2D nextScene)
+	{
+		if (this._lastScene != null)
+		{
+			this.RemoveChild(this._lastScene);
+		}
+		this.AddChild(nextScene);
 
-        this._lastScene = nextScene;
-    }
-    #endregion
+		this._lastScene = nextScene;
+	}
+	#endregion
 
-    #region Properties
-    #endregion
+	#region Properties
+	#endregion
 }
