@@ -490,7 +490,7 @@ script = ExtResource( 16 )
 [node name="Wave" type="AnimatedSprite" parent="Image/Sea/Wave"]
 position = Vector2( 1400, 800 )
 frames = SubResource( 1 )
-frame = 17
+frame = 1
 playing = true
 centered = false
 
@@ -499,21 +499,20 @@ centered = false
 [node name="Wave1" type="AnimatedSprite" parent="Image/Sea/Wave/Up"]
 position = Vector2( -20.872, 950 )
 frames = SubResource( 1 )
-frame = 16
 playing = true
 centered = false
 
 [node name="Wave2" type="AnimatedSprite" parent="Image/Sea/Wave/Up"]
 position = Vector2( 552, 880 )
 frames = SubResource( 1 )
-frame = 17
+frame = 1
 playing = true
 centered = false
 
 [node name="Wave3" type="AnimatedSprite" parent="Image/Sea/Wave/Up"]
 position = Vector2( 1032, 816 )
 frames = SubResource( 1 )
-frame = 17
+frame = 1
 playing = true
 centered = false
 
@@ -522,21 +521,19 @@ centered = false
 [node name="Wave1" type="AnimatedSprite" parent="Image/Sea/Wave/Down"]
 position = Vector2( 9.822, 630.107 )
 frames = SubResource( 1 )
-frame = 15
+frame = 22
 playing = true
 centered = false
 
 [node name="Wave2" type="AnimatedSprite" parent="Image/Sea/Wave/Down"]
 position = Vector2( 650, 650 )
 frames = SubResource( 1 )
-frame = 16
 playing = true
 centered = false
 
 [node name="Wave3" type="AnimatedSprite" parent="Image/Sea/Wave/Down"]
 position = Vector2( 715.774, 900 )
 frames = SubResource( 1 )
-frame = 16
 playing = true
 centered = false
 
@@ -544,7 +541,7 @@ centered = false
 position = Vector2( -8, 584 )
 scale = Vector2( 1.96875, 1.46667 )
 frames = SubResource( 2 )
-frame = 12
+frame = 25
 playing = true
 centered = false
 
@@ -554,7 +551,6 @@ centered = false
 position = Vector2( -144, 56 )
 scale = Vector2( 1.3, 1.1 )
 frames = SubResource( 3 )
-frame = 7
 playing = true
 centered = false
 
@@ -562,7 +558,7 @@ centered = false
 position = Vector2( -200, 216 )
 scale = Vector2( 1.42, 1.50857 )
 frames = SubResource( 4 )
-frame = 1
+frame = 4
 playing = true
 centered = false
 
@@ -570,7 +566,7 @@ centered = false
 position = Vector2( 1608, 56 )
 scale = Vector2( 1.58667, 1.984 )
 frames = SubResource( 5 )
-frame = 3
+frame = 6
 playing = true
 centered = false
 
@@ -579,7 +575,7 @@ position = Vector2( 1096, -16 )
 rotation = 0.588929
 scale = Vector2( 2.35746, 1.71628 )
 frames = SubResource( 6 )
-frame = 7
+frame = 10
 playing = true
 centered = false
 flip_v = true
@@ -587,7 +583,7 @@ flip_v = true
 [node name="cable5" type="AnimatedSprite" parent="Image/Cable"]
 position = Vector2( 854.741, -50.5266 )
 frames = SubResource( 7 )
-frame = 5
+frame = 8
 playing = true
 centered = false
 
@@ -633,7 +629,7 @@ texture = SubResource( 10 )
 [node name="PillarWave1" type="AnimatedSprite" parent="Image/Tube/PillarWave"]
 position = Vector2( 424, 696 )
 frames = SubResource( 11 )
-frame = 15
+frame = 14
 playing = true
 centered = false
 
@@ -641,14 +637,14 @@ centered = false
 position = Vector2( 968, 80.0001 )
 scale = Vector2( 1, 2 )
 frames = SubResource( 12 )
-frame = 14
+frame = 13
 playing = true
 
 [node name="PillarWave2" type="AnimatedSprite" parent="Image/Tube/PillarWave"]
 position = Vector2( 1648, 720 )
 scale = Vector2( 1.81333, 1.76 )
 frames = SubResource( 13 )
-frame = 3
+frame = 18
 playing = true
 centered = false
 
@@ -656,14 +652,14 @@ centered = false
 position = Vector2( -807.353, 77.2726 )
 scale = Vector2( 2.216, 1.66333 )
 frames = SubResource( 12 )
-frame = 14
+frame = 13
 playing = true
 
 [node name="PillarWave3" type="AnimatedSprite" parent="Image/Tube/PillarWave"]
 position = Vector2( 912, 592 )
 scale = Vector2( 1.472, 1.65333 )
 frames = SubResource( 14 )
-frame = 12
+frame = 14
 playing = true
 centered = false
 
@@ -671,7 +667,7 @@ centered = false
 position = Vector2( -112, 104 )
 scale = Vector2( 1, 1.8 )
 frames = SubResource( 12 )
-frame = 14
+frame = 13
 playing = true
 
 [node name="Spike" type="Node2D" parent="Image"]
@@ -695,14 +691,14 @@ process_material = SubResource( 20 )
 [node name="spark-right" type="AnimatedSprite" parent="Image/Sparks"]
 position = Vector2( 1264, 120 )
 frames = SubResource( 43 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="spark-middle" type="AnimatedSprite" parent="Image/Sparks"]
 position = Vector2( 444.57, 77.5414 )
 rotation = 3.14159
 frames = SubResource( 43 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="Menu" type="Node2D" parent="."]
