@@ -541,7 +541,7 @@ centered = false
 position = Vector2( -8, 584 )
 scale = Vector2( 1.96875, 1.46667 )
 frames = SubResource( 2 )
-frame = 25
+frame = 1
 playing = true
 centered = false
 
@@ -551,6 +551,7 @@ centered = false
 position = Vector2( -144, 56 )
 scale = Vector2( 1.3, 1.1 )
 frames = SubResource( 3 )
+frame = 9
 playing = true
 centered = false
 
@@ -558,7 +559,7 @@ centered = false
 position = Vector2( -200, 216 )
 scale = Vector2( 1.42, 1.50857 )
 frames = SubResource( 4 )
-frame = 4
+frame = 3
 playing = true
 centered = false
 
@@ -566,7 +567,7 @@ centered = false
 position = Vector2( 1608, 56 )
 scale = Vector2( 1.58667, 1.984 )
 frames = SubResource( 5 )
-frame = 6
+frame = 5
 playing = true
 centered = false
 
@@ -575,7 +576,7 @@ position = Vector2( 1096, -16 )
 rotation = 0.588929
 scale = Vector2( 2.35746, 1.71628 )
 frames = SubResource( 6 )
-frame = 10
+frame = 14
 playing = true
 centered = false
 flip_v = true
@@ -583,7 +584,7 @@ flip_v = true
 [node name="cable5" type="AnimatedSprite" parent="Image/Cable"]
 position = Vector2( 854.741, -50.5266 )
 frames = SubResource( 7 )
-frame = 8
+frame = 7
 playing = true
 centered = false
 
@@ -644,7 +645,7 @@ playing = true
 position = Vector2( 1648, 720 )
 scale = Vector2( 1.81333, 1.76 )
 frames = SubResource( 13 )
-frame = 18
+frame = 11
 playing = true
 centered = false
 
@@ -659,7 +660,7 @@ playing = true
 position = Vector2( 912, 592 )
 scale = Vector2( 1.472, 1.65333 )
 frames = SubResource( 14 )
-frame = 14
+frame = 5
 playing = true
 centered = false
 
@@ -675,7 +676,7 @@ playing = true
 [node name="SpikeLeft" type="AnimatedSprite" parent="Image/Spike"]
 position = Vector2( 98.8062, 108.83 )
 frames = SubResource( 19 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="Particles2D" type="Particles2D" parent="Image/Spike"]
@@ -691,14 +692,14 @@ process_material = SubResource( 20 )
 [node name="spark-right" type="AnimatedSprite" parent="Image/Sparks"]
 position = Vector2( 1264, 120 )
 frames = SubResource( 43 )
-frame = 4
+frame = 10
 playing = true
 
 [node name="spark-middle" type="AnimatedSprite" parent="Image/Sparks"]
 position = Vector2( 444.57, 77.5414 )
 rotation = 3.14159
 frames = SubResource( 43 )
-frame = 3
+frame = 9
 playing = true
 
 [node name="Menu" type="Node2D" parent="."]

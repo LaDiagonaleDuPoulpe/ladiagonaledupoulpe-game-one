@@ -22,8 +22,6 @@ public class CloudMoving : AnimatedSprite
 	/// </summary>
 	public async void MoveCloud()
 	{
-		GD.Print(this.Frames.GetFrame("default", 0).GetSize().x);
-		GD.Print(Position.x);
 		while (Position.x  < this.Frames.GetFrame("default",0).GetSize().x)
 		{
 			this.Position = new Vector2(this.Position.x - _speed, this.Position.y);

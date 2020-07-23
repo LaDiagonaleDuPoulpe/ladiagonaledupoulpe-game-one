@@ -8,13 +8,13 @@ using System;
 /// </summary>
 public class Home : BaseActiveScene
 {
-    #region Internal methods
-    private void _on_BtnNewParty_pressed() 
-    {
-        this.LoadingScene.Launch(new LevelConfiguration()
-        {
-            Key = "video-intro"
-        });
-    }
-    #endregion 
+	#region Internal methods
+	private void _on_BtnNewParty_pressed() 
+	{
+		this.LoadingScene.Launch(new LevelConfiguration()
+		{
+			Key = "video-intro"
+		});
+	}
+	#endregion 
 }
