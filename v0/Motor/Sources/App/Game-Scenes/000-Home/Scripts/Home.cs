@@ -4,7 +4,7 @@ using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Configurations;
 using System;
 
 /// <summary>
-/// Home scene with menu to new ame, load game
+/// Home scene with menu to new game, load game
 /// </summary>
 public class Home : BaseActiveScene
 {
