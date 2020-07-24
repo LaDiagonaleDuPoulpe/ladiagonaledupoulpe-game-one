@@ -8,9 +8,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1B6C37C2
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		ExportDebug|Any CPU = ExportDebug|Any CPU
-		ExportRelease|Any CPU = ExportRelease|Any CPU
+	Debug|Any CPU = Debug|Any CPU
+	ExportDebug|Any CPU = ExportDebug|Any CPU
+	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D7BAC461-683E-4BB9-AAD5-B5A6C74F72EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
