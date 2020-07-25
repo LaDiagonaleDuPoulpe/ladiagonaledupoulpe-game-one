@@ -33,27 +33,37 @@ Display=8
 [application]
 
 config/name="la-diagonale-du-poulpe"
-run/main_scene="res://Sources/App/Game-Scenes/000-Home/Home.tscn"
+run/main_scene="res://Sources/App/Core/Container-Scenes/RootScene.tscn"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
+config/icon="res://icon.png"
 
 [autoload]
 
-LoadSettings="*res://Sources/App/Core/LoadSettings.cs"
+DialoxBoxManager="*res://Sources/App/Shared/Services/UI/DialoxBoxManager.cs"
+DialogBox="*res://Sources/App/Shared/Scenes/Dialog/DialogBox.tscn"
+LoadingScene="*res://Sources/App/Shared/Scenes/LoadingScene/LoadingScene.tscn"
+GlobalDataService="*res://Sources/App/Shared/Services/Data/GlobalDataService.cs"
+ResourcesSceneLoader="*res://Sources/App/Shared/Services/Resources/ResourcesSceneLoader.cs"
 
 [display]
 
-window/size/resizable=false
-window/handheld/orientation="portrait"
-window/stretch/mode="2d"
+window/size/width=1980
+window/size/height=1024
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
 
 [editor_plugins]
 
 enabled=PoolStringArray( "WAT", "mono_debugger" )
 
+[logging]
+
+file_logging/enable_file_logging=true
+
 [mono]
 
-debugger_agent/wait_timeout=10000
+project/auto_update_project=false
 
 [rendering]
 
