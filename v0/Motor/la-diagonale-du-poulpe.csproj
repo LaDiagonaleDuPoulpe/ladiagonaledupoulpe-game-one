@@ -8,7 +8,7 @@
     <OutputPath>.mono\temp\bin\$(Configuration)</OutputPath>
     <RootNamespace>ladiagonaledupoulpe</RootNamespace>
     <AssemblyName>la-diagonale-du-poulpe</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <GodotProjectGeneratorVersion>1.0.7374.16792</GodotProjectGeneratorVersion>
     <BaseIntermediateOutputPath>.mono\temp\obj</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)\$(Configuration)</IntermediateOutputPath>
@@ -50,211 +50,95 @@
       <Private>False</Private>
       <HintPath>$(ProjectDir)/.mono/assemblies/$(ApiConfiguration)/GodotSharpEditor.dll</HintPath>
     </Reference>
+    <Reference Include="GodotSharpEditor" Condition=" '$(Configuration)' == 'Debug' ">
+      <HintPath>$(ProjectDir)/.mono/assemblies/$(ApiConfiguration)/GodotSharpEditor.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addons\WAT\core\assertions\Assertions.cs" />
+    <Compile Include="addons\WAT\core\test\Recorder.cs" />
+    <Compile Include="addons\WAT\core\test\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sources\App\Core\LoadSettings.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\Configurations\DefaultConfiguration.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\Configurations\LevelConfiguration.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\LoadSettings.cs" />
+    <Compile Include="Sources\App\Core\Base\Scenes\BaseScene.cs" />
+    <Compile Include="Sources\App\Core\Base\Scenes\BaseActiveScene.cs" />
+    <Compile Include="Sources\App\Core\Container-Scenes\Scripts\RootScene.cs" />
+    <Compile Include="Sources\App\Core\Interfaces\Configurations\LevelConfiguration.cs" />
+    <Compile Include="Sources\App\Core\Interfaces\Scenes\IDataInit.cs" />
+    <Compile Include="Sources\App\Core\Interfaces\Scenes\ILevelConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Players\Player.cs" />
-    <Compile Include="Sources\App\Core\Models\Settings\DefaultConfiguration\DefaultConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Motor.cs" />
     <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\CloudMoving.cs" />
+    <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\Home.cs" />
     <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\InstantiateCloud.cs" />
     <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\WaveSea.cs" />
     <Compile Include="Sources\App\Shared\Plugins\DestroyOnAnimationFinished.cs" />
     <Compile Include="Sources\App\Shared\Plugins\SpriteAnimation.cs" />
+    <Compile Include="Tests\Node2DTest.cs" />
+    <Compile Include="Sources\App\Game-Scenes\002-Inside-Crash-Ship\Scripts\InsideCrashShip.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Scenes\IMovingSprite.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Scenes\IMainScene.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Scenes\IWithChilds.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Scenes\IWithClouds.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Generators\BaseGenerator.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Generators\GeneratorSetting.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Generators\CloudGenerator\GreyCloudGenerator.Plugin.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Generators\ISpriteGenerator.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Clouds\GreyCloud.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Sparks\LightSparks\Scripts\LightSpark.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxExchangesItemSetting.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxMessageContentSetting.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxSetting.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\SceneConfigurationSetting.cs" />
+    <Compile Include="Sources\App\Game-Scenes\Test-Scene\TestSceneToBeLoaded.cs" />
+    <Compile Include="Sources\App\Shared\Constants\KeyPressActionKeys.cs" />
+    <Compile Include="Sources\App\Shared\Enums\DialogBox\DialogBoxActionType.cs" />
+    <Compile Include="Sources\App\Shared\Enums\LoadingActionsType.cs" />
+    <Compile Include="Sources\App\Shared\Enums\AnimatedSpriteDirection.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\DialogBox.cs" />
+    <Compile Include="Sources\App\Core\Models\Scenes\DialogBox\DialogBoxExchange.cs" />
+    <Compile Include="Sources\App\Shared\Enums\DialogBox\DialogBoxSpriteStatus.cs" />
+    <Compile Include="Sources\App\Core\Models\Scenes\DialogBox\MessageContent.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\LoadingScene\Scripts\LoadingScene.cs" />
+    <Compile Include="Sources\App\Shared\Services\Data\GlobalDataService.cs" />
+    <Compile Include="Sources\App\Shared\Services\UI\DialoxBoxManager.cs" />
+    <Compile Include="Sources\App\Shared\Services\Resources\ResourcesSceneLoader.cs" />
+    <Compile Include="Sources\App\Core\Interfaces\DialogBox\IDialoxBoxManager.cs" />
+    <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\ExchangeSettingExtensionMethod.cs" />
+    <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\StringExtensionMethod.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Scenes\home.json" />
+    <None Include="Data\Scenes\inside-broken-space-ship.json" />
+    <None Include="packages.config" />
+    <None Include="Sources\App\Core\Container-Scenes\README.md" />
+    <None Include="Sources\App\Core\Container-Scenes\RootScene.tscn" />
+    <None Include="Sources\App\Assets\Settings\Audiowide-Regular.ttf" />
+    <None Include="Sources\App\Assets\Settings\GlobalSettings.json" />
+    <None Include="Sources\App\Game-Scenes\Test-Scene\test-scene-to-be-loaded.tscn" />
+    <None Include="Sources\App\Shared\Services\README.md" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="Tests\Node2DTest.cs" />
-    <None Include="packages.config" />
-    <None Include="Sources\App\Assets\Settings\Audiowide-Regular.ttf" />
-    <None Include="Sources\App\Assets\Settings\GlobalSettings.json" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies">
+      <Version>1.0.0</Version>
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="addons\WAT\assets\crash_warning.png.import" />
-    <None Include="addons\WAT\assets\down.png.import" />
-    <None Include="addons\WAT\assets\failed.png.import" />
-    <None Include="addons\WAT\assets\function.png.import" />
-    <None Include="addons\WAT\assets\function.svg.import" />
-    <None Include="addons\WAT\assets\icon_add.png.import" />
-    <None Include="addons\WAT\assets\kofi.png.import" />
-    <None Include="addons\WAT\assets\more_button.png.import" />
-    <None Include="addons\WAT\assets\more_button.svg.import" />
-    <None Include="addons\WAT\assets\play.svg.import" />
-    <None Include="addons\WAT\assets\remove.png.import" />
-    <None Include="addons\WAT\assets\replace.png.import" />
-    <None Include="addons\WAT\assets\success.png.import" />
-    <None Include="addons\WAT\assets\summary.png.import" />
-    <None Include="addons\WAT\cli.tscn" />
-    <None Include="addons\WAT\core\assertions\assertions.gd" />
-    <None Include="addons\WAT\core\assertions\base.gd" />
-    <None Include="addons\WAT\core\assertions\boolean\is_false.gd" />
-    <None Include="addons\WAT\core\assertions\boolean\is_true.gd" />
-    <None Include="addons\WAT\core\assertions\class_list.gd" />
-    <None Include="addons\WAT\core\assertions\constants\type_library.gd" />
-    <None Include="addons\WAT\core\assertions\double\called_with_arguments.gd" />
-    <None Include="addons\WAT\core\assertions\double\script_was_called.gd" />
-    <None Include="addons\WAT\core\assertions\double\script_was_not_called.gd" />
-    <None Include="addons\WAT\core\assertions\equality\is_equal.gd" />
-    <None Include="addons\WAT\core\assertions\equality\is_equal_or_greater_than.gd" />
-    <None Include="addons\WAT\core\assertions\equality\is_equal_or_less_than.gd" />
-    <None Include="addons\WAT\core\assertions\equality\is_greater_than.gd" />
-    <None Include="addons\WAT\core\assertions\equality\is_less_than.gd" />
-    <None Include="addons\WAT\core\assertions\equality\is_not_equal.gd" />
-    <None Include="addons\WAT\core\assertions\file\file_does_not_exist.gd" />
-    <None Include="addons\WAT\core\assertions\file\file_exists.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_AABB.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_Array.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_Basis.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_bool.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_built_in_type.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_class_instance.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_Color.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_Dictionary.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_float.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_int.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_NodePath.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_Object.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_Plane.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_PoolByteArray.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_PoolColorArray.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_PoolIntArray.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_PoolRealArray.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_PoolStringArray.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_PoolVector2Array.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_PoolVector3Array.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_Quat.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_Rect2.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_RID.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_String.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_Transform.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_Transform2D.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_Vector2.gd" />
-    <None Include="addons\WAT\core\assertions\is\is_Vector3.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_AABB.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_Array.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_Basis.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_bool.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_built_in_type.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_class_instance.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_Color.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_Dictionary.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_float.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_int.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_NodePath.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_Object.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_Plane.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_PoolByteArray.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_PoolColorArray.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_PoolIntArray.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_PoolRealArray.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_PoolStringArray.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_PoolVector2Array.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_PoolVector3Array.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_Quat.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_Rect2.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_RID.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_String.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_Transform.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_Transform2D.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_Vector2.gd" />
-    <None Include="addons\WAT\core\assertions\is_not\is_not_Vector3.gd" />
-    <None Include="addons\WAT\core\assertions\misc\fail.gd" />
-    <None Include="addons\WAT\core\assertions\misc\that.gd" />
-    <None Include="addons\WAT\core\assertions\null\is_not_null.gd" />
-    <None Include="addons\WAT\core\assertions\null\is_null.gd" />
-    <None Include="addons\WAT\core\assertions\object\does_not_have_meta.gd" />
-    <None Include="addons\WAT\core\assertions\object\does_not_have_method.gd" />
-    <None Include="addons\WAT\core\assertions\object\does_not_have_user_signal.gd" />
-    <None Include="addons\WAT\core\assertions\object\has_meta.gd" />
-    <None Include="addons\WAT\core\assertions\object\has_method.gd" />
-    <None Include="addons\WAT\core\assertions\object\has_user_signal.gd" />
-    <None Include="addons\WAT\core\assertions\object\is_blocking_signals.gd" />
-    <None Include="addons\WAT\core\assertions\object\is_connected.gd" />
-    <None Include="addons\WAT\core\assertions\object\is_freed.gd" />
-    <None Include="addons\WAT\core\assertions\object\is_not_blocking_signals.gd" />
-    <None Include="addons\WAT\core\assertions\object\is_not_connected.gd" />
-    <None Include="addons\WAT\core\assertions\object\is_not_freed.gd" />
-    <None Include="addons\WAT\core\assertions\object\is_not_queued_for_deletion.gd" />
-    <None Include="addons\WAT\core\assertions\object\is_queued_for_deletion.gd" />
-    <None Include="addons\WAT\core\assertions\property\does_not_have.gd" />
-    <None Include="addons\WAT\core\assertions\property\has.gd" />
-    <None Include="addons\WAT\core\assertions\range\is_in_range.gd" />
-    <None Include="addons\WAT\core\assertions\range\is_not_in_range.gd" />
-    <None Include="addons\WAT\core\assertions\signal\signal_was_emitted.gd" />
-    <None Include="addons\WAT\core\assertions\signal\signal_was_emitted_with_arguments.gd" />
-    <None Include="addons\WAT\core\assertions\signal\signal_was_emitted_x_times.gd" />
-    <None Include="addons\WAT\core\assertions\signal\signal_was_not_emitted.gd" />
-    <None Include="addons\WAT\core\assertions\string\string_begins_with.gd" />
-    <None Include="addons\WAT\core\assertions\string\string_contains.gd" />
-    <None Include="addons\WAT\core\assertions\string\string_does_not_begin_with.gd" />
-    <None Include="addons\WAT\core\assertions\string\string_does_not_contain.gd" />
-    <None Include="addons\WAT\core\assertions\string\string_does_not_end_with.gd" />
-    <None Include="addons\WAT\core\assertions\string\string_ends_with.gd" />
-    <None Include="addons\WAT\core\double\factory.gd" />
-    <None Include="addons\WAT\core\double\method.gd" />
-    <None Include="addons\WAT\core\double\methods.gd" />
-    <None Include="addons\WAT\core\double\registry.gd" />
-    <None Include="addons\WAT\core\double\scene_director.gd" />
-    <None Include="addons\WAT\core\double\script_director.gd" />
-    <None Include="addons\WAT\core\double\script_writer.gd" />
-    <None Include="addons\WAT\core\test\any.gd" />
-    <None Include="addons\WAT\core\test\case.gd" />
-    <None Include="addons\WAT\core\test\executable.gd" />
-    <None Include="addons\WAT\core\test\parameters.gd" />
-    <None Include="addons\WAT\core\test\recorder.gd" />
-    <None Include="addons\WAT\core\test\suite.gd" />
-    <None Include="addons\WAT\core\test\template.gd" />
-    <None Include="addons\WAT\core\test\test.gd" />
-    <None Include="addons\WAT\core\test\timer.gd" />
-    <None Include="addons\WAT\core\test\watcher.gd" />
-    <None Include="addons\WAT\core\test\yielder.gd" />
-    <None Include="addons\WAT\core\test_runner\directory.gd" />
-    <None Include="addons\WAT\core\test_runner\execute.gd" />
-    <None Include="addons\WAT\core\test_runner\TestRunner.tscn" />
-    <None Include="addons\WAT\core\test_runner\test_loader.gd" />
-    <None Include="addons\WAT\core\test_runner\test_runner.gd" />
-    <None Include="addons\WAT\gui.tscn" />
-    <None Include="addons\WAT\LICENSE" />
-    <None Include="addons\WAT\plugin.cfg" />
-    <None Include="addons\WAT\plugin.gd" />
-    <None Include="addons\WAT\resources\base\results.gd" />
-    <None Include="addons\WAT\resources\JUnitXML.gd" />
-    <None Include="addons\WAT\resources\results.tres" />
-    <None Include="addons\WAT\system\filesystem.gd" />
-    <None Include="addons\WAT\system\initializer.gd" />
-    <None Include="addons\WAT\ui\dock.gd" />
-    <None Include="addons\WAT\ui\metadata\editor.gd" />
-    <None Include="addons\WAT\ui\metadata\index.gd" />
-    <None Include="addons\WAT\ui\metadata\metadata.gd" />
-    <None Include="addons\WAT\ui\metadata\Metadata.tscn" />
-    <None Include="addons\WAT\ui\metadata\tag.gd" />
-    <None Include="addons\WAT\ui\metadata\Tag.tscn" />
-    <None Include="addons\WAT\ui\metadata\TagArray.tscn" />
-    <None Include="addons\WAT\ui\results\ResultsForest.tscn" />
-    <None Include="addons\WAT\ui\results\ResultTree.tscn" />
-    <None Include="addons\WAT\ui\results\result_forest.gd" />
-    <None Include="addons\WAT\ui\results\result_tree.gd" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="addons\WAT\assets\crash_warning.png" />
-    <Content Include="addons\WAT\assets\down.png" />
-    <Content Include="addons\WAT\assets\failed.png" />
-    <Content Include="addons\WAT\assets\function.png" />
-    <Content Include="addons\WAT\assets\function.svg" />
-    <Content Include="addons\WAT\assets\icon_add.png" />
-    <Content Include="addons\WAT\assets\kofi.png" />
-    <Content Include="addons\WAT\assets\more_button.png" />
-    <Content Include="addons\WAT\assets\more_button.svg" />
-    <Content Include="addons\WAT\assets\play.svg" />
-    <Content Include="addons\WAT\assets\remove.png" />
-    <Content Include="addons\WAT\assets\replace.png" />
-    <Content Include="addons\WAT\assets\success.png" />
-    <Content Include="addons\WAT\assets\summary.png" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies">
+      <Version>1.0.0</Version>
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies">

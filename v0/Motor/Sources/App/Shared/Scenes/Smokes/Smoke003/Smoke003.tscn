@@ -1,0 +1,27 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/smoke3/smoke3_007.png" type="Texture" id=1]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/smoke3/smoke3_002.png" type="Texture" id=2]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/smoke3/smoke3_006.png" type="Texture" id=3]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/smoke3/smoke3_005.png" type="Texture" id=4]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/smoke3/smoke3_008.png" type="Texture" id=5]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/smoke3/smoke3_003.png" type="Texture" id=6]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/smoke3/smoke3_009.png" type="Texture" id=7]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/smoke3/smoke3_004.png" type="Texture" id=8]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/smoke3/smoke3_000.png" type="Texture" id=9]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/smoke3/smoke3_001.png" type="Texture" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Smoke" type="Node2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+frame = 7
+playing = true

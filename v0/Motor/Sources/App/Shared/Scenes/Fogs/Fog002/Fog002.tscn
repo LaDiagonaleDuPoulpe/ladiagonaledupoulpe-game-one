@@ -1,0 +1,46 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_000.png" type="Texture" id=1]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_001.png" type="Texture" id=2]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_003.png" type="Texture" id=3]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_002.png" type="Texture" id=4]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_004.png" type="Texture" id=5]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_022.png" type="Texture" id=6]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_008.png" type="Texture" id=7]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_021.png" type="Texture" id=8]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_028.png" type="Texture" id=9]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_026.png" type="Texture" id=10]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_013.png" type="Texture" id=11]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_015.png" type="Texture" id=12]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_018.png" type="Texture" id=13]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_020.png" type="Texture" id=14]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_017.png" type="Texture" id=15]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_014.png" type="Texture" id=16]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_009.png" type="Texture" id=17]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_016.png" type="Texture" id=18]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_006.png" type="Texture" id=19]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_024.png" type="Texture" id=20]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_027.png" type="Texture" id=21]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_029.png" type="Texture" id=22]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_007.png" type="Texture" id=23]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_023.png" type="Texture" id=24]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_011.png" type="Texture" id=25]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_010.png" type="Texture" id=26]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_012.png" type="Texture" id=27]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_019.png" type="Texture" id=28]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_005.png" type="Texture" id=29]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/black fog2/black fog2_025.png" type="Texture" id=30]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 29 ), ExtResource( 19 ), ExtResource( 23 ), ExtResource( 7 ), ExtResource( 17 ), ExtResource( 26 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 11 ), ExtResource( 16 ), ExtResource( 12 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 28 ), ExtResource( 14 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 24 ), ExtResource( 20 ), ExtResource( 30 ), ExtResource( 10 ), ExtResource( 21 ), ExtResource( 9 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Fog" type="Node2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+playing = true

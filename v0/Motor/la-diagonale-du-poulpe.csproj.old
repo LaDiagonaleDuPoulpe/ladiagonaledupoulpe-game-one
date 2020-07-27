@@ -8,7 +8,7 @@
     <OutputPath>.mono\temp\bin\$(Configuration)</OutputPath>
     <RootNamespace>ladiagonaledupoulpe</RootNamespace>
     <AssemblyName>la-diagonale-du-poulpe</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <GodotProjectGeneratorVersion>1.0.7374.16792</GodotProjectGeneratorVersion>
     <BaseIntermediateOutputPath>.mono\temp\obj</BaseIntermediateOutputPath>
     <IntermediateOutputPath>$(BaseIntermediateOutputPath)\$(Configuration)</IntermediateOutputPath>
@@ -57,24 +57,43 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sources\App\Core\LoadSettings.cs" />
+    <Compile Include="Sources\App\Core\Base\Scenes\BaseScene.cs" />
+    <Compile Include="Sources\App\Core\Container-Scenes\RootScene.cs" />
+    <Compile Include="Sources\App\Core\Interfaces\Configurations\LevelConfiguration.cs" />
+    <Compile Include="Sources\App\Core\Interfaces\Scenes\IDataInit.cs" />
+    <Compile Include="Sources\App\Core\Interfaces\Scenes\ILevelConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Players\Player.cs" />
-    <Compile Include="Sources\App\Core\Models\Settings\DefaultConfiguration\DefaultConfiguration.cs" />
-    <Compile Include="Sources\App\Core\Models\Settings\Motor.cs" />
-    <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\CloudMoving.cs" />
-    <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\InstantiateCloud.cs" />
-    <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\WaveSea.cs" />
-    <Compile Include="Sources\App\Shared\Plugins\DestroyOnAnimationFinished.cs" />
-    <Compile Include="Sources\App\Shared\Plugins\SpriteAnimation.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxExchangesItemSetting.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxMessageContentSetting.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxSetting.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\SceneConfigurationSetting.cs" />
+    <Compile Include="Sources\App\Game-Scenes\Test-Scene\TestSceneToBeLoaded.cs" />
+    <Compile Include="Sources\App\Shared\Enums\LoadingActionsType.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\AnimatedSpriteDirection.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\DialogBox.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\DialogBoxExchange.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\DialogBoxSpriteStatus.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\MessageContent.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\LoadingScene\Scripts\LoadingScene.cs" />
+    <Compile Include="Sources\App\Shared\Services\UI\DialoxBoxManager.cs" />
+    <Compile Include="Sources\App\Shared\Services\Resources\ResourcesSceneLoader.cs" />
+    <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\ExchangeSettingExtensionMethod.cs" />
+    <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\StringExtensionMethod.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <None Include="Tests\Node2DTest.cs" />
+    <None Include="Data\Scenes\inside-broken-space-ship.json" />
     <None Include="packages.config" />
+    <None Include="Sources\App\Core\Container-Scenes\README.md" />
+    <None Include="Sources\App\Core\Container-Scenes\RootScene.tscn" />
+    <None Include="Sources\App\Game-Scenes\Test-Scene\test-scene-to-be-loaded.tscn" />
+    <None Include="Sources\App\Shared\Services\README.md" />
+  </ItemGroup>
+<ItemGroup>
+    <None Include="Tests\Node2DTest.cs" />
     <None Include="Sources\App\Assets\Settings\Audiowide-Regular.ttf" />
     <None Include="Sources\App\Assets\Settings\GlobalSettings.json" />
   </ItemGroup>
-  <ItemGroup>
+<ItemGroup>
     <None Include="addons\WAT\assets\crash_warning.png.import" />
     <None Include="addons\WAT\assets\down.png.import" />
     <None Include="addons\WAT\assets\failed.png.import" />
@@ -256,5 +275,6 @@
     <Content Include="addons\WAT\assets\success.png" />
     <Content Include="addons\WAT\assets\summary.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

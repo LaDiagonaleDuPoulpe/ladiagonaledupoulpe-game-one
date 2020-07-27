@@ -1,0 +1,65 @@
+[gd_scene load_steps=34 format=2]
+
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_019.png" type="Texture" id=1]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_009.png" type="Texture" id=2]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_011.png" type="Texture" id=3]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_024.png" type="Texture" id=4]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_025.png" type="Texture" id=5]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_026.png" type="Texture" id=6]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_027.png" type="Texture" id=7]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_003.png" type="Texture" id=8]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_028.png" type="Texture" id=9]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_000.png" type="Texture" id=10]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_017.png" type="Texture" id=11]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_007.png" type="Texture" id=12]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_010.png" type="Texture" id=13]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_005.png" type="Texture" id=14]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_015.png" type="Texture" id=15]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_020.png" type="Texture" id=16]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_021.png" type="Texture" id=17]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_016.png" type="Texture" id=18]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_001.png" type="Texture" id=19]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_002.png" type="Texture" id=20]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_014.png" type="Texture" id=21]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_022.png" type="Texture" id=22]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_004.png" type="Texture" id=23]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_013.png" type="Texture" id=24]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_018.png" type="Texture" id=25]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_008.png" type="Texture" id=26]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_012.png" type="Texture" id=27]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_023.png" type="Texture" id=28]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_006.png" type="Texture" id=29]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/spark3/spark3_029.png" type="Texture" id=30]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 8 ), ExtResource( 23 ), ExtResource( 14 ), ExtResource( 29 ), ExtResource( 12 ), ExtResource( 26 ), ExtResource( 2 ), ExtResource( 13 ), ExtResource( 3 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 15 ), ExtResource( 18 ), ExtResource( 11 ), ExtResource( 25 ), ExtResource( 1 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 22 ), ExtResource( 28 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 79.1951
+height = 227.207
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 121.34, 79.8799 )
+
+[node name="LightSpark" type="StaticBody2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 5.75574, 1.91855 )
+frames = SubResource( 1 )
+frame = 12
+playing = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( -101.684, -76.7429 )
+rotation = -0.6353
+shape = SubResource( 2 )
+one_way_collision = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 107.504, 90.3247 )
+shape = SubResource( 3 )
