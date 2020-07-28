@@ -1,6 +1,7 @@
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Base.Scenes;
 using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Configurations;
+using ladiagonaledupoulpe.Sources.App.Shared.Constants;
 using System;
 
 /// <summary>
@@ -8,8 +9,26 @@ using System;
 /// </summary>
 public class VideoIntro : BaseActiveScene
 {
+    #region Public methods
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+        if (@event.IsActionPressed(KeyPressActionKeys.PressEnter))
+        {
+            this.GoToNextScene();
+        }
+    }
+    #endregion
+
     #region Internal methods
     private void _on_VideoPlayer_finished()
+    {
+        // this.GoToNextScene();
+    }
+
+    private void _on_VideoPlayer_gui_input(InputEvent action) {}
+
+    private void GoToNextScene() 
     {
         this.LoadingScene.Launch(new LevelConfiguration()
         {
