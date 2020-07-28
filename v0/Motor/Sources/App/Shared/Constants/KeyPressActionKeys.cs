@@ -16,6 +16,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Constants
         /// When key press is enter or space
         /// </summary>
         public const string PressEnter = "ui_accept";
+
+        /// <summary>
+        /// When key press is escape
+        /// </summary>
+        public const string PressCancel = "ui_cancel";
         #endregion
     }
 }

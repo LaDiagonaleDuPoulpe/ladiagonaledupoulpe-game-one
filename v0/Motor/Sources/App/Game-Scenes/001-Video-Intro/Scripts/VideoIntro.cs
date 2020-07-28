@@ -13,8 +13,9 @@ public class VideoIntro : BaseActiveScene
     public override void _Input(InputEvent @event)
     {
         base._Input(@event);
-        if (@event.IsActionPressed(KeyPressActionKeys.PressEnter))
+        if (@event.IsActionPressed(KeyPressActionKeys.PressCancel))
         {
+            GD.Print("Key !");
             this.GoToNextScene();
         }
     }
@@ -23,13 +24,16 @@ public class VideoIntro : BaseActiveScene
     #region Internal methods
     private void _on_VideoPlayer_finished()
     {
-        // this.GoToNextScene();
+        this.GoToNextScene();
     }
 
     private void _on_VideoPlayer_gui_input(InputEvent action) {}
 
     private void GoToNextScene() 
     {
+        VideoPlayer player = this.GetNode<VideoPlayer>("VideoPlayer");
+        player.Stop();
+
         this.LoadingScene.Launch(new LevelConfiguration()
         {
             Key = "inside-broken-space-ship"

@@ -235,7 +235,7 @@ public class DialogBox : Node2D
         {
             MessageContent content = null;
 
-            if (this.CurrentPartOfMessage < this.MessageContents.Count)
+            if (this.CurrentPartOfMessage < this.MessageContents?.Count)
             {
                 content = this.MessageContents[this.CurrentPartOfMessage];
             }
