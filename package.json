@@ -1,0 +1,19 @@
+{
+  "name": "ladiagonaledupoulpe-game-one",
+  "version": "1.0.0",
+  "description": "Game one, with js coding",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evan-boissonnot/ladiagonaledupoulpe-game-one.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/evan-boissonnot/ladiagonaledupoulpe-game-one/issues"
+  },
+  "homepage": "https://github.com/evan-boissonnot/ladiagonaledupoulpe-game-one#readme"
+}
