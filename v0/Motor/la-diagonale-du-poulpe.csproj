@@ -79,8 +79,11 @@
     <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\InstantiateCloud.cs" />
     <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\WaveSea.cs" />
     <Compile Include="Sources\App\Game-Scenes\001-Video-Intro\Scripts\VideoIntro.cs" />
+    <Compile Include="Sources\App\Game-Scenes\XXX-Test-TestingScenes\Scripts\TestHealthBar.cs" />
     <Compile Include="Sources\App\Shared\Plugins\DestroyOnAnimationFinished.cs" />
     <Compile Include="Sources\App\Shared\Plugins\SpriteAnimation.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\StatusBar\Heart\Scripts\HeartBar.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\StatusBar\Scripts\HeartsLifeBar.cs" />
     <Compile Include="Tests\Node2DTest.cs" />
     <Compile Include="Sources\App\Game-Scenes\002-Inside-Crash-Ship\Scripts\InsideCrashShip.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Scenes\IMovingSprite.cs" />
