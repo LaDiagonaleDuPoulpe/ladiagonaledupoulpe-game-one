@@ -11,6 +11,7 @@ public class HeartBar : Node2D
     #region Fields
     private TextureProgress _progressBar = null;
     private Tween _tweenItem = null;
+    private int _currentValue = 0;
     #endregion
 
     #region Public methods
@@ -28,9 +29,9 @@ public class HeartBar : Node2D
     {
         int finalValue = this.CurrentValue + value;
 
-        this._tweenItem.InterpolateProperty(this._progressBar, "value", this.CurrentValue, finalValue, 
-                                            0.5f, 
-                                            Tween.TransitionType.Elastic, 
+        this._tweenItem.InterpolateProperty(this._progressBar, "value", this.CurrentValue, finalValue,
+                                            0.5f,
+                                            Tween.TransitionType.Elastic,
                                             Tween.EaseType.Out);
         this._tweenItem.Start();
 
@@ -47,7 +48,23 @@ public class HeartBar : Node2D
     /// <summary>
     /// Current value of the life bar
     /// </summary>
-    public int CurrentValue { get; set; } = 0;
+    public int CurrentValue
+    { 
+        get => this._currentValue; 
+        private set
+        {
+            if (value < 0)
+            {
+                value = 0;
+            }
+            if (value > this.MaxValue)
+            {
+                value = this.MaxValue;
+            }
+
+            this._currentValue = value;
+        }
+    }
 
     /// <summary>
     /// Max value of the life bar

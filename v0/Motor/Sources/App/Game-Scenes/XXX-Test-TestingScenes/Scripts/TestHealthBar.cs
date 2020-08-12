@@ -3,23 +3,21 @@ using System;
 
 public class TestHealthBar : Node2D
 {
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
+    private HeartsLifeBar _lifeBar = null;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        
+        this._lifeBar = this.GetNode<HeartsLifeBar>("LifeBar");
     }
 
     public void _on_Button_pressed() 
     {
-        HeartsLifeBar lifeBar = this.GetNode<HeartsLifeBar>("LifeBar");
+        this._lifeBar.Update(20);
+    }
 
-
-        GD.Print("pressed");
-
-        lifeBar.Update(20);
+    public void _on_Button2_pressed()
+    {
+        this._lifeBar.Update(-20);
     }
 }
