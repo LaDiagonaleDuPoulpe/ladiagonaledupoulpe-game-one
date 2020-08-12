@@ -26,16 +26,15 @@ public class HeartBar : Node2D
     /// <param name="value">Value positive or negative</param>
     public void Update(int value)
     {
-        GD.Print("Heart update =>", value);
+        int finalValue = this.CurrentValue + value;
 
-
-        this._tweenItem.InterpolateProperty(this._progressBar, "value", this.CurrentValue, value, 0.3f, Tween.TransitionType.Elastic, Tween.EaseType.Out);
+        this._tweenItem.InterpolateProperty(this._progressBar, "value", this.CurrentValue, finalValue, 
+                                            0.5f, 
+                                            Tween.TransitionType.Elastic, 
+                                            Tween.EaseType.Out);
         this._tweenItem.Start();
 
         this.CurrentValue += value;
-        this._progressBar.Value = this.CurrentValue;
-
-        GD.Print("this._progressBar.Value => ", this._progressBar.Value);
     }
     #endregion
 
