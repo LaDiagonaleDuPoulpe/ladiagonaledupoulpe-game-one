@@ -35,7 +35,10 @@ public class HeartBar : Node2D
                                             0.5f,
                                             Tween.TransitionType.Elastic,
                                             Tween.EaseType.Out);
-        this._tweenItem.Start();
+        if (!this._tweenItem.IsActive())
+        {
+            this._tweenItem.Start();
+        }
 
         this.CurrentValue += value;
         this.ChangeColorStyle(this.CurrentValue);
@@ -71,8 +74,8 @@ public class HeartBar : Node2D
     /// Current value of the life bar
     /// </summary>
     public int CurrentValue
-    { 
-        get => this._currentValue; 
+    {
+        get => this._currentValue;
         private set
         {
             if (value < 0)
