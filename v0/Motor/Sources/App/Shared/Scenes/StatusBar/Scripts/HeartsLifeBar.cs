@@ -23,8 +23,6 @@ public class HeartsLifeBar : Node2D
     /// <param name="value">Positive or negative value</param>
     public void Update(int value)
     {
-        GD.Print("Life bar update");
-
         this._mainHeart.Update(value);
     }
     #endregion
@@ -34,12 +32,19 @@ public class HeartsLifeBar : Node2D
     /// Min health of the octopus
     /// </summary>
     [Export]
-    public int MinHealth { get; set; } = 0;
+    public int CurrentHealth
+    {
+        get => this._mainHeart.CurrentValue;
+    }
 
     /// <summary>
     /// Max health of the octopus
     /// </summary>
     [Export]
-    public int MaxHealth { get; set; } = 100;
+    public int MaxHealth
+    {
+        get => this._mainHeart.MaxValue;
+        set => this._mainHeart.MaxValue = value;
+    }
     #endregion
 }
