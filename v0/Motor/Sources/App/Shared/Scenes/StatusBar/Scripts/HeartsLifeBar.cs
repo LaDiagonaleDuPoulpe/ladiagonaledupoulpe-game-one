@@ -31,7 +31,6 @@ public class HeartsLifeBar : Node2D
     /// <summary>
     /// Min health of the octopus
     /// </summary>
-    [Export]
     public int CurrentHealth
     {
         get => this._mainHeart.CurrentValue;

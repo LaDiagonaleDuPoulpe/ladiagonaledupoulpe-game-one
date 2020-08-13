@@ -19,6 +19,8 @@ public class HeartBar : Node2D
     {
         this._progressBar = this.GetNode<TextureProgress>("TextureProgress");
         this._tweenItem = this.GetNode<Tween>("Tween");
+
+        this._progressBar.MaxValue = this.MaxValue;
     }
 
     /// <summary>
@@ -36,6 +38,26 @@ public class HeartBar : Node2D
         this._tweenItem.Start();
 
         this.CurrentValue += value;
+        this.ChangeColorStyle(this.CurrentValue);
+    }
+    #endregion
+
+    #region Internal methods
+    private void ChangeColorStyle(int value)
+    {
+        double redPart = this.MaxValue * 0.3;
+        double reallyGoodPart = this.MaxValue * 0.7;
+
+        this._progressBar.TintProgress = Colors.DarkBlue;
+        if (value < redPart)
+        {
+            this._progressBar.TintProgress = Colors.DarkRed;
+        }
+
+        if (value >= redPart && value <= reallyGoodPart)
+        {
+            this._progressBar.TintProgress = Colors.LightSkyBlue;
+        }
     }
     #endregion
 
