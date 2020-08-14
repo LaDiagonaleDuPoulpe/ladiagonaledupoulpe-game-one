@@ -63,6 +63,7 @@
     <Compile Include="addons\WAT\core\test\Recorder.cs" />
     <Compile Include="addons\WAT\core\test\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Scripts\BaseCharacter.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\DefaultConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\LevelConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\LoadSettings.cs" />
