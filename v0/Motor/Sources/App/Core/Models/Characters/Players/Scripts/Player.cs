@@ -2,67 +2,90 @@ using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
 using System;
 
-/// <summary>
-/// Current player with animated sprite in the game
-/// </summary>
-public class Player : BaseCharacter
+namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 {
-	#region Fields
-	private string _lastAnimation = "";
-    #endregion
+    /// <summary>
+    /// Current player with animated sprite in the game
+    /// </summary>
+    public class Player : BaseCharacter
+    {
+        #region Fields
+        private string _lastAnimation = "";
+        #endregion
 
-    #region Public methods
-	public override void _PhysicsProcess(float delta)
-	{
-        base._PhysicsProcess(delta);
+        #region Public methods
+        public override void _Ready()
+        {
+            base._Ready();
+        }
 
-		Vector2 vector = Vector2.Zero;
+        public override void _PhysicsProcess(float delta)
+        {
+            base._PhysicsProcess(delta);
 
-		vector.x = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
-		vector.y = Input.GetActionStrength("ui_down") - Input.GetActionStrength("ui_up");
-		
-		this.Velocity = Vector2.Zero;
-		if (vector != Vector2.Zero) 
-		{
-			this.Velocity = vector;
-		}
+            Vector2 vector = Vector2.Zero;
 
-		this.MoveAndCollide(this.Velocity.Normalized() * this.Speed);
-	}
+            vector.x = Input.GetActionStrength("ui_right") - Input.GetActionStrength("ui_left");
+            vector.y = Input.GetActionStrength("ui_down") - Input.GetActionStrength("ui_up");
 
-	public override void _Process(float delta)
-	{
-		string animation = string.Empty;
-		string prefix = string.Empty;
-	
-		var animatedSprite = this.GetNode<AnimatedSprite>("AnimatedSprite");
+            this.Velocity = Vector2.Zero;
+            if (vector != Vector2.Zero)
+            {
+                this.Velocity = vector;
+            }
 
-		if (this.Velocity.Length() <= 0)
-		{
-			prefix = "idle_";
-		}
+            this.MoveAndCollide(this.Velocity.Normalized() * this.Speed);
+        }
 
-		if (this.Velocity.x != 0)
-		{
-			this._lastAnimation = "left";
-			animatedSprite.FlipV = false;
-			animatedSprite.FlipH = this.Velocity.x > 0;
-		}
-		else if (this.Velocity.y != 0)
-		{
-			this._lastAnimation = "up";
-			if (this.Velocity.y > 0)
-			{
-				this._lastAnimation = "down";
-			}
-		}
+        public override void _Process(float delta)
+        {
+            string animation = string.Empty;
+            string prefix = string.Empty;
 
-		animation = prefix + this._lastAnimation;
+            var animatedSprite = this.GetNode<AnimatedSprite>("AnimatedSprite");
 
-		animatedSprite.Play(animation);
-	}
-	#endregion
+            if (this.Velocity.Length() <= 0)
+            {
+                prefix = "idle_";
+            }
 
-	#region Properties
-	#endregion
+            if (this.Velocity.x != 0)
+            {
+                this._lastAnimation = "left";
+                animatedSprite.FlipV = false;
+                animatedSprite.FlipH = this.Velocity.x > 0;
+            }
+            else if (this.Velocity.y != 0)
+            {
+                this._lastAnimation = "up";
+                if (this.Velocity.y > 0)
+                {
+                    this._lastAnimation = "down";
+                }
+            }
+
+            animation = prefix + this._lastAnimation;
+
+            animatedSprite.Play(animation);
+        }
+        #endregion
+
+        #region Internal methods
+        protected override void Initialize()
+        {
+            base.Initialize();
+
+            if (this.Health is HeartsHealth heartsHealth)
+            {
+                heartsHealth.AddHearts(new Heart()
+                {
+
+                });
+            }
+        }
+        #endregion
+
+        #region Properties
+        #endregion
+    }
 }

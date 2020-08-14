@@ -24,7 +24,16 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
             base._Ready();
             this.ScreenSize = this.GetViewport().Size;
             this.Health = this.GetNode<Health>("Health");
+
+            this.Initialize();
         }
+        #endregion
+
+        #region Internal methods
+        /// <summary>
+        /// Allows you to add more initialize settings
+        /// </summary>
+        protected virtual void Initialize() {}
         #endregion
 
         #region Properties

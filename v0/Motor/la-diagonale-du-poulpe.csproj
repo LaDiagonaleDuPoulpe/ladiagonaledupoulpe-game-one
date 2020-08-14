@@ -63,10 +63,12 @@
     <Compile Include="addons\WAT\core\test\Recorder.cs" />
     <Compile Include="addons\WAT\core\test\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sources\App\Core\Interfaces\Models\Attacks\IWithDamage.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\Heart.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\HeartsHealth.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\BaseCharacter.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\Health.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Scripts\LifePoint.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\DefaultConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\LevelConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\LoadSettings.cs" />

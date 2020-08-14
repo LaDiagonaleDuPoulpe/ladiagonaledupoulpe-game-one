@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,17 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
         #region Constructors
         public HeartsHealth(params Heart[] hearts)
+        {
+            this.AddHearts(hearts);
+        }
+        #endregion
+
+        #region Public methods
+        /// <summary>
+        /// Adds a list of heart to manage specific health
+        /// </summary>
+        /// <param name="hearts">Array of healths</param>
+        public void AddHearts(params Heart[] hearts)
         {
             if (hearts.Length == 0)
             {
