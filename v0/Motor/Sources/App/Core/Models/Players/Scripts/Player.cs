@@ -11,10 +11,10 @@ public class Player : KinematicBody2D
 	private string _lastAnimation = "";
 
 	private Vector2 _velocity = Vector2.Zero;
-	#endregion
+    #endregion
 
-	#region Public methods
-	public override void _Ready()
+    #region Public methods
+    public override void _Ready()
 	{
 		this.ScreenSize = this.GetViewport().Size;
 	}
@@ -40,7 +40,7 @@ public class Player : KinematicBody2D
 		string animation = string.Empty;
 		string prefix = string.Empty;
 	
-		var animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
+		var animatedSprite = this.GetNode<AnimatedSprite>("AnimatedSprite");
 
 		if (this._velocity.Length() <= 0)
 		{

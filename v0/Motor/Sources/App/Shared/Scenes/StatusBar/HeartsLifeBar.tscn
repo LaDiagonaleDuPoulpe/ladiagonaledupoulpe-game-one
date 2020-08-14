@@ -6,4 +6,11 @@
 [node name="HeartsStatusBar" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="MainHeart" parent="." instance=ExtResource( 1 )]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainHeart" parent="MarginContainer" instance=ExtResource( 1 )]
