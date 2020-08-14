@@ -95,7 +95,7 @@
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 left all_063.png" type="Texture" id=93]
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 down all_010.png" type="Texture" id=94]
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_001.png" type="Texture" id=95]
-[ext_resource path="res://Sources/App/Core/Models/Characters/Scripts/Health.cs" type="Script" id=96]
+[ext_resource path="res://Sources/App/Core/Models/Characters/Players/Scripts/HeartsHealth.cs" type="Script" id=96]
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 down all_002.png" type="Texture" id=97]
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 down all_006.png" type="Texture" id=102]
 
