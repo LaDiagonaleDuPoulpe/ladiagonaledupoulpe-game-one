@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=2]
+[gd_scene load_steps=101 format=2]
 
 [ext_resource path="res://Sources/App/Core/Models/Characters/Players/Scripts/Player.cs" type="Script" id=1]
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 down all_001.png" type="Texture" id=2]
@@ -95,6 +95,7 @@
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 left all_063.png" type="Texture" id=93]
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 down all_010.png" type="Texture" id=94]
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 up all_001.png" type="Texture" id=95]
+[ext_resource path="res://Sources/App/Core/Models/Characters/Scripts/Health.cs" type="Script" id=96]
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 down all_002.png" type="Texture" id=97]
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 down all_006.png" type="Texture" id=102]
 
@@ -139,6 +140,9 @@ height = 2.0
 position = Vector2( 212, 211 )
 collision_layer = 13
 script = ExtResource( 1 )
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource( 96 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -1 )

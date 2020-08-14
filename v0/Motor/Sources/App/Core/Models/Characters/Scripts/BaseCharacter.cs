@@ -15,6 +15,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         #region Fields
         private Vector2 _velocity = Vector2.Zero;
         private Vector2 _screenSize;
+        private Health _health = null;
         #endregion
 
         #region Public methods
@@ -22,6 +23,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         {
             base._Ready();
             this.ScreenSize = this.GetViewport().Size;
+            this.Health = this.GetNode<Health>("Health");
         }
         #endregion
 
@@ -42,6 +44,8 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// </summary>
         [Export]
         public int Speed { get; set; } = 300;
+
+        public Health Health { get => this._health; protected set => this._health = value; }
         #endregion
     }
 }
