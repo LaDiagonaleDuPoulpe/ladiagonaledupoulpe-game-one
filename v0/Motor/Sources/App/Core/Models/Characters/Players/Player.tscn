@@ -1,6 +1,6 @@
 [gd_scene load_steps=100 format=2]
 
-[ext_resource path="res://Sources/App/Core/Models/Players/Scripts/Player.cs" type="Script" id=1]
+[ext_resource path="res://Sources/App/Core/Models/Characters/Players/Scripts/Player.cs" type="Script" id=1]
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 down all_001.png" type="Texture" id=2]
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 down all_005.png" type="Texture" id=3]
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 down all_007.png" type="Texture" id=4]
@@ -115,14 +115,14 @@ animations = [ {
 "name": "down",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 90 ), ExtResource( 95 ), ExtResource( 92 ), ExtResource( 84 ), ExtResource( 86 ), ExtResource( 78 ), ExtResource( 89 ), ExtResource( 75 ), ExtResource( 81 ), ExtResource( 76 ), ExtResource( 79 ) ],
-"loop": true,
-"name": "idle_up",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 82 ), ExtResource( 2 ), ExtResource( 97 ), ExtResource( 6 ), ExtResource( 83 ), ExtResource( 3 ), ExtResource( 102 ), ExtResource( 4 ), ExtResource( 88 ), ExtResource( 5 ), ExtResource( 94 ) ],
 "loop": true,
 "name": "idle_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 90 ), ExtResource( 95 ), ExtResource( 92 ), ExtResource( 84 ), ExtResource( 86 ), ExtResource( 78 ), ExtResource( 89 ), ExtResource( 75 ), ExtResource( 81 ), ExtResource( 76 ), ExtResource( 79 ) ],
+"loop": true,
+"name": "idle_up",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 71 ), ExtResource( 32 ), ExtResource( 57 ), ExtResource( 53 ), ExtResource( 33 ), ExtResource( 62 ), ExtResource( 72 ), ExtResource( 58 ), ExtResource( 45 ), ExtResource( 73 ), ExtResource( 55 ) ],

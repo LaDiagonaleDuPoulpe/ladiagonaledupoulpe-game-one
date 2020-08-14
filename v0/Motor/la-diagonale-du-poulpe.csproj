@@ -72,7 +72,7 @@
     <Compile Include="Sources\App\Core\Interfaces\Configurations\LevelConfiguration.cs" />
     <Compile Include="Sources\App\Core\Interfaces\Scenes\IDataInit.cs" />
     <Compile Include="Sources\App\Core\Interfaces\Scenes\ILevelConfiguration.cs" />
-    <Compile Include="Sources\App\Core\Models\Players\Scripts\Player.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\Player.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Motor.cs" />
     <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\CloudMoving.cs" />
     <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\Home.cs" />
@@ -128,7 +128,7 @@
     <None Include="Sources\App\Shared\Services\README.md" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Sources\App\Core\Models\Npcs\" />
+    <Folder Include="Sources\App\Core\Models\Characters\Npcs\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies">
