@@ -24,7 +24,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// Observes this event to know when here is no life
         /// </summary>
         [Signal]
-        public delegate void IsGone();
+        public delegate void LifeIsGone();
         #endregion
         #endregion
 

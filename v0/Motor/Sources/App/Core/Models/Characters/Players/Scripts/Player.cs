@@ -19,6 +19,18 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
         #region Fields
         #region Signals
+        /// <summary>
+        /// Observes this event to know when health changed (plus or less)
+        /// </summary>
+        /// <param name="health">New health</param>
+        [Signal]
+        public delegate void HealthChanged(LifePoint point);
+
+        /// <summary>
+        /// Observes this event to know when here is no life
+        /// </summary>
+        [Signal]
+        public delegate void IsGone();
         #endregion
 
         private string _lastAnimation = LEFT_ANIMATION_KEY;
@@ -99,12 +111,14 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
         private void HealthIsChanged(LifePoint point)
         {
-            
+            // TODO: 15/08/2020, play hint animation
+            this.EmitSignal(CharacterLifeSignal.HealthChanged.ToString(), point);
         }
 
         private void HealthIsGone()
         {
-
+            // TODO: 15/08/2020, play died animation
+            this.EmitSignal(CharacterLifeSignal.LifeIsGone.ToString());
         }
         #endregion
 
