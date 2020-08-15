@@ -10,12 +10,18 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
     /// </summary>
     public class Player : BaseCharacter
     {
-        #region Fields
-        #region Signals
-
+        #region Constants
+        const string IDLE_STATE_KEY = "idle";
+        const string LEFT_ANIMATION_KEY = "left";
+        const string DOWN_ANIMATION_KEY = "down";
+        const string UP_ANIMATION_KEY = "up";
         #endregion
 
-        private string _lastAnimation = "";
+        #region Fields
+        #region Signals
+        #endregion
+
+        private string _lastAnimation = LEFT_ANIMATION_KEY;
         #endregion
 
         #region Public methods
@@ -51,27 +57,29 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
             if (this.Velocity.Length() <= 0)
             {
-                prefix = "idle_";
+                prefix = IDLE_STATE_KEY + "_";
             }
 
             if (this.Velocity.x != 0)
             {
-                this._lastAnimation = "left";
+                this._lastAnimation = LEFT_ANIMATION_KEY;
                 animatedSprite.FlipV = false;
                 animatedSprite.FlipH = this.Velocity.x > 0;
             }
             else if (this.Velocity.y != 0)
             {
-                this._lastAnimation = "up";
+                this._lastAnimation = UP_ANIMATION_KEY;
                 if (this.Velocity.y > 0)
                 {
-                    this._lastAnimation = "down";
+                    this._lastAnimation = DOWN_ANIMATION_KEY;
                 }
             }
 
-            animation = prefix + this._lastAnimation;
-
-            animatedSprite.Play(animation);
+            if (!string.IsNullOrEmpty(this._lastAnimation))
+            {
+                animation = $"{prefix}{this._lastAnimation}";
+                animatedSprite.Play(animation);
+            }
         }
         #endregion
 
