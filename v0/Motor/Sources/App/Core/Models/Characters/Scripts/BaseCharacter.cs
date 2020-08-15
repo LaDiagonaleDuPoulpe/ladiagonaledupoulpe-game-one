@@ -1,4 +1,5 @@
 ﻿using Godot;
+using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Models.Attacks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
     /// <summary>
     /// Absract class, it represents all characters in the game : pncs anr pcs 
     /// </summary>
-    public abstract class BaseCharacter : KinematicBody2D
+    public abstract class BaseCharacter : KinematicBody2D, IWithDamage
     {
         #region Fields
         private Vector2 _velocity = Vector2.Zero;
@@ -34,6 +35,15 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// Allows you to add more initialize settings
         /// </summary>
         protected virtual void Initialize() {}
+
+        /// <summary>
+        /// Hits the health of the character
+        /// </summary>
+        /// <param name="damageValue"></param>
+        public void Hit(int damageValue)
+        {
+            this.Health.Hit(damageValue);
+        }
         #endregion
 
         #region Properties
