@@ -44,7 +44,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
             if (this.CurrentValue < 0)
             {
                 this.CurrentValue = 0;
-                this.EmitSignal(CharacterLifeSignal.IsGone.ToString());
+                this.EmitSignal(CharacterLifeSignal.LifeIsGone.ToString());
             }
         } 
         #endregion

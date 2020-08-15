@@ -19,6 +19,6 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Enums
         /// <summary>
         /// Use this key to connect to event signal, when there is no life
         /// </summary>
-        IsGone
+        LifeIsGone
     }
 }

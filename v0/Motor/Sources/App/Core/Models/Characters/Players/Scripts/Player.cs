@@ -94,12 +94,12 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
             }
 
             this.Health.Connect(CharacterLifeSignal.HealthChanged.ToString(), this, nameof(HealthIsChanged));
-            this.Health.Connect(CharacterLifeSignal.IsGone.ToString(), this, nameof(HealthIsGone));
+            this.Health.Connect(CharacterLifeSignal.LifeIsGone.ToString(), this, nameof(HealthIsGone));
         }
 
         private void HealthIsChanged(LifePoint point)
         {
-
+            
         }
 
         private void HealthIsGone()
