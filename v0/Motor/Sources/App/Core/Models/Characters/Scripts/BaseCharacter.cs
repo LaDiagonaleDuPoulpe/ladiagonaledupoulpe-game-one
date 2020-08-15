@@ -54,6 +54,9 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         [Export]
         public int Speed { get; set; } = 300;
 
+        /// <summary>
+        /// Health of each character. You can override this property.
+        /// </summary>
         public Health Health { get => this._health; protected set => this._health = value; }
         #endregion
     }

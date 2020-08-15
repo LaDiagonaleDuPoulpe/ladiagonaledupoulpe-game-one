@@ -86,6 +86,7 @@
     <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\WaveSea.cs" />
     <Compile Include="Sources\App\Game-Scenes\001-Video-Intro\Scripts\VideoIntro.cs" />
     <Compile Include="Sources\App\Game-Scenes\XXX-Test-TestingScenes\Scripts\TestHealthBar.cs" />
+    <Compile Include="Sources\App\Shared\Enums\CharacterLifeSignal.cs" />
     <Compile Include="Sources\App\Shared\Plugins\DestroyOnAnimationFinished.cs" />
     <Compile Include="Sources\App\Shared\Plugins\SpriteAnimation.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\Heart\Scripts\HeartBar.cs" />

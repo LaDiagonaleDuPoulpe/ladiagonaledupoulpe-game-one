@@ -9,7 +9,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
     /// <summary>
     /// Uses it in health class, or to manage hit
     /// </summary>
-    public class LifePoint
+    public class LifePoint : Godot.Object
     {
         #region Public methods
         /// <summary>

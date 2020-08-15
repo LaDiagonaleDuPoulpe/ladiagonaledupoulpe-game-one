@@ -14,7 +14,8 @@ public class HeartsLifeBar : Node2D
     #region Public methods
     public override void _Ready()
     {
-        this._mainHeart = this.GetNode<HeartBar>("MainHeart");
+        Control container = this.GetNode<Control>("MarginContainer"); 
+        this._mainHeart = container.GetNode<HeartBar>("MainHeart");
     }
 
     /// <summary>

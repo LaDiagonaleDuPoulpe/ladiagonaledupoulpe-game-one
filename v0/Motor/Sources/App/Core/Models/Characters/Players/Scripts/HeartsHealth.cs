@@ -18,7 +18,9 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         #endregion
 
         #region Constructors
-        public HeartsHealth(params Heart[] hearts)
+        public HeartsHealth() {}
+
+        public HeartsHealth(params Heart[] hearts) : base()
         {
             this.AddHearts(hearts);
         }

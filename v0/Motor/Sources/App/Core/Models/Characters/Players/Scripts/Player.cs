@@ -1,5 +1,6 @@
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
+using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
@@ -10,6 +11,10 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
     public class Player : BaseCharacter
     {
         #region Fields
+        #region Signals
+
+        #endregion
+
         private string _lastAnimation = "";
         #endregion
 
@@ -77,11 +82,21 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
             if (this.Health is HeartsHealth heartsHealth)
             {
-                heartsHealth.AddHearts(new Heart()
-                {
-
-                });
+                heartsHealth.AddHearts(new Heart(100, 100));
             }
+
+            this.Health.Connect(CharacterLifeSignal.HealthChanged.ToString(), this, nameof(HealthIsChanged));
+            this.Health.Connect(CharacterLifeSignal.IsGone.ToString(), this, nameof(HealthIsGone));
+        }
+
+        private void HealthIsChanged(LifePoint point)
+        {
+
+        }
+
+        private void HealthIsGone()
+        {
+
         }
         #endregion
 

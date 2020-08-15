@@ -1,5 +1,6 @@
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Models.Attacks;
+using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
@@ -20,10 +21,10 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         public delegate void HealthChanged(LifePoint point);
 
         /// <summary>
-        /// Observes this event to know when player is died
+        /// Observes this event to know when here is no life
         /// </summary>
         [Signal]
-        public delegate void Died();
+        public delegate void IsGone();
         #endregion
         #endregion
 
@@ -38,14 +39,14 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         {
             this.CurrentValue -= damageValue;
 
-            this.EmitSignal(nameof(HealthChanged), LifePoint.New(this.CurrentValue));
+            this.EmitSignal(CharacterLifeSignal.HealthChanged.ToString(), LifePoint.New(this.CurrentValue));
 
             if (this.CurrentValue < 0)
             {
                 this.CurrentValue = 0;
-                this.EmitSignal(nameof(Died));
+                this.EmitSignal(CharacterLifeSignal.IsGone.ToString());
             }
-        }
+        } 
         #endregion
 
         #region Properties
