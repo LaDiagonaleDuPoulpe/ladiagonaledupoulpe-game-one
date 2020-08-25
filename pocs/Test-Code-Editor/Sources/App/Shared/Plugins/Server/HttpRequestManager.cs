@@ -21,54 +21,32 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Server
 		/// <param name="data"></param>
 		/// <param name="callbackSuccess"></param>
 		/// <param name="callbackError"></param>
-		protected void SendRequest<T>(HTTPClient.Method type, string url, object data, Action<T> callbackSuccess, Action callbackError)
+		protected async Task SendRequest<T>(HTTPClient.Method type, string url, object data, Action<T> callbackSuccess, Action callbackError)
 		{
 
-			var http = new HTTPClient();
-			http.ConnectToHost(_host, useSsl: true, verifyHost: false);
-
-			var headers = new[] { "Content-Type: application/json" };
-			string json = string.Empty;
-			if (data != null)
-			{
-				json = JsonConvert.SerializeObject(data);
+			string json = await SendRequest(type, url, data);
+            try
+            {
+				var obj = JsonConvert.DeserializeObject<T>(json);
+				callbackSuccess.Invoke(obj);
 			}
-			Error response = http.Request(type, url, headers, json);
-
-			if (response == Error.Ok)
-			{
-
-				var bytes = new List<byte>();
-				while (http.GetStatus() == HTTPClient.Status.Body)
-				{
-					http.Poll();
-					var chunk = http.ReadResponseBodyChunk();
-					if (chunk.Length != 0)
-					{
-						bytes.AddRange(chunk);
-					}
-				}
-				if (bytes.Count() > 0)
-				{
-					var jsonResponse = System.Text.Encoding.UTF8.GetString(bytes.ToArray());
-					callbackSuccess?.Invoke(JsonConvert.DeserializeObject<T>(jsonResponse));
-				}
-			}
-			else
-			{
+			catch(Exception ex){
 				callbackError?.Invoke();
+
 			}
+
+			
 		}
 
 
 
-		protected async Task SendRequest(HTTPClient.Method type, string url, object data = null)
+		private async Task<string> SendRequest(HTTPClient.Method type, string url, object data = null)
 		{
 
 			//HTTPRequest test = new HTTPRequest();
 			//AddChild(test);
 			//test.Request(_host + "/api/" + url + "2", headers, false, HTTPClient.Method.Get, "");
-			await Task.Run(() =>
+			return await Task.Run(() =>
 			{
 				var http = new HTTPClient();
 				http.ConnectToHost(_host, 52671);
@@ -95,8 +73,9 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Server
 			};
 
 
+				GD.Print(json);
 				Error response = http.Request(type, "/api/" + url, headers, json);
-				GD.Print(_host + "/api/" + url + "2");
+				GD.Print(_host + "/api/" + url );
 
 				while (http.GetStatus() == HTTPClient.Status.Requesting)
 				{
@@ -122,11 +101,14 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Server
 						bytes.AddRange(chunk);
 					}
 				}
+				string jsonResponse = "";
 				if (bytes.Count() > 0)
 				{
-					var jsonResponse = System.Text.Encoding.UTF8.GetString(bytes.ToArray());
+					jsonResponse = System.Text.Encoding.UTF8.GetString(bytes.ToArray());
 					GD.Print(jsonResponse);
 				}
+
+				return jsonResponse;
 			});
 
 		}

@@ -1,4 +1,5 @@
 using Godot;
+using ladiagonaledupoulpe.Sources.App.Game_Scenes._003_Code_Editor.scripts.Models;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Server;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,17 @@ namespace ladiagonaledupoulpe.Sources.App.Game_Scenes._003_Code_Editor.scripts
 		{
 			var serverManager = GetTree().Root.GetNode<ServerManager>("ServerManager");
 
-			//string code = GetTree().Root.GetNode<TextEdit>("Node2D/TxtCodePlayer").Text;
-			//GD.Print(code);
-			Task.Run( ()=> serverManager.CodeEditor.TestCodePlayer("code"));
+			string code = GetTree().Root.GetNode<TextEdit>("Node2D/Button/TxtCodePlayer").Text;
+			Action<IList<Frame>> action = (frames) =>
+			{
+				foreach (var frame in frames)
+				{
+					GD.Print($"({frame.PlayerPosition.PosX}, {frame.PlayerPosition.PosY})");
+
+				}
+
+			};
+			Task.Run( ()=> serverManager.CodeEditor.Compile(code, action));
 		}
 
 	}
