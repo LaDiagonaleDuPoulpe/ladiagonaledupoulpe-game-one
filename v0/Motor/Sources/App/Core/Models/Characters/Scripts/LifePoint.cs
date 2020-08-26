@@ -23,7 +23,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// <returns></returns>
         public static LifePoint New(int currentValue = 0, int maxValue = 0)
         {
-            GD.Print("LifePint::new ", currentValue);
             return new LifePoint()
             {
                 CurrentValue = currentValue,
@@ -39,11 +38,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// <param name="value">Value could be positive or negative</param>
         public void Add(int value)
         {
-            GD.Print("0. LifePoint::this.CurrentValue : ", this.CurrentValue);
-
             this.CurrentValue += value;
-
-            GD.Print("1. LifePoint::this.CurrentValue : ", this.CurrentValue);
 
             this.ControlRangeOfValue();
         }

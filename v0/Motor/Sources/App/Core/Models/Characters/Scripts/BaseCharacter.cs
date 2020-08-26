@@ -46,7 +46,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// <param name="damageValue"></param>
         public void Hit(int damageValue)
         {
-            GD.Print("BaseCharacter : damage : ", damageValue);
             this.MainHealth.Hit(damageValue);
         }
         #endregion

@@ -41,8 +41,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         {
             this.CurrentValue += damageValue;
 
-            GD.Print("Health => ", damageValue);
-
             this.EmitSignal(CharacterLifeSignal.HealthChanged.ToString(), LifePoint.New(this.CurrentValue));
 
             if (this.CurrentValue < 0)

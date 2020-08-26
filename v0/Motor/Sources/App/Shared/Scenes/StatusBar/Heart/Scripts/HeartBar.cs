@@ -24,12 +24,12 @@ public class HeartBar : Node2D
     }
 
     /// <summary>
-    /// Add or subtract value to the health bar
+    /// Defines new value of the status bar
     /// </summary>
     /// <param name="value">Value positive or negative</param>
     public void Update(int value)
     {
-        int finalValue = this.CurrentValue + value;
+        int finalValue = value;
 
         this._tweenItem.InterpolateProperty(this._progressBar, "value", this.CurrentValue, finalValue,
                                             0.5f,
@@ -40,7 +40,7 @@ public class HeartBar : Node2D
             this._tweenItem.Start();
         }
 
-        this.CurrentValue += value;
+        this.CurrentValue = value;
         this.ChangeColorStyle(this.CurrentValue);
     }
 
@@ -50,10 +50,8 @@ public class HeartBar : Node2D
     /// <param name="value"></param>
     public void SetDefaultValues(int value, int maxValue)
     {
-        GD.Print("0. SetDefaultValues, value : ", value, " maxvalue ", maxValue);
         this.CurrentValue = value;
         this.MaxValue = maxValue;
-        GD.Print("1. SetDefaultValues, value : ", value, " maxvalue ", maxValue);
 
         this._progressBar.MaxValue = maxValue;
         this._progressBar.Value = value;

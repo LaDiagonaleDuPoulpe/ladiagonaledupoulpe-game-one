@@ -30,6 +30,6 @@ public class TestHealthBar : Node2D
 
     private void Player_LifeChanged(LifePoint point)
     {
-        GD.Print(point.CurrentValue);
+        this._lifeBar.Update(point.CurrentValue);
     }
 }
