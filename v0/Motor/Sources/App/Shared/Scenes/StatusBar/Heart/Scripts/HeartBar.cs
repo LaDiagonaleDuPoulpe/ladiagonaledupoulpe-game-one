@@ -43,6 +43,21 @@ public class HeartBar : Node2D
         this.CurrentValue += value;
         this.ChangeColorStyle(this.CurrentValue);
     }
+
+    /// <summary>
+    /// Initializes the value of the life bar
+    /// </summary>
+    /// <param name="value"></param>
+    public void SetDefaultValues(int value, int maxValue)
+    {
+        GD.Print("0. SetDefaultValues, value : ", value, " maxvalue ", maxValue);
+        this.CurrentValue = value;
+        this.MaxValue = maxValue;
+        GD.Print("1. SetDefaultValues, value : ", value, " maxvalue ", maxValue);
+
+        this._progressBar.MaxValue = maxValue;
+        this._progressBar.Value = value;
+    }
     #endregion
 
     #region Internal methods

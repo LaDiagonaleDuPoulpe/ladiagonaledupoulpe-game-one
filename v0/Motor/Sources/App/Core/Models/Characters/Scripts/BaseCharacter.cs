@@ -24,7 +24,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         {
             base._Ready();
             this.ScreenSize = this.GetViewport().Size;
-            this.Health = this.GetNode<Health>("Health");
+            this.MainHealth = this.GetNode<Health>("Health");
 
             this.Initialize();
         }
@@ -34,7 +34,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// <summary>
         /// Allows you to add more initialize settings
         /// </summary>
-        protected virtual void Initialize() {}
+        protected virtual void Initialize() 
+        {
+            // TODO: 20/08/2020, initialize with real values (from api ?)
+            this.MainHealth.Initialize(100);
+        }
 
         /// <summary>
         /// Hits the health of the character
@@ -42,7 +46,8 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// <param name="damageValue"></param>
         public void Hit(int damageValue)
         {
-            this.Health.Hit(damageValue);
+            GD.Print("BaseCharacter : damage : ", damageValue);
+            this.MainHealth.Hit(damageValue);
         }
         #endregion
 
@@ -67,7 +72,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// <summary>
         /// Health of each character. You can override this property.
         /// </summary>
-        public Health Health { get => this._health; protected set => this._health = value; }
+        public Health MainHealth { get => this._health; protected set => this._health = value; }
         #endregion
     }
 }

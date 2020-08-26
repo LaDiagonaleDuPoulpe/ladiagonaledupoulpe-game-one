@@ -18,10 +18,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
         public Heart(int currentValue, int maxValue = 100)
         {
-            this.LifePoint = new LifePoint()
-            {
-                MaxValue = maxValue
-            };
+            this.LifePoint = LifePoint.New(currentValue, maxValue);
         }
         #endregion
 

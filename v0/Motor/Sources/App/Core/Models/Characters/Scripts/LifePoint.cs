@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Godot;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,13 +12,18 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
     /// </summary>
     public class LifePoint : Godot.Object
     {
+        #region Constructors
+        private LifePoint() { }
+        #endregion
+
         #region Public methods
         /// <summary>
         /// Returns a new life point instance
         /// </summary>
         /// <returns></returns>
-        public static LifePoint New(int currentValue, int maxValue = 0)
+        public static LifePoint New(int currentValue = 0, int maxValue = 0)
         {
+            GD.Print("LifePint::new ", currentValue);
             return new LifePoint()
             {
                 CurrentValue = currentValue,
@@ -33,8 +39,30 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// <param name="value">Value could be positive or negative</param>
         public void Add(int value)
         {
+            GD.Print("0. LifePoint::this.CurrentValue : ", this.CurrentValue);
+
             this.CurrentValue += value;
 
+            GD.Print("1. LifePoint::this.CurrentValue : ", this.CurrentValue);
+
+            this.ControlRangeOfValue();
+        }
+
+        /// <summary>
+        /// Defines the current value of the life point, and control the value 
+        /// inside the valid range 
+        /// </summary>
+        /// <param name="currentValue"></param>
+        public void Define(int currentValue)
+        {
+            this.CurrentValue = currentValue;
+            this.ControlRangeOfValue();
+        }
+        #endregion
+
+        #region Internal methods
+        private void ControlRangeOfValue()
+        {
             if (this.CurrentValue > this.MaxValue)
             {
                 this.CurrentValue = this.MaxValue;

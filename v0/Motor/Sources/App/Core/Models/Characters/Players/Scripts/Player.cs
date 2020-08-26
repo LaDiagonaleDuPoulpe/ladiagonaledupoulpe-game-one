@@ -100,13 +100,15 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         {
             base.Initialize();
 
-            if (this.Health is HeartsHealth heartsHealth)
+            if (this.MainHealth is HeartsHealth heartsHealth)
             {
                 heartsHealth.AddHearts(new Heart(100, 100));
             }
 
-            this.Health.Connect(CharacterLifeSignal.HealthChanged.ToString(), this, nameof(HealthIsChanged));
-            this.Health.Connect(CharacterLifeSignal.LifeIsGone.ToString(), this, nameof(HealthIsGone));
+            this.MainHealth.Connect(CharacterLifeSignal.HealthChanged.ToString(), this, nameof(HealthIsChanged));
+            this.MainHealth.Connect(CharacterLifeSignal.LifeIsGone.ToString(), this, nameof(HealthIsGone));
+
+            this.MainHealth.Initialize(100);
         }
 
         private void HealthIsChanged(LifePoint point)
