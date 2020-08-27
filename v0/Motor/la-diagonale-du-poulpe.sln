@@ -6,11 +6,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "la-diagonale-du-poulpe", "l
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1B6C37C2-F380-4D37-808B-62AD40AD9586}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ladiagonaledupoulpe.Tests", "..\ladiagonaledupoulpe.Tests\ladiagonaledupoulpe.Tests.csproj", "{4611D5ED-0C0C-4776-8690-D203B0C456C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-	Debug|Any CPU = Debug|Any CPU
-	ExportDebug|Any CPU = ExportDebug|Any CPU
-	ExportRelease|Any CPU = ExportRelease|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		ExportDebug|Any CPU = ExportDebug|Any CPU
+		ExportRelease|Any CPU = ExportRelease|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D7BAC461-683E-4BB9-AAD5-B5A6C74F72EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -19,9 +22,22 @@ Global
 		{D7BAC461-683E-4BB9-AAD5-B5A6C74F72EA}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
 		{D7BAC461-683E-4BB9-AAD5-B5A6C74F72EA}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
 		{D7BAC461-683E-4BB9-AAD5-B5A6C74F72EA}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{D7BAC461-683E-4BB9-AAD5-B5A6C74F72EA}.Release|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{D7BAC461-683E-4BB9-AAD5-B5A6C74F72EA}.Release|Any CPU.Build.0 = ExportRelease|Any CPU
+		{4611D5ED-0C0C-4776-8690-D203B0C456C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4611D5ED-0C0C-4776-8690-D203B0C456C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4611D5ED-0C0C-4776-8690-D203B0C456C0}.ExportDebug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4611D5ED-0C0C-4776-8690-D203B0C456C0}.ExportDebug|Any CPU.Build.0 = Debug|Any CPU
+		{4611D5ED-0C0C-4776-8690-D203B0C456C0}.ExportRelease|Any CPU.ActiveCfg = Release|Any CPU
+		{4611D5ED-0C0C-4776-8690-D203B0C456C0}.ExportRelease|Any CPU.Build.0 = Release|Any CPU
+		{4611D5ED-0C0C-4776-8690-D203B0C456C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4611D5ED-0C0C-4776-8690-D203B0C456C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4611D5ED-0C0C-4776-8690-D203B0C456C0} = {1B6C37C2-F380-4D37-808B-62AD40AD9586}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2D3423CB-A9BC-401D-AFD8-DD663BC25714}
