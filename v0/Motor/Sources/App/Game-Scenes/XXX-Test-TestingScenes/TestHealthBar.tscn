@@ -7,9 +7,6 @@
 [node name="RootTest" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="LifeBar" parent="." instance=ExtResource( 1 )]
-position = Vector2( -8, 24 )
-
 [node name="Button" type="Button" parent="."]
 margin_left = 56.0
 margin_top = 640.0
@@ -33,5 +30,11 @@ __meta__ = {
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 648, 848 )
 Speed = 10
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LifeBar" parent="CanvasLayer" instance=ExtResource( 1 )]
+position = Vector2( -88, -24 )
+scale = Vector2( 0.5, 0.5 )
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
