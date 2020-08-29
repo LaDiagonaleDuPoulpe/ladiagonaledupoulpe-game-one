@@ -12,21 +12,19 @@ public class Signals : Node
 {
     #region Fields
     private Player _currentPlayer = null;
-
+    private OnePlayerStatusBar _statusBar = null;
     #endregion
 
     #region Public methods
     public override void _Ready()
     {
         this._currentPlayer = this.GetNode<Player>("/root/CurrentPlayer");
-        this._currentPlayer.Connect(CharacterLifeSignal.HealthChanged.ToString(), this, nameof(Player_LifeChanged));
+        this._statusBar = this.GetNode<OnePlayerStatusBar>("/root/OnePlayerStatusBar");
+
+        this._currentPlayer.Connect(CharacterLifeSignal.HealthChanged.ToString(), this._statusBar, "LifeChanged");
     }
     #endregion
 
     #region Internal methods
-    private void Player_LifeChanged(LifePoint point)
-    {
-        //this._lifeBar.Update(point.CurrentValue);
-    }
     #endregion
 }
