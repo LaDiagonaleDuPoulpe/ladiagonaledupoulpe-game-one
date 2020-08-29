@@ -91,6 +91,7 @@
     <Compile Include="Sources\App\Shared\Plugins\SpriteAnimation.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\Heart\Scripts\HeartBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\Scripts\HeartsLifeBar.cs" />
+    <Compile Include="Sources\App\Shared\Signals\Signals.cs" />
     <Compile Include="Tests\Node2DTest.cs" />
     <Compile Include="Sources\App\Game-Scenes\002-Inside-Crash-Ship\Scripts\InsideCrashShip.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Scenes\IMovingSprite.cs" />
