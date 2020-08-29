@@ -7,28 +7,23 @@ using System;
 public class TestHealthBar : Node2D
 {
     private HeartsLifeBar _lifeBar = null;
-    private Player _player = null;
+    private Player _currentPlayer = null;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        //this._lifeBar = this.GetNode<HeartsLifeBar>("/root/LifeBar");
-        this._player = this.GetNode<Player>("/root/CurrentPlayer");
-        this._player.Connect(CharacterLifeSignal.HealthChanged.ToString(), this, nameof(Player_LifeChanged));
+        this._currentPlayer = this.GetNode<Player>("/root/CurrentPlayer");
     }
 
     public void _on_Button_pressed() 
     {
-        this._player.Hit(10);
+        this._currentPlayer.Hit(10);
     }
 
     public void _on_Button2_pressed()
     {
-        this._player.Hit(-10);
+        this._currentPlayer.Hit(-10);
     }
 
-    private void Player_LifeChanged(LifePoint point)
-    {
-        //this._lifeBar.Update(point.CurrentValue);
-    }
+    
 }
