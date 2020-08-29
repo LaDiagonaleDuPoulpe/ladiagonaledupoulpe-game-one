@@ -20,7 +20,6 @@
 [ext_resource path="res://Sources/App/Shared/Assets/Scenes/Ships/lights/blue-light.png" type="Texture" id=18]
 [ext_resource path="res://Sources/App/Shared/Scenes/Sparks/LightSparks/Scripts/LightSpark.cs" type="Script" id=19]
 
-
 [sub_resource type="Environment" id=1]
 glow_enabled = true
 glow_intensity = 1.03

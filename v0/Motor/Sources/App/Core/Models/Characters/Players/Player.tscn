@@ -101,6 +101,16 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 28 ), ExtResource( 63 ), ExtResource( 69 ), ExtResource( 74 ), ExtResource( 54 ), ExtResource( 36 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 59 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 44 ), ExtResource( 46 ), ExtResource( 56 ), ExtResource( 61 ), ExtResource( 91 ), ExtResource( 80 ), ExtResource( 85 ), ExtResource( 93 ), ExtResource( 87 ), ExtResource( 77 ) ],
+"loop": true,
+"name": "left",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 37 ), ExtResource( 50 ), ExtResource( 48 ), ExtResource( 23 ), ExtResource( 31 ), ExtResource( 26 ), ExtResource( 38 ), ExtResource( 52 ), ExtResource( 51 ), ExtResource( 21 ), ExtResource( 29 ), ExtResource( 49 ), ExtResource( 41 ), ExtResource( 22 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 34 ), ExtResource( 24 ), ExtResource( 35 ), ExtResource( 27 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "up",
+"speed": 10.0
+}, {
 "frames": [ ExtResource( 90 ), ExtResource( 95 ), ExtResource( 92 ), ExtResource( 84 ), ExtResource( 86 ), ExtResource( 78 ), ExtResource( 89 ), ExtResource( 75 ), ExtResource( 81 ), ExtResource( 76 ), ExtResource( 79 ) ],
 "loop": true,
 "name": "idle_up",
@@ -120,16 +130,6 @@ animations = [ {
 "loop": true,
 "name": "idle_down",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 28 ), ExtResource( 63 ), ExtResource( 69 ), ExtResource( 74 ), ExtResource( 54 ), ExtResource( 36 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 59 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 44 ), ExtResource( 46 ), ExtResource( 56 ), ExtResource( 61 ), ExtResource( 91 ), ExtResource( 80 ), ExtResource( 85 ), ExtResource( 93 ), ExtResource( 87 ), ExtResource( 77 ) ],
-"loop": true,
-"name": "left",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 37 ), ExtResource( 50 ), ExtResource( 48 ), ExtResource( 23 ), ExtResource( 31 ), ExtResource( 26 ), ExtResource( 38 ), ExtResource( 52 ), ExtResource( 51 ), ExtResource( 21 ), ExtResource( 29 ), ExtResource( 49 ), ExtResource( 41 ), ExtResource( 22 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 34 ), ExtResource( 24 ), ExtResource( 35 ), ExtResource( 27 ), ExtResource( 30 ) ],
-"loop": true,
-"name": "up",
-"speed": 10.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
@@ -140,6 +140,7 @@ height = 2.0
 position = Vector2( 212, 211 )
 collision_layer = 13
 script = ExtResource( 1 )
+Speed = 15
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource( 96 )

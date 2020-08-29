@@ -13,7 +13,7 @@ public class TestHealthBar : Node2D
     public override void _Ready()
     {
         //this._lifeBar = this.GetNode<HeartsLifeBar>("/root/LifeBar");
-        this._player = this.GetNode<Player>("Player");
+        this._player = this.GetNode<Player>("/root/CurrentPlayer");
         this._player.Connect(CharacterLifeSignal.HealthChanged.ToString(), this, nameof(Player_LifeChanged));
     }
 
