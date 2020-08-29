@@ -12,7 +12,7 @@ public class TestHealthBar : Node2D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        this._lifeBar = this.GetNode<HeartsLifeBar>("LifeBar");
+        //this._lifeBar = this.GetNode<HeartsLifeBar>("/root/LifeBar");
         this._player = this.GetNode<Player>("Player");
 
         this._player.Connect(CharacterLifeSignal.HealthChanged.ToString(), this, nameof(Player_LifeChanged));
@@ -30,6 +30,6 @@ public class TestHealthBar : Node2D
 
     private void Player_LifeChanged(LifePoint point)
     {
-        this._lifeBar.Update(point.CurrentValue);
+        //this._lifeBar.Update(point.CurrentValue);
     }
 }
