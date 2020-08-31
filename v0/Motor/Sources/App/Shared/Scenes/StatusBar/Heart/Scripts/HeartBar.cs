@@ -105,6 +105,6 @@ public class HeartBar : Node2D
     /// <summary>
     /// Max value of the life bar
     /// </summary>
-    public int MaxValue { get; set; } = 100;
+    public int MaxValue { get; set; } = 80;
     #endregion
 }
