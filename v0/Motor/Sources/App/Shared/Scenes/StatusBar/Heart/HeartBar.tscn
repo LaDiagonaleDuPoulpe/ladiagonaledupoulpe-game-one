@@ -10,6 +10,7 @@
 [sub_resource type="AnimatedTexture" id=1]
 flags = 4
 frames = 4
+fps = 0.0
 frame_0/texture = ExtResource( 1 )
 frame_1/texture = ExtResource( 2 )
 frame_1/delay_sec = 0.0
@@ -25,7 +26,7 @@ script = ExtResource( 4 )
 margin_left = 72.0
 margin_right = 704.0
 margin_bottom = 592.0
-value = 100.0
+value = 70.0
 rounded = true
 allow_greater = true
 allow_lesser = true

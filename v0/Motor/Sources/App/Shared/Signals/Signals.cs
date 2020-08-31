@@ -5,7 +5,7 @@ using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
 
 /// <summary>
-/// This class is dedicated o connect all signals in the game
+/// This class is dedicated to connect all signals in the game
 /// It is loaded with AutoLoad option in Godot.
 /// </summary>
 public class Signals : Node

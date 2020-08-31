@@ -29,19 +29,22 @@ public class HeartBar : Node2D
     /// <param name="value">Value positive or negative</param>
     public void Update(int value)
     {
-        int finalValue = value;
-
-        this._tweenItem.InterpolateProperty(this._progressBar, "value", this.CurrentValue, finalValue,
-                                            0.5f,
-                                            Tween.TransitionType.Elastic,
-                                            Tween.EaseType.Out);
-        if (!this._tweenItem.IsActive())
+        if (this.CurrentValue >= 0 && this.CurrentValue <= this.MaxValue)
         {
-            this._tweenItem.Start();
-        }
+            int finalValue = value;
 
-        this.CurrentValue = value;
-        this.ChangeColorStyle(this.CurrentValue);
+            this._tweenItem.InterpolateProperty(this._progressBar, "value", this.CurrentValue, finalValue,
+                                                0.5f,
+                                                Tween.TransitionType.Elastic,
+                                                Tween.EaseType.Out);
+            if (!this._tweenItem.IsActive())
+            {
+                this._tweenItem.Start();
+            }
+
+            this.CurrentValue = value;
+            this.ChangeColorStyle(this.CurrentValue);
+        }
     }
 
     /// <summary>
@@ -68,11 +71,6 @@ public class HeartBar : Node2D
         if (value < redPart)
         {
             this._progressBar.TintProgress = Colors.DarkRed;
-        }
-
-        if (value >= redPart && value <= reallyGoodPart)
-        {
-            this._progressBar.TintProgress = Colors.LightSkyBlue;
         }
     }
     #endregion
