@@ -67,7 +67,7 @@ public class HeartBar : Node2D
         double redPart = this.MaxValue * 0.3;
         double reallyGoodPart = this.MaxValue * 0.7;
 
-        this._progressBar.TintProgress = Colors.DarkBlue;
+        this._progressBar.TintProgress = Colors.Transparent;
         if (value < redPart)
         {
             this._progressBar.TintProgress = Colors.DarkRed;

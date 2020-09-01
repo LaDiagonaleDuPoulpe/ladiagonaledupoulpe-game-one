@@ -40,4 +40,8 @@ public class VideoIntro : BaseActiveScene
         });
     }
     #endregion
+
+    #region Properties
+    public override bool RootNodesVisibility => false;
+    #endregion
 }
