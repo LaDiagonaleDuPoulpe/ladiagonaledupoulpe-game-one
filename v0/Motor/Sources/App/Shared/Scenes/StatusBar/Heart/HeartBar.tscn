@@ -13,9 +13,9 @@
 [ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/heart big/heart big_000007.png" type="Texture" id=11]
 [ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/heart big/heart big_000009.png" type="Texture" id=12]
 
-[sub_resource type="Theme" id=2]
+[sub_resource type="Theme" id=1]
 
-[sub_resource type="AnimatedTexture" id=3]
+[sub_resource type="AnimatedTexture" id=2]
 flags = 4
 frames = 10
 frame_0/texture = ExtResource( 1 )
@@ -45,13 +45,11 @@ script = ExtResource( 4 )
 margin_left = 72.0
 margin_right = 704.0
 margin_bottom = 624.0
-theme = SubResource( 2 )
-min_value = -20.0
-max_value = 100.0
+theme = SubResource( 1 )
 step = 0.0
 value = 70.0
 rounded = true
-texture_under = SubResource( 3 )
+texture_under = SubResource( 2 )
 texture_progress = ExtResource( 6 )
 fill_mode = 3
 radial_center_offset = Vector2( 50, 50 )

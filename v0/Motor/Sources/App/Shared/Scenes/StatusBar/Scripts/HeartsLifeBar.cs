@@ -7,45 +7,45 @@ using System;
 /// </summary>
 public class HeartsLifeBar : Node2D
 {
-    #region Fields
-    private HeartBar _mainHeart = null;
-    #endregion
+	#region Fields
+	private HeartBar _mainHeart = null;
+	#endregion
 
-    #region Public methods
-    public override void _Ready()
-    {
-        Control container = this.GetNode<Control>("MarginContainer"); 
-        this._mainHeart = container.GetNode<HeartBar>("MainHeart");
-        this._mainHeart.SetDefaultValues(100, 100);
-    }
+	#region Public methods
+	public override void _Ready()
+	{
+		Control container = this.GetNode<Control>("MarginContainer"); 
+		this._mainHeart = container.GetNode<HeartBar>("MainHeart");
+		this._mainHeart.SetDefaultValues(100, 100);
+	}
 
-    /// <summary>
-    /// Updates value in all heart bars
-    /// </summary>
-    /// <param name="value">Positive or negative value</param>
-    public void Update(int value)
-    {
-        this._mainHeart.Update(value);
-    }
-    #endregion
+	/// <summary>
+	/// Updates value in all heart bars
+	/// </summary>
+	/// <param name="value">Positive or negative value</param>
+	public void Update(int value)
+	{
+		this._mainHeart.Update(value);
+	}
+	#endregion
 
-    #region Properties
-    /// <summary>
-    /// Min health of the octopus
-    /// </summary>
-    public int CurrentHealth
-    {
-        get => this._mainHeart.CurrentValue;
-    }
+	#region Properties
+	/// <summary>
+	/// Min health of the octopus
+	/// </summary>
+	public int CurrentHealth
+	{
+		get => this._mainHeart.CurrentValue;
+	}
 
-    /// <summary>
-    /// Max health of the octopus
-    /// </summary>
-    [Export]
-    public int MaxHealth
-    {
-        get => this._mainHeart.MaxValue;
-        set => this._mainHeart.MaxValue = value;
-    }
-    #endregion
+	/// <summary>
+	/// Max health of the octopus
+	/// </summary>
+	[Export]
+	public int MaxHealth
+	{
+		get => this._mainHeart.MaxValue;
+		set => this._mainHeart.MaxValue = value;
+	}
+	#endregion
 }
