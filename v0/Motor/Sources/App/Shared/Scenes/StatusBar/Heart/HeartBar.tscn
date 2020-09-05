@@ -126,4 +126,3 @@ position = Vector2( 393, 314 )
 frames = SubResource( 3 )
 animation = "Damage"
 frame = 19
-playing = true

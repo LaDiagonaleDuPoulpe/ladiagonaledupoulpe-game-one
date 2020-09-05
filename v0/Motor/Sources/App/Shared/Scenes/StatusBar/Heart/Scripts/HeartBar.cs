@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System;
 
 /// <summary>
@@ -10,8 +11,10 @@ public class HeartBar : Node2D
 {
 	#region Fields
 	private TextureProgress _progressBar = null;
+	private AnimatedSprite _animatedSprite = null;
 	private Tween _tweenItem = null;
 	private int _currentValue = 0;
+	private Dictionary<bool, string> _animations = new Dictionary<bool, string>();
 	#endregion
 
 	#region Public methods
@@ -19,8 +22,10 @@ public class HeartBar : Node2D
 	{
 		this._progressBar = this.GetNode<TextureProgress>("TextureProgress");
 		this._tweenItem = this.GetNode<Tween>("Tween");
+		this._animatedSprite = this.GetNode<AnimatedSprite>("Effects");
 
 		this._progressBar.MaxValue = this.MaxValue;
+		this.DefineAnimations();
 	}
 
 	/// <summary>
@@ -37,11 +42,12 @@ public class HeartBar : Node2D
 												0.5f,
 												Tween.TransitionType.Elastic,
 												Tween.EaseType.Out);
-			if (!this._tweenItem.IsActive())
+			if (! this._tweenItem.IsActive())
 			{
 				this._tweenItem.Start();
 			}
 
+			this.ActivateAnimation(value);
 			this.CurrentValue = value;
 			this.ChangeColorStyle(this.CurrentValue);
 		}
@@ -62,6 +68,25 @@ public class HeartBar : Node2D
 	#endregion
 
 	#region Internal methods
+	private void DefineAnimations()
+	{
+		this._animations.Add(false, "Damage");
+		this._animations.Add(true, "PowerUp");
+	}
+
+	private void ActivateAnimation(int newValue)
+	{
+		string animation = this._animations[newValue > this.CurrentValue];
+
+		this._animatedSprite.ShowOnTop = true;
+		if (this._animatedSprite.IsPlaying())
+		{
+			this._animatedSprite.Stop();
+		}
+
+		this._animatedSprite.Play(animation);
+	}
+
 	private void ChangeColorStyle(int value)
 	{
 		double redPart = this.MaxValue * 0.3;
