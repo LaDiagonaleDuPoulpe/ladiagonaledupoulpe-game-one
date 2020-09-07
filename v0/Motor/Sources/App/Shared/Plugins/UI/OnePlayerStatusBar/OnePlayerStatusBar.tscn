@@ -11,4 +11,3 @@ script = ExtResource( 1 )
 [node name="HeartsLifeBar" parent="CanvasLayer" instance=ExtResource( 2 )]
 position = Vector2( -40, -8 )
 scale = Vector2( 0.3, 0.3 )
-MaxHealth = 80
