@@ -126,3 +126,6 @@ position = Vector2( 393, 314 )
 frames = SubResource( 3 )
 animation = "Damage"
 frame = 19
+speed_scale = 5.0
+playing = true
+[connection signal="animation_finished" from="Effects" to="." method="_on_Effects_animation_finished"]

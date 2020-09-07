@@ -65,6 +65,11 @@ public class HeartBar : Node2D
 		this._progressBar.MaxValue = maxValue;
 		this._progressBar.Value = value;
 	}
+
+	public void _on_Effects_animation_finished()
+	{
+		this._animatedSprite.Visible = false;
+	}
 	#endregion
 
 	#region Internal methods
@@ -78,12 +83,19 @@ public class HeartBar : Node2D
 	{
 		string animation = this._animations[newValue > this.CurrentValue];
 
+		GD.Print("animation : ", animation);
+		GD.Print("animation:newValue : ", newValue);
+		GD.Print("animation:CurrentValue : ", this.CurrentValue);
+
 		this._animatedSprite.ShowOnTop = true;
 		if (this._animatedSprite.IsPlaying())
 		{
+			this._animatedSprite.Visible = false;
+			this._animatedSprite.Frame = 0;
 			this._animatedSprite.Stop();
 		}
 
+		this._animatedSprite.Visible = true;	
 		this._animatedSprite.Play(animation);
 	}
 
