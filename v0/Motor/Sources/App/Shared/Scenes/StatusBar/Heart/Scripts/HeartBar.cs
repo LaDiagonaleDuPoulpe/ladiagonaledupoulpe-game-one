@@ -23,7 +23,6 @@ public class HeartBar : Node2D
 		this._progressBar = this.GetNode<TextureProgress>("TextureProgress");
 		this._tweenItem = this.GetNode<Tween>("Tween");
 		this._animatedSprite = this.GetNode<AnimatedSprite>("Effects");
-
 		this._progressBar.MaxValue = this.MaxValue;
 		this.DefineAnimations();
 	}
