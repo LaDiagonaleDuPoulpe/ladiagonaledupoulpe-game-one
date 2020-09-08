@@ -16,6 +16,7 @@ public class HeartBar : Node2D
 	private Tween _tweenFpsItem = null;
 	private int _currentValue = 0;
 	private Dictionary<bool, string> _animations = new Dictionary<bool, string>();
+	private Dictionary<bool, float> _fpsValues = new Dictionary<bool, float>() { { true, 10 }, { false, 4 }  };
 	#endregion
 
 	#region Public methods
@@ -84,18 +85,19 @@ public class HeartBar : Node2D
 	private void ChangeHeartSpeed(int currentValue)
 	{
 		AnimatedTexture underTexture = this._progressBar.TextureUnder as AnimatedTexture;
-		float currentTexture = underTexture.Fps;
+		float currentFpsValue = underTexture.Fps;
+		float newFpsValue = this._fpsValues[this.IsWeakLife];
 
-		this._tweenTextureItem.InterpolateProperty(underTexture, "fps", currentTexture, 20,
+		this._tweenFpsItem.InterpolateProperty(underTexture, "fps", currentFpsValue, newFpsValue,
 												0.5f,
 												Tween.TransitionType.Elastic,
 												Tween.EaseType.Out);
-		if (!this._tweenTextureItem.IsActive())
+		if (!this._tweenFpsItem.IsActive())
 		{
-			this._tweenTextureItem.Start();
+			this._tweenFpsItem.Start();
 		}
 
-		underTexture.Fps = 20;
+		underTexture.Fps = newFpsValue;
 	}
 
 	private void ActivateAnimation(int newValue)
@@ -118,7 +120,7 @@ public class HeartBar : Node2D
 	{
 		double reallyGoodPart = this.MaxValue * 0.7;
 
-		this._progressBar.TintProgress = Colors.Transparent;
+		this._progressBar.TintProgress = Colors.White;
 		if (this.IsWeakLife)
 		{
 			this._progressBar.TintProgress = Colors.DarkRed;
@@ -130,7 +132,7 @@ public class HeartBar : Node2D
 	/// <summary>
 	/// Value where life could be weak to survive
 	/// </summary>
-	public double WeakLifeValue { get => this.MaxValue * 0.3; }
+	public double WeakLifeValue { get => this.MaxValue * 0.4; }
 
 	/// <summary>
 	/// Life is weak, take care !
