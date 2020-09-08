@@ -119,7 +119,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tween" type="Tween" parent="."]
+[node name="TweenForTexture" type="Tween" parent="."]
+
+[node name="TweenForFps" type="Tween" parent="."]
 
 [node name="Effects" type="AnimatedSprite" parent="."]
 position = Vector2( 393, 314 )

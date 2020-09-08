@@ -12,7 +12,8 @@ public class HeartBar : Node2D
 	#region Fields
 	private TextureProgress _progressBar = null;
 	private AnimatedSprite _animatedSprite = null;
-	private Tween _tweenItem = null;
+	private Tween _tweenTextureItem = null;
+	private Tween _tweenFpsItem = null;
 	private int _currentValue = 0;
 	private Dictionary<bool, string> _animations = new Dictionary<bool, string>();
 	#endregion
@@ -21,7 +22,8 @@ public class HeartBar : Node2D
 	public override void _Ready()
 	{
 		this._progressBar = this.GetNode<TextureProgress>("TextureProgress");
-		this._tweenItem = this.GetNode<Tween>("Tween");
+		this._tweenTextureItem = this.GetNode<Tween>("TweenForTexture");
+		this._tweenFpsItem = this.GetNode<Tween>("TweenForFps");
 		this._animatedSprite = this.GetNode<AnimatedSprite>("Effects");
 		this._progressBar.MaxValue = this.MaxValue;
 		this.DefineAnimations();
@@ -37,18 +39,19 @@ public class HeartBar : Node2D
 		{
 			int finalValue = value;
 
-			this._tweenItem.InterpolateProperty(this._progressBar, "value", this.CurrentValue, finalValue,
+			this._tweenTextureItem.InterpolateProperty(this._progressBar, "value", this.CurrentValue, finalValue,
 												0.5f,
 												Tween.TransitionType.Elastic,
 												Tween.EaseType.Out);
-			if (! this._tweenItem.IsActive())
+			if (! this._tweenTextureItem.IsActive())
 			{
-				this._tweenItem.Start();
+				this._tweenTextureItem.Start();
 			}
 
 			this.ActivateAnimation(value);
 			this.CurrentValue = value;
 			this.ChangeColorStyle(this.CurrentValue);
+			this.ChangeHeartSpeed(this.CurrentValue);
 		}
 	}
 
@@ -78,13 +81,26 @@ public class HeartBar : Node2D
 		this._animations.Add(true, "PowerUp");
 	}
 
+	private void ChangeHeartSpeed(int currentValue)
+	{
+		AnimatedTexture underTexture = this._progressBar.TextureUnder as AnimatedTexture;
+		float currentTexture = underTexture.Fps;
+
+		this._tweenTextureItem.InterpolateProperty(underTexture, "fps", currentTexture, 20,
+												0.5f,
+												Tween.TransitionType.Elastic,
+												Tween.EaseType.Out);
+		if (!this._tweenTextureItem.IsActive())
+		{
+			this._tweenTextureItem.Start();
+		}
+
+		underTexture.Fps = 20;
+	}
+
 	private void ActivateAnimation(int newValue)
 	{
 		string animation = this._animations[newValue > this.CurrentValue];
-
-		GD.Print("animation : ", animation);
-		GD.Print("animation:newValue : ", newValue);
-		GD.Print("animation:CurrentValue : ", this.CurrentValue);
 
 		this._animatedSprite.ShowOnTop = true;
 		if (this._animatedSprite.IsPlaying())
@@ -100,11 +116,10 @@ public class HeartBar : Node2D
 
 	private void ChangeColorStyle(int value)
 	{
-		double redPart = this.MaxValue * 0.3;
 		double reallyGoodPart = this.MaxValue * 0.7;
 
-		this._progressBar.TintProgress = Colors.DarkBlue;
-		if (value < redPart)
+		this._progressBar.TintProgress = Colors.Transparent;
+		if (this.IsWeakLife)
 		{
 			this._progressBar.TintProgress = Colors.DarkRed;
 		}
@@ -112,6 +127,16 @@ public class HeartBar : Node2D
 	#endregion
 
 	#region Properties
+	/// <summary>
+	/// Value where life could be weak to survive
+	/// </summary>
+	public double WeakLifeValue { get => this.MaxValue * 0.3; }
+
+	/// <summary>
+	/// Life is weak, take care !
+	/// </summary>
+	public bool IsWeakLife { get => this.CurrentValue < this.WeakLifeValue; }
+
 	/// <summary>
 	/// Alive if value is more than 0
 	/// </summary>
