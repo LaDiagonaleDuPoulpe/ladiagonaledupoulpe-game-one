@@ -38,7 +38,7 @@ public class HeartBar : Node2D
 	{
 		if (this.CurrentValue >= 0 && this.CurrentValue <= this.MaxValue)
 		{
-			int finalValue = value;
+			int finalValue = (int)((value * 0.6) + 20);
 
 			this._tweenTextureItem.InterpolateProperty(this._progressBar, "value", this.CurrentValue, finalValue,
 												0.5f,
