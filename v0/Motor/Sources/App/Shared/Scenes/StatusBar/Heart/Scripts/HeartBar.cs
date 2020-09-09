@@ -38,7 +38,7 @@ public class HeartBar : Node2D
 	{
 		if (this.CurrentValue >= 0 && this.CurrentValue <= this.MaxValue)
 		{
-			int finalValue = (int)((value * 0.6) + 20);
+			int finalValue = this.ComputeValueToProgressBar(value);
 
 			this._tweenTextureItem.InterpolateProperty(this._progressBar, "value", this.CurrentValue, finalValue,
 												0.5f,
@@ -76,6 +76,11 @@ public class HeartBar : Node2D
 	#endregion
 
 	#region Internal methods
+	private int ComputeValueToProgressBar(int value)
+	{
+		return (int)((value * 0.6) + 20);
+	}
+	
 	private void DefineAnimations()
 	{
 		this._animations.Add(false, "Damage");
@@ -133,6 +138,8 @@ public class HeartBar : Node2D
 	/// Value where life could be weak to survive
 	/// </summary>
 	public double WeakLifeValue { get => this.MaxValue * 0.4; }
+
+	public double NearDeadValue {get => this.MaxValue * 0.2; }
 
 	/// <summary>
 	/// Life is weak, take care !
