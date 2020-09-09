@@ -50,9 +50,22 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
             }
         } 
 
-        public void Initialize(int maxValue)
+        /// <summary>
+        /// Initializes life of the heart (current value and max value)
+        /// </summary>
+        /// <param name="maxValue"></param>
+        public virtual void Initialize(int maxValue)
         {
-            this.CurrentValue = maxValue;
+            this.Initialize(maxValue, maxValue);
+        }
+
+        /// <summary>
+        /// Initializes life of the heart (current value and max value)
+        /// </summary>
+        /// <param name="maxValue"></param>
+        public virtual void Initialize(int currentValue, int maxValue)
+        {
+            this.CurrentValue = currentValue;
             this.MaxValue = maxValue;
         }
         #endregion

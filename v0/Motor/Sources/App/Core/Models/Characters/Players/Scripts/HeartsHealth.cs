@@ -18,7 +18,10 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         #endregion
 
         #region Constructors
-        public HeartsHealth() {}
+        public HeartsHealth()
+        {
+            this.AddHearts(new Heart(100, 100)); // TODO: 09/09/2020, See to Initialize values from database
+        }
 
         public HeartsHealth(params Heart[] hearts) : base()
         {
@@ -27,6 +30,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         #endregion
 
         #region Public methods
+        public override void Initialize(int currentValue, int maxValue)
+        {
+            this._hearts[0].Initialize(currentValue, maxValue);
+        }
+
         /// <summary>
         /// Adds a list of heart to manage specific health
         /// </summary>

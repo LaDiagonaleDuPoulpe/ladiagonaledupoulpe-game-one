@@ -24,6 +24,25 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
         #region Public methods
         /// <summary>
+        /// Initializes life of the heart (current value and max value)
+        /// </summary>
+        /// <param name="maxValue"></param>
+        public virtual void Initialize(int maxValue)
+        {
+            this.Initialize(maxValue, maxValue);
+        }
+
+        /// <summary>
+        /// Initializes life of the heart (current value and max value)
+        /// </summary>
+        /// <param name="maxValue"></param>
+        public virtual void Initialize(int currentValue, int maxValue)
+        {
+            this.LifePoint.Define(currentValue);
+            this.LifePoint.MaxValue = maxValue;
+        }
+
+        /// <summary>
         /// Adds damage to the heart life points
         /// </summary>
         /// <param name="hitDamage">Positive value</param>
