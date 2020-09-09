@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Runtime.InteropServices;
 
 /// <summary>
 /// Heart life status bar
@@ -15,7 +16,7 @@ public class HeartBar : Node2D
 	private Tween _tweenTextureItem = null;
 	private Tween _tweenFpsItem = null;
 	private int _currentValue = 0;
-	private Dictionary<bool, string> _animations = new Dictionary<bool, string>();
+	private Dictionary<int, string> _animations = new Dictionary<int, string>();
 	private Dictionary<bool, float> _fpsValues = new Dictionary<bool, float>() { { true, 10 }, { false, 4 }  };
 	#endregion
 
@@ -26,8 +27,8 @@ public class HeartBar : Node2D
 		this._tweenTextureItem = this.GetNode<Tween>("TweenForTexture");
 		this._tweenFpsItem = this.GetNode<Tween>("TweenForFps");
 		this._animatedSprite = this.GetNode<AnimatedSprite>("Effects");
-		this._progressBar.MaxValue = this.MaxValue;
-		this.DefineAnimations();
+
+		this.Initialize();
 	}
 
 	/// <summary>
@@ -49,18 +50,27 @@ public class HeartBar : Node2D
 				this._tweenTextureItem.Start();
 			}
 
-			this.ActivateAnimation(value);
-			this.CurrentValue = value;
+			this.ActivateAnimation(finalValue);
+			this.CurrentValue = finalValue;
 			this.ChangeColorStyle(this.CurrentValue);
 			this.ChangeHeartSpeed(this.CurrentValue);
 		}
 	}
 
-	/// <summary>
-	/// Initializes the value of the life bar
-	/// </summary>
-	/// <param name="value"></param>
-	public void SetDefaultValues(int value, int maxValue)
+	public void _on_Effects_animation_finished()
+	{
+		this._animatedSprite.Visible = false;
+	}
+    #endregion
+
+    #region Internal methods
+    private void Initialize()
+	{
+		this.SetDefaultValues(80, 100);
+		this.DefineAnimations();
+	}
+
+	private void SetDefaultValues(int value, int maxValue)
 	{
 		this.CurrentValue = value;
 		this.MaxValue = maxValue;
@@ -69,22 +79,16 @@ public class HeartBar : Node2D
 		this._progressBar.Value = value;
 	}
 
-	public void _on_Effects_animation_finished()
-	{
-		this._animatedSprite.Visible = false;
-	}
-	#endregion
-
-	#region Internal methods
 	private int ComputeValueToProgressBar(int value)
 	{
 		return (int)((value * 0.6) + 20);
 	}
-	
+
 	private void DefineAnimations()
 	{
-		this._animations.Add(false, "Damage");
-		this._animations.Add(true, "PowerUp");
+		this._animations.Add(-1, "Damage");
+		this._animations.Add(0, string.Empty);
+		this._animations.Add(1, "PowerUp");
 	}
 
 	private void ChangeHeartSpeed(int currentValue)
@@ -101,24 +105,36 @@ public class HeartBar : Node2D
 		{
 			this._tweenFpsItem.Start();
 		}
-
-		underTexture.Fps = newFpsValue;
 	}
 
 	private void ActivateAnimation(int newValue)
 	{
-		string animation = this._animations[newValue > this.CurrentValue];
+		string animation = this.GetCurrentAnimation(newValue);
 
-		this._animatedSprite.ShowOnTop = true;
-		if (this._animatedSprite.IsPlaying())
+		if (!string.IsNullOrEmpty(animation))
 		{
-			this._animatedSprite.Visible = false;
-			this._animatedSprite.Frame = 0;
-			this._animatedSprite.Stop();
-		}
+			this._animatedSprite.ShowOnTop = true;
+			if (this._animatedSprite.IsPlaying())
+			{
+				this._animatedSprite.Visible = false;
+				this._animatedSprite.Frame = 0;
+				this._animatedSprite.Stop();
+			}
 
-		this._animatedSprite.Visible = true;	
-		this._animatedSprite.Play(animation);
+			this._animatedSprite.Visible = true;
+			this._animatedSprite.Play(animation);
+		}
+	}
+
+	private string GetCurrentAnimation(int newValue)
+    {
+		int updateLifeDirection = newValue.CompareTo(this.CurrentValue);
+
+		GD.Print("GetCurrentAnimation: CurrentValue", this.CurrentValue);
+		GD.Print("GetCurrentAnimation: newValue", newValue);
+		GD.Print("GetCurrentAnimation: updateLifeDirection", updateLifeDirection);
+
+		return this._animations[updateLifeDirection];
 	}
 
 	private void ChangeColorStyle(int value)
@@ -175,6 +191,6 @@ public class HeartBar : Node2D
 	/// <summary>
 	/// Max value of the life bar
 	/// </summary>
-	public int MaxValue { get; set; } = 80;
+	public int MaxValue { get; set; } = 100;
 	#endregion
 }

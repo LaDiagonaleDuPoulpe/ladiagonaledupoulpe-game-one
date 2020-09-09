@@ -16,7 +16,6 @@ public class HeartsLifeBar : Node2D
 	{
 		Control container = this.GetNode<Control>("MarginContainer"); 
 		this._mainHeart = container.GetNode<HeartBar>("MainHeart");
-		this._mainHeart.SetDefaultValues(100, 100);
 	}
 
 	/// <summary>
