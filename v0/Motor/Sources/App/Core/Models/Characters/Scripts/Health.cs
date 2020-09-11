@@ -11,7 +11,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
     public class Health : Node, IWithDamage
     {
         #region Fields
-        private LifePoint _lifePoint = LifePoint.New();
+        private LifePoint _lifePoint = new LifePoint();
         #region Signals
         /// <summary>
         /// Observes this event to know when health changed (plus or less)
@@ -29,9 +29,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         #endregion
 
         #region Public methods
-        public override void _Ready() { 
-        
-        }
+        public override void _Ready() {}
 
         /// <summary>
         /// Hits the health, and substract the damage value to the current health value
@@ -39,9 +37,8 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// <param name="damageValue">Damage value, must be more than 0</param>
         public void Hit(int damageValue)
         {
-            this.CurrentValue += damageValue;
-
-            this.EmitSignal(CharacterLifeSignal.HealthChanged.ToString(), LifePoint.New(this.CurrentValue));
+            this.CurrentValue = this.CurrentValue + damageValue;
+            this.EmitSignal(CharacterLifeSignal.HealthChanged.ToString(), new LifePoint(this.CurrentValue));
 
             if (this.CurrentValue < 0)
             {
@@ -75,12 +72,12 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// Current value of the health.
         /// Could be overrided.
         /// </summary>
-        public virtual int CurrentValue { get => this._lifePoint.CurrentValue; private set => this._lifePoint.Define(value); }
+        public virtual int CurrentValue { get => this._lifePoint.GetCurrentValue(); set => this._lifePoint.Define(value); }
 
         /// <summary>
         /// Max value of the health
         /// </summary>
-        public virtual int MaxValue { get => this._lifePoint.MaxValue; private set => this._lifePoint.MaxValue = value; }
+        public virtual int MaxValue { get => this._lifePoint.MaxValue; set => this._lifePoint.MaxValue = value; }
 
         /// <summary>
         /// Current value is more than 0 ?

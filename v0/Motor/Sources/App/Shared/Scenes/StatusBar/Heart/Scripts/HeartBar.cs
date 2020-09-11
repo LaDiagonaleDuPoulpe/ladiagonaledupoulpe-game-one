@@ -130,10 +130,6 @@ public class HeartBar : Node2D
     {
 		int updateLifeDirection = newValue.CompareTo(this.CurrentValue);
 
-		GD.Print("GetCurrentAnimation: CurrentValue", this.CurrentValue);
-		GD.Print("GetCurrentAnimation: newValue", newValue);
-		GD.Print("GetCurrentAnimation: updateLifeDirection", updateLifeDirection);
-
 		return this._animations[updateLifeDirection];
 	}
 

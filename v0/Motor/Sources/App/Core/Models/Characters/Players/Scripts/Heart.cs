@@ -18,7 +18,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
         public Heart(int currentValue, int maxValue = 100)
         {
-            this.LifePoint = LifePoint.New(currentValue, maxValue);
+            this.LifePoint = new LifePoint(currentValue, maxValue);
         }
         #endregion
 
@@ -58,6 +58,10 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         /// Life point of the heart
         /// </summary>
         public LifePoint LifePoint { get; private set; }
+
+        public virtual int CurrentValue { get => this.LifePoint.CurrentValue; set => this.LifePoint.Define(value); }
+
+        public virtual int MaxValue { get => this.LifePoint.MaxValue; set => this.LifePoint.MaxValue = value; }
         #endregion
     }
 }

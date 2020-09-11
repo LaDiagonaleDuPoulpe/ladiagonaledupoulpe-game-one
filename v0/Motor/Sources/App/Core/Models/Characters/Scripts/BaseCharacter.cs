@@ -1,5 +1,6 @@
 ﻿using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Models.Attacks;
+using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,17 +29,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
 
             this.Initialize();
         }
-        #endregion
-
-        #region Internal methods
-        /// <summary>
-        /// Allows you to add more initialize settings
-        /// </summary>
-        protected virtual void Initialize() 
-        {
-            // TODO: 20/08/2020, initialize with real values (from api ?)
-            this.MainHealth.Initialize(100);
-        }
 
         /// <summary>
         /// Hits the health of the character
@@ -47,6 +37,32 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         public void Hit(int damageValue)
         {
             this.MainHealth.Hit(damageValue);
+        }
+        #endregion
+
+        #region Internal methods
+        /// <summary>
+        /// Allows you to add more initialize settings
+        /// </summary>
+        protected virtual void Initialize() 
+        {
+            this.MainHealth.Connect(CharacterLifeSignal.HealthChanged.ToString(), this, nameof(HealthIsChanged));
+            this.MainHealth.Connect(CharacterLifeSignal.LifeIsGone.ToString(), this, nameof(HealthIsGone));
+
+            // TODO: 20/08/2020, initialize with real values (from api ?)
+            this.MainHealth.Initialize(100, 100);
+        }
+
+        protected virtual void HealthIsChanged(LifePoint point)
+        {
+            // TODO: 15/08/2020, play hint animation
+            this.EmitSignal(CharacterLifeSignal.HealthChanged.ToString(), point);
+        }
+
+        protected virtual void HealthIsGone()
+        {
+            // TODO: 15/08/2020, play died animation
+            this.EmitSignal(CharacterLifeSignal.LifeIsGone.ToString());
         }
         #endregion
 

@@ -99,27 +99,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         protected override void Initialize()
         {
             base.Initialize();
-
-            this.MainHealth.Connect(CharacterLifeSignal.HealthChanged.ToString(), this, nameof(HealthIsChanged));
-            this.MainHealth.Connect(CharacterLifeSignal.LifeIsGone.ToString(), this, nameof(HealthIsGone));
-
-            this.MainHealth.Initialize(100);
         }
-
-        private void HealthIsChanged(LifePoint point)
-        {
-            // TODO: 15/08/2020, play hint animation
-            this.EmitSignal(CharacterLifeSignal.HealthChanged.ToString(), point);
-        }
-
-        private void HealthIsGone()
-        {
-            // TODO: 15/08/2020, play died animation
-            this.EmitSignal(CharacterLifeSignal.LifeIsGone.ToString());
-        }
-        #endregion
-
-        #region Properties
         #endregion
     }
 }

@@ -13,22 +13,16 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
     public class LifePoint : Godot.Object
     {
         #region Constructors
-        private LifePoint() { }
+        public LifePoint() { }
+
+        public LifePoint(int currentValue = 0, int maxValue = 0) 
+        { 
+            this.CurrentValue = currentValue;
+            this.MaxValue = maxValue;
+        }
         #endregion
 
         #region Public methods
-        /// <summary>
-        /// Returns a new life point instance
-        /// </summary>
-        /// <returns></returns>
-        public static LifePoint New(int currentValue = 0, int maxValue = 0)
-        {
-            return new LifePoint()
-            {
-                CurrentValue = currentValue,
-                MaxValue = maxValue
-            };
-        }
         #endregion
 
         #region Public methods
@@ -53,6 +47,10 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
             this.CurrentValue = currentValue;
             this.ControlRangeOfValue();
         }
+
+        public int GetCurrentValue() {
+            return this.CurrentValue;
+        }
         #endregion
 
         #region Internal methods
@@ -74,7 +72,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// <summary>
         /// Current value of the life
         /// </summary>
-        public int CurrentValue { get; private set; }
+        public int CurrentValue { get; set; }
 
         /// <summary>
         /// Maximum value of the life point

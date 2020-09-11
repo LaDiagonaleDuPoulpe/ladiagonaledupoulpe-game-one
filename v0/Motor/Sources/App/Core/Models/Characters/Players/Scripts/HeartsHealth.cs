@@ -49,5 +49,31 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
             this._hearts.AddRange(hearts);
         }
         #endregion
+
+        #region Properties
+        public override int CurrentValue 
+        { 
+            get 
+            {
+                return this._hearts[0].CurrentValue;
+            } 
+            set
+            {
+                this._hearts[0].CurrentValue = value; 
+            }
+        }
+
+        public override int MaxValue 
+        { 
+            get 
+            {
+                return this._hearts[0].MaxValue;
+            } 
+            set 
+            {
+                this._hearts[0].MaxValue = value; 
+            }
+        }
+        #endregion
     }
 }

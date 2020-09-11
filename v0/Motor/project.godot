@@ -34,6 +34,7 @@ Display=8
 
 config/name="la-diagonale-du-poulpe"
 run/main_scene="res://Sources/App/Game-Scenes/XXX-Test-TestingScenes/TestHealthBar.tscn"
+config/use_custom_user_dir=true
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://icon.png"
@@ -66,6 +67,7 @@ file_logging/enable_file_logging=true
 
 [mono]
 
+debugger_agent/wait_timeout=5000
 project/auto_update_project=false
 
 [rendering]
