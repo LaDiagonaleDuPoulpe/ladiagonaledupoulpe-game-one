@@ -38,8 +38,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         /// <param name="maxValue"></param>
         public virtual void Initialize(int currentValue, int maxValue)
         {
-            this.LifePoint.Define(currentValue);
-            this.LifePoint.MaxValue = maxValue;
+            this.LifePoint = new LifePoint(currentValue, maxValue);
         }
 
         /// <summary>
