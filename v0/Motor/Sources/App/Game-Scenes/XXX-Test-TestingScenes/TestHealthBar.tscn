@@ -3,6 +3,7 @@
 [ext_resource path="res://Sources/App/Game-Scenes/XXX-Test-TestingScenes/Scripts/TestHealthBar.cs" type="Script" id=2]
 
 [node name="RootTest" type="Node2D"]
+position = Vector2( 13, 0 )
 script = ExtResource( 2 )
 
 [node name="Button" type="Button" parent="."]

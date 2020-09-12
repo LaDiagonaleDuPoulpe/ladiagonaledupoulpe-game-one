@@ -36,10 +36,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// <param name="damageValue"></param>
         public void Hit(int damageValue)
         {
-            GD.Print("Hit CurrentValue before", this.MainHealth.CurrentValue);
             this.MainHealth.Hit(damageValue);
-            GD.Print("Hit damageValue ", damageValue);
-            GD.Print("Hit CurrentValue after", this.MainHealth.CurrentValue);
         }
         #endregion
 

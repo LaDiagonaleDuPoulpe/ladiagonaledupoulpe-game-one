@@ -34,12 +34,13 @@ public class HeartBar : Node2D
 	/// <summary>
 	/// Defines new value of the status bar
 	/// </summary>
-	/// <param name="value">Value positive or negative</param>
-	public void Update(int value)
+	/// <param name="newValueOfPlayer">New value positive of the player</param>
+	/// <param name="maxValueOfPlayer">Maximum value of the player</param>
+	public void Update(int newValueOfPlayer, int maxValueOfPlayer)
 	{
 		if (this.CurrentValue >= 0 && this.CurrentValue <= this.MaxValue)
 		{
-			int finalValue = this.ComputeValueToProgressBar(value);
+			int finalValue = this.ComputeValueToProgressBar(newValueOfPlayer, maxValueOfPlayer);
 
 			this._tweenTextureItem.InterpolateProperty(this._progressBar, "value", this.CurrentValue, finalValue,
 												0.5f,
@@ -79,9 +80,13 @@ public class HeartBar : Node2D
 		this._progressBar.Value = value;
 	}
 
-	private int ComputeValueToProgressBar(int value)
+	private int ComputeValueToProgressBar(int value, int maxValueOfPlayer)
 	{
-		return (int)((value * 0.6) + 20);
+		const int margin = 20;
+		int maxRealValueProgressBar = this.MaxValue - (margin * 2);
+		decimal ratio = (maxRealValueProgressBar / (decimal) maxValueOfPlayer);
+
+		return (int)((value * ratio) + 20);
 	}
 
 	private void DefineAnimations()

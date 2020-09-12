@@ -21,10 +21,11 @@ public class HeartsLifeBar : Node2D
 	/// <summary>
 	/// Updates value in all heart bars
 	/// </summary>
-	/// <param name="value">Positive or negative value</param>
-	public void Update(int value)
+	/// <param name="value">Positive value of the value of life of player</param>
+	/// <param name="maxValueOfPlayer">Maximum life of the player</param>
+	public void Update(int value, int maxValueOfPlayer)
 	{
-		this._mainHeart.Update(value);
+		this._mainHeart.Update(value, maxValueOfPlayer);
 	}
 	#endregion
 

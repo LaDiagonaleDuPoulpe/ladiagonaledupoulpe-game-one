@@ -38,7 +38,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         public void Hit(int damageValue)
         {
             this.CurrentValue = this.CurrentValue + damageValue;
-            this.EmitSignal(CharacterLifeSignal.HealthChanged.ToString(), new LifePoint(this.CurrentValue));
+            this.EmitSignal(CharacterLifeSignal.HealthChanged.ToString(), new LifePoint(this.CurrentValue, this.MaxValue));
 
             if (this.CurrentValue < 0)
             {
