@@ -4,6 +4,7 @@ using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -61,9 +62,14 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
 
         protected virtual void HealthIsGone()
         {
-            // TODO: 15/08/2020, play died animation
+            
             this.EmitSignal(CharacterLifeSignal.LifeIsGone.ToString());
         }
+
+        /// <summary>
+        ///  Overrides it to add custom code about the death of the character
+        /// </summary>
+        protected virtual void Die() {}
         #endregion
 
         #region Properties

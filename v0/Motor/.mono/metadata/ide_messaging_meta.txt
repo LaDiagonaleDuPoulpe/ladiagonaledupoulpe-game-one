@@ -1,2 +1,2 @@
-﻿63651
-C:\Program Files\Godot\Godot_v3.2.2-stable_mono_win64\Godot_v3.2.2-stable_mono_win64.exe
+﻿59366
+C:\Program Files\Godot\Godot_v3.2.3-stable_mono_win64\Godot_v3.2.3-stable_mono_win64.exe
