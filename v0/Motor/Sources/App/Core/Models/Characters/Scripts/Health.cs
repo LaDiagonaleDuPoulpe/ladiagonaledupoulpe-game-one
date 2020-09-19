@@ -41,7 +41,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
             this.EmitSignal(CharacterLifeSignal.HealthChanged.ToString(), new LifePoint(this.CurrentValue, this.MaxValue));
 
             int lastValue = this.CurrentValue;
-            GD.Print("Hit : ", lastValue);
             if (lastValue <= 0)
             {
                 this.CurrentValue = 0;

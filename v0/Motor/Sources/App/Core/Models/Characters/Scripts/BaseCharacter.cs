@@ -62,7 +62,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
 
         protected virtual void HealthIsGone()
         {
-            
+            this.Die();
             this.EmitSignal(CharacterLifeSignal.LifeIsGone.ToString());
         }
 
