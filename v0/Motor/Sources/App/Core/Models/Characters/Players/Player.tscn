@@ -141,6 +141,11 @@ animations = [ {
 "name": "idle_up",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 71 ), ExtResource( 32 ), ExtResource( 57 ), ExtResource( 53 ), ExtResource( 33 ), ExtResource( 62 ), ExtResource( 72 ), ExtResource( 58 ), ExtResource( 45 ), ExtResource( 73 ), ExtResource( 55 ) ],
+"loop": true,
+"name": "idle_left",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 82 ), ExtResource( 2 ), ExtResource( 97 ), ExtResource( 6 ), ExtResource( 83 ), ExtResource( 3 ), ExtResource( 102 ), ExtResource( 4 ), ExtResource( 88 ), ExtResource( 5 ), ExtResource( 94 ) ],
 "loop": true,
 "name": "idle_down",
@@ -150,11 +155,6 @@ animations = [ {
 "loop": true,
 "name": "down",
 "speed": 10.0
-}, {
-"frames": [ ExtResource( 71 ), ExtResource( 32 ), ExtResource( 57 ), ExtResource( 53 ), ExtResource( 33 ), ExtResource( 62 ), ExtResource( 72 ), ExtResource( 58 ), ExtResource( 45 ), ExtResource( 73 ), ExtResource( 55 ) ],
-"loop": true,
-"name": "idle_left",
-"speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]

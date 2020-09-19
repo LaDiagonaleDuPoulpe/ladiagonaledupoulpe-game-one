@@ -62,10 +62,10 @@ public class HeartBar : Node2D
 	{
 		this._animatedSprite.Visible = false;
 	}
-    #endregion
+	#endregion
 
-    #region Internal methods
-    private void Initialize()
+	#region Internal methods
+	private void Initialize()
 	{
 		this.SetDefaultValues(80, 100);
 		this.DefineAnimations();
@@ -132,7 +132,7 @@ public class HeartBar : Node2D
 	}
 
 	private string GetCurrentAnimation(int newValue)
-    {
+	{
 		int updateLifeDirection = newValue.CompareTo(this.CurrentValue);
 
 		return this._animations[updateLifeDirection];

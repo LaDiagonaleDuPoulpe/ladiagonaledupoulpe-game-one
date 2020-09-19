@@ -1,4 +1,5 @@
 using Godot;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts.State;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
@@ -19,7 +20,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
 		#region Fields
 		private AnimatedSprite _animatedSprite = null;
-
+		private StateMachinePlayer _stateMachine = null;
 		#region Signals
 		/// <summary>
 		/// Observes this event to know when health changed (plus or less)
@@ -42,6 +43,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 		public override void _Ready()
 		{
 			base._Ready();
+			this._stateMachine = new StateMachinePlayer(this);
 			this._animatedSprite = this.GetNode<AnimatedSprite>("AnimatedSprite");
 		}
 
@@ -65,35 +67,17 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
 		public override void _Process(float delta)
 		{
-			string animation = string.Empty;
-			string prefix = string.Empty;
+			this._stateMachine.HandleInput();
+			this._stateMachine.Play();
+		}
 
-
-			if (this.Velocity.Length() <= 0)
-			{
-				prefix = IDLE_STATE_KEY + "_";
-			}
-
-			if (this.Velocity.x != 0)
-			{
-				this._lastAnimation = LEFT_ANIMATION_KEY;
-				this._animatedSprite.FlipV = false;
-				this._animatedSprite.FlipH = this.Velocity.x > 0;
-			}
-			else if (this.Velocity.y != 0)
-			{
-				this._lastAnimation = UP_ANIMATION_KEY;
-				if (this.Velocity.y > 0)
-				{
-					this._lastAnimation = DOWN_ANIMATION_KEY;
-				}
-			}
-
-			if (!string.IsNullOrEmpty(this._lastAnimation))
-			{
-				animation = $"{prefix}{this._lastAnimation}";
-				this._animatedSprite.Play(animation);
-			}
+		/// <summary>
+		/// Plays an animation in the player node
+		/// </summary>
+		/// <param name="animation">Key of the animation</param>
+		public override void PlayAnimation(string animation)
+		{
+			this._animatedSprite.Play(animation);
 		}
 		#endregion
 
@@ -106,12 +90,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 		protected override void Die()
 		{
 			base.Die();
-			if (this._animatedSprite.Playing)
-			{
-				this._animatedSprite.Stop();
-				this._animatedSprite.Frame = 0;
-			}
-			this._animatedSprite.Play("die_down");
+			this._stateMachine.Die();
 		}
 		#endregion
 	}

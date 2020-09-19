@@ -39,6 +39,12 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         {
             this.MainHealth.Hit(damageValue);
         }
+
+        /// <summary>
+		/// Plays an animation in the player node
+		/// </summary>
+		/// <param name="animation">Key of the animation</param>
+		public virtual void PlayAnimation(string animation) { }
         #endregion
 
         #region Internal methods

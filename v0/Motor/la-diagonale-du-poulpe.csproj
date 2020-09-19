@@ -25,7 +25,12 @@
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\HeartsHealth.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\BaseStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\DiedStatePlayer.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\IStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\IdleStatePlayer.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\LeftMoveStatePlayer.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\MoveStatePlayer.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\RightMoveStatePlayer.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\StateMachinePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\BaseCharacter.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\Health.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\LifePoint.cs" />

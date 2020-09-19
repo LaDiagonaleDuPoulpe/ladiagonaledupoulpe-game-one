@@ -7,22 +7,11 @@ using System.Threading.Tasks;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts.State
 {
-    public class DiedStatePlayer : BaseStatePlayer
+    public class LeftMoveStatePlayer : MoveStatePlayer
     {
         #region Constructors
-        public DiedStatePlayer(StateMachinePlayer playerState, BaseCharacter character) : base(playerState, character)
+        public LeftMoveStatePlayer(StateMachinePlayer playerState, BaseCharacter character) : base(playerState, character)
         {
-        }
-        #endregion
-
-        #region Public methods
-        public override void HandleInput()
-        {
-        }
-
-        public override void Play()
-        {
-            
         }
         #endregion
     }
