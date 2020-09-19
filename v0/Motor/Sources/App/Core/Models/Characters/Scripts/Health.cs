@@ -40,7 +40,9 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
             this.CurrentValue = this.CurrentValue + damageValue;
             this.EmitSignal(CharacterLifeSignal.HealthChanged.ToString(), new LifePoint(this.CurrentValue, this.MaxValue));
 
-            if (this.CurrentValue < 0)
+            int lastValue = this.CurrentValue;
+            GD.Print("Hit : ", lastValue);
+            if (lastValue <= 0)
             {
                 this.CurrentValue = 0;
                 this.EmitSignal(CharacterLifeSignal.LifeIsGone.ToString());
