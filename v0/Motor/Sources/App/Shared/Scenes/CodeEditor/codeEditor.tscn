@@ -47,4 +47,24 @@ __meta__ = {
 position = Vector2( 119.38, 126.508 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 1 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Button" type="Button" parent="Node2D"]
+margin_left = 655.0
+margin_top = 719.0
+margin_right = 676.0
+margin_bottom = 739.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="Node2D"]
+margin_left = 708.74
+margin_top = 719.0
+margin_right = 729.74
+margin_bottom = 739.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]
