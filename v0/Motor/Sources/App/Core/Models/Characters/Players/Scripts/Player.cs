@@ -79,6 +79,12 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 		{
 			this._animatedSprite.Play(animation);
 		}
+
+        public override void ChangeDirectionAnimation(bool isRight = true, bool isVertical = false)
+        {
+			this._animatedSprite.FlipV = isVertical;
+			this._animatedSprite.FlipH = isRight;
+		}
 		#endregion
 
 		#region Internal methods

@@ -9,9 +9,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Enums
     /// <summary>
     /// Direction to display the animated sprite : left or right
     /// </summary>
-    public enum AnimatedSpriteDirection
+    public enum Direction
     {
         Left,
-        Right
+        Right,
+        Top,
+        Down
     }
 }

@@ -27,9 +27,8 @@
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\DiedStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\IStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\IdleStatePlayer.cs" />
-    <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\LeftMoveStatePlayer.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\HorizontalMoveStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\MoveStatePlayer.cs" />
-    <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\RightMoveStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\StateMachinePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\BaseCharacter.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\Health.cs" />
@@ -76,7 +75,7 @@
     <Compile Include="Sources\App\Shared\Constants\KeyPressActionKeys.cs" />
     <Compile Include="Sources\App\Shared\Enums\DialogBox\DialogBoxActionType.cs" />
     <Compile Include="Sources\App\Shared\Enums\LoadingActionsType.cs" />
-    <Compile Include="Sources\App\Shared\Enums\AnimatedSpriteDirection.cs" />
+    <Compile Include="Sources\App\Shared\Enums\Direction.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\DialogBox.cs" />
     <Compile Include="Sources\App\Core\Models\Scenes\DialogBox\DialogBoxExchange.cs" />
     <Compile Include="Sources\App\Shared\Enums\DialogBox\DialogBoxSpriteStatus.cs" />

@@ -121,14 +121,19 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 28 ), ExtResource( 63 ), ExtResource( 69 ), ExtResource( 74 ), ExtResource( 54 ), ExtResource( 36 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 59 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 44 ), ExtResource( 46 ), ExtResource( 56 ), ExtResource( 61 ), ExtResource( 91 ), ExtResource( 80 ), ExtResource( 85 ), ExtResource( 93 ), ExtResource( 87 ), ExtResource( 77 ) ],
-"loop": true,
-"name": "left",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 37 ), ExtResource( 50 ), ExtResource( 48 ), ExtResource( 23 ), ExtResource( 31 ), ExtResource( 26 ), ExtResource( 38 ), ExtResource( 52 ), ExtResource( 51 ), ExtResource( 21 ), ExtResource( 29 ), ExtResource( 49 ), ExtResource( 41 ), ExtResource( 22 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 34 ), ExtResource( 24 ), ExtResource( 35 ), ExtResource( 27 ), ExtResource( 30 ) ],
 "loop": true,
-"name": "up",
+"name": "move_up",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 63 ), ExtResource( 69 ), ExtResource( 74 ), ExtResource( 54 ), ExtResource( 36 ), ExtResource( 66 ), ExtResource( 67 ), ExtResource( 59 ), ExtResource( 39 ), ExtResource( 40 ), ExtResource( 44 ), ExtResource( 46 ), ExtResource( 56 ), ExtResource( 61 ), ExtResource( 91 ), ExtResource( 80 ), ExtResource( 85 ), ExtResource( 93 ), ExtResource( 87 ), ExtResource( 77 ) ],
+"loop": true,
+"name": "move_left",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 7 ), ExtResource( 14 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 17 ), ExtResource( 25 ), ExtResource( 19 ), ExtResource( 8 ), ExtResource( 47 ), ExtResource( 70 ), ExtResource( 60 ), ExtResource( 65 ), ExtResource( 68 ), ExtResource( 64 ) ],
+"loop": true,
+"name": "move_down",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 113 ), ExtResource( 99 ), ExtResource( 104 ), ExtResource( 114 ), ExtResource( 107 ), ExtResource( 109 ), ExtResource( 116 ), ExtResource( 111 ), ExtResource( 110 ), ExtResource( 98 ), ExtResource( 100 ), ExtResource( 101 ), ExtResource( 103 ), ExtResource( 105 ), ExtResource( 112 ), ExtResource( 115 ), ExtResource( 108 ), ExtResource( 117 ), ExtResource( 106 ), ExtResource( 118 ) ],
@@ -150,11 +155,6 @@ animations = [ {
 "loop": true,
 "name": "idle_down",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 18 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 7 ), ExtResource( 14 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 17 ), ExtResource( 25 ), ExtResource( 19 ), ExtResource( 8 ), ExtResource( 47 ), ExtResource( 70 ), ExtResource( 60 ), ExtResource( 65 ), ExtResource( 68 ), ExtResource( 64 ) ],
-"loop": true,
-"name": "down",
-"speed": 10.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
@@ -174,7 +174,7 @@ script = ExtResource( 96 )
 position = Vector2( 0, -1 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
-animation = "die_down"
+animation = "move_up"
 frame = 19
 playing = true
 

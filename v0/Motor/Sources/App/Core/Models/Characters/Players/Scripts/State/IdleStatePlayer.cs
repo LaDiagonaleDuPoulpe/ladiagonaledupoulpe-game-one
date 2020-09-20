@@ -1,4 +1,5 @@
 ﻿using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
+using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,17 +22,19 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         #region Public methods
         public override void HandleInput()
         {
-            IStatePlayer newState = new IdleStatePlayer(this.PlayerState, this.Character);
+            IStatePlayer newState = null;
 
             if (this.Character.Velocity.x != 0)
             {
-                newState = new LeftMoveStatePlayer(this.PlayerState, this.Character);
-                //this._lastAnimation = LEFT_ANIMATION_KEY;
-                //this._animatedSprite.FlipV = false;
-                //this._animatedSprite.FlipH = this.Velocity.x > 0;
+                Direction direction = this.Character.Velocity.x > 0 ? Direction.Right : Direction.Left;
+
+                newState = new HorizontalMoveStatePlayer(this.PlayerState, this.Character) 
+                           { 
+                                CurrentDirection = direction
+                            };
+                this.PlayerState.ChangeState(newState);
             }
 
-            this.PlayerState.ChangeState(newState);
             //else if (this.Velocity.y != 0)
             //{
             //	this._lastAnimation = UP_ANIMATION_KEY;
@@ -48,9 +51,9 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
             //}
         }
 
-		public override void Play()
+        public override void Play()
         {
-            this.Character.PlayAnimation("idle_left");
+            this.Character.PlayAnimation($"idle_left");
         }
         #endregion
     }

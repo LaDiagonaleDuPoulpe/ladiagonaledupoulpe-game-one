@@ -27,7 +27,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog
         /// <summary>
         /// Direction of the animated sprite
         /// </summary>
-        public AnimatedSpriteDirection SpriteDirection { get; set; }
+        public Direction SpriteDirection { get; set; }
         #endregion
     }
 }

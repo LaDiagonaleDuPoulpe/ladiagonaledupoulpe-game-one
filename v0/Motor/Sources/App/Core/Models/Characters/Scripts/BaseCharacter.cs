@@ -45,6 +45,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
 		/// </summary>
 		/// <param name="animation">Key of the animation</param>
 		public virtual void PlayAnimation(string animation) { }
+
+        /// <summary>
+        /// Defines the direction of the animated sprite
+        /// </summary>
+        public virtual void ChangeDirectionAnimation(bool isLeft = true, bool isVertical = false) { }
         #endregion
 
         #region Internal methods

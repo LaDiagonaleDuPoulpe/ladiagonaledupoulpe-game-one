@@ -1,4 +1,6 @@
-﻿using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
+﻿using Godot;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
+using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +17,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         #region Fields
         private StateMachinePlayer _playerState = null;
         private BaseCharacter _character = null;
+        private string _currentAction = string.Empty;
         #endregion
 
         #region Constructors
@@ -41,6 +44,16 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         /// Gets the current character (player)
         /// </summary>
         protected BaseCharacter Character { get => this._character; }
+
+        /// <summary>
+        /// Gets the current action of the player
+        /// </summary>
+        public string CurrentAction { get => _currentAction; set => _currentAction = value; }
+
+        /// <summary>
+        /// Gets current direction
+        /// </summary>
+        public Direction CurrentDirection { get; set; }
         #endregion
     }
 }

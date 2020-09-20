@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ladiagonaledupoulpe.Sources.App.Shared.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         public StateMachinePlayer(Player player)
         {
             this._player = player;
-            this.ChangeState(new IdleStatePlayer(this, player));
+            this.ChangeState(new IdleStatePlayer(this, player) { CurrentDirection = Direction.Left  } );
         }
         #endregion
 
