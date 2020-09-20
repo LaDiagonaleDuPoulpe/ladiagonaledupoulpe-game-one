@@ -121,6 +121,11 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
+"frames": [ ExtResource( 90 ), ExtResource( 95 ), ExtResource( 92 ), ExtResource( 84 ), ExtResource( 86 ), ExtResource( 78 ), ExtResource( 89 ), ExtResource( 75 ), ExtResource( 81 ), ExtResource( 76 ), ExtResource( 79 ) ],
+"loop": true,
+"name": "idle_up",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 37 ), ExtResource( 50 ), ExtResource( 48 ), ExtResource( 23 ), ExtResource( 31 ), ExtResource( 26 ), ExtResource( 38 ), ExtResource( 52 ), ExtResource( 51 ), ExtResource( 21 ), ExtResource( 29 ), ExtResource( 49 ), ExtResource( 41 ), ExtResource( 22 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 34 ), ExtResource( 24 ), ExtResource( 35 ), ExtResource( 27 ), ExtResource( 30 ) ],
 "loop": true,
 "name": "move_up",
@@ -140,11 +145,6 @@ animations = [ {
 "loop": false,
 "name": "die_down",
 "speed": 10.0
-}, {
-"frames": [ ExtResource( 90 ), ExtResource( 95 ), ExtResource( 92 ), ExtResource( 84 ), ExtResource( 86 ), ExtResource( 78 ), ExtResource( 89 ), ExtResource( 75 ), ExtResource( 81 ), ExtResource( 76 ), ExtResource( 79 ) ],
-"loop": true,
-"name": "idle_up",
-"speed": 5.0
 }, {
 "frames": [ ExtResource( 71 ), ExtResource( 32 ), ExtResource( 57 ), ExtResource( 53 ), ExtResource( 33 ), ExtResource( 62 ), ExtResource( 72 ), ExtResource( 58 ), ExtResource( 45 ), ExtResource( 73 ), ExtResource( 55 ) ],
 "loop": true,
@@ -174,8 +174,8 @@ script = ExtResource( 96 )
 position = Vector2( 0, -1 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
-animation = "move_up"
-frame = 19
+animation = "idle_up"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -23,37 +23,44 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         public override void HandleInput()
         {
             IStatePlayer newState = null;
+            Direction direction;
 
             if (this.Character.Velocity.x != 0)
             {
-                Direction direction = this.Character.Velocity.x > 0 ? Direction.Right : Direction.Left;
+                direction = this.Character.Velocity.x > 0 ? Direction.Right : Direction.Left;
 
-                newState = new HorizontalMoveStatePlayer(this.PlayerState, this.Character) 
-                           { 
-                                CurrentDirection = direction
-                            };
-                this.PlayerState.ChangeState(newState);
+                newState = new HorizontalMoveStatePlayer(this.PlayerState, this.Character)
+                {
+                    CurrentDirection = direction
+                };
+            }
+            else if (this.Character.Velocity.y != 0)
+            {
+                direction = this.Character.Velocity.y > 0 ? Direction.Down : Direction.Up;
+
+                newState = new VerticalMoveStatePlayer(this.PlayerState, this.Character)
+                {
+                    CurrentDirection = direction
+                };
             }
 
-            //else if (this.Velocity.y != 0)
-            //{
-            //	this._lastAnimation = UP_ANIMATION_KEY;
-            //	if (this.Velocity.y > 0)
-            //	{
-            //		this._lastAnimation = DOWN_ANIMATION_KEY;
-            //	}
-            //}
 
-            //if (!string.IsNullOrEmpty(this._lastAnimation))
-            //{
-            //	animation = $"{prefix}{this._lastAnimation}";
-            //	this._animatedSprite.Play(animation);
-            //}
+            if (newState != null)
+            { 
+                this.PlayerState.ChangeState(newState);
+            }
         }
 
         public override void Play()
         {
-            this.Character.PlayAnimation($"idle_left");
+            Direction currentDirection = this.CurrentDirection;
+
+            if (currentDirection == Direction.Right)
+            {
+                currentDirection = Direction.Left;
+            }
+
+            this.Character.PlayAnimation($"idle_{currentDirection.ToString().ToLower()}");
         }
         #endregion
     }

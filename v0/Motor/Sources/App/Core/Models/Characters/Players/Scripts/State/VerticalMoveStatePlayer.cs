@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts.State
 {
-    public class HorizontalMoveStatePlayer : MoveStatePlayer
+    public class VerticalMoveStatePlayer : MoveStatePlayer
     {
         #region Constructors
-        public HorizontalMoveStatePlayer(StateMachinePlayer playerState, BaseCharacter character) : base(playerState, character)
+        public VerticalMoveStatePlayer(StateMachinePlayer playerState, BaseCharacter character) : base(playerState, character)
         {
         }
         #endregion
 
         #region Public methods
-        public override void HandleInput() 
+        public override void HandleInput()
         {
             bool isIdle = false;
 
@@ -25,19 +25,18 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
             if (! isIdle)
             {
-                this.CurrentDirection = this.Character.Velocity.x > 0 ? Direction.Right : Direction.Left;
+                this.CurrentDirection = this.Character.Velocity.y > 0 ? Direction.Down : Direction.Up;
             }
         }
 
         public override void Play()
         {
-            this.Character.PlayAnimation($"move_left");
-            this.Character.ChangeDirectionAnimation(this.CurrentDirection == Shared.Enums.Direction.Right);
+            this.Character.PlayAnimation($"move_{this.CurrentDirection.ToString().ToLower()}");
         }
 
         protected override float GetVelocityValue()
         {
-            return this.Character.Velocity.x;
+            return this.Character.Velocity.y;
         }
         #endregion
     }

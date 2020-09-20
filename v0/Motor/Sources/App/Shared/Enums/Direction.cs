@@ -13,7 +13,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Enums
     {
         Left,
         Right,
-        Top,
+        Up,
         Down
     }
 }
