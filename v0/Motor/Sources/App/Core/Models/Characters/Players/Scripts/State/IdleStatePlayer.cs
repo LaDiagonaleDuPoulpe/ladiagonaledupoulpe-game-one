@@ -1,4 +1,5 @@
-﻿using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
+﻿using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Models.States;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         #region Public methods
         public override void HandleInput()
         {
-            IStatePlayer newState = null;
+            IStateCharacter newState = null;
             Direction direction;
 
             if (this.Character.Velocity.x != 0)

@@ -1,4 +1,5 @@
 ﻿using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
+using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,14 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
         public override void Play()
         {
-            this.Character.PlayAnimation("die_down");
+            Direction currentDirection = this.CurrentDirection;
+            
+            if (currentDirection == Direction.Right)
+            {
+                currentDirection = Direction.Left;
+            }
+
+            this.Character.PlayAnimation($"die_{currentDirection.ToString().ToLower()}");
         }
         #endregion
     }

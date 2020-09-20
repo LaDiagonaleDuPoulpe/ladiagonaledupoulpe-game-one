@@ -25,7 +25,7 @@
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\HeartsHealth.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\BaseStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\DiedStatePlayer.cs" />
-    <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\IStatePlayer.cs" />
+    <Compile Include="Sources\App\Core\Interfaces\Models\States\IStateCharacter.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\IdleStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\HorizontalMoveStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\MoveStatePlayer.cs" />

@@ -1,4 +1,5 @@
 ﻿using Godot;
+using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Models.States;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
@@ -12,7 +13,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
     /// <summary>
     ///  Parent of all states of the player
     /// </summary>
-    public abstract class BaseStatePlayer : IStatePlayer
+    public abstract class BaseStatePlayer : IStateCharacter
     {
         #region Fields
         private StateMachinePlayer _playerState = null;

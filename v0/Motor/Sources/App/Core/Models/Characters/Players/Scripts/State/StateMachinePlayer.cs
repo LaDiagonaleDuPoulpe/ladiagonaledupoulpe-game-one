@@ -1,4 +1,5 @@
-﻿using ladiagonaledupoulpe.Sources.App.Shared.Enums;
+﻿using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Models.States;
+using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,13 @@ using System.Threading.Tasks;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts.State
 {
+    /// <summary>
+    /// State machine to manage all states of the player
+    /// </summary>
     public class StateMachinePlayer
     {
         #region Fields
-        private IStatePlayer _state = null;
+        private IStateCharacter _state = null;
         private Player _player = null;
         #endregion
 
@@ -27,25 +31,46 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         /// Changes the current state of the player
         /// </summary>
         /// <param name="newState">New state of the player</param>
-        public void ChangeState(IStatePlayer newState)
+        public void ChangeState(IStateCharacter newState)
         {
             this._state = newState;
         }
 
+        /// <summary>
+        /// Handles the input of the player
+        /// </summary>
         public void HandleInput()
         {
             this._state?.HandleInput();
         }
 
+        /// <summary>
+        /// Plays animation of the current state
+        /// </summary>
         public void Play()
         {
             this._state?.Play();
         }
 
+        /// <summary>
+        /// Changes state to die
+        /// </summary>
         public void Die()
         {
-            this._state = new DiedStatePlayer(this, this._player);
+            Direction lastDirection = this._state.CurrentDirection;
+
+            this._state = new DiedStatePlayer(this, this._player)
+            {
+                 CurrentDirection = lastDirection
+            };
         }
+        #endregion
+
+        #region Properties
+        /// <summary>
+        /// Current state in the machine state
+        /// </summary>
+        public IStateCharacter CurrentState { get => this._state; }
         #endregion
     }
 }
