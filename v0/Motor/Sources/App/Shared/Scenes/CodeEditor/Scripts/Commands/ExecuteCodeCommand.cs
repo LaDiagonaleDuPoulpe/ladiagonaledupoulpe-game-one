@@ -44,10 +44,10 @@ namespace ladiagonaledupoulpe.Sources.App.Game_Scenes._003_Code_Editor.scripts.M
 			for (var i = 0; i < positions.Count; i++)
 			{
 
-				var origin = new Vector2(positions[i].X, positions[i].Y);
-				var destination = new Vector2(positions[i + 1].X, positions[i + 1].Y);
+				Vector2 origin = new Vector2(positions[i].X, positions[i].Y);
+				Vector2 destination = new Vector2(positions[i + 1].X, positions[i + 1].Y);
 
-				tween.InterpolateProperty(_sprite, "position", origin, destination, 1, Tween.TransitionType.Linear, Tween.EaseType.InOut);
+				tween.InterpolateProperty(_sprite, "position", origin, destination, 0.3f, Tween.TransitionType.Linear, Tween.EaseType.InOut);
 				tween.Start();
 				while (tween.IsActive())
 				{

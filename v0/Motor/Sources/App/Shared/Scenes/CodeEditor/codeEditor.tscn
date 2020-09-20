@@ -8,20 +8,20 @@
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [node name="Button" type="Button" parent="."]
-margin_left = 754.65
-margin_top = 482.575
-margin_right = 904.65
-margin_bottom = 532.575
+margin_left = 1648.65
+margin_top = 899.575
+margin_right = 1798.65
+margin_bottom = 949.575
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TxtCodePlayer" type="TextEdit" parent="Button"]
-margin_left = -81.623
-margin_top = -480.143
-margin_right = 268.38
-margin_bottom = -30.143
+margin_left = -168.623
+margin_top = -898.143
+margin_right = 331.377
+margin_bottom = -98.1429
 text = "private const int posPlayerX = 0;
 private const int posPlayerY = 0;
 

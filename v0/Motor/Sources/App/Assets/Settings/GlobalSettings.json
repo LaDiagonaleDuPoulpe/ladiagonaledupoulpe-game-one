@@ -1,3 +1,11 @@
 {
-	
+    "Compiler": {
+        "HostServer" : "http://localhost:52671",
+        "Headers" : [
+        "User-Agent: Pirulo/1.0 (Godot)",
+        "Accept: */*",
+        "Content-Type: application/json"
+        ]
+    }
+    
 }

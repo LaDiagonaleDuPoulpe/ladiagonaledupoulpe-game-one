@@ -4,19 +4,17 @@ using System;
 
 public class ValidateCode : Node
 {
-	// Declare member variables here. Examples:
-	// private int a = 2;
-	// private string b = "text";
-
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		
 	}
 
+	/// <summary>
+	/// Called when player click on compile button
+	/// </summary>
 	private void _on_Button_pressed()
 	{
-
 			string code = GetTree().Root.GetNode<TextEdit>("Node2D/Button/TxtCodePlayer").Text;
 			var compileCodeEditor = new CompileCodeEditor();
 			AddChild(compileCodeEditor);
@@ -24,11 +22,6 @@ public class ValidateCode : Node
 			compileCodeEditor.SendRequest(code, new ExecuteCodeCommand(sprite));
 
 	}
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
 
 }
 
