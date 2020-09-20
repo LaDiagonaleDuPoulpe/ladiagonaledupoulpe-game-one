@@ -22,7 +22,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
         public override void Play()
         {
-            
+            this.Character.PlayAnimation("die_down");
         }
         #endregion
     }

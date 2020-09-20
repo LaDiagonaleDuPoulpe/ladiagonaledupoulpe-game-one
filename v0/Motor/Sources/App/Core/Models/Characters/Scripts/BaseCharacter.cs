@@ -80,7 +80,10 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// <summary>
         ///  Overrides it to add custom code about the death of the character
         /// </summary>
-        protected virtual void Die() {}
+        protected virtual void Die() 
+        {
+            this.CanMove = false;
+        }
         #endregion
 
         #region Properties
@@ -105,6 +108,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// Health of each character. You can override this property.
         /// </summary>
         public Health MainHealth { get => this._health; protected set => this._health = value; }
+
+        /// <summary>
+        /// True if the user is alive and rights to move
+        /// </summary>
+        public bool CanMove { get; set; } = true;
         #endregion
     }
 }
