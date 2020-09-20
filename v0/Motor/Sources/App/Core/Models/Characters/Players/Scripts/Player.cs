@@ -58,7 +58,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
                     this.Velocity = vector;
                 }
 
-                this.MoveAndCollide(this.Velocity.Normalized() * this.Speed);
+                var collision = this.MoveAndCollide(this.Velocity.Normalized() * this.Speed);
             }
         }
 
