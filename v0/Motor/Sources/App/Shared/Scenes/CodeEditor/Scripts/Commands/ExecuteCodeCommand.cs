@@ -15,10 +15,12 @@ namespace ladiagonaledupoulpe.Sources.App.Game_Scenes._003_Code_Editor.scripts.M
 	public class ExecuteCodeCommand : Node2D, ICommand
 	{
 		private readonly Sprite _sprite;
+		private readonly HBoxContainer _frameContainer;
 
-		public ExecuteCodeCommand(Sprite sprite)
+		public ExecuteCodeCommand(Sprite sprite, HBoxContainer frameContainer)
 		{
 			_sprite = sprite;
+			_frameContainer = frameContainer;
 		}
 
         public ICommand NextCommand { get; set; }
@@ -28,6 +30,19 @@ namespace ladiagonaledupoulpe.Sources.App.Game_Scenes._003_Code_Editor.scripts.M
 			var httpResponse = (HttpFramesResponse)response;
 			IList<ActionFrame> frames = httpResponse.Frames;
 			IList<Position> positions = frames.Select(x=> x.PlayerPosition).ToList();
+            foreach (var frame in frames)
+            {
+
+				var button = new Button();
+				ulong objId = button.GetInstanceId();
+				//SetScript crée une nouvelle instance avec le même id que l'ancienne
+				button.SetScript(ResourceLoader.Load("res://Sources/App/Shared/Scenes/CodeEditor/Scripts/FrameBtn.cs"));
+				GD.Print(GD.InstanceFromId(objId).GetType().Name);
+				var obj =(FrameBtn)GD.InstanceFromId(objId);
+				obj.Frame = frame;
+				_frameContainer.AddChild(obj);
+
+			}
 			Task.Run(()=> ExecuteTween(positions));
 		}
 	

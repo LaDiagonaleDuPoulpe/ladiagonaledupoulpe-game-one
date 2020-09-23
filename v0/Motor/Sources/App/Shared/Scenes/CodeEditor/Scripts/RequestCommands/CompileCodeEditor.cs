@@ -66,9 +66,8 @@ using System.Threading.Tasks;
 	public void _http_request_completed(HTTPRequest.Result result, string response_code, string[] headers, byte[] body)
 	{
 		var response = System.Text.Encoding.UTF8.GetString(body);
-		var frame = JsonConvert.DeserializeObject<IList<ActionFrame>>(response);
-
-		var objectResult = new HttpFramesResponse(frame);
+		var objectResult = JsonConvert.DeserializeObject<HttpFramesResponse>(response);
+		this.AddChild((Node2D)_callbackSuccess);
 		_callbackSuccess.Execute(objectResult);
 		this.RemoveChild(_httpRequest);
 
