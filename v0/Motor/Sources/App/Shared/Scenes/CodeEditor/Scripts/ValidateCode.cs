@@ -10,20 +10,19 @@ public class ValidateCode : Node
 		
 	}
 
-	/// <summary>
-	/// Called when player click on compile button
-	/// </summary>
 	private void _on_Button_pressed()
-	{
-			string code = GetTree().Root.GetNode<TextEdit>("Node2D/Button/TxtCodePlayer").Text;
+{
+	string code = GetTree().Root.GetNode<TextEdit>("Node2D/Button/TxtCodePlayer").Text;
 			var compileCodeEditor = new CompileCodeEditor();
 			AddChild(compileCodeEditor);
 			Sprite sprite = GetTree().Root.GetNode<Sprite>("Node2D/Sprite");
 			compileCodeEditor.SendRequest(code, new ExecuteCodeCommand(sprite));
-
-	}
+}
 
 }
+
+
+
 
 
 
