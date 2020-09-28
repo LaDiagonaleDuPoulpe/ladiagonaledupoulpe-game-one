@@ -86,7 +86,7 @@ public class HeartBar : Node2D
 		int maxRealValueProgressBar = this.MaxValue - (margin * 2);
 		decimal ratio = (maxRealValueProgressBar / (decimal) maxValueOfPlayer);
 
-		return (int)((value * ratio) + 20);
+		return (int)((value * ratio) + margin);
 	}
 
 	private void DefineAnimations()
