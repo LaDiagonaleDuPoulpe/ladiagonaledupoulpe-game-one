@@ -141,12 +141,18 @@ public class HeartBar : Node2D
 	private void ChangeColorStyle(int value)
 	{
 		double reallyGoodPart = this.MaxValue * 0.7;
+		Color futureColor = Colors.White;
 
-		this._progressBar.TintProgress = Colors.White;
 		if (this.IsWeakLife)
 		{
-			this._progressBar.TintProgress = Colors.DarkRed;
+			futureColor = Colors.DarkRed;
 		}
+		if (! this.IsAlive)
+		{
+			futureColor = Colors.Gray;
+		}
+
+		this._progressBar.TintProgress = futureColor;
 	}
 	#endregion
 
