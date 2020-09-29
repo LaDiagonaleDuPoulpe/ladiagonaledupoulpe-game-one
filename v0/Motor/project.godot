@@ -59,7 +59,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "WAT", "mono_debugger" )
+enabled=PoolStringArray( "MonoDebuggerQM-1.0.1", "WAT", "mono_debugger" )
 
 [layer_names]
 
