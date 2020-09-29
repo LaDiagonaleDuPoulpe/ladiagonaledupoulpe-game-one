@@ -1,68 +1,39 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Godot.NET.Sdk/3.2.3">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D7BAC461-683E-4BB9-AAD5-B5A6C74F72EA}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <OutputPath>.mono\temp\bin\$(Configuration)</OutputPath>
     <RootNamespace>ladiagonaledupoulpe</RootNamespace>
     <AssemblyName>la-diagonale-du-poulpe</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <GodotProjectGeneratorVersion>1.0.7374.16792</GodotProjectGeneratorVersion>
-    <BaseIntermediateOutputPath>.mono\temp\obj</BaseIntermediateOutputPath>
-    <IntermediateOutputPath>$(BaseIntermediateOutputPath)\$(Configuration)</IntermediateOutputPath>
-    <ApiConfiguration Condition=" '$(Configuration)' != 'ExportRelease' ">Debug</ApiConfiguration>
-    <ApiConfiguration Condition=" '$(Configuration)' == 'ExportRelease' ">Release</ApiConfiguration>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ExportDebug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>portable</DebugType>
-    <Optimize>false</Optimize>
-    <DefineConstants>$(GodotDefineConstants);GODOT;DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ExportRelease|AnyCPU' ">
-    <DebugType>portable</DebugType>
-    <Optimize>true</Optimize>
-    <DefineConstants>$(GodotDefineConstants);GODOT;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>portable</DebugType>
-    <Optimize>false</Optimize>
-    <DefineConstants>$(GodotDefineConstants);GODOT;DEBUG;TOOLS;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
+    <TargetFramework>net472</TargetFramework>
+    <!--The following properties were overriden during migration to prevent errors.
+    Enabling them may require other manual changes to the project and its files.-->
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Deterministic>false</Deterministic>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GodotSharp">
-      <Private>False</Private>
-      <HintPath>$(ProjectDir)/.mono/assemblies/$(ApiConfiguration)/GodotSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="GodotSharpEditor" Condition=" '$(Configuration)' == 'Debug' ">
-      <Private>False</Private>
-      <HintPath>$(ProjectDir)/.mono/assemblies/$(ApiConfiguration)/GodotSharpEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="GodotSharpEditor" Condition=" '$(Configuration)' == 'Debug' ">
-      <HintPath>$(ProjectDir)/.mono/assemblies/$(ApiConfiguration)/GodotSharpEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
+    <EmbeddedResource Remove="addons\WAT\**" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="addons\WAT\core\assertions\Assertions.cs" />
-    <Compile Include="addons\WAT\core\test\Recorder.cs" />
-    <Compile Include="addons\WAT\core\test\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sources\App\Core\Interfaces\Models\Attacks\IWithDamage.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\Heart.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\HeartsHealth.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\BaseStatePlayer.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\DiedStatePlayer.cs" />
+    <Compile Include="Sources\App\Core\Interfaces\Models\States\IStateCharacter.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\IdleStatePlayer.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\HorizontalMoveStatePlayer.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\MoveStatePlayer.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\StateMachinePlayer.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\VerticalMoveStatePlayer.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Scripts\BaseCharacter.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Scripts\Health.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Scripts\LifePoint.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\DefaultConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\LevelConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\LoadSettings.cs" />
@@ -72,16 +43,22 @@
     <Compile Include="Sources\App\Core\Interfaces\Configurations\LevelConfiguration.cs" />
     <Compile Include="Sources\App\Core\Interfaces\Scenes\IDataInit.cs" />
     <Compile Include="Sources\App\Core\Interfaces\Scenes\ILevelConfiguration.cs" />
-    <Compile Include="Sources\App\Core\Models\Players\Player.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\Player.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Motor.cs" />
     <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\CloudMoving.cs" />
     <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\Home.cs" />
     <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\InstantiateCloud.cs" />
     <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\WaveSea.cs" />
     <Compile Include="Sources\App\Game-Scenes\001-Video-Intro\Scripts\VideoIntro.cs" />
+    <Compile Include="Sources\App\Game-Scenes\XXX-Test-TestingScenes\Scripts\TestHealthBar.cs" />
+    <Compile Include="Sources\App\Shared\Enums\CharacterLifeSignal.cs" />
+    <Compile Include="Sources\App\Shared\Enums\HeartBarState.cs" />
     <Compile Include="Sources\App\Shared\Plugins\DestroyOnAnimationFinished.cs" />
     <Compile Include="Sources\App\Shared\Plugins\SpriteAnimation.cs" />
-    <Compile Include="Tests\Node2DTest.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\UI\OnePlayerStatusBar\Scripts\OnePlayerStatusBar.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\StatusBar\Heart\Scripts\HeartBar.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\StatusBar\Scripts\HeartsLifeBar.cs" />
+    <Compile Include="Sources\App\Shared\Signals\Signals.cs" />
     <Compile Include="Sources\App\Game-Scenes\002-Inside-Crash-Ship\Scripts\InsideCrashShip.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Scenes\IMovingSprite.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Scenes\IMainScene.cs" />
@@ -100,15 +77,15 @@
     <Compile Include="Sources\App\Shared\Constants\KeyPressActionKeys.cs" />
     <Compile Include="Sources\App\Shared\Enums\DialogBox\DialogBoxActionType.cs" />
     <Compile Include="Sources\App\Shared\Enums\LoadingActionsType.cs" />
-    <Compile Include="Sources\App\Shared\Enums\AnimatedSpriteDirection.cs" />
+    <Compile Include="Sources\App\Shared\Enums\Direction.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Dialog\Scripts\DialogBox.cs" />
     <Compile Include="Sources\App\Core\Models\Scenes\DialogBox\DialogBoxExchange.cs" />
     <Compile Include="Sources\App\Shared\Enums\DialogBox\DialogBoxSpriteStatus.cs" />
     <Compile Include="Sources\App\Core\Models\Scenes\DialogBox\MessageContent.cs" />
     <Compile Include="Sources\App\Shared\Scenes\LoadingScene\Scripts\LoadingScene.cs" />
     <Compile Include="Sources\App\Shared\Services\Data\GlobalDataService.cs" />
-    <Compile Include="Sources\App\Shared\Services\UI\DialoxBoxManager.cs" />
-    <Compile Include="Sources\App\Shared\Services\Resources\ResourcesSceneLoader.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\UI\DialoxBoxManager.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Resources\ResourcesSceneLoader.cs" />
     <Compile Include="Sources\App\Core\Interfaces\DialogBox\IDialoxBoxManager.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\ExchangeSettingExtensionMethod.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\StringExtensionMethod.cs" />
@@ -124,27 +101,16 @@
     <None Include="Sources\App\Assets\Settings\GlobalSettings.json" />
     <None Include="Sources\App\Shared\Services\README.md" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies">
-      <Version>1.0.0</Version>
-      <PrivateAssets>All</PrivateAssets>
-    </PackageReference>
+    <Folder Include="addons\" />
+    <Folder Include="Sources\App\Core\Models\Characters\Npcs\" />
+    <Folder Include="Tests\" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies">
-      <Version>1.0.0</Version>
-      <PrivateAssets>All</PrivateAssets>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies">
-      <Version>1.0.0</Version>
-      <PrivateAssets>All</PrivateAssets>
-    </PackageReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup />
+  <ItemGroup />
 </Project>

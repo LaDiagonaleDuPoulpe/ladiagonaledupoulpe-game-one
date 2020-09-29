@@ -17,3 +17,71 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "WATTest": ""
 }
+
+[WAT]
+
+Test_Directory="res://Tests"
+Results_Directory="res://Tests/results/WAT"
+Minimize_Window_When_Running_Tests=false
+TestStrategy={
+"repeat": 1,
+"strategy": "RunAll"
+}
+Tags=PoolStringArray(  )
+Display=8
+
+[application]
+
+config/name="la-diagonale-du-poulpe"
+run/main_scene="res://Sources/App/Game-Scenes/XXX-Test-TestingScenes/TestHealthBar.tscn"
+config/use_custom_user_dir=true
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
+config/icon="res://icon.png"
+
+[autoload]
+
+ResourcesSceneLoader="*res://Sources/App/Shared/Plugins/Resources/ResourcesSceneLoader.cs"
+LoadingScene="*res://Sources/App/Shared/Scenes/LoadingScene/LoadingScene.tscn"
+GlobalDataService="*res://Sources/App/Shared/Services/Data/GlobalDataService.cs"
+CurrentPlayer="*res://Sources/App/Core/Models/Characters/Players/Player.tscn"
+OnePlayerStatusBar="*res://Sources/App/Shared/Plugins/UI/OnePlayerStatusBar/OnePlayerStatusBar.tscn"
+DialogBox="*res://Sources/App/Shared/Scenes/Dialog/DialogBox.tscn"
+DialoxBoxManager="*res://Sources/App/Shared/Plugins/UI/DialoxBoxManager.cs"
+Signals="*res://Sources/App/Shared/Signals/Signals.cs"
+
+[display]
+
+window/size/width=1980
+window/size/height=1024
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "MonoDebuggerQM-1.0.1", "WAT", "mono_debugger" )
+
+[layer_names]
+
+2d_render/layer_1="walls"
+2d_physics/layer_1="walls"
+2d_render/layer_2="player"
+2d_physics/layer_2="player"
+2d_render/layer_3="enemies"
+2d_physics/layer_3="enemies"
+2d_render/layer_4="coins"
+2d_physics/layer_4="coins"
+
+[logging]
+
+file_logging/enable_file_logging=true
+
+[mono]
+
+debugger_agent/wait_timeout=5000
+project/auto_update_project=false
+
+[rendering]
+
+vram_compression/import_etc=true
+vram_compression/import_etc2=false

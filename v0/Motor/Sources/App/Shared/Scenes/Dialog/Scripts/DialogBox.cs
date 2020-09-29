@@ -161,7 +161,7 @@ public class DialogBox : Node2D
 
     private void DefineAnimatedSpritePosition()
     {
-        if (this.CurrentMessage.SpriteDirection == AnimatedSpriteDirection.Right)
+        if (this.CurrentMessage.SpriteDirection == Direction.Right)
         {
             Vector2 animatedSpriteSize = new Vector2(130, 70); // TODO: 08/06/2020, see to get real size
 
@@ -204,7 +204,7 @@ public class DialogBox : Node2D
 
     private string DefineAlignement(string content)
     {
-        if (this.CurrentMessage.SpriteDirection == AnimatedSpriteDirection.Right)
+        if (this.CurrentMessage.SpriteDirection == Direction.Right)
         {
             content = content.AlignRightToBBContent();
         }
@@ -247,11 +247,11 @@ public class DialogBox : Node2D
     /// <summary>
     /// Gets the current displayed direction of the animated sprite
     /// </summary>
-    public AnimatedSpriteDirection DisplayedDirection
+    public Direction DisplayedDirection
     {
         get
         {
-            return this.CurrentMessage != null ? this.CurrentMessage.SpriteDirection : AnimatedSpriteDirection.Left;
+            return this.CurrentMessage != null ? this.CurrentMessage.SpriteDirection : Direction.Left;
         }
     }
 

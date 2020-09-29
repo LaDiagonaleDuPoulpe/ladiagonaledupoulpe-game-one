@@ -1,0 +1,133 @@
+[gd_scene load_steps=61 format=2]
+
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/heart big/heart big_000000.png" type="Texture" id=1]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/heart big/heart big_000001.png" type="Texture" id=2]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/heart big/heart big_000003.png" type="Texture" id=3]
+[ext_resource path="res://Sources/App/Shared/Scenes/StatusBar/Heart/Scripts/HeartBar.cs" type="Script" id=4]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/heart big/heart big_000002.png" type="Texture" id=5]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/Blood all PNGs/blood big beat/blood big beat_000000.png" type="Texture" id=6]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/heart big/heart big_000006.png" type="Texture" id=7]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/heart big/heart big_000004.png" type="Texture" id=8]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/heart big/heart big_000005.png" type="Texture" id=9]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/heart big/heart big_000008.png" type="Texture" id=10]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/heart big/heart big_000007.png" type="Texture" id=11]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/heart big/heart big_000009.png" type="Texture" id=12]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect damage edit/effect damage edit_000012.png" type="Texture" id=13]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect damage edit/effect damage edit_000013.png" type="Texture" id=14]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect damage edit/effect damage edit_000001.png" type="Texture" id=15]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect damage edit/effect damage edit_000015.png" type="Texture" id=16]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect damage edit/effect damage edit_000004.png" type="Texture" id=17]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect damage edit/effect damage edit_000007.png" type="Texture" id=18]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect damage edit/effect damage edit_000010.png" type="Texture" id=19]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect damage edit/effect damage edit_000014.png" type="Texture" id=20]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect damage edit/effect damage edit_000016.png" type="Texture" id=21]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect damage edit/effect damage edit_000017.png" type="Texture" id=22]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect damage edit/effect damage edit_000011.png" type="Texture" id=23]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect damage edit/effect damage edit_000000.png" type="Texture" id=24]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect damage edit/effect damage edit_000005.png" type="Texture" id=25]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect damage edit/effect damage edit_000002.png" type="Texture" id=26]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect damage edit/effect damage edit_000003.png" type="Texture" id=27]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect damage edit/effect damage edit_000006.png" type="Texture" id=28]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect damage edit/effect damage edit_000009.png" type="Texture" id=29]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect damage edit/effect damage edit_000008.png" type="Texture" id=30]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000002.png" type="Texture" id=31]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000003.png" type="Texture" id=32]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect damage edit/effect damage edit_000018.png" type="Texture" id=33]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect damage edit/effect damage edit_000019.png" type="Texture" id=34]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000000.png" type="Texture" id=35]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000001.png" type="Texture" id=36]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000018.png" type="Texture" id=37]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000023.png" type="Texture" id=38]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000024.png" type="Texture" id=39]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000017.png" type="Texture" id=40]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000019.png" type="Texture" id=41]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000022.png" type="Texture" id=42]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000021.png" type="Texture" id=43]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000020.png" type="Texture" id=44]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000004.png" type="Texture" id=45]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000011.png" type="Texture" id=46]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000015.png" type="Texture" id=47]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000016.png" type="Texture" id=48]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000006.png" type="Texture" id=49]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000013.png" type="Texture" id=50]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000008.png" type="Texture" id=51]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000009.png" type="Texture" id=52]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000010.png" type="Texture" id=53]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000005.png" type="Texture" id=54]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000014.png" type="Texture" id=55]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000012.png" type="Texture" id=56]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000007.png" type="Texture" id=57]
+
+[sub_resource type="Theme" id=1]
+
+[sub_resource type="AnimatedTexture" id=2]
+flags = 4
+frames = 10
+frame_0/texture = ExtResource( 1 )
+frame_1/texture = ExtResource( 2 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 5 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 3 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 8 )
+frame_4/delay_sec = 0.0
+frame_5/texture = ExtResource( 9 )
+frame_5/delay_sec = 0.0
+frame_6/texture = ExtResource( 7 )
+frame_6/delay_sec = 0.0
+frame_7/texture = ExtResource( 11 )
+frame_7/delay_sec = 0.0
+frame_8/texture = ExtResource( 10 )
+frame_8/delay_sec = 0.0
+frame_9/texture = ExtResource( 12 )
+frame_9/delay_sec = 0.0
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 24 ), ExtResource( 15 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 17 ), ExtResource( 25 ), ExtResource( 28 ), ExtResource( 18 ), ExtResource( 30 ), ExtResource( 29 ), ExtResource( 19 ), ExtResource( 23 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 33 ), ExtResource( 34 ) ],
+"loop": false,
+"name": "Damage",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 35 ), ExtResource( 36 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 45 ), ExtResource( 54 ), ExtResource( 49 ), ExtResource( 57 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 46 ), ExtResource( 56 ), ExtResource( 50 ), ExtResource( 55 ), ExtResource( 47 ), ExtResource( 48 ), ExtResource( 40 ), ExtResource( 37 ), ExtResource( 41 ), ExtResource( 44 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 38 ), ExtResource( 39 ) ],
+"loop": false,
+"name": "PowerUp",
+"speed": 5.0
+} ]
+
+[node name="BigHeartBar" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_left = 72.0
+margin_right = 704.0
+margin_bottom = 624.0
+theme = SubResource( 1 )
+max_value = 110.0
+step = 0.0
+value = 20.0
+rounded = true
+texture_under = SubResource( 2 )
+texture_progress = ExtResource( 6 )
+fill_mode = 3
+radial_center_offset = Vector2( 50, 50 )
+nine_patch_stretch = true
+stretch_margin_top = 20
+stretch_margin_bottom = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TweenForTexture" type="Tween" parent="."]
+
+[node name="TweenForFps" type="Tween" parent="."]
+
+[node name="Effects" type="AnimatedSprite" parent="."]
+position = Vector2( 393, 314 )
+frames = SubResource( 3 )
+animation = "Damage"
+frame = 19
+speed_scale = 5.0
+playing = true
+[connection signal="animation_finished" from="Effects" to="." method="_on_Effects_animation_finished"]

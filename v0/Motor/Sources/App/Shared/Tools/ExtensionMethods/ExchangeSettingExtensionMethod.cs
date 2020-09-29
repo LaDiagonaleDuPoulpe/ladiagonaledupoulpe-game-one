@@ -41,7 +41,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods
             MessageContent message = new MessageContent();
 
             message.Content = setting.Content;
-            message.SpriteDirection = (AnimatedSpriteDirection)Enum.Parse(typeof(AnimatedSpriteDirection), setting.SpriteDirection);
+            message.SpriteDirection = (Direction)Enum.Parse(typeof(Direction), setting.SpriteDirection);
             message.SpriteFrames = (SpriteFrames)loadResource(setting.SpriteFramesPath, string.Empty, false);
 
             return message;
