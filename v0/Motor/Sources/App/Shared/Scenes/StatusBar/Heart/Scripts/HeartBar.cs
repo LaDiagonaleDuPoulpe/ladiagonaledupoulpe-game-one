@@ -158,31 +158,27 @@ public class HeartBar : Node2D
 
 	private string GetCurrentAnimation(int newValue)
 	{
-		GD.Print("GetCurrentAnimation, currentValue : ", this.CurrentValue);
-		GD.Print("GetCurrentAnimation, newValue : ", newValue);		
-
 		int updateLifeDirection = newValue.CompareTo(this.CurrentValue);
-
-		GD.Print("GetCurrentAnimation, updateLifeDirection : ", updateLifeDirection);
 
 		return this._animations[updateLifeDirection];
 	}
 
 	private void ChangeColorStyle(int value)
 	{
-		double reallyGoodPart = this.MaxValue * 0.7;
 		Color futureColor = Colors.White;
 
 		if (this.IsWeakLife)
 		{
 			futureColor = Colors.DarkRed;
 		}
+		this._progressBar.TintProgress = futureColor;
+
+		futureColor = Colors.White;
 		if (! this.IsAlive)
 		{
 			futureColor = Colors.Gray;
 		}
-
-		this._progressBar.TintProgress = futureColor;
+		this._progressBar.TintUnder = futureColor;
 	}
 	#endregion
 
