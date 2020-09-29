@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
 using System.Runtime.InteropServices;
 
@@ -10,6 +11,10 @@ using System.Runtime.InteropServices;
 /// </summary>
 public class HeartBar : Node2D
 {
+	#region Constants
+	private const int MARGIN = 20;
+	#endregion
+	
 	#region Fields
 	private TextureProgress _progressBar = null;
 	private AnimatedSprite _animatedSprite = null;
@@ -17,7 +22,10 @@ public class HeartBar : Node2D
 	private Tween _tweenFpsItem = null;
 	private int _currentValue = 0;
 	private Dictionary<int, string> _animations = new Dictionary<int, string>();
-	private Dictionary<bool, float> _fpsValues = new Dictionary<bool, float>() { { true, 10 }, { false, 4 }  };
+	private Dictionary<HeartBarState, float> _fpsValues = new Dictionary<HeartBarState, float>() { 
+															{ HeartBarState.Alive, 4 }, 
+															{ HeartBarState.Weak, 10 }, 
+															{ HeartBarState.Dead, 0 } };
 	#endregion
 
 	#region Public methods
@@ -82,11 +90,10 @@ public class HeartBar : Node2D
 
 	private int ComputeValueToProgressBar(int value, int maxValueOfPlayer)
 	{
-		const int margin = 20;
-		int maxRealValueProgressBar = this.MaxValue - (margin * 2);
+		int maxRealValueProgressBar = this.MaxValue - (MARGIN * 2);
 		decimal ratio = (maxRealValueProgressBar / (decimal) maxValueOfPlayer);
 
-		return (int)((value * ratio) + margin);
+		return (int)((value * ratio) + MARGIN);
 	}
 
 	private void DefineAnimations()
@@ -100,7 +107,7 @@ public class HeartBar : Node2D
 	{
 		AnimatedTexture underTexture = this._progressBar.TextureUnder as AnimatedTexture;
 		float currentFpsValue = underTexture.Fps;
-		float newFpsValue = this._fpsValues[this.IsWeakLife];
+		float newFpsValue = this._fpsValues[this.GetCurrentState()];
 
 		this._tweenFpsItem.InterpolateProperty(underTexture, "fps", currentFpsValue, newFpsValue,
 												0.5f,
@@ -110,6 +117,21 @@ public class HeartBar : Node2D
 		{
 			this._tweenFpsItem.Start();
 		}
+	}
+
+	private HeartBarState GetCurrentState()
+	{
+		HeartBarState state = HeartBarState.Alive;
+
+		if (! this.IsAlive)
+		{
+			state = HeartBarState.Dead;
+		} else if(this.IsWeakLife)
+		{
+			state = HeartBarState.Weak;
+		}
+
+		return state;
 	}
 
 	private void ActivateAnimation(int newValue)
@@ -172,7 +194,7 @@ public class HeartBar : Node2D
 	/// <summary>
 	/// Alive if value is more than 0
 	/// </summary>
-	public bool IsAlive { get => this._progressBar.Value > 0; }
+	public bool IsAlive { get => this.CurrentValue > 0; }
 
 	/// <summary>
 	/// Current value of the life bar
