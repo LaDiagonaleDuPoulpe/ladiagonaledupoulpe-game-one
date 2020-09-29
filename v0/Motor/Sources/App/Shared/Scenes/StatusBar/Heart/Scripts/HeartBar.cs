@@ -75,7 +75,7 @@ public class HeartBar : Node2D
 	#region Internal methods
 	private void Initialize()
 	{
-		this.SetDefaultValues(80, 100);
+		this.SetDefaultValues(100 - MARGIN, 100);
 		this.DefineAnimations();
 	}
 
@@ -107,7 +107,9 @@ public class HeartBar : Node2D
 	{
 		AnimatedTexture underTexture = this._progressBar.TextureUnder as AnimatedTexture;
 		float currentFpsValue = underTexture.Fps;
-		float newFpsValue = this._fpsValues[this.GetCurrentState()];
+		HeartBarState state = this.GetCurrentState();
+
+		float newFpsValue = this._fpsValues[state];
 
 		this._tweenFpsItem.InterpolateProperty(underTexture, "fps", currentFpsValue, newFpsValue,
 												0.5f,
@@ -126,7 +128,8 @@ public class HeartBar : Node2D
 		if (! this.IsAlive)
 		{
 			state = HeartBarState.Dead;
-		} else if(this.IsWeakLife)
+		} 
+		else if(this.IsWeakLife)
 		{
 			state = HeartBarState.Weak;
 		}
@@ -155,7 +158,12 @@ public class HeartBar : Node2D
 
 	private string GetCurrentAnimation(int newValue)
 	{
+		GD.Print("GetCurrentAnimation, currentValue : ", this.CurrentValue);
+		GD.Print("GetCurrentAnimation, newValue : ", newValue);		
+
 		int updateLifeDirection = newValue.CompareTo(this.CurrentValue);
+
+		GD.Print("GetCurrentAnimation, updateLifeDirection : ", updateLifeDirection);
 
 		return this._animations[updateLifeDirection];
 	}
@@ -194,7 +202,7 @@ public class HeartBar : Node2D
 	/// <summary>
 	/// Alive if value is more than 0
 	/// </summary>
-	public bool IsAlive { get => this.CurrentValue > 0; }
+	public bool IsAlive { get => this.CurrentValue > MARGIN; }
 
 	/// <summary>
 	/// Current value of the life bar
@@ -204,9 +212,9 @@ public class HeartBar : Node2D
 		get => this._currentValue;
 		private set
 		{
-			if (value < 0)
+			if (value < MARGIN)
 			{
-				value = 0;
+				value = MARGIN;
 			}
 			if (value > this.MaxValue)
 			{
