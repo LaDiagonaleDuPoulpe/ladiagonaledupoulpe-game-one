@@ -35,7 +35,7 @@ namespace ladiagonaledupoulpe.Sources.App.Game_Scenes._003_Code_Editor.scripts.M
 
 				var button = new Button();
 				ulong objId = button.GetInstanceId();
-				//SetScript crée une nouvelle instance avec le même id que l'ancienne
+				//SetScript dispose old instance and create new instance type of script
 				button.SetScript(ResourceLoader.Load("res://Sources/App/Shared/Scenes/CodeEditor/Scripts/FrameBtn.cs"));
 				GD.Print(GD.InstanceFromId(objId).GetType().Name);
 				var obj =(FrameBtn)GD.InstanceFromId(objId);
