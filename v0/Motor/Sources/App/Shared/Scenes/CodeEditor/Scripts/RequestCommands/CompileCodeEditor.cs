@@ -1,7 +1,7 @@
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Game_Scenes._003_Code_Editor.Scripts;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes.Request;
-using ladiagonaledupoulpe.Sources.App.Shared.Services.Data.Factories;
+using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -30,7 +30,8 @@ using System.Threading.Tasks;
 	/// <param name="callBackError">the method execute if error on request</param>
 	public void SendRequest(object data, ICommand callbackSucess, ICommand callBackError = null)
 	{
-		var requestSettings = GlobalSettingsFactory.GetSettings().Compiler;
+		GlobalDataService dataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
+		var requestSettings = dataService.GlobalSettings.Compiler;
 		_callbackSuccess = callbackSucess;
 		_httpRequest = new HTTPRequest();
 

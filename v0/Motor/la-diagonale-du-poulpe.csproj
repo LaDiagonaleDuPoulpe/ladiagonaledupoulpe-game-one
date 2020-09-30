@@ -53,7 +53,6 @@
     <Compile Include="Sources\App\Shared\Plugins\SpriteAnimation.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Models\Position.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\ValidateCode.cs" />
-    <Compile Include="Sources\App\Shared\Services\Data\Factories\GlobalSettingsFactory.cs" />
     <Compile Include="Tests\Node2DTest.cs" />
     <Compile Include="Sources\App\Game-Scenes\002-Inside-Crash-Ship\Scripts\InsideCrashShip.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Scenes\IMovingSprite.cs" />

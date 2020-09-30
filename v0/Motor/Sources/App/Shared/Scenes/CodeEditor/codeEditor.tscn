@@ -47,15 +47,18 @@ __meta__ = {
 
 [node name="Grid" type="Sprite" parent="."]
 position = Vector2( 765.688, 410.792 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 6, 6 )
 texture = ExtResource( 3 )
 
 [node name="Players" type="Node2D" parent="Grid"]
-position = Vector2( 299.013, -24.2536 )
+position = Vector2( 96.308, 10.1462 )
 
 [node name="Poulpe" type="Sprite" parent="Grid/Players"]
-scale = Vector2( 0.15, 0.15 )
+scale = Vector2( 0.06, 0.07 )
 texture = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="FramesBtn" type="Node2D" parent="."]
 position = Vector2( 2.11893, 139.849 )
