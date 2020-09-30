@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 ﻿53641
+=======
+﻿52497
+>>>>>>> 01050c63... refactor(project + dataloader): removing some file + creating dataloader
 C:\Program Files\Godot\Godot_v3.2.3-stable_mono_win64\Godot_v3.2.3-stable_mono_win64.exe

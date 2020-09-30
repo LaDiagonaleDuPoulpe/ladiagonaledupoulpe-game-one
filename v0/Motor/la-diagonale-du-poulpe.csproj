@@ -41,7 +41,6 @@
     <Compile Include="Sources\App\Assets\Settings\Models\GlobalSettings.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\DefaultConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\LevelConfiguration.cs" />
-    <Compile Include="Sources\App\Core\Models\Settings\LoadSettings.cs" />
     <Compile Include="Sources\App\Core\Base\Scenes\BaseScene.cs" />
     <Compile Include="Sources\App\Core\Base\Scenes\BaseActiveScene.cs" />
     <Compile Include="Sources\App\Core\Container-Scenes\Scripts\RootScene.cs" />
@@ -49,7 +48,6 @@
     <Compile Include="Sources\App\Core\Interfaces\Scenes\IDataInit.cs" />
     <Compile Include="Sources\App\Core\Interfaces\Scenes\ILevelConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\Player.cs" />
-    <Compile Include="Sources\App\Core\Models\Settings\Motor.cs" />
     <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\CloudMoving.cs" />
     <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\Home.cs" />
     <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\InstantiateCloud.cs" />
@@ -69,9 +67,9 @@
     <Compile Include="Sources\App\Shared\Interfaces\Request\ICommand.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Request\IHttpResponse.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Request\IRequest.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Initializers\GlobalDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\InMemoryPlayerDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\PlayerDataInitializer.cs" />
-    <Compile Include="Sources\App\Shared\Plugins\SpriteAnimation.cs" />
     <Compile Include="Sources\App\Shared\Plugins\UI\OnePlayerStatusBar\Scripts\OnePlayerStatusBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\Heart\Scripts\HeartBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\Scripts\HeartsLifeBar.cs" />
