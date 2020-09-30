@@ -16,6 +16,9 @@
     <EmbeddedResource Remove="addons\WAT\**" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
@@ -34,6 +37,8 @@
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\BaseCharacter.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\Health.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\LifePoint.cs" />
+    <Compile Include="Sources\App\Assets\Settings\Models\CompilerConfiguration.cs" />
+    <Compile Include="Sources\App\Assets\Settings\Models\GlobalSettings.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\DefaultConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\LevelConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\LoadSettings.cs" />
@@ -54,11 +59,21 @@
     <Compile Include="Sources\App\Shared\Enums\CharacterLifeSignal.cs" />
     <Compile Include="Sources\App\Shared\Enums\HeartBarState.cs" />
     <Compile Include="Sources\App\Shared\Plugins\DestroyOnAnimationFinished.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Commands\ExecuteCodeCommand.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\FrameBtn.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\RequestCommands\CompileCodeEditor.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Models\ActionFrame.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Models\HttpFramesResponse.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Request\ICommand.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Request\IHttpResponse.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Request\IRequest.cs" />
     <Compile Include="Sources\App\Shared\Plugins\SpriteAnimation.cs" />
     <Compile Include="Sources\App\Shared\Plugins\UI\OnePlayerStatusBar\Scripts\OnePlayerStatusBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\Heart\Scripts\HeartBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\Scripts\HeartsLifeBar.cs" />
     <Compile Include="Sources\App\Shared\Signals\Signals.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Models\Position.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\ValidateCode.cs" />
     <Compile Include="Sources\App\Game-Scenes\002-Inside-Crash-Ship\Scripts\InsideCrashShip.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Scenes\IMovingSprite.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Scenes\IMainScene.cs" />
@@ -99,6 +114,7 @@
     <None Include="Sources\App\Core\Container-Scenes\RootScene.tscn" />
     <None Include="Sources\App\Assets\Settings\Audiowide-Regular.ttf" />
     <None Include="Sources\App\Assets\Settings\GlobalSettings.json" />
+    <None Include="Sources\App\Shared\Scenes\CodeEditor\CodeEditor.tscn" />
     <None Include="Sources\App\Shared\Services\README.md" />
   </ItemGroup>
   <ItemGroup>

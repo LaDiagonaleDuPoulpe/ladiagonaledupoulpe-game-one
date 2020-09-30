@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 left all_000.png" type="Texture" id=1]
+[ext_resource path="res://Sources/App/Shared/Scenes/CodeEditor/Scripts/ValidateCode.cs" type="Script" id=2]
+[ext_resource path="res://Sources/App/Shared/Scenes/CodeEditor/Assets/Grid.png" type="Texture" id=3]
+[ext_resource path="res://Sources/App/Assets/Settings/TxtFont.tres" type="DynamicFont" id=4]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 2.82861, 0 )
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="Button" type="Button" parent="."]
+margin_left = 1648.65
+margin_top = 899.575
+margin_right = 1798.65
+margin_bottom = 949.575
+custom_fonts/font = ExtResource( 4 )
+text = "Compiler"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TxtCodePlayer" type="TextEdit" parent="Button"]
+margin_left = -168.623
+margin_top = -898.143
+margin_right = 331.377
+margin_bottom = -98.1429
+custom_fonts/font = ExtResource( 4 )
+text = "
+
+public void Process()
+{
+     MoveForward();
+	MoveForward();
+	MoveForward();
+	MoveForward();
+	MoveLeft();
+	MoveLeft();
+	MoveBackward();
+	MoveRight();
+}"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" type="Sprite" parent="."]
+position = Vector2( 765.688, 410.792 )
+scale = Vector2( 6, 6 )
+texture = ExtResource( 3 )
+
+[node name="Players" type="Node2D" parent="Grid"]
+position = Vector2( 96.308, 10.1462 )
+
+[node name="Poulpe" type="Sprite" parent="Grid/Players"]
+scale = Vector2( 0.06, 0.07 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="FramesBtn" type="Node2D" parent="."]
+position = Vector2( 2.11893, 139.849 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FramesBtn"]
+margin_left = 562.313
+margin_top = 693.119
+margin_right = 602.313
+margin_bottom = 733.119
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Button" to="Button" method="_on_Button_pressed"]

@@ -1,7 +1,10 @@
 using Godot;
+using ladiagonaledupoulpe.Sources.App.Assets.Settings.Models;
 using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Scenes;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Services;
+using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -61,7 +64,7 @@ public class LoadingScene : Node2D
 		this._oneFileProgressBar = this._progressBarsGroup.GetNode<ProgressBar>("OneFileProgressBar");
 		this._allFilesProgressBar = this._progressBarsGroup.GetNode<ProgressBar>("AllFilesProgressBar");
 		this._resourcesSceneLoader = this.GetNode<ResourcesSceneLoader>("/root/ResourcesSceneLoader");
-
+		this.InitializeGlobalSettings();
 		this.AttachSignals();
 	}
 
@@ -110,6 +113,17 @@ public class LoadingScene : Node2D
 		this._currentFilesLoadingNumber++;
 		decimal loadedPourcent = ((decimal)this._currentFilesLoadingNumber / this.FilesNumber) * 100;
 		this._allFilesProgressBar.Value = (int) loadedPourcent;
+	}
+
+
+	private void InitializeGlobalSettings()
+    {
+		GlobalDataService globalDataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
+		File file = new Godot.File();
+		file.Open("res://Sources/App/Assets/Settings/GlobalSettings.json", File.ModeFlags.Read);
+		string json = file.GetAsText();
+		file.Close();
+		globalDataService.GlobalSettings = JsonConvert.DeserializeObject<GlobalSettings>(json);
 	}
 	#endregion
 
