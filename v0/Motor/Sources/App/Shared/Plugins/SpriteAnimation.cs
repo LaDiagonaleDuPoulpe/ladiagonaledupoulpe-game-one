@@ -17,7 +17,7 @@ public class SpriteAnimation : Sprite
 		timer.Start();
 	}
 
-	private async void TimerElapsed()
+	private void TimerElapsed()
 	{
 		if (this.Frame < this._qteFrame)
 		{
