@@ -33,18 +33,15 @@ Display=8
 [application]
 
 config/name="la-diagonale-du-poulpe"
-<<<<<<< HEAD
 run/main_scene="res://Sources/App/Game-Scenes/XXX-Test-TestingScenes/TestHealthBar.tscn"
 config/use_custom_user_dir=true
-=======
-run/main_scene="res://Sources/App/Core/Container-Scenes/RootScene.tscn"
->>>>>>> 6c3f6528caee1bbd601a24e852345fe24188e3eb
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://icon.png"
 
 [autoload]
 
+GlobalDataInitializer="*res://Sources/App/Shared/Plugins/Initializers/GlobalDataInitializer.cs"
 ResourcesSceneLoader="*res://Sources/App/Shared/Plugins/Resources/ResourcesSceneLoader.cs"
 LoadingScene="*res://Sources/App/Shared/Scenes/LoadingScene/LoadingScene.tscn"
 GlobalDataService="*res://Sources/App/Shared/Services/Data/GlobalDataService.cs"
@@ -75,7 +72,6 @@ enabled=PoolStringArray( "MonoDebuggerQM-1.0.1", "WAT", "mono_debugger" )
 2d_physics/layer_3="enemies"
 2d_render/layer_4="coins"
 2d_physics/layer_4="coins"
-enabled=PoolStringArray( "WAT", "mono_debugger" )
 
 [logging]
 
@@ -89,4 +85,4 @@ project/auto_update_project=false
 [rendering]
 
 vram_compression/import_etc=true
-environment/default_environment="res://default_env.tres"
+vram_compression/import_etc2=false
