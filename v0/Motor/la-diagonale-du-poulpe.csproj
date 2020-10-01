@@ -59,6 +59,14 @@
     <Compile Include="Sources\App\Shared\Enums\LoadDataType.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Initializers\IDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Plugins\DestroyOnAnimationFinished.cs" />
+<<<<<<< HEAD
+=======
+    <Compile Include="Sources\App\Shared\Plugins\Initializers\BaseDataInitializer.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Initializers\GlobalDataInitializer.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Initializers\InMemoryPlayerDataInitializer.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Initializers\LoadedDataInitializerResult.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Initializers\PlayerDataInitializer.cs" />
+>>>>>>> 718d6c4e... feat(data initializer): Connect all signals
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Commands\ExecuteCodeCommand.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\FrameBtn.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\RequestCommands\CompileCodeEditor.cs" />

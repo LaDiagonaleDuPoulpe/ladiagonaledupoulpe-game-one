@@ -15,7 +15,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
         #region Public methods
         public override void Load()
         {
-            this.EmitSignal(LoadDataType.DataLoaded.ToString(), null);
+            this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, new Godot.Object());
         }
         #endregion
     }

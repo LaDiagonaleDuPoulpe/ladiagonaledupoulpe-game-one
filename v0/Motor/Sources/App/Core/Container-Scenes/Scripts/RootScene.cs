@@ -36,8 +36,6 @@ public class RootScene : BaseScene
 	public override void _Input(InputEvent @event)
 	{
 		base._Input(@event);
-
-	   
 	}
 	#endregion
 
@@ -52,7 +50,7 @@ public class RootScene : BaseScene
 
 	private void LoadingScene_Start()
 	{
-		
+		// nothing to do now
 	}
 
 	private void LoadingScene_End(Node2D nextScene)
@@ -66,9 +64,8 @@ public class RootScene : BaseScene
 		this._lastScene = nextScene;
 	}
 
-	private void globalDataInitializer_DataLoaded()
+	private void globalDataInitializer_DataLoaded(Godot.Object sender, Godot.Object data)
     {
-		GD.Print("globalDataInitializer_DataLoaded");
 		this.LoadingScene.Launch(new LevelConfiguration()
 		{
 			Key = "home"
