@@ -17,5 +17,12 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Initializers
         /// </summary>
         void Load();
         #endregion
+
+        #region Properties
+        /// <summary>
+        /// Gets unique key of the initializer
+        /// </summary>
+        string Key { get; }
+        #endregion
     }
 }
