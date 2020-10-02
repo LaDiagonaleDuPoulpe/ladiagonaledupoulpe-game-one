@@ -39,6 +39,8 @@
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\LifePoint.cs" />
     <Compile Include="Sources\App\Assets\Settings\Models\CompilerConfiguration.cs" />
     <Compile Include="Sources\App\Assets\Settings\Models\GlobalSettings.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\Characters\CharacterDataSetting.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\Characters\HeartDataSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\DefaultConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\LevelConfiguration.cs" />
     <Compile Include="Sources\App\Core\Base\Scenes\BaseScene.cs" />
@@ -62,7 +64,7 @@
 <<<<<<< HEAD
 =======
     <Compile Include="Sources\App\Shared\Plugins\Initializers\BaseDataInitializer.cs" />
-    <Compile Include="Sources\App\Shared\Plugins\Initializers\GlobalDataInitializer.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Initializers\MainDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\InMemoryPlayerDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\LoadedDataInitializerResult.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\PlayerDataInitializer.cs" />

@@ -1,4 +1,5 @@
-﻿using ladiagonaledupoulpe.Sources.App.Shared.Enums;
+﻿using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Characters;
+using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,17 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
     /// </summary>
     public class InMemoryPlayerDataInitializer : PlayerDataInitializer
     {
-        #region Public methods
-        public override void Load()
+        #region Internal methods
+        protected override void DefineSetting(CharacterDataSetting setting)
         {
-            this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, new Godot.Object());
+            setting.Hearts = new List<HeartDataSetting>()
+            {
+                new HeartDataSetting()
+                {
+                    CurrentValue = 100,
+                    MaxValue = 100
+                }
+            };
         }
         #endregion
     }

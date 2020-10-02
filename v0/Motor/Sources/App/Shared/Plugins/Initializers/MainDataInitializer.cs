@@ -12,14 +12,14 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
     /// <summary>
     /// Factory and singleton to initialize all data initializer
     /// </summary>
-    public class GlobalDataInitializer : BaseDataInitializer
+    public class MainDataInitializer : BaseDataInitializer
     {
         #region Fields
         private List<LoadedDataInitializerResult> _dataInitializers = new List<LoadedDataInitializerResult>();
         #endregion
 
         #region Constructors
-        public GlobalDataInitializer()
+        public MainDataInitializer()
         {
             InMemoryPlayerDataInitializer initializer = new InMemoryPlayerDataInitializer();
 
@@ -37,14 +37,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
 
         public void Initializer_DataLoaded(Godot.Object sender,  Godot.Object data)
         {
-            GD.Print("Initializer_DataLoaded");
-
             IDataInitializer initializer = sender as IDataInitializer;
 
             LoadedDataInitializerResult item = this._dataInitializers.First(result => result.Initializer.Key == initializer.Key);
             item.IsLoaded = true;
 
-            // 01/10/2020, there is a bug, not pass into the if
             if (this._dataInitializers.All(result => result.IsLoaded))
             {
                 this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, null);

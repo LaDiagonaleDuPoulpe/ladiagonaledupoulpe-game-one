@@ -115,7 +115,6 @@ public class LoadingScene : Node2D
 		this._allFilesProgressBar.Value = (int) loadedPourcent;
 	}
 
-
 	private void InitializeGlobalSettings()
     {
 		GlobalDataService globalDataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");

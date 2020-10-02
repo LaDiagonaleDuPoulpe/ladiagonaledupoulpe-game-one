@@ -18,7 +18,7 @@ public class RootScene : BaseScene
 {
 	#region Fields
 	private Node2D _lastScene = null;
-	private GlobalDataInitializer _globalDataInitializer = null;
+	private MainDataInitializer _globalDataInitializer = null;
 	#endregion
 
 	#region Public methods
@@ -26,7 +26,7 @@ public class RootScene : BaseScene
 	{
 		base._Ready();
 
-		this._globalDataInitializer = this.GetNode<GlobalDataInitializer>("/root/GlobalDataInitializer");
+		this._globalDataInitializer = this.GetNode<MainDataInitializer>("/root/MainDataInitializer");
 
 		this.Initialize();
 
