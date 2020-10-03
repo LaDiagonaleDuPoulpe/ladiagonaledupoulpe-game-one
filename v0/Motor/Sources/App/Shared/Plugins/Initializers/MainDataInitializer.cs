@@ -41,6 +41,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
 
             if (this._dataInitializers.All(result => result.IsLoaded))
             {
+                this._dataInitializers.ForEach(init => this.RemoveChild(init.Initializer as Node));
                 this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, null);
             }
         }
