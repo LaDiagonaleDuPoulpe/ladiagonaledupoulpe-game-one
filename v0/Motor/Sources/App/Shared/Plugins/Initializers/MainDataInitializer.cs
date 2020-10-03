@@ -21,6 +21,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
         #region Constructors
         public MainDataInitializer()
         {
+            this.DefineGlobalDataInitializer();
             this.DefinePlayerInitializer();
         }
         #endregion
@@ -46,6 +47,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
         #endregion
 
         #region Internal methods
+        private void DefineGlobalDataInitializer()
+        {
+
+        }
+
         private void DefinePlayerInitializer()
         {
             InMemoryPlayerDataInitializer initializer = new InMemoryPlayerDataInitializer();

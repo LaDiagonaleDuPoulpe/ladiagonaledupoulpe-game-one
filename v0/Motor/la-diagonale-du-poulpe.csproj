@@ -66,6 +66,8 @@
 <<<<<<< HEAD
 =======
     <Compile Include="Sources\App\Shared\Plugins\Initializers\BaseDataInitializer.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Initializers\GlobalDataDataInitializer.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Initializers\JsonGlobalDataDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\MainDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\InMemoryPlayerDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\LoadedDataInitializerResult.cs" />
