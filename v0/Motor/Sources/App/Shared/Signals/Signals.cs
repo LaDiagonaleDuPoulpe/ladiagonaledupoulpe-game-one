@@ -22,8 +22,6 @@ public class Signals : Node
         this._statusBar = this.GetNode<OnePlayerStatusBar>("/root/OnePlayerStatusBar");
 
         this._currentPlayer.Connect(CharacterLifeSignal.HealthChanged.ToString(), this._statusBar, "LifeChanged");
-
-        GD.Print("Signals => ", this.GetTree().Root.Name);
     }
     #endregion
 

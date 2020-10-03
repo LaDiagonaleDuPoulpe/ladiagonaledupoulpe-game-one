@@ -16,9 +16,9 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
         #region Internal methods
         protected override void DefineSetting(CharacterDataSetting setting)
         {
-            setting.Hearts = new List<HeartDataSetting>()
+            (setting as PlayerCharacterDataSetting).Hearts = new List<HeartHealthDataSetting>()
             {
-                new HeartDataSetting()
+                new HeartHealthDataSetting()
                 {
                     CurrentValue = 100,
                     MaxValue = 100

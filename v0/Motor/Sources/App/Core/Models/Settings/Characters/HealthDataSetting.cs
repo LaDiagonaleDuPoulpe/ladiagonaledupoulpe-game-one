@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Characters
 {
     /// <summary>
-    /// Setting to intialize heart of the player
+    /// Setting of all data of the health of one character
     /// </summary>
-    public class HeartDataSetting
+    public class HealthDataSetting
     {
         #region Properties
         /// <summary>

@@ -7,16 +7,15 @@ using System.Threading.Tasks;
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Characters
 {
     /// <summary>
-    /// Settings of the player character 
-    /// Data setting from server, to initialize xp, life bar, ...
+    /// Setting to intialize heart of the player
     /// </summary>
-    public class CharacterDataSetting : Godot.Object
+    public class HeartHealthDataSetting : HealthDataSetting
     {
         #region Properties
         /// <summary>
-        /// Health data setting
+        /// True if it's the main heart of all hearts of the octopuses
         /// </summary>
-        public virtual HealthDataSetting Health { get; set; }
+        public bool IsMain { get; set; }
         #endregion
     }
 }

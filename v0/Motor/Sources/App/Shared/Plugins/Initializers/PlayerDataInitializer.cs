@@ -1,4 +1,5 @@
 ﻿using Godot;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Characters;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Initializers;
@@ -18,9 +19,10 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
         #region Public methods
         public override void Load()
         {
-            CharacterDataSetting setting = new CharacterDataSetting();
+            PlayerCharacterDataSetting setting = new PlayerCharacterDataSetting();
 
             this.DefineSetting(setting);
+            this.UpdateValuesOfPlayer(setting);
 
             this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, setting);
         }
@@ -28,12 +30,19 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
 
         #region Internal methods
         /// <summary>
-        /// You can override this methode to set some values from setting
+        /// You must override this methode to set some values from setting
         /// </summary>
         /// <param name="setting">Setting is not null</param>
-        protected virtual void DefineSetting(CharacterDataSetting setting)
+        protected abstract void DefineSetting(CharacterDataSetting setting);
+
+        /// <summary>
+        /// Updates all values of the current player
+        /// </summary>
+        /// <param name="setting"></param>
+        protected virtual void UpdateValuesOfPlayer(PlayerCharacterDataSetting setting)
         {
-            // Here, nothing to do
+            Player player = this.GetNode<Player>("/root/CurrentPlayer");
+            player.InitializeData(setting);
         }
         #endregion
     }

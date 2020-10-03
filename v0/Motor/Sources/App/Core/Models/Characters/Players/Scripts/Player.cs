@@ -1,6 +1,7 @@
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts.State;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Characters;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
 
@@ -94,6 +95,13 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 		{
 			base.Die();
 			this._stateMachine.Die();
+		}
+
+		public override void InitializeData(CharacterDataSetting setting)
+		{
+			PlayerCharacterDataSetting playerSetting = setting as PlayerCharacterDataSetting;
+
+			this.MainHealth.Initialize(playerSetting.Health.CurrentValue, playerSetting.Health.MaxValue);
 		}
 		#endregion
 	}

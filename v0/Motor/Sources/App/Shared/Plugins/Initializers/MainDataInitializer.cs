@@ -21,11 +21,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
         #region Constructors
         public MainDataInitializer()
         {
-            InMemoryPlayerDataInitializer initializer = new InMemoryPlayerDataInitializer();
-
-            initializer.Connect(LoadDataType.DataLoaded.ToString(), this, nameof(Initializer_DataLoaded));
-
-            this._dataInitializers.Add(new LoadedDataInitializerResult(initializer));
+            this.DefinePlayerInitializer();
         }
         #endregion
 
@@ -46,6 +42,18 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
             {
                 this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, null);
             }
+        }
+        #endregion
+
+        #region Internal methods
+        private void DefinePlayerInitializer()
+        {
+            InMemoryPlayerDataInitializer initializer = new InMemoryPlayerDataInitializer();
+
+            initializer.Connect(LoadDataType.DataLoaded.ToString(), this, nameof(Initializer_DataLoaded));
+
+            this._dataInitializers.Add(new LoadedDataInitializerResult(initializer));
+            this.AddChild(initializer);
         }
         #endregion
     }
