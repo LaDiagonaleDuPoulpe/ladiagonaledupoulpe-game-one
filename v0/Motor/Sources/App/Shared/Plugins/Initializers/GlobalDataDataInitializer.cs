@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ladiagonaledupoulpe.Sources.App.Assets.Settings.Models;
+using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,8 +16,18 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
         #region Public methods
         public override void Load()
         {
-            
+            GlobalDataService globalDataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
+
+            globalDataService.GlobalSettings = this.GetGlobalSettings();
         }
+        #endregion
+
+        #region Internal methods
+        /// <summary>
+        /// Get global settings instance
+        /// </summary>
+        /// <returns></returns>
+        protected abstract GlobalSettings GetGlobalSettings();
         #endregion
     }
 }

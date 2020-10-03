@@ -50,17 +50,24 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
         #region Internal methods
         private void DefineGlobalDataInitializer()
         {
+            GlobalDataDataInitializer initializer = new JsonGlobalDataDataInitializer();
 
+            this.AddAndConnectInitializer(initializer);
         }
 
         private void DefinePlayerInitializer()
         {
-            InMemoryPlayerDataInitializer initializer = new InMemoryPlayerDataInitializer();
+            PlayerDataInitializer initializer = new InMemoryPlayerDataInitializer();
 
+            this.AddAndConnectInitializer(initializer);
+        }
+
+        private void AddAndConnectInitializer(IDataInitializer initializer)
+        {
             initializer.Connect(LoadDataType.DataLoaded.ToString(), this, nameof(Initializer_DataLoaded));
 
             this._dataInitializers.Add(new LoadedDataInitializerResult(initializer));
-            this.AddChild(initializer);
+            this.AddChild(initializer as Node);
         }
         #endregion
     }

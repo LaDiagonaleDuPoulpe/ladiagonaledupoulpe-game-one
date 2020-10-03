@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Godot;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,14 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Initializers
         /// Loads all data from database
         /// </summary>
         void Load();
+
+        /// <summary>
+        /// Connects to a signal
+        /// </summary>
+        /// <param name="signal">Target to activate method</param>
+        /// <param name="method">Name of the method to activate</param>
+        /// <returns></returns>
+        Error Connect(string signal, Godot.Object target, string method, Godot.Collections.Array binds = null, uint flags = 0);
         #endregion
 
         #region Properties
