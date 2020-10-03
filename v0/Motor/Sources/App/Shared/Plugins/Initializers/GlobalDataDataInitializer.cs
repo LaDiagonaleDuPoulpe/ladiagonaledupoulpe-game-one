@@ -1,4 +1,5 @@
 ﻿using ladiagonaledupoulpe.Sources.App.Assets.Settings.Models;
+using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,8 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
             GlobalDataService globalDataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
 
             globalDataService.GlobalSettings = this.GetGlobalSettings();
+
+            this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, new Godot.Object());
         }
         #endregion
 
