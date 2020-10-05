@@ -1,5 +1,6 @@
 ﻿using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Models.Attacks;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Characters;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
 using System.Collections.Generic;
@@ -32,6 +33,15 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         }
 
         /// <summary>
+        /// Initializes all data of the character
+        /// </summary>
+        /// <param name="setting">Setting of the character. Settings from a data initializer</param>
+        public virtual void InitializeData(CharacterDataSetting setting)
+        {
+            // Nothing to do here
+        }
+
+        /// <summary>
         /// Hits the health of the character
         /// </summary>
         /// <param name="damageValue"></param>
@@ -61,8 +71,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
             this.MainHealth.Connect(CharacterLifeSignal.HealthChanged.ToString(), this, nameof(HealthIsChanged));
             this.MainHealth.Connect(CharacterLifeSignal.LifeIsGone.ToString(), this, nameof(HealthIsGone));
 
-            // TODO: 20/08/2020, initialize with real values (from api ?)
-            this.MainHealth.Initialize(300, 300);
+            this.MainHealth.Initialize(100, 100);
         }
 
         protected virtual void HealthIsChanged(LifePoint point)
