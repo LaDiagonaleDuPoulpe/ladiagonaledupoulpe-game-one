@@ -12,32 +12,32 @@ using System;
 /// </summary>
 public class InsideCrashShip : BaseActiveScene, IWithClouds
 {
-    #region Fields
-    private ISpriteGenerator _cloudGenerator = null;
-    #endregion
+	#region Fields
+	private ISpriteGenerator _cloudGenerator = null;
+	#endregion
 
-    #region Public methods        
-    public override void _Ready()
+	#region Public methods        
+	public override void _Ready()
 	{
-        base._Ready();
-        
-        this._cloudGenerator = new GreyCloudGenerator(this, new GeneratorSetting()
-        {
-            InitialNumber = 10,
-            ZIndex = 2,
-            Size = new Vector2(0, 200)
-        });
+		base._Ready();
+		
+		this._cloudGenerator = new GreyCloudGenerator(this, new GeneratorSetting()
+		{
+			InitialNumber = 10,
+			ZIndex = 2,
+			Size = new Vector2(0, 200)
+		});
 
-        this._cloudGenerator.Initialize();
-        this._cloudGenerator.Generate();
+		this._cloudGenerator.Initialize();
+		this._cloudGenerator.Generate();
 
-        this.DialoxBoxManager.Start("begin");        
-    }
-    #endregion
+		this.DialoxBoxManager.Start("begin");        
+	}
+	#endregion
 
-    #region Properties
-    public Vector2 WindowSize => this.GetViewport().Size;
+	#region Properties
+	public Vector2 WindowSize => this.GetViewport().Size;
 
-    public Godot.Object ToObject { get => this; }
-    #endregion
+	public Godot.Object ToObject { get => this; }
+	#endregion
 }

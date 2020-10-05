@@ -64,7 +64,7 @@ public class RootScene : BaseScene
 	}
 
 	private void globalDataInitializer_DataLoaded(Godot.Object sender, Godot.Object data)
-    {
+	{
 		this.LoadingScene.Launch(new LevelConfiguration()
 		{
 			Key = "home"
