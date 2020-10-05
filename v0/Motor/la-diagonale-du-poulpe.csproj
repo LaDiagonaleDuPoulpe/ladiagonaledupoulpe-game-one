@@ -62,6 +62,7 @@
     <Compile Include="Sources\App\Shared\Enums\HeartBarState.cs" />
     <Compile Include="Sources\App\Shared\Enums\LoadDataType.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Initializers\IDataInitializer.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\AutoLoaderAccessor.cs" />
     <Compile Include="Sources\App\Shared\Plugins\DestroyOnAnimationFinished.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\BaseDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\GlobalDataDataInitializer.cs" />
@@ -111,7 +112,7 @@
     <Compile Include="Sources\App\Shared\Services\Data\GlobalDataService.cs" />
     <Compile Include="Sources\App\Shared\Plugins\UI\DialoxBoxManager.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Resources\ResourcesSceneLoader.cs" />
-    <Compile Include="Sources\App\Core\Interfaces\DialogBox\IDialoxBoxManager.cs" />
+    <Compile Include="Sources\App\Core\Interfaces\DialogBox\IDialogBoxManager.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\ExchangeSettingExtensionMethod.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\StringExtensionMethod.cs" />
   </ItemGroup>

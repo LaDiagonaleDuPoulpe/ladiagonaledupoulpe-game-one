@@ -9,7 +9,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Interfaces.DialogBox
     /// Manager of the dialogbox of one scene.
     /// Allows you to command dialog box of the scene : some messages will be auto launched, some others will be load by signal or key.
     /// </summary>
-    public interface IDialoxBoxManager
+    public interface IDialogBoxManager
     {
         /// <summary>
         /// Preloads all exchanges 

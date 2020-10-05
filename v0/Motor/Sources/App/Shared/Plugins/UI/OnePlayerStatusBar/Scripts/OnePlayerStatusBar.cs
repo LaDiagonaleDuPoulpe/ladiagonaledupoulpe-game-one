@@ -22,5 +22,14 @@ public class OnePlayerStatusBar : Node2D
 	{
 		this._lifeBar.Update(point.CurrentValue, point.MaxValue);
 	}
+
+	/// <summary>
+	/// Defines visibility of the component
+	/// </summary>
+	public void SetVisibility(bool isVisible)
+	{
+		this._lifeBar.Visible = isVisible;
+		this.Visible = isVisible;
+	}
 	#endregion
 }

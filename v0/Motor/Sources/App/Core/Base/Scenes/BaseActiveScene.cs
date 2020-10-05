@@ -5,6 +5,7 @@ using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts;
 using ladiagonaledupoulpe.Sources.App.Core.Models.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
+using ladiagonaledupoulpe.Sources.App.Shared.Plugins;
 using ladiagonaledupoulpe.Sources.App.Shared.Services;
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
 using System;
@@ -20,12 +21,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
     /// </summary>
     public abstract class BaseActiveScene : BaseScene, IDataInit
     {
-        #region Fields
-        private GlobalDataService _globalDataService = null;
-        private Player _currentPlayer = null;
-        private OnePlayerStatusBar _statusBar = null;
-        #endregion
-
         #region Constructors
         public BaseActiveScene(): base()
         {
@@ -38,26 +33,21 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         {
             base._Ready();
 
-            this.GlobalDataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
-            this._currentPlayer = this.GetNode<Player>("/root/CurrentPlayer");
-            this._statusBar = this.GetNode<OnePlayerStatusBar>("/root/OnePlayerStatusBar");
-
-            this.Initialize(this.GlobalDataService.CurrentExchanges);
-
+            this.Initialize(this.AutoLoaderAccessor.GlobalDataService.CurrentExchanges);
             this.PrepareEvents();
         }
 
         public void Initialize(List<DialogBoxExchange> contents)
         {
             this.DialoxBoxManager.Preload(contents);
+            this.SetVisibilityGlobalNodes();
         }
         #endregion
 
         #region Internal methods
         private void PrepareEvents()
         {
-            IDialoxBoxManager dialogBoxManager = this.GetNode<IDialoxBoxManager>("/root/DialoxBoxManager");
-            dialogBoxManager.Connect(DialogBoxActionType.EndOfOneExchange.ToString(), this, nameof(EndOfOneExchange));
+            this.AutoLoaderAccessor.DialogBoxManager.Connect(DialogBoxActionType.EndOfOneExchange.ToString(), this, nameof(EndOfOneExchange));
         }
 
         private void EndOfOneExchange()
@@ -71,17 +61,13 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         /// <param name="visible"></param>
         protected virtual void SetVisibilityGlobalNodes()
         {            
-            this._currentPlayer.Visible = this.RootNodesVisibility;
-            this._statusBar.Visible = this.RootNodesVisibility;
+            this.AutoLoaderAccessor.CurrentPlayer.Visible = this.RootNodesVisibility;
+            this.AutoLoaderAccessor.StatusBar.SetVisibility(this.RootNodesVisibility);
         }
         #endregion
 
         #region Properties
-        /// <summary>
-        /// Service to get global project data
-        /// </summary>
-        public GlobalDataService GlobalDataService { get => this._globalDataService; private set => this._globalDataService = value; }
-
+        
         /// <summary>
         /// Defines visibility of player, statusbar, ...
         /// </summary>

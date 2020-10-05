@@ -15,7 +15,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
     /// Manager of the dialogbox of one scene.
     /// Allows you to command dialog box of the scene : some messages will be auto launched, some others will be load by signal or key.
     /// </summary>
-    public class DialoxBoxManager : Node, IDialoxBoxManager
+    public class DialoxBoxManager : Node, IDialogBoxManager
     {
         #region Fields
         #region Signals
