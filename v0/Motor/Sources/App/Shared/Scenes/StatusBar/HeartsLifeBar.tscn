@@ -7,10 +7,12 @@
 script = ExtResource( 2 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_top = -1.0
+margin_right = 70.0
+margin_bottom = 48.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MainHeart" parent="MarginContainer" instance=ExtResource( 1 )]
+position = Vector2( 0, 6 )
