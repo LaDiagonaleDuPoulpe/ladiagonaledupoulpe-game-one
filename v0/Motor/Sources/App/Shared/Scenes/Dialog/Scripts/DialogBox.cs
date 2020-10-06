@@ -46,9 +46,8 @@ public class DialogBox : Node2D
 	#region Public methods
 	public override void _Ready()
 	{
-		this.Visible = false;
-
 		this._container = this.GetNode<CanvasLayer>("CanvasLayer").GetNode<Node2D>("Container");
+		this.SetVisibility(false);
 
 		this._content = this._container.GetNode<RichTextLabel>("Content");
 		this._currentTimer = this._container.GetNode<Timer>("Timer");
@@ -116,11 +115,16 @@ public class DialogBox : Node2D
 	#endregion
 
 	#region Internal methods
+	private void SetVisibility(bool visible)
+	{
+		this.Visible = visible;
+		this._container.Visible = visible;
+	}
+
 	private void Initialize()
 	{
-		this.Visible = true;
-		this._container.Visible = true;
-
+		this.SetVisibility(this.MessageContents != null & this.MessageContents.Count > 0);
+		
 		this.CurrentVisibleCharacters = 0;
 		this._content.BbcodeText = this.DefineAlignement(this.CurrentMessage.Content);
 
