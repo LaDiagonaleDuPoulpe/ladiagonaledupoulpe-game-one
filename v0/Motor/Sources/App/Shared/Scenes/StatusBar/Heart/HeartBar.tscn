@@ -130,4 +130,14 @@ animation = "Damage"
 frame = 19
 speed_scale = 5.0
 playing = true
+
+[node name="LifeText" type="RichTextLabel" parent="."]
+margin_left = 365.0
+margin_top = 276.0
+margin_right = 405.0
+margin_bottom = 316.0
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="animation_finished" from="Effects" to="." method="_on_Effects_animation_finished"]

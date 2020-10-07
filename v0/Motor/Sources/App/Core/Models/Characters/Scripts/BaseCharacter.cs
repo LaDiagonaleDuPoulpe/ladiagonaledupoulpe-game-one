@@ -17,6 +17,28 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
     public abstract class BaseCharacter : KinematicBody2D, IWithDamage
     {
         #region Fields
+        #region Signals
+        /// <summary>
+        /// Initialize health value
+        /// </summary>
+        /// <param name="point"></param>
+        [Signal]
+        public delegate void HealthInitialized(LifePoint point);
+
+        /// <summary>
+        /// Observes this event to know when health changed (plus or less)
+        /// </summary>
+        /// <param name="health">New health</param>
+        [Signal]
+        public delegate void HealthChanged(LifePoint point);
+
+        /// <summary>
+        /// Observes this event to know when here is no life
+        /// </summary>
+        [Signal]
+        public delegate void LifeIsGone();
+        #endregion
+
         private Vector2 _velocity = Vector2.Zero;
         private Vector2 _screenSize;
         private Health _health = null;
@@ -38,7 +60,8 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// <param name="setting">Setting of the character. Settings from a data initializer</param>
         public virtual void InitializeData(CharacterDataSetting setting)
         {
-            // Nothing to do here
+            this.EmitSignal(CharacterLifeSignal.HealthInitialized.ToString(), 
+                            new LifePoint(setting.Health.CurrentValue, setting.Health.MaxValue));
         }
 
         /// <summary>
@@ -70,8 +93,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         {
             this.MainHealth.Connect(CharacterLifeSignal.HealthChanged.ToString(), this, nameof(HealthIsChanged));
             this.MainHealth.Connect(CharacterLifeSignal.LifeIsGone.ToString(), this, nameof(HealthIsGone));
-
-            this.MainHealth.Initialize(100, 100);
         }
 
         protected virtual void HealthIsChanged(LifePoint point)

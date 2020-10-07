@@ -12,6 +12,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Enums
     public enum CharacterLifeSignal
     {
         /// <summary>
+        /// Use this key to connect to event signal, when health is initialized
+        /// </summary>
+        HealthInitialized,
+
+        /// <summary>
         /// Use this key to connect to event signal, when health changed
         /// </summary>
         HealthChanged,

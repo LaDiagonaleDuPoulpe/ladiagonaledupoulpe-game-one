@@ -18,20 +18,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 		#region Fields
 		private AnimatedSprite _animatedSprite = null;
 		private StateMachinePlayer _stateMachine = null;
-		#region Signals
-		/// <summary>
-		/// Observes this event to know when health changed (plus or less)
-		/// </summary>
-		/// <param name="health">New health</param>
-		[Signal]
-		public delegate void HealthChanged(LifePoint point);
-
-		/// <summary>
-		/// Observes this event to know when here is no life
-		/// </summary>
-		[Signal]
-		public delegate void IsGone();
-		#endregion
 		#endregion
 
 		#region Public methods
@@ -102,6 +88,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 			PlayerCharacterDataSetting playerSetting = setting as PlayerCharacterDataSetting;
 
 			this.MainHealth.Initialize(playerSetting.Health.CurrentValue, playerSetting.Health.MaxValue);
+			base.InitializeData(setting);
 		}
 		#endregion
 	}

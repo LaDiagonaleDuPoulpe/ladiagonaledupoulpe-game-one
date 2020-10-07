@@ -26,6 +26,7 @@ public class Signals : Node
         this._statusBar = this._autoLoaderAccessor.StatusBar;
 
         this._currentPlayer.Connect(CharacterLifeSignal.HealthChanged.ToString(), this._statusBar, "LifeChanged");
+        this._currentPlayer.Connect(CharacterLifeSignal.HealthInitialized.ToString(), this._statusBar, "InitializeValues");
     }
     #endregion
 
