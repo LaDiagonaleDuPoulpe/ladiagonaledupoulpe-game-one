@@ -32,6 +32,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Initializers
         /// Gets unique key of the initializer
         /// </summary>
         string Key { get; }
+
+        /// <summary>
+        /// Know if data loaded is finished
+        /// </summary>
+        bool IsLoaded { get; }
         #endregion
     }
 }

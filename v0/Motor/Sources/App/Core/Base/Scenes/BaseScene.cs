@@ -1,5 +1,4 @@
 using Godot;
-using ladiagonaledupoulpe.Sources.App.Assets.Settings.Models;
 using ladiagonaledupoulpe.Sources.App.Core.Interfaces.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins;
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;

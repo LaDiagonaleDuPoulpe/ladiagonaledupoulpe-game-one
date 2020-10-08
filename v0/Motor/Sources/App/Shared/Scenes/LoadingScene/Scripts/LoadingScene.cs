@@ -1,5 +1,4 @@
 using Godot;
-using ladiagonaledupoulpe.Sources.App.Assets.Settings.Models;
 using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Scenes;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins;

@@ -15,7 +15,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
     public class MainDataInitializer : BaseDataInitializer
     {
         #region Fields
-        private List<LoadedDataInitializerResult> _dataInitializers = new List<LoadedDataInitializerResult>();
+        private Dictionary<DataInitializerStep, DataInitializerGroup> _dataInitializers = new Dictionary<DataInitializerStep, DataInitializerGroup>();
         #endregion
 
         #region Constructors
@@ -29,21 +29,24 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
         #region Public methods
         public override void Load()
         {
-            this._dataInitializers.ForEach(item => item.Initializer.Load());
+            if(this.CurrentStep > 0)
+            {
+                this._dataInitializers[this.CurrentStep].Load();
+            }
         }
 
         public void Initializer_DataLoaded(Godot.Object sender,  Godot.Object data)
         {
-            IDataInitializer initializer = sender as IDataInitializer;
+            //IDataInitializer initializer = sender as IDataInitializer;
 
-            LoadedDataInitializerResult item = this._dataInitializers.First(result => result.Initializer.Key == initializer.Key);
-            item.IsLoaded = true;
+            //LoadedDataInitializerResult item = this._dataInitializers.First(result => result.Initializer.Key == initializer.Key);
+            //initializer.IsLoaded = true;
 
-            if (this._dataInitializers.All(result => result.IsLoaded))
-            {
-                this._dataInitializers.ForEach(init => this.RemoveChild(init.Initializer as Node));
-                this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, null);
-            }
+            //if (this._dataInitializers.All(result => result.IsLoaded))
+            //{
+            //    this._dataInitializers.ForEach(init => this.RemoveChild(init.Initializer as Node));
+            //    this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, null);
+            //}
         }
         #endregion
 
@@ -52,23 +55,30 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
         {
             GlobalDataDataInitializer initializer = new JsonGlobalDataDataInitializer();
 
-            this.AddAndConnectInitializer(initializer);
+            this.AddAndConnectInitializer(DataInitializerStep.GlobalData, initializer);
         }
 
         private void DefinePlayerInitializer()
         {
             PlayerDataInitializer initializer = new InMemoryPlayerDataInitializer();
 
-            this.AddAndConnectInitializer(initializer);
+            this.AddAndConnectInitializer(DataInitializerStep.PlayerData, initializer);
         }
 
-        private void AddAndConnectInitializer(IDataInitializer initializer)
+        private void AddAndConnectInitializer(DataInitializerStep step, IDataInitializer initializer)
         {
             initializer.Connect(LoadDataType.DataLoaded.ToString(), this, nameof(Initializer_DataLoaded));
 
-            this._dataInitializers.Add(new LoadedDataInitializerResult(initializer));
+            //this._dataInitializers.Add(step, new LoadedDataInitializerResult(initializer));
             this.AddChild(initializer as Node);
         }
+        #endregion
+
+        #region Properties
+        /// <summary>
+        /// Current step of data loading
+        /// </summary>
+        public DataInitializerStep CurrentStep { get; set; }
         #endregion
     }
 }
