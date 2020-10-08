@@ -59,8 +59,8 @@ public class RootScene : BaseScene
 		this._lastScene = nextScene;
 	}
 
-    protected override void ExecuteAfterDataLoaded()
-    {
+	protected override void ExecuteAfterDataLoaded()
+	{
 		this.LoadingScene.Launch(new LevelConfiguration()
 		{
 			Key = "home"
