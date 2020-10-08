@@ -2,6 +2,7 @@ using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Base.Scenes;
 using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Configurations;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts;
+using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
 
 /// <summary>
@@ -16,17 +17,23 @@ public class Home : BaseActiveScene
     public override void _Ready()
     {
         base._Ready();
+
     }
     #endregion
 
     #region Internal methods
     private void _on_BtnNewParty_pressed() 
 	{
-		this.LoadingScene.Launch(new LevelConfiguration()
-		{
-			Key = "video-intro"
-		});
+        this.LoadMainData(DataInitializerStep.NewGame);
 	}
+
+    protected override void ExecuteAfterDataLoaded()
+    {
+        this.LoadingScene.Launch(new LevelConfiguration()
+        {
+            Key = "video-intro"
+        });
+    }
     #endregion
 
     #region Properties

@@ -18,15 +18,12 @@ public class RootScene : BaseScene
 {
 	#region Fields
 	private Node2D _lastScene = null;
-	private MainDataInitializer _globalDataInitializer = null;
 	#endregion
 
 	#region Public methods
 	public override void _Ready()
 	{
 		base._Ready();
-
-		this._globalDataInitializer = this.GetNode<MainDataInitializer>("/root/MainDataInitializer");
 
 		this.Initialize();
 	}
@@ -43,9 +40,7 @@ public class RootScene : BaseScene
 		this.LoadingScene.Connect(LoadingActionsType.Begin.ToString(), this, nameof(LoadingScene_Start));
 		this.LoadingScene.Connect(LoadingActionsType.End.ToString(), this, nameof(LoadingScene_End));
 
-		this._globalDataInitializer.Connect(LoadDataType.DataLoaded.ToString(), this, nameof(globalDataInitializer_DataLoaded));
-		this._globalDataInitializer.CurrentStep = DataInitializerStep.GlobalData;
-		this._globalDataInitializer.Load();
+		this.LoadMainData(DataInitializerStep.GlobalData);
 	}
 
 	private void LoadingScene_Start()
@@ -64,8 +59,8 @@ public class RootScene : BaseScene
 		this._lastScene = nextScene;
 	}
 
-	private void globalDataInitializer_DataLoaded(Godot.Object sender, Godot.Object data)
-	{
+    protected override void ExecuteAfterDataLoaded()
+    {
 		this.LoadingScene.Launch(new LevelConfiguration()
 		{
 			Key = "home"
