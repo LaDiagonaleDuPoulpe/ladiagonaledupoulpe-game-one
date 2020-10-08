@@ -19,11 +19,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Enums
         /// <summary>
         /// Loads global data (data for whole game)
         /// </summary>
-        GlobalData,
+        GlobalData = 1,
 
         /// <summary>
         /// Loads data for the player
         /// </summary>
-        PlayerData
+        NewGame = 2
     }
 }

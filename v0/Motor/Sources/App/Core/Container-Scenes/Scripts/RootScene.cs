@@ -44,6 +44,7 @@ public class RootScene : BaseScene
 		this.LoadingScene.Connect(LoadingActionsType.End.ToString(), this, nameof(LoadingScene_End));
 
 		this._globalDataInitializer.Connect(LoadDataType.DataLoaded.ToString(), this, nameof(globalDataInitializer_DataLoaded));
+		this._globalDataInitializer.CurrentStep = DataInitializerStep.GlobalData;
 		this._globalDataInitializer.Load();
 	}
 

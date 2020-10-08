@@ -24,6 +24,8 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
             this.DefineSetting(setting);
             this.UpdateValuesOfPlayer(setting);
 
+            this.IsLoaded = true;
+
             this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, setting);
         }
         #endregion

@@ -13,7 +13,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
     /// <summary>
     /// Collection of data initializers, with key to load it
     /// </summary>
-    public class DataInitializerGroup : Node, IDataInitializer, IList<IDataInitializer>
+    public class DataInitializerGroup : BaseDataInitializer, IDataInitializer, IList<IDataInitializer>
     {
         #region Fields
         private List<IDataInitializer> _dataInitializers = new List<IDataInitializer>();
@@ -31,6 +31,8 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
         public void Add(IDataInitializer item)
         {
             this._dataInitializers.Add(item);
+            item.Connect(LoadDataType.DataLoaded.ToString(), this, nameof(Initializer_DataLoaded));
+            this.AddChild(item as Node);
         }
 
         public void Clear()
@@ -63,14 +65,21 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
             this._dataInitializers.Insert(index, item);
         }
 
-        public void Load()
+        public override void Load()
         {
             this._dataInitializers.ForEach(item => item.Load());
         }
 
         public bool Remove(IDataInitializer item)
-        {
-            return this._dataInitializers.Remove(item);
+        {            
+            bool isRemoved = this._dataInitializers.Remove(item);
+
+            if (isRemoved)
+            {
+                this.RemoveChild(item as Node);
+            }
+
+            return isRemoved;
         }
 
         public void RemoveAt(int index)
@@ -79,16 +88,27 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
         }
         #endregion
 
+        #region Internal methods
+        private void Initializer_DataLoaded(Godot.Object sender, Godot.Object data)
+        {
+            IDataInitializer initializer = sender as IDataInitializer;
+
+            if (this.All(item => item.IsLoaded))
+            {
+                this.IsLoaded = true;
+                this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, new Godot.Object());
+            }
+        }
+        #endregion
+
         #region Properties
         public IDataInitializer this[int index] { get => this._dataInitializers[index]; set => this._dataInitializers[index] = value; }
         
-        public string Key => this._step.ToString();
+        public override string Key => this._step.ToString();
 
         public int Count => this._dataInitializers.Count;
 
         public bool IsReadOnly => false;
-
-        public bool IsLoaded { get; private set; }
 
         IEnumerator IEnumerable.GetEnumerator()
         {

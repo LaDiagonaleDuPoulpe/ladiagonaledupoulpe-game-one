@@ -36,7 +36,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
         #endregion
 
         #region Properties
-        public string Key => this.GetType().Name;
+        public virtual string Key => this.GetType().Name;
 
         public bool IsLoaded { get; protected set; }
         #endregion

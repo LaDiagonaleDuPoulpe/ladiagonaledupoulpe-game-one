@@ -21,6 +21,8 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
 
             globalDataService.GlobalSettings = this.GetGlobalSettings();
 
+            this.IsLoaded = true;
+
             this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, new Godot.Object());
         }
         #endregion

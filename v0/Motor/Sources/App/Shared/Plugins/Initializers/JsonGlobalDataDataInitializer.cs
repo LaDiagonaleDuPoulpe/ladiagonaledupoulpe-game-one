@@ -20,9 +20,10 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
         {
             using (File file = new Godot.File())
             {
-                file.Open("res://Sources/App/Assets/Settings/GlobalSettings.json", File.ModeFlags.Read);
+                file.Open("res://Data/Global/GlobalSettings.json", File.ModeFlags.Read);
                 string json = file.GetAsText();
                 file.Close();
+
                 return JsonConvert.DeserializeObject<GlobalSettings>(json);
             }
         }

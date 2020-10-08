@@ -15,14 +15,13 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
     public class MainDataInitializer : BaseDataInitializer
     {
         #region Fields
-        private Dictionary<DataInitializerStep, DataInitializerGroup> _dataInitializers = new Dictionary<DataInitializerStep, DataInitializerGroup>();
+        private Dictionary<DataInitializerStep, DataInitializerGroup> _dataInitializerGroups = new Dictionary<DataInitializerStep, DataInitializerGroup>();
         #endregion
 
         #region Constructors
         public MainDataInitializer()
         {
-            this.DefineGlobalDataInitializer();
-            this.DefinePlayerInitializer();
+            this.DefineDataInitializerGroups();
         }
         #endregion
 
@@ -31,46 +30,44 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
         {
             if(this.CurrentStep > 0)
             {
-                this._dataInitializers[this.CurrentStep].Load();
+                this._dataInitializerGroups[this.CurrentStep].Load();
             }
         }
 
         public void Initializer_DataLoaded(Godot.Object sender,  Godot.Object data)
         {
-            //IDataInitializer initializer = sender as IDataInitializer;
-
-            //LoadedDataInitializerResult item = this._dataInitializers.First(result => result.Initializer.Key == initializer.Key);
-            //initializer.IsLoaded = true;
-
-            //if (this._dataInitializers.All(result => result.IsLoaded))
-            //{
-            //    this._dataInitializers.ForEach(init => this.RemoveChild(init.Initializer as Node));
-            //    this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, null);
-            //}
+            this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, null);
         }
         #endregion
 
         #region Internal methods
+        private void DefineDataInitializerGroups()
+        {
+            this._dataInitializerGroups.Add(DataInitializerStep.GlobalData, new DataInitializerGroup(DataInitializerStep.GlobalData));
+            this._dataInitializerGroups.Add(DataInitializerStep.NewGame, new DataInitializerGroup(DataInitializerStep.NewGame));
+
+            foreach (var item in this._dataInitializerGroups)
+            {
+                this.AddChild(item.Value as Node);
+                item.Value.Connect(LoadDataType.DataLoaded.ToString(), this, nameof(Initializer_DataLoaded));
+            }
+
+            this.DefineGlobalDataInitializer();
+            this.DefinePlayerInitializer();
+        }
+
         private void DefineGlobalDataInitializer()
         {
             GlobalDataDataInitializer initializer = new JsonGlobalDataDataInitializer();
 
-            this.AddAndConnectInitializer(DataInitializerStep.GlobalData, initializer);
+            this._dataInitializerGroups[DataInitializerStep.GlobalData].Add(initializer);
         }
 
         private void DefinePlayerInitializer()
         {
             PlayerDataInitializer initializer = new InMemoryPlayerDataInitializer();
 
-            this.AddAndConnectInitializer(DataInitializerStep.PlayerData, initializer);
-        }
-
-        private void AddAndConnectInitializer(DataInitializerStep step, IDataInitializer initializer)
-        {
-            initializer.Connect(LoadDataType.DataLoaded.ToString(), this, nameof(Initializer_DataLoaded));
-
-            //this._dataInitializers.Add(step, new LoadedDataInitializerResult(initializer));
-            this.AddChild(initializer as Node);
+            this._dataInitializerGroups[DataInitializerStep.NewGame].Add(initializer);
         }
         #endregion
 
