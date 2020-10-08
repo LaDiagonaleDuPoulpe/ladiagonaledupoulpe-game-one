@@ -49,8 +49,8 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
 
         private void globalDataInitializer_DataLoaded(Godot.Object sender, Godot.Object data)
         {
+            this.GlobalDataInitializer.Disconnect(LoadDataType.DataLoaded.ToString(), this, nameof(globalDataInitializer_DataLoaded));
             this.ExecuteAfterDataLoaded();
-            this.Disconnect(LoadDataType.DataLoaded.ToString(), this, nameof(globalDataInitializer_DataLoaded));
         }
 
         /// <summary>

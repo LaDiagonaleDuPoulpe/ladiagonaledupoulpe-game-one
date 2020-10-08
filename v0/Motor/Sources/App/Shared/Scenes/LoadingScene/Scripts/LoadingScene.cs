@@ -119,7 +119,10 @@ public class LoadingScene : Node2D
 	{
 		this._oneFileProgressBar.Value = 100;
 		this._currentFilesLoadingNumber++;
-		decimal loadedPourcent = ((decimal)this._currentFilesLoadingNumber / this.FilesNumber) * 100;
+
+		int nbFiles = this.FilesNumber == 0 ? 1 : this.FilesNumber;
+
+		decimal loadedPourcent = ((decimal)this._currentFilesLoadingNumber / nbFiles) * 100;
 		this._allFilesProgressBar.Value = (int) loadedPourcent;
 	}
 	#endregion
