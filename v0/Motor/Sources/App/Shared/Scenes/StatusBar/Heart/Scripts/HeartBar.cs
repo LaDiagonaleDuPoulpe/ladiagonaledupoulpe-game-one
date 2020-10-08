@@ -66,13 +66,6 @@ public class HeartBar : Node2D
 			this.ChangeColorStyle(this.CurrentValue);
 			this.ChangeHeartSpeed(this.CurrentValue);
 		}
-
-		this.DisplayLifeValue();
-	}
-
-	private void DisplayLifeValue()
-	{
-		this._lifeText.BbcodeText = $"{this.CurrentValue} / {this.MaxValue}";
 	}
 
 	public void _on_Effects_animation_finished()
@@ -86,8 +79,6 @@ public class HeartBar : Node2D
 	{
 		this.SetDefaultValues(100 - MARGIN, 100);
 		this.DefineAnimations();
-
-		this.DisplayLifeValue();
 	}
 
 	private void SetDefaultValues(int value, int maxValue)
