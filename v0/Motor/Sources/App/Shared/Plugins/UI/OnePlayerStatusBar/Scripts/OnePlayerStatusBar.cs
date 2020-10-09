@@ -18,9 +18,23 @@ public class OnePlayerStatusBar : Node2D
 		this._lifeBar = layer.GetNode<HeartsLifeBar>("HeartsLifeBar");
 	}
 
+	public void InitializeValues(LifePoint point)
+	{
+		this._lifeBar.Update(point.CurrentValue, point.MaxValue);
+	}
+
 	public void LifeChanged(LifePoint point)
 	{
 		this._lifeBar.Update(point.CurrentValue, point.MaxValue);
+	}
+
+	/// <summary>
+	/// Defines visibility of the component
+	/// </summary>
+	public void SetVisibility(bool isVisible)
+	{
+		this._lifeBar.Visible = isVisible;
+		this.Visible = isVisible;
 	}
 	#endregion
 }

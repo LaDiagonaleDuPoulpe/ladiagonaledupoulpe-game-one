@@ -13,265 +13,277 @@ using System.Runtime.InteropServices;
 /// </summary>
 public class DialogBox : Node2D
 {
-    #region Constants
-    private const string BASE_RESOURCE_PATH = "res://Sources/App/Shared/Assets/Animations";
-    private const float DEFAULT_HEIGHT = 200;
-    #endregion
+	#region Constants
+	private const string BASE_RESOURCE_PATH = "res://Sources/App/Shared/Assets/Animations";
+	private const float DEFAULT_HEIGHT = 200;
+	#endregion
 
-    #region Fields
-    private List<MessageContent> _messageContents;
-    private RichTextLabel _content = null;
-    private Timer _currentTimer = null;
-    private Button _nextOrCloseButton = null;
-    private AnimatedSprite _animatedSprite = null;
-    private ColorRect _borderRectangle = null;
-    private int _currentPartOfMessage = 0;
+	#region Fields
+	private List<MessageContent> _messageContents;
+	private RichTextLabel _content = null;
+	private Timer _currentTimer = null;
+	private Button _nextOrCloseButton = null;
+	private AnimatedSprite _animatedSprite = null;
+	private ColorRect _borderRectangle = null;
+	private int _currentPartOfMessage = 0;
+	private Node2D _container = null;
 
-    #region Signals
-    /// <summary>
-    /// Occurs when one message is ended
-    /// </summary>
-    [Signal]
-    public delegate void EndOfOneMessage();
+	#region Signals
+	/// <summary>
+	/// Occurs when one message is ended
+	/// </summary>
+	[Signal]
+	public delegate void EndOfOneMessage();
 
-    /// <summary>
-    /// Occurs when all of the message are ended
-    /// </summary>
-    [Signal]
-    public delegate void EndOfAllMessages();
-    #endregion
-    #endregion
+	/// <summary>
+	/// Occurs when all of the message are ended
+	/// </summary>
+	[Signal]
+	public delegate void EndOfAllMessages();
+	#endregion
+	#endregion
 
-    #region Public methods
-    public override void _Ready()
-    {
-        this.Visible = false;
+	#region Public methods
+	public override void _Ready()
+	{
+		this._container = this.GetNode<CanvasLayer>("CanvasLayer").GetNode<Node2D>("Container");
+		this.SetVisibility(false);
 
-        this._content = this.GetNode("Content") as RichTextLabel;
-        this._currentTimer = this.GetNode("Timer") as Timer;
-        this._nextOrCloseButton = this.GetNode("NextOrClose") as Button;
-        this._animatedSprite = this.GetNode("AnimatedSprite") as AnimatedSprite;
-        this._borderRectangle = this.GetNode("BorderRect") as ColorRect;
+		this._content = this._container.GetNode<RichTextLabel>("Content");
+		this._currentTimer = this._container.GetNode<Timer>("Timer");
+		this._nextOrCloseButton = this._container.GetNode<Button>("NextOrClose");
+		this._animatedSprite = this._container.GetNode<AnimatedSprite>("AnimatedSprite");
+		this._borderRectangle = this._container.GetNode<ColorRect>("BorderRect");
 
-        this.GetTree().Root.Connect("size_changed", this, nameof(Resize));
-        this.PutAtTheBottom();
-    }
+		this.GetTree().Root.Connect("size_changed", this, nameof(Resize));
+		this.PutAtTheBottom();
+	}
 
-    public override void _Input(InputEvent @event)
-    {
-        base._Input(@event);
-        if (@event.IsActionPressed(KeyPressActionKeys.PressEnter))
-        {
-            this.DisplayFullMessageOrGoToNextOne();
-        }
-    }
+	public override void _Input(InputEvent @event)
+	{
+		base._Input(@event);
+		if (@event.IsActionPressed(KeyPressActionKeys.PressEnter))
+		{
+			this.DisplayFullMessageOrGoToNextOne();
+		}
+	}
 
-    /// <summary>
-    /// Begins the display of the message list
-    /// </summary>
-    public void Start(List<MessageContent> messageContents)
-    {
-        this._messageContents = messageContents;
+	/// <summary>
+	/// Begins the display of the message list
+	/// </summary>
+	public void Start(List<MessageContent> messageContents)
+	{
+		this._messageContents = messageContents;
 
-        this.Initialize();
-        this._currentTimer.Start();
-    }
+		this.Initialize();
+		this._currentTimer.Start();
+	}
 
-    /// <summary>
-    /// Stops displaying text
-    /// </summary>
-    public void Stop()
-    {
-        this._currentTimer.Stop();
-        this.Reset();
-    }
+	/// <summary>
+	/// Stops displaying text
+	/// </summary>
+	public void Stop()
+	{
+		this._currentTimer.Stop();
+		this.Reset();
+	}
 
-    /// <summary>
-    /// One tick to display new character
-    /// </summary>
-    public void OnTimerTimeout()
-    {
-        this.CurrentVisibleCharacters++;
-        if (this.CurrentMessage != null && this.CurrentPartOfMessage >= this.CurrentMessage.Content.Length)
-        {
-            this.EmitSignal(nameof(EndOfOneMessage));
-            this._currentTimer.Stop();
-        }
-    }
+	/// <summary>
+	/// One tick to display new character
+	/// </summary>
+	public void OnTimerTimeout()
+	{
+		this.CurrentVisibleCharacters++;
+		if (this.CurrentMessage != null && this.CurrentPartOfMessage >= this.CurrentMessage.Content.Length)
+		{
+			this.EmitSignal(nameof(EndOfOneMessage));
+			this._currentTimer.Stop();
+		}
+	}
 
-    public void DisplayFullMessageOrGoToNextOne()
-    {
-        Action nextAtion = this.DisplayFullMessage;
+	public void DisplayFullMessageOrGoToNextOne()
+	{
+		Action nextAtion = this.DisplayFullMessage;
 
-        if (this.CurrentVisibleCharacters >= this.CurrentMessage?.Content.Length - 1)
-        {
-            nextAtion = this.OnNextOrClosePressed;
-        }
+		if (this.CurrentVisibleCharacters >= this.CurrentMessage?.Content.Length - 1)
+		{
+			nextAtion = this.OnNextOrClosePressed;
+		}
 
-        nextAtion.Invoke();
-    }
-    #endregion
+		nextAtion.Invoke();
+	}
+	#endregion
 
-    #region Internal methods
-    private void Initialize()
-    {
-        this.Visible = true;
-        this.CurrentVisibleCharacters = 0;
-        this._content.BbcodeText = this.DefineAlignement(this.CurrentMessage.Content);
+	#region Internal methods
+	private void SetVisibility(bool visible)
+	{
+		this.Visible = visible;
+		this._container.Visible = visible;
+	}
 
-        this._animatedSprite.Frames = null;
-        if (this.CurrentMessage.SpriteFrames != null)
-        {
-            this._animatedSprite.Frames = this.CurrentMessage.SpriteFrames;
-            this._animatedSprite.Play(DialogBoxSpriteStatus.Idle.ToString().ToLower());
+	private void Initialize()
+	{
+		this.SetVisibility(this.MessageContents != null & this.MessageContents.Count > 0);
+		
+		this.CurrentVisibleCharacters = 0;
+		this._content.BbcodeText = this.DefineAlignement(this.CurrentMessage.Content);
 
-            this.DefineAnimatedSpritePosition();
-        }
+		this._animatedSprite.Frames = null;
+		if (this.CurrentMessage.SpriteFrames != null)
+		{
+			this._animatedSprite.Frames = this.CurrentMessage.SpriteFrames;
+			this._animatedSprite.Play(DialogBoxSpriteStatus.Idle.ToString().ToLower());
 
-        this.SetTextFromNextOrCloseButton();
-    }
+			this.DefineAnimatedSpritePosition();
+		}
 
-    /// <summary>
-    /// Manage the next display message : if there isnt new message close the display box
-    /// </summary>
-    private void OnNextOrClosePressed()
-    {
-        this.CurrentPartOfMessage++;
+		this.SetTextFromNextOrCloseButton();
+	}
 
-        this.Visible = this.CurrentPartOfMessage < this.MessageContents.Count;
-        if (this.Visible)
-        {
-            this.Initialize();
-            this._currentTimer.Start();
-        }
+	/// <summary>
+	/// Manage the next display message : if there isnt new message close the display box
+	/// </summary>
+	private void OnNextOrClosePressed()
+	{
+		this.CurrentPartOfMessage++;
 
-        if (!this.Visible)
-        {
-            this.MessageContents.Clear();
-            this.EmitSignal(nameof(EndOfAllMessages));
-        }
+		this.Visible = this.CurrentPartOfMessage < this.MessageContents.Count;
+		this._container.Visible = this.Visible;
 
-    }
+		if (this.Visible)
+		{
+			this.Initialize();
+			this._currentTimer.Start();
+		}
 
-    private void DisplayFullMessage()
-    {
-        this.CurrentVisibleCharacters = (this.CurrentMessage?.Content.Length).GetValueOrDefault(0);
-        this._currentTimer.Stop();
-    }
+		if (!this.Visible)
+		{
+			this.MessageContents.Clear();
+			this.EmitSignal(nameof(EndOfAllMessages));
+		}
 
-    private void DefineAnimatedSpritePosition()
-    {
-        if (this.CurrentMessage.SpriteDirection == Direction.Right)
-        {
-            Vector2 animatedSpriteSize = new Vector2(130, 70); // TODO: 08/06/2020, see to get real size
+	}
 
-            Vector2 newPosition = new Vector2(this._animatedSprite.Position.x + this._borderRectangle.RectSize.x - animatedSpriteSize.x,
-                                              this._animatedSprite.Position.y + this._borderRectangle.RectSize.y - animatedSpriteSize.y);
+	private void DisplayFullMessage()
+	{
+		this.CurrentVisibleCharacters = (this.CurrentMessage?.Content.Length).GetValueOrDefault(0);
+		this._currentTimer.Stop();
+	}
 
-            this._animatedSprite.Position = newPosition;
-        }
-    }
+	private void DefineAnimatedSpritePosition()
+	{
+		if (this.CurrentMessage.SpriteDirection == Direction.Right)
+		{
+			Vector2 animatedSpriteSize = new Vector2(130, 70); // TODO: 08/06/2020, see to get real size
 
-    private void PutAtTheBottom()
-    {
-        Rect2 windowPosition = this.GetViewportRect();
+			Vector2 newPosition = new Vector2(this._animatedSprite.Position.x + this._borderRectangle.RectSize.x - animatedSpriteSize.x,
+											  this._animatedSprite.Position.y + this._borderRectangle.RectSize.y - animatedSpriteSize.y);
 
-        float newY = windowPosition.Size.y - this._borderRectangle.RectSize.y;
-        float newX = windowPosition.Size.x / 2 - (this._borderRectangle.RectSize.x / 2);
+			this._animatedSprite.Position = newPosition;
+		}
+	}
 
-        this.Position = new Vector2(newX, newY);
-    }
+	private void PutAtTheBottom()
+	{
+		Rect2 windowPosition = this.GetViewportRect();
 
-    private void Resize()
-    {
-        this.PutAtTheBottom();
-    }
+		float newY = windowPosition.Size.y - this._borderRectangle.RectSize.y;
+		float newX = windowPosition.Size.x / 2 - (this._borderRectangle.RectSize.x / 2);
 
-    private void Reset()
-    {
-        this.CurrentVisibleCharacters = 0;
-        this.CurrentPartOfMessage = 0;
-    }
+		this.Position = new Vector2(newX, newY);
+		this._container.Position = this.Position;
+	}
 
-    private void SetTextFromNextOrCloseButton()
-    {
-        this._nextOrCloseButton.Text = "Fermer";
-        if (this.CurrentPartOfMessage < this.MessageContents.Count - 1)
-        {
-            this._nextOrCloseButton.Text = "Suivant";
-        }
-    }
+	private void Resize()
+	{
+		this.PutAtTheBottom();
+	}
 
-    private string DefineAlignement(string content)
-    {
-        if (this.CurrentMessage.SpriteDirection == Direction.Right)
-        {
-            content = content.AlignRightToBBContent();
-        }
+	private void Reset()
+	{
+		this.CurrentVisibleCharacters = 0;
+		this.CurrentPartOfMessage = 0;
+	}
 
-        return content;
-    }
-    #endregion
+	private void SetTextFromNextOrCloseButton()
+	{
+		this._nextOrCloseButton.Text = "Fermer";
+		if (this.CurrentPartOfMessage < this.MessageContents.Count - 1)
+		{
+			this._nextOrCloseButton.Text = "Suivant";
+		}
+	}
 
-    #region Properties
-    /// <summary>
-    /// Defines the number of characters to show in the label content
-    /// </summary>
-    public int CurrentVisibleCharacters
-    {
-        get => this._content.VisibleCharacters;
-        set
-        {
-            this._content.VisibleCharacters = value;
-        }
-    }
+	private string DefineAlignement(string content)
+	{
+		if (this.CurrentMessage.SpriteDirection == Direction.Right)
+		{
+			content = content.AlignRightToBBContent();
+		}
 
-    /// <summary>
-    /// Content message to display
-    /// </summary>
-    public MessageContent CurrentMessage
-    {
-        get
-        {
-            MessageContent content = null;
+		return content;
+	}
+	#endregion
 
-            if (this.CurrentPartOfMessage < this.MessageContents?.Count)
-            {
-                content = this.MessageContents[this.CurrentPartOfMessage];
-            }
+	#region Properties
+	/// <summary>
+	/// Defines the number of characters to show in the label content
+	/// </summary>
+	public int CurrentVisibleCharacters
+	{
+		get => this._content.VisibleCharacters;
+		set
+		{
+			this._content.VisibleCharacters = value;
+		}
+	}
 
-            return content;
-        }
-    }
+	/// <summary>
+	/// Content message to display
+	/// </summary>
+	public MessageContent CurrentMessage
+	{
+		get
+		{
+			MessageContent content = null;
 
-    /// <summary>
-    /// Gets the current displayed direction of the animated sprite
-    /// </summary>
-    public Direction DisplayedDirection
-    {
-        get
-        {
-            return this.CurrentMessage != null ? this.CurrentMessage.SpriteDirection : Direction.Left;
-        }
-    }
+			if (this.CurrentPartOfMessage < this.MessageContents?.Count)
+			{
+				content = this.MessageContents[this.CurrentPartOfMessage];
+			}
 
-    /// <summary>
-    /// Index of the part of the message in the message list
-    /// </summary>
-    public int CurrentPartOfMessage { get => this._currentPartOfMessage; private set => this._currentPartOfMessage = value; }
+			return content;
+		}
+	}
 
-    /// <summary>
-    /// List of message text as one full message to be displayed in X steps
-    /// </summary>
-    public List<MessageContent> MessageContents { get => this._messageContents; private set => this._messageContents = value; }
+	/// <summary>
+	/// Gets the current displayed direction of the animated sprite
+	/// </summary>
+	public Direction DisplayedDirection
+	{
+		get
+		{
+			return this.CurrentMessage != null ? this.CurrentMessage.SpriteDirection : Direction.Left;
+		}
+	}
 
-    /// <summary>
-    /// Sprite frames to display animated sprite
-    /// </summary>
-    public SpriteFrames AnimatedSpriteFrames
-    {
-        get => this._animatedSprite.Frames;
-        set => this._animatedSprite.Frames = value;
-    }
-    #endregion
+	/// <summary>
+	/// Index of the part of the message in the message list
+	/// </summary>
+	public int CurrentPartOfMessage { get => this._currentPartOfMessage; private set => this._currentPartOfMessage = value; }
+
+	/// <summary>
+	/// List of message text as one full message to be displayed in X steps
+	/// </summary>
+	public List<MessageContent> MessageContents { get => this._messageContents; private set => this._messageContents = value; }
+
+	/// <summary>
+	/// Sprite frames to display animated sprite
+	/// </summary>
+	public SpriteFrames AnimatedSpriteFrames
+	{
+		get => this._animatedSprite.Frames;
+		set => this._animatedSprite.Frames = value;
+	}
+	#endregion
 }

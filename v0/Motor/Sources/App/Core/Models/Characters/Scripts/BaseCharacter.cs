@@ -1,5 +1,6 @@
 ﻿using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Models.Attacks;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Characters;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,28 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
     public abstract class BaseCharacter : KinematicBody2D, IWithDamage
     {
         #region Fields
+        #region Signals
+        /// <summary>
+        /// Initialize health value
+        /// </summary>
+        /// <param name="point"></param>
+        [Signal]
+        public delegate void HealthInitialized(LifePoint point);
+
+        /// <summary>
+        /// Observes this event to know when health changed (plus or less)
+        /// </summary>
+        /// <param name="health">New health</param>
+        [Signal]
+        public delegate void HealthChanged(LifePoint point);
+
+        /// <summary>
+        /// Observes this event to know when here is no life
+        /// </summary>
+        [Signal]
+        public delegate void LifeIsGone();
+        #endregion
+
         private Vector2 _velocity = Vector2.Zero;
         private Vector2 _screenSize;
         private Health _health = null;
@@ -29,6 +52,16 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
             this.MainHealth = this.GetNode<Health>("Health");
 
             this.Initialize();
+        }
+
+        /// <summary>
+        /// Initializes all data of the character
+        /// </summary>
+        /// <param name="setting">Setting of the character. Settings from a data initializer</param>
+        public virtual void InitializeData(CharacterDataSetting setting)
+        {
+            this.EmitSignal(CharacterLifeSignal.HealthInitialized.ToString(), 
+                            new LifePoint(setting.Health.CurrentValue, setting.Health.MaxValue));
         }
 
         /// <summary>
@@ -60,9 +93,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         {
             this.MainHealth.Connect(CharacterLifeSignal.HealthChanged.ToString(), this, nameof(HealthIsChanged));
             this.MainHealth.Connect(CharacterLifeSignal.LifeIsGone.ToString(), this, nameof(HealthIsGone));
-
-            // TODO: 20/08/2020, initialize with real values (from api ?)
-            this.MainHealth.Initialize(300, 300);
         }
 
         protected virtual void HealthIsChanged(LifePoint point)

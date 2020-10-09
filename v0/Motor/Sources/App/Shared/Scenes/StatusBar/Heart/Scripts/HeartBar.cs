@@ -18,6 +18,7 @@ public class HeartBar : Node2D
 	#region Fields
 	private TextureProgress _progressBar = null;
 	private AnimatedSprite _animatedSprite = null;
+	private RichTextLabel _lifeText = null;
 	private Tween _tweenTextureItem = null;
 	private Tween _tweenFpsItem = null;
 	private int _currentValue = 0;
@@ -35,6 +36,7 @@ public class HeartBar : Node2D
 		this._tweenTextureItem = this.GetNode<Tween>("TweenForTexture");
 		this._tweenFpsItem = this.GetNode<Tween>("TweenForFps");
 		this._animatedSprite = this.GetNode<AnimatedSprite>("Effects");
+		this._lifeText = this.GetNode<RichTextLabel>("LifeText");
 
 		this.Initialize();
 	}

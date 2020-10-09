@@ -1,7 +1,7 @@
 using Godot;
-using ladiagonaledupoulpe.Sources.App.Assets.Settings.Models;
 using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Scenes;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
+using ladiagonaledupoulpe.Sources.App.Shared.Plugins;
 using ladiagonaledupoulpe.Sources.App.Shared.Services;
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
 using Newtonsoft.Json;
@@ -59,13 +59,21 @@ public class LoadingScene : Node2D
 	private void Initialize()
 	{
 		this.Visible = false;
+		this.HidePlayerNodes();
 
 		this._progressBarsGroup = this.GetNode<Node2D>("Bloc-ProgressBars");
 		this._oneFileProgressBar = this._progressBarsGroup.GetNode<ProgressBar>("OneFileProgressBar");
 		this._allFilesProgressBar = this._progressBarsGroup.GetNode<ProgressBar>("AllFilesProgressBar");
 		this._resourcesSceneLoader = this.GetNode<ResourcesSceneLoader>("/root/ResourcesSceneLoader");
-		this.InitializeGlobalSettings();
+
 		this.AttachSignals();
+	}
+
+	private void HidePlayerNodes()
+	{
+		AutoLoaderAccessor loader = this.GetNode<AutoLoaderAccessor>("/root/AutoLoaderAccessor");
+		loader.CurrentPlayer.Visible = false;
+		loader.StatusBar.SetVisibility(false);
 	}
 
 	private void AttachSignals()
@@ -111,19 +119,11 @@ public class LoadingScene : Node2D
 	{
 		this._oneFileProgressBar.Value = 100;
 		this._currentFilesLoadingNumber++;
-		decimal loadedPourcent = ((decimal)this._currentFilesLoadingNumber / this.FilesNumber) * 100;
+
+		int nbFiles = this.FilesNumber == 0 ? 1 : this.FilesNumber;
+
+		decimal loadedPourcent = ((decimal)this._currentFilesLoadingNumber / nbFiles) * 100;
 		this._allFilesProgressBar.Value = (int) loadedPourcent;
-	}
-
-
-	private void InitializeGlobalSettings()
-    {
-		GlobalDataService globalDataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
-		File file = new Godot.File();
-		file.Open("res://Sources/App/Assets/Settings/GlobalSettings.json", File.ModeFlags.Read);
-		string json = file.GetAsText();
-		file.Close();
-		globalDataService.GlobalSettings = JsonConvert.DeserializeObject<GlobalSettings>(json);
 	}
 	#endregion
 

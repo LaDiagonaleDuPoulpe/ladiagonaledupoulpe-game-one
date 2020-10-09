@@ -15,7 +15,6 @@ public class VideoIntro : BaseActiveScene
         base._Input(@event);
         if (@event.IsActionPressed(KeyPressActionKeys.PressCancel))
         {
-            GD.Print("Key !");
             this.GoToNextScene();
         }
     }

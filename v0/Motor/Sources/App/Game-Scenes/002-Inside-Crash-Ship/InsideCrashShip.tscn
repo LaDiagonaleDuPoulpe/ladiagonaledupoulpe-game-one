@@ -82,21 +82,6 @@ position = Vector2( 0, 1 )
 current = true
 zoom = Vector2( 0.7, 0.7 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
-margin_left = 90.6826
-margin_top = 22.299
-margin_right = 130.683
-margin_bottom = 62.299
-bbcode_text = "hello"
-text = "hello"
-scroll_following = true
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
 [node name="Borders" type="Node" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Borders"]
