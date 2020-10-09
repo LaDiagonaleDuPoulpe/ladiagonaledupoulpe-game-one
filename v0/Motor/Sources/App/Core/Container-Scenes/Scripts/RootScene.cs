@@ -18,12 +18,15 @@ public class RootScene : BaseScene
 {
 	#region Fields
 	private Node2D _lastScene = null;
+	private MainDataInitializer _globalDataInitializer = null;
 	#endregion
 
 	#region Public methods
 	public override void _Ready()
 	{
 		base._Ready();
+
+		this._globalDataInitializer = this.GetNode<MainDataInitializer>("/root/MainDataInitializer");
 
 		this.Initialize();
 	}
