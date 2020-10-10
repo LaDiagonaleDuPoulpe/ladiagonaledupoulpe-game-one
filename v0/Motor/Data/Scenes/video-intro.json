@@ -1,3 +1,4 @@
 {
-  "path": "Sources/App/Game-Scenes/001-Video-Intro/VideoIntro.tscn"
+  "path": "Sources/App/Game-Scenes/001-Video-Intro/VideoIntro.tscn",
+  "nextSceneAsKey": "inside-broken-space-ship"
 }
