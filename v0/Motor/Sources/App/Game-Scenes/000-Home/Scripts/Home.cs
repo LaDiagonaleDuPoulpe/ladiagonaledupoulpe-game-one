@@ -10,33 +10,33 @@ using System;
 /// </summary>
 public class Home : BaseActiveScene
 {
-    #region Fields
-    #endregion
+	#region Fields
+	#endregion
 
-    #region Public methods
-    public override void _Ready()
-    {
-        base._Ready();
-
-    }
-    #endregion
-
-    #region Internal methods
-    private void _on_BtnNewParty_pressed() 
+	#region Public methods
+	public override void _Ready()
 	{
-        this.LoadMainData(DataInitializerStep.NewGame);
+		base._Ready();
+
+	}
+	#endregion
+
+	#region Internal methods
+	private void _on_BtnNewParty_pressed() 
+	{
+		this.LoadMainData(DataInitializerStep.NewGame);
 	}
 
-    protected override void ExecuteAfterDataLoaded()
-    {
-        this.LoadingScene.Launch(new LevelConfiguration()
-        {
-            Key = "video-intro"
-        });
-    }
-    #endregion
+	protected override void ExecuteAfterDataLoaded()
+	{
+		this.LoadingScene.Launch(new LevelConfiguration()
+		{
+			Key = this.CurrentSetting.NextSceneAsKey
+		});
+	}
+	#endregion
 
-    #region Properties
-    public override bool RootNodesVisibility => false;
-    #endregion
+	#region Properties
+	public override bool RootNodesVisibility => false;
+	#endregion
 }

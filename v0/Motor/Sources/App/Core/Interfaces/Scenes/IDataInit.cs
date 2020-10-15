@@ -14,5 +14,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Interfaces.Scenes
         /// Initializes one scene
         /// </summary>
          void Initialize(List<DialogBoxExchange> contents);
+
+        /// <summary>
+		/// Gets the setting of the current scene
+		/// </summary>
+		/// <remarks>It will change each time you change the current scene</remarks>
+		SceneConfigurationSetting CurrentSetting { get; set; }
     }
 }

@@ -18,6 +18,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings
         public string Path { get; set; }
 
         /// <summary>
+        /// Key of the next scene of the game
+        /// </summary>
+        public string NextSceneAsKey { get; set; }
+
+        /// <summary>
         /// Settings for the dialog box exchanges
         /// </summary>
         public DialogBox.DialogBoxSetting DialogBox { get; set; }

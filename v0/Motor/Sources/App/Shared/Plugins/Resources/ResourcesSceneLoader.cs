@@ -164,6 +164,8 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 				this.EmitSignal(LoadingActionsType.EndLoadingResource.ToString());
 			});
 
+			scene.CurrentSetting = settings;
+
 			this.GetNode<GlobalDataService>("/root/GlobalDataService").CurrentExchanges = contents;
 		}
 		#endregion
