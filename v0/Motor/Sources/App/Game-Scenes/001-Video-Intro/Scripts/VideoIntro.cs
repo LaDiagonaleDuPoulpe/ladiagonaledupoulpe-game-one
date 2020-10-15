@@ -9,38 +9,38 @@ using System;
 /// </summary>
 public class VideoIntro : BaseActiveScene
 {
-    #region Public methods
-    public override void _Input(InputEvent @event)
-    {
-        base._Input(@event);
-        if (@event.IsActionPressed(KeyPressActionKeys.PressCancel))
-        {
-            this.GoToNextScene();
-        }
-    }
-    #endregion
+	#region Public methods
+	public override void _Input(InputEvent @event)
+	{
+		base._Input(@event);
+		if (@event.IsActionPressed(KeyPressActionKeys.PressCancel))
+		{
+			this.GoToNextScene();
+		}
+	}
+	#endregion
 
-    #region Internal methods
-    private void _on_VideoPlayer_finished()
-    {
-        this.GoToNextScene();
-    }
+	#region Internal methods
+	private void _on_VideoPlayer_finished()
+	{
+		this.GoToNextScene();
+	}
 
-    private void _on_VideoPlayer_gui_input(InputEvent action) {}
+	private void _on_VideoPlayer_gui_input(InputEvent action) {}
 
-    private void GoToNextScene() 
-    {
-        VideoPlayer player = this.GetNode<VideoPlayer>("VideoPlayer");
-        player.Stop();
+	private void GoToNextScene() 
+	{
+		VideoPlayer player = this.GetNode<VideoPlayer>("VideoPlayer");
+		player.Stop();
 
-        this.LoadingScene.Launch(new LevelConfiguration()
-        {
-            Key = "inside-broken-space-ship"
-        });
-    }
-    #endregion
+		this.LoadingScene.Launch(new LevelConfiguration()
+		{
+			Key = this.CurrentSetting.NextSceneAsKey
+		});
+	}
+	#endregion
 
-    #region Properties
-    public override bool RootNodesVisibility => false;
-    #endregion
+	#region Properties
+	public override bool RootNodesVisibility => false;
+	#endregion
 }

@@ -72,6 +72,12 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         /// Defines visibility of player, statusbar, ...
         /// </summary>
         public virtual bool RootNodesVisibility { get => true; }
+
+        /// <summary>
+		/// Gets the setting of the current scene
+		/// </summary>
+		/// <remarks>It will change each time you change the current scene</remarks>
+		public SceneConfigurationSetting CurrentSetting { get; set; }
         #endregion
     }
 }

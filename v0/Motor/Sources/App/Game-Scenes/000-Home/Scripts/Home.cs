@@ -31,7 +31,7 @@ public class Home : BaseActiveScene
     {
         this.LoadingScene.Launch(new LevelConfiguration()
         {
-            Key = "video-intro"
+            Key = this.CurrentSetting.NextSceneAsKey
         });
     }
     #endregion
