@@ -17,15 +17,17 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "WATTest": ""
 }
+RunInEngine=true
 
 [WAT]
 
 Test_Directory="res://Tests"
 Results_Directory="res://Tests/results/WAT"
-Minimize_Window_When_Running_Tests=false
+Minimize_Window_When_Running_Tests=true
 TestStrategy={
 "repeat": 1,
-"strategy": "RunAll"
+"script": "res://Tests/AutoloaderPocTest.cs",
+"strategy": "RunScript"
 }
 Tags=PoolStringArray(  )
 Display=8
@@ -51,6 +53,7 @@ DialoxBoxManager="*res://Sources/App/Shared/Plugins/UI/DialoxBoxManager.cs"
 MainDataInitializer="*res://Sources/App/Shared/Plugins/Initializers/MainDataInitializer.cs"
 AutoLoaderAccessor="*res://Sources/App/Shared/Plugins/AutoLoaderAccessor.cs"
 LoadingScene="*res://Sources/App/Shared/Scenes/LoadingScene/LoadingScene.tscn"
+MainDataPreloader="*res://Sources/App/Shared/Plugins/Preloaders/MainDataPreloader.cs"
 Signals="*res://Sources/App/Shared/Signals/Signals.cs"
 
 [display]

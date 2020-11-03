@@ -73,6 +73,7 @@
     <Compile Include="Sources\App\Shared\Plugins\Initializers\InMemoryPlayerDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\LoadedDataInitializerResult.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\PlayerDataInitializer.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Preloaders\MainDataPreloader.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Commands\ExecuteCodeCommand.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\FrameBtn.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\RequestCommands\CompileCodeEditor.cs" />
