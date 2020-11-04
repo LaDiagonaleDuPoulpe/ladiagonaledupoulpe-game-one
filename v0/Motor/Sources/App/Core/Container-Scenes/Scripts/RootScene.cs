@@ -44,9 +44,6 @@ public class RootScene : BaseScene
 		this.LoadingScene.Connect(LoadingActionsType.Begin.ToString(), this, nameof(LoadingScene_Start));
 		this.LoadingScene.Connect(LoadingActionsType.End.ToString(), this, nameof(LoadingScene_End));
 
-		GlobalDataService globalDataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
-		GD.Print("compiler => ", globalDataService.GlobalSettings.Compiler);
-
 		this.LoadingScene.Launch(new LevelConfiguration()
 		{
 			Key = "home"
