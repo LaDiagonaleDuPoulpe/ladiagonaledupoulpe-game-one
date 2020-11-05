@@ -19,7 +19,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
     public abstract class BaseScene : Node2D
     {
         #region Fields
-        private MainDataInitializer _mainDataInitializer = null;
+        private ProxyDataInitializer _mainDataInitializer = null;
 
         #region Signals
         [Signal]
@@ -32,7 +32,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         {
             base._Ready();
             this.AutoLoaderAccessor = this.GetNode<AutoLoaderAccessor>("/root/AutoLoaderAccessor");
-            this.MainDataInitializer = this.GetNode<MainDataInitializer>("/root/MainDataInitializer");
+            this.MainDataInitializer = this.GetNode<ProxyDataInitializer>("/root/MainDataInitializer");
         }
         #endregion
 
@@ -82,7 +82,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         /// <summary>
         /// Accessor to the data initializer proxy
         /// </summary>
-        public MainDataInitializer MainDataInitializer { get => _mainDataInitializer; private set => _mainDataInitializer = value; }
+        public ProxyDataInitializer MainDataInitializer { get => _mainDataInitializer; private set => _mainDataInitializer = value; }
         #endregion
     }
 }

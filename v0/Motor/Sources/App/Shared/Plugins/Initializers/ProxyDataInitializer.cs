@@ -12,14 +12,14 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
     /// <summary>
     /// Factory and singleton to initialize all data initializer
     /// </summary>
-    public class MainDataInitializer : BaseDataInitializer
+    public class ProxyDataInitializer : BaseDataInitializer
     {
         #region Fields
         private Dictionary<DataInitializerStep, DataInitializerGroup> _dataInitializerGroups = new Dictionary<DataInitializerStep, DataInitializerGroup>();
         #endregion
 
         #region Constructors
-        public MainDataInitializer()
+        public ProxyDataInitializer()
         {
             this.DefineDataInitializerGroups();
         }

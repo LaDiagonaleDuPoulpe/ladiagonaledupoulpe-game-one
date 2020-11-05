@@ -14,14 +14,14 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Preloaders
     public class MainDataPreloader : Node
     {
         #region Fields
-        private MainDataInitializer _globalDataInitializer = null;
+        private ProxyDataInitializer _globalDataInitializer = null;
         #endregion
 
         #region Public methods
         public override void _Ready()
         {
             base._Ready();
-            this._globalDataInitializer = this.GetNode<MainDataInitializer>("/root/MainDataInitializer");
+            this._globalDataInitializer = this.GetNode<ProxyDataInitializer>("/root/MainDataInitializer");
             this._globalDataInitializer.CurrentStep = Enums.DataInitializerStep.GlobalData;
             this._globalDataInitializer.Load();
         }
