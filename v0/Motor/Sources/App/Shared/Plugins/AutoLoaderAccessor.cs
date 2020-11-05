@@ -1,6 +1,8 @@
 ﻿using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Interfaces.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts;
+using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers;
+using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Preloaders;
 using ladiagonaledupoulpe.Sources.App.Shared.Services;
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
 using System;
@@ -24,6 +26,8 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins
         private IDialogBoxManager _dialogBoxManager = null;
         private LoadingScene _loadingScene = null;
         private ResourcesSceneLoader _resourcesSceneLoader = null;
+        private ProxyDataInitializer _proxyDataInitializer = null;
+        private DataPreloader _dataPreloader = null;
         #endregion
 
         #region Public methods
@@ -31,12 +35,14 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins
         {
             base._Ready();
 
-            this._globalDataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
-            this._currentPlayer = this.GetNode<Player>("/root/CurrentPlayer");
-            this._statusBar = this.GetNode<OnePlayerStatusBar>("/root/OnePlayerStatusBar");
-            this._dialogBoxManager = this.GetNode<IDialogBoxManager>("/root/DialoxBoxManager");
-            this._loadingScene = this.GetNode<LoadingScene>("/root/LoadingScene");
-            this._resourcesSceneLoader = this.GetNode<ResourcesSceneLoader>("/root/ResourcesSceneLoader");
+            this.GlobalDataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
+            this.CurrentPlayer = this.GetNode<Player>("/root/CurrentPlayer");
+            this.StatusBar = this.GetNode<OnePlayerStatusBar>("/root/OnePlayerStatusBar");
+            this.DialogBoxManager = this.GetNode<IDialogBoxManager>("/root/DialoxBoxManager");
+            this.LoadingScene = this.GetNode<LoadingScene>("/root/LoadingScene");
+            this.ResourcesSceneLoader = this.GetNode<ResourcesSceneLoader>("/root/ResourcesSceneLoader");
+            this.ProxyDataInitializer = this.GetNode<ProxyDataInitializer>("/root/ProxyDataInitializer");
+            this.DataPreloader = this.GetNode<DataPreloader>("/root/DataPreloader");
         }
         #endregion
 
@@ -69,7 +75,17 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins
         /// <summary>
         /// Loader of all ressources of one scene
         /// </summary>
-        public ResourcesSceneLoader ResourcesSceneLoader { get => _resourcesSceneLoader; set => _resourcesSceneLoader = value; }
+        public ResourcesSceneLoader ResourcesSceneLoader { get => _resourcesSceneLoader; private set => _resourcesSceneLoader = value; }
+       
+        /// <summary>
+        /// Access of the proxy of all data initializers
+        /// </summary>
+        public ProxyDataInitializer ProxyDataInitializer { get => _proxyDataInitializer; private set => _proxyDataInitializer = value; }
+
+        /// <summary>
+        /// Preloader of data, using the data initializer proxy <c>ProxyDataInitializer</c>
+        /// </summary>
+        public DataPreloader DataPreloader { get => _dataPreloader; private set => _dataPreloader = value; }
         #endregion
     }
 }

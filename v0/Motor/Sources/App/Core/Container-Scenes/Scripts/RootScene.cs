@@ -26,9 +26,6 @@ public class RootScene : BaseScene
 	public override void _Ready()
 	{
 		base._Ready();
-
-		this._globalDataInitializer = this.GetNode<ProxyDataInitializer>("/root/MainDataInitializer");
-
 		this.Initialize();
 	}
 

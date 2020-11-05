@@ -10,20 +10,20 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Preloaders
 {
     /// <summary>
     /// Uses it to preload the first necessary data before load the root scene
+    /// Plugin to put in autoload singleton mode
     /// </summary>
     public class MainDataPreloader : Node
     {
         #region Fields
-        private ProxyDataInitializer _globalDataInitializer = null;
+        private DataPreloader _dataPreloader = null;
         #endregion
 
         #region Public methods
         public override void _Ready()
         {
             base._Ready();
-            this._globalDataInitializer = this.GetNode<ProxyDataInitializer>("/root/MainDataInitializer");
-            this._globalDataInitializer.CurrentStep = Enums.DataInitializerStep.GlobalData;
-            this._globalDataInitializer.Load();
+            this._dataPreloader = this.GetNode<AutoLoaderAccessor>("/root/AutoLoaderAccessor").DataPreloader;
+            this._dataPreloader.Load(Enums.DataInitializerStep.GlobalData);
         }
         #endregion
     }

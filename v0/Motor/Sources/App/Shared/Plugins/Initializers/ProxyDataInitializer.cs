@@ -36,7 +36,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
 
         public void Initializer_DataLoaded(Godot.Object sender,  Godot.Object data)
         {
-            this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, null);
+            this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, data);
         }
         #endregion
 
