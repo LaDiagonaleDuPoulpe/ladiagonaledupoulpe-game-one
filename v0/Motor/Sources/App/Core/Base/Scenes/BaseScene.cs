@@ -3,6 +3,7 @@ using ladiagonaledupoulpe.Sources.App.Core.Interfaces.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers;
+using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Preloaders;
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
 using Newtonsoft.Json;
 using System;
@@ -19,7 +20,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
     public abstract class BaseScene : Node2D
     {
         #region Fields
-        private MainDataInitializer _globalDataInitializer = null;
+        private DataPreloader _dataPreloader = null;
 
         #region Signals
         [Signal]
@@ -32,7 +33,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         {
             base._Ready();
             this.AutoLoaderAccessor = this.GetNode<AutoLoaderAccessor>("/root/AutoLoaderAccessor");
-            this.GlobalDataInitializer = this.GetNode<MainDataInitializer>("/root/MainDataInitializer");
+            this.DataPreloader = this.AutoLoaderAccessor.DataPreloader;
         }
         #endregion
 
@@ -42,14 +43,12 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         /// </summary>
         protected void LoadMainData(DataInitializerStep step)
         {
-            this.GlobalDataInitializer.Connect(LoadDataType.DataLoaded.ToString(), this, nameof(globalDataInitializer_DataLoaded));
-            this.GlobalDataInitializer.CurrentStep = step;
-            this.GlobalDataInitializer.Load();
+            this.DataPreloader.Connect(LoadDataType.DataLoaded.ToString(), this, nameof(globalDataInitializer_DataLoaded));
+            this.DataPreloader.Load(step);
         }
 
         private void globalDataInitializer_DataLoaded(Godot.Object sender, Godot.Object data)
         {
-            this.GlobalDataInitializer.Disconnect(LoadDataType.DataLoaded.ToString(), this, nameof(globalDataInitializer_DataLoaded));
             this.ExecuteAfterDataLoaded();
         }
 
@@ -80,9 +79,9 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         public AutoLoaderAccessor AutoLoaderAccessor { get; private set; }
 
         /// <summary>
-        /// Accessor to the data initializer proxy
+        /// Singleton to get a proxy of preloading data with data initializers
         /// </summary>
-        public MainDataInitializer GlobalDataInitializer { get => _globalDataInitializer; private set => _globalDataInitializer = value; }
+        public DataPreloader DataPreloader { get => _dataPreloader; private set => _dataPreloader = value; }
         #endregion
     }
 }

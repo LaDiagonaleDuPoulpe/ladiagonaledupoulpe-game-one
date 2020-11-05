@@ -12,14 +12,14 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
     /// <summary>
     /// Factory and singleton to initialize all data initializer
     /// </summary>
-    public class MainDataInitializer : BaseDataInitializer
+    public class ProxyDataInitializer : BaseDataInitializer
     {
         #region Fields
         private Dictionary<DataInitializerStep, DataInitializerGroup> _dataInitializerGroups = new Dictionary<DataInitializerStep, DataInitializerGroup>();
         #endregion
 
         #region Constructors
-        public MainDataInitializer()
+        public ProxyDataInitializer()
         {
             this.DefineDataInitializerGroups();
         }
@@ -36,7 +36,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
 
         public void Initializer_DataLoaded(Godot.Object sender,  Godot.Object data)
         {
-            this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, null);
+            this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, data);
         }
         #endregion
 

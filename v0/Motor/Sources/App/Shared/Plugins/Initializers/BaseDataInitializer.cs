@@ -36,8 +36,14 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Unic key of the initializer
+        /// </summary>
         public virtual string Key => this.GetType().Name;
 
+        /// <summary>
+        /// True if all data of the current loader are loaded
+        /// </summary>
         public bool IsLoaded { get; protected set; }
         #endregion
     }
