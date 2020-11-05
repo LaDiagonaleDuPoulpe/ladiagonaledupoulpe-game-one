@@ -8,6 +8,7 @@ using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Initializers;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers;
 using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog;
 using ladiagonaledupoulpe.Sources.App.Shared.Services;
+using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -18,16 +19,13 @@ public class RootScene : BaseScene
 {
 	#region Fields
 	private Node2D _lastScene = null;
-	private MainDataInitializer _globalDataInitializer = null;
+	private ProxyDataInitializer _globalDataInitializer = null;
 	#endregion
 
 	#region Public methods
 	public override void _Ready()
 	{
 		base._Ready();
-
-		this._globalDataInitializer = this.GetNode<MainDataInitializer>("/root/MainDataInitializer");
-
 		this.Initialize();
 	}
 
@@ -43,7 +41,10 @@ public class RootScene : BaseScene
 		this.LoadingScene.Connect(LoadingActionsType.Begin.ToString(), this, nameof(LoadingScene_Start));
 		this.LoadingScene.Connect(LoadingActionsType.End.ToString(), this, nameof(LoadingScene_End));
 
-		this.LoadMainData(DataInitializerStep.GlobalData);
+		this.LoadingScene.Launch(new LevelConfiguration()
+		{
+			Key = "home"
+		});
 	}
 
 	private void LoadingScene_Start()
@@ -60,14 +61,6 @@ public class RootScene : BaseScene
 		this.AddChild(nextScene);
 
 		this._lastScene = nextScene;
-	}
-
-	protected override void ExecuteAfterDataLoaded()
-	{
-		this.LoadingScene.Launch(new LevelConfiguration()
-		{
-			Key = "home"
-		});
 	}
 	#endregion
 
