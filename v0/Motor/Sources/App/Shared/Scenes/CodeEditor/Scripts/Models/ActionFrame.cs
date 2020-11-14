@@ -14,5 +14,7 @@ namespace ladiagonaledupoulpe.Sources.App.Game_Scenes._003_Code_Editor.Scripts
 	{
 		public Position PlayerPosition { get; set; }
 
+		public int ActionPointLeft { get; set; }
+
 	}
 }

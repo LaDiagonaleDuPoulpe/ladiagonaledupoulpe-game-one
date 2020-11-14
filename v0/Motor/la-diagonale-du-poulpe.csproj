@@ -14,6 +14,7 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Remove="addons\WAT\**" />
+    <EmbeddedResource Remove="Sources\App\Assets\Settings\Models\**" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -37,6 +38,7 @@
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\BaseCharacter.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\Health.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\LifePoint.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\BattleConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\CompilerConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\GlobalSettings.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Characters\CharacterDataSetting.cs" />
@@ -73,17 +75,21 @@
     <Compile Include="Sources\App\Shared\Plugins\Initializers\InMemoryPlayerDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\LoadedDataInitializerResult.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\PlayerDataInitializer.cs" />
-    <Compile Include="Sources\App\Shared\Plugins\Preloaders\DataPreloader.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\BtnActionFrameContainer.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Compiler\Commands\ExecuteCodeCommand.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\ActionPointLeftContainer.cs" />
+	<Compile Include="Sources\App\Shared\Plugins\Preloaders\DataPreloader.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Preloaders\MainDataPreloader.cs" />
-    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Commands\ExecuteCodeCommand.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\FrameBtn.cs" />
-    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\RequestCommands\CompileCodeEditor.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Compiler\CompileCodeEditor.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\FrameManager.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Models\ActionFrame.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Models\HttpFramesResponse.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Request\ICommand.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Request\IHttpResponse.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Request\IRequest.cs" />
     <Compile Include="Sources\App\Shared\Plugins\UI\OnePlayerStatusBar\Scripts\OnePlayerStatusBar.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\GridBattle.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\Heart\Scripts\HeartBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\Scripts\HeartsLifeBar.cs" />
     <Compile Include="Sources\App\Shared\Signals\Signals.cs" />

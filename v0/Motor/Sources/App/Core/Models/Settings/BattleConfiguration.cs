@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings
 {
     /// <summary>
-    /// Main settings for the whole game
+    /// Contains configuration for battle mode
     /// </summary>
-    public class GlobalSettings
+    public class BattleConfiguration
     {
-        #region Properties
         /// <summary>
-        /// Compiler configuration
+        /// Square numbers on the grid height
         /// </summary>
-        public CompilerConfiguration Compiler { get; set; }
+        public int GridHeight { get; set; }
         /// <summary>
-        /// Configuration for battle mode
+        ///  /// <summary>
+        /// Square numbers on the grid width
         /// </summary>
-        public BattleConfiguration Battle { get; set; }
-        #endregion
+        /// </summary>
+        public int GridWidth { get; set; }
     }
 }

@@ -1,13 +1,19 @@
 using Godot;
-using ladiagonaledupoulpe.Sources.App.Game_Scenes._003_Code_Editor.scripts.Models.Commands;
+using ladiagonaledupoulpe.Sources.App.Game_Scenes._003_Code_Editor.scripts.Compiler.Models.Commands;
 using System;
 
 public class ValidateCode : Node
 {
 	// Called when the node enters the scene tree for the first time.
+	#region Fields
+	private TextEdit _textEditplayerCode;
+	private ExecuteCodeCommand _executeCodeCommand;
+	#endregion
 	public override void _Ready()
 	{
-		
+		_textEditplayerCode = GetTree().Root.GetNode<TextEdit>("Battle/Button/TxtCodePlayer");
+		_executeCodeCommand = GetTree().Root.GetNode<ExecuteCodeCommand>("Battle/ExecuteCodeCommand");
+
 	}
 
 	/// <summary>
@@ -15,13 +21,9 @@ public class ValidateCode : Node
 	/// </summary>
 	private void _on_Button_pressed()
 	{
-			string code = GetTree().Root.GetNode<TextEdit>("Node2D/Button/TxtCodePlayer").Text;
-			var compileCodeEditor = new CompileCodeEditor();
-			AddChild(compileCodeEditor);
-			Sprite sprite = GetTree().Root.GetNode<Sprite>("Node2D/Grid/Players/Poulpe");
-			HBoxContainer frameContainer = GetTree().Root.GetNode<HBoxContainer>("Node2D/FramesBtn/HBoxContainer");
-			compileCodeEditor.SendRequest(code, new ExecuteCodeCommand(sprite, frameContainer));
-
+		var compileCodeEditor = new CompileCodeEditor();
+		AddChild(compileCodeEditor);
+		compileCodeEditor.SendRequest(_textEditplayerCode.Text, _executeCodeCommand);
 	}
 
 }

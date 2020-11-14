@@ -1,4 +1,5 @@
 using Godot;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
 using ladiagonaledupoulpe.Sources.App.Game_Scenes._003_Code_Editor.Scripts;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes.Request;
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
@@ -9,17 +10,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-	/// <summary>
-	/// Send request for compile player code
-	/// </summary>
-	public class CompileCodeEditor : Node2D, IRequestCommand
-	{
+/// <summary>
+/// Send request for compile player code
+/// </summary>
+public class CompileCodeEditor : Node2D, IRequestCommand
+{
 	#region Properties
 	private static ICommand _callbackSuccess;
 	private HTTPRequest _httpRequest;
+	private CompilerConfiguration _compilerConfiguration;
 	#endregion
 
-
+	public override void _Ready()
+	{
+		GlobalDataService dataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
+		_compilerConfiguration = dataService.GlobalSettings.Compiler;
+		base._Ready();
+	}
 	#region Public method
 
 	/// <summary>
@@ -30,8 +37,8 @@ using System.Threading.Tasks;
 	/// <param name="callBackError">the method execute if error on request</param>
 	public void SendRequest(object data, ICommand callbackSucess, ICommand callBackError = null)
 	{
-		GlobalDataService dataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
-		var requestSettings = dataService.GlobalSettings.Compiler;
+		
+		
 		_callbackSuccess = callbackSucess;
 		_httpRequest = new HTTPRequest();
 
@@ -45,9 +52,9 @@ using System.Threading.Tasks;
 			{
 				 "Content-Length: "+ json.Length
 			};
-		headers.AddRange(requestSettings.Headers);
+		headers.AddRange(_compilerConfiguration.Headers);
 
-		var error = _httpRequest.Request($"{requestSettings.HostServer}/api/CodeEditor/Compile", headers.ToArray(), false, HTTPClient.Method.Post, json);
+		var error = _httpRequest.Request($"{_compilerConfiguration.HostServer}/api/CodeEditor/Compile", headers.ToArray(), false, HTTPClient.Method.Post, json);
 		if (error != Godot.Error.Ok)
 		{
 			GD.Print("An error occurred in the HTTP request.");
@@ -68,10 +75,9 @@ using System.Threading.Tasks;
 	{
 		var response = System.Text.Encoding.UTF8.GetString(body);
 		var objectResult = JsonConvert.DeserializeObject<HttpFramesResponse>(response);
-		this.AddChild((Node2D)_callbackSuccess);
 		_callbackSuccess.Execute(objectResult);
 		this.RemoveChild(_httpRequest);
-
+		_httpRequest.QueueFree();
 	}
 	#endregion
 

@@ -1,14 +1,22 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octo3 left all_000.png" type="Texture" id=1]
 [ext_resource path="res://Sources/App/Shared/Scenes/CodeEditor/Scripts/ValidateCode.cs" type="Script" id=2]
 [ext_resource path="res://Sources/App/Shared/Scenes/CodeEditor/Assets/Grid.png" type="Texture" id=3]
 [ext_resource path="res://Sources/App/Assets/Settings/TxtFont.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Sources/App/Shared/Scenes/CodeEditor/Scripts/ActionPointLeftContainer.cs" type="Script" id=5]
+[ext_resource path="res://Sources/App/Shared/Scenes/CodeEditor/Scripts/Compiler/Commands/ExecuteCodeCommand.cs" type="Script" id=6]
+[ext_resource path="res://Sources/App/Shared/Scenes/CodeEditor/Assets/RedPoint.png" type="Texture" id=7]
+[ext_resource path="res://Sources/App/Shared/Scenes/CodeEditor/Scripts/FrameManager.cs" type="Script" id=8]
+[ext_resource path="res://Sources/App/Shared/Scenes/CodeEditor/Scripts/BtnActionFrameContainer.cs" type="Script" id=9]
+[ext_resource path="res://Sources/App/Shared/Scenes/CodeEditor/Scripts/GridBattle.cs" type="Script" id=10]
 
-[node name="Node2D" type="Node2D"]
+[node name="Battle" type="Node2D"]
 position = Vector2( 2.82861, 0 )
 
-[node name="HTTPRequest" type="HTTPRequest" parent="."]
+[node name="ExecuteCodeCommand" type="Node2D" parent="."]
+position = Vector2( 2.11884, 142.094 )
+script = ExtResource( 6 )
 
 [node name="Button" type="Button" parent="."]
 margin_left = 1648.65
@@ -49,9 +57,10 @@ __meta__ = {
 position = Vector2( 765.688, 410.792 )
 scale = Vector2( 6, 6 )
 texture = ExtResource( 3 )
+script = ExtResource( 10 )
 
 [node name="Players" type="Node2D" parent="Grid"]
-position = Vector2( 96.308, 10.1462 )
+position = Vector2( 100.668, 8.75879 )
 
 [node name="Poulpe" type="Sprite" parent="Grid/Players"]
 scale = Vector2( 0.06, 0.07 )
@@ -61,13 +70,41 @@ __meta__ = {
 }
 
 [node name="FramesBtn" type="Node2D" parent="."]
-position = Vector2( 2.11893, 139.849 )
+position = Vector2( -4.61587, 7.39838 )
+script = ExtResource( 8 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="FramesBtn"]
-margin_left = 562.313
-margin_top = 693.119
-margin_right = 602.313
-margin_bottom = 733.119
+[node name="LbActionPointLeft" type="RichTextLabel" parent="FramesBtn"]
+margin_left = 68.8858
+margin_top = 775.504
+margin_right = 368.886
+margin_bottom = 835.503
+custom_fonts/normal_font = ExtResource( 4 )
+text = "Point d'action : "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnActionFrameContainer" type="HBoxContainer" parent="FramesBtn"]
+margin_left = 569.048
+margin_top = 827.815
+margin_right = 609.048
+margin_bottom = 867.815
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActionPointLeftContainer" type="TextureRect" parent="FramesBtn"]
+anchor_right = 0.653
+margin_left = 42.6536
+margin_top = 819.398
+margin_right = 419.654
+margin_bottom = 1196.4
+rect_scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 2
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
