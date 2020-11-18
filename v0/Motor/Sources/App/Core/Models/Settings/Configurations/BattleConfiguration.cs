@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings
+namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations
 {
     /// <summary>
     /// Contains configuration for battle mode

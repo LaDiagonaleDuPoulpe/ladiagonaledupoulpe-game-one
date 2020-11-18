@@ -38,8 +38,9 @@
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\BaseCharacter.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\Health.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\LifePoint.cs" />
-    <Compile Include="Sources\App\Core\Models\Settings\BattleConfiguration.cs" />
-    <Compile Include="Sources\App\Core\Models\Settings\CompilerConfiguration.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\Configurations\ApiConfiguration.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\Configurations\BattleConfiguration.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\Configurations\CompilerConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\GlobalSettings.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Characters\CharacterDataSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Characters\HealthDataSetting.cs" />
