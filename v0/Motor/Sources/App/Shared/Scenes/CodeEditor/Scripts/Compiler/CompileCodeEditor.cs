@@ -1,5 +1,6 @@
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations;
 using ladiagonaledupoulpe.Sources.App.Game_Scenes._003_Code_Editor.Scripts;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes.Request;
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
@@ -24,7 +25,7 @@ public class CompileCodeEditor : Node2D, IRequestCommand
 	public override void _Ready()
 	{
 		GlobalDataService dataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
-		_compilerConfiguration = dataService.GlobalSettings.Compiler;
+		_compilerConfiguration = dataService.GlobalSettings.Apis.Compiler;
 		base._Ready();
 	}
 	#region Public method

@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations
 {
     /// <summary>
-    /// Srttings in json file to organize all apis configurations (urls, headers settings, ...)
+    /// Default host configuration to define settings to connect to one api
     /// </summary>
-    public class ApiConfiguration
+    public abstract class BaseHostConfiguration
     {
         #region Properties
         /// <summary>
-        /// Compiler api configuration
+        /// Host server api url 
         /// </summary>
-        public CompilerConfiguration Compiler { get; set; }
+        public string HostServer { get; set; }
 
         /// <summary>
-        /// Game api configuration
+        /// Headers for configure request HTTP
         /// </summary>
-        public GameConfiguration Game { get; set; }
+        public IList<string> Headers { get; set; }
         #endregion
     }
 }
