@@ -1,6 +1,8 @@
 ﻿using Godot;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Initializers;
+using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Global;
+using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Player;
 using System;
 using System.Collections.Generic;
 using System.Linq;

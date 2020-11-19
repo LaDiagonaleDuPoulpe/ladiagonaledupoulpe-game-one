@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
+namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Global
 {
     /// <summary>
     /// Initialize the main data of the game
