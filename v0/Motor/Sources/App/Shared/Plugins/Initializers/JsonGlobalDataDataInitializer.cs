@@ -1,5 +1,6 @@
 ﻿using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations;
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
 using Newtonsoft.Json;
 using System;

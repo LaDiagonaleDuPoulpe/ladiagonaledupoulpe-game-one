@@ -4,6 +4,7 @@ using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Scenes;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts;
 using ladiagonaledupoulpe.Sources.App.Core.Models.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Scenes;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins;
 using ladiagonaledupoulpe.Sources.App.Shared.Services;

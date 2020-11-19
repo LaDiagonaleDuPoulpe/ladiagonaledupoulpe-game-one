@@ -1,4 +1,5 @@
 ﻿using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
 using System;

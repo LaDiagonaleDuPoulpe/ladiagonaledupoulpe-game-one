@@ -43,7 +43,7 @@
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\Battle\BattleConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\Apis\CompilerConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\Game\GameConfiguration.cs" />
-    <Compile Include="Sources\App\Core\Models\Settings\GlobalSettings.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\Configurations\GlobalSettings.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\Characters\CharacterDataSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\Characters\HealthDataSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\Characters\HeartHealthDataSetting.cs" />
@@ -113,7 +113,7 @@
     <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxExchangesItemSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxMessageContentSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxSetting.cs" />
-    <Compile Include="Sources\App\Core\Models\Settings\SceneConfigurationSetting.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\Configurations\Scenes\SceneConfigurationSetting.cs" />
     <Compile Include="Sources\App\Shared\Constants\KeyPressActionKeys.cs" />
     <Compile Include="Sources\App\Shared\Enums\DialogBox\DialogBoxActionType.cs" />
     <Compile Include="Sources\App\Shared\Enums\LoadingActionsType.cs" />
