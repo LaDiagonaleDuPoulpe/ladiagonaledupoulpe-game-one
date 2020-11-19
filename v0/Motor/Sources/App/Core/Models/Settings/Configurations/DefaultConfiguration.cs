@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations
 {
-    public class DefaultConfiguration
+    public abstract class DefaultConfiguration
     {
     }
 }

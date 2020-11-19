@@ -1,6 +1,7 @@
 ﻿using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Battle;
 using ladiagonaledupoulpe.Sources.App.Game_Scenes._003_Code_Editor.Scripts;
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
 using System;

@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations
+namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Battle
 {
     /// <summary>
     /// Contains configuration for battle mode
     /// </summary>
-    public class BattleConfiguration
+    public class BattleConfiguration : DefaultConfiguration
     {
         /// <summary>
         /// Square numbers on the grid height

@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations
+namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Apis
 {
     /// <summary>
     /// Default host configuration to define settings to connect to one api
     /// </summary>
-    public abstract class BaseHostConfiguration
+    public abstract class BaseHostConfiguration : DefaultConfiguration
     {
         #region Properties
         /// <summary>

@@ -1,4 +1,6 @@
 ﻿using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Apis;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Battle;
 using System;
 using System.Collections.Generic;
 using System.Linq;

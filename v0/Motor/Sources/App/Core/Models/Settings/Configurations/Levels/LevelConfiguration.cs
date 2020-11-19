@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations
+namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Levels
 {
     /// <summary>
     /// Configuration for one level, a level is one scene
     /// </summary>
-    public class LevelConfiguration : ILevelConfiguration
+    public class LevelConfiguration : DefaultConfiguration, ILevelConfiguration
     {
         #region Properties
         /// <summary>

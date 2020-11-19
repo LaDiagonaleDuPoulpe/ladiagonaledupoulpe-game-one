@@ -1,15 +1,16 @@
-﻿using System;
+﻿using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Game;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations
+namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Apis
 {
     /// <summary>
     /// Srttings in json file to organize all apis configurations (urls, headers settings, ...)
     /// </summary>
-    public class ApiConfiguration
+    public class ApiConfiguration : DefaultConfiguration
     {
         #region Properties
         /// <summary>
