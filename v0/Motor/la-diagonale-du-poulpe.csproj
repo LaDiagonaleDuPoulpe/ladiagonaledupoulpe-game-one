@@ -25,6 +25,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sources\App\Core\Interfaces\Models\Attacks\IWithDamage.cs" />
+    <Compile Include="Sources\App\Core\Interfaces\Requests\IHostConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\Heart.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\HeartsHealth.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\BaseStatePlayer.cs" />
@@ -53,7 +54,6 @@
     <Compile Include="Sources\App\Core\Base\Scenes\BaseScene.cs" />
     <Compile Include="Sources\App\Core\Base\Scenes\BaseActiveScene.cs" />
     <Compile Include="Sources\App\Core\Container-Scenes\Scripts\RootScene.cs" />
-    <Compile Include="Sources\App\Core\Interfaces\Configurations\LevelConfiguration.cs" />
     <Compile Include="Sources\App\Core\Interfaces\Scenes\IDataInit.cs" />
     <Compile Include="Sources\App\Core\Interfaces\Scenes\ILevelConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\Player.cs" />
@@ -130,6 +130,7 @@
     <Compile Include="Sources\App\Core\Interfaces\DialogBox\IDialogBoxManager.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\ExchangeSettingExtensionMethod.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\StringExtensionMethod.cs" />
+    <Compile Include="Sources\App\Shared\Tools\Http\JsonHttpRequest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\Scenes\home.json" />
@@ -145,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="addons\" />
+    <Folder Include="Sources\App\Core\Interfaces\Configurations\" />
     <Folder Include="Sources\App\Core\Models\Characters\Npcs\" />
     <Folder Include="Tests\" />
   </ItemGroup>

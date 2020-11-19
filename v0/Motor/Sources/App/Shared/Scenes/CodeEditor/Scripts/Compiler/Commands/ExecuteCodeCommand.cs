@@ -20,10 +20,8 @@ namespace ladiagonaledupoulpe.Sources.App.Game_Scenes._003_Code_Editor.scripts.C
 		#region Fields
 		private FrameManager _frameManager;
 		#endregion
-		
 
 		public ICommand NextCommand { get; set; }
-
 
 		#region Public 
 
@@ -42,8 +40,5 @@ namespace ladiagonaledupoulpe.Sources.App.Game_Scenes._003_Code_Editor.scripts.C
 
 		}
 		#endregion
-
-
-		
 	}
 }

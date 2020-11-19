@@ -12,7 +12,14 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes.Request
     /// </summary>
     public interface ICommand
     {
+        /// <summary>
+        /// Next command to execute after this one
+        /// </summary>
         ICommand NextCommand { get;  set; }
+
+        /// <summary>
+        /// Executes with the http response, from the server 
+        /// </summary>
         void Execute(IHttpResponse response);
     }
 }

@@ -1,6 +1,6 @@
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Base.Scenes;
-using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Configurations;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Levels;
 using ladiagonaledupoulpe.Sources.App.Shared.Constants;
 using System;
 

@@ -35,12 +35,10 @@ public class CompileCodeEditor : Node2D, IRequestCommand
 	/// Send request to Server for compile player code
 	/// </summary>
 	/// <param name="data">code from player</param>
-	/// <param name="callbackSucess">the method execute after compilation</param>
+	/// <param name="callbackSucess">the method execute after the request</param>
 	/// <param name="callBackError">the method execute if error on request</param>
 	public void SendRequest(object data, ICommand callbackSucess, ICommand callBackError = null)
-	{
-		
-		
+	{	
 		_callbackSuccess = callbackSucess;
 		_httpRequest = new HTTPRequest();
 
