@@ -1,4 +1,4 @@
-﻿using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Characters;
+﻿using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Characters;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
 using System.Collections.Generic;

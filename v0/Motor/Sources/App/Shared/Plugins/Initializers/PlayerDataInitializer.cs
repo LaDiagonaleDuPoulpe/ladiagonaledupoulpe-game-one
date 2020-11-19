@@ -1,6 +1,6 @@
 ﻿using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts;
-using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Characters;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Characters;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Initializers;
 using System;
