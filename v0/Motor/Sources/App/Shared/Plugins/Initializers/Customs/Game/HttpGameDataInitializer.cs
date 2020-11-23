@@ -23,7 +23,9 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Gam
         #region Constructors
         public HttpGameDataInitializer()
         {
-            this._request = new JsonHttpRequest<DefaultApiResult<gamemodel.Game>>(new GameConfiguration());
+            GameConfiguration configuration = new GameConfiguration();
+
+            this._request = new JsonHttpRequest<DefaultApiResult<gamemodel.Game>>(configuration);
         }
         #endregion
 

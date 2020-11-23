@@ -16,11 +16,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Ap
     {
         #region Properties
         /// <summary>
-        /// Host server api url 
-        /// </summary>
-        public string HostServer { get; set; }
-
-        /// <summary>
         /// Headers for configure request HTTP
         /// </summary>
         public IList<string> Headers { get; set; }
@@ -28,7 +23,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Ap
         /// <summary>
         /// Relative url (without host server)
         /// </summary>
-        public string RelativeUrl { get; set; }
+        public string Url { get; set; }
 
         /// <summary>
         /// Default method to send to the server

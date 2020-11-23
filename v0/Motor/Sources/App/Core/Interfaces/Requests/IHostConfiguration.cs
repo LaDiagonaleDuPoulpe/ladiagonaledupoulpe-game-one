@@ -13,19 +13,14 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Interfaces.Requests
     public interface IHostConfiguration
     {
         /// <summary>
-        /// Host server api url 
-        /// </summary>
-        string HostServer { get; set; }
-
-        /// <summary>
         /// Headers for configure request HTTP
         /// </summary>
         IList<string> Headers { get; set; }
 
         /// <summary>
-        /// Relative url (without host server)
+        /// Full url (without host server)
         /// </summary>
-        string RelativeUrl { get; set; }
+        string Url { get; set; }
 
         /// <summary>
         /// Default method to send to the server
