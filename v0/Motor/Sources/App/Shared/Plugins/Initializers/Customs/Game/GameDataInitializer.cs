@@ -11,6 +11,13 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Gam
     /// </summary>
     public abstract class GameDataInitializer : BaseDataInitializer
     {
+        #region Constructors
+        public GameDataInitializer()
+        {
+
+        }
+        #endregion
+
         #region Public methods
         #endregion
     }

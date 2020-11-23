@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Game
+namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Apis
 {
     /// <summary>
     /// Api access configuration to the game data

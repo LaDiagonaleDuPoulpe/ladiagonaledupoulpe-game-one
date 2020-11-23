@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations
+namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings
 {
     /// <summary>
     /// Main settings for the whole game
