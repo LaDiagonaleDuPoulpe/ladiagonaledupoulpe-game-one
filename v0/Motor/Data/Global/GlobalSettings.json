@@ -9,7 +9,7 @@
       ]
     },
     "Game": {
-      "HostServer": "http://localhost:52671",
+      "HostServer": "https://localhost:44364",
       "Headers": [
         "User-Agent: Pirulo/1.0 (Godot)",
         "Accept: */*",

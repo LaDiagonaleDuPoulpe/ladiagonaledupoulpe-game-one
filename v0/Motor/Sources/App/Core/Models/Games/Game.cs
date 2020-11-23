@@ -11,7 +11,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
     /// It represents the current game
     /// Usually, this game gets all settings to define how to use levels, magics rules, synale rules, ...
     /// </summary>
-    public class Game : IHttpResponse
+    public class Game
     {
         #region Properties
         /// <summary>

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Game;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Results;
 
 namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Game
 {
@@ -16,13 +17,13 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Gam
     public class HttpGameDataInitializer : GameDataInitializer
     {
         #region Fields
-        private JsonHttpRequest<gamemodel.Game> _request = null;
+        private JsonHttpRequest<DefaultApiResult<gamemodel.Game>> _request = null;
         #endregion
 
         #region Constructors
         public HttpGameDataInitializer()
         {
-            this._request = new JsonHttpRequest<gamemodel.Game>(new GameConfiguration());
+            this._request = new JsonHttpRequest<DefaultApiResult<gamemodel.Game>>(new GameConfiguration());
         }
         #endregion
 

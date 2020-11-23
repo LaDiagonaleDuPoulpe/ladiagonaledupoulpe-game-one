@@ -40,6 +40,8 @@
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\Health.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\LifePoint.cs" />
     <Compile Include="Sources\App\Core\Models\Games\Game.cs" />
+    <Compile Include="Sources\App\Core\Models\Results\DefaultApiResult.cs" />
+    <Compile Include="Sources\App\Core\Models\Results\ErrorApiResult.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\Apis\ApiConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\Apis\BaseHostConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\Battle\BattleConfiguration.cs" />
