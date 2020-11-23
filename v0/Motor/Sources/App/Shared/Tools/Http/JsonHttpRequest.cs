@@ -84,7 +84,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Tools.Http
 				var objectResult = JsonConvert.DeserializeObject<T>(response);
 
 				this.EmitSignal(nameof(BeforeCommandExecuted), objectResult);
-				_callbackSuccess.Execute(objectResult);
+				_callbackSuccess?.Execute(objectResult);
 				this.EmitSignal(nameof(AfterCommandExecuted), objectResult);
             }
             catch (Exception)

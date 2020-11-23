@@ -54,7 +54,8 @@ public class CompileCodeEditor : Node2D, IRequestCommand
 			};
 		headers.AddRange(_compilerConfiguration.Headers);
 
-		var error = _httpRequest.Request($"{_compilerConfiguration.HostServer}/api/CodeEditor/Compile", headers.ToArray(), false, HTTPClient.Method.Post, json);
+
+		var error = _httpRequest.Request(_compilerConfiguration.Url, headers.ToArray(), false, HTTPClient.Method.Post, json);
 		if (error != Godot.Error.Ok)
 		{
 			GD.Print("An error occurred in the HTTP request.");

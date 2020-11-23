@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Game;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Results;
+using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
 
 namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Game
 {
@@ -23,8 +24,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Gam
         #region Constructors
         public HttpGameDataInitializer()
         {
-            GameConfiguration configuration = new GameConfiguration();
+            GameConfiguration configuration = null;
+            GlobalDataService dataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
 
+            configuration = dataService.GlobalSettings.Apis.Game;
+               
             this._request = new JsonHttpRequest<DefaultApiResult<gamemodel.Game>>(configuration);
         }
         #endregion
