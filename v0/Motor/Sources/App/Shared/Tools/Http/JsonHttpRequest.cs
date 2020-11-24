@@ -22,9 +22,26 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Tools.Http
 		private IHostConfiguration _hostConfiguration = null;
 
 		#region Signals
+		/// <summary>
+		/// Use this signal to know when get the response and not starting to execute the command
+		/// </summary>
+		/// <param name="result"></param>
 		public delegate void BeforeCommandExecuted(T result);
+
+		/// <summary>
+		/// Use this signal to know when get the response and the command is executed
+		/// </summary>
+		/// <param name="result"></param>
 		public delegate void AfterCommandExecuted(T result);
+
+		/// <summary>
+		/// Use it to get the error when receiving the response
+		/// </summary>
 		public delegate void OnErrorBeforeCommandExecuted();
+
+		/// <summary>
+		/// Use it to get the error when execute the command
+		/// </summary>
 		public delegate void OnErrorAfterCommandExecuted();
         #endregion
         #endregion

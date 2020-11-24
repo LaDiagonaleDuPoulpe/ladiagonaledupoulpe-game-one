@@ -1,7 +1,7 @@
 {
   "Apis": {
     "Compiler": {
-      "HostServer": "http://localhost:52671/api/CodeEditor/Compile",
+      "Url": "http://localhost:52671/api/CodeEditor/Compile",
       "Headers": [
         "User-Agent: Pirulo/1.0 (Godot)",
         "Accept: */*",
@@ -9,7 +9,7 @@
       ]
     },
     "Game": {
-      "HostServer": "https://localhost:44364",
+      "Url": "https://localhost:44364/api/Game",
       "Headers": [
         "User-Agent: Pirulo/1.0 (Godot)",
         "Accept: */*",

@@ -10,7 +10,7 @@ using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Game;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Results;
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
 
-namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Game
+namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Game
 {
     /// <summary>
     /// Initializes all data from the game with http request
@@ -22,24 +22,29 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Gam
         #endregion
 
         #region Constructors
-        public HttpGameDataInitializer()
-        {
-            GameConfiguration configuration = null;
-            GlobalDataService dataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
-
-            configuration = dataService.GlobalSettings.Apis.Game;
-               
-            this._request = new JsonHttpRequest<DefaultApiResult<gamemodel.Game>>(configuration);
-        }
+        public HttpGameDataInitializer() {}
         #endregion
 
         #region Public methods
         public override void Load()
         {
+            this.PrepareHttpRequest();
+
             HttpGameSuccessResponse response = new HttpGameSuccessResponse(this);
             this.AddChild(response);
 
             this._request.SendRequest(new { isNew = true }, response, null);
+        }
+        #endregion
+
+        #region Internal methods
+        private void PrepareHttpRequest()
+        {
+            GameConfiguration configuration = null;
+            GlobalDataService dataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
+
+            configuration = dataService.GlobalSettings.Apis.Game;               
+            this._request = new JsonHttpRequest<DefaultApiResult<gamemodel.Game>>(configuration);
         }
         #endregion
     }

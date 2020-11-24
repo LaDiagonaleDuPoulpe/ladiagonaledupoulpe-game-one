@@ -43,6 +43,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         /// </summary>
         protected void LoadMainData(DataInitializerStep step)
         {
+            if (this.DataPreloader.IsConnected(LoadDataType.DataLoaded.ToString(), this, nameof(globalDataInitializer_DataLoaded)))
+            {
+                this.DataPreloader.Disconnect(LoadDataType.DataLoaded.ToString(), this, nameof(globalDataInitializer_DataLoaded));
+            }
+
             this.DataPreloader.Connect(LoadDataType.DataLoaded.ToString(), this, nameof(globalDataInitializer_DataLoaded));
             this.DataPreloader.Load(step);
         }

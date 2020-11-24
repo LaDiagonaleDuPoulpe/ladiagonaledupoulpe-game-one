@@ -1,7 +1,6 @@
 ﻿using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Results;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes.Request;
-using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Game;
 using gamemodel = ladiagonaledupoulpe.Sources.App.Core.Models.Games;
 using System;
 using System.Collections.Generic;
