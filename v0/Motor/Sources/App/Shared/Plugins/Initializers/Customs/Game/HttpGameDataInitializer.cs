@@ -45,6 +45,8 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Ga
 
             configuration = dataService.GlobalSettings.Apis.Game;               
             this._request = new JsonHttpRequest<DefaultApiResult<gamemodel.Game>>(configuration);
+
+            this.AddChild(this._request);
         }
         #endregion
     }
