@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Characters
+namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Characters
 {
     /// <summary>
     /// Setting to intialize heart of the player

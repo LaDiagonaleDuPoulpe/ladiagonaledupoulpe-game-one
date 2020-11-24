@@ -1,5 +1,7 @@
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Apis;
 using ladiagonaledupoulpe.Sources.App.Game_Scenes._003_Code_Editor.Scripts;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes.Request;
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
@@ -24,7 +26,7 @@ public class CompileCodeEditor : Node2D, IRequestCommand
 	public override void _Ready()
 	{
 		GlobalDataService dataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
-		_compilerConfiguration = dataService.GlobalSettings.Compiler;
+		_compilerConfiguration = dataService.GlobalSettings.Apis.Compiler;
 		base._Ready();
 	}
 	#region Public method
@@ -33,12 +35,10 @@ public class CompileCodeEditor : Node2D, IRequestCommand
 	/// Send request to Server for compile player code
 	/// </summary>
 	/// <param name="data">code from player</param>
-	/// <param name="callbackSucess">the method execute after compilation</param>
+	/// <param name="callbackSucess">the method execute after the request</param>
 	/// <param name="callBackError">the method execute if error on request</param>
 	public void SendRequest(object data, ICommand callbackSucess, ICommand callBackError = null)
-	{
-		
-		
+	{	
 		_callbackSuccess = callbackSucess;
 		_httpRequest = new HTTPRequest();
 
@@ -54,7 +54,8 @@ public class CompileCodeEditor : Node2D, IRequestCommand
 			};
 		headers.AddRange(_compilerConfiguration.Headers);
 
-		var error = _httpRequest.Request($"{_compilerConfiguration.HostServer}/api/CodeEditor/Compile", headers.ToArray(), false, HTTPClient.Method.Post, json);
+
+		var error = _httpRequest.Request(_compilerConfiguration.Url, headers.ToArray(), false, HTTPClient.Method.Post, json);
 		if (error != Godot.Error.Ok)
 		{
 			GD.Print("An error occurred in the HTTP request.");

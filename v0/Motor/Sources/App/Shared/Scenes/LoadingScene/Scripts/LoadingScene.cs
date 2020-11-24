@@ -1,5 +1,6 @@
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Scenes;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins;
 using ladiagonaledupoulpe.Sources.App.Shared.Services;
@@ -71,9 +72,11 @@ public class LoadingScene : Node2D
 
 	private void HidePlayerNodes()
 	{
-		AutoLoaderAccessor loader = this.GetNode<AutoLoaderAccessor>("/root/AutoLoaderAccessor");
-		loader.CurrentPlayer.Visible = false;
-		loader.StatusBar.SetVisibility(false);
+		Player player = this.GetNode<Player>("/root/CurrentPlayer");
+		OnePlayerStatusBar statusBar = this.GetNode<OnePlayerStatusBar>("/root/OnePlayerStatusBar");
+
+		player.Visible = false;
+		statusBar.SetVisibility(false);
 	}
 
 	private void AttachSignals()

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings
+namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Scenes
 {
     /// <summary>
     /// Configuration setting to load all resources from a scene, and scene itself

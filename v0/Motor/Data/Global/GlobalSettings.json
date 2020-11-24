@@ -1,15 +1,24 @@
 {
-  "Compiler": {
-    "HostServer": "http://localhost:52671",
-    "Headers": [
-      "User-Agent: Pirulo/1.0 (Godot)",
-      "Accept: */*",
-      "Content-Type: application/json"
-    ]
-  },
+  "Apis": {
+    "Compiler": {
+      "Url": "http://localhost:52671/api/CodeEditor/Compile",
+      "Headers": [
+        "User-Agent: Pirulo/1.0 (Godot)",
+        "Accept: */*",
+        "Content-Type: application/json"
+      ]
+    },
+    "Game": {
+      "Url": "https://localhost:44364/api/Game",
+      "Headers": [
+        "User-Agent: Pirulo/1.0 (Godot)",
+        "Accept: */*",
+        "Content-Type: application/json"
+      ]
+    }
+  }, 
   "Battle": {
     "GridHeight": 6,
-    "GridWidth" : 11
+    "GridWidth": 11
   }
-    
 }

@@ -1,6 +1,8 @@
 ﻿using Godot;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Initializers;
+using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Global;
+using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Player;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,9 +67,8 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
 
         private void DefinePlayerInitializer()
         {
-            PlayerDataInitializer initializer = new InMemoryPlayerDataInitializer();
-
-            this._dataInitializerGroups[DataInitializerStep.NewGame].Add(initializer);
+            this._dataInitializerGroups[DataInitializerStep.NewGame].Add(new Customs.Game.HttpGameDataInitializer());
+            this._dataInitializerGroups[DataInitializerStep.NewGame].Add(new InMemoryPlayerDataInitializer());
         }
         #endregion
 

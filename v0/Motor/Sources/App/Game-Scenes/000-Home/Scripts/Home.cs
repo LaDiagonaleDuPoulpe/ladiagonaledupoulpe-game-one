@@ -1,7 +1,7 @@
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Base.Scenes;
-using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Configurations;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Levels;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
 

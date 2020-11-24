@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Apis;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Battle;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,9 +16,10 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings
     {
         #region Properties
         /// <summary>
-        /// Compiler configuration
+        /// List of all api configurations
         /// </summary>
-        public CompilerConfiguration Compiler { get; set; }
+        public ApiConfiguration Apis { get; set; }
+
         /// <summary>
         /// Configuration for battle mode
         /// </summary>

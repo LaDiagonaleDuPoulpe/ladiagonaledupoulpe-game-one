@@ -25,6 +25,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sources\App\Core\Interfaces\Models\Attacks\IWithDamage.cs" />
+    <Compile Include="Sources\App\Core\Interfaces\Requests\IHostConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\Heart.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\HeartsHealth.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\BaseStatePlayer.cs" />
@@ -38,19 +39,24 @@
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\BaseCharacter.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\Health.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\LifePoint.cs" />
-    <Compile Include="Sources\App\Core\Models\Settings\BattleConfiguration.cs" />
-    <Compile Include="Sources\App\Core\Models\Settings\CompilerConfiguration.cs" />
+    <Compile Include="Sources\App\Core\Models\Games\Game.cs" />
+    <Compile Include="Sources\App\Core\Models\Results\DefaultApiResult.cs" />
+    <Compile Include="Sources\App\Core\Models\Results\ErrorApiResult.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\Configurations\Apis\ApiConfiguration.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\Configurations\Apis\BaseHostConfiguration.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\Configurations\Battle\BattleConfiguration.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\Configurations\Apis\CompilerConfiguration.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\Configurations\Apis\GameConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\GlobalSettings.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Characters\CharacterDataSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Characters\HealthDataSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Characters\HeartHealthDataSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Characters\PlayerCharacterDataSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\DefaultConfiguration.cs" />
-    <Compile Include="Sources\App\Core\Models\Settings\Configurations\LevelConfiguration.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\Configurations\Levels\LevelConfiguration.cs" />
     <Compile Include="Sources\App\Core\Base\Scenes\BaseScene.cs" />
     <Compile Include="Sources\App\Core\Base\Scenes\BaseActiveScene.cs" />
     <Compile Include="Sources\App\Core\Container-Scenes\Scripts\RootScene.cs" />
-    <Compile Include="Sources\App\Core\Interfaces\Configurations\LevelConfiguration.cs" />
     <Compile Include="Sources\App\Core\Interfaces\Scenes\IDataInit.cs" />
     <Compile Include="Sources\App\Core\Interfaces\Scenes\ILevelConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\Player.cs" />
@@ -68,13 +74,16 @@
     <Compile Include="Sources\App\Shared\Plugins\AutoLoaderAccessor.cs" />
     <Compile Include="Sources\App\Shared\Plugins\DestroyOnAnimationFinished.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\BaseDataInitializer.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Initializers\Customs\Game\HttpGameSuccessResponse.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\DataInitializerGroup.cs" />
-    <Compile Include="Sources\App\Shared\Plugins\Initializers\GlobalDataDataInitializer.cs" />
-    <Compile Include="Sources\App\Shared\Plugins\Initializers\JsonGlobalDataDataInitializer.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Initializers\Customs\Game\GameDataInitializer.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Initializers\Customs\Global\GlobalDataDataInitializer.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Initializers\Customs\Game\HttpGameDataInitializer.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Initializers\Customs\Global\JsonGlobalDataDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\ProxyDataInitializer.cs" />
-    <Compile Include="Sources\App\Shared\Plugins\Initializers\InMemoryPlayerDataInitializer.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Initializers\Customs\Player\InMemoryPlayerDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\LoadedDataInitializerResult.cs" />
-    <Compile Include="Sources\App\Shared\Plugins\Initializers\PlayerDataInitializer.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Initializers\Customs\Player\PlayerDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\BtnActionFrameContainer.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Compiler\Commands\ExecuteCodeCommand.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\ActionPointLeftContainer.cs" />
@@ -109,7 +118,7 @@
     <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxExchangesItemSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxMessageContentSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\DialogBox\DialogBoxSetting.cs" />
-    <Compile Include="Sources\App\Core\Models\Settings\SceneConfigurationSetting.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\Scenes\SceneConfigurationSetting.cs" />
     <Compile Include="Sources\App\Shared\Constants\KeyPressActionKeys.cs" />
     <Compile Include="Sources\App\Shared\Enums\DialogBox\DialogBoxActionType.cs" />
     <Compile Include="Sources\App\Shared\Enums\LoadingActionsType.cs" />
@@ -125,6 +134,7 @@
     <Compile Include="Sources\App\Core\Interfaces\DialogBox\IDialogBoxManager.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\ExchangeSettingExtensionMethod.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\StringExtensionMethod.cs" />
+    <Compile Include="Sources\App\Shared\Tools\Http\JsonHttpRequest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\Scenes\home.json" />
@@ -140,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="addons\" />
+    <Folder Include="Sources\App\Core\Interfaces\Configurations\" />
     <Folder Include="Sources\App\Core\Models\Characters\Npcs\" />
     <Folder Include="Tests\" />
   </ItemGroup>

@@ -1,6 +1,7 @@
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Models.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Linq;

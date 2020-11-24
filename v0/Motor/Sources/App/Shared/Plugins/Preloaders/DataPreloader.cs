@@ -39,7 +39,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Preloaders
             this._globalDataInitializer = this.GetNode<ProxyDataInitializer>("/root/ProxyDataInitializer");
 
             this._globalDataInitializer.Connect(LoadDataType.DataLoaded.ToString(), this, nameof(globalDataInitializer_DataLoaded));
-            this._globalDataInitializer.CurrentStep = Enums.DataInitializerStep.GlobalData;
+            this._globalDataInitializer.CurrentStep = step;
             this._globalDataInitializer.Load();
         }
         #endregion

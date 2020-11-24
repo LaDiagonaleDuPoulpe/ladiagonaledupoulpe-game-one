@@ -1,5 +1,6 @@
 using ladiagonaledupoulpe.Sources.App.Core.Models.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Scenes;
 using System.Collections.Generic;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Interfaces.Scenes

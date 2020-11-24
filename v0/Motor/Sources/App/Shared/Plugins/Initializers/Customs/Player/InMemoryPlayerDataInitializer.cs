@@ -1,4 +1,4 @@
-﻿using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Characters;
+﻿using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Characters;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
+namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Player
 {
     /// <summary>
     /// In memory data initializer for a player

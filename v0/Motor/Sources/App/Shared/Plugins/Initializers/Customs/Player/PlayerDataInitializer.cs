@@ -1,6 +1,6 @@
 ﻿using Godot;
-using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts;
-using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Characters;
+using modelsplayer = ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Characters;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Initializers;
 using System;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
+namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Player
 {
     /// <summary>
     /// Initializer of all data of the player
@@ -43,7 +43,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
         /// <param name="setting"></param>
         protected virtual void UpdateValuesOfPlayer(PlayerCharacterDataSetting setting)
         {
-            Player player = this.GetNode<Player>("/root/CurrentPlayer");
+            modelsplayer.Player player = this.GetNode<modelsplayer.Player>("/root/CurrentPlayer");
             player.InitializeData(setting);
         }
         #endregion
