@@ -1,4 +1,5 @@
 ﻿using Godot;
+using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Initializers;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,27 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
         #endregion
 
         #region Public methods
-        public abstract void Load();
+        public virtual void Load()
+        {
+            this.DoLoad();
+            this.DefineDataIsLoaded();
+        }
+        #endregion
+
+        #region Internal methods
+        /// <summary>
+        /// Define data is loaded and launch signal to tell about it
+        /// </summary>
+        protected void DefineDataIsLoaded()
+        {
+            this.IsLoaded = true;
+            this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, new Godot.Object());
+        }
+
+        /// <summary>
+        /// Defines this method to set the behavior to get the data
+        /// </summary>
+        protected virtual void DoLoad() { }
         #endregion
 
         #region Properties

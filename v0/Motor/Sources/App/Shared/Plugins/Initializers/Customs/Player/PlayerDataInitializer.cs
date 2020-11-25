@@ -16,8 +16,8 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Pla
     /// </summary>
     public abstract class PlayerDataInitializer : BaseDataInitializer
     {
-        #region Public methods
-        public override void Load()
+        #region Internal methods
+        protected override void DoLoad()
         {
             PlayerCharacterDataSetting setting = new PlayerCharacterDataSetting();
 
@@ -28,9 +28,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Pla
 
             this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, setting);
         }
-        #endregion
 
-        #region Internal methods
         /// <summary>
         /// You must override this methode to set some values from setting
         /// </summary>

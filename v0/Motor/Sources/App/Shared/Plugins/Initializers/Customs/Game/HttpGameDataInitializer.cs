@@ -35,6 +35,13 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Ga
 
         public override void Load()
         {
+            this.DoLoad();
+        }
+        #endregion
+
+        #region Internal methods
+        protected override void DoLoad()
+        {
             this.PrepareHttpRequest();
 
             HttpGameSuccessResponse response = new HttpGameSuccessResponse(this);
@@ -42,9 +49,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Ga
 
             this._request.SendRequest(new { isNew = true }, response, null);
         }
-        #endregion
 
-        #region Internal methods
         private void PrepareHttpRequest()
         {
             GameConfiguration configuration = null;
@@ -65,8 +70,9 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Ga
         private void Request_OnAfterCommandExecuted(GameApiResult result)
         {
             gamemodel.Game currentGame = this.GetNode<AutoLoaderAccessor>("/root/AutoLoaderAccessor").CurrentGame;
-
             currentGame.Initialize(result.Item);
+
+            this.DefineDataIsLoaded();
         }
         #endregion
     }
