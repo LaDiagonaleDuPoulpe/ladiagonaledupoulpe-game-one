@@ -59,7 +59,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Ga
 
         private void AttachSignalsFromRequest(JsonHttpRequest request)
         {
-            request.Connect("AfterCommandExecuted", this, nameof(Request_OnAfterCommandExecuted));
+            request.Connect(nameof(JsonHttpRequest.AfterCommandExecuted), this, nameof(Request_OnAfterCommandExecuted));
         }
 
         private void Request_OnAfterCommandExecuted(GameApiResult result)
