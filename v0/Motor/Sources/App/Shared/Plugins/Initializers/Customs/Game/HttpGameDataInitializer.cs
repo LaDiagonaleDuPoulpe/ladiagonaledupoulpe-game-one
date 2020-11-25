@@ -48,7 +48,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Ga
         private void PrepareHttpRequest()
         {
             GameConfiguration configuration = null;
-            GlobalDataService dataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
+            GlobalDataService dataService = this.GetNode<AutoLoaderAccessor>("/root/AutoLoaderAccessor").GlobalDataService;
 
             configuration = dataService.GlobalSettings.Apis.Game;               
             this._request = new GameJsonHttpRequest(configuration);
@@ -64,7 +64,9 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Ga
 
         private void Request_OnAfterCommandExecuted(GameApiResult result)
         {
-            GD.Print("Request_OnAfterCommandExecuted => ", result);
+            gamemodel.Game currentGame = this.GetNode<AutoLoaderAccessor>("/root/AutoLoaderAccessor").CurrentGame;
+
+            currentGame.Initialize(result.Item);
         }
         #endregion
     }
