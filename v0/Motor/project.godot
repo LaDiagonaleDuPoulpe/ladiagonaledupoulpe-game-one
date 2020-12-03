@@ -46,6 +46,7 @@ config/icon="res://icon.png"
 
 ResourcesSceneLoader="*res://Sources/App/Shared/Plugins/Resources/ResourcesSceneLoader.cs"
 GlobalDataService="*res://Sources/App/Shared/Services/Data/GlobalDataService.cs"
+CurrentGame="*res://Sources/App/Core/Models/Games/Game.cs"
 CurrentPlayer="*res://Sources/App/Core/Models/Characters/Players/Player.tscn"
 OnePlayerStatusBar="*res://Sources/App/Shared/Plugins/UI/OnePlayerStatusBar/OnePlayerStatusBar.tscn"
 DialogBox="*res://Sources/App/Shared/Scenes/Dialog/DialogBox.tscn"

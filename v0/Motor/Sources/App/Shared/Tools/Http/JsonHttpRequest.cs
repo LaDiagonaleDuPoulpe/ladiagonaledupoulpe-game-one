@@ -12,8 +12,10 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Tools.Http
 {
 	/// <summary>
 	/// Sends http request to get json result and parse it to and object
+	/// Due to bug in signal detection with godot when we use generic class, 
+	/// you have to create a specific class that inherits this one to override the json serialization
 	/// </summary>
-    public class JsonHttpRequest<T> : Node, IRequestCommand where T: Godot.Object, IHttpResponse
+    public abstract class JsonHttpRequest : Node, IRequestCommand
 	{
 		#region Fields
 		private ICommand _callbackSuccess = null;
@@ -26,22 +28,26 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Tools.Http
 		/// Use this signal to know when get the response and not starting to execute the command
 		/// </summary>
 		/// <param name="result"></param>
-		public delegate void BeforeCommandExecuted(T result);
+		[Signal]
+		public delegate void BeforeCommandExecuted(Godot.Object result);
 
 		/// <summary>
 		/// Use this signal to know when get the response and the command is executed
 		/// </summary>
 		/// <param name="result"></param>
-		public delegate void AfterCommandExecuted(T result);
+		[Signal]
+		public delegate void AfterCommandExecuted(Godot.Object result);
 
 		/// <summary>
 		/// Use it to get the error when receiving the response
 		/// </summary>
+		[Signal]
 		public delegate void OnErrorBeforeCommandExecuted();
 
 		/// <summary>
 		/// Use it to get the error when execute the command
 		/// </summary>
+		[Signal]
 		public delegate void OnErrorAfterCommandExecuted();
         #endregion
         #endregion
@@ -98,10 +104,10 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Tools.Http
             try
             {
 				var response = System.Text.Encoding.UTF8.GetString(body);
-				var objectResult = JsonConvert.DeserializeObject<T>(response);
+				var objectResult = this.Convert(response);
 
 				this.EmitSignal(nameof(BeforeCommandExecuted), objectResult);
-				_callbackSuccess?.Execute(objectResult);
+				_callbackSuccess?.Execute(objectResult as IHttpResponse);
 				this.EmitSignal(nameof(AfterCommandExecuted), objectResult);
             }
             catch (Exception)
@@ -110,6 +116,12 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Tools.Http
 				this.EmitSignal(nameof(OnErrorAfterCommandExecuted));
             }
 		}
+
+		/// <summary>
+		/// Overrides this method to convert json string result as the specific result you want
+		/// </summary>
+		/// <returns></returns>
+		protected abstract Godot.Object Convert(string jsonResponse);
 		#endregion
 	}
 }

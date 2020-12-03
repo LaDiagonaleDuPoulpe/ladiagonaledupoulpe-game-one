@@ -43,16 +43,16 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         /// </summary>
         protected void LoadMainData(DataInitializerStep step)
         {
-            if (this.DataPreloader.IsConnected(LoadDataType.DataLoaded.ToString(), this, nameof(globalDataInitializer_DataLoaded)))
+            if (this.DataPreloader.IsConnected(LoadDataType.DataLoaded.ToString(), this, nameof(DataPreloader_DataLoaded)))
             {
-                this.DataPreloader.Disconnect(LoadDataType.DataLoaded.ToString(), this, nameof(globalDataInitializer_DataLoaded));
+                this.DataPreloader.Disconnect(LoadDataType.DataLoaded.ToString(), this, nameof(DataPreloader_DataLoaded));
             }
 
-            this.DataPreloader.Connect(LoadDataType.DataLoaded.ToString(), this, nameof(globalDataInitializer_DataLoaded));
+            this.DataPreloader.Connect(LoadDataType.DataLoaded.ToString(), this, nameof(DataPreloader_DataLoaded));
             this.DataPreloader.Load(step);
         }
 
-        private void globalDataInitializer_DataLoaded(Godot.Object sender, Godot.Object data)
+        private void DataPreloader_DataLoaded(Godot.Object sender, Godot.Object data)
         {
             this.ExecuteAfterDataLoaded();
         }

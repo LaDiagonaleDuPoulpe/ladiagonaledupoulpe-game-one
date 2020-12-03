@@ -1,6 +1,7 @@
 ﻿using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Interfaces.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Games;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Preloaders;
 using ladiagonaledupoulpe.Sources.App.Shared.Services;
@@ -28,6 +29,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins
         private ResourcesSceneLoader _resourcesSceneLoader = null;
         private ProxyDataInitializer _proxyDataInitializer = null;
         private DataPreloader _dataPreloader = null;
+        private Game _currentGame = null;
         #endregion
 
         #region Public methods
@@ -37,6 +39,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins
 
             this.GlobalDataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
             this.CurrentPlayer = this.GetNode<Player>("/root/CurrentPlayer");
+            this.CurrentGame = this.GetNode<Game>("/root/CurrentGame");
             this.StatusBar = this.GetNode<OnePlayerStatusBar>("/root/OnePlayerStatusBar");
             this.DialogBoxManager = this.GetNode<IDialogBoxManager>("/root/DialoxBoxManager");
             this.LoadingScene = this.GetNode<LoadingScene>("/root/LoadingScene");
@@ -86,6 +89,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins
         /// Preloader of data, using the data initializer proxy <c>ProxyDataInitializer</c>
         /// </summary>
         public DataPreloader DataPreloader { get => _dataPreloader; private set => _dataPreloader = value; }
+
+        /// <summary>
+        /// Access of the current game (all data of the current game)
+        /// </summary>
+        public Game CurrentGame { get => _currentGame; private set => _currentGame = value; }
         #endregion
     }
 }

@@ -15,20 +15,15 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Glo
     /// </summary>
     public abstract class GlobalDataDataInitializer : BaseDataInitializer
     {
-        #region Public methods
-        public override void Load()
+        #region Internal methods
+        protected override void DoLoad()
         {
             GlobalDataService globalDataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
-
             globalDataService.GlobalSettings = this.GetGlobalSettings();
-
-            this.IsLoaded = true;
-
-            this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, new Godot.Object());
         }
         #endregion
 
-        #region Internal methods
+        #region Properties
         /// <summary>
         /// Get global settings instance
         /// </summary>

@@ -42,11 +42,13 @@
     <Compile Include="Sources\App\Core\Models\Games\Game.cs" />
     <Compile Include="Sources\App\Core\Models\Results\DefaultApiResult.cs" />
     <Compile Include="Sources\App\Core\Models\Results\ErrorApiResult.cs" />
+    <Compile Include="Sources\App\Core\Models\Results\GameApiResult.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\Apis\ApiConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\Apis\BaseHostConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\Battle\BattleConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\Apis\CompilerConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\Apis\GameConfiguration.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\Games\GameSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\GlobalSettings.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Characters\CharacterDataSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Characters\HealthDataSetting.cs" />
@@ -134,6 +136,7 @@
     <Compile Include="Sources\App\Core\Interfaces\DialogBox\IDialogBoxManager.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\ExchangeSettingExtensionMethod.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\StringExtensionMethod.cs" />
+    <Compile Include="Sources\App\Shared\Tools\Http\Customs\GameJsonHttpRequest.cs" />
     <Compile Include="Sources\App\Shared\Tools\Http\JsonHttpRequest.cs" />
   </ItemGroup>
   <ItemGroup>

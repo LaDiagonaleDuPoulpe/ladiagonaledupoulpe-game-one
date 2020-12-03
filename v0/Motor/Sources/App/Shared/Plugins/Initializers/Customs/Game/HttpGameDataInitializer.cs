@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Game;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Results;
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
+using Godot;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.Http.Customs;
 
 namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Game
 {
@@ -18,7 +20,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Ga
     public class HttpGameDataInitializer : GameDataInitializer
     {
         #region Fields
-        private JsonHttpRequest<DefaultApiResult<gamemodel.Game>> _request = null;
+        private JsonHttpRequest _request = null;
         #endregion
 
         #region Constructors
@@ -26,7 +28,19 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Ga
         #endregion
 
         #region Public methods
+        public override void _Ready()
+        {
+            base._Ready();
+        }
+
         public override void Load()
+        {
+            this.DoLoad();
+        }
+        #endregion
+
+        #region Internal methods
+        protected override void DoLoad()
         {
             this.PrepareHttpRequest();
 
@@ -41,12 +55,26 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Ga
         private void PrepareHttpRequest()
         {
             GameConfiguration configuration = null;
-            GlobalDataService dataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
+            GlobalDataService dataService = this.GetNode<AutoLoaderAccessor>("/root/AutoLoaderAccessor").GlobalDataService;
 
             configuration = dataService.GlobalSettings.Apis.Game;               
-            this._request = new JsonHttpRequest<DefaultApiResult<gamemodel.Game>>(configuration);
+            this._request = new GameJsonHttpRequest(configuration);
 
             this.AddChild(this._request);
+            this.AttachSignalsFromRequest(this._request);
+        }
+
+        private void AttachSignalsFromRequest(JsonHttpRequest request)
+        {
+            request.Connect(nameof(JsonHttpRequest.AfterCommandExecuted), this, nameof(Request_OnAfterCommandExecuted));
+        }
+
+        private void Request_OnAfterCommandExecuted(GameApiResult result)
+        {
+            gamemodel.Game currentGame = this.GetNode<AutoLoaderAccessor>("/root/AutoLoaderAccessor").CurrentGame;
+            currentGame.Initialize(result.Item);
+
+            this.DefineDataIsLoaded();
         }
         #endregion
     }

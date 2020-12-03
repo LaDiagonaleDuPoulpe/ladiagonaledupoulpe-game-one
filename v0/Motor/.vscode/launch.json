@@ -3,7 +3,7 @@
     "configurations": [        
         {
             "name": "Run",
-            "type": "coreclr",
+            "type": "clr",
             "request": "launch",
             "preLaunchTask": "build",
             "program": "C:/Program Files/Godot/Godot_v3.2.3-stable_mono_win64/Godot_v3.2.3-stable_mono_win64.exe",
