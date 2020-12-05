@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Sources/App/Shared/Scenes/CodeEditor/GridPlayCode/Scripts/Players/PlayerActionGrid.cs" type="Script" id=2]
+[ext_resource path="res://Sources/App/Core/Models/Characters/Players/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sources/App/Shared/Scenes/CodeEditor/Assets/Grid.png" type="Texture" id=4]
+[ext_resource path="res://Sources/App/Shared/Scenes/CodeEditor/GridPlayCode/Scripts/MovingCharacter.cs" type="Script" id=5]
+
+
+[node name="Grid" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Players" type="Node2D" parent="."]
+position = Vector2( 1369.7, 463.345 )
+scale = Vector2( 6, 6 )
+
+[node name="Player" parent="Players" instance=ExtResource( 3 )]
+position = Vector2( 0.720947, -0.0269775 )
+scale = Vector2( 0.13, 0.13 )
+script = ExtResource( 2 )
+
+[node name="Grid" type="Sprite" parent="."]
+position = Vector2( 765.688, 410.792 )
+scale = Vector2( 6, 6 )
+texture = ExtResource( 4 )

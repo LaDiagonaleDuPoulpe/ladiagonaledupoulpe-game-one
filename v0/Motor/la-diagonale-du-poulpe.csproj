@@ -49,6 +49,7 @@
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\Apis\CompilerConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\Apis\GameConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Games\GameSetting.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\BattleConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\GlobalSettings.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Characters\CharacterDataSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Characters\HealthDataSetting.cs" />
@@ -85,22 +86,23 @@
     <Compile Include="Sources\App\Shared\Plugins\Initializers\ProxyDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\Customs\Player\InMemoryPlayerDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\LoadedDataInitializerResult.cs" />
-    <Compile Include="Sources\App\Shared\Plugins\Initializers\Customs\Player\PlayerDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\BtnActionFrameContainer.cs" />
-    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Compiler\Commands\ExecuteCodeCommand.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Models\Base\BaseCompilation.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Preloaders\DataPreloader.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Initializers\Customs\Player\PlayerDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\ActionPointLeftContainer.cs" />
-	<Compile Include="Sources\App\Shared\Plugins\Preloaders\DataPreloader.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Preloaders\MainDataPreloader.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\FrameBtn.cs" />
-    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Compiler\CompileCodeEditor.cs" />
-    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\FrameManager.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\TextEditor\Scripts\CompileCodeEditor.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\MovingSceneManager.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Models\ActionFrame.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Models\HttpFramesResponse.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Request\ICommand.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Request\IHttpResponse.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Request\IRequest.cs" />
     <Compile Include="Sources\App\Shared\Plugins\UI\OnePlayerStatusBar\Scripts\OnePlayerStatusBar.cs" />
-    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\GridBattle.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\GridPlayCode\Scripts\MovingCharacter.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\CodeEditor\GridPlayCode\Scripts\Players\PlayerActionGrid.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\Heart\Scripts\HeartBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\Scripts\HeartsLifeBar.cs" />
     <Compile Include="Sources\App\Shared\Signals\Signals.cs" />
@@ -148,7 +150,8 @@
     <None Include="Sources\App\Core\Container-Scenes\RootScene.tscn" />
     <None Include="Sources\App\Assets\Settings\Audiowide-Regular.ttf" />
     <None Include="Data\Global\GlobalSettings.json" />
-    <None Include="Sources\App\Shared\Scenes\CodeEditor\CodeEditor.tscn" />
+    <None Include="Sources\App\Shared\Scenes\CodeEditor\MovingScene.tscn" />
+    <None Include="Sources\App\Shared\Scenes\CodeEditor\TextEditor\TextEditor.tscn" />
     <None Include="Sources\App\Shared\Services\README.md" />
   </ItemGroup>
   <ItemGroup>

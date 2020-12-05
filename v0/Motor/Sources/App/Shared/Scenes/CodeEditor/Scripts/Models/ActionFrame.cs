@@ -10,7 +10,7 @@ namespace ladiagonaledupoulpe.Sources.App.Game_Scenes._003_Code_Editor.Scripts
 	/// <summary>
 	/// Player code action frame 
 	/// </summary>
-	public class ActionFrame : IHttpResponse
+	public class ActionFrame : Godot.Object, IHttpResponse
 	{
 		public Position PlayerPosition { get; set; }
 
