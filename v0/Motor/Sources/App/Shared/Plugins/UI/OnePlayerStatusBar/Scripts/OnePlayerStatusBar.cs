@@ -9,6 +9,7 @@ public class OnePlayerStatusBar : Node2D
 {
 	#region Fields
 	private HeartsLifeBar _lifeBar = null;
+	private SynaleBar _synaleBar = null;
 	#endregion
 
 	#region Public methods
@@ -16,12 +17,18 @@ public class OnePlayerStatusBar : Node2D
 	{
 		CanvasLayer layer = this.GetNode<CanvasLayer>("CanvasLayer");
 		this._lifeBar = layer.GetNode<HeartsLifeBar>("HeartsLifeBar");
+		this._synaleBar = layer.GetNode<SynaleBar>("SynaleBar");
 	}
 
-	public void InitializeValues(LifePoint point)
+	public void InitializeLife(LifePoint point)
 	{
 		this._lifeBar.Update(point.CurrentValue, point.MaxValue);
 	}
+
+	public void InitializeSynale(PowerPoint point)
+    {
+		this._synaleBar.Initialize(point);
+    }
 
 	public void LifeChanged(LifePoint point)
 	{
@@ -35,6 +42,7 @@ public class OnePlayerStatusBar : Node2D
 	{
 		this._lifeBar.Visible = isVisible;
 		this.Visible = isVisible;
+		this._synaleBar.Visible = isVisible;
 	}
 	#endregion
 }

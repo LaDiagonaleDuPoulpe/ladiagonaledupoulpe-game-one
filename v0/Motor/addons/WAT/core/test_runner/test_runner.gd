@@ -71,16 +71,25 @@ const Executor = preload("res://addons/WAT/core/test/executable.gd")
 const TestCase = preload("res://addons/WAT/core/test/case.gd")
 
 func run(test = _tests.pop_front().new()) -> void:
-	var testcase = TestCase.new(test.Title(), test.get_script().resource_path as String)
-	test.SetUp(testcase)
+	var testcase: TestCase
+	if test.get_script() is CSharpScript:
+		testcase = TestCase.new(test.Title(), test.get_script().resource_path as String)
+		test.SetUp(testcase)
+	elif test.get_script() is GDScript:
+		testcase = TestCase.new(test.title(), test.path())
+		test.setup(testcase)
 	var executable = Executor.new(test)
 	var start_time = OS.get_ticks_msec()
 	add_child(executable)
 	# Add Strategy Here?
-	if _strategy.has("method"):
+	if _strategy.has("method") and test.get_script() is CSharpScript:
 		executable._methods = test.GetTestMethod(_strategy.method)
-	else:
+	elif _strategy.has("method") and test.get_script() is GDScript:
+		executable._methods = [{"title": _strategy.method, "args": []}]
+	elif test.get_script() is CSharpScript:
 		executable._methods = test.GetMethods()
+	elif test.get_script() is GDScript:
+		executable._methods = test.methods()
 	executable._start()
 	var time = OS.get_ticks_msec() - start_time
 	testcase.time_taken = time / 1000.0
@@ -88,6 +97,7 @@ func run(test = _tests.pop_front().new()) -> void:
 	testcase.calculate()
 	_cases.append(testcase.to_dictionary())
 	remove_child(executable)
+
 	
 func end() -> void:
 	print("Ending WAT Test Runner")
@@ -96,7 +106,10 @@ func end() -> void:
 	test_results.deposit(_cases)
 	emit_signal("ended")
 	clear()
-	get_tree().quit()
+	if ProjectSettings.get("RunInEngine"):
+		get_tree().quit()
+	else:
+		queue_free()
 
 func _create_test_double_registry() -> void:
 	if not ProjectSettings.has_setting("WAT/TestDouble"):
@@ -106,5 +119,6 @@ func _create_test_double_registry() -> void:
 func clear() -> void:
 	if ProjectSettings.has_setting("WAT/TestDouble"):
 		ProjectSettings.get_setting("WAT/TestDouble").clear()
-		ProjectSettings.get_setting("WAT/TestDouble").free()
+		if ProjectSettings.get("RunInEngine"):
+			ProjectSettings.get_setting("WAT/TestDouble").free()
 

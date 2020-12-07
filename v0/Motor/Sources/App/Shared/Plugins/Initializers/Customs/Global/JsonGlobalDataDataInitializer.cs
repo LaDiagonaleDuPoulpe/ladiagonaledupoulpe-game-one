@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Global
+namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Global
 {
     /// <summary>
     /// Initializes the main data of the game with a json file

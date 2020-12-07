@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Apis
 {
     /// <summary>
-    /// Settings Compiler Server
+    /// Api access configuration to the player data
     /// </summary>
-    public class CompilerConfiguration : BaseHostConfiguration
+    public class PlayerApiConfiguration : BaseHostConfiguration
     {
     }
 }

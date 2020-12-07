@@ -5,7 +5,7 @@ const TEST: bool = true
 const YIELD: String = "finished"
 const CRASH_IF_TEST_FAILS: bool = true
 
-var Assert
+var asserts
 var direct: Reference
 var rerun_method: bool = false
 
@@ -15,8 +15,8 @@ var p: Dictionary
  
 var _watcher: Reference
 var _parameters: Reference
-var _yielder: Timer
-var _testcase: Reference
+var Yielder: Timer
+var Testcase: Reference
 var _recorder
 
 signal described
@@ -33,12 +33,15 @@ func post():
 func end():
 	pass
 
-func methods() -> PoolStringArray:
-	var output: PoolStringArray = []
+func methods() -> Array:
+	var output: Array = []
 	for method in get_method_list():
 		if method.name.begins_with("test"):
-			output.append(method.name)
+			output.append({"title": method.name, "args": []})
 	return output
+	
+static func get_instance_base_type() -> String:
+	return "WAT.Test"
 	
 # I think the best idea is to remove everything
 # Change this to a c# test suite object
@@ -46,10 +49,10 @@ func methods() -> PoolStringArray:
 # We may also need to create an external script when loading tests
 # so we can collect them via c# attributes
 func setup(testcase):
-	Assert = load("res://addons/WAT/core/assertions/Assertions.cs").new()
+	asserts = load("res://addons/WAT/core/assertions/GDscript/assertions.gd").new()
 	direct = load("res://addons/WAT/core/double/factory.gd").new()
-	_testcase = testcase # No changes needed
-	_yielder = load("res://addons/WAT/core/test/yielder.gd").new() # Research C# Yield
+	Testcase = testcase # No changes needed
+	Yielder = load("res://addons/WAT/core/test/yielder.gd").new() # Research C# Yield
 	_watcher = load("res://addons/WAT/core/test/watcher.gd").new() # Research signal-interoperation
 	_parameters = load("res://addons/WAT/core/test/parameters.gd").new()# Use C# Attributes
 	_recorder = load("res://addons/WAT/core/test/recorder.gd").new() # Maybe require more research
@@ -62,8 +65,8 @@ func record(who: Object, properties: Array) -> Node:
 	
 func _ready() -> void:
 	p = _parameters.parameters
-	Assert.assertions.connect("asserted", _testcase, "_on_asserted")
-	connect("described", _testcase, "_on_test_method_described")
+	asserts.connect("asserted", Testcase, "_on_asserted")
+	connect("described", Testcase, "_on_test_method_described")
 
 func any():
 	return preload("any.gd").new()
@@ -104,11 +107,13 @@ func simulate(obj, times, delta):
 
 func until_signal(emitter: Object, event: String, time_limit: float) -> Node:
 	watch(emitter, event)
-	return _yielder.until_signal(time_limit, emitter, event)
+	return Yielder.until_signal(time_limit, emitter, event)
 
 func until_timeout(time_limit: float) -> Node:
-	return _yielder.until_timeout(time_limit)
+	return Yielder.until_timeout(time_limit)
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE:
 		_watcher.clear()
+		Yielder.free()
+		_recorder.free()

@@ -1,9 +1,13 @@
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts.State;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Games;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Characters;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Synales;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
+using ladiagonaledupoulpe.Sources.App.Shared.Plugins;
 using System;
+using System.Diagnostics;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 {
@@ -16,16 +20,41 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 		#endregion
 
 		#region Fields
+		private RulesSet _rules = null;
+		private Synale _synalePower = null;
 		private AnimatedSprite _animatedSprite = null;
 		private StateMachinePlayer _stateMachine = null;
+
+		#region Signals
+		/// <summary>
+		/// Connect to this signal to get the init power point 
+		/// </summary>
+		[Signal]
+		public delegate void SynaleInitialized(PowerPoint point);
+		#endregion
 		#endregion
 
 		#region Public methods
+		/// <summary>
+		/// Puts player on the scene, with defaults settings
+		/// </summary>
+		/// <param name="position"></param>
+		public void PutOnScene(Vector2 position, int zindex = 1)
+		{
+			this.Position = position;
+			this.ZIndex = zindex;
+		}
+
 		public override void _Ready()
 		{
 			base._Ready();
 			this._stateMachine = new StateMachinePlayer(this);
 			this._animatedSprite = this.GetNode<AnimatedSprite>("AnimatedSprite");
+
+			this._rules = this.GetNode<Game>("/root/CurrentGame").RulesSet;
+
+			this._synalePower = new Synale();
+			this.AddChild(this._synalePower);
 		}
 
 		public override void _PhysicsProcess(float delta)
@@ -69,6 +98,14 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 			this._animatedSprite.FlipV = isVertical;
 			this._animatedSprite.FlipH = isRight;
 		}
+
+		public override void InitializeData(CharacterDataSetting setting)
+		{
+			PlayerCharacterDataSetting playerSetting = setting as PlayerCharacterDataSetting;
+
+			this.InitializeLifeData(playerSetting);
+			this.InitializeSynaleData(playerSetting);
+		}
 		#endregion
 
 		#region Internal methods
@@ -77,19 +114,33 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 			base.Initialize();
 		}
 
-		protected override void Die()
-		{
-			base.Die();
-			this._stateMachine.Die();
-		}
-
-		public override void InitializeData(CharacterDataSetting setting)
-		{
-			PlayerCharacterDataSetting playerSetting = setting as PlayerCharacterDataSetting;
-
+		private void InitializeLifeData(PlayerCharacterDataSetting playerSetting)
+        {
 			this.MainHealth.Initialize(playerSetting.Health.CurrentValue, playerSetting.Health.MaxValue);
-			base.InitializeData(setting);
+			this._stateMachine.Initialize();
+
+			base.InitializeData(playerSetting);
 		}
+
+		private void InitializeSynaleData(PlayerCharacterDataSetting playerSetting)
+        {
+			var point = new PowerPoint(playerSetting.SynalePower.CurrentValue, playerSetting.SynalePower.MaxValue);
+
+			this._synalePower.Initialize(point);
+			this.EmitSignal(nameof(SynaleInitialized), point);
+		}
+
+		protected override void DoDie()
+		{
+			if( this._synalePower.ActToReborn() )
+            {
+				base.DoDie();
+				this._stateMachine.Die();
+            }
+		}
+		#endregion
+
+		#region Properties
 		#endregion
 	}
 }

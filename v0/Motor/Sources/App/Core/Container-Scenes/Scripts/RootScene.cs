@@ -19,7 +19,9 @@ public class RootScene : BaseScene
 {
 	#region Fields
 	private Node2D _lastScene = null;
-	private ProxyDataInitializer _globalDataInitializer = null;
+	private Timer _currentDyingTimer = null;
+	private Camera2D _globalCamera = null;
+	private DyingScene _dyingScene = null;	
 	#endregion
 
 	#region Public methods
@@ -33,13 +35,23 @@ public class RootScene : BaseScene
 	{
 		base._Input(@event);
 	}
+
+	public void PlayerDie(Godot.Object sender)
+	{
+		this._currentDyingTimer.Start(1.2F);
+	}
 	#endregion
 
 	#region Internal methods
 	private void Initialize()
 	{
-		this.LoadingScene.Connect(LoadingActionsType.Begin.ToString(), this, nameof(LoadingScene_Start));
-		this.LoadingScene.Connect(LoadingActionsType.End.ToString(), this, nameof(LoadingScene_End));
+		this._dyingScene = this.GetNode<DyingScene>("DyingScene");
+		this._currentDyingTimer = this.GetNode<Timer>("DyingTimer");
+		this._globalCamera = this.GetNode<Camera2D>("MainCamera");
+
+		this.LoadingScene.Connect(nameof(LoadingScene.Begin), this, nameof(LoadingScene_Start));
+		this.LoadingScene.Connect(nameof(LoadingScene.End), this, nameof(LoadingScene_End));
+		this.ConnectToActivateCameraEvent(this._dyingScene);
 
 		this.LoadingScene.Launch(new LevelConfiguration()
 		{
@@ -54,16 +66,60 @@ public class RootScene : BaseScene
 
 	private void LoadingScene_End(Node2D nextScene)
 	{
+		this.RemoveLastScene();
+
+		if (nextScene != null)
+		{
+			this.AddChild(nextScene);
+			this._lastScene = nextScene;
+			this.ConnectToActivateCameraEvent(nextScene);
+		}
+	}
+
+	private void ConnectToActivateCameraEvent(Node2D scene)
+	{
+		scene.Connect(nameof(BaseActiveScene.ActivateCamera), this, nameof(ActivateCamera));
+	}
+
+	private void ActivateCamera(string cameraKey)
+	{
+		this._globalCamera.ClearCurrent();
+		this._globalCamera.Current = true;
+	}
+
+	private void RemoveLastScene()
+	{
 		if (this._lastScene != null)
 		{
+			if (this._lastScene.IsConnected(nameof(BaseActiveScene.ActivateCamera), this, nameof(ActivateCamera)))
+			{
+				this._lastScene.Disconnect(nameof(BaseActiveScene.ActivateCamera), this, nameof(ActivateCamera));
+			}
+
 			this.RemoveChild(this._lastScene);
 		}
-		this.AddChild(nextScene);
+	}
 
-		this._lastScene = nextScene;
+	private void DisplayDyingScene()
+	{
+		this.RemoveLastScene();
+		this._dyingScene.Display();
+	}
+
+	private void _on_Timer_timeout()
+	{
+		this.DisplayDyingScene();
+	}
+
+	protected override void DefineCurrentCamera()
+	{
+		this._globalCamera.Current = true;
 	}
 	#endregion
 
 	#region Properties
 	#endregion
 }
+
+
+

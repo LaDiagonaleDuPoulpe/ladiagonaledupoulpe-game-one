@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Player
+namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Player
 {
     /// <summary>
     /// Initializer of all data of the player
@@ -26,7 +26,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Pla
 
             this.IsLoaded = true;
 
-            this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, setting);
+            this.EmitSignal(nameof(DataLoaded), this, setting);
         }
 
         /// <summary>

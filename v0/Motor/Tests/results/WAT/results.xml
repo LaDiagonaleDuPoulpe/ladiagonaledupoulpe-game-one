@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
-<testsuites failures="0" name="TestXML" tests="1" time="0.552">
-<testsuite failures="0" name="Given A Signal Watcher" tests="1" time="0.003">
-<testcase name="WhenWeWatchASignalFromAnObjectWithNoBoundVariables" time="0">
+<testsuites failures="0" name="TestXML" tests="1" time="3.455">
+<testsuite failures="0" name="AutoloaderPocTest" tests="1" time="0.006">
+<testcase name="TestCalling" time="0.011">
 </testcase>
 </testsuite>
 </testsuites>

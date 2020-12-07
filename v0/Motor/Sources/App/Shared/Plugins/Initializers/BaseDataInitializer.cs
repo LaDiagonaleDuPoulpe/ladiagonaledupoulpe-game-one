@@ -47,7 +47,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
         protected void DefineDataIsLoaded()
         {
             this.IsLoaded = true;
-            this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, new Godot.Object());
+            this.EmitSignal(nameof(DataLoaded), this, new Godot.Object());
         }
 
         /// <summary>

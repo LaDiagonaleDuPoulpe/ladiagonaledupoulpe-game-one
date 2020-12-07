@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://Sources/App/Game-Scenes/999-Dying-Player/DyingScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sources/App/Core/Container-Scenes/Scripts/RootScene.cs" type="Script" id=2]
 
 [node name="Root" type="Node2D"]
 script = ExtResource( 2 )
+
+[node name="DyingTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DyingScene" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[node name="MainCamera" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+[connection signal="timeout" from="DyingTimer" to="." method="_on_Timer_timeout"]

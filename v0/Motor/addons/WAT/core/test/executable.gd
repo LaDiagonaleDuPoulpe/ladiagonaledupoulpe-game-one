@@ -47,7 +47,7 @@ func _change_state() -> void:
 	
 func _start():
 	_state = State.START
-	_test.Start()
+	_test.Start() if _test.get_script() is CSharpScript else _test.start()
 	_next()
 	
 func _pre():
@@ -57,28 +57,33 @@ func _pre():
 		_next()
 		return
 	_state = State.PRE
-	_test.Pre()
+	_test.Pre() if _test.get_script() is CSharpScript else _test.pre()
 	_next()
 	
 func _execute():
 	_state = State.EXECUTE
-	_method = _methods.pop_back()
+	if _test.get_script() is GDScript and _test.rerun_method:
+		_method = _method
+	else:
+		_method = _methods.pop_back()
 	_test.Testcase.add_method(_method.title)
-	_test.callv(_method.title, _method.args)
+	_test.callv(_method.title, _method.args) 
 	_next()
 	
 func _post():
 	_test.Testcase.methods.back().time = (OS.get_ticks_msec() - time) / 1000.0
 	_state = State.POST
-	_test.Post()
+	_test.Post() if _test.get_script() is CSharpScript else _test.pre()
 	_next()
 	
 func _end():
 	_state = State.END
-	_test.End()
+	_test.End() if _test.get_script() is CSharpScript else _test.end()
 	emit_signal("completed")
 	
 func _exit_tree() -> void:
+	if _test.get_script() is GDScript:
+		_test.free()
 	queue_free()
 	
 func start():

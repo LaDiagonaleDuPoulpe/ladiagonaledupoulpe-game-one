@@ -81,11 +81,11 @@ public class LoadingScene : Node2D
 
 	private void AttachSignals()
 	{
-		this._resourcesSceneLoader.Connect(LoadingActionsType.Begin.ToString(), this, nameof(BeginLoadingResources));
-		this._resourcesSceneLoader.Connect(LoadingActionsType.BeginLoadingResource.ToString(), this, nameof(BeginLoadingOneResource));
-		this._resourcesSceneLoader.Connect(LoadingActionsType.End.ToString(), this, nameof(EndLoadingResources));
-		this._resourcesSceneLoader.Connect(LoadingActionsType.EndLoadingResource.ToString(), this, nameof(EndLoadingOneResource));
-		this._resourcesSceneLoader.Connect(LoadingActionsType.Reinit.ToString(), this, nameof(ReinitProgressBars));
+		this._resourcesSceneLoader.Connect(nameof(ResourcesSceneLoader.Begin), this, nameof(BeginLoadingResources));
+		this._resourcesSceneLoader.Connect(nameof(ResourcesSceneLoader.BeginLoadingResource), this, nameof(BeginLoadingOneResource));
+		this._resourcesSceneLoader.Connect(nameof(ResourcesSceneLoader.End), this, nameof(EndLoadingResources));
+		this._resourcesSceneLoader.Connect(nameof(ResourcesSceneLoader.EndLoadingResource), this, nameof(EndLoadingOneResource));
+		this._resourcesSceneLoader.Connect(nameof(ResourcesSceneLoader.Reinit), this, nameof(ReinitProgressBars));
 	}
 
 	private void BeginLoadingResources(int nbResources)
@@ -93,7 +93,7 @@ public class LoadingScene : Node2D
 		this.Visible = true;
 		this.FilesNumber = nbResources;
 		this.CurrentFilesLoadingNumber = 0;
-		this.EmitSignal(LoadingActionsType.Begin.ToString());
+		this.EmitSignal(nameof(Begin));
 	}
 
 	private void EndLoadingResources(Node nextScene)
@@ -101,7 +101,7 @@ public class LoadingScene : Node2D
 		this.Visible = false;
 
 		this.ReinitProgressBars();
-		this.EmitSignal(LoadingActionsType.End.ToString(), nextScene);
+		this.EmitSignal(nameof(End), nextScene);
 	}
 
 	private void ReinitProgressBars()

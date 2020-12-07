@@ -36,11 +36,10 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// Observes this event to know when here is no life
         /// </summary>
         [Signal]
-        public delegate void LifeIsGone();
+        public delegate void LifeIsGone(Godot.Object sender);
         #endregion
 
         private Vector2 _velocity = Vector2.Zero;
-        private Vector2 _screenSize;
         private Health _health = null;
         #endregion
 
@@ -48,7 +47,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         public override void _Ready()
         {
             base._Ready();
-            this.ScreenSize = this.GetViewport().Size;
             this.MainHealth = this.GetNode<Health>("Health");
 
             this.Initialize();
@@ -60,17 +58,27 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// <param name="setting">Setting of the character. Settings from a data initializer</param>
         public virtual void InitializeData(CharacterDataSetting setting)
         {
-            this.EmitSignal(CharacterLifeSignal.HealthInitialized.ToString(), 
+            this.CanMove = true;
+            this.EmitSignal(nameof(HealthInitialized), 
                             new LifePoint(setting.Health.CurrentValue, setting.Health.MaxValue));
         }
 
         /// <summary>
         /// Hits the health of the character
         /// </summary>
-        /// <param name="damageValue"></param>
+        /// <param name="damageValue">Positive value to decrease</param>
         public void Hit(int damageValue)
         {
             this.MainHealth.Hit(damageValue);
+        }
+
+        /// <summary>
+        /// Restore life value on current one
+        /// </summary>
+        /// <param name="value">Positive value to increase</param>
+        public void Restore(int value)
+        {
+            this.MainHealth.Restore(value);
         }
 
         /// <summary>
@@ -91,26 +99,26 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// </summary>
         protected virtual void Initialize() 
         {
-            this.MainHealth.Connect(CharacterLifeSignal.HealthChanged.ToString(), this, nameof(HealthIsChanged));
-            this.MainHealth.Connect(CharacterLifeSignal.LifeIsGone.ToString(), this, nameof(HealthIsGone));
+            this.MainHealth.Connect(nameof(Health.HealthChanged), this, nameof(HealthIsChanged));
+            this.MainHealth.Connect(nameof(Health.LifeIsGone), this, nameof(Die));
         }
 
         protected virtual void HealthIsChanged(LifePoint point)
         {
             // TODO: 15/08/2020, play hint animation
-            this.EmitSignal(CharacterLifeSignal.HealthChanged.ToString(), point);
+            this.EmitSignal(nameof(HealthChanged), point);
         }
 
-        protected virtual void HealthIsGone()
+        protected virtual void Die(Godot.Object sender)
         {
-            this.Die();
-            this.EmitSignal(CharacterLifeSignal.LifeIsGone.ToString());
+            this.DoDie();
+            this.EmitSignal(nameof(LifeIsGone), this);
         }
 
         /// <summary>
         ///  Overrides it to add custom code about the death of the character
         /// </summary>
-        protected virtual void Die() 
+        protected virtual void DoDie() 
         {
             this.CanMove = false;
         }
@@ -118,15 +126,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
 
         #region Properties
         public Vector2 Velocity { get => this._velocity; protected set => this._velocity = value; }
-
-        /// <summary>
-        /// Size of the game window.
-        /// </summary>
-        public Vector2 ScreenSize
-        {
-            get => this._screenSize;
-            private set => this._screenSize = value;
-        }
 
         /// <summary>
         /// How fast the player will move (pixels/sec)

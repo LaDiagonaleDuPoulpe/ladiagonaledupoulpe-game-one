@@ -33,22 +33,27 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         {
             base._Ready();
             this.AutoLoaderAccessor = this.GetNode<AutoLoaderAccessor>("/root/AutoLoaderAccessor");
-            this.DataPreloader = this.AutoLoaderAccessor.DataPreloader;
+			this.DataPreloader = this.AutoLoaderAccessor.DataPreloader;
         }
         #endregion
 
         #region Internal methods
         /// <summary>
+        /// Defines the default current camera of the current scene
+        /// </summary>
+        protected abstract void DefineCurrentCamera();
+
+        /// <summary>
         /// Load all data from one step, with main data initializer
         /// </summary>
         protected void LoadMainData(DataInitializerStep step)
         {
-            if (this.DataPreloader.IsConnected(LoadDataType.DataLoaded.ToString(), this, nameof(DataPreloader_DataLoaded)))
+            if (this.DataPreloader.IsConnected(nameof(DataPreloader.DataLoaded), this, nameof(DataPreloader_DataLoaded)))
             {
-                this.DataPreloader.Disconnect(LoadDataType.DataLoaded.ToString(), this, nameof(DataPreloader_DataLoaded));
+                this.DataPreloader.Disconnect(nameof(DataPreloader.DataLoaded), this, nameof(DataPreloader_DataLoaded));
             }
 
-            this.DataPreloader.Connect(LoadDataType.DataLoaded.ToString(), this, nameof(DataPreloader_DataLoaded));
+            this.DataPreloader.Connect(nameof(DataPreloader.DataLoaded), this, nameof(DataPreloader_DataLoaded));
             this.DataPreloader.Load(step);
         }
 

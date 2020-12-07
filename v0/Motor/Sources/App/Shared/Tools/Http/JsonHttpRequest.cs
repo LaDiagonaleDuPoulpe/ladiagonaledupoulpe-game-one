@@ -110,7 +110,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Tools.Http
 				_callbackSuccess?.Execute(objectResult as IHttpResponse);
 				this.EmitSignal(nameof(AfterCommandExecuted), objectResult);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 				this._callBackError?.Execute(null);
 				this.EmitSignal(nameof(OnErrorAfterCommandExecuted));

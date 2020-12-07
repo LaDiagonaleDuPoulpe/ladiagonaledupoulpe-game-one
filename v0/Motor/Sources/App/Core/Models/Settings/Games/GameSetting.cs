@@ -18,9 +18,9 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Games
         public DateTime CreatedDate { get; set; }
 
         /// <summary>
-        /// Power of using the synale invocation
+        /// Rules set of the current game
         /// </summary>
-        public int SynalePower { get; set; }
+        public RuleSetSetting RulesSet { get; set; }
         #endregion
     }
 }

@@ -22,11 +22,19 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         public StateMachinePlayer(Player player)
         {
             this._player = player;
-            this.ChangeState(new IdleStatePlayer(this, player) { CurrentDirection = Direction.Left  } );
+            this.Initialize();
         }
         #endregion
 
         #region Public methods
+        /// <summary>
+        /// Starts the state of the player
+        /// </summary>
+        public void Initialize()
+        {
+            this.ChangeState(new IdleStatePlayer(this, this._player) { CurrentDirection = Direction.Left  } );
+        }
+
         /// <summary>
         /// Changes the current state of the player
         /// </summary>

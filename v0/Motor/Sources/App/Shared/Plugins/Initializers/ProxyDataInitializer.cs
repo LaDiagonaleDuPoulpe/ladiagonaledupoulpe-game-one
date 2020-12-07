@@ -1,8 +1,7 @@
 ﻿using Godot;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Initializers;
-using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Global;
-using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Custom.Player;
+using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Global;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +37,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
 
         public void Initializer_DataLoaded(Godot.Object sender,  Godot.Object data)
         {
-            this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, data);
+            this.EmitSignal(nameof(DataLoaded), this, data);
         }
         #endregion
 
@@ -51,7 +50,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
             foreach (var item in this._dataInitializerGroups)
             {
                 this.AddChild(item.Value as Node);
-                item.Value.Connect(LoadDataType.DataLoaded.ToString(), this, nameof(Initializer_DataLoaded));
+                item.Value.Connect(nameof(DataInitializerGroup.DataLoaded), this, nameof(Initializer_DataLoaded));
             }
 
             this.DefineGlobalDataInitializer();
@@ -68,7 +67,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
         private void DefinePlayerInitializer()
         {
             this._dataInitializerGroups[DataInitializerStep.NewGame].Add(new Customs.Game.HttpGameDataInitializer());
-            this._dataInitializerGroups[DataInitializerStep.NewGame].Add(new InMemoryPlayerDataInitializer());
+            this._dataInitializerGroups[DataInitializerStep.NewGame].Add(new Customs.Player.HttpPlayerDataInitializer());
         }
         #endregion
 

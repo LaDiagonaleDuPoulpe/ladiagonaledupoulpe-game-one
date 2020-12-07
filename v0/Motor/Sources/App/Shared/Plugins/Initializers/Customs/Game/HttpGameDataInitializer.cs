@@ -17,64 +17,23 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Ga
     /// <summary>
     /// Initializes all data from the game with http request
     /// </summary>
-    public class HttpGameDataInitializer : GameDataInitializer
+    public class HttpGameDataInitializer : BaseHttpDataInitializer<GameApiConfiguration, HttpGameSuccessResponse>
     {
-        #region Fields
-        private JsonHttpRequest _request = null;
-        #endregion
-
-        #region Constructors
-        public HttpGameDataInitializer() {}
-        #endregion
-
-        #region Public methods
-        public override void _Ready()
-        {
-            base._Ready();
-        }
-
-        public override void Load()
-        {
-            this.DoLoad();
-        }
-        #endregion
-
         #region Internal methods
-        protected override void DoLoad()
+        protected override JsonHttpRequest CreateOneRequest(GameApiConfiguration config)
         {
-            this.PrepareHttpRequest();
-
-            HttpGameSuccessResponse response = new HttpGameSuccessResponse(this);
-            this.AddChild(response);
-
-            this._request.SendRequest(new { isNew = true }, response, null);
-        }
-        #endregion
-
-        #region Internal methods
-        private void PrepareHttpRequest()
-        {
-            GameConfiguration configuration = null;
-            GlobalDataService dataService = this.GetNode<AutoLoaderAccessor>("/root/AutoLoaderAccessor").GlobalDataService;
-
-            configuration = dataService.GlobalSettings.Apis.Game;               
-            this._request = new GameJsonHttpRequest(configuration);
-
-            this.AddChild(this._request);
-            this.AttachSignalsFromRequest(this._request);
+            return new GameJsonHttpRequest(config);
         }
 
-        private void AttachSignalsFromRequest(JsonHttpRequest request)
+        protected override GameApiConfiguration GetConfiguration(GlobalDataService dataService)
         {
-            request.Connect(nameof(JsonHttpRequest.AfterCommandExecuted), this, nameof(Request_OnAfterCommandExecuted));
+            return dataService.GlobalSettings.Apis.Game;
         }
 
-        private void Request_OnAfterCommandExecuted(GameApiResult result)
+        protected override void ProcessResponse(Godot.Object result, AutoLoaderAccessor accessor)
         {
-            gamemodel.Game currentGame = this.GetNode<AutoLoaderAccessor>("/root/AutoLoaderAccessor").CurrentGame;
-            currentGame.Initialize(result.Item);
-
-            this.DefineDataIsLoaded();
+            gamemodel.Game currentGame = accessor.CurrentGame;
+            currentGame.Initialize(((GameApiResult) result).Item);
         }
         #endregion
     }

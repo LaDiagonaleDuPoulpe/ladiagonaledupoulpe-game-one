@@ -8,42 +8,42 @@ namespace WAT
 	public class Recorder : Node
 	{
 		Godot.Object What;
-		Godot.Collections.Dictionary<String, System.Object> Properties = new Godot.Collections.Dictionary<String, System.Object>();
+		Godot.Collections.Dictionary<string, object> Properties = new Godot.Collections.Dictionary<string, object>();
 		bool isRecording = false;
 	
-		public void Start() { this.isRecording = true; }
-		public void Stop() { this.isRecording = false; }
+		public void Start() { isRecording = true; }
+		public void Stop() { isRecording = false; }
 		
 		public void Record(Godot.Object what, Godot.Collections.Array properties)
 		{
-            this.What = what;
-			foreach(string Property in properties){
-                this.Properties[Property] = new Godot.Collections.Array();
+			What = what;
+			foreach(string property in properties){
+				Properties[property] = new Godot.Collections.Array();
 			}
 		}
 		
 		public override void _Process(float delta)
 		{
-			if(this.isRecording) { this.Capture(); }
+			if(isRecording) { Capture(); }
 		}
 		
 		private void Capture()
 		{
-			if(IsInstanceValid(this.What)){
-				foreach(var Property in this.Properties.Keys){
-					Godot.Collections.Array values = (Godot.Collections.Array)this.Properties[Property];
-					values.Add(this.What.Get(Property));
+			if(IsInstanceValid(What)){
+				foreach(var Property in Properties.Keys){
+					Godot.Collections.Array values = (Godot.Collections.Array)Properties[Property];
+					values.Add(What.Get(Property));
 				}
 			}
 		}
 		
 		public Godot.Collections.Array GetPropertyTimeline(string Property){
-			return (Godot.Collections.Array)this.Properties[Property];
+			return (Godot.Collections.Array)Properties[Property];
 		}
 		
 		public Godot.Collections.Dictionary GetPropertyMap()
 		{
-			return (Godot.Collections.Dictionary)this.Properties;
+			return (Godot.Collections.Dictionary)Properties;
 		}
 	}
 }

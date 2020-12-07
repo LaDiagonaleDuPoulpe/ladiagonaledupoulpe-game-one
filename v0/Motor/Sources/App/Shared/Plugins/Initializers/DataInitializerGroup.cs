@@ -31,7 +31,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
         public void Add(IDataInitializer item)
         {
             this._dataInitializers.Add(item);
-            item.Connect(LoadDataType.DataLoaded.ToString(), this, nameof(Initializer_DataLoaded));
+            item.Connect(nameof(BaseDataInitializer.DataLoaded), this, nameof(Initializer_DataLoaded));
             this.AddChild(item as Node);
         }
 
@@ -96,7 +96,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
             if (this.All(item => item.IsLoaded))
             {
                 this.IsLoaded = true;
-                this.EmitSignal(LoadDataType.DataLoaded.ToString(), this, new Godot.Object());
+                this.EmitSignal(nameof(DataLoaded), this, new Godot.Object());
             }
         }
         #endregion

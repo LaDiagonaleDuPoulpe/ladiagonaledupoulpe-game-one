@@ -15,12 +15,17 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Ap
         /// <summary>
         /// Compiler api configuration
         /// </summary>
-        public CompilerConfiguration Compiler { get; set; }
+        public CompilerApiConfiguration Compiler { get; set; }
 
         /// <summary>
         /// Game api configuration
         /// </summary>
-        public GameConfiguration Game { get; set; }
+        public GameApiConfiguration Game { get; set; }
+
+        /// <summary>
+        /// Player api configuration
+        /// </summary>
+        public PlayerApiConfiguration Player { get; set; }
         #endregion
     }
 }

@@ -15,6 +15,14 @@
         "Accept: */*",
         "Content-Type: application/json"
       ]
+    },
+    "Player": {
+      "Url": "https://localhost:44364/api/Player",
+      "Headers": [
+        "User-Agent: Pirulo/1.0 (Godot)",
+        "Accept: */*",
+        "Content-Type: application/json"
+      ]
     }
   }, 
   "Battle": {

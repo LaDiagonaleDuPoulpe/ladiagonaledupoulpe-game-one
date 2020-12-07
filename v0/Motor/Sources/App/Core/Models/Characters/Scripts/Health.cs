@@ -24,7 +24,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// Observes this event to know when here is no life
         /// </summary>
         [Signal]
-        public delegate void LifeIsGone();
+        public delegate void LifeIsGone(Godot.Object sender);
         #endregion
         #endregion
 
@@ -37,16 +37,17 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// <param name="damageValue">Damage value, must be more than 0</param>
         public void Hit(int damageValue)
         {
-            this.CurrentValue = this.CurrentValue + damageValue;
-            this.EmitSignal(CharacterLifeSignal.HealthChanged.ToString(), new LifePoint(this.CurrentValue, this.MaxValue));
-
-            int lastValue = this.CurrentValue;
-            if (lastValue <= 0)
-            {
-                this.CurrentValue = 0;
-                this.EmitSignal(CharacterLifeSignal.LifeIsGone.ToString());
-            }
+            this.AddValue(-damageValue);
         } 
+
+        /// <summary>
+        /// Adds life value to the current one
+        /// </summary>
+        /// <param name="value"></param>
+        public void Restore(int value)
+        {
+            this.AddValue(value);
+        }
 
         /// <summary>
         /// Initializes life of the heart (current value and max value)
@@ -65,6 +66,21 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         {
             this.CurrentValue = currentValue;
             this.MaxValue = maxValue;
+        }
+        #endregion
+
+        #region Internal methods
+        private void AddValue(int value)
+        {
+            this.CurrentValue = this.CurrentValue + value;
+            this.EmitSignal(nameof(HealthChanged), new LifePoint(this.CurrentValue, this.MaxValue));
+
+            int lastValue = this.CurrentValue;
+            if (lastValue <= 0)
+            {
+                this.CurrentValue = 0;
+                this.EmitSignal(nameof(LifeIsGone), this);
+            }
         }
         #endregion
 

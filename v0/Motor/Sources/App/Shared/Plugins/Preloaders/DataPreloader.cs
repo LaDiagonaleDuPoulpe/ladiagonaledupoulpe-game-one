@@ -16,7 +16,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Preloaders
     public class DataPreloader : Node
     {
         #region Fields
-        private ProxyDataInitializer _globalDataInitializer = null;
+        private ProxyDataInitializer _proxyDataInitializer = null;
 
         #region Signals
         /// <summary>
@@ -36,18 +36,18 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Preloaders
         public void Load(Enums.DataInitializerStep step)
         {
             base._Ready();
-            this._globalDataInitializer = this.GetNode<ProxyDataInitializer>("/root/ProxyDataInitializer");
+            this._proxyDataInitializer = this.GetNode<ProxyDataInitializer>("/root/ProxyDataInitializer");
 
-            this._globalDataInitializer.Connect(LoadDataType.DataLoaded.ToString(), this, nameof(globalDataInitializer_DataLoaded));
-            this._globalDataInitializer.CurrentStep = step;
-            this._globalDataInitializer.Load();
+            this._proxyDataInitializer.Connect(nameof(ProxyDataInitializer.DataLoaded), this, nameof(globalDataInitializer_DataLoaded));
+            this._proxyDataInitializer.CurrentStep = step;
+            this._proxyDataInitializer.Load();
         }
         #endregion
 
         #region Internal methods
         private void globalDataInitializer_DataLoaded(Godot.Object sender, Godot.Object data)
         {
-            this.EmitSignal(LoadDataType.DataLoaded.ToString(), sender, data);
+            this.EmitSignal(nameof(DataLoaded), sender, data);
         }
         #endregion
     }

@@ -11,8 +11,19 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Enums
     /// </summary>
     public enum HeartBarState
     {
+        /// <summary>
+        /// Alive state : everything is ok
+        /// </summary>
         Alive,
+
+        /// <summary>
+        /// Weak state (near dying state)
+        /// </summary>
         Weak,
+
+        /// <summary>
+        /// Heart bar is done, dead
+        /// </summary>
         Dead
     }
 }

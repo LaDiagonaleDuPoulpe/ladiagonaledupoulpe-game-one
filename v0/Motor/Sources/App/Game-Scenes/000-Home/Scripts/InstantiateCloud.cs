@@ -15,7 +15,7 @@ public class InstantiateCloud : Node2D
 		AddChild(_timer);
 
 
-		_timer.Connect("timeout", this, "InstantiateNewCloud");
+		_timer.Connect("timeout", this, nameof(InstantiateNewCloud));
 		_timer.WaitTime = 1f;
 		_timer.OneShot = false;
 		_timer.Start();

@@ -8,6 +8,7 @@ func _init() -> void:
 	_add_test_strategy_setting()
 	_add_test_metadata_folder()
 	_add_tag_setting()
+	_add_window_sizing()
 	
 func _add_tag_setting() -> void:
 	if ProjectSettings.has_setting("WAT/Tags"):
@@ -62,9 +63,18 @@ func _add_window_setting() -> void:
 		ProjectSettings.add_property_info(property)
 		ProjectSettings.save()
 
+func _add_window_sizing() -> void:
+	if not ProjectSettings.has_setting("WAT/Window_Size"):
+		ProjectSettings.set_setting("WAT/Window_Size", Vector2(1280, 720))
+		var property = {}
+		property.name = "WAT/Window_Size"
+		property.type = TYPE_VECTOR2
+		ProjectSettings.add_property_info(property)
+		ProjectSettings.save()
+
 func _add_test_strategy_setting() -> void:
 	if not ProjectSettings.has_setting("WAT/TestStrategy"):
-		var property_info: Dictionary = {"name": "WAT/TestStrategy", "type": TYPE_DICTIONARY, 
+		var property_info: Dictionary = {"name": "WAT/TestStrategy", "type": TYPE_DICTIONARY,
 		"hint_string": "Used by WAT internally to determine how to run tests"}
 		ProjectSettings.set("WAT/TestStrategy", {})
 		ProjectSettings.add_property_info(property_info)

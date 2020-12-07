@@ -22,8 +22,19 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
     /// </summary>
     public abstract class BaseActiveScene : BaseScene, IDataInit
     {
+        #region Fields
+        #region Signals
+        /// <summary>
+        /// Asks for activate camera to the observer
+        /// </summary>
+        /// <param name="cameraKey">Key of the camera</param>
+        [Signal]
+        public delegate void ActivateCamera(string cameraKey);
+        #endregion
+        #endregion
+
         #region Constructors
-        public BaseActiveScene(): base()
+        public BaseActiveScene() : base()
         {
 
         }
@@ -34,8 +45,17 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         {
             base._Ready();
 
+            this.Initialize();
+        }
+
+        /// <summary>
+        /// You can override this method to add more code to initialize the scene
+        /// </summary>
+        public virtual void Initialize()
+        {
             this.Initialize(this.AutoLoaderAccessor.GlobalDataService.CurrentExchanges);
             this.PrepareEvents();
+            this.DefineCurrentCamera();
         }
 
         public void Initialize(List<DialogBoxExchange> contents)
@@ -48,7 +68,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         #region Internal methods
         private void PrepareEvents()
         {
-            this.AutoLoaderAccessor.DialogBoxManager.Connect(DialogBoxActionType.EndOfOneExchange.ToString(), this, nameof(EndOfOneExchange));
+            this.AutoLoaderAccessor.DialogBoxManager.Connect(nameof(Shared.Services.DialoxBoxManager.EndOfOneExchange), this, nameof(EndOfOneExchange));
         }
 
         private void EndOfOneExchange()
@@ -61,14 +81,38 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         /// </summary>
         /// <param name="visible"></param>
         protected virtual void SetVisibilityGlobalNodes()
-        {            
-            this.AutoLoaderAccessor.CurrentPlayer.Visible = this.RootNodesVisibility;
-            this.AutoLoaderAccessor.StatusBar.SetVisibility(this.RootNodesVisibility);
+        {
+            this.SetVisibilityGlobalNodes(this.RootNodesVisibility);
+        }
+
+        /// <summary>
+        /// Defines visibility of player, statusbar, ...
+        /// </summary>
+        /// <param name="visible"></param>
+        protected virtual void SetVisibilityGlobalNodes(bool visibility)
+        {
+            this.AutoLoaderAccessor.CurrentPlayer.Visible = visibility;
+            this.AutoLoaderAccessor.StatusBar.SetVisibility(visibility);
+        }
+
+        /// <summary>
+        /// Sets the current camera to be activated
+        /// </summary>
+        protected override void DefineCurrentCamera()
+        {
+            this.ActivateMainCamera();
+        }
+
+        /// <summary>
+        /// Use this method to activate the root main camera
+        /// </summary>
+        protected virtual void ActivateMainCamera()
+        { 
+            this.EmitSignal(nameof(ActivateCamera), "Main");
         }
         #endregion
 
         #region Properties
-        
         /// <summary>
         /// Defines visibility of player, statusbar, ...
         /// </summary>

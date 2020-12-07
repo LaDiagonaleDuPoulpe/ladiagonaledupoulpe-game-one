@@ -42,7 +42,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 			base._Ready();
 
 			this.DialogBox = this.GetNode<DialogBox>("/root/DialogBox");
-			this.DialogBox.Connect(DialogBoxActionType.EndOfAllMessages.ToString(), this, nameof(StopDisplayMessagesOfOneExchange));
+			this.DialogBox.Connect(nameof(DialogBox.EndOfAllMessages), this, nameof(StopDisplayMessagesOfOneExchange));
 
 			this.CreateTimer();
 		}
@@ -88,7 +88,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 
 		private void StopDisplayMessagesOfOneExchange()
 		{
-			this.EmitSignal(DialogBoxActionType.EndOfOneExchange.ToString());
+			this.EmitSignal(nameof(EndOfOneExchange));
 		}
 
 		private void ShowDialog()

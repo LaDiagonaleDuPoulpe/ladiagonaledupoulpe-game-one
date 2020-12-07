@@ -20,10 +20,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Ga
         #endregion
 
         #region Constructors
-        public HttpGameSuccessResponse(GameDataInitializer gameDataInitializer)
-        {
-            this._gameDataInitializer = gameDataInitializer;
-        }
+        public HttpGameSuccessResponse() {}
         #endregion
 
         #region Public methods

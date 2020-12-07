@@ -6,7 +6,7 @@ static func test_folder():
 	return ProjectSettings.get_setting("WAT/Test_Directory")
 
 static func scripts(path: String = test_folder()) -> PoolStringArray:
-	if path.ends_with(".cs"):
+	if path.ends_with(".cs") or path.ends_with(".gd"):
 		var list: PoolStringArray = [path]
 		return list
 	else:
@@ -50,7 +50,7 @@ static func _parse_for_tests(what_exists: String, list: PoolStringArray) -> Pool
 	var directory: Directory = Directory.new()
 	for path in list:
 		if directory.call(what_exists, path):
-			if path.ends_with(".cs"):
+			if path.ends_with(".cs") or path.ends_with(".gd"):
 				output.append(path)
 	return output
 

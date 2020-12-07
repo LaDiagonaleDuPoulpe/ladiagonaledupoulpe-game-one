@@ -10,7 +10,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Ap
     /// <summary>
     /// Api access configuration to the game data
     /// </summary>
-    public class GameConfiguration : BaseHostConfiguration
+    public class GameApiConfiguration : BaseHostConfiguration
     {
     }
 }

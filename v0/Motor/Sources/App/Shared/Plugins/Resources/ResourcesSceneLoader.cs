@@ -71,7 +71,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 			this._loadedResources.Clear();
 			this._maintThread = new System.Threading.Thread(new System.Threading.ThreadStart(this.LoadResources));
 
-			this.EmitSignal(LoadingActionsType.Begin.ToString(), 1);
+			this.EmitSignal(nameof(Begin), 1);
 			this._maintThread.Start();
 		}
 		#endregion
@@ -101,7 +101,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 			{
 				try
 				{
-					this.EmitSignal(LoadingActionsType.BeginLoadingResource.ToString());
+					this.EmitSignal(nameof(BeginLoadingResource));
 
 					string resourcePath = string.Format("res://Data/Scenes/{0}.json", this._configuration.Key);
 					var error = file.Open(resourcePath, File.ModeFlags.Read);
@@ -109,7 +109,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 					string content = file.GetAsText();
 					this._currentSetting = Newtonsoft.Json.JsonConvert.DeserializeObject<SceneConfigurationSetting>(content);
 
-					this.EmitSignal(LoadingActionsType.EndLoadingResource.ToString());
+					this.EmitSignal(nameof(EndLoadingResource));
 					isOk = true;
 				}
 				finally
@@ -127,7 +127,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 
 			Node nextScene = this.LoadScene();
 
-			this.EmitSignal(LoadingActionsType.End.ToString(), nextScene); 
+			this.EmitSignal(nameof(End), nextScene); 
 		}
 
 		private Node LoadScene()
@@ -139,14 +139,14 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 				int? nbExchanges = 0;
 
 				nbExchanges = this._currentSetting.DialogBox?.Items?.Count;
-				this.EmitSignal(LoadingActionsType.Begin.ToString(), 1 + nbExchanges.GetValueOrDefault(0));
+				this.EmitSignal(nameof(Begin), 1 + nbExchanges.GetValueOrDefault(0));
 
 				Resource resourceScene = ResourceLoader.Load("res://" + this._currentSetting.Path);
 				PackedScene scene = resourceScene as PackedScene;
 				this._loadedResources.Add(resourceScene);
 
 				instanceOfScene = scene.Instance();
-				this.EmitSignal(LoadingActionsType.EndLoadingResource.ToString());
+				this.EmitSignal(nameof(EndLoadingResource));
 
 				this.InitializeScene(instanceOfScene as IDataInit, this._currentSetting);
 			}
@@ -162,7 +162,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 			settings.DialogBox?.Items.ForEach(item =>
 			{
 				contents.Add(item.Convert(ResourceLoader.Load));
-				this.EmitSignal(LoadingActionsType.EndLoadingResource.ToString());
+				this.EmitSignal(nameof(EndLoadingResource));
 			});
 
 			scene.CurrentSetting = settings;

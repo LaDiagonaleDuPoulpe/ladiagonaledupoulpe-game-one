@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://Sources/App/Shared/Nodes/Camera/FollowPlayerCamera.cs" type="Script" id=1]
 [ext_resource path="res://Sources/App/Game-Scenes/XXX-Test-TestingScenes/Scripts/TestHealthBar.cs" type="Script" id=2]
 
 [node name="RootTest" type="Node2D"]
@@ -17,13 +18,16 @@ __meta__ = {
 }
 
 [node name="Button2" type="Button" parent="."]
-margin_left = 288.0
-margin_top = 648.0
-margin_right = 408.0
-margin_bottom = 704.0
+margin_left = 204.0
+margin_top = 646.0
+margin_right = 324.0
+margin_bottom = 702.0
 text = "- 20"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MainCamera" type="Camera2D" parent="."]
+script = ExtResource( 1 )
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]

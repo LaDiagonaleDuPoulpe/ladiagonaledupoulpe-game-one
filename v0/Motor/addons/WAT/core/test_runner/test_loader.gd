@@ -55,17 +55,17 @@ func deposited() -> Array:
 func _load_tests() -> Array:
 	var tests: Array = []
 	for path in _tests:
-		# Can't load WAT.Test here for whatever reason
-		if path is String and not path.ends_with(".cs"):
-			path = path.substr(0, path.find(".cs") + 3)
-		var test = load(path) if path is String else path
-
+		var test
+		if path is String and path.ends_with(".gd"):
+			test = load(path)
+		elif path is String and path.ends_with(".cs"):
+			test = load(path)
 		if test.get_instance_base_type() == "WAT.Test":
 			tests.append(test)
-#		elif test.get("IS_WAT_SUITE") and Engine.get_version_info().minor == 2:
-#			tests += _suite_of_suites_3p2(test)
-#		elif test.get("IS_WAT_SUITE") and Engine.get_version_info().minor == 1:
-#			tests += _suite_of_suites_3p1(test)
+		elif test.get("IS_WAT_SUITE") and Engine.get_version_info().minor == 2:
+			tests += _suite_of_suites_3p2(test)
+		elif test.get("IS_WAT_SUITE") and Engine.get_version_info().minor == 1:
+			tests += _suite_of_suites_3p1(test)
 	return tests
 
 func _suite_of_suites_3p2(suite_of_suites) -> Array:
