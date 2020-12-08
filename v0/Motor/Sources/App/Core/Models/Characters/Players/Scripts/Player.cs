@@ -24,6 +24,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 		private Synale _synalePower = null;
 		private AnimatedSprite _animatedSprite = null;
 		private StateMachinePlayer _stateMachine = null;
+		private PlayerCharacterDataSetting _lastSettings = null;
 
 		#region Signals
 		/// <summary>
@@ -101,10 +102,10 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
 		public override void InitializeData(CharacterDataSetting setting)
 		{
-			PlayerCharacterDataSetting playerSetting = setting as PlayerCharacterDataSetting;
+			this._lastSettings = setting as PlayerCharacterDataSetting;
 
-			this.InitializeLifeData(playerSetting);
-			this.InitializeSynaleData(playerSetting);
+			this.InitializeLifeData(this._lastSettings);
+			this.InitializeSynaleData(this._lastSettings);
 		}
 		#endregion
 
