@@ -133,7 +133,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
 		protected override void DoDie()
 		{
-			if( this._synalePower.ActToReborn() )
+			if(! this._synalePower.ActToReborn() )
 			{
 				base.DoDie();
 				this._stateMachine.Die();
