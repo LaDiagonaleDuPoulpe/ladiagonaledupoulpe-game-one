@@ -115,7 +115,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 		}
 
 		private void InitializeLifeData(PlayerCharacterDataSetting playerSetting)
-        {
+		{
 			this.MainHealth.Initialize(playerSetting.Health.CurrentValue, playerSetting.Health.MaxValue);
 			this._stateMachine.Initialize();
 
@@ -123,7 +123,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 		}
 
 		private void InitializeSynaleData(PlayerCharacterDataSetting playerSetting)
-        {
+		{
 			var point = new PowerPoint(playerSetting.SynalePower.CurrentValue, playerSetting.SynalePower.MaxValue);
 
 			this._synalePower.Initialize(point);
@@ -133,10 +133,10 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 		protected override void DoDie()
 		{
 			if( this._synalePower.ActToReborn() )
-            {
+			{
 				base.DoDie();
 				this._stateMachine.Die();
-            }
+			}
 		}
 		#endregion
 

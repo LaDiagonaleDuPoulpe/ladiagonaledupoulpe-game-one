@@ -22,6 +22,7 @@
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
+  
   <ItemGroup>
     <Compile Include="addons\WAT\core\assertions\CSharp\Assertion.cs" />
     <Compile Include="addons\WAT\core\assertions\CSharp\Assertions.cs" />
