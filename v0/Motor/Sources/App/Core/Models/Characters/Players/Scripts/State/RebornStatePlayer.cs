@@ -16,10 +16,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         #endregion
 
         #region Public methods
-        public override void HandleInput()
-        {
-            throw new NotImplementedException();
-        }
+        public override void HandleInput() {}
 
         public override void Play()
         {
