@@ -1,4 +1,5 @@
 ﻿using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
+using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,8 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
         public override void Play()
         {
-            throw new NotImplementedException();
+            Direction currentDirection = this.CurrentDirection;
+            this.Character.PlayAnimation($"reborn_{currentDirection.ToString().ToLower()}");
         }
         #endregion
     }
