@@ -25,6 +25,17 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Initializers
         /// <param name="method">Name of the method to activate</param>
         /// <returns></returns>
         Error Connect(string signal, Godot.Object target, string method, Godot.Collections.Array binds = null, uint flags = 0);
+
+        /// <summary>
+        /// Defines if one signal is already connected
+        /// </summary>
+        /// <returns></returns>
+        bool IsConnected(string signal, Godot.Object target, string method);
+
+        /// <summary>
+        /// Disconnects one signal from one method
+        /// </summary>
+        void Disconnect(string signal, Godot.Object target, string method);
         #endregion
 
         #region Properties

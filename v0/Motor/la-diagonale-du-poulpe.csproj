@@ -49,6 +49,7 @@
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\IdleStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\HorizontalMoveStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\MoveStatePlayer.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\RebornStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\StateMachinePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\VerticalMoveStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\BaseCharacter.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="Sources\App\Shared\Plugins\UI\OnePlayerStatusBar\Scripts\OnePlayerStatusBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\GridPlayCode\Scripts\MovingCharacter.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\GridPlayCode\Scripts\Players\PlayerActionGrid.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Reborns\Scripts\RebornWithSynalePower.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\Heart\Scripts\HeartBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\Scripts\HeartsLifeBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\SynaleBar\Scripts\SynaleBar.cs" />
@@ -189,6 +191,7 @@
     <None Include="Data\Global\GlobalSettings.json" />
     <None Include="Sources\App\Shared\Scenes\CodeEditor\MovingScene.tscn" />
     <None Include="Sources\App\Shared\Scenes\CodeEditor\TextEditor\TextEditor.tscn" />
+    <None Include="Sources\App\Shared\Scenes\Reborns\RebornWithSynalePower.tscn" />
     <None Include="Sources\App\Shared\Services\README.md" />
   </ItemGroup>
   <ItemGroup>

@@ -31,6 +31,12 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers
         public void Add(IDataInitializer item)
         {
             this._dataInitializers.Add(item);
+
+            if (item.IsConnected(nameof(BaseDataInitializer.DataLoaded), this, nameof(Initializer_DataLoaded)))
+            {
+                item.Disconnect(nameof(BaseDataInitializer.DataLoaded), this, nameof(Initializer_DataLoaded));
+            }
+
             item.Connect(nameof(BaseDataInitializer.DataLoaded), this, nameof(Initializer_DataLoaded));
             this.AddChild(item as Node);
         }

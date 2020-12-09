@@ -38,7 +38,12 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Preloaders
             base._Ready();
             this._proxyDataInitializer = this.GetNode<ProxyDataInitializer>("/root/ProxyDataInitializer");
 
+            if (this._proxyDataInitializer.IsConnected(nameof(ProxyDataInitializer.DataLoaded), this, nameof(globalDataInitializer_DataLoaded)))
+            {
+                this._proxyDataInitializer.Disconnect(nameof(ProxyDataInitializer.DataLoaded), this, nameof(globalDataInitializer_DataLoaded));
+            }
             this._proxyDataInitializer.Connect(nameof(ProxyDataInitializer.DataLoaded), this, nameof(globalDataInitializer_DataLoaded));
+            
             this._proxyDataInitializer.CurrentStep = step;
             this._proxyDataInitializer.Load();
         }

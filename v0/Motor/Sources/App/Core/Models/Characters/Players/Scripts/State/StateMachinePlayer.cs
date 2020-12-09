@@ -72,6 +72,17 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
                  CurrentDirection = lastDirection
             };
         }
+
+        /// <summary>
+        /// Changes state to reborn
+        /// </summary>
+        public void Reborn()
+        {
+            this._state = new RebornStatePlayer(this, this._player)
+            {
+                CurrentDirection = this._state.CurrentDirection
+            };
+        }
         #endregion
 
         #region Properties
