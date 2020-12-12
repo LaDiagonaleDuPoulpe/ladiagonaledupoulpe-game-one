@@ -6,28 +6,24 @@ using System.Threading.Tasks;
 
 public class CloudMoving : AnimatedSprite
 {
-	private int _speed;
-	private float _maxPosition;
 
 	public override void _Ready()
 	{
-		_speed = new Random().Next(1, 4);
-		_maxPosition = OS.GetScreenSize().x;
+		int speed = new Random().Next(1, 4);
+		Vector2 destination = new Vector2( OS.GetScreenSize().x * - 2, this.Position.y);
+		Tween tween = new Tween();
+		this.AddChild(tween);
+		tween.InterpolateProperty(this, "position", this.Position, destination, 25f / speed, Tween.TransitionType.Linear, Tween.EaseType.InOut);
+		tween.Connect("tween_all_completed", this, nameof(RemoveCloud));
+		tween.Start();
 
-		Task.Run(MoveCloud);
 	}
 
 	/// <summary>
-	/// Deplace le srite du nuage de gauche a droite
+	/// Remove cloud from scene
 	/// </summary>
-	public async void MoveCloud()
+	private void RemoveCloud()
 	{
-		while (Position.x  < this.Frames.GetFrame("default",0).GetSize().x)
-		{
-			this.Position = new Vector2(this.Position.x - _speed, this.Position.y);
-			await Task.Delay(10);
-		}
-	
 		GetParent().QueueFree();
 	}
 }

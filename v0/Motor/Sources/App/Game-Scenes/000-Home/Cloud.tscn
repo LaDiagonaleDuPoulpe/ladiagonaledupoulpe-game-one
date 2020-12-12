@@ -43,8 +43,8 @@ animations = [ {
 [node name="Node2D" type="Node2D"]
 
 [node name="Cloud" type="AnimatedSprite" parent="."]
+position = Vector2( 2.11902, 0 )
 frames = SubResource( 1 )
-frame = 17
 playing = true
 centered = false
 script = ExtResource( 2 )
