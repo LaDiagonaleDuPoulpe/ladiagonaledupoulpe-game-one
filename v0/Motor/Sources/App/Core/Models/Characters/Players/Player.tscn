@@ -1,4 +1,4 @@
-[gd_scene load_steps=214 format=2]
+[gd_scene load_steps=212 format=2]
 
 [ext_resource path="res://Sources/App/Core/Models/Characters/Players/Scripts/Player.cs" type="Script" id=1]
 [ext_resource path="res://Sources/App/Shared/Scenes/Reborns/LoadingPower.tscn" type="PackedScene" id=2]
@@ -195,7 +195,6 @@
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octopus3 idle up/octo3 up all_001.png" type="Texture" id=193]
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octopus3 idle up/octo3 up all_002.png" type="Texture" id=194]
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octopus3 idle up/octo3 up all_014.png" type="Texture" id=195]
-[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octopus3 idle up/octo3 up all_019.png" type="Texture" id=196]
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octopus3 idle up/octo3 up all_004.png" type="Texture" id=197]
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octopus3 idle up/octo3 up all_011.png" type="Texture" id=198]
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octopus3 idle up/octo3 up all_008.png" type="Texture" id=199]
@@ -203,7 +202,6 @@
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octopus3 idle up/octo3 up all_016.png" type="Texture" id=201]
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octopus3 idle up/octo3 up all_013.png" type="Texture" id=202]
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octopus3 idle up/octo3 up all_015.png" type="Texture" id=203]
-[ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octopus3 idle up/octo3 up all_020.png" type="Texture" id=204]
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octopus3 idle up/octo3 up all_010.png" type="Texture" id=205]
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octopus3 idle up/octo3 up all_018.png" type="Texture" id=206]
 [ext_resource path="res://Sources/App/Shared/Assets/Characters/octo3 all/octopus3 idle up/octo3 up all_005.png" type="Texture" id=207]
@@ -249,7 +247,7 @@ animations = [ {
 "name": "move_left",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 192 ), ExtResource( 193 ), ExtResource( 194 ), ExtResource( 191 ), ExtResource( 197 ), ExtResource( 207 ), ExtResource( 210 ), ExtResource( 209 ), ExtResource( 199 ), ExtResource( 208 ), ExtResource( 205 ), ExtResource( 198 ), ExtResource( 211 ), ExtResource( 202 ), ExtResource( 195 ), ExtResource( 203 ), ExtResource( 201 ), ExtResource( 200 ), ExtResource( 206 ), ExtResource( 196 ), ExtResource( 204 ) ],
+"frames": [ ExtResource( 192 ), ExtResource( 193 ), ExtResource( 194 ), ExtResource( 191 ), ExtResource( 197 ), ExtResource( 207 ), ExtResource( 210 ), ExtResource( 209 ), ExtResource( 199 ), ExtResource( 208 ), ExtResource( 205 ), ExtResource( 198 ), ExtResource( 211 ), ExtResource( 202 ), ExtResource( 195 ), ExtResource( 203 ), ExtResource( 201 ), ExtResource( 200 ), ExtResource( 206 ) ],
 "loop": true,
 "name": "idle_up",
 "speed": 5.0
@@ -302,7 +300,7 @@ script = ExtResource( 96 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
 animation = "idle_left"
-frame = 12
+frame = 10
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

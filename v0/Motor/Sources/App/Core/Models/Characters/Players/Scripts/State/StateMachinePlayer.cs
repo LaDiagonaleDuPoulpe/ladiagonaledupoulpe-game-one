@@ -70,7 +70,10 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         /// </summary>
         public void TryToReborn()
         {
-            this.ChangeState(new ReloadingPowerStatePlayer(this, this._player));
+            this.ChangeState(new ReloadingPowerStatePlayer(this, this._player) 
+            { 
+                CurrentDirection = this._state.CurrentDirection 
+            });
         }
 
         /// <summary>
@@ -78,7 +81,10 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         /// </summary>
         public void Die()
         {
-            this.ChangeState(new DiedStatePlayer(this, this._player));
+            this.ChangeState(new DiedStatePlayer(this, this._player)
+            {
+                CurrentDirection = this._state.CurrentDirection
+            });
         }
 
         /// <summary>
