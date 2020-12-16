@@ -1,4 +1,5 @@
 using Godot;
+using models = ladiagonaledupoulpe.Sources.App.Core.Models;
 using ladiagonaledupoulpe.Sources.App.Core.Base.Scenes;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Characters;
@@ -25,8 +26,17 @@ public class TestRebornPlayer : BaseActiveScene
 			},
 			SynalePower = new SynaleDataSetting()
 			{
-				CurrentValue = 50,
+				CurrentValue = 20,
 				MaxValue = 100
+			}
+		});
+
+		var globalData = this.GetNode<models.Games.Game>("/root/CurrentGame");
+		globalData.Initialize(new models.Settings.Games.GameSetting()
+		{
+			RulesSet = new models.Settings.Games.RuleSetSetting()
+			{
+				RebornCost = 30
 			}
 		});
 	}

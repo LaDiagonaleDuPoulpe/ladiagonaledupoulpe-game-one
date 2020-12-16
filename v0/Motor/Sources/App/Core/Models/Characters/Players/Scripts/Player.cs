@@ -22,16 +22,25 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 		#region Fields
 		private RulesSet _rules = null;
 		private Synale _synalePower = null;
+		private LoadingPower _loadingPower = null;
 		private AnimatedSprite _animatedSprite = null;
 		private StateMachinePlayer _stateMachine = null;
 		private PlayerCharacterDataSetting _lastSettings = null;
-
+		private Timer _dyingTimer = null;
+		private Timer _rebornTimer = null;
 		#region Signals
 		/// <summary>
 		/// Connect to this signal to get the init power point 
 		/// </summary>
 		[Signal]
 		public delegate void SynaleInitialized(PowerPoint point);
+
+		/// <summary>
+		/// Update the power of the synale
+		/// </summary>
+		/// <param name="point"></param>
+		[Signal]
+		public delegate void SynalePowerUpdated(PowerPoint point);
 		#endregion
 		#endregion
 
@@ -52,10 +61,12 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 			this._stateMachine = new StateMachinePlayer(this);
 			this._animatedSprite = this.GetNode<AnimatedSprite>("AnimatedSprite");
 
+			this.PrepareTimers();
+			this.ConfigureLoadingPower();
+
 			this._rules = this.GetNode<Game>("/root/CurrentGame").RulesSet;
 
-			this._synalePower = new Synale();
-			this.AddChild(this._synalePower);
+			this.AddSynale();
 		}
 
 		public override void _PhysicsProcess(float delta)
@@ -81,8 +92,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
 		public override void _Process(float delta)
 		{
-			this._stateMachine.HandleInput();
-			this._stateMachine.Play();
+			if (! this.AnimationIsActive)
+			{
+				this._stateMachine.HandleInput();
+				this._stateMachine.Play();
+			}
 		}
 
 		/// <summary>
@@ -107,12 +121,65 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 			this.InitializeLifeData(this._lastSettings);
 			this.InitializeSynaleData(this._lastSettings);
 		}
+
+		/// <summary>
+		/// Launches animation to show the reloading power 
+		/// </summary>
+		public void ActivateSynalePower()
+		{
+			Timer activeTimer = this._dyingTimer;
+			this.AnimationIsActive = true;
+			this._loadingPower.Visible = true;
+
+			bool canReborn = this._synalePower.ActToReborn();
+
+			if (canReborn)
+			{
+				activeTimer = this._rebornTimer;
+			}
+			activeTimer.Start();
+		}
+
+		public override void Die(Godot.Object sender = null)
+		{
+			this._loadingPower.Visible = false;
+
+			this._stateMachine.Die();
+			base.Die(sender);
+		}
+
+		private void _on_AnimatedSprite_animation_finished()
+		{
+		}
 		#endregion
 
 		#region Internal methods
 		protected override void Initialize()
 		{
 			base.Initialize();
+		}
+
+		private void _on_DyingTimer_timeout()
+		{
+			this._dyingTimer.Stop();
+			this._loadingPower.ActivateNoPowerAnimation();
+		}
+
+		private void _on_RebornTimer_timeout()
+		{
+			this._rebornTimer.Stop();
+			this._loadingPower.Visible = false;
+		}
+
+		private void ConfigureLoadingPower()
+		{
+			this._loadingPower = this.GetNode<LoadingPower>("LoadingPower");
+			this._loadingPower.Connect(nameof(LoadingPower.NoPowerAnimationCompleted), this, nameof(LoadingPower_NoPowerAnimationCompleted));
+		}
+
+		private void LoadingPower_NoPowerAnimationCompleted()
+		{
+			this.Die();
 		}
 
 		private void InitializeLifeData(PlayerCharacterDataSetting playerSetting)
@@ -128,20 +195,49 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 			var point = new PowerPoint(playerSetting.SynalePower.CurrentValue, playerSetting.SynalePower.MaxValue);
 
 			this._synalePower.Initialize(point);
+		}
+
+		private void AddSynale()
+		{
+			this._synalePower = new Synale();
+			this.AddChild(this._synalePower);
+
+			this._synalePower.Connect(nameof(Synale.SynaleInitialized), this, nameof(Synale_SynaleInitialized));
+			this._synalePower.Connect(nameof(Synale.SynalePowerUpdated), this, nameof(Synale_SynalePowerUpdated));
+		}
+
+		private void PrepareTimers()
+		{
+			this._dyingTimer = this.GetNode<Timer>("DyingTimer");
+			this._rebornTimer = this.GetNode<Timer>("RebornTimer");
+		}
+
+		private void Synale_SynaleInitialized(PowerPoint point)
+		{
 			this.EmitSignal(nameof(SynaleInitialized), point);
 		}
 
-		protected override void DoDie()
+		private void Synale_SynalePowerUpdated(PowerPoint point)
 		{
-			if(! this._synalePower.ActToReborn() )
-			{
-				base.DoDie();
-				this._stateMachine.Die();
-			}
+			this.EmitSignal(nameof(SynalePowerUpdated), point);
+		}
+
+		protected override void GoneLife(Godot.Object sender)
+		{
+			base.DoDie();
+			this._stateMachine.TryToReborn();
 		}
 		#endregion
 
 		#region Properties
+		/// <summary>
+		/// True if player can reborn
+		/// </summary>
+		public bool CanReborn
+		{
+			get => this._synalePower.IsValid;
+		}
 		#endregion
 	}
 }
+

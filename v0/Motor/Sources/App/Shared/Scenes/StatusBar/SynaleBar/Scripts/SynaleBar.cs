@@ -42,6 +42,25 @@ public class SynaleBar : Node2D
 	}
 
 	/// <summary>
+	/// Updates power of the synale 
+	/// </summary>
+	/// <param name="addingPoint">Instance with currentValue >0 or < 0</param>
+	/// <remarks>We do a summary, not a replacement of the current value</remarks>
+	public void UpdatePower(PowerPoint addingPoint)
+    {
+		GD.Print("update power ", this._currentPoint.CurrentValue, " / ", addingPoint.CurrentValue);
+
+		var synaleState = SynaleState.SynaleDecreased;
+
+		if (addingPoint.CurrentValue > 0)
+        {
+			synaleState = SynaleState.SynaleIncreased;
+        }
+
+		this.UpdatePowerOfSynale(addingPoint, synaleState);
+    }
+
+	/// <summary>
 	/// Increases power of the synale
 	/// Plays animation during increase action
 	/// </summary>
@@ -66,7 +85,7 @@ public class SynaleBar : Node2D
 	{
 		if (this._currentPoint.IsValid)
 		{
-			PowerPoint old = this._currentPoint;
+			PowerPoint old = this._currentPoint.Clone() as PowerPoint;
 
 			this._currentPoint = (PowerPoint) (this._currentPoint + point);
 
@@ -155,7 +174,7 @@ public class SynaleBar : Node2D
 	public int CurrentValue
 	{
 		get => this._currentPoint.CurrentValue;
-		private set => new LifePoint(value, this._currentPoint.MaxValue);
+		private set => new PowerPoint(value, this._currentPoint.MaxValue);
 	}
 
 	/// <summary>
@@ -164,7 +183,7 @@ public class SynaleBar : Node2D
 	public int MaxValue
 	{
 		get => this._currentPoint.MaxValue;
-		set => new LifePoint(this._currentPoint.CurrentValue, value);
+		set => new PowerPoint(this._currentPoint.CurrentValue, value);
 	}
 
 	/// <summary>

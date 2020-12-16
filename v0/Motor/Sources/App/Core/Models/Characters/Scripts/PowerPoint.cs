@@ -19,5 +19,12 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         {
         }
         #endregion
+
+        #region Public methods
+        public override object Clone()
+        {
+            return new PowerPoint(this.CurrentValue, this.MaxValue);
+        }
+        #endregion
     }
 }

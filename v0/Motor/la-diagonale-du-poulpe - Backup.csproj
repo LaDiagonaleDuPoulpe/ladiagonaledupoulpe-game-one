@@ -22,7 +22,6 @@
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
-  
   <ItemGroup>
     <Compile Include="addons\WAT\core\assertions\CSharp\Assertion.cs" />
     <Compile Include="addons\WAT\core\assertions\CSharp\Assertions.cs" />
@@ -50,7 +49,6 @@
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\HorizontalMoveStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\MoveStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\RebornStatePlayer.cs" />
-    <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\ReloadingPowerStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\StateMachinePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\VerticalMoveStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\BaseCharacter.cs" />
@@ -72,7 +70,7 @@
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\Apis\CompilerApiConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\Apis\GameApiConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Games\GameSetting.cs" />
-<Compile Include="Sources\App\Core\Models\Settings\Games\RuleSetSetting.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\Games\RuleSetSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\BattleConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\GlobalSettings.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Characters\CharacterDataSetting.cs" />
@@ -176,9 +174,10 @@
     <Compile Include="Sources\App\Core\Interfaces\DialogBox\IDialogBoxManager.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\ExchangeSettingExtensionMethod.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\StringExtensionMethod.cs" />
- 	<Compile Include="Sources\App\Shared\Tools\Http\Customs\GameJsonHttpRequest.cs" />
- 	<Compile Include="Sources\App\Shared\Tools\Http\Customs\PlayerJsonHttpRequest.cs" />
-    <Compile Include="Sources\App\Shared\Tools\Http\JsonHttpRequest.cs" />  </ItemGroup>
+    <Compile Include="Sources\App\Shared\Tools\Http\Customs\GameJsonHttpRequest.cs" />
+    <Compile Include="Sources\App\Shared\Tools\Http\Customs\PlayerJsonHttpRequest.cs" />
+    <Compile Include="Sources\App\Shared\Tools\Http\JsonHttpRequest.cs" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Data\Scenes\test-health-bar.json" />
     <None Include="Data\Scenes\home.json" />
@@ -192,7 +191,7 @@
     <None Include="Data\Global\GlobalSettings.json" />
     <None Include="Sources\App\Shared\Scenes\CodeEditor\MovingScene.tscn" />
     <None Include="Sources\App\Shared\Scenes\CodeEditor\TextEditor\TextEditor.tscn" />
-    <None Include="Sources\App\Shared\Scenes\Reborns\LoadingPower.tscn" />
+    <None Include="Sources\App\Shared\Scenes\Reborns\RebornWithSynalePower.tscn" />
     <None Include="Sources\App\Shared\Services\README.md" />
   </ItemGroup>
   <ItemGroup>

@@ -45,7 +45,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
                 };
             }
 
-
             if (newState != null)
             { 
                 this.PlayerState.ChangeState(newState);

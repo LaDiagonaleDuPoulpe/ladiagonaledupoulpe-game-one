@@ -31,6 +31,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
             }
 
             this.Character.PlayAnimation($"die_{currentDirection.ToString().ToLower()}");
+            this.PlayerState.Stop();
         }
         #endregion
     }

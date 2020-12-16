@@ -46,6 +46,7 @@ public class Signals : Node
         this._currentPlayer.Connect(nameof(Player.LifeIsGone), this.GetTree().CurrentScene, nameof(RootScene.PlayerDie));
     
         this._currentPlayer.Connect(nameof(Player.SynaleInitialized), this._statusBar, nameof(OnePlayerStatusBar.InitializeSynale));
+        this._currentPlayer.Connect(nameof(Player.SynalePowerUpdated), this._statusBar, nameof(OnePlayerStatusBar.SynalePowerChanged));
     }
     #endregion
 }

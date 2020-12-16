@@ -9,7 +9,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Points
     /// <summary>
     /// Use this class to get a proxy about value point (life point, ...)
     /// </summary>
-    public class ValuePoint : Godot.Object
+    public class ValuePoint : Godot.Object, ICloneable
     {
         #region Constructors
         public ValuePoint() { }
@@ -76,9 +76,14 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Points
             }
         }
 
+        public virtual object Clone()
+        {
+            return new ValuePoint(this.CurrentValue, this.MaxValue);
+        }
+
         public static bool operator ==(ValuePoint old, ValuePoint add)
         {
-            return old.CurrentValue != add.CurrentValue;
+            return old.CurrentValue == add.CurrentValue;
         }
 
         public static bool operator !=(ValuePoint old, ValuePoint add)
@@ -90,14 +95,14 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Points
         {
             old.Add(add.CurrentValue);
 
-            return old;
+            return old.Clone() as ValuePoint;
         }
 
         public static ValuePoint operator -(ValuePoint old, ValuePoint add)
         {
             old.Add(-add.CurrentValue);
 
-            return old;
+            return old as ValuePoint;
         }
         #endregion
 
@@ -115,7 +120,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Points
         /// <summary>
         /// Value is positive and less than max value
         /// </summary>
-        public bool IsValid { get => this.CurrentValue >= 0 && this.CurrentValue <= this.MaxValue; }
+        public bool IsValid { get => this.CurrentValue > 0 && this.CurrentValue <= this.MaxValue; }
         #endregion
     }
 }

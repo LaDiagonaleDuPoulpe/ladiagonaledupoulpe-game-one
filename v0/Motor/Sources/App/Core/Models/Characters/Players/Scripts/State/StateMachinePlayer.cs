@@ -16,6 +16,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         #region Fields
         private IStateCharacter _state = null;
         private Player _player = null;
+        private bool _canPlay = true;
         #endregion
 
         #region Constructors
@@ -32,6 +33,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         /// </summary>
         public void Initialize()
         {
+            this._canPlay = true;
             this.ChangeState(new IdleStatePlayer(this, this._player) { CurrentDirection = Direction.Left  } );
         }
 
@@ -57,31 +59,35 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         /// </summary>
         public void Play()
         {
-            this._state?.Play();
+            if (this._canPlay)
+            {
+                this._state?.Play();
+            }
         }
 
         /// <summary>
-        /// Changes state to die
+        /// The player tries to reborn 
+        /// </summary>
+        public void TryToReborn()
+        {
+            this.ChangeState(new ReloadingPowerStatePlayer(this, this._player));
+        }
+
+        /// <summary>
+        /// Change the state to die state
         /// </summary>
         public void Die()
         {
-            Direction lastDirection = this._state.CurrentDirection;
-
-            this._state = new DiedStatePlayer(this, this._player)
-            {
-                 CurrentDirection = lastDirection
-            };
+            this.ChangeState(new DiedStatePlayer(this, this._player));
         }
 
         /// <summary>
-        /// Changes state to reborn
+        /// There will be no state with this
         /// </summary>
-        public void Reborn()
+        public void Stop()
         {
-            this._state = new RebornStatePlayer(this, this._player)
-            {
-                CurrentDirection = this._state.CurrentDirection
-            };
+            this._state = null;
+            this._canPlay = false;
         }
         #endregion
 

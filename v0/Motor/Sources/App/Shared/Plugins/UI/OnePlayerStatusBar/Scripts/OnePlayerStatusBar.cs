@@ -25,15 +25,20 @@ public class OnePlayerStatusBar : Node2D
 		this._lifeBar.Update(point.CurrentValue, point.MaxValue);
 	}
 
+	public void LifeChanged(LifePoint point)
+	{
+		this._lifeBar.Update(point.CurrentValue, point.MaxValue);
+	}
+
 	public void InitializeSynale(PowerPoint point)
     {
 		this._synaleBar.Initialize(point);
     }
 
-	public void LifeChanged(LifePoint point)
-	{
-		this._lifeBar.Update(point.CurrentValue, point.MaxValue);
-	}
+	public void SynalePowerChanged(PowerPoint addingPoint)
+    {
+		this._synaleBar.UpdatePower(addingPoint);
+    }
 
 	/// <summary>
 	/// Defines visibility of the component

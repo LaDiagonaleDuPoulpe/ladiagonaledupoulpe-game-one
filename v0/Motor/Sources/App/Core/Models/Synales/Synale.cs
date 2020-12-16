@@ -17,6 +17,21 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Synales
     {
         #region Fields
         private RulesSet _rules = null;
+
+        #region Signals
+        /// <summary>
+		/// Connect to this signal to get the init power point 
+		/// </summary>
+		[Signal]
+        public delegate void SynaleInitialized(PowerPoint point);
+
+        /// <summary>
+        /// Update the power of the synale
+        /// </summary>
+        /// <param name="point"></param>
+		[Signal]
+        public delegate void SynalePowerUpdated(PowerPoint point);
+        #endregion
         #endregion
 
         #region Constructors
@@ -41,6 +56,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Synales
         public void Initialize(PowerPoint point)
         {
             this.CurrentPower = point;
+            this.EmitSignal(nameof(SynaleInitialized), point.Clone());
         }
 
         /// <summary>
@@ -49,7 +65,10 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Synales
         /// <returns></returns>
         public bool ActToReborn()
         {
-            this.CurrentPower.Add(-this._rules.RebornCost);
+            int addingValue = -this._rules.RebornCost;
+            
+            this.CurrentPower.Add(addingValue);
+            this.EmitSignal(nameof(SynalePowerUpdated), new PowerPoint(addingValue));
             return this.CurrentPower.IsValid;
         }
         #endregion
@@ -59,6 +78,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Synales
         /// Current power of the synale 
         /// </summary>
         public PowerPoint CurrentPower { get; private set; }
+
+        /// <summary>
+        /// True if there is enough power
+        /// </summary>
+        public bool IsValid { get => this.CurrentPower.IsValid; }
         #endregion
     }
 }

@@ -41,6 +41,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
 
         private Vector2 _velocity = Vector2.Zero;
         private Health _health = null;
+        private bool _animationIsActive = false;
         #endregion
 
         #region Public methods
@@ -82,6 +83,17 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         }
 
         /// <summary>
+        /// Activates Die method when main health is gone
+        /// </summary>
+        /// <param name="sender"></param>
+        public virtual void Die(Godot.Object sender = null)
+        {
+            this.DoDie();
+            this.EmitSignal(nameof(LifeIsGone), this);
+            this.AnimationIsActive = false;
+        }
+
+        /// <summary>
 		/// Plays an animation in the player node
 		/// </summary>
 		/// <param name="animation">Key of the animation</param>
@@ -100,7 +112,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         protected virtual void Initialize() 
         {
             this.MainHealth.Connect(nameof(Health.HealthChanged), this, nameof(HealthIsChanged));
-            this.MainHealth.Connect(nameof(Health.LifeIsGone), this, nameof(Die));
+            this.MainHealth.Connect(nameof(Health.LifeIsGone), this, nameof(GoneLife));
         }
 
         protected virtual void HealthIsChanged(LifePoint point)
@@ -109,10 +121,9 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
             this.EmitSignal(nameof(HealthChanged), point);
         }
 
-        protected virtual void Die(Godot.Object sender)
+        protected virtual void GoneLife(Godot.Object sender)
         {
-            this.DoDie();
-            this.EmitSignal(nameof(LifeIsGone), this);
+            this.Die(sender);
         }
 
         /// <summary>
@@ -142,6 +153,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// True if the user is alive and rights to move
         /// </summary>
         public bool CanMove { get; set; } = true;
+
+        /// <summary>
+        /// Sets this flag to ignore other animation during the current
+        /// </summary>
+        protected bool AnimationIsActive { get => _animationIsActive; set => _animationIsActive = value; }
         #endregion
     }
 }
