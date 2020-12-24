@@ -22,7 +22,6 @@
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
-  
   <ItemGroup>
     <Compile Include="addons\WAT\core\assertions\CSharp\Assertion.cs" />
     <Compile Include="addons\WAT\core\assertions\CSharp\Assertions.cs" />
@@ -55,6 +54,8 @@
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\VerticalMoveStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\BaseCharacter.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\PowerPoint.cs" />
+    <Compile Include="Sources\App\Core\Models\Games\CheckPoint.cs" />
+    <Compile Include="Sources\App\Core\Models\Games\CheckPointTaker.cs" />
     <Compile Include="Sources\App\Core\Models\Points\ValuePoint.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\Health.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Scripts\LifePoint.cs" />
@@ -71,8 +72,9 @@
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\Battle\BattleConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\Apis\CompilerApiConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Configurations\Apis\GameApiConfiguration.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\Games\CheckPointSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Games\GameSetting.cs" />
-<Compile Include="Sources\App\Core\Models\Settings\Games\RuleSetSetting.cs" />
+    <Compile Include="Sources\App\Core\Models\Settings\Games\RuleSetSetting.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\BattleConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\GlobalSettings.cs" />
     <Compile Include="Sources\App\Core\Models\Settings\Characters\CharacterDataSetting.cs" />
@@ -104,7 +106,9 @@
     <Compile Include="Sources\App\Shared\Enums\LoadDataType.cs" />
     <Compile Include="Sources\App\Shared\Enums\SceneActionEventType.cs" />
     <Compile Include="Sources\App\Shared\Enums\SynaleState.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\CheckPoints\IMemento.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Initializers\IDataInitializer.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Scenes\IStartAnimation.cs" />
     <Compile Include="Sources\App\Shared\Models\Settings\Animations\AnimationSetting.cs" />
     <Compile Include="Sources\App\Shared\Nodes\Camera\FollowPlayerCamera.cs" />
     <Compile Include="Sources\App\Shared\Plugins\AutoLoaderAccessor.cs" />
@@ -140,9 +144,12 @@
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\GridPlayCode\Scripts\MovingCharacter.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\GridPlayCode\Scripts\Players\PlayerActionGrid.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Reborns\Scripts\LoadingPower.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Reborns\Scripts\RebornHeartEffect.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Reborns\Scripts\RebornPower.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\Heart\Scripts\HeartBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\Scripts\HeartsLifeBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\SynaleBar\Scripts\SynaleBar.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Synales\Scripts\RebornSynale.cs" />
     <Compile Include="Sources\App\Shared\Signals\Signals.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Models\Position.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\ValidateCode.cs" />
@@ -176,9 +183,10 @@
     <Compile Include="Sources\App\Core\Interfaces\DialogBox\IDialogBoxManager.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\ExchangeSettingExtensionMethod.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\StringExtensionMethod.cs" />
- 	<Compile Include="Sources\App\Shared\Tools\Http\Customs\GameJsonHttpRequest.cs" />
- 	<Compile Include="Sources\App\Shared\Tools\Http\Customs\PlayerJsonHttpRequest.cs" />
-    <Compile Include="Sources\App\Shared\Tools\Http\JsonHttpRequest.cs" />  </ItemGroup>
+    <Compile Include="Sources\App\Shared\Tools\Http\Customs\GameJsonHttpRequest.cs" />
+    <Compile Include="Sources\App\Shared\Tools\Http\Customs\PlayerJsonHttpRequest.cs" />
+    <Compile Include="Sources\App\Shared\Tools\Http\JsonHttpRequest.cs" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Data\Scenes\test-health-bar.json" />
     <None Include="Data\Scenes\home.json" />

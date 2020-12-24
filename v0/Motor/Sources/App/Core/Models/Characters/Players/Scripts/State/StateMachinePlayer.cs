@@ -34,7 +34,14 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         public void Initialize()
         {
             this._canPlay = true;
-            this.ChangeState(new IdleStatePlayer(this, this._player) { CurrentDirection = Direction.Left  } );
+
+            var lastDirection = Direction.Left;
+            if (this._state != null)
+            {
+                lastDirection = this._state.CurrentDirection;
+            }
+
+            this.ChangeState(new IdleStatePlayer(this, this._player) { CurrentDirection = lastDirection  } );
         }
 
         /// <summary>

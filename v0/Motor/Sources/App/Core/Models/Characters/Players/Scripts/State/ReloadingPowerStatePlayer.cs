@@ -21,7 +21,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
         public override void Play()
         {
             var player = this.Character as Player;
-
             player.ActivateSynalePower();
         }
         #endregion

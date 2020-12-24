@@ -1,0 +1,60 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://Sources/App/Shared/Scenes/Reborns/Scripts/RebornPower.cs" type="Script" id=1]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Synales/synale effect background/synale effect background_000008.png" type="Texture" id=2]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Synales/synale effect background/synale effect background_000001.png" type="Texture" id=3]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Synales/synale effect background/synale effect background_000006.png" type="Texture" id=4]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Synales/synale effect background/synale effect background_000005.png" type="Texture" id=5]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Synales/synale effect background/synale effect background_000007.png" type="Texture" id=6]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Synales/synale effect background/synale effect background_000003.png" type="Texture" id=7]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Synales/synale effect background/synale effect background_000009.png" type="Texture" id=8]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Synales/synale effect background/synale effect background_000010.png" type="Texture" id=9]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Synales/synale effect background/synale effect background_000000.png" type="Texture" id=10]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Synales/synale effect background/synale effect background_000002.png" type="Texture" id=11]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Synales/synale effect background/synale effect background_000004.png" type="Texture" id=12]
+[ext_resource path="res://Sources/App/Shared/Scenes/Synales/RebornSynale.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Synales/synale effect electric background/synale effect electric background_000004.png" type="Texture" id=60]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Synales/synale effect electric background/synale effect electric background_000008.png" type="Texture" id=61]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Synales/synale effect electric background/synale effect electric background_000007.png" type="Texture" id=62]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Synales/synale effect electric background/synale effect electric background_000000.png" type="Texture" id=70]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Synales/synale effect electric background/synale effect electric background_000006.png" type="Texture" id=71]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Synales/synale effect electric background/synale effect electric background_000009.png" type="Texture" id=72]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Synales/synale effect electric background/synale effect electric background_000010.png" type="Texture" id=73]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Synales/synale effect electric background/synale effect electric background_000003.png" type="Texture" id=75]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Synales/synale effect electric background/synale effect electric background_000001.png" type="Texture" id=78]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Synales/synale effect electric background/synale effect electric background_000002.png" type="Texture" id=89]
+[ext_resource path="res://Sources/App/Shared/Assets/Scenes/Synales/synale effect electric background/synale effect electric background_000005.png" type="Texture" id=90]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 3 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 12 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 70 ), ExtResource( 78 ), ExtResource( 89 ), ExtResource( 75 ), ExtResource( 60 ), ExtResource( 90 ), ExtResource( 71 ), ExtResource( 62 ), ExtResource( 61 ), ExtResource( 72 ), ExtResource( 73 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="RebornPower" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Background" type="AnimatedSprite" parent="."]
+visible = false
+frames = SubResource( 1 )
+animation = "idle"
+frame = 1
+
+[node name="Exploded" type="AnimatedSprite" parent="."]
+visible = false
+frames = SubResource( 2 )
+frame = 9
+speed_scale = 5.0
+playing = true
+
+[node name="RebornSynale" parent="." instance=ExtResource( 13 )]

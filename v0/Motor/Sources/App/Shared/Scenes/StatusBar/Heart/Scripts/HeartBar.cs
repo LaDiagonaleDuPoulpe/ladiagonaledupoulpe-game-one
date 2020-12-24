@@ -14,8 +14,9 @@ public class HeartBar : Node2D
 	#region Constants
 	private const int MARGIN = 20;
 	#endregion
-	
+
 	#region Fields
+	private RebornHeartEffect _rebornEffect = null;
 	private TextureProgress _progressBar = null;
 	private AnimatedSprite _animatedSprite = null;
 	private Tween _tweenTextureItem = null;
@@ -31,12 +32,22 @@ public class HeartBar : Node2D
 	#region Public methods
 	public override void _Ready()
 	{
+		this._rebornEffect = this.GetNode<RebornHeartEffect>("Reborn");
 		this._progressBar = this.GetNode<TextureProgress>("TextureProgress");
 		this._tweenTextureItem = this.GetNode<Tween>("TweenForTexture");
 		this._tweenFpsItem = this.GetNode<Tween>("TweenForFps");
 		this._animatedSprite = this.GetNode<AnimatedSprite>("Effects");
 
 		this.Initialize();
+	}
+
+	/// <summary>
+	/// Puts a new value of the status bar
+	/// </summary>
+	public void Initialize(int newValueOfPlayer, int maxValueOfPlayer)
+	{
+		this.UpdateValue(newValueOfPlayer, maxValueOfPlayer, false);
+		this._rebornEffect.Start();
 	}
 
 	/// <summary>
@@ -48,21 +59,7 @@ public class HeartBar : Node2D
 	{
 		if (this.CurrentValue >= 0 && this.CurrentValue <= this.MaxValue)
 		{
-			int finalValue = this.ComputeValueToProgressBar(newValueOfPlayer, maxValueOfPlayer);
-
-			this._tweenTextureItem.InterpolateProperty(this._progressBar, "value", this.CurrentValue, finalValue,
-												0.5f,
-												Tween.TransitionType.Elastic,
-												Tween.EaseType.Out);
-			if (! this._tweenTextureItem.IsActive())
-			{
-				this._tweenTextureItem.Start();
-			}
-
-			this.ActivateAnimation(finalValue);
-			this.CurrentValue = finalValue;
-			this.ChangeColorStyle(this.CurrentValue);
-			this.ChangeHeartSpeed(this.CurrentValue);
+			this.UpdateValue(newValueOfPlayer, maxValueOfPlayer, true);
 		}
 	}
 
@@ -119,6 +116,28 @@ public class HeartBar : Node2D
 		{
 			this._tweenFpsItem.Start();
 		}
+	}
+
+	private void UpdateValue(int newValueOfPlayer, int maxValueOfPlayer, bool animate = true)
+	{
+		int finalValue = this.ComputeValueToProgressBar(newValueOfPlayer, maxValueOfPlayer);
+
+		this._tweenTextureItem.InterpolateProperty(this._progressBar, "value", this.CurrentValue, finalValue,
+											0.5f,
+											Tween.TransitionType.Elastic,
+											Tween.EaseType.Out);
+		if (!this._tweenTextureItem.IsActive())
+		{
+			this._tweenTextureItem.Start();
+		}
+
+		if (animate)
+		{
+			this.ActivateAnimation(finalValue);
+		}
+		this.CurrentValue = finalValue;
+		this.ChangeColorStyle(this.CurrentValue);
+		this.ChangeHeartSpeed(this.CurrentValue);
 	}
 
 	private HeartBarState GetCurrentState()

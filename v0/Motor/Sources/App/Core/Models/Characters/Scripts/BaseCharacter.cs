@@ -2,6 +2,7 @@
 using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Models.Attacks;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Characters;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
+using ladiagonaledupoulpe.Sources.App.Shared.Plugins;
 using System;
 using System.Collections.Generic;
 using System.Linq;

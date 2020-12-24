@@ -43,10 +43,13 @@ public class Signals : Node
     {
         this._currentPlayer.Connect(nameof(Player.HealthChanged), this._statusBar, nameof(OnePlayerStatusBar.LifeChanged));
         this._currentPlayer.Connect(nameof(Player.HealthInitialized), this._statusBar, nameof(OnePlayerStatusBar.InitializeLife));
+        this._currentPlayer.Connect(nameof(Player.HealthInitialized), this._currentGame, nameof(Game.Player_HealthInitialized));
         this._currentPlayer.Connect(nameof(Player.LifeIsGone), this.GetTree().CurrentScene, nameof(RootScene.PlayerDie));
     
         this._currentPlayer.Connect(nameof(Player.SynaleInitialized), this._statusBar, nameof(OnePlayerStatusBar.InitializeSynale));
         this._currentPlayer.Connect(nameof(Player.SynalePowerUpdated), this._statusBar, nameof(OnePlayerStatusBar.SynalePowerChanged));
+
+        this._currentPlayer.Connect(nameof(Player.RebornActivated), this._currentGame, nameof(Game.Player_RebornActivated));
     }
     #endregion
 }

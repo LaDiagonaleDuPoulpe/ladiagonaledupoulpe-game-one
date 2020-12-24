@@ -3,8 +3,10 @@ using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts.Sta
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Games;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Characters;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Games;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Synales;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.CheckPoints;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins;
 using System;
 using System.Diagnostics;
@@ -14,7 +16,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 	/// <summary>
 	/// Current player with animated sprite in the game
 	/// </summary>
-	public class Player : BaseCharacter
+	public class Player : BaseCharacter, IMemento
 	{
 		#region Constants
 		#endregion
@@ -23,6 +25,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 		private RulesSet _rules = null;
 		private Synale _synalePower = null;
 		private LoadingPower _loadingPower = null;
+		private RebornPower _rebornPower = null;
 		private AnimatedSprite _animatedSprite = null;
 		private StateMachinePlayer _stateMachine = null;
 		private PlayerCharacterDataSetting _lastSettings = null;
@@ -41,6 +44,12 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 		/// <param name="point"></param>
 		[Signal]
 		public delegate void SynalePowerUpdated(PowerPoint point);
+
+		/// <summary>
+		/// Connect to this signal to know when reborn is activated and we can, for example, restore data of the player
+		/// </summary>
+		[Signal]
+		public delegate void RebornActivated();
 		#endregion
 		#endregion
 
@@ -63,6 +72,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
 			this.PrepareTimers();
 			this.ConfigureLoadingPower();
+			this.ConfigureReloadingPower();
 
 			this._rules = this.GetNode<Game>("/root/CurrentGame").RulesSet;
 
@@ -123,6 +133,19 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 		}
 
 		/// <summary>
+		/// Initializes life data of the player
+		/// Starts the state motor
+		/// </summary>
+		/// <param name="playerSetting"></param>
+		public void InitializeLifeData(PlayerCharacterDataSetting playerSetting)
+		{
+			this.MainHealth.Initialize(playerSetting.Health.CurrentValue, playerSetting.Health.MaxValue);
+			this._stateMachine.Initialize();
+
+			base.InitializeData(playerSetting);
+		}
+
+		/// <summary>
 		/// Launches animation to show the reloading power 
 		/// </summary>
 		public void ActivateSynalePower()
@@ -132,7 +155,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 			this._loadingPower.Visible = true;
 
 			bool canReborn = this._synalePower.ActToReborn();
-
 			if (canReborn)
 			{
 				activeTimer = this._rebornTimer;
@@ -148,12 +170,18 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 			base.Die(sender);
 		}
 
-		private void _on_AnimatedSprite_animation_finished()
+		public CheckPointSetting GenerateMemento()
 		{
+			return new CheckPointSetting()
+			{
+				Player = this._lastSettings
+			};
 		}
 		#endregion
 
 		#region Internal methods
+		private void _on_AnimatedSprite_animation_finished() {}
+
 		protected override void Initialize()
 		{
 			base.Initialize();
@@ -169,6 +197,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 		{
 			this._rebornTimer.Stop();
 			this._loadingPower.Visible = false;
+			this._rebornPower.Start();
 		}
 
 		private void ConfigureLoadingPower()
@@ -177,17 +206,16 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 			this._loadingPower.Connect(nameof(LoadingPower.NoPowerAnimationCompleted), this, nameof(LoadingPower_NoPowerAnimationCompleted));
 		}
 
+		private void ConfigureReloadingPower()
+		{
+			this._rebornPower = this.GetNode<RebornPower>("RebornPower");
+			this._rebornPower.Connect(nameof(RebornPower.RebornIsReady), this, nameof(rebornPower_RebornIsReady));
+			this._rebornPower.Stop();
+		}
+
 		private void LoadingPower_NoPowerAnimationCompleted()
 		{
 			this.Die();
-		}
-
-		private void InitializeLifeData(PlayerCharacterDataSetting playerSetting)
-		{
-			this.MainHealth.Initialize(playerSetting.Health.CurrentValue, playerSetting.Health.MaxValue);
-			this._stateMachine.Initialize();
-
-			base.InitializeData(playerSetting);
 		}
 
 		private void InitializeSynaleData(PlayerCharacterDataSetting playerSetting)
@@ -226,6 +254,18 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 		{
 			base.DoDie();
 			this._stateMachine.TryToReborn();
+		}
+
+		private void rebornPower_RebornIsReady()
+		{
+			this.CanMove = true;
+			this.AnimationIsActive = false;
+			this.SetSettingsFromLastCheckPoint();
+		}
+
+		private void SetSettingsFromLastCheckPoint()
+		{
+			this.EmitSignal(nameof(RebornActivated));
 		}
 		#endregion
 

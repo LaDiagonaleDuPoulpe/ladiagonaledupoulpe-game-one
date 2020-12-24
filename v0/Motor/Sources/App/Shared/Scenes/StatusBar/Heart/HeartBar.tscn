@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/heart big/heart big_000000.png" type="Texture" id=1]
 [ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/heart big/heart big_000001.png" type="Texture" id=2]
@@ -57,6 +57,7 @@
 [ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000014.png" type="Texture" id=55]
 [ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000012.png" type="Texture" id=56]
 [ext_resource path="res://Sources/App/Shared/Assets/Scenes/LifeBar/3 hearts PNG sequences/effect power up/effect power up_000007.png" type="Texture" id=57]
+[ext_resource path="res://Sources/App/Shared/Scenes/Reborns/RebornHeartEffect.tscn" type="PackedScene" id=58]
 
 [sub_resource type="Theme" id=1]
 
@@ -124,10 +125,13 @@ __meta__ = {
 [node name="TweenForFps" type="Tween" parent="."]
 
 [node name="Effects" type="AnimatedSprite" parent="."]
+visible = false
 position = Vector2( 393, 314 )
 frames = SubResource( 3 )
-animation = "Damage"
-frame = 19
+animation = "PowerUp"
+frame = 24
 speed_scale = 5.0
 playing = true
+
+[node name="Reborn" parent="." instance=ExtResource( 58 )]
 [connection signal="animation_finished" from="Effects" to="." method="_on_Effects_animation_finished"]

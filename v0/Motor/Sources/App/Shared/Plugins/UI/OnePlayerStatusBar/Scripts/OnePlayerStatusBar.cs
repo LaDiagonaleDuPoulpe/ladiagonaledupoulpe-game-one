@@ -22,7 +22,7 @@ public class OnePlayerStatusBar : Node2D
 
 	public void InitializeLife(LifePoint point)
 	{
-		this._lifeBar.Update(point.CurrentValue, point.MaxValue);
+		this._lifeBar.Initialize(point.CurrentValue, point.MaxValue);
 	}
 
 	public void LifeChanged(LifePoint point)

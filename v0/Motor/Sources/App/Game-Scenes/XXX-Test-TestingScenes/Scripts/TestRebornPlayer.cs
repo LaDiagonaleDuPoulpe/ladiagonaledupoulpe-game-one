@@ -26,7 +26,7 @@ public class TestRebornPlayer : BaseActiveScene
 			},
 			SynalePower = new SynaleDataSetting()
 			{
-				CurrentValue = 20,
+				CurrentValue = 40,
 				MaxValue = 100
 			}
 		});
@@ -36,7 +36,7 @@ public class TestRebornPlayer : BaseActiveScene
 		{
 			RulesSet = new models.Settings.Games.RuleSetSetting()
 			{
-				RebornCost = 30
+				RebornCost = 10
 			}
 		});
 	}

@@ -19,6 +19,14 @@ public class HeartsLifeBar : Node2D
 	}
 
 	/// <summary>
+	/// Initializes life point
+	/// </summary>
+	public void Initialize(int value, int maxValueOfPlayer)
+	{
+		this._mainHeart.Initialize(value, maxValueOfPlayer);
+	}
+
+	/// <summary>
 	/// Updates value in all heart bars
 	/// </summary>
 	/// <param name="value">Positive value of the value of life of player</param>
