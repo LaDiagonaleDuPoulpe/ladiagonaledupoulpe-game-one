@@ -1,0 +1,482 @@
+{
+	"textures": [
+		{
+			"image": "spark-left-all.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1463,
+				"h": 406
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "spark-left-001.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 203
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					}
+				},
+				{
+					"filename": "spark-left-002.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 203
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					},
+					"frame": {
+						"x": 133,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					}
+				},
+				{
+					"filename": "spark-left-003.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 203
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					},
+					"frame": {
+						"x": 266,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					}
+				},
+				{
+					"filename": "spark-left-004.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 203
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					},
+					"frame": {
+						"x": 399,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					}
+				},
+				{
+					"filename": "spark-left-005.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 203
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					},
+					"frame": {
+						"x": 532,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					}
+				},
+				{
+					"filename": "spark-left-006.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 203
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					},
+					"frame": {
+						"x": 665,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					}
+				},
+				{
+					"filename": "spark-left-007.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 203
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					},
+					"frame": {
+						"x": 798,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					}
+				},
+				{
+					"filename": "spark-left-008.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 203
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					},
+					"frame": {
+						"x": 931,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					}
+				},
+				{
+					"filename": "spark-left-009.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 203
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					},
+					"frame": {
+						"x": 1064,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					}
+				},
+				{
+					"filename": "spark-left-010.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 203
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					},
+					"frame": {
+						"x": 1197,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					}
+				},
+				{
+					"filename": "spark-left-011.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 203
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					},
+					"frame": {
+						"x": 1330,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					}
+				},
+				{
+					"filename": "spark-left-012.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 203
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					},
+					"frame": {
+						"x": 0,
+						"y": 203,
+						"w": 133,
+						"h": 203
+					}
+				},
+				{
+					"filename": "spark-left-013.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 203
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					},
+					"frame": {
+						"x": 133,
+						"y": 203,
+						"w": 133,
+						"h": 203
+					}
+				},
+				{
+					"filename": "spark-left-014.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 203
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					},
+					"frame": {
+						"x": 266,
+						"y": 203,
+						"w": 133,
+						"h": 203
+					}
+				},
+				{
+					"filename": "spark-left-015.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 203
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					},
+					"frame": {
+						"x": 399,
+						"y": 203,
+						"w": 133,
+						"h": 203
+					}
+				},
+				{
+					"filename": "spark-left-016.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 203
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					},
+					"frame": {
+						"x": 532,
+						"y": 203,
+						"w": 133,
+						"h": 203
+					}
+				},
+				{
+					"filename": "spark-left-017.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 203
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					},
+					"frame": {
+						"x": 665,
+						"y": 203,
+						"w": 133,
+						"h": 203
+					}
+				},
+				{
+					"filename": "spark-left-018.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 203
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					},
+					"frame": {
+						"x": 798,
+						"y": 203,
+						"w": 133,
+						"h": 203
+					}
+				},
+				{
+					"filename": "spark-left-019.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 203
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					},
+					"frame": {
+						"x": 931,
+						"y": 203,
+						"w": 133,
+						"h": 203
+					}
+				},
+				{
+					"filename": "spark-left-020.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 203
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					},
+					"frame": {
+						"x": 1064,
+						"y": 203,
+						"w": 133,
+						"h": 203
+					}
+				},
+				{
+					"filename": "spark-left-021.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 203
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					},
+					"frame": {
+						"x": 1197,
+						"y": 203,
+						"w": 133,
+						"h": 203
+					}
+				},
+				{
+					"filename": "spark-left-022.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 133,
+						"h": 203
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 133,
+						"h": 203
+					},
+					"frame": {
+						"x": 1330,
+						"y": 203,
+						"w": 133,
+						"h": 203
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:4baf333fb95c8544fad5733167c828de:e0a9172341c8685f5c2a59d1a91de3eb:a1122ce71358c2227c9ef2272506f61c$"
+	}
+}

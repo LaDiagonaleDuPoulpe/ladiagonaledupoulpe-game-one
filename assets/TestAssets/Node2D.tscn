@@ -1,0 +1,261 @@
+[gd_scene load_steps=142 format=2]
+
+[ext_resource path="res://wave3/wave3_026.png" type="Texture" id=1]
+[ext_resource path="res://wave3/wave3_025.png" type="Texture" id=2]
+[ext_resource path="res://wave3/wave3_027.png" type="Texture" id=3]
+[ext_resource path="res://wave3/wave3_022.png" type="Texture" id=4]
+[ext_resource path="res://wave3/wave3_028.png" type="Texture" id=5]
+[ext_resource path="res://wave3/wave3_021.png" type="Texture" id=6]
+[ext_resource path="res://wave3/wave3_024.png" type="Texture" id=7]
+[ext_resource path="res://wave3/wave3_029.png" type="Texture" id=8]
+[ext_resource path="res://wave3/wave3_023.png" type="Texture" id=9]
+[ext_resource path="res://wave3/wave3_001.png" type="Texture" id=10]
+[ext_resource path="res://wave3/wave3_003.png" type="Texture" id=11]
+[ext_resource path="res://wave3/wave3_007.png" type="Texture" id=12]
+[ext_resource path="res://wave3/wave3_000.png" type="Texture" id=13]
+[ext_resource path="res://wave3/wave3_002.png" type="Texture" id=14]
+[ext_resource path="res://wave3/wave3_005.png" type="Texture" id=15]
+[ext_resource path="res://wave3/wave3_006.png" type="Texture" id=16]
+[ext_resource path="res://wave3/wave3_004.png" type="Texture" id=17]
+[ext_resource path="res://wave3/wave3_019.png" type="Texture" id=18]
+[ext_resource path="res://wave3/wave3_012.png" type="Texture" id=19]
+[ext_resource path="res://wave3/wave3_009.png" type="Texture" id=20]
+[ext_resource path="res://wave3/wave3_020.png" type="Texture" id=21]
+[ext_resource path="res://wave3/wave3_016.png" type="Texture" id=22]
+[ext_resource path="res://wave3/wave3_008.png" type="Texture" id=23]
+[ext_resource path="res://wave3/wave3_010.png" type="Texture" id=24]
+[ext_resource path="res://wave3/wave3_013.png" type="Texture" id=25]
+[ext_resource path="res://wave3/wave3_011.png" type="Texture" id=26]
+[ext_resource path="res://wave3/wave3_014.png" type="Texture" id=27]
+[ext_resource path="res://wave3/wave3_015.png" type="Texture" id=28]
+[ext_resource path="res://wave3/wave3_018.png" type="Texture" id=29]
+[ext_resource path="res://wave3/wave3_017.png" type="Texture" id=30]
+[ext_resource path="res://wave1/wave1_003.png" type="Texture" id=31]
+[ext_resource path="res://wave1/wave1_000.png" type="Texture" id=32]
+[ext_resource path="res://wave1/wave1_001.png" type="Texture" id=33]
+[ext_resource path="res://wave2/wave2_009.png" type="Texture" id=34]
+[ext_resource path="res://wave2/wave2_008.png" type="Texture" id=35]
+[ext_resource path="res://wave1/wave1_004.png" type="Texture" id=36]
+[ext_resource path="res://wave2/wave2_001.png" type="Texture" id=37]
+[ext_resource path="res://wave1/wave1_005.png" type="Texture" id=38]
+[ext_resource path="res://wave2/wave2_005.png" type="Texture" id=39]
+[ext_resource path="res://wave1/wave1_012.png" type="Texture" id=40]
+[ext_resource path="res://wave1/wave1_006.png" type="Texture" id=41]
+[ext_resource path="res://wave2/wave2_007.png" type="Texture" id=42]
+[ext_resource path="res://wave1/wave1_002.png" type="Texture" id=43]
+[ext_resource path="res://wave2/wave2_004.png" type="Texture" id=44]
+[ext_resource path="res://wave1/wave1_008.png" type="Texture" id=45]
+[ext_resource path="res://wave4/wave4_000.png" type="Texture" id=46]
+[ext_resource path="res://wave1/wave1_009.png" type="Texture" id=47]
+[ext_resource path="res://wave1/wave1_007.png" type="Texture" id=48]
+[ext_resource path="res://wave2/wave2_002.png" type="Texture" id=49]
+[ext_resource path="res://wave2/wave2_006.png" type="Texture" id=50]
+[ext_resource path="res://wave1/wave1_010.png" type="Texture" id=51]
+[ext_resource path="res://wave1/wave1_011.png" type="Texture" id=52]
+[ext_resource path="res://wave2/wave2_003.png" type="Texture" id=53]
+[ext_resource path="res://wave5/wave5_001.png" type="Texture" id=54]
+[ext_resource path="res://wave5/wave5_014.png" type="Texture" id=55]
+[ext_resource path="res://sparks/left/spark-left-001.png" type="Texture" id=56]
+[ext_resource path="res://wave5/wave5_006.png" type="Texture" id=57]
+[ext_resource path="res://wave4/wave4_007.png" type="Texture" id=58]
+[ext_resource path="res://wave4/wave4_008.png" type="Texture" id=59]
+[ext_resource path="res://wave5/wave5_004.png" type="Texture" id=60]
+[ext_resource path="res://wave5/wave5_012.png" type="Texture" id=61]
+[ext_resource path="res://sparks/left/spark-left-002.png" type="Texture" id=62]
+[ext_resource path="res://wave4/wave4_002.png" type="Texture" id=63]
+[ext_resource path="res://wave5/wave5_002.png" type="Texture" id=64]
+[ext_resource path="res://sparks/left/spark-left-003.png" type="Texture" id=65]
+[ext_resource path="res://sparks/left/spark-left-004.png" type="Texture" id=66]
+[ext_resource path="res://wave1/wave1_014.png" type="Texture" id=67]
+[ext_resource path="res://sparks/left/spark-left-005.png" type="Texture" id=68]
+[ext_resource path="res://wave4/wave4_009.png" type="Texture" id=69]
+[ext_resource path="res://wave5/wave5_007.png" type="Texture" id=70]
+[ext_resource path="res://wave4/wave4_003.png" type="Texture" id=71]
+[ext_resource path="res://wave5/wave5_000.png" type="Texture" id=72]
+[ext_resource path="res://wave4/wave4_005.png" type="Texture" id=73]
+[ext_resource path="res://wave1/wave1_013.png" type="Texture" id=74]
+[ext_resource path="res://wave4/wave4_001.png" type="Texture" id=75]
+[ext_resource path="res://wave4/wave4_004.png" type="Texture" id=76]
+[ext_resource path="res://wave4/wave4_006.png" type="Texture" id=77]
+[ext_resource path="res://wave5/wave5_003.png" type="Texture" id=78]
+[ext_resource path="res://wave5/wave5_005.png" type="Texture" id=79]
+[ext_resource path="res://wave5/wave5_008.png" type="Texture" id=80]
+[ext_resource path="res://wave5/wave5_009.png" type="Texture" id=81]
+[ext_resource path="res://wave5/wave5_010.png" type="Texture" id=82]
+[ext_resource path="res://wave5/wave5_011.png" type="Texture" id=83]
+[ext_resource path="res://wave5/wave5_013.png" type="Texture" id=84]
+[ext_resource path="res://wave2/wave2_000.png" type="Texture" id=85]
+[ext_resource path="res://pillar wave1/pillar wave1_006.png" type="Texture" id=86]
+[ext_resource path="res://pillar wave1/pillar wave1_001.png" type="Texture" id=87]
+[ext_resource path="res://sparks/left/spark-left-012.png" type="Texture" id=88]
+[ext_resource path="res://sparks/left/spark-left-016.png" type="Texture" id=89]
+[ext_resource path="res://sparks/left/spark-left-017.png" type="Texture" id=90]
+[ext_resource path="res://sparks/left/spark-left-008.png" type="Texture" id=91]
+[ext_resource path="res://sparks/left/spark-left-018.png" type="Texture" id=92]
+[ext_resource path="res://pillar wave2/pillar wave2_000.png" type="Texture" id=93]
+[ext_resource path="res://pillar wave1/pillar wave1_000.png" type="Texture" id=94]
+[ext_resource path="res://sparks/left/spark-left-019.png" type="Texture" id=95]
+[ext_resource path="res://pillar wave1/pillar wave1_002.png" type="Texture" id=96]
+[ext_resource path="res://sparks/left/spark-left-006.png" type="Texture" id=97]
+[ext_resource path="res://sparks/left/spark-left-007.png" type="Texture" id=98]
+[ext_resource path="res://sparks/left/spark-left-021.png" type="Texture" id=99]
+[ext_resource path="res://pillar wave1/pillar wave1_005.png" type="Texture" id=100]
+[ext_resource path="res://pillar wave1/pillar wave1_008.png" type="Texture" id=101]
+[ext_resource path="res://sparks/left/spark-left-014.png" type="Texture" id=102]
+[ext_resource path="res://sparks/left/spark-left-013.png" type="Texture" id=103]
+[ext_resource path="res://pillar wave1/pillar wave1_003.png" type="Texture" id=104]
+[ext_resource path="res://pillar wave2/pillar wave2_003.png" type="Texture" id=105]
+[ext_resource path="res://sparks/left/spark-left-015.png" type="Texture" id=106]
+[ext_resource path="res://sparks/left/spark-left-010.png" type="Texture" id=107]
+[ext_resource path="res://sparks/left/spark-left-020.png" type="Texture" id=108]
+[ext_resource path="res://pillar wave1/pillar wave1_009.png" type="Texture" id=109]
+[ext_resource path="res://pillar wave2/pillar wave2_004.png" type="Texture" id=110]
+[ext_resource path="res://sparks/left/spark-left-022.png" type="Texture" id=111]
+[ext_resource path="res://pillar wave1/pillar wave1_004.png" type="Texture" id=112]
+[ext_resource path="res://pillar wave1/pillar wave1_007.png" type="Texture" id=113]
+[ext_resource path="res://pillar wave2/pillar wave2_001.png" type="Texture" id=114]
+[ext_resource path="res://sparks/left/spark-left-009.png" type="Texture" id=115]
+[ext_resource path="res://pillar wave2/pillar wave2_002.png" type="Texture" id=116]
+[ext_resource path="res://sparks/left/spark-left-011.png" type="Texture" id=117]
+[ext_resource path="res://pillar wave3/pillar wave3_001.png" type="Texture" id=118]
+[ext_resource path="res://pillar wave2/pillar wave2_009.png" type="Texture" id=119]
+[ext_resource path="res://pillar wave3/pillar wave3_006.png" type="Texture" id=120]
+[ext_resource path="res://pillar wave2/pillar wave2_008.png" type="Texture" id=121]
+[ext_resource path="res://pillar wave3/pillar wave3_003.png" type="Texture" id=122]
+[ext_resource path="res://pillar wave3/pillar wave3_000.png" type="Texture" id=123]
+[ext_resource path="res://pillar wave3/pillar wave3_008.png" type="Texture" id=124]
+[ext_resource path="res://pillar wave2/pillar wave2_005.png" type="Texture" id=125]
+[ext_resource path="res://pillar wave3/pillar wave3_004.png" type="Texture" id=126]
+[ext_resource path="res://pillar wave2/pillar wave2_007.png" type="Texture" id=127]
+[ext_resource path="res://pillar wave3/pillar wave3_009.png" type="Texture" id=128]
+[ext_resource path="res://pillar wave3/pillar wave3_005.png" type="Texture" id=129]
+[ext_resource path="res://pillar wave3/pillar wave3_007.png" type="Texture" id=130]
+[ext_resource path="res://pillar wave3/pillar wave3_002.png" type="Texture" id=131]
+[ext_resource path="res://pillar wave2/pillar wave2_006.png" type="Texture" id=132]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 13 ), ExtResource( 10 ), ExtResource( 14 ), ExtResource( 11 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 12 ), ExtResource( 23 ), ExtResource( 20 ), ExtResource( 24 ), ExtResource( 26 ), ExtResource( 19 ), ExtResource( 25 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 22 ), ExtResource( 30 ), ExtResource( 29 ), ExtResource( 18 ), ExtResource( 21 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 85 ), ExtResource( 37 ), ExtResource( 49 ), ExtResource( 53 ), ExtResource( 44 ), ExtResource( 39 ), ExtResource( 50 ), ExtResource( 42 ), ExtResource( 35 ), ExtResource( 34 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 32 ), ExtResource( 33 ), ExtResource( 43 ), ExtResource( 31 ), ExtResource( 36 ), ExtResource( 38 ), ExtResource( 41 ), ExtResource( 48 ), ExtResource( 45 ), ExtResource( 47 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 40 ), ExtResource( 74 ), ExtResource( 67 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 46 ), ExtResource( 75 ), ExtResource( 63 ), ExtResource( 71 ), ExtResource( 76 ), ExtResource( 73 ), ExtResource( 77 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 69 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 72 ), ExtResource( 54 ), ExtResource( 64 ), ExtResource( 78 ), ExtResource( 60 ), ExtResource( 79 ), ExtResource( 57 ), ExtResource( 70 ), ExtResource( 80 ), ExtResource( 81 ), ExtResource( 82 ), ExtResource( 83 ), ExtResource( 61 ), ExtResource( 84 ), ExtResource( 55 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 56 ), ExtResource( 62 ), ExtResource( 65 ), ExtResource( 66 ), ExtResource( 68 ), ExtResource( 97 ), ExtResource( 98 ), ExtResource( 91 ), ExtResource( 115 ), ExtResource( 107 ), ExtResource( 117 ), ExtResource( 88 ), ExtResource( 103 ), ExtResource( 102 ), ExtResource( 106 ), ExtResource( 89 ), ExtResource( 90 ), ExtResource( 92 ), ExtResource( 95 ), ExtResource( 108 ), ExtResource( 99 ), ExtResource( 111 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 94 ), ExtResource( 87 ), ExtResource( 96 ), ExtResource( 104 ), ExtResource( 112 ), ExtResource( 100 ), ExtResource( 86 ), ExtResource( 113 ), ExtResource( 101 ), ExtResource( 109 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 93 ), ExtResource( 114 ), ExtResource( 116 ), ExtResource( 105 ), ExtResource( 110 ), ExtResource( 125 ), ExtResource( 132 ), ExtResource( 127 ), ExtResource( 121 ), ExtResource( 119 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 123 ), ExtResource( 118 ), ExtResource( 131 ), ExtResource( 122 ), ExtResource( 126 ), ExtResource( 129 ), ExtResource( 120 ), ExtResource( 130 ), ExtResource( 124 ), ExtResource( 128 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="wave3" type="AnimatedSprite" parent="."]
+position = Vector2( 216, 107 )
+scale = Vector2( 0.416016, 0.7 )
+frames = SubResource( 1 )
+frame = 16
+playing = true
+
+[node name="wave2" type="AnimatedSprite" parent="."]
+position = Vector2( 647, 77 )
+frames = SubResource( 2 )
+frame = 6
+playing = true
+
+[node name="wave1" type="AnimatedSprite" parent="."]
+position = Vector2( 788, 199 )
+frames = SubResource( 3 )
+frame = 7
+playing = true
+
+[node name="wave4" type="AnimatedSprite" parent="."]
+position = Vector2( 177, 340 )
+frames = SubResource( 4 )
+playing = true
+
+[node name="wave5" type="AnimatedSprite" parent="."]
+position = Vector2( 1081, 82 )
+frames = SubResource( 5 )
+playing = true
+
+[node name="sparks-left" type="AnimatedSprite" parent="."]
+position = Vector2( -74, 211 )
+frames = SubResource( 6 )
+frame = 11
+playing = true
+
+[node name="pillarwave01" type="AnimatedSprite" parent="."]
+position = Vector2( 1051, 341 )
+frames = SubResource( 7 )
+frame = 1
+playing = true
+
+[node name="pillarwave02" type="AnimatedSprite" parent="."]
+position = Vector2( 867, 323 )
+frames = SubResource( 8 )
+frame = 6
+playing = true
+
+[node name="pillarwave03" type="AnimatedSprite" parent="."]
+position = Vector2( 579, 355 )
+frames = SubResource( 9 )
+frame = 1
+playing = true
