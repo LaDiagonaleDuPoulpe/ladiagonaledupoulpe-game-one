@@ -207,6 +207,7 @@
   <ItemGroup>
     <Folder Include="Sources\App\Core\Interfaces\Configurations\" />
     <Folder Include="Sources\App\Core\Models\Characters\Npcs\" />
+    <Folder Include="Sources\App\Shared\Plugins\Quests\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">
