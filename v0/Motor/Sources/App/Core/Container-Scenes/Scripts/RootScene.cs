@@ -9,6 +9,7 @@ using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers;
 using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog;
 using ladiagonaledupoulpe.Sources.App.Shared.Services;
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
+using ladiagonaledupoulpe.Sources.App.Shared.Signals;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -49,14 +50,22 @@ public class RootScene : BaseScene
 		this._currentDyingTimer = this.GetNode<Timer>("DyingTimer");
 		this._globalCamera = this.GetNode<Camera2D>("MainCamera");
 
-		this.LoadingScene.Connect(nameof(LoadingScene.Begin), this, nameof(LoadingScene_Start));
-		this.LoadingScene.Connect(nameof(LoadingScene.End), this, nameof(LoadingScene_End));
-		this.ConnectToActivateCameraEvent(this._dyingScene);
+		this.AttachEvents();
 
 		this.LoadingScene.Launch(new LevelConfiguration()
 		{
 			Key = "home"
 		});
+	}
+
+	private void AttachEvents()
+	{
+		this.LoadingScene.Connect(nameof(LoadingScene.Begin), this, nameof(LoadingScene_Start));
+		this.LoadingScene.Connect(nameof(LoadingScene.End), this, nameof(LoadingScene_End));
+		this.ConnectToActivateCameraEvent(this._dyingScene);
+
+		HealthCharacterEvents characterEvents = this.GetNode<HealthCharacterEvents>("/root/HealthCharacterEvents");
+		characterEvents.AttachToDie(this, nameof(RootScene.PlayerDie));
 	}
 
 	private void LoadingScene_Start()

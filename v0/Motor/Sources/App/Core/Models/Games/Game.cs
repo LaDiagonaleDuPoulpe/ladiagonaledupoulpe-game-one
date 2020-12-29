@@ -4,6 +4,7 @@ using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Games;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes.Request;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins;
+using ladiagonaledupoulpe.Sources.App.Shared.Signals;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,8 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
             this.AddChild(this._checkPointsTaker);
             this.AddChild(this.RulesSet);
             this._currentPlayer = this.GetNode<Player>("/root/CurrentPlayer");
+
+            this.AttachEvents();
         }
 
         /// <summary>
@@ -58,12 +61,12 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
             }
         }
 
-        public void Player_HealthInitialized(LifePoint point)
+        public void Player_HealthInitialized(Godot.Object sender, LifePoint point)
         {
             this.SaveNewCheckPoint();
         }
 
-        public void Player_RebornActivated()
+        public void Player_RebornActivated(Godot.Object sender)
         {
             this.RestoreLastCheckPoint();
         }
@@ -76,6 +79,15 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
         {
             this.CreatedDate = setting.CreatedDate;
             this.RulesSet.RebornCost = setting.RulesSet.RebornCost;
+        }
+        #endregion
+
+        #region Internal methods
+        private void AttachEvents()
+        {
+            HealthCharacterEvents characterEvents = this.GetNode<HealthCharacterEvents>("/root/HealthCharacterEvents");
+            characterEvents.AttachToInitialize(this, nameof(Game.Player_HealthInitialized));
+            characterEvents.AttachToReborn(this, nameof(Game.Player_RebornActivated));
         }
         #endregion
 

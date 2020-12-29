@@ -50,6 +50,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
+SynaleEvents="*res://Sources/App/Shared/Signals/SynaleEvents.cs"
+HealthCharacterEvents="*res://Sources/App/Shared/Signals/HealthCharacterEvents.cs"
 ResourcesSceneLoader="*res://Sources/App/Shared/Plugins/Resources/ResourcesSceneLoader.cs"
 GlobalDataService="*res://Sources/App/Shared/Services/Data/GlobalDataService.cs"
 CurrentPlayer="*res://Sources/App/Core/Models/Characters/Players/Player.tscn"
@@ -62,7 +64,6 @@ LoadingScene="*res://Sources/App/Shared/Scenes/LoadingScene/LoadingScene.tscn"
 AutoLoaderAccessor="*res://Sources/App/Shared/Plugins/AutoLoaderAccessor.cs"
 DataPreloader="*res://Sources/App/Shared/Plugins/Preloaders/DataPreloader.cs"
 MainDataPreloader="*res://Sources/App/Shared/Plugins/Preloaders/MainDataPreloader.cs"
-Signals="*res://Sources/App/Shared/Signals/Signals.cs"
 
 [display]
 

@@ -150,7 +150,7 @@
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\Scripts\HeartsLifeBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\SynaleBar\Scripts\SynaleBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Synales\Scripts\RebornSynale.cs" />
-    <Compile Include="Sources\App\Shared\Signals\Signals.cs" />
+    <Compile Include="Sources\App\Shared\Signals\HealthCharacterEvents.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Models\Position.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\ValidateCode.cs" />
     <Compile Include="Sources\App\Game-Scenes\002-Inside-Crash-Ship\Scripts\InsideCrashShip.cs" />
@@ -181,6 +181,7 @@
     <Compile Include="Sources\App\Shared\Plugins\UI\DialoxBoxManager.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Resources\ResourcesSceneLoader.cs" />
     <Compile Include="Sources\App\Core\Interfaces\DialogBox\IDialogBoxManager.cs" />
+    <Compile Include="Sources\App\Shared\Signals\SynaleEvents.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\ExchangeSettingExtensionMethod.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\StringExtensionMethod.cs" />
     <Compile Include="Sources\App\Shared\Tools\Http\Customs\GameJsonHttpRequest.cs" />

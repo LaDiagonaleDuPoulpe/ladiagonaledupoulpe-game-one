@@ -8,6 +8,7 @@ using ladiagonaledupoulpe.Sources.App.Core.Models.Synales;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.CheckPoints;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins;
+using ladiagonaledupoulpe.Sources.App.Shared.Signals;
 using System;
 using System.Diagnostics;
 
@@ -22,6 +23,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 		#endregion
 
 		#region Fields
+		private SynaleEvents _synaleEvents = null;
 		private RulesSet _rules = null;
 		private Synale _synalePower = null;
 		private LoadingPower _loadingPower = null;
@@ -31,26 +33,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 		private PlayerCharacterDataSetting _lastSettings = null;
 		private Timer _dyingTimer = null;
 		private Timer _rebornTimer = null;
-		#region Signals
-		/// <summary>
-		/// Connect to this signal to get the init power point 
-		/// </summary>
-		[Signal]
-		public delegate void SynaleInitialized(PowerPoint point);
-
-		/// <summary>
-		/// Update the power of the synale
-		/// </summary>
-		/// <param name="point"></param>
-		[Signal]
-		public delegate void SynalePowerUpdated(PowerPoint point);
-
-		/// <summary>
-		/// Connect to this signal to know when reborn is activated and we can, for example, restore data of the player
-		/// </summary>
-		[Signal]
-		public delegate void RebornActivated();
-		#endregion
 		#endregion
 
 		#region Public methods
@@ -75,6 +57,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 			this.ConfigureReloadingPower();
 
 			this._rules = this.GetNode<Game>("/root/CurrentGame").RulesSet;
+			this._synaleEvents = this.GetNode<SynaleEvents>("/root/SynaleEvents");
 
 			this.AddSynale();
 		}
@@ -242,12 +225,12 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
 		private void Synale_SynaleInitialized(PowerPoint point)
 		{
-			this.EmitSignal(nameof(SynaleInitialized), point);
+			this._synaleEvents.BeInitialized(this, point);
 		}
 
 		private void Synale_SynalePowerUpdated(PowerPoint point)
 		{
-			this.EmitSignal(nameof(SynalePowerUpdated), point);
+			this._synaleEvents.BeUpdated(this, point);
 		}
 
 		protected override void GoneLife(Godot.Object sender)
@@ -265,7 +248,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
 		private void SetSettingsFromLastCheckPoint()
 		{
-			this.EmitSignal(nameof(RebornActivated));
+			this.HealthCharacterEvents.BeReborn(this);
 		}
 		#endregion
 

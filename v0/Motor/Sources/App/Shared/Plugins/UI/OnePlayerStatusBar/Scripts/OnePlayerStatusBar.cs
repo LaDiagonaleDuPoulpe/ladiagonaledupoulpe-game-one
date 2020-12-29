@@ -1,5 +1,6 @@
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
+using ladiagonaledupoulpe.Sources.App.Shared.Signals;
 using System;
 
 /// <summary>
@@ -18,24 +19,26 @@ public class OnePlayerStatusBar : Node2D
 		CanvasLayer layer = this.GetNode<CanvasLayer>("CanvasLayer");
 		this._lifeBar = layer.GetNode<HeartsLifeBar>("HeartsLifeBar");
 		this._synaleBar = layer.GetNode<SynaleBar>("SynaleBar");
+
+		this.AttachToEvents();
 	}
 
-	public void InitializeLife(LifePoint point)
+	public void InitializeLife(Godot.Object sender, LifePoint point)
 	{
 		this._lifeBar.Initialize(point.CurrentValue, point.MaxValue);
 	}
 
-	public void LifeChanged(LifePoint point)
+	public void LifeChanged(Godot.Object sender, LifePoint point)
 	{
 		this._lifeBar.Update(point.CurrentValue, point.MaxValue);
 	}
 
-	public void InitializeSynale(PowerPoint point)
+	public void InitializeSynale(Godot.Object sender, PowerPoint point)
     {
 		this._synaleBar.Initialize(point);
     }
 
-	public void SynalePowerChanged(PowerPoint addingPoint)
+	public void SynalePowerChanged(Godot.Object sender, PowerPoint addingPoint)
     {
 		this._synaleBar.UpdatePower(addingPoint);
     }
@@ -48,6 +51,19 @@ public class OnePlayerStatusBar : Node2D
 		this._lifeBar.Visible = isVisible;
 		this.Visible = isVisible;
 		this._synaleBar.Visible = isVisible;
+	}
+	#endregion
+
+	#region Internal methods
+	private void AttachToEvents()
+	{
+		HealthCharacterEvents characterEvents = this.GetNode<HealthCharacterEvents>("/root/HealthCharacterEvents");
+		characterEvents.AttachToInitialize(this, nameof(InitializeLife));
+		characterEvents.AttachToChange(this, nameof(LifeChanged));
+
+		SynaleEvents synaleEvents = this.GetNode<SynaleEvents>("/root/SynaleEvents");
+		synaleEvents.AttachToInitialize(this, nameof(InitializeSynale));
+		synaleEvents.AttachToUpdate(this, nameof(SynalePowerChanged));
 	}
 	#endregion
 }

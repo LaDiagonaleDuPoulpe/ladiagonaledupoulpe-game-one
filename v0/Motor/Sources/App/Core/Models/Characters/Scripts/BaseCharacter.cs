@@ -3,6 +3,7 @@ using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Models.Attacks;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Characters;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins;
+using ladiagonaledupoulpe.Sources.App.Shared.Signals;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,30 +20,13 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
     {
         #region Fields
         #region Signals
-        /// <summary>
-        /// Initialize health value
-        /// </summary>
-        /// <param name="point"></param>
-        [Signal]
-        public delegate void HealthInitialized(LifePoint point);
-
-        /// <summary>
-        /// Observes this event to know when health changed (plus or less)
-        /// </summary>
-        /// <param name="health">New health</param>
-        [Signal]
-        public delegate void HealthChanged(LifePoint point);
-
-        /// <summary>
-        /// Observes this event to know when here is no life
-        /// </summary>
-        [Signal]
-        public delegate void LifeIsGone(Godot.Object sender);
+        
         #endregion
 
         private Vector2 _velocity = Vector2.Zero;
         private Health _health = null;
         private bool _animationIsActive = false;
+        private HealthCharacterEvents _healthCharacterEvents = null;
         #endregion
 
         #region Public methods
@@ -50,6 +34,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         {
             base._Ready();
             this.MainHealth = this.GetNode<Health>("Health");
+            this._healthCharacterEvents = this.GetNode<HealthCharacterEvents>("/root/HealthCharacterEvents");
 
             this.Initialize();
         }
@@ -61,8 +46,8 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         public virtual void InitializeData(CharacterDataSetting setting)
         {
             this.CanMove = true;
-            this.EmitSignal(nameof(HealthInitialized), 
-                            new LifePoint(setting.Health.CurrentValue, setting.Health.MaxValue));
+            this.HealthCharacterEvents.BeInitialized(this,
+                                                  new LifePoint(setting.Health.CurrentValue, setting.Health.MaxValue));
         }
 
         /// <summary>
@@ -90,7 +75,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         public virtual void Die(Godot.Object sender = null)
         {
             this.DoDie();
-            this.EmitSignal(nameof(LifeIsGone), this);
+            this.HealthCharacterEvents.BeDied(this);
             this.AnimationIsActive = false;
         }
 
@@ -119,7 +104,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         protected virtual void HealthIsChanged(LifePoint point)
         {
             // TODO: 15/08/2020, play hint animation
-            this.EmitSignal(nameof(HealthChanged), point);
+            this.HealthCharacterEvents.BeChanged(this, point);
         }
 
         protected virtual void GoneLife(Godot.Object sender)
@@ -159,6 +144,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// Sets this flag to ignore other animation during the current
         /// </summary>
         protected bool AnimationIsActive { get => _animationIsActive; set => _animationIsActive = value; }
+
+        /// <summary>
+        /// Accessor to the singleton to gets all events of character health
+        /// </summary>
+        public HealthCharacterEvents HealthCharacterEvents => _healthCharacterEvents;
         #endregion
     }
 }
