@@ -76,7 +76,6 @@ public class RootScene : BaseScene
 		questEvents.AttachRewardsArePublishing(this, nameof(QuestEvents_RewardsArePublishing));
 		questEvents.AttachRewardsHaveBeenCollected(this, nameof(QuestEvents_RewardsHaveBeenCollected));
 	}
-
 	private void LoadingScene_Start()
 	{
 		// nothing to do now

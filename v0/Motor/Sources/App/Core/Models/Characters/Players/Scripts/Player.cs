@@ -59,6 +59,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 			this.ConfigureReloadingPower();
 
 			this._rules = this.GetRootNode<Game>("CurrentGame").RulesSet;
+			this._synaleEvents = this.GetNode<SynaleEvents>("/root/SynaleEvents");
 
 			this.AttachQuestEvents();
 

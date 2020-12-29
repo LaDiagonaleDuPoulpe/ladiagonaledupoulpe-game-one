@@ -47,6 +47,8 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
             this.AddChild(this.Story as Node);
 
             this.AttachEvents();
+
+            this.AttachEvents();
         }
 
         /// <summary>
