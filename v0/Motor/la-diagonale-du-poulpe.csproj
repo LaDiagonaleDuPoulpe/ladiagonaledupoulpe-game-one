@@ -108,7 +108,11 @@
     <Compile Include="Sources\App\Shared\Enums\SynaleState.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\CheckPoints\IMemento.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Initializers\IDataInitializer.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Quests\IGoal.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Quests\IQuest.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Quests\IQuestReward.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Scenes\IStartAnimation.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Signals\IWithSignals.cs" />
     <Compile Include="Sources\App\Shared\Models\Settings\Animations\AnimationSetting.cs" />
     <Compile Include="Sources\App\Shared\Nodes\Camera\FollowPlayerCamera.cs" />
     <Compile Include="Sources\App\Shared\Plugins\AutoLoaderAccessor.cs" />
@@ -126,6 +130,9 @@
     <Compile Include="Sources\App\Shared\Plugins\Initializers\ProxyDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\Customs\Player\InMemoryPlayerDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\LoadedDataInitializerResult.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Quests\Goal.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Quests\Quest.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\Quests\QuestReward.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\BtnActionFrameContainer.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Models\Base\BaseCompilation.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Preloaders\DataPreloader.cs" />
@@ -182,6 +189,7 @@
     <Compile Include="Sources\App\Shared\Plugins\Resources\ResourcesSceneLoader.cs" />
     <Compile Include="Sources\App\Core\Interfaces\DialogBox\IDialogBoxManager.cs" />
     <Compile Include="Sources\App\Shared\Signals\SynaleEvents.cs" />
+    <Compile Include="Sources\App\Shared\Signals\UIEvents.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\ExchangeSettingExtensionMethod.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\StringExtensionMethod.cs" />
     <Compile Include="Sources\App\Shared\Tools\Http\Customs\GameJsonHttpRequest.cs" />
@@ -207,7 +215,6 @@
   <ItemGroup>
     <Folder Include="Sources\App\Core\Interfaces\Configurations\" />
     <Folder Include="Sources\App\Core\Models\Characters\Npcs\" />
-    <Folder Include="Sources\App\Shared\Plugins\Quests\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">
