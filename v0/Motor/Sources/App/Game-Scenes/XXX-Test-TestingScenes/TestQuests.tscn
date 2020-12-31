@@ -4,3 +4,14 @@
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 151.0
+margin_top = 133.0
+margin_right = 430.0
+margin_bottom = 250.0
+text = "Activate"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

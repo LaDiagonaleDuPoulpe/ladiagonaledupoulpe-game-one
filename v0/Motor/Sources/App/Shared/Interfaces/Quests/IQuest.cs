@@ -13,6 +13,21 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
     public interface IQuest: IList<IGoal>
     {
         /// <summary>
+        /// Add a list of rewards to give when the quest is achieved
+        /// </summary>
+        void AddRewards(params IQuestReward[] rewards);
+
+        /// <summary>
+        /// Defines quest is active
+        /// </summary>
+        void Activate();
+
+        /// <summary>
+        /// Quest is not active for now
+        /// </summary>
+        void Deactivate();
+
+        /// <summary>
         /// Allows you to know if all goals are achieved
         /// </summary>
         bool IsAchieved { get; }
@@ -21,6 +36,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
         /// True if it's a main quest, false, if it's secondary quest
         /// </summary>
         bool IsMain { get; }
+
+        /// <summary>
+        /// Id of the quest
+        /// </summary>
+        int Id { get; set; }
 
         /// <summary>
         /// Name of the quest

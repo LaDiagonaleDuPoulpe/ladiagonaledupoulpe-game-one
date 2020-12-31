@@ -1,4 +1,5 @@
-﻿using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests;
+﻿using Godot;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,87 +13,130 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Quests
     /// Represents a quest in the game.
     /// Quest has a list of goals (steps) to achieve
     /// </summary>
-    public class Quest : IQuest
+    public class Quest : Node, IQuest
     {
         #region Fields
+        private DateTime _lastActivation;
+        private bool _isActive = false;
         private bool _isMain = true;
-        private List<IGoal> _goals = new List<IGoal>();
+        private List<IGoal> _goalList = new List<IGoal>();
         #endregion
 
         #region Constructors
-        public Quest(bool isMain = true)
+        public Quest(int id, string name, string description, bool isMain = true)
         {
+            this.Id = id;
+            this.Name = name;
+            this.Description = description;
             this._isMain = isMain;
+            this.Rewards = new List<IQuestReward>();
         }
 
+        public Quest(string name, string description, bool isMain = true) : this(0, name, description, isMain)
+        {}
+
+        public Quest(string name, bool isMain = true) : this(name, "", isMain)
+        {}
+
+        public Quest(bool isMain = true) : this("", isMain)
+        {}
+
         public Quest() : this(true)
-        {
-        }
+        {}
         #endregion
 
         #region Public methods
+        /// <summary>
+        /// Defines quest is active
+        /// </summary>
+        public void Activate()
+        {
+            this._isActive = true;
+        }
+
+        /// <summary>
+        /// Quest is not active for now
+        /// </summary>
+        public void Deactivate()
+        {
+            this._isActive = false;
+        }
+
         public void Add(IGoal item)
         {
-            this._goals.Add(item);
+            this._goalList.Add(item);
         }
 
         public void Clear()
         {
-            this._goals.Clear();
+            this._goalList.Clear();
         }
 
         public bool Contains(IGoal item)
         {
-            return this._goals.Contains(item);
+            return this._goalList.Contains(item);
         }
 
         public void CopyTo(IGoal[] array, int arrayIndex)
         {
-            this._goals.CopyTo(array, arrayIndex);
+            this._goalList.CopyTo(array, arrayIndex);
         }
 
         public IEnumerator<IGoal> GetEnumerator()
         {
-            return this._goals.GetEnumerator();
+            return this._goalList.GetEnumerator();
         }
 
         public int IndexOf(IGoal item)
         {
-            return this._goals.IndexOf(item);
+            return this._goalList.IndexOf(item);
         }
 
         public void Insert(int index, IGoal item)
         {
-            this._goals.Insert(index, item);
+            this._goalList.Insert(index, item);
         }
 
         public bool Remove(IGoal item)
         {
-            return this._goals.Remove(item);
+            return this._goalList.Remove(item);
         }
 
         public void RemoveAt(int index)
         {
-            this._goals.RemoveAt(index);
+            this._goalList.RemoveAt(index);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return this._goals.GetEnumerator();
+            return this._goalList.GetEnumerator();
+        }
+
+        public void AddRewards(params IQuestReward[] rewards)
+        {
+            foreach (var item in rewards)
+            {
+                this.Rewards.Add(item);
+            }
         }
         #endregion
 
         #region Properties
-        public IGoal this[int index] { get => this._goals[index]; set => this._goals[index] = value; }
+        /// <summary>
+        /// Id of the quest
+        /// </summary>
+        public int Id { get; set; }
 
-        public int Count => this._goals.Count;
+        public IGoal this[int index] { get => this._goalList[index]; set => this._goalList[index] = value; }
+
+        public int Count => this._goalList.Count;
 
         public bool IsReadOnly => false;
 
         /// <summary>
         /// Is all goals are achieved ?
         /// </summary>
-        public bool IsAchieved => this._goals.All(item => item.IsAchieved);
+        public bool IsAchieved => this._goalList.All(item => item.IsAchieved);
 
         /// <summary>
         /// Main quest or secondary
