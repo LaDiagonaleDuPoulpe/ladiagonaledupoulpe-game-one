@@ -38,7 +38,11 @@
     <Compile Include="addons\WAT\core\test\Recorder.cs" />
     <Compile Include="addons\WAT\core\test\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sources\App\Core\Models\Items\BaseItem.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Goals\ActivatedItemGoal.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Goals\TouchedItemGoal.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Models\Attacks\IWithDamage.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Models\Items\IItem.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Requests\IHostConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\Heart.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\HeartsHealth.cs" />
@@ -217,7 +221,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Sources\App\Core\Models\Characters\Npcs\" />
-    <Folder Include="Sources\App\Core\Models\Quests\Goals\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">

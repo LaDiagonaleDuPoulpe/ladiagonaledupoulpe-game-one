@@ -21,6 +21,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         public override void _Ready()
         {
             base._Ready();
+            this.DoInitialize();
         }
 
         public virtual bool Evaluate()
@@ -37,7 +38,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         #endregion
 
         #region Properties
-        public bool IsAchieved => this._isAchieved;
+        public bool IsAchieved { get => this._isAchieved; protected set => this._isAchieved = value; }
         #endregion
     }
 }

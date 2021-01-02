@@ -1,4 +1,6 @@
 ﻿using Godot;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Items;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Models.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +16,33 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
     {
         #region Fields
         #region Signals
-        public delegate void ItemTouched();
+        /// <summary>
+        /// Raised when one item is touched
+        /// </summary>
+        /// <param name="item"></param>
+        public delegate void ItemTouched(BaseItem item);
         #endregion
+        #endregion
+
+        #region Public methods
+        /// <summary>
+		/// Allows you to be attached to the event
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="methodName"></param>
+        public void AttachItemIsTouched(Godot.Object sender, string methodName)
+        {
+            this.Connect(nameof(ItemTouched), this, methodName);
+        }
+
+        /// <summary>
+        /// One item is touched, raises the signal
+        /// </summary>
+        /// <param name="sender"></param>
+        public void BeItemIsTouched(BaseItem sender)
+        {
+            this.EmitSignal(nameof(ItemTouched), sender);
+        }
         #endregion
     }
 }
