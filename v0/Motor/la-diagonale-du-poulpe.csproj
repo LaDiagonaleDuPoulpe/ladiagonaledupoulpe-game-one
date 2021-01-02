@@ -132,10 +132,10 @@
     <Compile Include="Sources\App\Shared\Plugins\Initializers\ProxyDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\Customs\Player\InMemoryPlayerDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\LoadedDataInitializerResult.cs" />
-    <Compile Include="Sources\App\Shared\Plugins\Quests\Chapter.cs" />
-    <Compile Include="Sources\App\Shared\Plugins\Quests\Goal.cs" />
-    <Compile Include="Sources\App\Shared\Plugins\Quests\Quest.cs" />
-    <Compile Include="Sources\App\Shared\Plugins\Quests\QuestReward.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Chapter.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Goal.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Quest.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\QuestReward.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\BtnActionFrameContainer.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Models\Base\BaseCompilation.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Preloaders\DataPreloader.cs" />
@@ -218,6 +218,7 @@
   <ItemGroup>
     <Folder Include="Sources\App\Core\Interfaces\Configurations\" />
     <Folder Include="Sources\App\Core\Models\Characters\Npcs\" />
+    <Folder Include="Sources\App\Core\Models\Quests\Goals\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">

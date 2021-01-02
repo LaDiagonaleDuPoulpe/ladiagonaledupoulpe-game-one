@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Quests
+namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 {
     /// <summary>
     /// Represents a quest in the game.
@@ -144,11 +144,6 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Quests
         public bool IsMain => this._isMain;
 
         /// <summary>
-        /// Name of the quest
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
         /// Description of th quest
         /// </summary>
         public string Description { get; set; }
@@ -157,6 +152,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Quests
         /// Rewards list
         /// </summary>
        public IList<IQuestReward> Rewards { get; private set; }
+
+        /// <summary>
+        /// True if the quest is active
+        /// </summary>
+        public bool IsActive { get => this._isActive; }
         #endregion
     }
 }

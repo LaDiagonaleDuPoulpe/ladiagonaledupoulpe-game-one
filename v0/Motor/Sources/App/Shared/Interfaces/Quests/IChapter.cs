@@ -25,5 +25,10 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
         /// Title of the chapter
         /// </summary>
         string Title { get; set; }
+
+        /// <summary>
+        /// Is done if all quests are achieved
+        /// </summary>
+        bool IsDone { get; }
     }
 }

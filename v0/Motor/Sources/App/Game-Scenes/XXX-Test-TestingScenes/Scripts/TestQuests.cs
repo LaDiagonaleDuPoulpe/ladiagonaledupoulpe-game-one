@@ -1,30 +1,32 @@
 using Godot;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Quests;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests;
-using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Quests;
 using System;
 
 public class TestQuests : Node2D
 {
+	#region Fields
+	private IChapter _chapter = null;
+	#endregion
+
 	#region Public methods
 	public override void _Ready()
 	{
-		IChapter chapter = new Chapter();
+		this._chapter = new Chapter(1, "Sortir du vaisseau");
 
 		IQuest quest = new Quest(1, "Wake up the IA", "IA is broken, try to reboot her");
 		quest.AddRewards(new QuestReward(), new QuestReward());
 
-		chapter.Add(quest);
-
+		this._chapter.Add(quest);
 	}
-    #endregion
+	#endregion
 
-    #region Internal methods
-    private void _on_Button_pressed()
+	#region Internal methods
+	private void _on_btnActivate_pressed()
 	{
-		// Replace with function body.
+		this._chapter[0].Activate();
+		GD.Print(this._chapter[0].IsActive);
 	}
-    #endregion
+	#endregion
 }
-
-
 

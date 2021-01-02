@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Quests
+namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 {
     /// <summary>
     /// Chapter that contains quests
@@ -15,6 +15,18 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Quests
     {
         #region Fields
         private List<IQuest> _questList = new List<IQuest>();
+        #endregion
+
+        #region Constructors
+        public Chapter(int id, int displayedId, string title)
+        {
+            this.Id = id;
+            this.DisplayedId = displayedId;
+            this.Title = title;
+        }
+
+        public Chapter(int displayedId, string title): this(0, displayedId, title)
+        {}
         #endregion
 
         #region Public methods
@@ -90,6 +102,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Quests
         public int Count => this._questList.Count;
 
         public bool IsReadOnly => false;
+
+        /// <summary>
+        /// Is done if all quests are achieved
+        /// </summary>
+        bool IsDone { get => this._questList.All(item => item.IsAchieved); }
         #endregion
     }
 }

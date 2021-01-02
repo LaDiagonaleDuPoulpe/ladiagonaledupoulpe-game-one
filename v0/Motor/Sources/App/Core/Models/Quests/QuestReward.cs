@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Quests
+namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 {
     /// <summary>
     /// When a quest is finished, it's the list of items, xp, ... to get

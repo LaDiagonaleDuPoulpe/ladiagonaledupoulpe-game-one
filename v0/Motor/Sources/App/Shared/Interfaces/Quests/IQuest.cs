@@ -28,6 +28,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
         void Deactivate();
 
         /// <summary>
+        /// True if the quest is active
+        /// </summary>
+        bool IsActive { get; }
+
+        /// <summary>
         /// Allows you to know if all goals are achieved
         /// </summary>
         bool IsAchieved { get; }
