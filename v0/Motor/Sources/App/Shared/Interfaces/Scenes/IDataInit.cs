@@ -3,7 +3,7 @@ using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Scenes;
 using System.Collections.Generic;
 
-namespace ladiagonaledupoulpe.Sources.App.Core.Interfaces.Scenes
+namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes
 {
     /// <summary>
     /// Uses this interface to set a class to get the initialize method 

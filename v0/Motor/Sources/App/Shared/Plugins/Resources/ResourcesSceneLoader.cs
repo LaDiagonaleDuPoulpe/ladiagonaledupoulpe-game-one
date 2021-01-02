@@ -1,9 +1,9 @@
 using Godot;
-using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Scenes;
 using ladiagonaledupoulpe.Sources.App.Core.Models.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Scenes;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes;
 using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog;
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
 using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;

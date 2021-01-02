@@ -106,7 +106,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         /// <summary>
         /// Is done if all quests are achieved
         /// </summary>
-        bool IsDone { get => this._questList.All(item => item.IsAchieved); }
+        public bool IsDone { get => this._questList.All(item => item.IsAchieved); }
         #endregion
     }
 }

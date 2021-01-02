@@ -1,6 +1,6 @@
-﻿using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Models.States;
-using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
+﻿using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Models.States;
 using System;
 using System.Collections.Generic;
 using System.Linq;

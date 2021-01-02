@@ -12,5 +12,10 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
     /// </summary>
     public class UIEvents : Node
     {
+        #region Fields
+        #region Signals
+        public delegate void ItemTouched();
+        #endregion
+        #endregion
     }
 }

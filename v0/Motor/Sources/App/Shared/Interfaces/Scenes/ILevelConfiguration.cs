@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ladiagonaledupoulpe.Sources.App.Core.Interfaces.Scenes
+namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes
 {
     /// <summary>
     /// Configuration for one level, a level is one scene

@@ -1,8 +1,8 @@
 using Godot;
-using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Requests;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Apis;
 using ladiagonaledupoulpe.Sources.App.Game_Scenes._003_Code_Editor.Scripts;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Requests;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes.Request;
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
 using ladiagonaledupoulpe.Sources.App.Shared.Tools.Http;

@@ -1,6 +1,6 @@
 using Godot;
-using ladiagonaledupoulpe.Sources.App.Core.Interfaces.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Preloaders;

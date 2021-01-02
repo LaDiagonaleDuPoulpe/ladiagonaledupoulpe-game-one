@@ -1,7 +1,7 @@
 using Godot;
-using ladiagonaledupoulpe.Sources.App.Core.Interfaces.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Games;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Preloaders;
 using ladiagonaledupoulpe.Sources.App.Shared.Services;

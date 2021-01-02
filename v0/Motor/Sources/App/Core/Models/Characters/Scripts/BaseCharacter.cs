@@ -1,7 +1,7 @@
 ﻿using Godot;
-using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Models.Attacks;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Characters;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Models.Attacks;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins;
 using ladiagonaledupoulpe.Sources.App.Shared.Signals;
 using System;

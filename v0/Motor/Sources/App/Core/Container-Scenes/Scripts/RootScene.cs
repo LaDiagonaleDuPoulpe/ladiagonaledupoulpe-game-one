@@ -1,6 +1,5 @@
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Base.Scenes;
-using ladiagonaledupoulpe.Sources.App.Core.Interfaces.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Levels;
 using ladiagonaledupoulpe.Sources.App.Shared.Constants;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;

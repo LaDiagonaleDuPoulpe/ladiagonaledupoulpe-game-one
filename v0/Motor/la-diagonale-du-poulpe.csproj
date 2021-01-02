@@ -38,13 +38,13 @@
     <Compile Include="addons\WAT\core\test\Recorder.cs" />
     <Compile Include="addons\WAT\core\test\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sources\App\Core\Interfaces\Models\Attacks\IWithDamage.cs" />
-    <Compile Include="Sources\App\Core\Interfaces\Requests\IHostConfiguration.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Models\Attacks\IWithDamage.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Requests\IHostConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\Heart.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\HeartsHealth.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\BaseStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\DiedStatePlayer.cs" />
-    <Compile Include="Sources\App\Core\Interfaces\Models\States\IStateCharacter.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Models\States\IStateCharacter.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\IdleStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\HorizontalMoveStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\MoveStatePlayer.cs" />
@@ -86,8 +86,6 @@
     <Compile Include="Sources\App\Core\Base\Scenes\BaseScene.cs" />
     <Compile Include="Sources\App\Core\Base\Scenes\BaseActiveScene.cs" />
     <Compile Include="Sources\App\Core\Container-Scenes\Scripts\RootScene.cs" />
-    <Compile Include="Sources\App\Core\Interfaces\Scenes\IDataInit.cs" />
-    <Compile Include="Sources\App\Core\Interfaces\Scenes\ILevelConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\Player.cs" />
     <Compile Include="Sources\App\Core\Models\Synales\Synale.cs" />
     <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\CloudMoving.cs" />
@@ -113,6 +111,8 @@
     <Compile Include="Sources\App\Shared\Interfaces\Quests\IGoal.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Quests\IQuest.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Quests\IQuestReward.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Scenes\IDataInit.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Scenes\ILevelConfiguration.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Scenes\IStartAnimation.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Signals\IWithSignals.cs" />
     <Compile Include="Sources\App\Shared\Models\Settings\Animations\AnimationSetting.cs" />
@@ -190,7 +190,7 @@
     <Compile Include="Sources\App\Shared\Services\Data\GlobalDataService.cs" />
     <Compile Include="Sources\App\Shared\Plugins\UI\DialoxBoxManager.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Resources\ResourcesSceneLoader.cs" />
-    <Compile Include="Sources\App\Core\Interfaces\DialogBox\IDialogBoxManager.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\DialogBox\IDialogBoxManager.cs" />
     <Compile Include="Sources\App\Shared\Signals\SynaleEvents.cs" />
     <Compile Include="Sources\App\Shared\Signals\UIEvents.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\ExchangeSettingExtensionMethod.cs" />
@@ -216,7 +216,6 @@
     <None Include="Sources\App\Shared\Services\README.md" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Sources\App\Core\Interfaces\Configurations\" />
     <Folder Include="Sources\App\Core\Models\Characters\Npcs\" />
     <Folder Include="Sources\App\Core\Models\Quests\Goals\" />
   </ItemGroup>
