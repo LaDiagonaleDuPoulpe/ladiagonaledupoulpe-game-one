@@ -11,7 +11,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Items
     /// <summary>
     /// Base of all items in the game
     /// </summary>
-    public abstract class BaseItem : Node, IItem
+    public abstract class BaseItem : Node2D, IItem
     {
         #region Public methods
         public static bool operator ==(BaseItem source, BaseItem target)
@@ -31,7 +31,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Items
         #endregion
 
         #region Properties
-        public int Id { get; set; }
+        public virtual int Id { get; set; }
         #endregion
     }
 }

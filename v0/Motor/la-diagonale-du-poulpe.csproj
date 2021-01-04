@@ -157,6 +157,7 @@
     <Compile Include="Sources\App\Shared\Plugins\UI\OnePlayerStatusBar\Scripts\OnePlayerStatusBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\GridPlayCode\Scripts\MovingCharacter.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\GridPlayCode\Scripts\Players\PlayerActionGrid.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Items\Scripts\TouchingWithHaloItem.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Reborns\Scripts\LoadingPower.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Reborns\Scripts\RebornHeartEffect.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Reborns\Scripts\RebornPower.cs" />

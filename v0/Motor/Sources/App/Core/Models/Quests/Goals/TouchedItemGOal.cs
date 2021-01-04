@@ -15,14 +15,18 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Goals
     {
         #region Fields
         private UIEvents _uiEvents = null;
-        private BaseItem _itemToTouch = null;
+        private int _itemToTouchId = 0;
         private bool _itemIsTouched = false;
         #endregion
 
         #region Constructors
-        public TouchedItemGoal(BaseItem item)
+        public TouchedItemGoal(int id)
         {
-            this._itemToTouch = item;
+            if (id <= 0)
+            {
+                throw new ArgumentNullException("id");
+            }
+            this._itemToTouchId = id;
         }
         #endregion
 
@@ -44,7 +48,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Goals
         private void OneItemIsTouched(BaseItem item)
         {
             this._itemIsTouched = false;
-            if (this._itemToTouch == item)
+            if (this._itemToTouchId == item.Id)
             {
                 this._itemIsTouched = true;
                 this.Evaluate();

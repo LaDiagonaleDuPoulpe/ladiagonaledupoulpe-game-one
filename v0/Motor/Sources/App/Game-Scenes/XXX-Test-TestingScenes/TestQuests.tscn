@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Sources/App/Game-Scenes/XXX-Test-TestingScenes/Scripts/TestQuests.cs" type="Script" id=1]
+[ext_resource path="res://Sources/App/Shared/Scenes/Items/TouchingWithHaloItem.tscn" type="PackedScene" id=2]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -14,4 +15,7 @@ text = "Activate"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Node2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 89, 69 )
 [connection signal="pressed" from="Button" to="." method="_on_btnActivate_pressed"]
