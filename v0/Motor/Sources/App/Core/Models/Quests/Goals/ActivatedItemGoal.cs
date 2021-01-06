@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,12 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Goals
     /// </summary>
     public class ActivatedItemGoal : Goal
     {
+        #region Constructors
+        public ActivatedItemGoal(IQuest quest) : base(quest)
+        {
+        }
+        #endregion
+
         #region Internal methods
         protected override void DoInitialize()
         {
