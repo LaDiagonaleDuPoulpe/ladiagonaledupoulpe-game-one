@@ -68,6 +68,18 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
             this._goalList.Add(item);
         }
 
+        /// <summary>
+        /// Adds goals 
+        /// </summary>
+        /// <param name="items"></param>
+        public void Add(params IGoal[] items)
+        {
+            foreach (var item in items)
+            {
+                this.Add(item);
+            }
+        }
+
         public void Clear()
         {
             this._goalList.ForEach(item => this.RemoveChild(item as Node));
