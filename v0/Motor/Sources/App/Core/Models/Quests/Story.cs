@@ -9,69 +9,61 @@ using System.Threading.Tasks;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 {
-    /// <summary>
-    /// Chapter that contains quests
-    /// </summary>
-    public class Chapter : Node, IChapter
+    public class Story : Node, IStory
     {
         #region Fields
-        private List<IQuest> _questList = new List<IQuest>();
+        private List<IChapter> _chapterList = new List<IChapter>();
         #endregion
 
         #region Constructors
-        public Chapter(int id, int displayedId, string title)
+        public Story(int id)
         {
             this.Id = id;
-            this.DisplayedId = displayedId;
-            this.Title = title;
         }
-
-        public Chapter(int displayedId, string title): this(0, displayedId, title)
-        {}
         #endregion
 
         #region Public methods
-        public void Add(IQuest item)
+        public void Add(IChapter item)
         {
             this.AddChild(item as Node);
-            this._questList.Add(item);
+            this._chapterList.Add(item);
         }
 
         public void Clear()
         {
-            this._questList.ForEach(item => this.RemoveChild(item as Node));
-            this._questList.Clear();
+            this._chapterList.ForEach(item => this.RemoveChild(item as Node));
+            this._chapterList.Clear();
         }
 
-        public bool Contains(IQuest item)
+        public bool Contains(IChapter item)
         {
-            return this._questList.Contains(item);
+            return this._chapterList.Contains(item);
         }
 
-        public void CopyTo(IQuest[] array, int arrayIndex)
+        public void CopyTo(IChapter[] array, int arrayIndex)
         {
-            this._questList.CopyTo(array, arrayIndex);
+            this._chapterList.CopyTo(array, arrayIndex);
         }
 
-        public IEnumerator<IQuest> GetEnumerator()
+        public IEnumerator<IChapter> GetEnumerator()
         {
-            return this._questList.GetEnumerator();
+            return this._chapterList.GetEnumerator();
         }
 
-        public int IndexOf(IQuest item)
+        public int IndexOf(IChapter item)
         {
-            return this._questList.IndexOf(item);
+            return this._chapterList.IndexOf(item);
         }
 
-        public void Insert(int index, IQuest item)
+        public void Insert(int index, IChapter item)
         {
             this.AddChild(item as Node);
-            this._questList.Insert(index, item);
+            this._chapterList.Insert(index, item);
         }
 
-        public bool Remove(IQuest item)
+        public bool Remove(IChapter item)
         {
-            bool isRemoved = this._questList.Remove(item);
+            bool isRemoved = this._chapterList.Remove(item);
 
             if (isRemoved)
             {
@@ -83,20 +75,21 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 
         public void RemoveAt(int index)
         {
-            IQuest item = this[index];
+            IChapter item = this[index];
 
-            this._questList.RemoveAt(index);
+            this._chapterList.RemoveAt(index);
             this.RemoveChild(item as Node);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return this._questList.GetEnumerator();
+            return this._chapterList.GetEnumerator();
         }
+
         #endregion
 
         #region Properties
-        public IQuest this[int index] { get => this._questList[index]; set => this._questList[index] = value; }
+        public IChapter this[int index] { get => this._chapterList[index]; set => this._chapterList[index] = value; }
 
         /// <summary>
         /// Id of the chapter
@@ -113,14 +106,14 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         /// </summary>
         public string Title { get; set; }
 
-        public int Count => this._questList.Count;
+        public int Count => this._chapterList.Count;
 
         public bool IsReadOnly => false;
 
         /// <summary>
         /// Is done if all quests are achieved
         /// </summary>
-        public bool IsDone { get => this._questList.All(item => item.IsAchieved); }
+        public bool IsDone { get => this._chapterList.All(item => item.IsDone); }
         #endregion
     }
 }

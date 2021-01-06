@@ -1,7 +1,9 @@
 ﻿using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Quests;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Games;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes.Request;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins;
 using ladiagonaledupoulpe.Sources.App.Shared.Signals;
@@ -23,6 +25,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
         private readonly RulesSet _rulesSet = new RulesSet();
         private CheckPointTaker _checkPointsTaker = new CheckPointTaker();
         private Player _currentPlayer = null;
+        private IStory _story = null;
 
         #region Signals
         #endregion
@@ -36,6 +39,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
             this.AddChild(this._checkPointsTaker);
             this.AddChild(this.RulesSet);
             this._currentPlayer = this.GetNode<Player>("/root/CurrentPlayer");
+            this.Story = new Story(1);
 
             this.AttachEvents();
         }
@@ -101,6 +105,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
         /// Rules of the game
         /// </summary>
         public RulesSet RulesSet => _rulesSet;
+
+        /// <summary>
+        /// Story of the game
+        /// </summary>
+        public IStory Story { get => _story; private set => _story = value; }
         #endregion
     }
 }

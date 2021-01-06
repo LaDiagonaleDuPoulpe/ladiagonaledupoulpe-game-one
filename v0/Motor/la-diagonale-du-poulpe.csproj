@@ -41,8 +41,10 @@
     <Compile Include="Sources\App\Core\Models\Items\BaseItem.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Goals\ActivatedItemGoal.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Goals\TouchedItemGoal.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Story.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Models\Attacks\IWithDamage.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Models\Items\IItem.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Quests\IStory.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Requests\IHostConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\Heart.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\HeartsHealth.cs" />
