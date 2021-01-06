@@ -17,9 +17,11 @@ public class TestQuests : BaseActiveScene
 		base._Ready();
 		this._chapter = new Chapter(1, "Sortir du vaisseau");
 
-		IQuest quest = new Quest(1, "Wake up the IA", "IA is broken, try to reboot her");
+		Quest quest = new Quest(1, "Wake up the IA", "IA is broken, try to reboot her");
 		quest.AddRewards(new QuestReward(), new QuestReward());
-		quest.Add(new TouchedItemGoal(null));
+		quest.Add(new TouchedItemGoal(1));
+
+		this.AddChild(quest);
 
 		this._chapter.Add(quest);
 	}

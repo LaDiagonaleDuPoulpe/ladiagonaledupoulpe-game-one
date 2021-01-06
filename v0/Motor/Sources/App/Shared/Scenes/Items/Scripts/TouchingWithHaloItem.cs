@@ -9,23 +9,34 @@ using System;
 public class TouchingWithHaloItem : BaseItem
 {
 	#region Fields
-	private UIEvents _uiEvents = null;
+	private ItemsEvents _uiEvents = null;
 	#endregion  
 
 	#region Public methods
 	public override void _Ready()
 	{
-		this._uiEvents = this.GetNode<UIEvents>("/root/UIEvents");
+		base._Ready();
+
+		this._uiEvents = this.GetNode<ItemsEvents>("/root/ItemsEvents");
+		this.Id = 1;
 	}
 	#endregion
 
 	#region Internal methods
 	private void _on_Area2D_area_entered(object area)
 	{
+		GD.Print("_on_Area2D_area_entered");
+	}
+
+	private void _on_Area2D_body_entered(object body)
+	{
+		GD.Print("_on_Area2D_body_entered");
 		this._uiEvents.BeItemIsTouched(this);
 	}
 	#endregion
+
+	#region Properties
+	public override int Id { get => base.Id; set => base.Id = value; }
+	#endregion
 }
-
-
 

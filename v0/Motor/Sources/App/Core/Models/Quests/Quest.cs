@@ -64,11 +64,13 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 
         public void Add(IGoal item)
         {
+            this.AddChild(item as Node);
             this._goalList.Add(item);
         }
 
         public void Clear()
         {
+            this._goalList.ForEach(item => this.RemoveChild(item as Node));
             this._goalList.Clear();
         }
 
@@ -95,16 +97,27 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         public void Insert(int index, IGoal item)
         {
             this._goalList.Insert(index, item);
+            this.AddChild(item as Node);
         }
 
         public bool Remove(IGoal item)
         {
-            return this._goalList.Remove(item);
+            bool isRemoved = this._goalList.Remove(item);
+
+            if (isRemoved)
+            {
+                this.RemoveChild(item as Node);
+            }
+
+            return isRemoved;
         }
 
         public void RemoveAt(int index)
         {
+            IGoal item = this[index];
+
             this._goalList.RemoveAt(index);
+            this.RemoveChild(item as Node);
         }
 
         IEnumerator IEnumerable.GetEnumerator()

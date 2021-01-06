@@ -14,7 +14,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Goals
     public class TouchedItemGoal : Goal
     {
         #region Fields
-        private UIEvents _uiEvents = null;
+        private ItemsEvents _uiEvents = null;
         private int _itemToTouchId = 0;
         private bool _itemIsTouched = false;
         #endregion
@@ -41,12 +41,14 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Goals
         #region Internal methods
         protected override void DoInitialize()
         {
-            this._uiEvents = this.GetNode<UIEvents>("/root/UIEvents");
+            this._uiEvents = this.GetNode<ItemsEvents>("/root/ItemsEvents");
             this._uiEvents.AttachItemIsTouched(this, nameof(OneItemIsTouched));
         }
 
         private void OneItemIsTouched(BaseItem item)
         {
+            Godot.GD.Print("Item is touched !");
+
             this._itemIsTouched = false;
             if (this._itemToTouchId == item.Id)
             {

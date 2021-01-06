@@ -17,5 +17,5 @@ __meta__ = {
 }
 
 [node name="Node2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( 89, 69 )
+position = Vector2( 619, 115 )
 [connection signal="pressed" from="Button" to="." method="_on_btnActivate_pressed"]
