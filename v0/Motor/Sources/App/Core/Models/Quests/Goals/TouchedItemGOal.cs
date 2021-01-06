@@ -47,8 +47,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Goals
 
         private void OneItemIsTouched(BaseItem item)
         {
-            Godot.GD.Print("Item is touched !");
-
             this._itemIsTouched = false;
             if (this._itemToTouchId == item.Id)
             {

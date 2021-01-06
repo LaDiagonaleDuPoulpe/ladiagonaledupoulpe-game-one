@@ -16,26 +16,22 @@ public class TouchingWithHaloItem : BaseItem
 	public override void _Ready()
 	{
 		base._Ready();
-
 		this._uiEvents = this.GetNode<ItemsEvents>("/root/ItemsEvents");
-		this.Id = 1;
 	}
 	#endregion
 
 	#region Internal methods
-	private void _on_Area2D_area_entered(object area)
-	{
-		GD.Print("_on_Area2D_area_entered");
-	}
+	private void _on_Area2D_area_entered(object area) {}
 
 	private void _on_Area2D_body_entered(object body)
 	{
-		GD.Print("_on_Area2D_body_entered");
+		GD.Print("TouchingWithHaloItem => ", this.Id);
 		this._uiEvents.BeItemIsTouched(this);
 	}
 	#endregion
 
 	#region Properties
+	[Export]
 	public override int Id { get => base.Id; set => base.Id = value; }
 	#endregion
 }

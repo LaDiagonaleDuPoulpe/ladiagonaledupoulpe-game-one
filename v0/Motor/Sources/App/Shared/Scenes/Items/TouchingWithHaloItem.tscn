@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 61, 36 )
 
-[node name="Node2D" type="Node2D"]
+[node name="TouchingItem" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]

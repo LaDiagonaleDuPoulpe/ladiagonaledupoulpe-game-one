@@ -16,6 +16,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Node2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( 619, 115 )
+[node name="TouchingItem" parent="." instance=ExtResource( 2 )]
+position = Vector2( 906, 469 )
+Id = 18
+
+[node name="TouchingItem2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 322, 691 )
+Id = 1
 [connection signal="pressed" from="Button" to="." method="_on_btnActivate_pressed"]
