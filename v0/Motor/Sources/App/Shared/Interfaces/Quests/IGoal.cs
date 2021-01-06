@@ -21,5 +21,10 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
         /// Allows you to know if all goals are achieved
         /// </summary>
         bool IsAchieved { get; }
+
+        /// <summary>
+        /// Gets the parent quest
+        /// </summary>
+        IQuest Quest { get; }
     }
 }

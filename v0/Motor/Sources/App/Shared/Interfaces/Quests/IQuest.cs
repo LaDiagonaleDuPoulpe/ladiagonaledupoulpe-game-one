@@ -18,6 +18,12 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
         void AddRewards(params IQuestReward[] rewards);
 
         /// <summary>
+        /// Checks if all goals are achieved
+        /// And sends event of this achievment
+        /// </summary>
+        void EvaluateAchievment();
+
+        /// <summary>
         /// Defines quest is active
         /// </summary>
         void Activate();

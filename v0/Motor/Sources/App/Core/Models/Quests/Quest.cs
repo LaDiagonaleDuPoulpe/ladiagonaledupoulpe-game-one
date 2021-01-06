@@ -46,6 +46,14 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         #endregion
 
         #region Public methods
+        public void EvaluateAchievment()
+        {
+            if (this.IsAchieved)
+            {
+                // Raise event
+            }
+        }
+
         /// <summary>
         /// Defines quest is active
         /// </summary>

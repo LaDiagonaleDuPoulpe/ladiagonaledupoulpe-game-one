@@ -1,4 +1,5 @@
 ﻿using ladiagonaledupoulpe.Sources.App.Core.Models.Items;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests;
 using ladiagonaledupoulpe.Sources.App.Shared.Signals;
 using System;
 using System.Collections.Generic;
@@ -20,13 +21,13 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Goals
         #endregion
 
         #region Constructors
-        public TouchedItemGoal(int id)
+        public TouchedItemGoal(int itemId, IQuest quest): base(quest)
         {
-            if (id <= 0)
+            if (itemId <= 0)
             {
                 throw new ArgumentNullException("id");
             }
-            this._itemToTouchId = id;
+            this._itemToTouchId = itemId;
         }
         #endregion
 

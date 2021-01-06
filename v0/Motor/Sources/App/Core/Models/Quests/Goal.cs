@@ -17,6 +17,13 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         private bool _isAchieved = false;
         #endregion
 
+        #region Constructors
+        public Goal(IQuest quest)
+        {
+            this.Quest = quest;
+        }
+        #endregion
+
         #region Public methods
         public override void _Ready()
         {
@@ -26,7 +33,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 
         public virtual bool Evaluate()
         {
-            return this._isAchieved;
+            if (this.IsAchieved)
+            {
+                this.Quest.EvaluateAchievment();
+            }
+            return this.IsAchieved;
         }
         #endregion
 
@@ -39,6 +50,8 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 
         #region Properties
         public bool IsAchieved { get => this._isAchieved; protected set => this._isAchieved = value; }
+
+        public IQuest Quest { get; private set; }
         #endregion
     }
 }
