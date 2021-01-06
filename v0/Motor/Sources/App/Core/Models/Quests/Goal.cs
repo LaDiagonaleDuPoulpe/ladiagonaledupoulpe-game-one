@@ -1,5 +1,6 @@
 ﻿using Godot;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests;
+using ladiagonaledupoulpe.Sources.App.Shared.Signals;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
     {
         #region Fields
         private bool _isAchieved = false;
+        private QuestEvents _questEvents = null;
         #endregion
 
         #region Constructors
@@ -28,6 +30,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         public override void _Ready()
         {
             base._Ready();
+            this._questEvents = this.GetNode<QuestEvents>("/root/QuestEvents");
             this.DoInitialize();
         }
 
@@ -35,6 +38,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         {
             if (this.IsAchieved)
             {
+                this._questEvents.BeGoalIsDone(this);
                 this.Quest.EvaluateAchievment();
             }
             return this.IsAchieved;

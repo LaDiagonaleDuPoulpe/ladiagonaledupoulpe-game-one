@@ -196,6 +196,7 @@
     <Compile Include="Sources\App\Shared\Plugins\UI\DialoxBoxManager.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Resources\ResourcesSceneLoader.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\DialogBox\IDialogBoxManager.cs" />
+    <Compile Include="Sources\App\Shared\Signals\QuestEvents.cs" />
     <Compile Include="Sources\App\Shared\Signals\SynaleEvents.cs" />
     <Compile Include="Sources\App\Shared\Signals\ItemsEvents.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\ExchangeSettingExtensionMethod.cs" />
