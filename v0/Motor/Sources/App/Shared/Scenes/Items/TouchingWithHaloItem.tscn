@@ -1,9 +1,36 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Sources/App/Shared/Scenes/Items/Scripts/TouchingWithHaloItem.cs" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 61, 36 )
+extents = Vector2( 104.519, 36 )
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+uniform float speed = 1;
+uniform vec4 mixColor = vec4(0);
+uniform float minAlphaChannel = 0.0;
+uniform bool Vertical = true;
+
+void fragment()
+{
+    vec4 c = texture(TEXTURE,UV); 
+    if(c.a > minAlphaChannel){
+        float coord = UV.y;
+        if(!Vertical) coord = UV.x;
+        float lerp_pos = clamp(cos(TIME * speed - coord),0,1);
+        c = mix(c,mixColor,lerp_pos);
+    }
+    COLOR = c;
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/speed = 1.0
+shader_param/mixColor = Plane( 0, 0, 0, 0 )
+shader_param/minAlphaChannel = 0.0
+shader_param/Vertical = true
 
 [node name="TouchingItem" type="Node2D"]
 script = ExtResource( 1 )
@@ -17,10 +44,12 @@ position = Vector2( 0.155701, 1.09479 )
 shape = SubResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="Area2D"]
+material = SubResource( 3 )
 margin_left = -55.0
 margin_top = -34.0
 margin_right = 60.0
 margin_bottom = 39.0
+color = Color( 0.0470588, 0.0470588, 0.0470588, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

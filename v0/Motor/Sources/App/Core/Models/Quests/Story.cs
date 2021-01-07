@@ -13,6 +13,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
     {
         #region Fields
         private List<IChapter> _chapterList = new List<IChapter>();
+        private IQuest _currentQuest = null;
         #endregion
 
         #region Constructors
@@ -89,6 +90,8 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         #endregion
 
         #region Properties
+        public IQuest CurrentQuest { get => this._currentQuest; private set => this._currentQuest = value; }
+
         public IChapter this[int index] { get => this._chapterList[index]; set => this._chapterList[index] = value; }
 
         /// <summary>
