@@ -1,15 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Sources/App/Shared/Scenes/Items/Scripts/TouchingWithHaloItem.cs" type="Script" id=1]
-[ext_resource path="res://Sources/App/Shared/Assets/Objects/Buttons/Btn_button03_h.png" type="Texture" id=2]
-[ext_resource path="res://Sources/App/Shared/Scenes/Items/TouchingWithHaloItem.shader" type="Shader" id=3]
+[ext_resource path="res://Sources/App/Shared/Assets/Objects/2MainMenu/Btn_MainMenu_n.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 134.485, 73.9536 )
-
-[sub_resource type="ShaderMaterial" id=3]
-shader = ExtResource( 3 )
-shader_param/outline_col = Color( 0.933333, 0.913725, 0.913725, 1 )
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 226.406
@@ -27,15 +22,16 @@ shape = SubResource( 1 )
 
 [node name="HightLight" type="Sprite" parent="ActiveArea"]
 visible = false
-material = SubResource( 3 )
-position = Vector2( 0.000183105, 2.24741 )
-scale = Vector2( 1.07656, 1.77385 )
+modulate = Color( 1, 0.996078, 0.996078, 1 )
+position = Vector2( 2.52289, 0.565613 )
+scale = Vector2( 0.513739, 1.34516 )
 texture = ExtResource( 2 )
 
 [node name="RayShapeArea" type="Area2D" parent="."]
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RayShapeArea"]
+position = Vector2( 6.10352e-05, 3.36353 )
 shape = SubResource( 4 )
 [connection signal="area_entered" from="ActiveArea" to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="ActiveArea" to="." method="_on_Area2D_body_entered"]
