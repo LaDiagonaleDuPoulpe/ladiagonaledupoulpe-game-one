@@ -1,57 +1,43 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Sources/App/Shared/Scenes/Items/Scripts/TouchingWithHaloItem.cs" type="Script" id=1]
+[ext_resource path="res://Sources/App/Shared/Assets/Objects/Buttons/Btn_button03_h.png" type="Texture" id=2]
+[ext_resource path="res://Sources/App/Shared/Scenes/Items/TouchingWithHaloItem.shader" type="Shader" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 104.519, 36 )
-
-[sub_resource type="Shader" id=2]
-code = "shader_type canvas_item;
-
-uniform float speed = 1;
-uniform vec4 mixColor = vec4(0);
-uniform float minAlphaChannel = 0.0;
-uniform bool Vertical = true;
-
-void fragment()
-{
-    vec4 c = texture(TEXTURE,UV); 
-    if(c.a > minAlphaChannel){
-        float coord = UV.y;
-        if(!Vertical) coord = UV.x;
-        float lerp_pos = clamp(cos(TIME * speed - coord),0,1);
-        c = mix(c,mixColor,lerp_pos);
-    }
-    COLOR = c;
-}"
+extents = Vector2( 134.485, 73.9536 )
 
 [sub_resource type="ShaderMaterial" id=3]
-shader = SubResource( 2 )
-shader_param/speed = 1.0
-shader_param/mixColor = Plane( 0, 0, 0, 0 )
-shader_param/minAlphaChannel = 0.0
-shader_param/Vertical = true
+shader = ExtResource( 3 )
+shader_param/outline_col = Color( 0.933333, 0.913725, 0.913725, 1 )
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 226.406
 
 [node name="TouchingItem" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="ActiveArea" type="Area2D" parent="."]
 gravity = 0.0
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActiveArea"]
 position = Vector2( 0.155701, 1.09479 )
 shape = SubResource( 1 )
 
-[node name="ColorRect" type="ColorRect" parent="Area2D"]
+[node name="HightLight" type="Sprite" parent="ActiveArea"]
+visible = false
 material = SubResource( 3 )
-margin_left = -55.0
-margin_top = -34.0
-margin_right = 60.0
-margin_bottom = 39.0
-color = Color( 0.0470588, 0.0470588, 0.0470588, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+position = Vector2( 0.000183105, 2.24741 )
+scale = Vector2( 1.07656, 1.77385 )
+texture = ExtResource( 2 )
+
+[node name="RayShapeArea" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RayShapeArea"]
+shape = SubResource( 4 )
+[connection signal="area_entered" from="ActiveArea" to="." method="_on_Area2D_area_entered"]
+[connection signal="body_entered" from="ActiveArea" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="RayShapeArea" to="." method="_on_RayShapeArea_body_entered"]
+[connection signal="body_exited" from="RayShapeArea" to="." method="_on_RayShapeArea_body_exited"]

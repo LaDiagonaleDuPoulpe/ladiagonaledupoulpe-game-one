@@ -1,4 +1,5 @@
-﻿using ladiagonaledupoulpe.Sources.App.Core.Models.Items;
+﻿using Godot;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Items;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests;
 using ladiagonaledupoulpe.Sources.App.Shared.Signals;
 using System;

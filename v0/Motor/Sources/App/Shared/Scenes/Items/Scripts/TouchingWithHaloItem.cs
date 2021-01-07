@@ -10,13 +10,15 @@ public class TouchingWithHaloItem : BaseItem
 {
 	#region Fields
 	private ItemsEvents _uiEvents = null;
-	#endregion  
+	private Sprite _hightLight = null;
+	#endregion
 
 	#region Public methods
 	public override void _Ready()
 	{
 		base._Ready();
 		this._uiEvents = this.GetNode<ItemsEvents>("/root/ItemsEvents");
+		this._hightLight = this.GetNode<Area2D>("ActiveArea").GetNode<Sprite>("HightLight");
 	}
 	#endregion
 
@@ -25,8 +27,17 @@ public class TouchingWithHaloItem : BaseItem
 
 	private void _on_Area2D_body_entered(object body)
 	{
-		GD.Print("TouchingWithHaloItem => ", this.Id);
 		this._uiEvents.BeItemIsTouched(this);
+	}
+
+	private void _on_RayShapeArea_body_entered(object body)
+	{
+		this._hightLight.Visible = true;
+	}
+
+	private void _on_RayShapeArea_body_exited(object body)
+	{
+		this._hightLight.Visible = false;
 	}
 	#endregion
 
@@ -35,4 +46,3 @@ public class TouchingWithHaloItem : BaseItem
 	public override int Id { get => base.Id; set => base.Id = value; }
 	#endregion
 }
-
