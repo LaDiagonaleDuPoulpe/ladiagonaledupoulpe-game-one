@@ -41,10 +41,14 @@
     <Compile Include="Sources\App\Core\Models\Items\BaseItem.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Goals\ActivatedItemGoal.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Goals\TouchedItemGoal.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Loaders\FactoryStoryLoader.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Loaders\MainStoryLoader.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Story.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Models\Attacks\IWithDamage.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Models\Items\IItem.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Quests\IFactoryStoryLoader.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Quests\IStory.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Quests\IStoryLoader.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Requests\IHostConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\Heart.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\HeartsHealth.cs" />
@@ -208,6 +212,9 @@
     <Compile Include="Sources\App\Shared\Tools\Http\JsonHttpRequest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\Global\Stories.json" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Data\Scenes\test-health-bar.json" />
     <None Include="Data\Scenes\home.json" />
     <None Include="Data\Scenes\inside-broken-space-ship.json" />
@@ -231,6 +238,5 @@
       <Version>12.0.3</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup />
 </Project>

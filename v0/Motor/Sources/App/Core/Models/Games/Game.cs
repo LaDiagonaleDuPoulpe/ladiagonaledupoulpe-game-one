@@ -2,6 +2,7 @@
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Quests;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Loaders;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Games;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes.Request;
@@ -22,6 +23,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
     public class Game : Node
     {
         #region Fields
+        private IFactoryStoryLoader _factoryStoryLoader = new FactoryStoryLoader();
         private readonly RulesSet _rulesSet = new RulesSet();
         private CheckPointTaker _checkPointsTaker = new CheckPointTaker();
         private Player _currentPlayer = null;
@@ -39,8 +41,8 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
             this.AddChild(this._checkPointsTaker);
             this.AddChild(this.RulesSet);
             this._currentPlayer = this.GetNode<Player>("/root/CurrentPlayer");
-            
-            this.Story = new Story(1);
+
+            this.Story = this._factoryStoryLoader.GetOne().LoadOne();
             this.AddChild(this.Story as Node);
 
             this.AttachEvents();

@@ -18,16 +18,6 @@ public class TestQuests : BaseActiveScene
 	public override void _Ready()
 	{
 		base._Ready();
-		IChapter chapter = new Chapter(1, "Sortir du vaisseau");
-
-		Quest quest = new Quest(1, "Wake up the IA", "IA is broken, try to reboot her");
-		quest.AddRewards(new QuestReward(), new QuestReward());
-		quest.Add(new TouchedItemGoal(1, quest));
-
-		chapter.Add(quest);
-
-		this._game = this.GetNode<Game>("/root/CurrentGame");
-		this._game.Story.Add(chapter);
 
 		this._questEvents = this.GetNode<QuestEvents>("/root/QuestEvents");
 		this._questEvents.AttachGoalIsDone(this, nameof(questEvents_GoalIsDone));
