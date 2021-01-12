@@ -10,7 +10,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Loaders
     public class FactoryStoryLoader : IFactoryStoryLoader
     {
         #region Fields
-        private IStoryLoader _loader = new JsonMainStoryLoader();
+        private IStoryLoader _loader = new MainStoryLoader();
         #endregion
 
         #region Public methods

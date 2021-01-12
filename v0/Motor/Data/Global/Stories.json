@@ -10,14 +10,19 @@
             "Id": 1,
             "Name": "Wake up the IA",
             "Description": "IA is broken, try to reboot her",
-            "Goals": [
-
-            ],
+            "Goals": {
+              "$type": "System.Collections.Generic.List`1[[ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests.IGoal, ladiagonaledupoulpe]], mscorlib",
+              "$values": [
+                {
+                  "$type": "ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Goals.TouchedItemGoal, ladiagonaledupoulpe",
+                  "ItemToTouchId": 1
+                }
+              ]
+            },
             "Rewards": [],
-            "Actions":  []
+            "Actions": []
           }
-        ]
       }
     ]
   }
-]
+] } ]

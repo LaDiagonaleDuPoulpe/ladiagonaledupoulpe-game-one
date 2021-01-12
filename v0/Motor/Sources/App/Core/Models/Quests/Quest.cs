@@ -31,6 +31,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
             this.Name = name;
             this.Description = description;
             this._isMain = isMain;
+            this.Rewards = new List<IQuestReward>();
         }
 
         public Quest(string name, string description, bool isMain = true) : this(0, name, description, isMain)

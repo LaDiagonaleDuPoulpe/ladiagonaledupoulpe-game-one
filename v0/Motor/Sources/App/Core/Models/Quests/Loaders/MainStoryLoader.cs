@@ -1,5 +1,6 @@
 ﻿using ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Goals;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -28,14 +28,14 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Goals
             {
                 throw new ArgumentNullException("id");
             }
-            this._itemToTouchId = itemId;
+            this.ItemToTouchId = itemId;
         }
         #endregion
 
         #region Public methods
         public override bool Evaluate()
         {
-            this.IsAchieved = this._itemIsTouched;
+            this.IsAchieved = this.ItemIsTouched;
             return base.Evaluate();
         }
         #endregion
@@ -49,13 +49,18 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Goals
 
         private void OneItemIsTouched(BaseItem item)
         {
-            this._itemIsTouched = false;
-            if (this._itemToTouchId == item.Id)
+            this.ItemIsTouched = false;
+            if (this.ItemToTouchId == item.Id)
             {
-                this._itemIsTouched = true;
+                this.ItemIsTouched = true;
                 this.Evaluate();
             }
         }
+        #endregion
+
+        #region Properties
+        public bool ItemIsTouched { get => _itemIsTouched; private set => _itemIsTouched = value; }
+        public int ItemToTouchId { get => _itemToTouchId; set => _itemToTouchId = value; }
         #endregion
     }
 }
