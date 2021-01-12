@@ -17,7 +17,9 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         #endregion
 
         #region Constructors
-        public Story(int id)
+        public Story() { }
+
+        public Story(int id): this()
         {
             this.Id = id;
         }

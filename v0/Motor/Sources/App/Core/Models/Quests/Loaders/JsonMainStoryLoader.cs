@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Loaders
 {
-    public class FactoryStoryLoader : IFactoryStoryLoader
+    public class JsonMainStoryLoader : MainStoryLoader
     {
-        #region Fields
-        private IStoryLoader _loader = new JsonMainStoryLoader();
-        #endregion
-
         #region Public methods
-        public IStoryLoader GetOne()
+        public override IStory LoadOne()
         {
-            return this._loader;
+            IStory story = null;
+
+
+
+            return story;
         }
         #endregion
     }

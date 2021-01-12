@@ -31,7 +31,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
             this.Name = name;
             this.Description = description;
             this._isMain = isMain;
-            this.Rewards = new List<IQuestReward>();
         }
 
         public Quest(string name, string description, bool isMain = true) : this(0, name, description, isMain)
@@ -59,6 +58,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
             if (this.IsAchieved)
             {
                 this._questEvents.BeQuestIsDone(this);
+                this.Actions[0]?.Run();
             }
         }
 
@@ -160,6 +160,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
                 this.Rewards.Add(item);
             }
         }
+
+        public void AddNextAction(IQuestAction action)
+        {
+            this.Actions.Add(action);
+        }
         #endregion
 
         #region Properties
@@ -192,12 +197,22 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         /// <summary>
         /// Rewards list
         /// </summary>
-       public IList<IQuestReward> Rewards { get; private set; }
+       public IList<IQuestReward> Rewards { get; set; }
 
         /// <summary>
         /// True if the quest is active
         /// </summary>
         public bool IsActive { get => this._isActive; }
+
+        /// <summary>
+        /// Actions list to activate after the end of the quest
+        /// </summary>
+        public List<IQuestAction> Actions { get; set; }
+
+        /// <summary>
+        /// Sets the list of all goals to finish the quest
+        /// </summary>
+        List<IGoal> Goals { set => this._goalList = value; }
         #endregion
     }
 }

@@ -19,7 +19,9 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         #endregion
 
         #region Constructors
-        public Chapter(int id, int displayedId, string title)
+        public Chapter() { }
+
+        public Chapter(int id, int displayedId, string title): this()
         {
             this.Id = id;
             this.DisplayedId = displayedId;
@@ -121,6 +123,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         /// Is done if all quests are achieved
         /// </summary>
         public bool IsDone { get => this._questList.All(item => item.IsAchieved); }
+        
+        /// <summary>
+        /// List of quests of the chapter
+        /// </summary>
+        public List<IQuest> Quests { set => this._questList = value; }
         #endregion
     }
 }

@@ -13,6 +13,12 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
     public interface IQuest: IList<IGoal>
     {
         /// <summary>
+        /// Allows you to define the next action before going to other quest
+        /// </summary>
+        /// <param name="action"></param>
+        void AddNextAction(IQuestAction action);
+
+        /// <summary>
         /// Add a list of rewards to give when the quest is achieved
         /// </summary>
         void AddRewards(params IQuestReward[] rewards);

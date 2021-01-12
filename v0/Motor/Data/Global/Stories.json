@@ -1,8 +1,23 @@
 ﻿[
   {
+    "Id": 1,
+    "Chapters": [
+      {
+        "Id": 1,
+        "Title": "Sortir du vaisseau",
+        "Quests": [
+          {
+            "Id": 1,
+            "Name": "Wake up the IA",
+            "Description": "IA is broken, try to reboot her",
+            "Goals": [
 
-  },
-  {
-
+            ],
+            "Rewards": [],
+            "Actions":  []
+          }
+        ]
+      }
+    ]
   }
 ]

@@ -15,7 +15,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Loaders
         #endregion
 
         #region Public methods
-        public IStory LoadOne()
+        public virtual IStory LoadOne()
         {
             if (this.Current == null)
             {

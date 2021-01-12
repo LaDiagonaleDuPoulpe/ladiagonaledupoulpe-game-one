@@ -39,13 +39,16 @@
     <Compile Include="addons\WAT\core\test\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sources\App\Core\Models\Items\BaseItem.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Actions\BaseQuestAction.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Goals\ActivatedItemGoal.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Goals\TouchedItemGoal.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Loaders\FactoryStoryLoader.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Loaders\JsonMainStoryLoader.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Loaders\MainStoryLoader.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Story.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Models\Attacks\IWithDamage.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Models\Items\IItem.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Quests\IQuestAction.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Quests\IFactoryStoryLoader.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Quests\IStory.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Quests\IStoryLoader.cs" />
