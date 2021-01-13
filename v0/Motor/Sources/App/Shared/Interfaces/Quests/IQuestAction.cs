@@ -22,6 +22,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
         IQuestAction Next { get; }
 
         /// <summary>
+        /// Gets the previous quest that activates this action
+        /// </summary>
+        IQuest LastQuest { get; }
+
+        /// <summary>
         /// Defines the next quest to start
         /// </summary>
         IQuest NextQuest { get; }

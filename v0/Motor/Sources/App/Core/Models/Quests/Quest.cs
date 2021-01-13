@@ -56,7 +56,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 
         public void EvaluateAchievment()
         {
-            if (this.IsAchieved)
+            if (this.IsActive && this.IsAchieved)
             {
                 this._questEvents.BeQuestIsDone(this);
                 this.Actions[0]?.Run();
