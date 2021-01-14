@@ -22,6 +22,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         private bool _isMain = true;
         private List<IGoal> _goalList = new List<IGoal>();
         private QuestEvents _questEvents = null;
+        private IQuestAction _currentAction = null;
         #endregion
 
         #region Constructors
@@ -32,6 +33,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
             this.Description = description;
             this._isMain = isMain;
             this.Rewards = new List<IQuestReward>();
+            this.Actions = new List<IQuestAction>();
         }
 
         public Quest(string name, string description, bool isMain = true) : this(0, name, description, isMain)
@@ -59,7 +61,8 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
             if (this.IsActive && this.IsAchieved)
             {
                 this._questEvents.BeQuestIsDone(this);
-                this.Actions[0]?.Run();
+                this._currentAction = this.Actions[0];
+                this._currentAction?.Run();
             }
         }
 
@@ -164,6 +167,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 
         public void AddNextAction(IQuestAction action)
         {
+            this.AddChild(action as Node);
             this.Actions.Add(action);
         }
         #endregion

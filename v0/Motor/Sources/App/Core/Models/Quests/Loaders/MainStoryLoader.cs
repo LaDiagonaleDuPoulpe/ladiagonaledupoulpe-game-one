@@ -1,4 +1,6 @@
-﻿using ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Goals;
+﻿using ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Actions;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Goals;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Rewards;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests;
 using Newtonsoft.Json;
 using System;
@@ -26,6 +28,9 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Loaders
                 Quest quest = new Quest(1, "Wake up the IA", "IA is broken, try to reboot her");
                 quest.AddRewards(new QuestReward(), new QuestReward());
                 quest.Add(new TouchedItemGoal(1, quest));
+                quest.AddNextAction(new GetRewardsQuestAction(quest));
+
+                quest.Activate();
 
                 chapter.Add(quest);
 

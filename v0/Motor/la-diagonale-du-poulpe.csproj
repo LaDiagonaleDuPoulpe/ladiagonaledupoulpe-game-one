@@ -39,6 +39,7 @@
     <Compile Include="addons\WAT\core\test\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sources\App\Core\Models\Items\BaseItem.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Actions\ActivateTalkQuestAction.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Actions\BaseQuestAction.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Actions\GetRewardsQuestAction.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Goals\ActivatedItemGoal.cs" />
@@ -149,7 +150,7 @@
     <Compile Include="Sources\App\Core\Models\Quests\Chapter.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Goal.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Quest.cs" />
-    <Compile Include="Sources\App\Core\Models\Quests\QuestReward.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Rewards\QuestReward.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\BtnActionFrameContainer.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Models\Base\BaseCompilation.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Preloaders\DataPreloader.cs" />
@@ -171,6 +172,8 @@
     <Compile Include="Sources\App\Shared\Scenes\Reborns\Scripts\LoadingPower.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Reborns\Scripts\RebornHeartEffect.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Reborns\Scripts\RebornPower.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Rewards\DisplayRewards\Scripts\DisplayRewards.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Rewards\OneReward\Scripts\OneReward.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\Heart\Scripts\HeartBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\Scripts\HeartsLifeBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\SynaleBar\Scripts\SynaleBar.cs" />

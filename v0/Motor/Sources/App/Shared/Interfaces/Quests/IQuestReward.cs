@@ -11,5 +11,9 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
     /// </summary>
     public interface IQuestReward
     {
+        /// <summary>
+        /// Id of the reward
+        /// </summary>
+        int Id { get; set; }
     }
 }

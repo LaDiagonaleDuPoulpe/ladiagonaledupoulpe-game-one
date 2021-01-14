@@ -1,4 +1,5 @@
-﻿using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests;
+﻿using Godot;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,16 @@ using System.Threading.Tasks;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Actions
 {
-    public abstract class BaseQuestAction : IQuestAction
+    /// <summary>
+    /// Base of all quest actions using after a quest ending
+    /// </summary>
+    public abstract class BaseQuestAction : Node, IQuestAction
     {
         #region Constructors
+        public BaseQuestAction(IQuest lastQuest) : this(lastQuest, null, null) { }
+
+        public BaseQuestAction(IQuest lastQuest, IQuestAction next) : this(lastQuest, null, next) { }
+
         public BaseQuestAction(IQuest lastQuest, IQuest nextQuest, IQuestAction next = null)
         {
             this.LastQuest = lastQuest;

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Sources/App/Game-Scenes/999-Dying-Player/DyingScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sources/App/Core/Container-Scenes/Scripts/RootScene.cs" type="Script" id=2]
+[ext_resource path="res://Sources/App/Shared/Scenes/Rewards/DisplayRewards/DisplayRewards.tscn" type="PackedScene" id=3]
 
 [node name="Root" type="Node2D"]
 script = ExtResource( 2 )
@@ -15,4 +16,6 @@ visible = false
 [node name="MainCamera" type="Camera2D" parent="."]
 anchor_mode = 0
 current = true
+
+[node name="DisplayRewards" parent="." instance=ExtResource( 3 )]
 [connection signal="timeout" from="DyingTimer" to="." method="_on_Timer_timeout"]

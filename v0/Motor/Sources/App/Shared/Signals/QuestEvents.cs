@@ -1,5 +1,6 @@
 ﻿using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Quests;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Rewards;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,13 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
 		/// </summary>
 		[Signal]
 		public delegate void QuestAccomplished(Quest item);
+
+		/// <summary>
+		/// Raised when getting a list of rewards
+		/// </summary>
+		/// <param name="rewards"></param>
+		[Signal]
+		public delegate void RewardsPublishing(Godot.Collections.Array<QuestReward> rewards);
 		
 		/// <summary>
 		/// Raised when one goal is done
@@ -32,6 +40,25 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
 		#endregion
 
 		#region Public methods
+		/// <summary>
+		/// Allows you to be attached to the event
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="methodName"></param>
+		public void AttachRewardsArePublishing(Godot.Object sender, string methodName)
+		{
+			this.Connect(nameof(RewardsPublishing), sender, methodName);
+		}
+
+		/// <summary>
+		/// One item is touched, raises the signal
+		/// </summary>
+		/// <param name="sender"></param>
+		public void BeRewardsPublishing(Godot.Collections.Array<QuestReward> senders)
+		{
+			this.EmitSignal(nameof(RewardsPublishing), senders);
+		}
+
 		/// <summary>
 		/// Allows you to be attached to the event
 		/// </summary>
