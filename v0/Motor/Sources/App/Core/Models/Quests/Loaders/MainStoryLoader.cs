@@ -26,7 +26,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Loaders
                 IChapter chapter = new Chapter(1, "Sortir du vaisseau");
 
                 Quest quest = new Quest(1, "Wake up the IA", "IA is broken, try to reboot her");
-                quest.AddRewards(new QuestReward(), new QuestReward());
+                quest.AddRewards(new QuestReward(), new QuestReward(), new QuestReward());
                 quest.Add(new TouchedItemGoal(1, quest));
                 quest.AddNextAction(new GetRewardsQuestAction(quest));
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Sources/App/Shared/Scenes/Rewards/DisplayRewards/Scripts/DisplayRewards.cs" type="Script" id=1]
 [ext_resource path="res://Sources/App/Shared/Assets/Objects/Buttons/Btn_sci-fi button04_h.png" type="Texture" id=2]
@@ -22,6 +22,14 @@ font_path = "res://Sources/App/Shared/Assets/Fonts/A001ff.ttf"
 
 [sub_resource type="DynamicFont" id=5]
 font_data = SubResource( 4 )
+
+[sub_resource type="DynamicFontData" id=6]
+font_path = "res://Sources/App/Shared/Assets/Fonts/A001ff-Bold.otf"
+
+[sub_resource type="DynamicFont" id=7]
+size = 50
+outline_color = Color( 0.101961, 0.133333, 0.913725, 1 )
+font_data = SubResource( 6 )
 
 [node name="DisplayRewards" type="Node2D"]
 position = Vector2( -3, 12 )
@@ -57,6 +65,18 @@ custom_styles/pressed = SubResource( 2 )
 custom_styles/normal = SubResource( 3 )
 custom_fonts/font = SubResource( 5 )
 text = "Récupérer"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_top = 50.0
+margin_right = 1986.0
+margin_bottom = 184.0
+custom_fonts/normal_font = SubResource( 7 )
+bbcode_enabled = true
+bbcode_text = "[center]Quête achevée !![/center]"
+text = "Quête achevée !!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
