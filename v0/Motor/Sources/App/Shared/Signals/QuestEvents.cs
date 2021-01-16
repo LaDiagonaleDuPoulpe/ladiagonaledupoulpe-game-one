@@ -29,6 +29,12 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
 		/// <param name="rewards"></param>
 		[Signal]
 		public delegate void RewardsPublishing(Godot.Collections.Array<QuestReward> rewards);
+
+		/// <summary>
+		/// Raised when all rewards have been collected 
+		/// </summary>
+		[Signal]
+		public delegate void RewardsHaveBeenCollected();
 		
 		/// <summary>
 		/// Raised when one goal is done
@@ -40,6 +46,25 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
 		#endregion
 
 		#region Public methods
+		/// <summary>
+		/// Allows you to be attached to the event
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="methodName"></param>
+		public void AttachRewardsHaveBeenCollected(Godot.Object sender, string methodName)
+		{
+			this.Connect(nameof(RewardsHaveBeenCollected), sender, methodName);
+		}
+
+		/// <summary>
+		/// One item is touched, raises the signal
+		/// </summary>
+		/// <param name="sender"></param>
+		public void BeRewardsHaveBeenCollected()
+		{
+			this.EmitSignal(nameof(RewardsHaveBeenCollected));
+		}
+
 		/// <summary>
 		/// Allows you to be attached to the event
 		/// </summary>

@@ -1,5 +1,6 @@
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Base.Scenes;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Rewards;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Levels;
 using ladiagonaledupoulpe.Sources.App.Shared.Constants;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
@@ -21,7 +22,9 @@ public class RootScene : BaseScene
 	private Node2D _lastScene = null;
 	private Timer _currentDyingTimer = null;
 	private Camera2D _globalCamera = null;
-	private DyingScene _dyingScene = null;	
+	private DyingScene _dyingScene = null;
+	private DisplayRewards _displayRewards = null;
+	private ColorRect _greyRectangle = null;
 	#endregion
 
 	#region Public methods
@@ -48,6 +51,8 @@ public class RootScene : BaseScene
 		this._dyingScene = this.GetNode<DyingScene>("DyingScene");
 		this._currentDyingTimer = this.GetNode<Timer>("DyingTimer");
 		this._globalCamera = this.GetNode<Camera2D>("MainCamera");
+		this._displayRewards = this.GetNode<DisplayRewards>("DisplayRewards");
+		this._greyRectangle = this.GetNode<ColorRect>("GreyRectangle");
 
 		this.AttachEvents();
 
@@ -65,6 +70,10 @@ public class RootScene : BaseScene
 
 		HealthCharacterEvents characterEvents = this.GetNode<HealthCharacterEvents>("/root/HealthCharacterEvents");
 		characterEvents.AttachToDie(this, nameof(RootScene.PlayerDie));
+
+		QuestEvents questEvents = this.GetNode<QuestEvents>("/root/QuestEvents");
+		questEvents.AttachRewardsArePublishing(this, nameof(QuestEvents_RewardsArePublishing));
+		questEvents.AttachRewardsHaveBeenCollected(this, nameof(QuestEvents_RewardsHaveBeenCollected));
 	}
 
 	private void LoadingScene_Start()
@@ -122,6 +131,18 @@ public class RootScene : BaseScene
 	protected override void DefineCurrentCamera()
 	{
 		this._globalCamera.Current = true;
+	}
+
+	private void QuestEvents_RewardsArePublishing(Godot.Collections.Array<QuestReward> items)
+	{
+		this._greyRectangle.Visible = true;
+		this._displayRewards.Visible = true;
+	}
+
+	private void QuestEvents_RewardsHaveBeenCollected()
+	{
+		this._greyRectangle.Visible = false;
+		this._displayRewards.Visible = false;
 	}
 	#endregion
 

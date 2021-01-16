@@ -58,10 +58,18 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 			this.ConfigureReloadingPower();
 
 			this._rules = this.GetNode<Game>("/root/CurrentGame").RulesSet;
-			this._synaleEvents = this.GetNode<SynaleEvents>("/root/SynaleEvents");
-			this.GetNode<QuestEvents>("/root/QuestEvents").AttachRewardsArePublishing(this, nameof(QuestEvents_RewardsArePublishing));
 
+			this.AttachQuestEvents();
+
+			this._synaleEvents = this.GetNode<SynaleEvents>("/root/SynaleEvents");
 			this.AddSynale();
+		}
+
+		private void AttachQuestEvents()
+		{
+			QuestEvents questEvents = this.GetNode<QuestEvents>("/root/QuestEvents");
+			questEvents.AttachRewardsArePublishing(this, nameof(QuestEvents_RewardsArePublishing));
+			questEvents.AttachRewardsHaveBeenCollected(this, nameof(QuestEvents_RewardsHaveBeenCollected));
 		}
 
 		public override void _PhysicsProcess(float delta)
@@ -258,12 +266,17 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 			this.CanMove = false;
 			this._stateMachine.Initialize();
 		}
+
+		private void QuestEvents_RewardsHaveBeenCollected()
+		{
+			this.CanMove = true;
+		}
 		#endregion
 
-		#region Properties
-		/// <summary>
-		/// True if player can reborn
-		/// </summary>
+			#region Properties
+			/// <summary>
+			/// True if player can reborn
+			/// </summary>
 		public bool CanReborn
 		{
 			get => this._synalePower.IsValid;
