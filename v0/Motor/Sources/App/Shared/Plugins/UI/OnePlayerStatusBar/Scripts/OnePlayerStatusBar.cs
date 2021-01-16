@@ -34,14 +34,14 @@ public class OnePlayerStatusBar : Node2D
 	}
 
 	public void InitializeSynale(Godot.Object sender, PowerPoint point)
-    {
+	{
 		this._synaleBar.Initialize(point);
-    }
+	}
 
 	public void SynalePowerChanged(Godot.Object sender, PowerPoint addingPoint)
-    {
+	{
 		this._synaleBar.UpdatePower(addingPoint);
-    }
+	}
 
 	/// <summary>
 	/// Defines visibility of the component

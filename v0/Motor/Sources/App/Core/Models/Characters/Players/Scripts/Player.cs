@@ -2,6 +2,7 @@ using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts.State;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Games;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Rewards;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Characters;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Games;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Synales;
@@ -58,6 +59,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
 			this._rules = this.GetNode<Game>("/root/CurrentGame").RulesSet;
 			this._synaleEvents = this.GetNode<SynaleEvents>("/root/SynaleEvents");
+			this.GetNode<QuestEvents>("/root/QuestEvents").AttachRewardsArePublishing(this, nameof(QuestEvents_RewardsArePublishing));
 
 			this.AddSynale();
 		}
@@ -249,6 +251,12 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 		private void SetSettingsFromLastCheckPoint()
 		{
 			this.HealthCharacterEvents.BeReborn(this);
+		}
+
+		private void QuestEvents_RewardsArePublishing(Godot.Collections.Array<QuestReward> items)
+		{
+			this.CanMove = false;
+			this._stateMachine.Initialize();
 		}
 		#endregion
 

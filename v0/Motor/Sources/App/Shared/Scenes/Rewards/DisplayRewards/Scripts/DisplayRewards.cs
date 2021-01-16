@@ -6,7 +6,8 @@ using System;
 public class DisplayRewards : Node2D
 {
 	#region Fields
-	private ScrollContainer _container = null;
+	private MarginContainer _container = null;
+	private HBoxContainer _subContainer = null;
 	#endregion
 
 	#region Public methods
@@ -14,7 +15,8 @@ public class DisplayRewards : Node2D
 	{
 		this.GetNode<QuestEvents>("/root/QuestEvents").AttachRewardsArePublishing(this, nameof(QuestEvents_RewardsArePublishing));
 		this.Visible = false;
-		this._container = this.GetNode<ScrollContainer>("ScrollContainer");
+		this._container = this.GetNode<CanvasLayer>("CanvasLayer").GetNode<MarginContainer>("MarginContainer");
+		this._subContainer = this._container.GetNode<HBoxContainer>("HBoxContainer");
 	}
 	#endregion
 
@@ -27,18 +29,22 @@ public class DisplayRewards : Node2D
 	}
 
 	private void RemoveAllOldies()
-    {
+	{
+		foreach (var item in this._subContainer.GetChildren())
+		{
+			Node node = item as Node;
+			this._subContainer.RemoveChild(node);
+			node.QueueFree();
+		}
 
-    }
+	}
 
 	private void Display(Godot.Collections.Array<QuestReward> items)
 	{
-		Panel panel = this._container.GetNode<Panel>("Panel");
-
 		foreach (var item in items)
 		{
 			var scene = GD.Load<PackedScene>("res://Sources/App/Shared/Scenes/Rewards/OneReward/OneReward.tscn");
-			panel.AddChild(scene.Instance());
+			this._subContainer.AddChild(scene.Instance());
 		}
 	}
 	#endregion
