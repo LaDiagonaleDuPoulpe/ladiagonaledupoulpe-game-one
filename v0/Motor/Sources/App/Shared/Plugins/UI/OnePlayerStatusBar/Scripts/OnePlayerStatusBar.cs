@@ -1,6 +1,7 @@
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
 using ladiagonaledupoulpe.Sources.App.Shared.Signals;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 using System;
 
 /// <summary>
@@ -57,11 +58,11 @@ public class OnePlayerStatusBar : Node2D
 	#region Internal methods
 	private void AttachToEvents()
 	{
-		HealthCharacterEvents characterEvents = this.GetNode<HealthCharacterEvents>("/root/HealthCharacterEvents");
+		HealthCharacterEvents characterEvents = this.GetRootNode<HealthCharacterEvents>();
 		characterEvents.AttachToInitialize(this, nameof(InitializeLife));
 		characterEvents.AttachToChange(this, nameof(LifeChanged));
 
-		SynaleEvents synaleEvents = this.GetNode<SynaleEvents>("/root/SynaleEvents");
+		SynaleEvents synaleEvents = this.GetRootNode<SynaleEvents>();
 		synaleEvents.AttachToInitialize(this, nameof(InitializeSynale));
 		synaleEvents.AttachToUpdate(this, nameof(SynalePowerChanged));
 	}

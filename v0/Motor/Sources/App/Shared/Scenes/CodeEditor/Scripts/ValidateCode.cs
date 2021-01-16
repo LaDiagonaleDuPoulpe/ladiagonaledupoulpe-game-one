@@ -2,6 +2,7 @@ using Godot;
 using ladiagonaledupoulpe.Sources.App.Shared.Scenes.CodeEditor.Scripts;
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
 using ladiagonaledupoulpe.Sources.App.Shared.Tools.Http;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 using System;
 
 /// <summary>
@@ -19,7 +20,7 @@ public class ValidateCode : Node
 		_textEditplayerCode = this.GetNode<TextEdit>("Button/TxtCodePlayer");
 		_movingSceneManager = this.Owner as MovingSceneManager;
 
-		GlobalDataService dataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
+		GlobalDataService dataService = this.GetRootNode<GlobalDataService>();
 		var compilerConfiguration = dataService.GlobalSettings.Apis.Compiler;
 		_requestCompileCode = new CompileCodeEditor(compilerConfiguration);
 		this.AddChild(_requestCompileCode);

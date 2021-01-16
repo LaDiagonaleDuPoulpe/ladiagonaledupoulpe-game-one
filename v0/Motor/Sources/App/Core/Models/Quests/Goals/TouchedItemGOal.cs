@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Goals
 {
@@ -43,7 +44,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Goals
         #region Internal methods
         protected override void DoInitialize()
         {
-            this._uiEvents = this.GetNode<ItemsEvents>("/root/ItemsEvents");
+            this._uiEvents = this.GetRootNode<ItemsEvents>();
             this._uiEvents.AttachItemIsTouched(this, nameof(OneItemIsTouched));
         }
 

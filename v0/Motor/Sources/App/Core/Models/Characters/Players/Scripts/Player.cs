@@ -10,6 +10,7 @@ using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.CheckPoints;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins;
 using ladiagonaledupoulpe.Sources.App.Shared.Signals;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 using System;
 using System.Diagnostics;
 
@@ -57,17 +58,17 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 			this.ConfigureLoadingPower();
 			this.ConfigureReloadingPower();
 
-			this._rules = this.GetNode<Game>("/root/CurrentGame").RulesSet;
+			this._rules = this.GetRootNode<Game>("CurrentGame").RulesSet;
 
 			this.AttachQuestEvents();
 
-			this._synaleEvents = this.GetNode<SynaleEvents>("/root/SynaleEvents");
+			this._synaleEvents = this.GetRootNode<SynaleEvents>();
 			this.AddSynale();
 		}
 
 		private void AttachQuestEvents()
 		{
-			QuestEvents questEvents = this.GetNode<QuestEvents>("/root/QuestEvents");
+			QuestEvents questEvents = this.GetRootNode<QuestEvents>();
 			questEvents.AttachRewardsArePublishing(this, nameof(QuestEvents_RewardsArePublishing));
 			questEvents.AttachRewardsHaveBeenCollected(this, nameof(QuestEvents_RewardsHaveBeenCollected));
 		}

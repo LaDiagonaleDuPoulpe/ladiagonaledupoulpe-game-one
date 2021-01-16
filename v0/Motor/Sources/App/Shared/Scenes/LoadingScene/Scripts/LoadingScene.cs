@@ -5,6 +5,7 @@ using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins;
 using ladiagonaledupoulpe.Sources.App.Shared.Services;
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -72,8 +73,8 @@ public class LoadingScene : Node2D
 
 	private void HidePlayerNodes()
 	{
-		Player player = this.GetNode<Player>("/root/CurrentPlayer");
-		OnePlayerStatusBar statusBar = this.GetNode<OnePlayerStatusBar>("/root/OnePlayerStatusBar");
+		Player player = this.GetRootNode<Player>("CurrentPlayer");
+		OnePlayerStatusBar statusBar = this.GetRootNode<OnePlayerStatusBar>();
 
 		player.Visible = false;
 		statusBar.SetVisibility(false);

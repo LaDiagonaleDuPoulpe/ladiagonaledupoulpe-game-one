@@ -8,6 +8,7 @@ using System.Linq;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 
 namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 {
@@ -41,7 +42,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 		{
 			base._Ready();
 
-			this.DialogBox = this.GetNode<DialogBox>("/root/DialogBox");
+			this.DialogBox = this.GetRootNode<DialogBox>();
 			this.DialogBox.Connect(nameof(DialogBox.EndOfAllMessages), this, nameof(StopDisplayMessagesOfOneExchange));
 
 			this.CreateTimer();

@@ -2,6 +2,7 @@ using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins;
 using System;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 
 namespace ladiagonaledupoulpe.Sources.App.Shared.Nodes.Camera
 {
@@ -17,7 +18,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Nodes.Camera
         #region Public methods
         public override void _Ready()
         {
-            AutoLoaderAccessor autoLoader = this.GetNode<AutoLoaderAccessor>("/root/AutoLoaderAccessor");
+            AutoLoaderAccessor autoLoader = this.GetRootNode<AutoLoaderAccessor>();
             this._player = autoLoader.CurrentPlayer;
         }
 

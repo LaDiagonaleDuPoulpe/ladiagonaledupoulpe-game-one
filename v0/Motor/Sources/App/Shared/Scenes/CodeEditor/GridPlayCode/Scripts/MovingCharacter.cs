@@ -5,6 +5,7 @@ using ladiagonaledupoulpe.Sources.App.Game_Scenes._003_Code_Editor.Scripts;
 using ladiagonaledupoulpe.Sources.App.Shared.Scenes.CodeEditor.Scripts.Players;
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
 using System;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Scenes.CodeEditor.Scripts
         public override void _Ready()
 		{
 			_player = this.GetNode<PlayerActionGrid>("Players/Player");
-			_battleConfiguration = this.GetNode<GlobalDataService>("/root/GlobalDataService").GlobalSettings.Battle;
+			_battleConfiguration = this.GetRootNode<GlobalDataService>().GlobalSettings.Battle;
 			_grid = this.GetNode<Sprite>("Grid");
 		}
 

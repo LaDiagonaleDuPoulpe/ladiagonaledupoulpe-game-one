@@ -1,6 +1,7 @@
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Items;
 using ladiagonaledupoulpe.Sources.App.Shared.Signals;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 using System;
 
 /// <summary>
@@ -17,7 +18,7 @@ public class TouchingWithHaloItem : BaseItem
 	public override void _Ready()
 	{
 		base._Ready();
-		this._uiEvents = this.GetNode<ItemsEvents>("/root/ItemsEvents");
+		this._uiEvents = this.GetRootNode<ItemsEvents>();
 		this._hightLight = this.GetNode<Area2D>("ActiveArea").GetNode<Sprite>("HightLight");
 	}
 	#endregion

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
 {
@@ -32,7 +33,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         public override void _Ready()
         {
             base._Ready();
-            this.AutoLoaderAccessor = this.GetNode<AutoLoaderAccessor>("/root/AutoLoaderAccessor");
+            this.AutoLoaderAccessor = this.GetRootNode<AutoLoaderAccessor>();
 			this.DataPreloader = this.AutoLoaderAccessor.DataPreloader;
         }
         #endregion

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
 {
@@ -34,7 +35,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         {
             base._Ready();
             this.MainHealth = this.GetNode<Health>("Health");
-            this._healthCharacterEvents = this.GetNode<HealthCharacterEvents>("/root/HealthCharacterEvents");
+            this._healthCharacterEvents = this.GetRootNode<HealthCharacterEvents>();
 
             this.Initialize();
         }

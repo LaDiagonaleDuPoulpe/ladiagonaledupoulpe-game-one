@@ -10,6 +10,7 @@ using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog;
 using ladiagonaledupoulpe.Sources.App.Shared.Services;
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
 using ladiagonaledupoulpe.Sources.App.Shared.Signals;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -68,10 +69,10 @@ public class RootScene : BaseScene
 		this.LoadingScene.Connect(nameof(LoadingScene.End), this, nameof(LoadingScene_End));
 		this.ConnectToActivateCameraEvent(this._dyingScene);
 
-		HealthCharacterEvents characterEvents = this.GetNode<HealthCharacterEvents>("/root/HealthCharacterEvents");
+		HealthCharacterEvents characterEvents = this.GetRootNode<HealthCharacterEvents>();
 		characterEvents.AttachToDie(this, nameof(RootScene.PlayerDie));
 
-		QuestEvents questEvents = this.GetNode<QuestEvents>("/root/QuestEvents");
+		QuestEvents questEvents = this.GetRootNode<QuestEvents>();
 		questEvents.AttachRewardsArePublishing(this, nameof(QuestEvents_RewardsArePublishing));
 		questEvents.AttachRewardsHaveBeenCollected(this, nameof(QuestEvents_RewardsHaveBeenCollected));
 	}

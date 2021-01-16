@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 
 namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs
 {
@@ -53,7 +54,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs
         private void PrepareHttpRequest()
         {
             TConfig configuration = null;
-            GlobalDataService dataService = this.GetNode<AutoLoaderAccessor>("/root/AutoLoaderAccessor").GlobalDataService;
+            GlobalDataService dataService = this.GetRootNode<AutoLoaderAccessor>().GlobalDataService;
 
             configuration = this.GetConfiguration(dataService);
             this._request = this.CreateOneRequest(configuration);
@@ -74,7 +75,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs
 
         private void Request_OnAfterCommandExecuted(Godot.Object result)
         {
-            AutoLoaderAccessor accessor = this.GetNode<AutoLoaderAccessor>("/root/AutoLoaderAccessor");
+            AutoLoaderAccessor accessor = this.GetRootNode<AutoLoaderAccessor>();
             this.ProcessResponse(result, accessor);
 
             this.DefineDataIsLoaded();

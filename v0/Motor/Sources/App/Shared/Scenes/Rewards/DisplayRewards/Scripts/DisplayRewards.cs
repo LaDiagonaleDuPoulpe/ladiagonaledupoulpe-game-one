@@ -2,6 +2,7 @@ using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Rewards;
 using ladiagonaledupoulpe.Sources.App.Shared.Signals;
 using System;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 
 public class DisplayRewards : Node2D
 {
@@ -14,7 +15,7 @@ public class DisplayRewards : Node2D
 	#region Public methods
 	public override void _Ready()
 	{
-		this._questEvents = this.GetNode<QuestEvents>("/root/QuestEvents");
+		this._questEvents = this.GetRootNode<QuestEvents>();
 		this._questEvents.AttachRewardsArePublishing(this, nameof(QuestEvents_RewardsArePublishing));
 
 		this.Visible = false;

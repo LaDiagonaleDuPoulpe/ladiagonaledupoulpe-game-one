@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 {
@@ -53,7 +54,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         public override void _Ready()
         {
             base._Ready();
-            this._questEvents = this.GetNode<QuestEvents>("/root/QuestEvents");
+            this._questEvents = this.GetRootNode<QuestEvents>();
         }
 
         public void EvaluateAchievment()

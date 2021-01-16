@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Actions
 {
@@ -41,7 +42,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Actions
                 {
                     array.Add(item as QuestReward);
                 }
-                this.GetNode<QuestEvents>("/root/QuestEvents").BeRewardsPublishing(array);
+                this.GetRootNode<QuestEvents>().BeRewardsPublishing(array);
             }
         }
         #endregion

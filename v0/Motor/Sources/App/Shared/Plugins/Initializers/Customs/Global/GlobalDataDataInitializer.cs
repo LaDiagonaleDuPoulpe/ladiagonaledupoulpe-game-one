@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 
 namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Global
 {
@@ -18,7 +19,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Gl
         #region Internal methods
         protected override void DoLoad()
         {
-            GlobalDataService globalDataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
+            GlobalDataService globalDataService = this.GetRootNode<GlobalDataService>();
             globalDataService.GlobalSettings = this.GetGlobalSettings();
         }
         #endregion

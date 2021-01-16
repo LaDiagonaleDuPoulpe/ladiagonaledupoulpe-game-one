@@ -5,6 +5,7 @@ using ladiagonaledupoulpe.Sources.App.Core.Models.Quests;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Goals;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests;
 using ladiagonaledupoulpe.Sources.App.Shared.Signals;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 using System;
 
 public class TestQuests : BaseActiveScene
@@ -19,7 +20,7 @@ public class TestQuests : BaseActiveScene
 	{
 		base._Ready();
 
-		this._questEvents = this.GetNode<QuestEvents>("/root/QuestEvents");
+		this._questEvents = this.GetRootNode<QuestEvents>();
 		this._questEvents.AttachGoalIsDone(this, nameof(questEvents_GoalIsDone));
 		this._questEvents.AttachQuestIsDone(this, nameof(questEvents_QuestIsDone));
 	}

@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
 {
@@ -40,7 +41,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
 
             this.AddChild(this._checkPointsTaker);
             this.AddChild(this.RulesSet);
-            this._currentPlayer = this.GetNode<Player>("/root/CurrentPlayer");
+            this._currentPlayer = this.GetRootNode<Player>();
 
             this.Story = this._factoryStoryLoader.GetOne().LoadOne();
             this.AddChild(this.Story as Node);
@@ -93,7 +94,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
         #region Internal methods
         private void AttachEvents()
         {
-            HealthCharacterEvents characterEvents = this.GetNode<HealthCharacterEvents>("/root/HealthCharacterEvents");
+            HealthCharacterEvents characterEvents = this.GetRootNode<HealthCharacterEvents>();
             characterEvents.AttachToInitialize(this, nameof(Game.Player_HealthInitialized));
             characterEvents.AttachToReborn(this, nameof(Game.Player_RebornActivated));
         }
