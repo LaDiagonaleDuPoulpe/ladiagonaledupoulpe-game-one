@@ -2,12 +2,15 @@ using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts.State;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Games;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Rewards;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Characters;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Games;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Synales;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.CheckPoints;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins;
+using ladiagonaledupoulpe.Sources.App.Shared.Signals;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 using System;
 using System.Diagnostics;
 
@@ -22,6 +25,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 		#endregion
 
 		#region Fields
+		private SynaleEvents _synaleEvents = null;
 		private RulesSet _rules = null;
 		private Synale _synalePower = null;
 		private LoadingPower _loadingPower = null;
@@ -31,26 +35,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 		private PlayerCharacterDataSetting _lastSettings = null;
 		private Timer _dyingTimer = null;
 		private Timer _rebornTimer = null;
-		#region Signals
-		/// <summary>
-		/// Connect to this signal to get the init power point 
-		/// </summary>
-		[Signal]
-		public delegate void SynaleInitialized(PowerPoint point);
-
-		/// <summary>
-		/// Update the power of the synale
-		/// </summary>
-		/// <param name="point"></param>
-		[Signal]
-		public delegate void SynalePowerUpdated(PowerPoint point);
-
-		/// <summary>
-		/// Connect to this signal to know when reborn is activated and we can, for example, restore data of the player
-		/// </summary>
-		[Signal]
-		public delegate void RebornActivated();
-		#endregion
 		#endregion
 
 		#region Public methods
@@ -74,9 +58,19 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 			this.ConfigureLoadingPower();
 			this.ConfigureReloadingPower();
 
-			this._rules = this.GetNode<Game>("/root/CurrentGame").RulesSet;
+			this._rules = this.GetRootNode<Game>("CurrentGame").RulesSet;
 
+			this.AttachQuestEvents();
+
+			this._synaleEvents = this.GetRootNode<SynaleEvents>();
 			this.AddSynale();
+		}
+
+		private void AttachQuestEvents()
+		{
+			QuestEvents questEvents = this.GetRootNode<QuestEvents>();
+			questEvents.AttachRewardsArePublishing(this, nameof(QuestEvents_RewardsArePublishing));
+			questEvents.AttachRewardsHaveBeenCollected(this, nameof(QuestEvents_RewardsHaveBeenCollected));
 		}
 
 		public override void _PhysicsProcess(float delta)
@@ -242,12 +236,12 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
 		private void Synale_SynaleInitialized(PowerPoint point)
 		{
-			this.EmitSignal(nameof(SynaleInitialized), point);
+			this._synaleEvents.BeInitialized(this, point);
 		}
 
 		private void Synale_SynalePowerUpdated(PowerPoint point)
 		{
-			this.EmitSignal(nameof(SynalePowerUpdated), point);
+			this._synaleEvents.BeUpdated(this, point);
 		}
 
 		protected override void GoneLife(Godot.Object sender)
@@ -265,14 +259,25 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
 		private void SetSettingsFromLastCheckPoint()
 		{
-			this.EmitSignal(nameof(RebornActivated));
+			this.HealthCharacterEvents.BeReborn(this);
+		}
+
+		private void QuestEvents_RewardsArePublishing(Godot.Collections.Array<QuestReward> items)
+		{
+			this.CanMove = false;
+			this._stateMachine.Initialize();
+		}
+
+		private void QuestEvents_RewardsHaveBeenCollected()
+		{
+			this.CanMove = true;
 		}
 		#endregion
 
-		#region Properties
-		/// <summary>
-		/// True if player can reborn
-		/// </summary>
+			#region Properties
+			/// <summary>
+			/// True if player can reborn
+			/// </summary>
 		public bool CanReborn
 		{
 			get => this._synalePower.IsValid;

@@ -4,6 +4,7 @@ using ladiagonaledupoulpe.Sources.App.Core.Base.Scenes;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Characters;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Characters;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 using System;
 
 public class TestRebornPlayer : BaseActiveScene
@@ -16,7 +17,7 @@ public class TestRebornPlayer : BaseActiveScene
 	public override void _Ready()
 	{
 		base._Ready();
-		this._currentPlayer = this.GetNode<Player>("/root/CurrentPlayer");
+		this._currentPlayer = this.GetRootNode<Player>("CurrentPlayer");
 		this._currentPlayer.InitializeData(new PlayerCharacterDataSetting()
 		{
 			Health = new HealthDataSetting()
@@ -31,7 +32,7 @@ public class TestRebornPlayer : BaseActiveScene
 			}
 		});
 
-		var globalData = this.GetNode<models.Games.Game>("/root/CurrentGame");
+		var globalData = this.GetRootNode<models.Games.Game>("CurrentGame");
 		globalData.Initialize(new models.Settings.Games.GameSetting()
 		{
 			RulesSet = new models.Settings.Games.RuleSetSetting()

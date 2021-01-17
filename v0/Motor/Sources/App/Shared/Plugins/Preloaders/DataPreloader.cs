@@ -1,6 +1,7 @@
 ﻿using Godot;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Preloaders
         public void Load(Enums.DataInitializerStep step)
         {
             base._Ready();
-            this._proxyDataInitializer = this.GetNode<ProxyDataInitializer>("/root/ProxyDataInitializer");
+            this._proxyDataInitializer = this.GetRootNode<ProxyDataInitializer>();
 
             if (this._proxyDataInitializer.IsConnected(nameof(ProxyDataInitializer.DataLoaded), this, nameof(globalDataInitializer_DataLoaded)))
             {

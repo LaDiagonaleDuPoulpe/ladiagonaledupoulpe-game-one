@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static Godot.HTTPClient;
 
-namespace ladiagonaledupoulpe.Sources.App.Core.Interfaces.Requests
+namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Requests
 {
     /// <summary>
     /// Default host configuration to define settings to connect to one api

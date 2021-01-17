@@ -1,4 +1,4 @@
-﻿using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Scenes;
+﻿using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes;
 using System;
 using System.Collections.Generic;
 using System.Linq;

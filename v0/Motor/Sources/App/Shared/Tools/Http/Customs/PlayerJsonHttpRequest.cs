@@ -1,5 +1,5 @@
-﻿using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Requests;
-using ladiagonaledupoulpe.Sources.App.Core.Models.Results;
+﻿using ladiagonaledupoulpe.Sources.App.Core.Models.Results;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Requests;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

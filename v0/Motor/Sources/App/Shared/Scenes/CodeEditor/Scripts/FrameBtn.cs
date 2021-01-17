@@ -4,7 +4,9 @@ using ladiagonaledupoulpe.Sources.App.Game_Scenes._003_Code_Editor.Scripts;
 using ladiagonaledupoulpe.Sources.App.Shared.Scenes.CodeEditor.Scripts;
 using ladiagonaledupoulpe.Sources.App.Shared.Scenes.CodeEditor.Scripts.Players;
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 using System;
+
 /// <summary>
 /// Button for one ActionFrame player code
 /// Set the player to the action of this ActionFrame
@@ -24,7 +26,7 @@ public class FrameBtn : Node
     #region Public
     public override void _Ready()
     {
-        _battleConfiguration = this.GetNode<GlobalDataService>("/root/GlobalDataService").GlobalSettings.Battle;
+        _battleConfiguration = this.GetRootNode<GlobalDataService>().GlobalSettings.Battle;
         var movingSceneManager = (MovingSceneManager)this.GetTree().Root.GetNode<Node>("MovingScene");
         _player = movingSceneManager.GetNode<PlayerActionGrid>("GridPlayCode/Players/Player");
         _grid = movingSceneManager.GetNode<Sprite>("GridPlayCode/Grid");

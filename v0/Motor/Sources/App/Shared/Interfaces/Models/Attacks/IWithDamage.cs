@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ladiagonaledupoulpe.Sources.App.Core.Interfaces.Models.Attacks
+namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Models.Attacks
 {
     /// <summary>
     /// Use this contract to use hit method

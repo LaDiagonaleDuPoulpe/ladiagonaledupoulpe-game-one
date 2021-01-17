@@ -1,4 +1,4 @@
-﻿using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Requests;
+﻿using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Requests;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes.Request;
 using System;
 using System.Collections.Generic;

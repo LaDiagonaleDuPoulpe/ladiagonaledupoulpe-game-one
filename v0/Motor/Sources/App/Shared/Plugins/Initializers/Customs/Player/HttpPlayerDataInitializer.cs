@@ -5,6 +5,7 @@ using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Charac
 using ladiagonaledupoulpe.Sources.App.Shared.Services.Data;
 using ladiagonaledupoulpe.Sources.App.Shared.Tools.Http;
 using ladiagonaledupoulpe.Sources.App.Shared.Tools.Http.Customs;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +42,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers.Customs.Pl
         /// <param name="setting"></param>
         protected virtual void UpdateValuesOfPlayer(PlayerCharacterDataSetting setting)
         {
-            modelsplayer.Player player = this.GetNode<modelsplayer.Player>("/root/CurrentPlayer");
+            modelsplayer.Player player = this.GetRootNode<modelsplayer.Player>("CurrentPlayer");
             player.InitializeData(setting);
         }
         #endregion

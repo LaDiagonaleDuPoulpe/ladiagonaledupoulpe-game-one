@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Synales
 {
@@ -47,7 +48,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Synales
         public override void _Ready()
         {
             base._Ready();
-            this._rules = this.GetNode<Game>("/root/CurrentGame").RulesSet;
+            this._rules = this.GetRootNode<Game>("CurrentGame").RulesSet;
         }
 
         /// <summary>

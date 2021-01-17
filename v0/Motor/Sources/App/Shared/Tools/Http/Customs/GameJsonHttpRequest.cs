@@ -1,7 +1,7 @@
 ﻿using Godot;
-using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Requests;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Games;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Results;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Requests;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes.Request;
 using Newtonsoft.Json;
 using System;

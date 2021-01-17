@@ -1,7 +1,7 @@
 using Godot;
-using ladiagonaledupoulpe.Sources.App.Core.Interfaces.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Games;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Preloaders;
 using ladiagonaledupoulpe.Sources.App.Shared.Services;
@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 
 namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins
 {
@@ -37,15 +38,15 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins
 		{
 			base._Ready();
 
-			this.GlobalDataService = this.GetNode<GlobalDataService>("/root/GlobalDataService");
-			this.CurrentPlayer = this.GetNode<Player>("/root/CurrentPlayer");
-			this.CurrentGame = this.GetNode<Game>("/root/CurrentGame");
-			this.StatusBar = this.GetNode<OnePlayerStatusBar>("/root/OnePlayerStatusBar");
-			this.DialogBoxManager = this.GetNode<IDialogBoxManager>("/root/DialoxBoxManager");
-			this.LoadingScene = this.GetNode<LoadingScene>("/root/LoadingScene");
-			this.ResourcesSceneLoader = this.GetNode<ResourcesSceneLoader>("/root/ResourcesSceneLoader");
-			this.ProxyDataInitializer = this.GetNode<ProxyDataInitializer>("/root/ProxyDataInitializer");
-			this.DataPreloader = this.GetNode<DataPreloader>("/root/DataPreloader");
+			this.GlobalDataService = this.GetRootNode<GlobalDataService>();
+			this.CurrentPlayer = this.GetRootNode<Player>("CurrentPlayer");
+			this.CurrentGame = this.GetRootNode<Game>("CurrentGame");
+			this.StatusBar = this.GetRootNode<OnePlayerStatusBar>();
+			this.DialogBoxManager = this.GetRootNode<IDialogBoxManager>("DialoxBoxManager");
+			this.LoadingScene = this.GetRootNode<LoadingScene>("LoadingScene");
+			this.ResourcesSceneLoader = this.GetRootNode<ResourcesSceneLoader>();
+			this.ProxyDataInitializer = this.GetRootNode<ProxyDataInitializer>();
+			this.DataPreloader = this.GetRootNode<DataPreloader>();
 		}
 		#endregion
 

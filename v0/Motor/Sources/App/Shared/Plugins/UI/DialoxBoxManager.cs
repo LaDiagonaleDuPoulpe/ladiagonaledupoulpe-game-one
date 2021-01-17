@@ -1,13 +1,14 @@
 using Godot;
-using ladiagonaledupoulpe.Sources.App.Core.Interfaces.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Core.Models.DialogBox;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.DialogBox;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 
 namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 {
@@ -41,7 +42,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 		{
 			base._Ready();
 
-			this.DialogBox = this.GetNode<DialogBox>("/root/DialogBox");
+			this.DialogBox = this.GetRootNode<DialogBox>();
 			this.DialogBox.Connect(nameof(DialogBox.EndOfAllMessages), this, nameof(StopDisplayMessagesOfOneExchange));
 
 			this.CreateTimer();

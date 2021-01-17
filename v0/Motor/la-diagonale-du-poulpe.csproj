@@ -38,13 +38,28 @@
     <Compile Include="addons\WAT\core\test\Recorder.cs" />
     <Compile Include="addons\WAT\core\test\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sources\App\Core\Interfaces\Models\Attacks\IWithDamage.cs" />
-    <Compile Include="Sources\App\Core\Interfaces\Requests\IHostConfiguration.cs" />
+    <Compile Include="Sources\App\Core\Models\Items\BaseItem.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Actions\ActivateTalkQuestAction.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Actions\BaseQuestAction.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Actions\GetRewardsQuestAction.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Goals\ActivatedItemGoal.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Goals\TouchedItemGoal.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Loaders\FactoryStoryLoader.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Loaders\JsonMainStoryLoader.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Loaders\MainStoryLoader.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Story.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Models\Attacks\IWithDamage.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Models\Items\IItem.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Quests\IQuestAction.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Quests\IFactoryStoryLoader.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Quests\IStory.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Quests\IStoryLoader.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Requests\IHostConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\Heart.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\HeartsHealth.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\BaseStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\DiedStatePlayer.cs" />
-    <Compile Include="Sources\App\Core\Interfaces\Models\States\IStateCharacter.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Models\States\IStateCharacter.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\IdleStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\HorizontalMoveStatePlayer.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\State\MoveStatePlayer.cs" />
@@ -86,8 +101,6 @@
     <Compile Include="Sources\App\Core\Base\Scenes\BaseScene.cs" />
     <Compile Include="Sources\App\Core\Base\Scenes\BaseActiveScene.cs" />
     <Compile Include="Sources\App\Core\Container-Scenes\Scripts\RootScene.cs" />
-    <Compile Include="Sources\App\Core\Interfaces\Scenes\IDataInit.cs" />
-    <Compile Include="Sources\App\Core\Interfaces\Scenes\ILevelConfiguration.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Players\Scripts\Player.cs" />
     <Compile Include="Sources\App\Core\Models\Synales\Synale.cs" />
     <Compile Include="Sources\App\Game-Scenes\000-Home\Scripts\CloudMoving.cs" />
@@ -98,6 +111,7 @@
     <Compile Include="Sources\App\Game-Scenes\999-Dying-Player\Scripts\DyingScene.cs" />
     <Compile Include="Sources\App\Game-Scenes\XXX-Test-Pocs\Scripts\AutoloaderPoc.cs" />
     <Compile Include="Sources\App\Game-Scenes\XXX-Test-TestingScenes\Scripts\TestHealthBar.cs" />
+    <Compile Include="Sources\App\Game-Scenes\XXX-Test-TestingScenes\Scripts\TestQuests.cs" />
     <Compile Include="Sources\App\Game-Scenes\XXX-Test-TestingScenes\Scripts\TestRebornPlayer.cs" />
     <Compile Include="Sources\App\Game-Scenes\XXX-Test-TestingScenes\Scripts\TestSynaleBar.cs" />
     <Compile Include="Sources\App\Shared\Enums\CharacterLifeSignal.cs" />
@@ -108,7 +122,14 @@
     <Compile Include="Sources\App\Shared\Enums\SynaleState.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\CheckPoints\IMemento.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Initializers\IDataInitializer.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Quests\IChapter.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Quests\IGoal.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Quests\IQuest.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Quests\IQuestReward.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Scenes\IDataInit.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Scenes\ILevelConfiguration.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Scenes\IStartAnimation.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\Signals\IWithSignals.cs" />
     <Compile Include="Sources\App\Shared\Models\Settings\Animations\AnimationSetting.cs" />
     <Compile Include="Sources\App\Shared\Nodes\Camera\FollowPlayerCamera.cs" />
     <Compile Include="Sources\App\Shared\Plugins\AutoLoaderAccessor.cs" />
@@ -126,6 +147,10 @@
     <Compile Include="Sources\App\Shared\Plugins\Initializers\ProxyDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\Customs\Player\InMemoryPlayerDataInitializer.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Initializers\LoadedDataInitializerResult.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Chapter.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Goal.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Quest.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Rewards\QuestReward.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\BtnActionFrameContainer.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Models\Base\BaseCompilation.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Preloaders\DataPreloader.cs" />
@@ -143,14 +168,17 @@
     <Compile Include="Sources\App\Shared\Plugins\UI\OnePlayerStatusBar\Scripts\OnePlayerStatusBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\GridPlayCode\Scripts\MovingCharacter.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\GridPlayCode\Scripts\Players\PlayerActionGrid.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Items\Scripts\TouchingWithHaloItem.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Reborns\Scripts\LoadingPower.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Reborns\Scripts\RebornHeartEffect.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Reborns\Scripts\RebornPower.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Rewards\DisplayRewards\Scripts\DisplayRewards.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Rewards\OneReward\Scripts\OneReward.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\Heart\Scripts\HeartBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\Scripts\HeartsLifeBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\SynaleBar\Scripts\SynaleBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Synales\Scripts\RebornSynale.cs" />
-    <Compile Include="Sources\App\Shared\Signals\Signals.cs" />
+    <Compile Include="Sources\App\Shared\Signals\HealthCharacterEvents.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Models\Position.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\ValidateCode.cs" />
     <Compile Include="Sources\App\Game-Scenes\002-Inside-Crash-Ship\Scripts\InsideCrashShip.cs" />
@@ -180,7 +208,11 @@
     <Compile Include="Sources\App\Shared\Services\Data\GlobalDataService.cs" />
     <Compile Include="Sources\App\Shared\Plugins\UI\DialoxBoxManager.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Resources\ResourcesSceneLoader.cs" />
-    <Compile Include="Sources\App\Core\Interfaces\DialogBox\IDialogBoxManager.cs" />
+    <Compile Include="Sources\App\Shared\Interfaces\DialogBox\IDialogBoxManager.cs" />
+    <Compile Include="Sources\App\Shared\Signals\QuestEvents.cs" />
+    <Compile Include="Sources\App\Shared\Signals\SynaleEvents.cs" />
+    <Compile Include="Sources\App\Shared\Signals\ItemsEvents.cs" />
+    <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\AutoLoaderExtensionMethods.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\ExchangeSettingExtensionMethod.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\StringExtensionMethod.cs" />
     <Compile Include="Sources\App\Shared\Tools\Http\Customs\GameJsonHttpRequest.cs" />
@@ -204,7 +236,6 @@
     <None Include="Sources\App\Shared\Services\README.md" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Sources\App\Core\Interfaces\Configurations\" />
     <Folder Include="Sources\App\Core\Models\Characters\Npcs\" />
   </ItemGroup>
   <ItemGroup>
@@ -212,6 +243,5 @@
       <Version>12.0.3</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup />
 </Project>

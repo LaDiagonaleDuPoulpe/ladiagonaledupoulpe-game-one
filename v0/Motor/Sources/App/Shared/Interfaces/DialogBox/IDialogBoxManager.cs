@@ -3,7 +3,7 @@ using Godot;
 using Godot.Collections;
 using ladiagonaledupoulpe.Sources.App.Core.Models.DialogBox;
 
-namespace ladiagonaledupoulpe.Sources.App.Core.Interfaces.DialogBox
+namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.DialogBox
 {
     /// <summary>
     /// Manager of the dialogbox of one scene.

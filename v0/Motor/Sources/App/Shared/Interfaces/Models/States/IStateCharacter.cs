@@ -1,6 +1,6 @@
 ﻿using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 
-namespace ladiagonaledupoulpe.Sources.App.Core.Interfaces.Models.States
+namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Models.States
 {
     /// <summary>
     /// State character to manage state pattern

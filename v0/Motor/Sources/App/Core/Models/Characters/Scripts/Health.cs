@@ -1,6 +1,6 @@
 using Godot;
-using ladiagonaledupoulpe.Sources.App.Core.Interfaces.Models.Attacks;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Models.Attacks;
 using System;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts

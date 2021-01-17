@@ -1,14 +1,19 @@
 ﻿using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Quests;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Loaders;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Games;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Scenes.Request;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins;
+using ladiagonaledupoulpe.Sources.App.Shared.Signals;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
 {
@@ -19,9 +24,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
     public class Game : Node
     {
         #region Fields
+        private IFactoryStoryLoader _factoryStoryLoader = new FactoryStoryLoader();
         private readonly RulesSet _rulesSet = new RulesSet();
         private CheckPointTaker _checkPointsTaker = new CheckPointTaker();
         private Player _currentPlayer = null;
+        private IStory _story = null;
 
         #region Signals
         #endregion
@@ -34,7 +41,12 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
 
             this.AddChild(this._checkPointsTaker);
             this.AddChild(this.RulesSet);
-            this._currentPlayer = this.GetNode<Player>("/root/CurrentPlayer");
+            this._currentPlayer = this.GetRootNode<Player>();
+
+            this.Story = this._factoryStoryLoader.GetOne().LoadOne();
+            this.AddChild(this.Story as Node);
+
+            this.AttachEvents();
         }
 
         /// <summary>
@@ -58,12 +70,12 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
             }
         }
 
-        public void Player_HealthInitialized(LifePoint point)
+        public void Player_HealthInitialized(Godot.Object sender, LifePoint point)
         {
             this.SaveNewCheckPoint();
         }
 
-        public void Player_RebornActivated()
+        public void Player_RebornActivated(Godot.Object sender)
         {
             this.RestoreLastCheckPoint();
         }
@@ -79,6 +91,15 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
         }
         #endregion
 
+        #region Internal methods
+        private void AttachEvents()
+        {
+            HealthCharacterEvents characterEvents = this.GetRootNode<HealthCharacterEvents>();
+            characterEvents.AttachToInitialize(this, nameof(Game.Player_HealthInitialized));
+            characterEvents.AttachToReborn(this, nameof(Game.Player_RebornActivated));
+        }
+        #endregion
+
         #region Properties
         /// <summary>
         /// Date of the creation of the new game
@@ -89,6 +110,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
         /// Rules of the game
         /// </summary>
         public RulesSet RulesSet => _rulesSet;
+
+        /// <summary>
+        /// Story of the game
+        /// </summary>
+        public IStory Story { get => _story; private set => _story = value; }
         #endregion
     }
 }
