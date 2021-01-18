@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 134.485, 73.9536 )
 
-[sub_resource type="Shader" id=5]
+[sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
 
 uniform vec4 flash_color: hint_color = vec4(1.0);
@@ -18,15 +18,15 @@ void fragment() {
 	COLOR = color;
 }"
 
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
 shader_param/flash_color = Color( 1, 1, 1, 1 )
 shader_param/flash_modifier = 0.0
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 226.406
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 resource_name = "HighLight"
 
 [node name="TouchingItem" type="Node2D"]
@@ -43,7 +43,7 @@ shape = SubResource( 1 )
 [node name="HightLight" type="Sprite" parent="ActiveArea"]
 visible = false
 modulate = Color( 1, 0.996078, 0.996078, 1 )
-material = SubResource( 6 )
+material = SubResource( 3 )
 position = Vector2( 2.52289, 0.565613 )
 scale = Vector2( 0.513739, 1.34516 )
 texture = ExtResource( 2 )
@@ -56,7 +56,7 @@ position = Vector2( 6.10352e-05, 3.36353 )
 shape = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/HighLight = SubResource( 7 )
+anims/HighLight = SubResource( 5 )
 [connection signal="area_entered" from="ActiveArea" to="." method="_on_Area2D_area_entered"]
 [connection signal="body_entered" from="ActiveArea" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_entered" from="RayShapeArea" to="." method="_on_RayShapeArea_body_entered"]

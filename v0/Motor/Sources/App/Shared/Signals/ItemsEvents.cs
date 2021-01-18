@@ -11,6 +11,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
 {
 	/// <summary>
 	/// Interact events with objects in the game
+	/// This class is used in autoplayer singleton
 	/// </summary>
 	public class ItemsEvents : Node
 	{

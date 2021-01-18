@@ -38,6 +38,8 @@
     <Compile Include="addons\WAT\core\test\Recorder.cs" />
     <Compile Include="addons\WAT\core\test\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Npcs\Bases\Scripts\BaseNPC.cs" />
+    <Compile Include="Sources\App\Core\Models\Characters\Npcs\Friends\DefaultFriendNPC.cs" />
     <Compile Include="Sources\App\Core\Models\Items\BaseItem.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Actions\ActivateTalkQuestAction.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Actions\BaseQuestAction.cs" />
@@ -210,6 +212,7 @@
     <Compile Include="Sources\App\Shared\Plugins\UI\DialoxBoxManager.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Resources\ResourcesSceneLoader.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\DialogBox\IDialogBoxManager.cs" />
+    <Compile Include="Sources\App\Shared\Signals\NonPlayerCharacterEvents.cs" />
     <Compile Include="Sources\App\Shared\Signals\QuestEvents.cs" />
     <Compile Include="Sources\App\Shared\Signals\SynaleEvents.cs" />
     <Compile Include="Sources\App\Shared\Signals\ItemsEvents.cs" />
@@ -237,12 +240,8 @@
     <None Include="Sources\App\Shared\Services\README.md" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Sources\App\Core\Models\Characters\Npcs\" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
 </Project>

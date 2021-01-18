@@ -11,7 +11,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
 {
     /// <summary>
     /// Use this class to manage all events about the quests actions
-    /// THis class is used in autoplayer singleton
+    /// This class is used in autoplayer singleton
     /// </summary>
     public class QuestEvents : Godot.Node
     {

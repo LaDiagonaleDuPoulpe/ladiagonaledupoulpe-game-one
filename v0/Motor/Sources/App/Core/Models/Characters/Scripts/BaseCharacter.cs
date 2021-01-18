@@ -15,15 +15,11 @@ using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
 {
     /// <summary>
-    /// Absract class, it represents all characters in the game : pncs anr pcs 
+    /// Absract class, it represents all characters in the game : npcs anr pcs 
     /// </summary>
     public abstract class BaseCharacter : KinematicBody2D, IWithDamage
     {
         #region Fields
-        #region Signals
-        
-        #endregion
-
         private Vector2 _velocity = Vector2.Zero;
         private Health _health = null;
         private bool _animationIsActive = false;
@@ -34,7 +30,10 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         public override void _Ready()
         {
             base._Ready();
-            this.MainHealth = this.GetNode<Health>("Health");
+            if (this.HasNode("Health"))
+            {
+                this.MainHealth = this.GetNode<Health>("Health");
+            }
             this._healthCharacterEvents = this.GetRootNode<HealthCharacterEvents>();
 
             this.Initialize();
@@ -98,8 +97,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// </summary>
         protected virtual void Initialize() 
         {
-            this.MainHealth.Connect(nameof(Health.HealthChanged), this, nameof(HealthIsChanged));
-            this.MainHealth.Connect(nameof(Health.LifeIsGone), this, nameof(GoneLife));
+            if (this.HasNode("Health"))
+            {
+                this.MainHealth.Connect(nameof(Health.HealthChanged), this, nameof(HealthIsChanged));
+                this.MainHealth.Connect(nameof(Health.LifeIsGone), this, nameof(GoneLife));
+            }
         }
 
         protected virtual void HealthIsChanged(LifePoint point)

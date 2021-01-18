@@ -13,6 +13,9 @@ public class TestQuests : BaseActiveScene
 	#region Fields
 	private Game _game = null;
 	private QuestEvents _questEvents = null;
+	private PathFollow2D _pathFollow2D = null;
+	private Vector2[] _pathToFollowPoints;
+	private int _pathPointIndex = 0;
 	#endregion
 
 	#region Public methods
@@ -23,6 +26,14 @@ public class TestQuests : BaseActiveScene
 		this._questEvents = this.GetRootNode<QuestEvents>();
 		this._questEvents.AttachGoalIsDone(this, nameof(questEvents_GoalIsDone));
 		this._questEvents.AttachQuestIsDone(this, nameof(questEvents_QuestIsDone));
+
+		this._pathFollow2D = this.GetNode<Path2D>("Path2D").GetNode<PathFollow2D>("PathFollow2D");
+	}
+
+	public override void _PhysicsProcess(float delta)
+	{
+		base._PhysicsProcess(delta);
+		this._pathFollow2D.Offset += 35 * delta; 
 	}
 	#endregion
 
