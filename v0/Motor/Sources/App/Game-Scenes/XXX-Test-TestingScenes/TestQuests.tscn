@@ -43,4 +43,5 @@ __meta__ = {
 
 [node name="NPC" parent="Path2D/PathFollow2D" instance=ExtResource( 3 )]
 position = Vector2( -150.78, -23.4174 )
+Id = 2
 [connection signal="pressed" from="Button" to="." method="_on_btnActivate_pressed"]

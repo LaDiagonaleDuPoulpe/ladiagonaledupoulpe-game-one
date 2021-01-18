@@ -5,33 +5,52 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
+using ladiagonaledupoulpe.Sources.App.Shared.Signals;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Actions
 {
     /// <summary>
-    /// Action taht allows you to wait for one specfic event emit
+    /// Action taht allows you to wait for one specific event emit
     /// </summary>
     public class WaitingForNPCAction : BaseQuestAction
     {
         #region Constructors
-        public WaitingForNPCAction(IQuest lastQuest, IQuest nextQuest, IQuestAction next = null) : base(lastQuest, nextQuest, next)
-        {
-        }
+        public WaitingForNPCAction(int npcId, IQuest lastQuest) : this(npcId, lastQuest, null) {}
 
-        public WaitingForNPCAction(IQuest lastQuest) : base(lastQuest)
+        public WaitingForNPCAction(int npcId, IQuest lastQuest, IQuestAction next) : base(lastQuest, next)
         {
+            this.NpcId = npcId;
         }
+        #endregion
 
-        public WaitingForNPCAction(IQuest lastQuest, IQuestAction next) : base(lastQuest, next)
+        #region Public methods
+        public override void _Ready()
         {
+            base._Ready();
         }
         #endregion
 
         #region Internal methods
         protected override void DoRun()
         {
-            
+            this.GetRootNode<NonPlayerCharacterEvents>().AttachCharacterTouched(this, nameof(NonPlayerCharacterEvents_CharacterTouched));
         }
+
+        private void NonPlayerCharacterEvents_CharacterTouched(BaseCharacter character)
+        {
+            if (this.NpcId == character.Id)
+            {
+                this.GetRootNode<QuestEvents>().BeNextRequestIntended();
+            }
+        }
+        #endregion
+
+        #region Properties
+        /// <summary>
+        /// Gets the searching id of character
+        /// </summary>
+        public int NpcId { get; private set; }
         #endregion
     }
 }

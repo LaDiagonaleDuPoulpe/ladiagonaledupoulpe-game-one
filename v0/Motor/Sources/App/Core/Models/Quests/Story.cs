@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
+using ladiagonaledupoulpe.Sources.App.Shared.Signals;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 {
@@ -26,6 +29,12 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         #endregion
 
         #region Public methods
+        public override void _Ready()
+        {
+            base._Ready();
+            this.GetRootNode<QuestEvents>().AttachNextRequestIntended(this, nameof(NextRequestIntended));
+        }
+
         public void Add(IChapter item)
         {
             this.AddChild(item as Node);
@@ -88,7 +97,13 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         {
             return this._chapterList.GetEnumerator();
         }
+        #endregion
 
+        #region Internal methods
+        private void NextRequestIntended()
+        {
+            GD.Print("NextRequestIntended");
+        }
         #endregion
 
         #region Properties

@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Sources/App/Shared/Assets/Objects/Circles/Sci-fi-Circle02_01.png" type="Texture" id=1]
 [ext_resource path="res://Sources/App/Core/Models/Characters/Npcs/Friends/DefaultFriendNPC.cs" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 103.191
+height = 0.0
 
 [node name="NPC" type="KinematicBody2D"]
 collision_layer = 4
@@ -18,5 +22,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="ExchangeShape" type="Area2D" parent="."]
+collision_layer = 6
+collision_mask = 2
 script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExchangeShape"]
+shape = SubResource( 1 )
+[connection signal="body_entered" from="ExchangeShape" to="." method="_on_ExchangeShape_body_entered"]

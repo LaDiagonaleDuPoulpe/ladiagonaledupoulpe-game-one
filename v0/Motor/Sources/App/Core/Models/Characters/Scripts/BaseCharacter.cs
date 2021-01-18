@@ -152,6 +152,12 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
         /// Accessor to the singleton to gets all events of character health
         /// </summary>
         public HealthCharacterEvents HealthCharacterEvents => _healthCharacterEvents;
+
+        /// <summary>
+        /// Id of the character
+        /// </summary>
+        [Export]
+        public int Id { get; set; }
         #endregion
     }
 }

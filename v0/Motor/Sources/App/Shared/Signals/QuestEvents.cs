@@ -24,6 +24,12 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
 		public delegate void QuestAccomplished(Quest item);
 
 		/// <summary>
+		/// Raised when the story could continue
+		/// </summary>
+		[Signal]
+		public delegate void NextQuestIntended();
+
+		/// <summary>
 		/// Raised when getting a list of rewards
 		/// </summary>
 		/// <param name="rewards"></param>
@@ -46,6 +52,24 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
 		#endregion
 
 		#region Public methods
+		/// <summary>
+		/// When a new request is intended
+		/// </summary>
+		public void BeNextRequestIntended()
+        {
+			this.EmitSignal(nameof(NextQuestIntended));
+        }
+
+		/// <summary>
+		/// Allows you to be attached to the event
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="methodName"></param>
+		public void AttachNextRequestIntended(Godot.Object sender, string methodName)
+        {
+			this.Connect(nameof(NextQuestIntended), sender, methodName);
+		}
+
 		/// <summary>
 		/// Allows you to be attached to the event
 		/// </summary>

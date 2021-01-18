@@ -20,6 +20,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
         /// Raised when character is touched
         /// </summary>
         /// <param name="character"></param>
+        [Signal]
         public delegate void CharacterTouched(BaseCharacter character);
         #endregion
         #endregion

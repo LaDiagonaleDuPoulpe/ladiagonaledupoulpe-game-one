@@ -14,8 +14,6 @@ public class TestQuests : BaseActiveScene
 	private Game _game = null;
 	private QuestEvents _questEvents = null;
 	private PathFollow2D _pathFollow2D = null;
-	private Vector2[] _pathToFollowPoints;
-	private int _pathPointIndex = 0;
 	#endregion
 
 	#region Public methods
