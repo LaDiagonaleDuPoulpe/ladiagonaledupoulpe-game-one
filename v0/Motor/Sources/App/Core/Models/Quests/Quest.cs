@@ -63,6 +63,8 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
             {
                 this._questEvents.BeQuestIsDone(this);
                 this._currentAction = this.Actions[0];
+                this._isActive = false;
+                this.ValidatedDate = DateTime.Now;
                 this._currentAction?.Run();
             }
         }
@@ -219,6 +221,8 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         /// Sets the list of all goals to finish the quest
         /// </summary>
         List<IGoal> Goals { set => this._goalList = value; }
+
+        public DateTime? ValidatedDate { get; private set; }
         #endregion
     }
 }

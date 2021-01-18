@@ -31,6 +31,14 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Actions
         }
         #endregion
 
+        #region Public methods
+        public override void _Ready()
+        {
+            base._Ready();
+            this.GetRootNode<QuestEvents>().AttachRewardsHaveBeenCollected(this, nameof(RewardsHaveBeenCollected));
+        }
+        #endregion
+
         #region Internal methods
         protected override void DoRun()
         {
@@ -44,6 +52,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Actions
                 }
                 this.GetRootNode<QuestEvents>().BeRewardsPublishing(array);
             }
+        }
+
+        private void RewardsHaveBeenCollected()
+        {
+            this.Next?.Run();
         }
         #endregion
     }

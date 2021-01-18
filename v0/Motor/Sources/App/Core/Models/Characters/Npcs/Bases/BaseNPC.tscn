@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sources/App/Shared/Assets/Objects/Circles/Sci-fi-Circle02_01.png" type="Texture" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 130.022
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -2.37842, 0 )
+shape = SubResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="CollisionShape2D"]
+margin_left = -62.1352
+margin_top = -66.7568
+margin_right = 65.8648
+margin_bottom = 95.2432
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

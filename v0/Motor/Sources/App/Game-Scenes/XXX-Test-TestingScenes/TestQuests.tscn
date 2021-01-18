@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Sources/App/Game-Scenes/XXX-Test-TestingScenes/Scripts/TestQuests.cs" type="Script" id=1]
 [ext_resource path="res://Sources/App/Shared/Scenes/Items/TouchingWithHaloItem.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sources/App/Core/Models/Characters/Npcs/Bases/BaseNPC.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -23,4 +24,7 @@ Id = 18
 [node name="TouchingItem2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 322, 691 )
 Id = 1
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 758, 998 )
 [connection signal="pressed" from="Button" to="." method="_on_btnActivate_pressed"]

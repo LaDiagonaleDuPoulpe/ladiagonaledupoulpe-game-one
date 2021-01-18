@@ -65,9 +65,14 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
         string Name { get; set; }
 
         /// <summary>
-        /// Description of th quest
+        /// Description of the quest
         /// </summary>
         string Description { get; set; }
+
+        /// <summary>
+        /// Date of the validation of the quest
+        /// </summary>
+        DateTime? ValidatedDate { get; }
 
         /// <summary>
         /// List of the rewards when the quest is achieved

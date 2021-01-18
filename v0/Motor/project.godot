@@ -84,8 +84,8 @@ enabled=PoolStringArray( "MonoDebuggerQM-1.0.1", "WAT", "mono_debugger" )
 2d_physics/layer_1="walls"
 2d_render/layer_2="player"
 2d_physics/layer_2="player"
-2d_render/layer_3="enemies"
-2d_physics/layer_3="enemies"
+2d_render/layer_3="npcs"
+2d_physics/layer_3="npcs"
 2d_render/layer_4="coins"
 2d_physics/layer_4="coins"
 
