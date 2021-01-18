@@ -26,5 +26,10 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
         /// Gets the parent quest
         /// </summary>
         IQuest Quest { get; }
+
+        /// <summary>
+        /// Description of the goal
+        /// </summary>
+        string Description { get; }
     }
 }

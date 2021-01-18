@@ -27,7 +27,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Loaders
 
                 Quest quest = new Quest(1, "Wake up the IA", "IA is broken, try to reboot her");
                 quest.AddRewards(new QuestReward(), new QuestReward(), new QuestReward());
-                quest.Add(new TouchedItemGoal(1, quest));
+                quest.Add(new TouchedItemGoal(1, "Accéder à l'arrière du tableau de bord", quest));
                 quest.AddNextAction(new GetRewardsQuestAction(quest));
 
                 quest.Activate();

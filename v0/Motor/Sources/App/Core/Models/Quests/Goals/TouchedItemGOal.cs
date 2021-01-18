@@ -23,7 +23,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Goals
         #endregion
 
         #region Constructors
-        public TouchedItemGoal(int itemId, IQuest quest): base(quest)
+        public TouchedItemGoal(int itemId, string description, IQuest quest): base(quest, description)
         {
             if (itemId <= 0)
             {
