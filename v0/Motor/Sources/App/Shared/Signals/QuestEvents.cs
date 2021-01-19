@@ -30,6 +30,13 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
 		public delegate void NextQuestIntended();
 
 		/// <summary>
+		/// Raised when new quest activated
+		/// </summary>
+		/// <param name="quest"></param>
+		[Signal]
+		public delegate void QuestActivated(Quest quest);
+
+		/// <summary>
 		/// Raised when getting a list of rewards
 		/// </summary>
 		/// <param name="rewards"></param>
@@ -52,6 +59,24 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
 		#endregion
 
 		#region Public methods
+		/// <summary>
+		/// When a new request is activated
+		/// </summary>
+		public void BeNewQuestActivated(Quest newQuest)
+		{
+			this.EmitSignal(nameof(QuestActivated), newQuest);
+		}
+
+		/// <summary>
+		/// Allows you to be attached to the event
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="methodName"></param>
+		public void AttachNewQuestActivated(Godot.Object sender, string methodName)
+		{
+			this.Connect(nameof(QuestActivated), sender, methodName);
+		}
+
 		/// <summary>
 		/// When a new request is intended
 		/// </summary>

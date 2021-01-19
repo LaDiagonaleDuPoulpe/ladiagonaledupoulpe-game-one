@@ -14,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Models.Games;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
 {
@@ -21,7 +22,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
     /// It represents the current game
     /// Usually, this game gets all settings to define how to use levels, magics rules, synale rules, ...
     /// </summary>
-    public class Game : Node
+    public class Game : Node, IGame
     {
         #region Fields
         private IFactoryStoryLoader _factoryStoryLoader = new FactoryStoryLoader();

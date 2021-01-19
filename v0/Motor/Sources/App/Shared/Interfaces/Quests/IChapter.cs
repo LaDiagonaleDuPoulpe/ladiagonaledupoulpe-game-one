@@ -12,6 +12,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
     public interface IChapter : IList<IQuest>
     {
         /// <summary>
+        /// Activates the chapter
+        /// </summary>
+        void Activate();
+
+        /// <summary>
         /// Id of the chapter
         /// </summary>
         int Id { get; set; }
@@ -30,5 +35,10 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
         /// Is done if all quests are achieved
         /// </summary>
         bool IsDone { get; }
+
+        /// <summary>
+        /// True if chapter is active
+        /// </summary>
+        bool IsActive { get; }
     }
 }

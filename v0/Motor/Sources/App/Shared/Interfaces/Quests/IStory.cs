@@ -12,13 +12,13 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
     public interface IStory : IList<IChapter>
     {
         /// <summary>
+        /// Starts the story, and launche the first quest
+        /// </summary>
+        void Start();
+
+        /// <summary>
         /// Id of the story
         /// </summary>
         int Id { get; set; }
-
-        /// <summary>
-        /// Gets current active quest
-        /// </summary>
-        IQuest CurrentQuest { get; }
     }
 }

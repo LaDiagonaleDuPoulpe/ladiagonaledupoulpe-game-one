@@ -21,9 +21,12 @@ public class TestQuests : BaseActiveScene
 	{
 		base._Ready();
 
+		this.GetRootNode<Game>("CurrentGame").Story.Start();
+
 		this._questEvents = this.GetRootNode<QuestEvents>();
 		this._questEvents.AttachGoalIsDone(this, nameof(questEvents_GoalIsDone));
 		this._questEvents.AttachQuestIsDone(this, nameof(questEvents_QuestIsDone));
+		this._questEvents.AttachNewQuestActivated(this, nameof(questEvents_NewQuestActivated));
 
 		this._pathFollow2D = this.GetNode<Path2D>("Path2D").GetNode<PathFollow2D>("PathFollow2D");
 	}
@@ -36,6 +39,11 @@ public class TestQuests : BaseActiveScene
 	#endregion
 
 	#region Internal methods
+	private void questEvents_NewQuestActivated(Quest quest)
+	{
+		GD.Print("new quest is activated ", quest.Name);
+	}
+
 	private void questEvents_GoalIsDone(Goal goal)
 	{
 		GD.Print("goal is done");

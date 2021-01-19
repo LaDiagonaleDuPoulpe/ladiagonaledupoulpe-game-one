@@ -33,6 +33,18 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         #endregion
 
         #region Public methods
+        /// <summary>
+        /// Activates the chapter
+        /// </summary>
+        public void Activate()
+        {
+            if (! this.IsDone && ! this.IsActive)
+            {
+                this.IsActive = true;
+                this._questList.First(item => !item.IsActive).Activate();
+            }            
+        }
+
         public void Add(IQuest item)
         {
             this.AddChild(item as Node);
@@ -128,6 +140,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         /// List of quests of the chapter
         /// </summary>
         public List<IQuest> Quests { set => this._questList = value; }
+
+        /// <summary>
+        /// True if chapter is active
+        /// </summary>
+        public bool IsActive { get; private set; }
         #endregion
     }
 }

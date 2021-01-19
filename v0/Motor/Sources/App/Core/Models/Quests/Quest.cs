@@ -75,6 +75,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         public void Activate()
         {
             this._isActive = true;
+            this._questEvents.BeNewQuestActivated(this);
         }
 
         /// <summary>

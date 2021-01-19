@@ -16,7 +16,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
     {
         #region Fields
         private List<IChapter> _chapterList = new List<IChapter>();
-        private IQuest _currentQuest = null;
+        private IChapter _currentChapter = null;
         #endregion
 
         #region Constructors
@@ -33,6 +33,12 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         {
             base._Ready();
             this.GetRootNode<QuestEvents>().AttachNextRequestIntended(this, nameof(NextRequestIntended));
+        }
+
+        public void Start()
+        {
+            this._currentChapter = this._chapterList.First(item => !item.IsActive);
+            this._currentChapter.Activate();
         }
 
         public void Add(IChapter item)
@@ -102,13 +108,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         #region Internal methods
         private void NextRequestIntended()
         {
-            GD.Print("NextRequestIntended");
+            
         }
         #endregion
 
         #region Properties
-        public IQuest CurrentQuest { get => this._currentQuest; private set => this._currentQuest = value; }
-
         public IChapter this[int index] { get => this._chapterList[index]; set => this._chapterList[index] = value; }
 
         /// <summary>
