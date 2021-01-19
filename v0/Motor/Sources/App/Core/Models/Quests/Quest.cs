@@ -170,7 +170,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 
         public void AddNextAction(IQuestAction action)
         {
-            this.AddChild(action as Node);
             this.Actions.Add(action);
         }
         #endregion
