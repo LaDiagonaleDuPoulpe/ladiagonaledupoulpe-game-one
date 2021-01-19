@@ -26,13 +26,16 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Npcs.Friends
 		#endregion
 
 		#region Internal methods
-		private void _on_ExchangeShape_body_entered(object body)
+		private void _on_Area2D_body_entered(object body)
 		{
 			this.GetRootNode<NonPlayerCharacterEvents>().BeCharacterTouched(this);
 		}
 		#endregion
 	}
 }
+
+
+
 
 
 

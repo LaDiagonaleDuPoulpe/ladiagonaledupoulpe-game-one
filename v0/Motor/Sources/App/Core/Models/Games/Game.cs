@@ -41,7 +41,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
 
             this.AddChild(this._checkPointsTaker);
             this.AddChild(this.RulesSet);
-            this._currentPlayer = this.GetRootNode<Player>();
+            this._currentPlayer = this.GetRootNode<Player>("CurrentPlayer");
 
             this.Story = this._factoryStoryLoader.GetOne().LoadOne();
             this.AddChild(this.Story as Node);
