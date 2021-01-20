@@ -37,7 +37,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 
         public void Start()
         {
-            this._currentChapter = this._chapterList.First(item => !item.IsActive);
+            this._currentChapter = this.GetNextInactiveChapter();
             this._currentChapter.Activate();
         }
 
@@ -108,7 +108,18 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         #region Internal methods
         private void NextRequestIntended()
         {
-            
+            if (! this._currentChapter.HasNextInactiveQuest)
+            {
+                this._currentChapter.Inactivate();
+                this._currentChapter = this.GetNextInactiveChapter();
+                this._currentChapter.Activate(false);
+            }
+            bool? isQuestActivated = this._currentChapter?.ActivateNextQuest();
+        }
+
+        private IChapter GetNextInactiveChapter()
+        {
+            return this._chapterList.First(item => !item.IsActive);
         }
         #endregion
 

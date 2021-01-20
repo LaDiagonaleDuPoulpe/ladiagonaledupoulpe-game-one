@@ -14,7 +14,18 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
         /// <summary>
         /// Activates the chapter
         /// </summary>
-        void Activate();
+        void Activate(bool activeQuest = true);
+
+        /// <summary>
+        /// Stops using current chapter
+        /// </summary>
+        void Inactivate();
+
+        /// <summary>
+        /// Searches next quest and activates it.
+        /// If the chapter is not able to find one not actived quest, return false
+        /// </summary>
+        bool ActivateNextQuest();
 
         /// <summary>
         /// Id of the chapter
@@ -40,5 +51,10 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
         /// True if chapter is active
         /// </summary>
         bool IsActive { get; }
+
+        /// <summary>
+        /// Detects if there is at least one inactive quest
+        /// </summary>
+        bool HasNextInactiveQuest { get; }
     }
 }

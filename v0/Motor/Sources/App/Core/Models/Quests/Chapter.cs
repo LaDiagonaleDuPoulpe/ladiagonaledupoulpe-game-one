@@ -37,14 +37,36 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         /// <summary>
         /// Activates the chapter
         /// </summary>
-        public void Activate()
+        public void Activate(bool activeQuest = true)
         {
             if (! this.IsDone && ! this.IsActive)
             {
                 this.IsActive = true;
-                this._currentQuest = this._questList.First(item => !item.IsActive);
-                this._currentQuest.Activate();
+
+                if(activeQuest)
+                {
+                    this.ActivateNextQuest();
+                }
             }            
+        }
+
+        public void Inactivate()
+        {
+            this.IsActive = false;
+        }
+
+        public bool ActivateNextQuest()
+        {
+            bool isQuestActivated = false;
+
+            this._currentQuest = this._questList.First(item => !item.IsActive);
+            if (this._currentQuest != null)
+            {
+                this._currentQuest.Activate();
+                isQuestActivated = true;
+            }
+
+            return isQuestActivated;
         }
 
         public void Add(IQuest item)
@@ -147,6 +169,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         /// True if chapter is active
         /// </summary>
         public bool IsActive { get; private set; }
+
+        /// <summary>
+        /// Detects if there is at least one inactive quest
+        /// </summary>
+        public bool HasNextInactiveQuest { get => this._questList.Any(item => !item.IsActive && !item.IsAchieved); }
         #endregion
     }
 }
