@@ -34,7 +34,11 @@ public class TestQuests : BaseActiveScene
 	public override void _PhysicsProcess(float delta)
 	{
 		base._PhysicsProcess(delta);
-		this._pathFollow2D.Offset += 35 * delta; 
+
+		if (this._pathFollow2D != null)
+		{
+			this._pathFollow2D.Offset += 35 * delta; 
+		}
 	}
 	#endregion
 

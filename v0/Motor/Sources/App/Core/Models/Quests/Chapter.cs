@@ -16,6 +16,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
     {
         #region Fields
         private List<IQuest> _questList = new List<IQuest>();
+        private IQuest _currentQuest = null;
         #endregion
 
         #region Constructors
@@ -41,7 +42,8 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
             if (! this.IsDone && ! this.IsActive)
             {
                 this.IsActive = true;
-                this._questList.First(item => !item.IsActive).Activate();
+                this._currentQuest = this._questList.First(item => !item.IsActive);
+                this._currentQuest.Activate();
             }            
         }
 
