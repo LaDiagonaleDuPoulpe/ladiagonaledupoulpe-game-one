@@ -21,13 +21,12 @@ public class TestQuests : BaseActiveScene
 	{
 		base._Ready();
 
-		this.GetRootNode<Game>("CurrentGame").Story.Start();
-
 		this._questEvents = this.GetRootNode<QuestEvents>();
 		this._questEvents.AttachGoalIsDone(this, nameof(questEvents_GoalIsDone));
 		this._questEvents.AttachQuestIsDone(this, nameof(questEvents_QuestIsDone));
 		this._questEvents.AttachNewQuestActivated(this, nameof(questEvents_NewQuestActivated));
 
+		this.GetRootNode<Game>("CurrentGame").Story.Start();
 		this._pathFollow2D = this.GetNode<Path2D>("Path2D").GetNode<PathFollow2D>("PathFollow2D");
 	}
 
