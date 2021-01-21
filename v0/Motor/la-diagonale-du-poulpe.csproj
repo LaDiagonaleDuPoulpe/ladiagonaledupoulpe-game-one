@@ -15,6 +15,7 @@
   <ItemGroup>
     <EmbeddedResource Remove="addons\WAT\**" />
     <EmbeddedResource Remove="Sources\App\Assets\Settings\Models\**" />
+    <EmbeddedResource Remove="Sources\App\Shared\Plugins\UI\Quests\**" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -155,7 +156,6 @@
     <Compile Include="Sources\App\Core\Models\Quests\Goal.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Quest.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Rewards\QuestReward.cs" />
-    <Compile Include="Sources\App\Shared\Plugins\UI\Quests\Scripts\QuestList.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\BtnActionFrameContainer.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Models\Base\BaseCompilation.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Preloaders\DataPreloader.cs" />

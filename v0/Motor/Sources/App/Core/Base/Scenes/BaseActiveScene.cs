@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
 {
@@ -92,6 +93,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         {
             this.AutoLoaderAccessor.CurrentPlayer.Visible = visibility;
             this.AutoLoaderAccessor.StatusBar.SetVisibility(visibility);
+            this.GetRootNode<CurrentQuest>().SetVisibility(visibility);
         }
 
         /// <summary>
