@@ -34,6 +34,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Loaders
 
                 quest = new Quest(2, "Motivate the IA to help you", "Is she an IA ?");
                 quest.AddRewards(new QuestReward());
+                quest.Add(new TouchedItemGoal(1, "Accéder à l'arrière du tableau de bord", quest));
                 quest.AddNextAction(new GetRewardsQuestAction(quest));
                 chapter.Add(quest);
 

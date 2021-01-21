@@ -42,6 +42,11 @@ public class TestQuests : BaseActiveScene
 	#endregion
 
 	#region Internal methods
+	private void _on_Sho_pressed()
+	{
+		// show the quests list
+	}
+
 	private void questEvents_NewQuestActivated(Quest quest)
 	{
 		GD.Print("new quest is activated ", quest.Name);
@@ -68,4 +73,6 @@ public class TestQuests : BaseActiveScene
 	public override bool RootNodesVisibility => true;
 	#endregion
 }
+
+
 

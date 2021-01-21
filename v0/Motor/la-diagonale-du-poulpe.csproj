@@ -155,6 +155,7 @@
     <Compile Include="Sources\App\Core\Models\Quests\Goal.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Quest.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Rewards\QuestReward.cs" />
+    <Compile Include="Sources\App\Shared\Plugins\UI\Quests\Scripts\QuestList.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\BtnActionFrameContainer.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Models\Base\BaseCompilation.cs" />
     <Compile Include="Sources\App\Shared\Plugins\Preloaders\DataPreloader.cs" />
@@ -173,6 +174,8 @@
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\GridPlayCode\Scripts\MovingCharacter.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\GridPlayCode\Scripts\Players\PlayerActionGrid.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Items\Scripts\TouchingWithHaloItem.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Quests\Scripts\CurrentQuest.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Quests\Scripts\QuestList.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Reborns\Scripts\LoadingPower.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Reborns\Scripts\RebornHeartEffect.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Reborns\Scripts\RebornPower.cs" />
