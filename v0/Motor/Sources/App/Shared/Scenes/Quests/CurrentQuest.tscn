@@ -31,10 +31,10 @@ scale = Vector2( 0.72622, 0.794665 )
 texture = ExtResource( 1 )
 
 [node name="Title" type="RichTextLabel" parent="CanvasLayer/ShowQuests"]
-margin_left = 75.954
-margin_top = 26.7266
-margin_right = 465.954
-margin_bottom = 88.7266
+margin_left = 54.0907
+margin_top = 40.181
+margin_right = 444.091
+margin_bottom = 102.181
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
 __meta__ = {
