@@ -173,7 +173,13 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         /// <summary>
         /// Detects if there is at least one inactive quest
         /// </summary>
-        public bool HasNextInactiveQuest { get => this._questList.Any(item => !item.IsActive && !item.IsAchieved); }
+        public bool HasNextInactiveQuest 
+        { get
+            { 
+                bool nextQuestAvailable = this._questList.Any(item => !item.IsActive && !item.IsAchieved); 
+                return nextQuestAvailable;
+            }
+        }
         #endregion
     }
 }
