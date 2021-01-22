@@ -51,7 +51,9 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Goals
         private void OneItemIsTouched(BaseItem item)
         {
             this.ItemIsTouched = false;
-            if (!this.IsAchieved && this.ItemToTouchId == item.Id)
+            bool canUseIt = this.Quest.IsActive && !this.IsAchieved;
+
+            if (canUseIt && this.ItemToTouchId == item.Id)
             {
                 this.ItemIsTouched = true;
                 this.Evaluate();

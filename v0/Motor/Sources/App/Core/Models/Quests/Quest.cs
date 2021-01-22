@@ -190,7 +190,13 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         /// <summary>
         /// Is all goals are achieved ?
         /// </summary>
-        public bool IsAchieved => this._goalList.All(item => item.IsAchieved);
+        public bool IsAchieved
+        {
+            get 
+            {
+                return this._goalList.All(item => item.IsAchieved);
+            }
+        }
 
         /// <summary>
         /// Main quest or secondary
