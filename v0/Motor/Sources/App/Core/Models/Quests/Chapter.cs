@@ -59,7 +59,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         {
             bool isQuestActivated = false;
 
-            this._currentQuest = this._questList.First(item => !item.IsActive);
+            this._currentQuest = this._questList.First(item => !item.IsActive && !item.IsAchieved);
             if (this._currentQuest != null)
             {
                 this._currentQuest.Activate();
