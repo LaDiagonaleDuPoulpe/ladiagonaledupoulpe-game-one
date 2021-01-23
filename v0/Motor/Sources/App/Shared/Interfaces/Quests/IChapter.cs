@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Models.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
     /// <summary>
     /// Chapter of the story, contains quest list
     /// </summary>
-    public interface IChapter : IList<IQuest>
+    public interface IChapter : IList<IQuest>, IItem
     {
         /// <summary>
         /// Activates the chapter

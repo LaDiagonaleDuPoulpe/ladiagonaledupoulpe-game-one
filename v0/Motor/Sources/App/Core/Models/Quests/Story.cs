@@ -85,7 +85,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 
             if (isRemoved)
             {
-                this.RemoveChild(item as Node);
+                item.ToBeFree(this);
             }
 
             return isRemoved;
@@ -96,7 +96,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
             IChapter item = this[index];
 
             this._chapterList.RemoveAt(index);
-            this.RemoveChild(item as Node);
+            item.ToBeFree(this);
         }
 
         IEnumerator IEnumerable.GetEnumerator()

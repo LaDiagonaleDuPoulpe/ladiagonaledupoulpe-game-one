@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 {
@@ -113,7 +114,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 
             if (isRemoved)
             {
-                this.RemoveChild(item as Node);
+                item.ToBeFree(this);
             }
 
             return isRemoved;
@@ -124,7 +125,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
             IQuest item = this[index];
 
             this._questList.RemoveAt(index);
-            this.RemoveChild(item as Node);
+            item.ToBeFree(this);
         }
 
         IEnumerator IEnumerable.GetEnumerator()

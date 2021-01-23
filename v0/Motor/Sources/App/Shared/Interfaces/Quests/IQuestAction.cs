@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Models.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
     /// <summary>
     /// Use this interface to define an action when a quest is finished
     /// </summary>
-    public interface IQuestAction
+    public interface IQuestAction : IItem
     {
         /// <summary>
         /// Runs the selected action

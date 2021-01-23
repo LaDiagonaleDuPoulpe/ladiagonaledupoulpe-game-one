@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Models.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
     /// <summary>
     /// Represents a goal to achieve inside a quest
     /// </summary>
-    public interface IGoal
+    public interface IGoal : IItem
     {
         /// <summary>
         /// Evaluate if the goal is achieved

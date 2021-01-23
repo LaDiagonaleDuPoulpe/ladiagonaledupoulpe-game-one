@@ -62,6 +62,9 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         public IQuest Quest { get; private set; }
 
         public string Description { get; private set; }
+
+        [Export]
+        public int Id { get; set; }
         #endregion
     }
 }
