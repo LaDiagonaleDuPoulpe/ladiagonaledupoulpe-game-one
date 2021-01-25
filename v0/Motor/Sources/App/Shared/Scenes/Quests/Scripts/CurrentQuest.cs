@@ -13,6 +13,8 @@ public class CurrentQuest : Node2D
 	private Button _showQuests = null;
 	private Sprite _icon = null;
 	private RichTextLabel _title = null;
+	private Particles2D _animation = null;
+	private Timer _animationTimer = null;
 	#endregion
 
 	#region Public methods
@@ -21,6 +23,8 @@ public class CurrentQuest : Node2D
 		CanvasLayer layer = this.GetNode<CanvasLayer>("CanvasLayer");
 		this._showQuests = layer.GetNode<Button>("ShowQuests");
 		this._icon = this._showQuests.GetNode<Sprite>("Icon");
+		this._animation = this._showQuests.GetNode<Particles2D>("Particles2D");
+		this._animationTimer = this._showQuests.GetNode<Timer>("AnimationTimer");
 		this._title = this._showQuests.GetNode<RichTextLabel>("Title");
 
 		this.AttachQuestEvents();
@@ -35,7 +39,7 @@ public class CurrentQuest : Node2D
 	#endregion
 
 	#region Internal methods
-	private void AttachQuestEvents()
+	private void AttachQuestEvents() 
 	{
 		QuestEvents events = this.GetRootNode<QuestEvents>();
 
@@ -45,7 +49,14 @@ public class CurrentQuest : Node2D
 
 	private void QuestEvents_NewQuestActivated(Quest quest)
 	{
+		this._animation.Visible = true;
+		this._animationTimer.Start();
 		this._title.BbcodeText = $"[color=white]{quest.Name}[/color]";
+	}
+
+	private void _on_Timer_timeout()
+	{
+		this._animation.Visible = false;
 	}
 
 	private void QuestEvents_QuestIsDone(Quest quest)
@@ -54,3 +65,4 @@ public class CurrentQuest : Node2D
 	}
 	#endregion
 }
+
