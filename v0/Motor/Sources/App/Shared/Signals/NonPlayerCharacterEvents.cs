@@ -33,7 +33,23 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
 		/// <param name="methodName"></param>
         public void AttachCharacterTouched(Godot.Object sender, string methodName)
         {
-            this.Connect(nameof(CharacterTouched), sender, methodName);
+            if (! this.IsConnected(nameof(CharacterTouched), sender, methodName))
+            {
+                this.Connect(nameof(CharacterTouched), sender, methodName);
+            }
+        }
+
+        /// <summary>
+        /// tops listenning event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="methodName"></param>
+        public void DetachCharacterTouched(Godot.Object sender, string methodName)
+        {
+            if (this.IsConnected(nameof(CharacterTouched), sender, methodName))
+            {
+                this.Disconnect(nameof(CharacterTouched), sender, methodName);
+            }
         }
 
         /// <summary>
