@@ -15,6 +15,7 @@ public class CurrentQuest : Node2D
 	private RichTextLabel _title = null;
 	private Particles2D _animation = null;
 	private Timer _animationTimer = null;
+	private Tween _textTween = null;
 	#endregion
 
 	#region Public methods
@@ -26,6 +27,7 @@ public class CurrentQuest : Node2D
 		this._animation = this._showQuests.GetNode<Particles2D>("Particles2D");
 		this._animationTimer = this._showQuests.GetNode<Timer>("AnimationTimer");
 		this._title = this._showQuests.GetNode<RichTextLabel>("Title");
+		this._textTween = this._showQuests.GetNode<Tween>("TextTween");
 
 		this.AttachQuestEvents();
 	}
@@ -51,7 +53,17 @@ public class CurrentQuest : Node2D
 	{
 		this._animation.Visible = true;
 		this._animationTimer.Start();
+
+		this._textTween.InterpolateProperty(this._title, "rect_position:x", this._title.RectPosition.x - 100, this._title.RectPosition.x,
+											1.5f, Tween.TransitionType.Expo, Tween.EaseType.OutIn);
+		this._textTween.Start();
+		
 		this._title.BbcodeText = $"[color=white]{quest.Name}[/color]";
+	}
+
+	private void QuestEvents_QuestIsDone(Quest quest)
+	{
+		this._title.BbcodeText = $"[color=grey][s]{quest.Name}[/s][/color]";
 	}
 
 	private void _on_Timer_timeout()
@@ -59,10 +71,14 @@ public class CurrentQuest : Node2D
 		this._animation.Visible = false;
 	}
 
-	private void QuestEvents_QuestIsDone(Quest quest)
+	private void _on_TexTween_tween_all_completed()
 	{
-		this._title.BbcodeText = $"[color=grey][s]{quest.Name}[/s][/color]";
+		this._textTween.StopAll();
+	}
+
+	private void _on_ShowQuests_pressed()
+	{
+		
 	}
 	#endregion
 }
-

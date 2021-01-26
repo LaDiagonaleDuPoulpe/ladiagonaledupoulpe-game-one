@@ -85,4 +85,8 @@ texture = ExtResource( 3 )
 
 [node name="AnimationTimer" type="Timer" parent="CanvasLayer/ShowQuests"]
 wait_time = 1.5
+
+[node name="TextTween" type="Tween" parent="CanvasLayer/ShowQuests"]
+[connection signal="pressed" from="CanvasLayer/ShowQuests" to="." method="_on_ShowQuests_pressed"]
 [connection signal="timeout" from="CanvasLayer/ShowQuests/AnimationTimer" to="." method="_on_Timer_timeout"]
+[connection signal="tween_all_completed" from="CanvasLayer/ShowQuests/TextTween" to="." method="_on_TexTween_tween_all_completed"]
