@@ -11,12 +11,11 @@ public class CurrentQuest : Node2D
 {
 	#region Fields
 	private Button _showQuests = null;
-	private Sprite _icon = null;
 	private RichTextLabel _title = null;
+	private Sprite _icon = null;
 	private Particles2D _animation = null;
 	private Timer _animationTimer = null;
 	private Tween _textTween = null;
-	private Node _questList = null;
 	#endregion
 
 	#region Public methods
@@ -24,20 +23,23 @@ public class CurrentQuest : Node2D
 	{
 		CanvasLayer layer = this.GetNode<CanvasLayer>("CanvasLayer");
 		this._showQuests = layer.GetNode<Button>("ShowQuests");
-		this._icon = this._showQuests.GetNode<Sprite>("Icon");
-		this._animation = this._showQuests.GetNode<Particles2D>("Particles2D");
-		this._animationTimer = this._showQuests.GetNode<Timer>("AnimationTimer");
+		this._icon = layer.GetNode<Sprite>("Icon");
+		this._animation = layer.GetNode<Particles2D>("Particles2D");
+		this._animationTimer = layer.GetNode<Timer>("AnimationTimer");
+		this._textTween = layer.GetNode<Tween>("TextTween");
 		this._title = this._showQuests.GetNode<RichTextLabel>("Title");
-		this._textTween = this._showQuests.GetNode<Tween>("TextTween");
 
 		this.AttachQuestEvents();
 	}
 
+	/// <summary>
+	/// Set visibility to items taht represent the component
+	/// </summary>
+	/// <param name="isVisible"></param>
 	public void SetVisibility(bool isVisible)
 	{
 		this._showQuests.Visible = isVisible;
 		this._icon.Visible = isVisible;
-		this._title.Visible = isVisible;
 	}
 	#endregion
 
