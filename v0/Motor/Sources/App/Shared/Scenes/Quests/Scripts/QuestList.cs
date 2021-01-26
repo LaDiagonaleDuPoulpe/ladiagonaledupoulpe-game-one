@@ -1,21 +1,25 @@
 using Godot;
+using ladiagonaledupoulpe.Sources.App.Shared.Signals;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 using System;
 
+/// <summary>
+/// DIsplays quest list of chapters in the current story
+/// </summary>
 public class QuestList : Node2D
 {
-	// Declare member variables here. Examples:
-	// private int a = 2;
-	// private string b = "text";
-
-	// Called when the node enters the scene tree for the first time.
+	#region Public methods
 	public override void _Ready()
 	{
 		
 	}
+	#endregion
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+	#region Internal methods
+	private void _on_BtnClose_pressed()
+	{
+		this.GetRootNode<QuestEvents>().BeShowQuests(false);
+	}
+	#endregion
 }
+

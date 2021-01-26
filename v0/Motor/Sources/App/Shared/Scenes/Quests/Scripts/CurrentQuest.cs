@@ -16,6 +16,7 @@ public class CurrentQuest : Node2D
 	private Particles2D _animation = null;
 	private Timer _animationTimer = null;
 	private Tween _textTween = null;
+	private Node _questList = null;
 	#endregion
 
 	#region Public methods
@@ -78,7 +79,7 @@ public class CurrentQuest : Node2D
 
 	private void _on_ShowQuests_pressed()
 	{
-		
+		this.GetRootNode<QuestEvents>().BeShowQuests(true);
 	}
 	#endregion
 }

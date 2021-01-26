@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Sources/App/Game-Scenes/999-Dying-Player/DyingScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sources/App/Core/Container-Scenes/Scripts/RootScene.cs" type="Script" id=2]
 [ext_resource path="res://Sources/App/Shared/Scenes/Rewards/DisplayRewards/DisplayRewards.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sources/App/Shared/Scenes/Quests/QuestList.tscn" type="PackedScene" id=4]
 
 [node name="Root" type="Node2D"]
 script = ExtResource( 2 )
@@ -27,5 +28,8 @@ __meta__ = {
 }
 
 [node name="DisplayRewards" parent="." instance=ExtResource( 3 )]
+visible = false
+
+[node name="QuestList" parent="." instance=ExtResource( 4 )]
 visible = false
 [connection signal="timeout" from="DyingTimer" to="." method="_on_Timer_timeout"]

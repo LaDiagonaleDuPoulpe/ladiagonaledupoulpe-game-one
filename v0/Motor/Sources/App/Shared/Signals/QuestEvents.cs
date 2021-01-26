@@ -18,6 +18,12 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
 		#region Fields
 		#region Signals
 		/// <summary>
+		/// Raised when quest list to display is needed
+		/// </summary>
+		[Signal]
+		public delegate void ShowQuests(bool isVisible);
+
+		/// <summary>
 		/// Raised when one quest is done
 		/// </summary>
 		[Signal]
@@ -59,6 +65,24 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
 		#endregion
 
 		#region Public methods
+		/// <summary>
+		/// When a new request is activated
+		/// </summary>
+		public void BeShowQuests(bool isVisible = true)
+		{
+			this.EmitSignal(nameof(ShowQuests), isVisible);
+		}
+
+		/// <summary>
+		/// Allows you to be attached to the event
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="methodName"></param>
+		public void AttachShowQuests(Godot.Object sender, string methodName)
+		{
+			this.Connect(nameof(ShowQuests), sender, methodName);
+		}
+
 		/// <summary>
 		/// When a new request is activated
 		/// </summary>

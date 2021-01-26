@@ -25,6 +25,7 @@ public class RootScene : BaseScene
 	private Camera2D _globalCamera = null;
 	private DyingScene _dyingScene = null;
 	private DisplayRewards _displayRewards = null;
+	private QuestList _questList = null;
 	private ColorRect _greyRectangle = null;
 	#endregion
 
@@ -54,6 +55,7 @@ public class RootScene : BaseScene
 		this._globalCamera = this.GetNode<Camera2D>("MainCamera");
 		this._displayRewards = this.GetNode<DisplayRewards>("DisplayRewards");
 		this._greyRectangle = this.GetNode<ColorRect>("GreyRectangle");
+		this._questList = this.GetNode<QuestList>("QuestList");
 
 		this.AttachEvents();
 
@@ -75,6 +77,7 @@ public class RootScene : BaseScene
 		QuestEvents questEvents = this.GetRootNode<QuestEvents>();
 		questEvents.AttachRewardsArePublishing(this, nameof(QuestEvents_RewardsArePublishing));
 		questEvents.AttachRewardsHaveBeenCollected(this, nameof(QuestEvents_RewardsHaveBeenCollected));
+		questEvents.AttachShowQuests(this, nameof(QuestEvents_ShowQuests));
 	}
 
 	private void LoadingScene_Start()
@@ -144,6 +147,11 @@ public class RootScene : BaseScene
 	{
 		this._greyRectangle.Visible = false;
 		this._displayRewards.Visible = false;
+	}
+
+	private void QuestEvents_ShowQuests(bool isVisible)
+	{
+		this._questList.Visible = isVisible;
 	}
 	#endregion
 
