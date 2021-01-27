@@ -26,17 +26,17 @@ public class ChapterResume : Node2D
 		this.Item = chapter;
 		if (this.Item != null)
 		{
-			this._title.BbcodeText = chapter.Title;
+			this._title.BbcodeText = this.Item.Title;
 			this.DisplayQuests();
 		}
 	}
-    #endregion
+	#endregion
 
-    #region Internal methods
+	#region Internal methods
 	private void DisplayQuests()
-    {
+	{
 		
-    }
+	}
 	#endregion
 
 	#region Properties
