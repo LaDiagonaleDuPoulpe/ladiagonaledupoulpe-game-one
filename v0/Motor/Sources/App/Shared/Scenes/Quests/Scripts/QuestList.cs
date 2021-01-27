@@ -11,12 +11,14 @@ public class QuestList : Node2D
 {
 	#region Fields
 	private QuestEvents _questEvents = null;
+	private HBoxContainer _container = null;
 	#endregion
 
 	#region Public methods
 	public override void _Ready()
 	{
 		this._questEvents = this.GetRootNode<QuestEvents>();
+		this._container = this.GetNode<MarginContainer>("MarginContainer").GetNode<HBoxContainer>("HBoxContainer");
 	}
 
 	/// <summary>
@@ -27,16 +29,16 @@ public class QuestList : Node2D
 	{
 		this.RemoveAllOldies();
 
-
-		// Add the current chapter, instanciate the ChapterResume
-		// And display the list of quest with eahc status quest
+		ChapterResume chapterNode = this.ToInstance<ChapterResume>("Quests/ChapterResume");
+		chapterNode.Display(story.CurrentChapter);
+		this._container.AddChild(chapterNode);
 	}
 	#endregion
 
 	#region Internal methods
 	private void RemoveAllOldies()
 	{
-		this.RemoveAllOldies();
+		this._container.RemoveAllOldies();
 	}
 
 	private void _on_BtnClose_pressed()

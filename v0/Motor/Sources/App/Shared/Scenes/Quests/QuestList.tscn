@@ -48,4 +48,17 @@ custom_fonts/font = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 76.0
+margin_top = 76.0
+margin_right = 1893.0
+margin_bottom = 963.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 1817.0
+margin_bottom = 887.0
 [connection signal="pressed" from="BtnClose" to="." method="_on_BtnClose_pressed"]
