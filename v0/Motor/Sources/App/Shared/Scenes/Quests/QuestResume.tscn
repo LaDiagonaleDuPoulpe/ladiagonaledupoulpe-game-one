@@ -15,20 +15,23 @@ font_data = SubResource( 1 )
 script = ExtResource( 1 )
 
 [node name="Title" type="RichTextLabel" parent="."]
-margin_left = 186.57
-margin_top = 61.1977
-margin_right = 651.57
-margin_bottom = 141.198
+margin_left = 139.002
+margin_top = 56.4408
+margin_right = 604.002
+margin_bottom = 136.441
 custom_fonts/normal_font = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Achieved" type="Sprite" parent="."]
-position = Vector2( 91.2986, 103.369 )
-texture = ExtResource( 2 )
-
 [node name="NotAchieved" type="Sprite" parent="."]
 visible = false
-position = Vector2( 88.9203, 103.369 )
+position = Vector2( 73.4605, 86.7199 )
+scale = Vector2( 0.72128, 0.739861 )
+texture = ExtResource( 2 )
+
+[node name="Achieved" type="Sprite" parent="."]
+visible = false
+position = Vector2( 75.839, 87.9092 )
+scale = Vector2( 0.795605, 0.758443 )
 texture = ExtResource( 3 )
