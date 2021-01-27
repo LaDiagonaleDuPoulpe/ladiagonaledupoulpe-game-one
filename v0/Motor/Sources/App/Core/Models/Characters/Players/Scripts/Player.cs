@@ -71,6 +71,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 			QuestEvents questEvents = this.GetRootNode<QuestEvents>();
 			questEvents.AttachRewardsArePublishing(this, nameof(QuestEvents_RewardsArePublishing));
 			questEvents.AttachRewardsHaveBeenCollected(this, nameof(QuestEvents_RewardsHaveBeenCollected));
+			questEvents.AttachShowQuests(this, nameof(QuestEvents_AttachShowQuests));
 		}
 
 		public override void _PhysicsProcess(float delta)
@@ -272,12 +273,21 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 		{
 			this.CanMove = true;
 		}
+
+		private void QuestEvents_AttachShowQuests(bool showQuests)
+		{
+			this.CanMove = ! showQuests;
+			if (! this.CanMove)
+			{
+				this._stateMachine.Initialize();
+			}
+		}
 		#endregion
 
-			#region Properties
-			/// <summary>
-			/// True if player can reborn
-			/// </summary>
+		#region Properties
+		/// <summary>
+		/// True if player can reborn
+		/// </summary>
 		public bool CanReborn
 		{
 			get => this._synalePower.IsValid;
