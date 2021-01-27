@@ -30,8 +30,8 @@ public class QuestList : Node2D
 		this.RemoveAllOldies();
 
 		ChapterResume chapterNode = this.ToInstance<ChapterResume>("Quests/ChapterResume");
-		chapterNode.Display(story.CurrentChapter);
 		this._container.AddChild(chapterNode);
+		chapterNode.Display(story.CurrentChapter);
 	}
 	#endregion
 
