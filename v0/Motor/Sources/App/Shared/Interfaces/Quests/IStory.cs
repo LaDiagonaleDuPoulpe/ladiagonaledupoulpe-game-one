@@ -16,5 +16,10 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
         /// Starts the story, and launche the first quest
         /// </summary>
         void Start();
+
+        /// <summary>
+        /// Gets the current chapter : could be null
+        /// </summary>
+        IChapter CurrentChapter { get; }
     }
 }

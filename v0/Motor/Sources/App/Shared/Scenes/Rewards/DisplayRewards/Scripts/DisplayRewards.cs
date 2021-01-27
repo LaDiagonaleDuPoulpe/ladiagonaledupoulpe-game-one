@@ -35,12 +35,7 @@ public class DisplayRewards : Node2D
 
 	private void RemoveAllOldies()
 	{
-		foreach (var item in this._subContainer.GetChildren())
-		{
-			Node node = item as Node;
-			this._subContainer.RemoveChild(node);
-			node.QueueFree();
-		}
+		this._subContainer.RemoveAllOldies();
 	}
 
 	private void Display(Godot.Collections.Array<QuestReward> items)

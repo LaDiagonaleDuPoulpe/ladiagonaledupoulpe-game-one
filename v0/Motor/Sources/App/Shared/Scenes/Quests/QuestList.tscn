@@ -28,6 +28,14 @@ font_data = SubResource( 4 )
 z_index = 10
 script = ExtResource( 1 )
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1976.0
+margin_bottom = 1032.0
+color = Color( 0.505882, 0.631373, 0.921569, 0.521569 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="BtnClose" type="Button" parent="."]
 margin_left = 1759.86
 margin_top = -6.85242

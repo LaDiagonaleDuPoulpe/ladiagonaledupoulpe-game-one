@@ -174,8 +174,10 @@
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\GridPlayCode\Scripts\MovingCharacter.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\GridPlayCode\Scripts\Players\PlayerActionGrid.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Items\Scripts\TouchingWithHaloItem.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Quests\Scripts\ChapterResume.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Quests\Scripts\CurrentQuest.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Quests\Scripts\QuestList.cs" />
+    <Compile Include="Sources\App\Shared\Scenes\Quests\Scripts\QuestResume.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Reborns\Scripts\LoadingPower.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Reborns\Scripts\RebornHeartEffect.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Reborns\Scripts\RebornPower.cs" />
@@ -223,6 +225,7 @@
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\AutoLoaderExtensionMethods.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\ExchangeSettingExtensionMethod.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\IITemExtensionMethods.cs" />
+    <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\NodeExtensionMethods.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\StringExtensionMethod.cs" />
     <Compile Include="Sources\App\Shared\Tools\Http\Customs\GameJsonHttpRequest.cs" />
     <Compile Include="Sources\App\Shared\Tools\Http\Customs\PlayerJsonHttpRequest.cs" />

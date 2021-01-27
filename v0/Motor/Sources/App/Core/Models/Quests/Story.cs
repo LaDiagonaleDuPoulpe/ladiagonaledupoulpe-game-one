@@ -149,6 +149,8 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         /// Is done if all quests are achieved
         /// </summary>
         public bool IsDone { get => this._chapterList.All(item => item.IsDone); }
+
+        public IChapter CurrentChapter => this._currentChapter;
         #endregion
     }
 }

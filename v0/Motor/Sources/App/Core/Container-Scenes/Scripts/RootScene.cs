@@ -1,10 +1,12 @@
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Base.Scenes;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Games;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Rewards;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Levels;
 using ladiagonaledupoulpe.Sources.App.Shared.Constants;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Initializers;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers;
 using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog;
 using ladiagonaledupoulpe.Sources.App.Shared.Services;
@@ -151,6 +153,8 @@ public class RootScene : BaseScene
 
 	private void QuestEvents_ShowQuests(bool isVisible)
 	{
+		IStory story = this.GetRootNode<Game>("CurrentGame").Story;
+		this._questList.Display(story);
 		this._questList.Visible = isVisible;
 	}
 	#endregion
