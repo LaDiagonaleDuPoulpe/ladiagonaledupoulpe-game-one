@@ -226,6 +226,7 @@
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\ExchangeSettingExtensionMethod.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\IITemExtensionMethods.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\NodeExtensionMethods.cs" />
+    <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\SceneExtensionMethods.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\StringExtensionMethod.cs" />
     <Compile Include="Sources\App\Shared\Tools\Http\Customs\GameJsonHttpRequest.cs" />
     <Compile Include="Sources\App\Shared\Tools\Http\Customs\PlayerJsonHttpRequest.cs" />

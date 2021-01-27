@@ -48,8 +48,7 @@ public class DisplayRewards : Node2D
 			Tween animatedRewardTween = new Tween();
 			this.AddChild(animatedRewardTween);
 
-			var scene = GD.Load<PackedScene>("res://Sources/App/Shared/Scenes/Rewards/OneReward/OneReward.tscn");
-			OneReward instance = scene.Instance() as OneReward;
+			OneReward instance = this.ToInstance<OneReward>("Rewards/OneReward/OneReward");
 
 			instance.ZIndex = 10;
 			instance.Position = new Vector2(positionX, positionY);
