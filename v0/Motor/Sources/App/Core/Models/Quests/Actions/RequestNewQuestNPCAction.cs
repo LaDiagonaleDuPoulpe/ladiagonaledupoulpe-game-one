@@ -13,16 +13,16 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Actions
 	/// <summary>
 	/// Action taht allows you to wait for one specific event emit
 	/// </summary>
-	public class WaitingForNPCAction : BaseQuestAction
+	public class RequestNewQuestNPCAction : BaseQuestAction
 	{
 		#region Fields
 		private NonPlayerCharacterEvents _nonPlayerCharacterEvents = null;
 		#endregion
 
 		#region Constructors
-		public WaitingForNPCAction(int npcId, IQuest lastQuest) : this(npcId, lastQuest, null) {}
+		public RequestNewQuestNPCAction(int npcId, IQuest lastQuest) : this(npcId, lastQuest, null) {}
 
-		public WaitingForNPCAction(int npcId, IQuest lastQuest, IQuestAction next) : base(lastQuest, next)
+		public RequestNewQuestNPCAction(int npcId, IQuest lastQuest, IQuestAction next) : base(lastQuest, next)
 		{
 			this.NpcId = npcId;
 		}

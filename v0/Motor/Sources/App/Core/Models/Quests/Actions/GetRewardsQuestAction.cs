@@ -35,13 +35,14 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Actions
         public override void _Ready()
         {
             base._Ready();
-            this.GetRootNode<QuestEvents>().AttachRewardsHaveBeenCollected(this, nameof(RewardsHaveBeenCollected));
         }
         #endregion
 
         #region Internal methods
         protected override void DoRun()
         {
+            this.GetRootNode<QuestEvents>().AttachRewardsHaveBeenCollected(this, nameof(RewardsHaveBeenCollected));
+
             Godot.Collections.Array<QuestReward> array = new Godot.Collections.Array<QuestReward>();
 
             if (this.LastQuest.Rewards != null && this.LastQuest.Rewards.Count > 0)

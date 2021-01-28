@@ -110,16 +110,18 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         {
             if (! (this._currentChapter?.HasNextInactiveQuest).GetValueOrDefault(false))
             {
-                this._currentChapter?.Inactivate();
+                IChapter lastChapter = this._currentChapter;
                 this._currentChapter = this.GetNextInactiveChapter();
                 this._currentChapter?.Activate(false);
+
+                lastChapter?.Inactivate();
             }
             bool? isQuestActivated = this._currentChapter?.ActivateNextQuest();
         }
 
         private IChapter GetNextInactiveChapter()
         {
-            return this._chapterList.FirstOrDefault(item => !item.IsActive);
+            return this._chapterList.FirstOrDefault(item => !item.IsActive && !item.IsDone);
         }
         #endregion
 

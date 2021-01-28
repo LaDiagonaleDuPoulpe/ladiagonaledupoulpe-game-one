@@ -46,7 +46,7 @@
     <Compile Include="Sources\App\Core\Models\Quests\Actions\ActivateTalkQuestAction.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Actions\BaseQuestAction.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Actions\GetRewardsQuestAction.cs" />
-    <Compile Include="Sources\App\Core\Models\Quests\Actions\WaitingForNPCAction.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Actions\RequestNewQuestNPCAction.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Goals\ActivatedItemGoal.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Goals\TouchedItemGoal.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Loaders\FactoryStoryLoader.cs" />
