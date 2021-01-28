@@ -15,7 +15,7 @@ public class DisplayRewards : Node2D
 	#region Public methods
 	public override void _Ready()
 	{
-		this._questEvents = this.GetRootNode<QuestEvents>();
+		this._questEvents = this.GetRootNode<EventsProxy>().QuestEvents;
 		this._questEvents.AttachRewardsArePublishing(this, nameof(QuestEvents_RewardsArePublishing));
 
 		this.Visible = false;

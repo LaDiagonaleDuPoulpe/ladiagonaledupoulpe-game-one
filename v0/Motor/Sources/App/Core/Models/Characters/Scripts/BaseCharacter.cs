@@ -34,7 +34,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts
             {
                 this.MainHealth = this.GetNode<Health>("Health");
             }
-            this._healthCharacterEvents = this.GetRootNode<HealthCharacterEvents>();
+            this._healthCharacterEvents = this.GetRootNode<EventsProxy>().HealthCharacterEvents;
 
             this.Initialize();
         }

@@ -32,7 +32,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Actions
 		public override void _Ready()
 		{
 			base._Ready();
-			this._nonPlayerCharacterEvents = this.GetRootNode<NonPlayerCharacterEvents>();
+			this._nonPlayerCharacterEvents = this.GetRootNode<EventsProxy>().NonPlayerCharacterEvents;
 		}
 		#endregion
 
@@ -47,7 +47,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Actions
 			if (this.NpcId == character.Id)
 			{
 				this._nonPlayerCharacterEvents.DetachCharacterTouched(this, nameof(NonPlayerCharacterEvents_CharacterTouched));
-				this.GetRootNode<QuestEvents>().BeNextRequestIntended();
+				this.GetRootNode<EventsProxy>().QuestEvents.BeNextRequestIntended();
 			}
 		}
 		#endregion

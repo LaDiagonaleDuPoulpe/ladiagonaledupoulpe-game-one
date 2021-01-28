@@ -46,7 +46,7 @@ public class CurrentQuest : Node2D
 	#region Internal methods
 	private void AttachQuestEvents() 
 	{
-		QuestEvents events = this.GetRootNode<QuestEvents>();
+		QuestEvents events = this.GetRootNode<EventsProxy>().QuestEvents;
 
 		events.AttachNewQuestActivated(this, nameof(QuestEvents_NewQuestActivated));
 		events.AttachQuestIsDone(this, nameof(QuestEvents_QuestIsDone));
@@ -81,7 +81,7 @@ public class CurrentQuest : Node2D
 
 	private void _on_ShowQuests_pressed()
 	{
-		this.GetRootNode<QuestEvents>().BeShowQuests(true);
+		this.GetRootNode<EventsProxy>().QuestEvents.BeShowQuests(true);
 	}
 	#endregion
 }

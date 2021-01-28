@@ -54,7 +54,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         public override void _Ready()
         {
             base._Ready();
-            this._questEvents = this.GetRootNode<QuestEvents>();
+            this._questEvents = this.GetRootNode<EventsProxy>().QuestEvents;
         }
 
         public void EvaluateAchievment()

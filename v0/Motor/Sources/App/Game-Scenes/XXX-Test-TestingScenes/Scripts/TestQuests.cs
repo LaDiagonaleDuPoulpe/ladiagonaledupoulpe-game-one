@@ -21,7 +21,7 @@ public class TestQuests : BaseActiveScene
 	{
 		base._Ready();
 
-		this._questEvents = this.GetRootNode<QuestEvents>();
+		this._questEvents = this.GetRootNode<EventsProxy>().QuestEvents;
 		this._questEvents.AttachGoalIsDone(this, nameof(questEvents_GoalIsDone));
 		this._questEvents.AttachQuestIsDone(this, nameof(questEvents_QuestIsDone));
 		this._questEvents.AttachNewQuestActivated(this, nameof(questEvents_NewQuestActivated));

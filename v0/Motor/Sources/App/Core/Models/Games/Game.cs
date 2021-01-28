@@ -95,7 +95,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
         #region Internal methods
         private void AttachEvents()
         {
-            HealthCharacterEvents characterEvents = this.GetRootNode<HealthCharacterEvents>();
+            HealthCharacterEvents characterEvents = this.GetRootNode<EventsProxy>().HealthCharacterEvents;
             characterEvents.AttachToInitialize(this, nameof(Game.Player_HealthInitialized));
             characterEvents.AttachToReborn(this, nameof(Game.Player_RebornActivated));
         }

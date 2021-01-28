@@ -32,7 +32,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         public override void _Ready()
         {
             base._Ready();
-            this.GetRootNode<QuestEvents>().AttachNextRequestIntended(this, nameof(NextRequestIntended));
+            this.GetRootNode<EventsProxy>().QuestEvents.AttachNextRequestIntended(this, nameof(NextRequestIntended));
         }
 
         public void Start()

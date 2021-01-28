@@ -39,7 +39,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Actions
         public override void _Ready()
         {
             base._Ready();
-            this._questEvents = this.GetRootNode<QuestEvents>();
+            this._questEvents = this.GetRootNode<EventsProxy>().QuestEvents;
         }
         #endregion
 
@@ -56,7 +56,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Actions
                 {
                     array.Add(item as QuestReward);
                 }
-                this.GetRootNode<QuestEvents>().BeRewardsPublishing(array);
+                this.GetRootNode<EventsProxy>().QuestEvents.BeRewardsPublishing(array);
             }
         }
 

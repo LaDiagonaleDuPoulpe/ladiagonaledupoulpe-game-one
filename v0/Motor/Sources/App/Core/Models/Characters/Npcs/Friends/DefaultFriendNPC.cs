@@ -28,7 +28,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Npcs.Friends
 		#region Internal methods
 		private void _on_Area2D_body_entered(object body)
 		{
-			this.GetRootNode<NonPlayerCharacterEvents>().BeCharacterTouched(this);
+			this.GetRootNode<EventsProxy>().NonPlayerCharacterEvents.BeCharacterTouched(this);
 		}
 		#endregion
 	}

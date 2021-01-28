@@ -62,13 +62,13 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Players.Scripts
 
 			this.AttachQuestEvents();
 
-			this._synaleEvents = this.GetRootNode<SynaleEvents>();
+			this._synaleEvents = this.GetRootNode<EventsProxy>().SynaleEvents;
 			this.AddSynale();
 		}
 
 		private void AttachQuestEvents()
 		{
-			QuestEvents questEvents = this.GetRootNode<QuestEvents>();
+			QuestEvents questEvents = this.GetRootNode<EventsProxy>().QuestEvents;
 			questEvents.AttachRewardsArePublishing(this, nameof(QuestEvents_RewardsArePublishing));
 			questEvents.AttachRewardsHaveBeenCollected(this, nameof(QuestEvents_RewardsHaveBeenCollected));
 			questEvents.AttachShowQuests(this, nameof(QuestEvents_AttachShowQuests));

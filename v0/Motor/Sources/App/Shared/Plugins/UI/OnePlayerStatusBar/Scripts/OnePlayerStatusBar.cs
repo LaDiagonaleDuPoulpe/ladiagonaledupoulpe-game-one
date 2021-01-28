@@ -58,11 +58,11 @@ public class OnePlayerStatusBar : Node2D
 	#region Internal methods
 	private void AttachToEvents()
 	{
-		HealthCharacterEvents characterEvents = this.GetRootNode<HealthCharacterEvents>();
+		HealthCharacterEvents characterEvents = this.GetRootNode<EventsProxy>().HealthCharacterEvents;
 		characterEvents.AttachToInitialize(this, nameof(InitializeLife));
 		characterEvents.AttachToChange(this, nameof(LifeChanged));
 
-		SynaleEvents synaleEvents = this.GetRootNode<SynaleEvents>();
+		SynaleEvents synaleEvents = this.GetRootNode<EventsProxy>().SynaleEvents;
 		synaleEvents.AttachToInitialize(this, nameof(InitializeSynale));
 		synaleEvents.AttachToUpdate(this, nameof(SynalePowerChanged));
 	}

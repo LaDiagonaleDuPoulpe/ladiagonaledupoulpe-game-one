@@ -73,10 +73,10 @@ public class RootScene : BaseScene
 		this.LoadingScene.Connect(nameof(LoadingScene.End), this, nameof(LoadingScene_End));
 		this.ConnectToActivateCameraEvent(this._dyingScene);
 
-		HealthCharacterEvents characterEvents = this.GetRootNode<HealthCharacterEvents>();
+		HealthCharacterEvents characterEvents = this.GetRootNode<EventsProxy>().HealthCharacterEvents;
 		characterEvents.AttachToDie(this, nameof(RootScene.PlayerDie));
 
-		QuestEvents questEvents = this.GetRootNode<QuestEvents>();
+		QuestEvents questEvents = this.GetRootNode<EventsProxy>().QuestEvents;
 		questEvents.AttachRewardsArePublishing(this, nameof(QuestEvents_RewardsArePublishing));
 		questEvents.AttachRewardsHaveBeenCollected(this, nameof(QuestEvents_RewardsHaveBeenCollected));
 		questEvents.AttachShowQuests(this, nameof(QuestEvents_ShowQuests));

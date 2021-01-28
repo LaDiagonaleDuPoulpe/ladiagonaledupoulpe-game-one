@@ -17,7 +17,7 @@ public class QuestList : Node2D
 	#region Public methods
 	public override void _Ready()
 	{
-		this._questEvents = this.GetRootNode<QuestEvents>();
+		this._questEvents = this.GetRootNode<EventsProxy>().QuestEvents;
 		this._container = this.GetNode<MarginContainer>("MarginContainer").GetNode<HBoxContainer>("HBoxContainer");
 	}
 
