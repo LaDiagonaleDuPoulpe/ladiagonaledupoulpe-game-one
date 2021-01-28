@@ -18,6 +18,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
         private NonPlayerCharacterEvents _nonPlayerCharacterEvents = new NonPlayerCharacterEvents();
         private QuestEvents _questEvents = new QuestEvents();
         private SynaleEvents _synaleEvents = new SynaleEvents();
+        private DialogBoxEvents _dialogBoxEvents = new DialogBoxEvents();
         #endregion
 
         #region Public methods
@@ -30,6 +31,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
             this.AddChild(this.NonPlayerCharacterEvents);
             this.AddChild(this.QuestEvents);
             this.AddChild(this.SynaleEvents);
+            this.AddChild(this.DialogBoxEvents);
         }
         #endregion
 
@@ -39,6 +41,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
         public NonPlayerCharacterEvents NonPlayerCharacterEvents { get => _nonPlayerCharacterEvents; }
         public QuestEvents QuestEvents { get => _questEvents; }
         public SynaleEvents SynaleEvents { get => _synaleEvents; }
+        public DialogBoxEvents DialogBoxEvents { get => _dialogBoxEvents; }
         #endregion
     }
 }

@@ -187,6 +187,7 @@
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\Scripts\HeartsLifeBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\StatusBar\SynaleBar\Scripts\SynaleBar.cs" />
     <Compile Include="Sources\App\Shared\Scenes\Synales\Scripts\RebornSynale.cs" />
+    <Compile Include="Sources\App\Shared\Signals\DialogBoxEvents.cs" />
     <Compile Include="Sources\App\Shared\Signals\EventsProxy.cs" />
     <Compile Include="Sources\App\Shared\Signals\HealthCharacterEvents.cs" />
     <Compile Include="Sources\App\Shared\Scenes\CodeEditor\Scripts\Models\Position.cs" />
