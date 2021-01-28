@@ -41,9 +41,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Npcs\Bases\Scripts\BaseNPC.cs" />
     <Compile Include="Sources\App\Core\Models\Characters\Npcs\Friends\DefaultFriendNPC.cs" />
+    <Compile Include="Sources\App\Core\Models\Quests\Actions\ActivateDialogAction.cs" />
     <Compile Include="Sources\App\Shared\Interfaces\Models\IGame.cs" />
     <Compile Include="Sources\App\Core\Models\Items\BaseItem.cs" />
-    <Compile Include="Sources\App\Core\Models\Quests\Actions\ActivateTalkQuestAction.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Actions\BaseQuestAction.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Actions\GetRewardsQuestAction.cs" />
     <Compile Include="Sources\App\Core\Models\Quests\Actions\RequestNewQuestNPCAction.cs" />

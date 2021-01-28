@@ -1,4 +1,29 @@
 {
+  "dialogBox": {
+    "items": [
+      {
+        "id":  1,
+        "key": "begin",
+        "next": null,
+        "autoLoad": false,
+        "order": 0,
+        "timeBeforeStart": 500,
+        "messages": [
+          {
+            "content": "Le vaisseau ne va vraiment pas bien ! Comment s'en sortir ?",
+            "spriteFramesPath": "res://Sources/App/Shared/Assets/Animations/Characters/Speaking/player3.tres",
+            "spriteDirection": "Left"
+          },
+          {
+            "content": "Et si nous trouvions deja un moyen de déclencher l'auto-reparation ?",
+            "contentResource": "traduction.resx",
+            "spriteFramesPath": "res://Sources/App/Shared/Assets/Animations/Characters/Speaking/player3.tres",
+            "spriteDirection": "Right"
+          }
+        ]
+      }
+    ]
+  },
   "path": "Sources/App/Game-Scenes/XXX-Test-TestingScenes/TestQuests.tscn",
   "nextSceneAsKey": "video-intro"
 }
