@@ -18,7 +18,7 @@ public class TouchingWithHaloItem : BaseItem
 	public override void _Ready()
 	{
 		base._Ready();
-		this._uiEvents = this.GetRootNode<ItemsEvents>();
+		this._uiEvents = this.GetRootNode<EventsProxy>().ItemsEvents;
 		this._hightLight = this.GetNode<Area2D>("ActiveArea").GetNode<Sprite>("HightLight");
 	}
 	#endregion

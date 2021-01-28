@@ -44,7 +44,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Goals
         #region Internal methods
         protected override void DoInitialize()
         {
-            this._uiEvents = this.GetRootNode<ItemsEvents>();
+            this._uiEvents = this.GetRootNode<EventsProxy>().ItemsEvents;
             this._uiEvents.AttachItemIsTouched(this, nameof(OneItemIsTouched));
         }
 
