@@ -153,8 +153,11 @@ public class RootScene : BaseScene
 
 	private void QuestEvents_ShowQuests(bool isVisible)
 	{
-		IStory story = this.GetRootNode<Game>("CurrentGame").Story;
-		this._questList.Display(story);
+		if (isVisible)
+		{
+			IStory story = this.GetRootNode<Game>("CurrentGame").Story;
+			this._questList.Display(story);
+		}
 		this._questList.Visible = isVisible;
 	}
 	#endregion
