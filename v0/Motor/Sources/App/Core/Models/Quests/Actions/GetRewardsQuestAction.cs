@@ -17,6 +17,10 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Actions
     /// </summary>
     public class GetRewardsQuestAction : BaseQuestAction
     {
+        #region Fields
+        private QuestEvents _questEvents = null;
+        #endregion
+
         #region Constructors
         public GetRewardsQuestAction(IQuest lastQuest, IQuest nextQuest, IQuestAction next = null) : base(lastQuest, nextQuest, next)
         {
@@ -35,13 +39,14 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Actions
         public override void _Ready()
         {
             base._Ready();
+            this._questEvents = this.GetRootNode<QuestEvents>();
         }
         #endregion
 
         #region Internal methods
         protected override void DoRun()
         {
-            this.GetRootNode<QuestEvents>().AttachRewardsHaveBeenCollected(this, nameof(RewardsHaveBeenCollected));
+            this._questEvents.AttachRewardsHaveBeenCollected(this, nameof(RewardsHaveBeenCollected));
 
             Godot.Collections.Array<QuestReward> array = new Godot.Collections.Array<QuestReward>();
 
@@ -58,6 +63,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Actions
         private void RewardsHaveBeenCollected()
         {
             this.Next?.Run();
+            this._questEvents.DetachRewardsHaveBeenCollected(this, nameof(RewardsHaveBeenCollected));
         }
         #endregion
     }

@@ -130,6 +130,19 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
 		}
 
 		/// <summary>
+		/// Stops listenning this signal
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="methodName"></param>
+		public void DetachRewardsHaveBeenCollected(Godot.Object sender, string methodName)
+		{
+			if (this.IsConnected(nameof(RewardsHaveBeenCollected), sender, methodName))
+			{
+				this.Disconnect(nameof(RewardsHaveBeenCollected), sender, methodName);
+			}
+		}
+
+		/// <summary>
 		/// One item is touched, raises the signal
 		/// </summary>
 		/// <param name="sender"></param>
