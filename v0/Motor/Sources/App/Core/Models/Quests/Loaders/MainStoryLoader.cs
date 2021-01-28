@@ -35,7 +35,18 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Loaders
                 quest = new Quest(2, "Motivate the IA to help you", "Is she an IA ?");
                 quest.AddRewards(new QuestReward());
                 quest.Add(new TouchedItemGoal(1, "Accéder à l'arrière du tableau de bord", quest));
+                quest.AddNextAction(new GetRewardsQuestAction(quest, new WaitingForNPCAction(2, quest)));
+
+                chapter.Add(quest);
+
+                this.Current.Add(chapter);
+
+                chapter = new Chapter(2, "Be alive during the trip");
+                quest = new Quest(3, "An boat ?", "Create the boat");
+                quest.AddRewards(new QuestReward());
+                quest.Add(new TouchedItemGoal(2, "Reorganize the ship", quest));
                 quest.AddNextAction(new GetRewardsQuestAction(quest));
+
                 chapter.Add(quest);
 
                 this.Current.Add(chapter);
