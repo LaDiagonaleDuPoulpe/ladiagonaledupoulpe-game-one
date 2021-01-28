@@ -4,7 +4,7 @@
       {
         "key": "begin",
         "next": null,
-        "autoLoad": false,
+        "autoLoad": true,
         "order": 0,
         "timeBeforeStart": 500,
         "messages": [
