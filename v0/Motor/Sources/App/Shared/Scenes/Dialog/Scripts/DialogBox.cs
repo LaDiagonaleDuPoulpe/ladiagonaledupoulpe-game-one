@@ -136,8 +136,6 @@ public class DialogBox : Node2D
 
 			this.DefineAnimatedSpritePosition();
 		}
-
-		this.SetTextFromNextOrCloseButton();
 	}
 
 	/// <summary>
@@ -203,15 +201,6 @@ public class DialogBox : Node2D
 	{
 		this.CurrentVisibleCharacters = 0;
 		this.CurrentPartOfMessage = 0;
-	}
-
-	private void SetTextFromNextOrCloseButton()
-	{
-		this._nextOrCloseButton.Text = "Fermer";
-		if (this.CurrentPartOfMessage < this.MessageContents.Count - 1)
-		{
-			this._nextOrCloseButton.Text = "Suivant";
-		}
 	}
 
 	private string DefineAlignement(string content)
