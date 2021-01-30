@@ -35,12 +35,17 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.UI.DialogBoxs
 		{
 			base._Ready();
 
-			this.GetRootNode<EventsProxy>().DialogBoxEvents.AttachStartOneDialog(this, nameof(EventsProxy_StartOneDialog));
+			this.AttachEvents();
 
 			this.DialogBox = this.GetRootNode<DialogBox>();
-			this.DialogBox.Connect(nameof(DialogBox.EndOfAllMessages), this, nameof(StopDisplayMessagesOfOneExchange));
-
 			this.CreateTimer();
+		}
+
+		private void AttachEvents()
+        {
+			EventsProxy eventsProxy = this.GetRootNode<EventsProxy>();
+			eventsProxy.DialogBoxEvents.AttachStartOneDialog(this, nameof(EventsProxy_StartOneDialog));
+			eventsProxy.DialogBoxEvents.AttachEndOfAllMessages(this, nameof(StopDisplayMessagesOfOneExchange));
 		}
 
 		/// <summary>
