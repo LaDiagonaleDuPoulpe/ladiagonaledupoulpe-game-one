@@ -25,7 +25,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
         /// </summary>
         /// <param name="id"></param>
         [Signal]
-        public delegate void StartOneDialog(int id);
+        public delegate void StartOneDialog(string key);
         #endregion
         #endregion
 
@@ -51,10 +51,10 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
         /// <summary>
         /// Raises the event
         /// </summary>
-        /// <param name="id">Id of one dialog</param>
-        public void BeStartOneDialog(int id)
+        /// <param name="key">Key of one dialog</param>
+        public void BeStartOneDialog(string key)
         {
-            this.EmitSignal(nameof(StartOneDialog), id);
+            this.EmitSignal(nameof(StartOneDialog), key);
         }
 
         /// <summary>

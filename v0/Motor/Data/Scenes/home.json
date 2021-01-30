@@ -2,20 +2,19 @@
   "dialogBox": {
     "items": [
       {
-        "id":  1,
-        "key": "begin",
+        "id": 1,
+        "key": "testquests_ia_001",
         "next": null,
         "autoLoad": false,
         "order": 0,
-        "timeBeforeStart": 500,
         "messages": [
           {
-            "content": "Le vaisseau ne va vraiment pas bien ! Comment s'en sortir ?",
+            "content": "Hello, I'm an octopus, where am I ? I just remember I've got tentacles ...joke ",
             "spriteFramesPath": "res://Sources/App/Shared/Assets/Animations/Characters/Speaking/player3.tres",
             "spriteDirection": "Left"
           },
           {
-            "content": "Et si nous trouvions deja un moyen de déclencher l'auto-reparation ?",
+            "content": "Hi Nila, How are you ?! Are you sure you're ok ?",
             "contentResource": "traduction.resx",
             "spriteFramesPath": "res://Sources/App/Shared/Assets/Animations/Characters/Speaking/player3.tres",
             "spriteDirection": "Right"

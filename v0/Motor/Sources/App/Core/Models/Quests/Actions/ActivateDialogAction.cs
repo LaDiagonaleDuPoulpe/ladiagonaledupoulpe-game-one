@@ -36,7 +36,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Actions
         #region Internal methods
         protected override void DoRun()
         {
-            this.GetRootNode<EventsProxy>().DialogBoxEvents.BeStartOneDialog(this._dialogId);
+            this.GetRootNode<EventsProxy>().DialogBoxEvents.BeStartOneDialog("testquests_ia_001");
         }
         #endregion
     }

@@ -63,9 +63,9 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.UI.DialogBoxs
 		#endregion
 
 		#region Internal methods
-		private void EventsProxy_StartOneDialog(int dialogId)
+		private void EventsProxy_StartOneDialog(string key)
         {
-
+			this.Start(key);
         }
 
 		private void CreateTimer()
