@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
+using ladiagonaledupoulpe.Sources.App.Shared.Signals;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Actions
 {
@@ -32,10 +34,9 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Actions
         #endregion
 
         #region Internal methods
-
         protected override void DoRun()
         {
-            throw new NotImplementedException();
+            this.GetRootNode<EventsProxy>().DialogBoxEvents.BeStartOneDialog(this._dialogId);
         }
         #endregion
     }
