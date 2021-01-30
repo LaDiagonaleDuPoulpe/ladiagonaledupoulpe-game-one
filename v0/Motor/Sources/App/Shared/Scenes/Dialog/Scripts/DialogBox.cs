@@ -2,6 +2,7 @@ using Godot;
 using ladiagonaledupoulpe.Sources.App.Shared.Constants;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog;
+using ladiagonaledupoulpe.Sources.App.Shared.Signals;
 using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 using System;
 using System.Collections.Generic;
@@ -15,12 +16,13 @@ public class DialogBox : Node2D
 {
 	#region Constants
 	private const string BASE_RESOURCE_PATH = "res://Sources/App/Shared/Assets/Animations";
-	private const float DEFAULT_HEIGHT = 200;
-	private const int MARGIN_X = 50;
-	private const int MARGIN_Y = 50;
+	private const int MARGIN_X = 20;
+	private const int MARGIN_Y = 20;
 	#endregion
 
 	#region Fields
+	private EventsProxy _eventsProxy = null;
+	private float _containerHeight = 100;
 	private List<MessageContent> _messageContents;
 	private RichTextLabel _content = null;
 	private Timer _currentTimer = null;
@@ -29,25 +31,13 @@ public class DialogBox : Node2D
 	private ColorRect _borderRectangle = null;
 	private int _currentPartOfMessage = 0;
 	private Node2D _container = null;
-
-	#region Signals
-	/// <summary>
-	/// Occurs when one message is ended
-	/// </summary>
-	[Signal]
-	public delegate void EndOfOneMessage();
-
-	/// <summary>
-	/// Occurs when all of the message are ended
-	/// </summary>
-	[Signal]
-	public delegate void EndOfAllMessages();
-	#endregion
 	#endregion
 
 	#region Public methods
 	public override void _Ready()
 	{
+		this._eventsProxy = this.GetRootNode<EventsProxy>();
+
 		this._container = this.GetNode<CanvasLayer>("CanvasLayer").GetNode<Node2D>("Container");
 		this.SetVisibility(false);
 
@@ -97,7 +87,7 @@ public class DialogBox : Node2D
 		this.CurrentVisibleCharacters++;
 		if (this.CurrentMessage != null && this.CurrentPartOfMessage >= this.CurrentMessage.Content.Length)
 		{
-			this.EmitSignal(nameof(EndOfOneMessage));
+			this._eventsProxy.DialogBoxEvents.BeEndOfOneMessage();
 			this._currentTimer.Stop();
 		}
 	}
@@ -178,7 +168,7 @@ public class DialogBox : Node2D
 		if (!this.Visible)
 		{
 			this.MessageContents.Clear();
-			this.EmitSignal(nameof(EndOfAllMessages));
+			this._eventsProxy.DialogBoxEvents.BeEndOfAllMessages();
 		}
 
 	}
