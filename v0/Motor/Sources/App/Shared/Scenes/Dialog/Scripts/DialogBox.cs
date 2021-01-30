@@ -16,6 +16,8 @@ public class DialogBox : Node2D
 	#region Constants
 	private const string BASE_RESOURCE_PATH = "res://Sources/App/Shared/Assets/Animations";
 	private const float DEFAULT_HEIGHT = 200;
+	private const int MARGIN_X = 50;
+	private const int MARGIN_Y = 50;
 	#endregion
 
 	#region Fields
@@ -56,7 +58,6 @@ public class DialogBox : Node2D
 		this._borderRectangle = this._container.GetNode<ColorRect>("BorderRect");
 
 		this.GetTree().Root.Connect("size_changed", this, nameof(Resize));
-		this.PutAtTheBottom();
 	}
 
 	public override void _Input(InputEvent @event)
@@ -127,6 +128,7 @@ public class DialogBox : Node2D
 		
 		this.CurrentVisibleCharacters = 0;
 		this._content.BbcodeText = this.DefineAlignement(this.CurrentMessage.Content);
+		this.DefineWindowPosition(this.CurrentMessage.SpriteDirection);
 
 		this._animatedSprite.Frames = null;
 		if (this.CurrentMessage.SpriteFrames != null)
@@ -136,6 +138,27 @@ public class DialogBox : Node2D
 
 			this.DefineAnimatedSpritePosition();
 		}
+	}
+
+	private void DefineWindowPosition(Direction position)
+	{
+		Rect2 windowPosition = this.GetViewportRect();
+		float x = 0;
+		float y = windowPosition.Size.y - this._borderRectangle.RectSize.y;
+
+		if (position == Direction.Left)
+		{
+			x = MARGIN_X;
+		}
+
+		if (position == Direction.Right)
+		{
+			x = windowPosition.End.x - this._borderRectangle.RectSize.x - MARGIN_X;
+		}
+
+		Vector2 newPosition = new Vector2(x, y - MARGIN_Y);
+		this.Position = newPosition;
+		this._container.Position = newPosition;
 	}
 
 	/// <summary>
@@ -181,20 +204,9 @@ public class DialogBox : Node2D
 		}
 	}
 
-	private void PutAtTheBottom()
-	{
-		Rect2 windowPosition = this.GetViewportRect();
-
-		float newY = windowPosition.Size.y - this._borderRectangle.RectSize.y;
-		float newX = windowPosition.Size.x / 2 - (this._borderRectangle.RectSize.x / 2);
-
-		this.Position = new Vector2(newX, newY);
-		this._container.Position = this.Position;
-	}
-
 	private void Resize()
 	{
-		this.PutAtTheBottom();
+		this.DefineWindowPosition(this.CurrentMessage.SpriteDirection);
 	}
 
 	private void Reset()
