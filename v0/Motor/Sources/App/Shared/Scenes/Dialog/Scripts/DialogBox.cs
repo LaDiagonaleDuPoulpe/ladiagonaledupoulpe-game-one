@@ -205,11 +205,6 @@ public class DialogBox : Node2D
 
 	private string DefineAlignement(string content)
 	{
-		if (this.CurrentMessage.SpriteDirection == Direction.Right)
-		{
-			content = content.AlignRightToBBContent();
-		}
-
 		return content;
 	}
 	#endregion
