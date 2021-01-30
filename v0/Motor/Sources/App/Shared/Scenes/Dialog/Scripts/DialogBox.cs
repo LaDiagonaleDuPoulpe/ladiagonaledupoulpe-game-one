@@ -16,6 +16,7 @@ public class DialogBox : Node2D
 {
 	#region Constants
 	private const string BASE_RESOURCE_PATH = "res://Sources/App/Shared/Assets/Animations";
+	private const string BOXSIZEANIMATION_LEFT_KEY = "BoxSizeLeftAnimation";
 	private const int MARGIN_X = 20;
 	private const int MARGIN_Y = 20;
 	#endregion
@@ -31,6 +32,7 @@ public class DialogBox : Node2D
 	private ColorRect _borderRectangle = null;
 	private int _currentPartOfMessage = 0;
 	private Node2D _container = null;
+	private AnimationPlayer _animateBox = null;
 	#endregion
 
 	#region Public methods
@@ -46,6 +48,7 @@ public class DialogBox : Node2D
 		this._nextOrCloseButton = this._container.GetNode<Button>("NextOrClose");
 		this._animatedSprite = this._container.GetNode<AnimatedSprite>("AnimatedSprite");
 		this._borderRectangle = this._container.GetNode<ColorRect>("BorderRect");
+		this._animateBox = this._container.GetNode<AnimationPlayer>("AnimateBox");
 
 		this.GetTree().Root.Connect("size_changed", this, nameof(Resize));
 	}
@@ -66,6 +69,13 @@ public class DialogBox : Node2D
 	{
 		this._messageContents = messageContents;
 
+		this.DefineWindowPosition(this.CurrentMessage.SpriteDirection);
+
+		this._animateBox.Play(BOXSIZEANIMATION_LEFT_KEY);
+	}
+
+	private void StartDisplayOneMessage()
+	{
 		this.Initialize();
 		this._currentTimer.Start();
 	}
@@ -106,6 +116,14 @@ public class DialogBox : Node2D
 	#endregion
 
 	#region Internal methods
+	private void _on_AnimateBox_animation_finished(String animationName)
+	{
+		if (animationName == BOXSIZEANIMATION_LEFT_KEY)
+		{
+			this.StartDisplayOneMessage();
+		}
+	}
+
 	private void SetVisibility(bool visible)
 	{
 		this.Visible = visible;
@@ -115,10 +133,9 @@ public class DialogBox : Node2D
 	private void Initialize()
 	{
 		this.SetVisibility(this.MessageContents != null & this.MessageContents.Count > 0);
-		
+
 		this.CurrentVisibleCharacters = 0;
 		this._content.BbcodeText = this.DefineAlignement(this.CurrentMessage.Content);
-		this.DefineWindowPosition(this.CurrentMessage.SpriteDirection);
 
 		this._animatedSprite.Frames = null;
 		if (this.CurrentMessage.SpriteFrames != null)
@@ -146,7 +163,23 @@ public class DialogBox : Node2D
 
 		Vector2 newPosition = new Vector2(x, y - MARGIN_Y);
 		this.Position = newPosition;
-		this._container.Position = newPosition;
+
+		var animation = this._animateBox.GetAnimation(BOXSIZEANIMATION_LEFT_KEY);
+		int id = animation.FindTrack("Background:position");
+		if (id >= 0)
+		{
+			int key = animation.TrackFindKey(id, 0.1f, true);
+			if(key >= 0)
+			{
+				animation.TrackSetKeyValue(id, key, new Vector2(newPosition.x - 50, newPosition.y));
+			}
+
+			key = animation.TrackFindKey(id, 0.5f, true);
+			if (key >= 0)
+			{
+				animation.TrackSetKeyValue(id, key, newPosition);
+			}
+		}
 	}
 
 	/// <summary>
@@ -161,8 +194,8 @@ public class DialogBox : Node2D
 
 		if (this.Visible)
 		{
-			this.Initialize();
-			this._currentTimer.Start();
+			this.DefineWindowPosition(this.CurrentMessage.SpriteDirection);
+			this._animateBox.Play(BOXSIZEANIMATION_LEFT_KEY);
 		}
 
 		if (!this.Visible)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Sources/App/Shared/Scenes/Dialog/Scripts/DialogBox.cs" type="Script" id=1]
 [ext_resource path="res://Sources/App/Shared/Assets/Objects/Icons/Icon_Restart.png" type="Texture" id=2]
@@ -20,6 +20,58 @@ font_path = "res://Sources/App/Shared/Assets/Fonts/A001ff.ttf"
 size = 50
 font_data = SubResource( 4 )
 
+[sub_resource type="Animation" id=8]
+resource_name = "BoxSizeLeftAnimation"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 0.5 ),
+"transitions": PoolRealArray( 3, 3 ),
+"update": 0,
+"values": [ Vector2( -50, 112.107 ), Vector2( 750.27, 112.107 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AroundCharacter:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.5 ),
+"transitions": PoolRealArray( 3, 3 ),
+"update": 0,
+"values": [ Vector2( -50, 27.259 ), Vector2( 50, 27.259 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Background:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 3 ),
+"update": 0,
+"values": [ Vector2( 0, 0.76 ), Vector2( 2.94575, 0.76013 ) ]
+}
+
 [node name="DialogBox" type="Node2D"]
 position = Vector2( 0, 8 )
 z_index = 100
@@ -28,9 +80,10 @@ script = ExtResource( 1 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Container" type="Node2D" parent="CanvasLayer"]
+visible = false
 
 [node name="AroundCharacter" type="Sprite" parent="CanvasLayer/Container"]
-position = Vector2( 111.515, 27.2594 )
+position = Vector2( 50, 27.259 )
 scale = Vector2( 2.52004, 2.28309 )
 texture = ExtResource( 4 )
 
@@ -41,10 +94,10 @@ z_index = 2
 speed_scale = 2.0
 
 [node name="BorderRect" type="ColorRect" parent="CanvasLayer/Container"]
-margin_left = 6.27051
-margin_top = 14.2705
-margin_right = 1486.27
-margin_bottom = 342.271
+margin_left = -50.0
+margin_top = 14.0
+margin_right = 1385.0
+margin_bottom = 230.0
 color = Color( 1, 1, 1, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -55,8 +108,9 @@ wait_time = 0.05
 
 [node name="Background" type="Sprite" parent="CanvasLayer/Container"]
 position = Vector2( 750.27, 112.107 )
-scale = Vector2( 2.92564, 0.76013 )
+scale = Vector2( 1e-05, 0.76 )
 texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 200, 100 )
 
 [node name="NextOrClose" type="Button" parent="CanvasLayer/Container"]
 margin_left = 1337.95
@@ -79,5 +133,9 @@ bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimateBox" type="AnimationPlayer" parent="CanvasLayer/Container"]
+anims/BoxSizeLeftAnimation = SubResource( 8 )
 [connection signal="timeout" from="CanvasLayer/Container/Timer" to="." method="OnTimerTimeout"]
 [connection signal="pressed" from="CanvasLayer/Container/NextOrClose" to="." method="DisplayFullMessageOrGoToNextOne"]
+[connection signal="animation_finished" from="CanvasLayer/Container/AnimateBox" to="." method="_on_AnimateBox_animation_finished"]
