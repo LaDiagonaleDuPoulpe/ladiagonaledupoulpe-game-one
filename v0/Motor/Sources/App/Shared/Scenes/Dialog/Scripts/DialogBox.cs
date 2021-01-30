@@ -135,8 +135,6 @@ public class DialogBox : Node2D
 		{
 			this._animatedSprite.Frames = this.CurrentMessage.SpriteFrames;
 			this._animatedSprite.Play(DialogBoxSpriteStatus.Idle.ToString().ToLower());
-
-			this.DefineAnimatedSpritePosition();
 		}
 	}
 
@@ -189,19 +187,6 @@ public class DialogBox : Node2D
 	{
 		this.CurrentVisibleCharacters = (this.CurrentMessage?.Content.Length).GetValueOrDefault(0);
 		this._currentTimer.Stop();
-	}
-
-	private void DefineAnimatedSpritePosition()
-	{
-		if (this.CurrentMessage.SpriteDirection == Direction.Right)
-		{
-			Vector2 animatedSpriteSize = new Vector2(130, 70); // TODO: 08/06/2020, see to get real size
-
-			Vector2 newPosition = new Vector2(this._animatedSprite.Position.x + this._borderRectangle.RectSize.x - animatedSpriteSize.x,
-											  this._animatedSprite.Position.y + this._borderRectangle.RectSize.y - animatedSpriteSize.y);
-
-			this._animatedSprite.Position = newPosition;
-		}
 	}
 
 	private void Resize()
