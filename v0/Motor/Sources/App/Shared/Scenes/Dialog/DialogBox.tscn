@@ -5,22 +5,22 @@
 [ext_resource path="res://Sources/App/Shared/Assets/Objects/Panels/small panel04.png" type="Texture" id=3]
 [ext_resource path="res://Sources/App/Shared/Assets/Objects/Titles/SmallTitle1-1.png" type="Texture" id=4]
 
-[sub_resource type="StyleBoxTexture" id=7]
+[sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 38, 60 )
 
-[sub_resource type="StyleBoxTexture" id=6]
+[sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 38, 60 )
 
-[sub_resource type="DynamicFontData" id=4]
+[sub_resource type="DynamicFontData" id=3]
 font_path = "res://Sources/App/Shared/Assets/Fonts/A001ff.ttf"
 
-[sub_resource type="DynamicFont" id=5]
-size = 50
-font_data = SubResource( 4 )
+[sub_resource type="DynamicFont" id=4]
+size = 30
+font_data = SubResource( 3 )
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=5]
 resource_name = "BoxSizeLeftAnimation"
 length = 0.5
 tracks/0/type = "value"
@@ -33,7 +33,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0.1, 0.5 ),
 "transitions": PoolRealArray( 3, 3 ),
 "update": 0,
-"values": [ Vector2( -50, 112.107 ), Vector2( 750.27, 112.107 ) ]
+"values": [ Vector2( -50, 112.107 ), Vector2( 544, 128 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("AroundCharacter:position")
@@ -66,38 +66,38 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0.2, 0.5 ),
 "transitions": PoolRealArray( 1, 3 ),
 "update": 0,
-"values": [ Vector2( 0, 0.76 ), Vector2( 2.94575, 0.76013 ) ]
+"values": [ Vector2( 0, 0.76 ), Vector2( 2.33, 0.76 ) ]
 }
 
 [node name="DialogBox" type="Node2D"]
-position = Vector2( 0, 8 )
+position = Vector2( 88, 800 )
 z_index = 100
 script = ExtResource( 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Container" type="Node2D" parent="CanvasLayer"]
-visible = false
+position = Vector2( 56, 752 )
 
 [node name="AroundCharacter" type="Sprite" parent="CanvasLayer/Container"]
 position = Vector2( 50, 27.259 )
-scale = Vector2( 2.52004, 2.28309 )
+scale = Vector2( 1.41405, 1.39891 )
 texture = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="CanvasLayer/Container"]
-position = Vector2( 88, 20.541 )
+position = Vector2( 32, 32 )
 scale = Vector2( 0.36, 0.32 )
 z_index = 2
 speed_scale = 2.0
 
 [node name="BorderRect" type="ColorRect" parent="CanvasLayer/Container"]
-margin_left = -50.0
-margin_top = 14.0
-margin_right = 1385.0
-margin_bottom = 230.0
+margin_left = 24.0
+margin_top = 16.0
+margin_right = 1056.0
+margin_bottom = 232.0
 color = Color( 1, 1, 1, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -107,35 +107,36 @@ __meta__ = {
 wait_time = 0.05
 
 [node name="Background" type="Sprite" parent="CanvasLayer/Container"]
-position = Vector2( 750.27, 112.107 )
-scale = Vector2( 1e-05, 0.76 )
+position = Vector2( 540.477, 128 )
+scale = Vector2( 2.31511, 0.76 )
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 200, 100 )
 
 [node name="NextOrClose" type="Button" parent="CanvasLayer/Container"]
-margin_left = 1337.95
-margin_top = 145.434
-margin_right = 1376.95
-margin_bottom = 194.434
-custom_styles/hover = SubResource( 7 )
-custom_styles/normal = SubResource( 6 )
+margin_left = 1048.0
+margin_top = 176.0
+margin_right = 1087.0
+margin_bottom = 225.0
+custom_styles/hover = SubResource( 1 )
+custom_styles/normal = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Content" type="RichTextLabel" parent="CanvasLayer/Container"]
-margin_left = 196.0
-margin_top = 44.0
-margin_right = 1320.0
-margin_bottom = 187.0
-custom_fonts/normal_font = SubResource( 5 )
+margin_left = 64.0
+margin_top = 56.0
+margin_right = 1016.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 100, 100 )
+custom_fonts/normal_font = SubResource( 4 )
 bbcode_enabled = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimateBox" type="AnimationPlayer" parent="CanvasLayer/Container"]
-anims/BoxSizeLeftAnimation = SubResource( 8 )
+anims/BoxSizeLeftAnimation = SubResource( 5 )
 [connection signal="timeout" from="CanvasLayer/Container/Timer" to="." method="OnTimerTimeout"]
 [connection signal="pressed" from="CanvasLayer/Container/NextOrClose" to="." method="DisplayFullMessageOrGoToNextOne"]
 [connection signal="animation_finished" from="CanvasLayer/Container/AnimateBox" to="." method="_on_AnimateBox_animation_finished"]

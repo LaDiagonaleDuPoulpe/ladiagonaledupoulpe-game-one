@@ -23,7 +23,6 @@ public class DialogBox : Node2D
 
 	#region Fields
 	private EventsProxy _eventsProxy = null;
-	private float _containerHeight = 100;
 	private List<MessageContent> _messageContents;
 	private RichTextLabel _content = null;
 	private Timer _currentTimer = null;
@@ -140,6 +139,7 @@ public class DialogBox : Node2D
 		this._animatedSprite.Frames = null;
 		if (this.CurrentMessage.SpriteFrames != null)
 		{
+			this._animatedSprite.Scale = new Vector2(0.2f, 0.2f);
 			this._animatedSprite.Frames = this.CurrentMessage.SpriteFrames;
 			this._animatedSprite.Play(DialogBoxSpriteStatus.Idle.ToString().ToLower());
 		}
@@ -163,6 +163,7 @@ public class DialogBox : Node2D
 
 		Vector2 newPosition = new Vector2(x, y - MARGIN_Y);
 		this.Position = newPosition;
+		this._container.Position = newPosition;
 
 		var animation = this._animateBox.GetAnimation(BOXSIZEANIMATION_LEFT_KEY);
 		int id = animation.FindTrack("Background:position");
@@ -171,13 +172,13 @@ public class DialogBox : Node2D
 			int key = animation.TrackFindKey(id, 0.1f, true);
 			if(key >= 0)
 			{
-				animation.TrackSetKeyValue(id, key, new Vector2(newPosition.x - 50, newPosition.y));
+				animation.TrackSetKeyValue(id, key, new Vector2(newPosition.x, newPosition.y));
 			}
 
 			key = animation.TrackFindKey(id, 0.5f, true);
 			if (key >= 0)
 			{
-				animation.TrackSetKeyValue(id, key, newPosition);
+				animation.TrackSetKeyValue(id, key, new Vector2(newPosition.x, newPosition.y));
 			}
 		}
 	}
