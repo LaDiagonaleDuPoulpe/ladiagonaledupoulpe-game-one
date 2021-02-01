@@ -69,6 +69,7 @@ public class DialogBox : Node2D
 		this._messageContents = messageContents;
 
 		this.DefineWindowPosition(this.CurrentMessage.SpriteDirection);
+		this.DefinePositionFromAnimation();
 
 		this._animateBox.Play(BOXSIZEANIMATION_LEFT_KEY);
 	}
@@ -163,24 +164,18 @@ public class DialogBox : Node2D
 
 		Vector2 newPosition = new Vector2(x, y - MARGIN_Y);
 		this.Position = newPosition;
-		this._container.Position = newPosition;
+		this._container.Position = newPosition;		
+	}
 
+	private void DefinePositionFromAnimation()
+	{
+		Rect2 windowPosition = this.GetViewportRect();
 		var animation = this._animateBox.GetAnimation(BOXSIZEANIMATION_LEFT_KEY);
 		int id = animation.FindTrack("Background:position");
-		if (id >= 0)
-		{
-			int key = animation.TrackFindKey(id, 0.1f, true);
-			if(key >= 0)
-			{
-				animation.TrackSetKeyValue(id, key, new Vector2(newPosition.x, newPosition.y));
-			}
+		float positionY = this._borderRectangle.RectSize.y / 2;
 
-			key = animation.TrackFindKey(id, 0.5f, true);
-			if (key >= 0)
-			{
-				animation.TrackSetKeyValue(id, key, new Vector2(newPosition.x, newPosition.y));
-			}
-		}
+		animation.DefinePositionToAnimation(id, 0.1f, new Vector2(-50, positionY));
+		animation.DefinePositionToAnimation(id, 0.5f, new Vector2(this._borderRectangle.RectSize.x / 2 + MARGIN_X, positionY));
 	}
 
 	/// <summary>
@@ -196,6 +191,7 @@ public class DialogBox : Node2D
 		if (this.Visible)
 		{
 			this.DefineWindowPosition(this.CurrentMessage.SpriteDirection);
+			this.DefinePositionFromAnimation();
 			this._animateBox.Play(BOXSIZEANIMATION_LEFT_KEY);
 		}
 
@@ -204,7 +200,6 @@ public class DialogBox : Node2D
 			this.MessageContents.Clear();
 			this._eventsProxy.DialogBoxEvents.BeEndOfAllMessages();
 		}
-
 	}
 
 	private void DisplayFullMessage()

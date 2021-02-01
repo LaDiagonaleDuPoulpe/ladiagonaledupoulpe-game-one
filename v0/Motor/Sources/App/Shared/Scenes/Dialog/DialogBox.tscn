@@ -95,9 +95,9 @@ speed_scale = 2.0
 
 [node name="BorderRect" type="ColorRect" parent="CanvasLayer/Container"]
 margin_left = 24.0
-margin_top = 16.0
+margin_top = 48.0
 margin_right = 1056.0
-margin_bottom = 232.0
+margin_bottom = 264.0
 color = Color( 1, 1, 1, 0 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -107,16 +107,16 @@ __meta__ = {
 wait_time = 0.05
 
 [node name="Background" type="Sprite" parent="CanvasLayer/Container"]
-position = Vector2( 540.477, 128 )
-scale = Vector2( 2.31511, 0.76 )
+position = Vector2( 544, 128 )
+scale = Vector2( 2.33, 0.76 )
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 200, 100 )
 
 [node name="NextOrClose" type="Button" parent="CanvasLayer/Container"]
-margin_left = 1048.0
-margin_top = 176.0
-margin_right = 1087.0
-margin_bottom = 225.0
+margin_left = 1008.0
+margin_top = 168.0
+margin_right = 1047.0
+margin_bottom = 217.0
 custom_styles/hover = SubResource( 1 )
 custom_styles/normal = SubResource( 2 )
 __meta__ = {
@@ -125,9 +125,9 @@ __meta__ = {
 
 [node name="Content" type="RichTextLabel" parent="CanvasLayer/Container"]
 margin_left = 64.0
-margin_top = 56.0
-margin_right = 1016.0
-margin_bottom = 192.0
+margin_top = 80.0
+margin_right = 1000.0
+margin_bottom = 216.0
 rect_min_size = Vector2( 100, 100 )
 custom_fonts/normal_font = SubResource( 4 )
 bbcode_enabled = true

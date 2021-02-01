@@ -224,6 +224,7 @@
     <Compile Include="Sources\App\Shared\Signals\QuestEvents.cs" />
     <Compile Include="Sources\App\Shared\Signals\SynaleEvents.cs" />
     <Compile Include="Sources\App\Shared\Signals\ItemsEvents.cs" />
+    <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\AnimationExtensionMethods.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\AutoLoaderExtensionMethods.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\ExchangeSettingExtensionMethod.cs" />
     <Compile Include="Sources\App\Shared\Tools\ExtensionMethods\IITemExtensionMethods.cs" />
