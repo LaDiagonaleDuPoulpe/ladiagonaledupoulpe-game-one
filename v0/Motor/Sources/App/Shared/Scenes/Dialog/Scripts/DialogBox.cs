@@ -170,12 +170,33 @@ public class DialogBox : Node2D
 	private void DefinePositionFromAnimation()
 	{
 		Rect2 windowPosition = this.GetViewportRect();
-		var animation = this._animateBox.GetAnimation(BOXSIZEANIMATION_LEFT_KEY);
-		int id = animation.FindTrack("Background:position");
 		float positionY = this._borderRectangle.RectSize.y / 2;
+		Vector2 beginPosition = new Vector2(-50, positionY);
 
-		animation.DefinePositionToAnimation(id, 0.1f, new Vector2(-50, positionY));
-		animation.DefinePositionToAnimation(id, 0.5f, new Vector2(this._borderRectangle.RectSize.x / 2 + MARGIN_X, positionY));
+		var animation = this._animateBox.GetAnimation(BOXSIZEANIMATION_LEFT_KEY);
+		this.DefineBackgroundPositionFromAnimation(animation, beginPosition);
+		this.DefineSpritePositionFromAnimation(animation, beginPosition);
+	}
+
+	private void DefineBackgroundPositionFromAnimation(Animation animation, Vector2 beginPosition)
+	{
+		this.DefineObjectPositionFromAnimation(animation, "Background", 0.1f, beginPosition, 
+												new Vector2(this._borderRectangle.RectSize.x / 2 + MARGIN_X, this._borderRectangle.RectSize.y / 2));
+	}
+
+	private void DefineSpritePositionFromAnimation(Animation animation, Vector2 beginPosition)
+	{
+		this.DefineObjectPositionFromAnimation(animation, "AroundCharacter", 0.2f, beginPosition, 
+											   new Vector2(MARGIN_X * 2, this._borderRectangle.RectPosition.y));
+	}
+
+	private void DefineObjectPositionFromAnimation(Animation animation, string trackCategory, float beginTime, 
+												   Vector2 beginPosition, Vector2 endPosition)
+	{
+		int trackId = animation.FindTrack($"{trackCategory}:position");
+
+		animation.DefinePositionToAnimation(trackId, beginTime, beginPosition);
+		animation.DefinePositionToAnimation(trackId, 0.5f, endPosition);
 	}
 
 	/// <summary>
