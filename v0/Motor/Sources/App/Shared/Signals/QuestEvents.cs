@@ -11,17 +11,36 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
 {
     /// <summary>
     /// Use this class to manage all events about the quests actions
-    /// THis class is used in autoplayer singleton
+    /// This class is used in autoplayer singleton
     /// </summary>
     public class QuestEvents : Godot.Node
     {
 		#region Fields
 		#region Signals
 		/// <summary>
+		/// Raised when quest list to display is needed
+		/// </summary>
+		[Signal]
+		public delegate void ShowQuests(bool isVisible);
+
+		/// <summary>
 		/// Raised when one quest is done
 		/// </summary>
 		[Signal]
 		public delegate void QuestAccomplished(Quest item);
+
+		/// <summary>
+		/// Raised when the story could continue
+		/// </summary>
+		[Signal]
+		public delegate void NextQuestIntended();
+
+		/// <summary>
+		/// Raised when new quest activated
+		/// </summary>
+		/// <param name="quest"></param>
+		[Signal]
+		public delegate void QuestActivated(Quest quest);
 
 		/// <summary>
 		/// Raised when getting a list of rewards
@@ -47,6 +66,60 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
 
 		#region Public methods
 		/// <summary>
+		/// When a new request is activated
+		/// </summary>
+		public void BeShowQuests(bool isVisible = true)
+		{
+			this.EmitSignal(nameof(ShowQuests), isVisible);
+		}
+
+		/// <summary>
+		/// Allows you to be attached to the event
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="methodName"></param>
+		public void AttachShowQuests(Godot.Object sender, string methodName)
+		{
+			this.Connect(nameof(ShowQuests), sender, methodName);
+		}
+
+		/// <summary>
+		/// When a new request is activated
+		/// </summary>
+		public void BeNewQuestActivated(Quest newQuest)
+		{
+			this.EmitSignal(nameof(QuestActivated), newQuest);
+		}
+
+		/// <summary>
+		/// Allows you to be attached to the event
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="methodName"></param>
+		public void AttachNewQuestActivated(Godot.Object sender, string methodName)
+		{
+			this.Connect(nameof(QuestActivated), sender, methodName);
+		}
+
+		/// <summary>
+		/// When a new request is intended
+		/// </summary>
+		public void BeNextRequestIntended()
+        {
+			this.EmitSignal(nameof(NextQuestIntended));
+        }
+
+		/// <summary>
+		/// Allows you to be attached to the event
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="methodName"></param>
+		public void AttachNextRequestIntended(Godot.Object sender, string methodName)
+        {
+			this.Connect(nameof(NextQuestIntended), sender, methodName);
+		}
+
+		/// <summary>
 		/// Allows you to be attached to the event
 		/// </summary>
 		/// <param name="sender"></param>
@@ -54,6 +127,19 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Signals
 		public void AttachRewardsHaveBeenCollected(Godot.Object sender, string methodName)
 		{
 			this.Connect(nameof(RewardsHaveBeenCollected), sender, methodName);
+		}
+
+		/// <summary>
+		/// Stops listenning this signal
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="methodName"></param>
+		public void DetachRewardsHaveBeenCollected(Godot.Object sender, string methodName)
+		{
+			if (this.IsConnected(nameof(RewardsHaveBeenCollected), sender, methodName))
+			{
+				this.Disconnect(nameof(RewardsHaveBeenCollected), sender, methodName);
+			}
 		}
 
 		/// <summary>

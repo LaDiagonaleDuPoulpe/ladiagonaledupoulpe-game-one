@@ -14,6 +14,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Models.Games;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
 {
@@ -21,7 +22,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
     /// It represents the current game
     /// Usually, this game gets all settings to define how to use levels, magics rules, synale rules, ...
     /// </summary>
-    public class Game : Node
+    public class Game : Node, IGame
     {
         #region Fields
         private IFactoryStoryLoader _factoryStoryLoader = new FactoryStoryLoader();
@@ -41,12 +42,10 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
 
             this.AddChild(this._checkPointsTaker);
             this.AddChild(this.RulesSet);
-            this._currentPlayer = this.GetRootNode<Player>();
+            this._currentPlayer = this.GetRootNode<Player>("CurrentPlayer");
 
             this.Story = this._factoryStoryLoader.GetOne().LoadOne();
             this.AddChild(this.Story as Node);
-
-            this.AttachEvents();
 
             this.AttachEvents();
         }
@@ -96,7 +95,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Games
         #region Internal methods
         private void AttachEvents()
         {
-            HealthCharacterEvents characterEvents = this.GetRootNode<HealthCharacterEvents>();
+            HealthCharacterEvents characterEvents = this.GetRootNode<EventsProxy>().HealthCharacterEvents;
             characterEvents.AttachToInitialize(this, nameof(Game.Player_HealthInitialized));
             characterEvents.AttachToReborn(this, nameof(Game.Player_RebornActivated));
         }

@@ -17,6 +17,10 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Actions
     /// </summary>
     public class GetRewardsQuestAction : BaseQuestAction
     {
+        #region Fields
+        private QuestEvents _questEvents = null;
+        #endregion
+
         #region Constructors
         public GetRewardsQuestAction(IQuest lastQuest, IQuest nextQuest, IQuestAction next = null) : base(lastQuest, nextQuest, next)
         {
@@ -31,9 +35,19 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Actions
         }
         #endregion
 
+        #region Public methods
+        public override void _Ready()
+        {
+            base._Ready();
+            this._questEvents = this.GetRootNode<EventsProxy>().QuestEvents;
+        }
+        #endregion
+
         #region Internal methods
         protected override void DoRun()
         {
+            this._questEvents.AttachRewardsHaveBeenCollected(this, nameof(RewardsHaveBeenCollected));
+
             Godot.Collections.Array<QuestReward> array = new Godot.Collections.Array<QuestReward>();
 
             if (this.LastQuest.Rewards != null && this.LastQuest.Rewards.Count > 0)
@@ -42,8 +56,14 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Actions
                 {
                     array.Add(item as QuestReward);
                 }
-                this.GetRootNode<QuestEvents>().BeRewardsPublishing(array);
+                this.GetRootNode<EventsProxy>().QuestEvents.BeRewardsPublishing(array);
             }
+        }
+
+        private void RewardsHaveBeenCollected()
+        {
+            this.Next?.Run();
+            this._questEvents.DetachRewardsHaveBeenCollected(this, nameof(RewardsHaveBeenCollected));
         }
         #endregion
     }

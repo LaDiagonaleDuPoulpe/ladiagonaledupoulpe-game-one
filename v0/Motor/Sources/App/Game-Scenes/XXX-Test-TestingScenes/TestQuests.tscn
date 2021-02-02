@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Sources/App/Game-Scenes/XXX-Test-TestingScenes/Scripts/TestQuests.cs" type="Script" id=1]
 [ext_resource path="res://Sources/App/Shared/Scenes/Items/TouchingWithHaloItem.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sources/App/Core/Models/Characters/Npcs/Friends/DefaultFriend.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 507, 78, -51, 21, 51, -21, 536, 41, 0, 0, 0, 0, 634, 31, 0, 0, 0, 0, 705, 23, 0, 0, 0, 0, 788, 35, -78, -53, 78, 53, 949, 49, -55, -31, 55, 31, 1015, 16, 0, 0, 0, 0, 1082, 97, 44, 25, -44, -25, 1061, 148, 0, 0, 0, 0, 915, 186, 0, 0, 0, 0, 735, 241, 0, 0, 0, 0, 673, 319, 49, 21, -49, -21, 640, 435, 44, 50, -44, -50, 510, 442, 0, 0, 0, 0, 433, 386, 0, 0, 0, 0, 328, 341, 34, 5, -34, -5, 138, 304, 0, 0, 0, 0, 85, 220, 0, 0, 0, 0, 79.2202, 172.583, 153, 27, -153, -27, 98.2202, 115.583, -15, 83, 15, -83, 97.2202, 107.583, 0, 0, 0, 0, 141.22, 81.5826, 0, 0, 0, 0, 210, 72, 0, 0, 0, 0, 369, 75, 0, 0, 0, 0, 481, 84, 0, 0, 0, 0, 507.027, 78.3611, 0, 0, 0, 0, 507, 78 )
+}
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -23,4 +29,19 @@ Id = 18
 [node name="TouchingItem2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 322, 691 )
 Id = 1
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2( 3.77979, 1.41741 )
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 507, 78 )
+rotation = -2.31135
+__meta__ = {
+"_edit_ik_": true
+}
+
+[node name="NPC" parent="Path2D/PathFollow2D" instance=ExtResource( 3 )]
+position = Vector2( -150.78, -23.4174 )
+Id = 2
 [connection signal="pressed" from="Button" to="." method="_on_btnActivate_pressed"]

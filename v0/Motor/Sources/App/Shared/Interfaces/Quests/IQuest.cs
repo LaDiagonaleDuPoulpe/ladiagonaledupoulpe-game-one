@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Models.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
     /// Represents a quest in the game.
     /// Quest has a list of goals (steps) to achieve
     /// </summary>
-    public interface IQuest: IList<IGoal>
+    public interface IQuest: IList<IGoal>, IItem
     {
         /// <summary>
         /// Allows you to define the next action before going to other quest
@@ -55,19 +56,19 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
         bool IsMain { get; }
 
         /// <summary>
-        /// Id of the quest
-        /// </summary>
-        int Id { get; set; }
-
-        /// <summary>
         /// Name of the quest
         /// </summary>
         string Name { get; set; }
 
         /// <summary>
-        /// Description of th quest
+        /// Description of the quest
         /// </summary>
         string Description { get; set; }
+
+        /// <summary>
+        /// Date of the validation of the quest
+        /// </summary>
+        DateTime? ValidatedDate { get; }
 
         /// <summary>
         /// List of the rewards when the quest is achieved

@@ -15,7 +15,7 @@ public class DisplayRewards : Node2D
 	#region Public methods
 	public override void _Ready()
 	{
-		this._questEvents = this.GetRootNode<QuestEvents>();
+		this._questEvents = this.GetRootNode<EventsProxy>().QuestEvents;
 		this._questEvents.AttachRewardsArePublishing(this, nameof(QuestEvents_RewardsArePublishing));
 
 		this.Visible = false;
@@ -35,12 +35,7 @@ public class DisplayRewards : Node2D
 
 	private void RemoveAllOldies()
 	{
-		foreach (var item in this._subContainer.GetChildren())
-		{
-			Node node = item as Node;
-			this._subContainer.RemoveChild(node);
-			node.QueueFree();
-		}
+		this._subContainer.RemoveAllOldies();
 	}
 
 	private void Display(Godot.Collections.Array<QuestReward> items)
@@ -53,8 +48,7 @@ public class DisplayRewards : Node2D
 			Tween animatedRewardTween = new Tween();
 			this.AddChild(animatedRewardTween);
 
-			var scene = GD.Load<PackedScene>("res://Sources/App/Shared/Scenes/Rewards/OneReward/OneReward.tscn");
-			OneReward instance = scene.Instance() as OneReward;
+			OneReward instance = this.ToInstance<OneReward>("Rewards/OneReward/OneReward");
 
 			instance.ZIndex = 10;
 			instance.Position = new Vector2(positionX, positionY);

@@ -54,7 +54,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         public override void _Ready()
         {
             base._Ready();
-            this._questEvents = this.GetRootNode<QuestEvents>();
+            this._questEvents = this.GetRootNode<EventsProxy>().QuestEvents;
         }
 
         public void EvaluateAchievment()
@@ -63,6 +63,8 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
             {
                 this._questEvents.BeQuestIsDone(this);
                 this._currentAction = this.Actions[0];
+                this._isActive = false;
+                this.ValidatedDate = DateTime.Now;
                 this._currentAction?.Run();
             }
         }
@@ -73,6 +75,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         public void Activate()
         {
             this._isActive = true;
+            this._questEvents.BeNewQuestActivated(this);
         }
 
         /// <summary>
@@ -139,7 +142,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 
             if (isRemoved)
             {
-                this.RemoveChild(item as Node);
+                item.ToBeFree(this);
             }
 
             return isRemoved;
@@ -150,7 +153,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
             IGoal item = this[index];
 
             this._goalList.RemoveAt(index);
-            this.RemoveChild(item as Node);
+            item.ToBeFree(this);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -168,7 +171,6 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 
         public void AddNextAction(IQuestAction action)
         {
-            this.AddChild(action as Node);
             this.Actions.Add(action);
         }
         #endregion
@@ -188,7 +190,13 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         /// <summary>
         /// Is all goals are achieved ?
         /// </summary>
-        public bool IsAchieved => this._goalList.All(item => item.IsAchieved);
+        public bool IsAchieved
+        {
+            get 
+            {
+                return this._goalList.All(item => item.IsAchieved);
+            }
+        }
 
         /// <summary>
         /// Main quest or secondary
@@ -219,6 +227,8 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         /// Sets the list of all goals to finish the quest
         /// </summary>
         List<IGoal> Goals { set => this._goalList = value; }
+
+        public DateTime? ValidatedDate { get; private set; }
         #endregion
     }
 }

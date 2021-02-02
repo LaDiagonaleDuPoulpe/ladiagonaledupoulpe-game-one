@@ -1,4 +1,28 @@
 {
+  "dialogBox": {
+    "items": [
+      {
+        "id": 1,
+        "key": "testquests_ia_001",
+        "next": null,
+        "autoLoad": false,
+        "order": 0,
+        "messages": [
+          {
+            "content": "Hello, I'm an octopus, where am I ? I just remember I've got tentacles ...joke ",
+            "spriteFramesPath": "res://Sources/App/Shared/Assets/Animations/Characters/Speaking/player3.tres",
+            "spriteDirection": "Left"
+          },
+          {
+            "content": "Hi Nila, How are you ?! Are you sure you're ok ?",
+            "contentResource": "traduction.resx",
+            "spriteFramesPath": "res://Sources/App/Shared/Assets/Animations/Characters/Speaking/player3.tres",
+            "spriteDirection": "Right"
+          }
+        ]
+      }
+    ]
+  },
   "path": "Sources/App/Game-Scenes/XXX-Test-TestingScenes/TestQuests.tscn",
   "nextSceneAsKey": "video-intro"
 }

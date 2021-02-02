@@ -23,7 +23,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Goals
         #endregion
 
         #region Constructors
-        public TouchedItemGoal(int itemId, IQuest quest): base(quest)
+        public TouchedItemGoal(int itemId, string description, IQuest quest): base(quest, description)
         {
             if (itemId <= 0)
             {
@@ -44,14 +44,16 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Goals
         #region Internal methods
         protected override void DoInitialize()
         {
-            this._uiEvents = this.GetRootNode<ItemsEvents>();
+            this._uiEvents = this.GetRootNode<EventsProxy>().ItemsEvents;
             this._uiEvents.AttachItemIsTouched(this, nameof(OneItemIsTouched));
         }
 
         private void OneItemIsTouched(BaseItem item)
         {
             this.ItemIsTouched = false;
-            if (this.ItemToTouchId == item.Id)
+            bool canUseIt = this.Quest.IsActive && !this.IsAchieved;
+
+            if (canUseIt && this.ItemToTouchId == item.Id)
             {
                 this.ItemIsTouched = true;
                 this.Evaluate();

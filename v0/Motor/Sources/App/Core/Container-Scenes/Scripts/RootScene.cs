@@ -1,10 +1,12 @@
 using Godot;
 using ladiagonaledupoulpe.Sources.App.Core.Base.Scenes;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Games;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Quests.Rewards;
 using ladiagonaledupoulpe.Sources.App.Core.Models.Settings.Configurations.Levels;
 using ladiagonaledupoulpe.Sources.App.Shared.Constants;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Initializers;
+using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests;
 using ladiagonaledupoulpe.Sources.App.Shared.Plugins.Initializers;
 using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog;
 using ladiagonaledupoulpe.Sources.App.Shared.Services;
@@ -25,6 +27,7 @@ public class RootScene : BaseScene
 	private Camera2D _globalCamera = null;
 	private DyingScene _dyingScene = null;
 	private DisplayRewards _displayRewards = null;
+	private QuestList _questList = null;
 	private ColorRect _greyRectangle = null;
 	#endregion
 
@@ -54,6 +57,7 @@ public class RootScene : BaseScene
 		this._globalCamera = this.GetNode<Camera2D>("MainCamera");
 		this._displayRewards = this.GetNode<DisplayRewards>("DisplayRewards");
 		this._greyRectangle = this.GetNode<ColorRect>("GreyRectangle");
+		this._questList = this.GetNode<QuestList>("QuestList");
 
 		this.AttachEvents();
 
@@ -69,13 +73,15 @@ public class RootScene : BaseScene
 		this.LoadingScene.Connect(nameof(LoadingScene.End), this, nameof(LoadingScene_End));
 		this.ConnectToActivateCameraEvent(this._dyingScene);
 
-		HealthCharacterEvents characterEvents = this.GetRootNode<HealthCharacterEvents>();
+		HealthCharacterEvents characterEvents = this.GetRootNode<EventsProxy>().HealthCharacterEvents;
 		characterEvents.AttachToDie(this, nameof(RootScene.PlayerDie));
 
-		QuestEvents questEvents = this.GetRootNode<QuestEvents>();
+		QuestEvents questEvents = this.GetRootNode<EventsProxy>().QuestEvents;
 		questEvents.AttachRewardsArePublishing(this, nameof(QuestEvents_RewardsArePublishing));
 		questEvents.AttachRewardsHaveBeenCollected(this, nameof(QuestEvents_RewardsHaveBeenCollected));
+		questEvents.AttachShowQuests(this, nameof(QuestEvents_ShowQuests));
 	}
+
 	private void LoadingScene_Start()
 	{
 		// nothing to do now
@@ -143,6 +149,16 @@ public class RootScene : BaseScene
 	{
 		this._greyRectangle.Visible = false;
 		this._displayRewards.Visible = false;
+	}
+
+	private void QuestEvents_ShowQuests(bool isVisible)
+	{
+		if (isVisible)
+		{
+			IStory story = this.GetRootNode<Game>("CurrentGame").Story;
+			this._questList.Display(story);
+		}
+		this._questList.Visible = isVisible;
 	}
 	#endregion
 

@@ -13,6 +13,7 @@ public class TestQuests : BaseActiveScene
 	#region Fields
 	private Game _game = null;
 	private QuestEvents _questEvents = null;
+	private PathFollow2D _pathFollow2D = null;
 	#endregion
 
 	#region Public methods
@@ -20,13 +21,37 @@ public class TestQuests : BaseActiveScene
 	{
 		base._Ready();
 
-		this._questEvents = this.GetRootNode<QuestEvents>();
+		this._questEvents = this.GetRootNode<EventsProxy>().QuestEvents;
 		this._questEvents.AttachGoalIsDone(this, nameof(questEvents_GoalIsDone));
 		this._questEvents.AttachQuestIsDone(this, nameof(questEvents_QuestIsDone));
+		this._questEvents.AttachNewQuestActivated(this, nameof(questEvents_NewQuestActivated));
+
+		this.GetRootNode<Game>("CurrentGame").Story.Start();
+		this._pathFollow2D = this.GetNode<Path2D>("Path2D").GetNode<PathFollow2D>("PathFollow2D");
+	}
+
+	public override void _PhysicsProcess(float delta)
+	{
+		base._PhysicsProcess(delta);
+
+		if (this._pathFollow2D != null)
+		{
+			this._pathFollow2D.Offset += 35 * delta; 
+		}
 	}
 	#endregion
 
 	#region Internal methods
+	private void _on_Sho_pressed()
+	{
+		// show the quests list
+	}
+
+	private void questEvents_NewQuestActivated(Quest quest)
+	{
+		GD.Print("new quest is activated ", quest.Name);
+	}
+
 	private void questEvents_GoalIsDone(Goal goal)
 	{
 		GD.Print("goal is done");
@@ -48,4 +73,6 @@ public class TestQuests : BaseActiveScene
 	public override bool RootNodesVisibility => true;
 	#endregion
 }
+
+
 

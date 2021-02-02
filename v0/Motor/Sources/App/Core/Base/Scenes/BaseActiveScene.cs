@@ -13,6 +13,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
+using ladiagonaledupoulpe.Sources.App.Shared.Signals;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
 {
@@ -67,7 +69,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         #region Internal methods
         private void PrepareEvents()
         {
-            this.AutoLoaderAccessor.DialogBoxManager.Connect(nameof(Shared.Services.DialoxBoxManager.EndOfOneExchange), this, nameof(EndOfOneExchange));
+            this.GetRootNode<EventsProxy>().DialogBoxEvents.AttachEndOfOneExchange(this, nameof(EndOfOneExchange));
         }
 
         private void EndOfOneExchange()
@@ -92,6 +94,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Base.Scenes
         {
             this.AutoLoaderAccessor.CurrentPlayer.Visible = visibility;
             this.AutoLoaderAccessor.StatusBar.SetVisibility(visibility);
+            this.GetRootNode<CurrentQuest>().SetVisibility(visibility);
         }
 
         /// <summary>

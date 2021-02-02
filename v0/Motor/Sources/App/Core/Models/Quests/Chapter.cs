@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 {
@@ -16,6 +17,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
     {
         #region Fields
         private List<IQuest> _questList = new List<IQuest>();
+        private IQuest _currentQuest = null;
         #endregion
 
         #region Constructors
@@ -33,6 +35,41 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         #endregion
 
         #region Public methods
+        /// <summary>
+        /// Activates the chapter
+        /// </summary>
+        public void Activate(bool activeQuest = true)
+        {
+            if (! this.IsDone && ! this.IsActive)
+            {
+                this.IsActive = true;
+
+                if(activeQuest)
+                {
+                    this.ActivateNextQuest();
+                }
+            }            
+        }
+
+        public void Inactivate()
+        {
+            this.IsActive = false;
+        }
+
+        public bool ActivateNextQuest()
+        {
+            bool isQuestActivated = false;
+
+            this._currentQuest = this._questList.FirstOrDefault(item => !item.IsActive && !item.IsAchieved);
+            if (this._currentQuest != null)
+            {
+                this._currentQuest.Activate();
+                isQuestActivated = true;
+            }
+
+            return isQuestActivated;
+        }
+
         public void Add(IQuest item)
         {
             this.AddChild(item as Node);
@@ -77,7 +114,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 
             if (isRemoved)
             {
-                this.RemoveChild(item as Node);
+                item.ToBeFree(this);
             }
 
             return isRemoved;
@@ -88,7 +125,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
             IQuest item = this[index];
 
             this._questList.RemoveAt(index);
-            this.RemoveChild(item as Node);
+            item.ToBeFree(this);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -128,6 +165,22 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         /// List of quests of the chapter
         /// </summary>
         public List<IQuest> Quests { set => this._questList = value; }
+
+        /// <summary>
+        /// True if chapter is active
+        /// </summary>
+        public bool IsActive { get; private set; }
+
+        /// <summary>
+        /// Detects if there is at least one inactive quest
+        /// </summary>
+        public bool HasNextInactiveQuest 
+        { get
+            { 
+                bool nextQuestAvailable = this._questList.Any(item => !item.IsActive && !item.IsAchieved); 
+                return nextQuestAvailable;
+            }
+        }
         #endregion
     }
 }

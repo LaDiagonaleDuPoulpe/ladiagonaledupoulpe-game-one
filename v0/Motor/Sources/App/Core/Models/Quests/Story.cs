@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ladiagonaledupoulpe.Sources.App.Core.Models.Characters.Scripts;
+using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
+using ladiagonaledupoulpe.Sources.App.Shared.Signals;
 
 namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 {
@@ -13,7 +16,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
     {
         #region Fields
         private List<IChapter> _chapterList = new List<IChapter>();
-        private IQuest _currentQuest = null;
+        private IChapter _currentChapter = null;
         #endregion
 
         #region Constructors
@@ -26,6 +29,18 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         #endregion
 
         #region Public methods
+        public override void _Ready()
+        {
+            base._Ready();
+            this.GetRootNode<EventsProxy>().QuestEvents.AttachNextRequestIntended(this, nameof(NextRequestIntended));
+        }
+
+        public void Start()
+        {
+            this._currentChapter = this.GetNextInactiveChapter();
+            this._currentChapter.Activate();
+        }
+
         public void Add(IChapter item)
         {
             this.AddChild(item as Node);
@@ -70,7 +85,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
 
             if (isRemoved)
             {
-                this.RemoveChild(item as Node);
+                item.ToBeFree(this);
             }
 
             return isRemoved;
@@ -81,19 +96,36 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
             IChapter item = this[index];
 
             this._chapterList.RemoveAt(index);
-            this.RemoveChild(item as Node);
+            item.ToBeFree(this);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this._chapterList.GetEnumerator();
         }
+        #endregion
 
+        #region Internal methods
+        private void NextRequestIntended()
+        {
+            if (! (this._currentChapter?.HasNextInactiveQuest).GetValueOrDefault(false))
+            {
+                IChapter lastChapter = this._currentChapter;
+                this._currentChapter = this.GetNextInactiveChapter();
+                this._currentChapter?.Activate(false);
+
+                lastChapter?.Inactivate();
+            }
+            bool? isQuestActivated = this._currentChapter?.ActivateNextQuest();
+        }
+
+        private IChapter GetNextInactiveChapter()
+        {
+            return this._chapterList.FirstOrDefault(item => !item.IsActive && !item.IsDone);
+        }
         #endregion
 
         #region Properties
-        public IQuest CurrentQuest { get => this._currentQuest; private set => this._currentQuest = value; }
-
         public IChapter this[int index] { get => this._chapterList[index]; set => this._chapterList[index] = value; }
 
         /// <summary>
@@ -119,6 +151,8 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         /// Is done if all quests are achieved
         /// </summary>
         public bool IsDone { get => this._chapterList.All(item => item.IsDone); }
+
+        public IChapter CurrentChapter => this._currentChapter;
         #endregion
     }
 }

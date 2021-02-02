@@ -9,8 +9,9 @@ using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
+using ladiagonaledupoulpe.Sources.App.Shared.Signals;
 
-namespace ladiagonaledupoulpe.Sources.App.Shared.Services
+namespace ladiagonaledupoulpe.Sources.App.Shared.Plugins.UI.DialogBoxs
 {
 	/// <summary>
 	/// Manager of the dialogbox of one scene.
@@ -19,14 +20,6 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 	public class DialoxBoxManager : Node, IDialogBoxManager
 	{
 		#region Fields
-		#region Signals
-		/// <summary>
-		/// Occurs when all messages of one exchange in dialogbox are done
-		/// </summary>
-		[Signal]
-		public delegate void EndOfOneExchange();
-		#endregion
-
 		private Timer _timer = null;
 		private List<DialogBoxExchange> _exchanges = null;
 		private DialogBoxExchange _currentExchange = null;
@@ -42,10 +35,17 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 		{
 			base._Ready();
 
-			this.DialogBox = this.GetRootNode<DialogBox>();
-			this.DialogBox.Connect(nameof(DialogBox.EndOfAllMessages), this, nameof(StopDisplayMessagesOfOneExchange));
+			this.AttachEvents();
 
+			this.DialogBox = this.GetRootNode<DialogBox>();
 			this.CreateTimer();
+		}
+
+		private void AttachEvents()
+        {
+			EventsProxy eventsProxy = this.GetRootNode<EventsProxy>();
+			eventsProxy.DialogBoxEvents.AttachStartOneDialog(this, nameof(EventsProxy_StartOneDialog));
+			eventsProxy.DialogBoxEvents.AttachEndOfAllMessages(this, nameof(StopDisplayMessagesOfOneExchange));
 		}
 
 		/// <summary>
@@ -68,6 +68,11 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 		#endregion
 
 		#region Internal methods
+		private void EventsProxy_StartOneDialog(string key)
+        {
+			this.Start(key);
+        }
+
 		private void CreateTimer()
 		{
 			this._timer = new Timer();
@@ -89,7 +94,7 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Services
 
 		private void StopDisplayMessagesOfOneExchange()
 		{
-			this.EmitSignal(nameof(EndOfOneExchange));
+			this.GetRootNode<EventsProxy>().DialogBoxEvents.BeEndOfOneExchange();
 		}
 
 		private void ShowDialog()

@@ -2,6 +2,7 @@ using Godot;
 using ladiagonaledupoulpe.Sources.App.Shared.Constants;
 using ladiagonaledupoulpe.Sources.App.Shared.Enums;
 using ladiagonaledupoulpe.Sources.App.Shared.Scenes.Dialog;
+using ladiagonaledupoulpe.Sources.App.Shared.Signals;
 using ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,13 @@ public class DialogBox : Node2D
 {
 	#region Constants
 	private const string BASE_RESOURCE_PATH = "res://Sources/App/Shared/Assets/Animations";
-	private const float DEFAULT_HEIGHT = 200;
+	private const string BOXSIZEANIMATION_LEFT_KEY = "BoxSizeLeftAnimation";
+	private const int MARGIN_X = 35;
+	private const int MARGIN_Y = 20;
 	#endregion
 
 	#region Fields
+	private EventsProxy _eventsProxy = null;
 	private List<MessageContent> _messageContents;
 	private RichTextLabel _content = null;
 	private Timer _currentTimer = null;
@@ -27,26 +31,16 @@ public class DialogBox : Node2D
 	private ColorRect _borderRectangle = null;
 	private int _currentPartOfMessage = 0;
 	private Node2D _container = null;
-
-	#region Signals
-	/// <summary>
-	/// Occurs when one message is ended
-	/// </summary>
-	[Signal]
-	public delegate void EndOfOneMessage();
-
-	/// <summary>
-	/// Occurs when all of the message are ended
-	/// </summary>
-	[Signal]
-	public delegate void EndOfAllMessages();
-	#endregion
+	private AnimationPlayer _animateBox = null;
 	#endregion
 
 	#region Public methods
 	public override void _Ready()
 	{
-		this._container = this.GetNode<CanvasLayer>("CanvasLayer").GetNode<Node2D>("Container");
+		this._eventsProxy = this.GetRootNode<EventsProxy>();
+
+		CanvasLayer layer = this.GetNode<CanvasLayer>("CanvasLayer");
+		this._container = layer.GetNode<Node2D>("Container");
 		this.SetVisibility(false);
 
 		this._content = this._container.GetNode<RichTextLabel>("Content");
@@ -54,9 +48,9 @@ public class DialogBox : Node2D
 		this._nextOrCloseButton = this._container.GetNode<Button>("NextOrClose");
 		this._animatedSprite = this._container.GetNode<AnimatedSprite>("AnimatedSprite");
 		this._borderRectangle = this._container.GetNode<ColorRect>("BorderRect");
+		this._animateBox = this._container.GetNode<AnimationPlayer>("AnimateBox");
 
 		this.GetTree().Root.Connect("size_changed", this, nameof(Resize));
-		this.PutAtTheBottom();
 	}
 
 	public override void _Input(InputEvent @event)
@@ -75,6 +69,14 @@ public class DialogBox : Node2D
 	{
 		this._messageContents = messageContents;
 
+		this.DefineWindowPosition(this.CurrentMessage.SpriteDirection);
+		this.DefinePositionFromAnimation();
+
+		this._animateBox.Play(BOXSIZEANIMATION_LEFT_KEY);
+	}
+
+	private void StartDisplayOneMessage()
+	{
 		this.Initialize();
 		this._currentTimer.Start();
 	}
@@ -96,7 +98,7 @@ public class DialogBox : Node2D
 		this.CurrentVisibleCharacters++;
 		if (this.CurrentMessage != null && this.CurrentPartOfMessage >= this.CurrentMessage.Content.Length)
 		{
-			this.EmitSignal(nameof(EndOfOneMessage));
+			this._eventsProxy.DialogBoxEvents.BeEndOfOneMessage();
 			this._currentTimer.Stop();
 		}
 	}
@@ -115,6 +117,14 @@ public class DialogBox : Node2D
 	#endregion
 
 	#region Internal methods
+	private void _on_AnimateBox_animation_finished(String animationName)
+	{
+		if (animationName == BOXSIZEANIMATION_LEFT_KEY)
+		{
+			this.StartDisplayOneMessage();
+		}
+	}
+
 	private void SetVisibility(bool visible)
 	{
 		this.Visible = visible;
@@ -124,20 +134,77 @@ public class DialogBox : Node2D
 	private void Initialize()
 	{
 		this.SetVisibility(this.MessageContents != null & this.MessageContents.Count > 0);
-		
+
 		this.CurrentVisibleCharacters = 0;
 		this._content.BbcodeText = this.DefineAlignement(this.CurrentMessage.Content);
 
 		this._animatedSprite.Frames = null;
 		if (this.CurrentMessage.SpriteFrames != null)
 		{
+			this._animatedSprite.Scale = new Vector2(0.2f, 0.2f);
 			this._animatedSprite.Frames = this.CurrentMessage.SpriteFrames;
 			this._animatedSprite.Play(DialogBoxSpriteStatus.Idle.ToString().ToLower());
+		}
+	}
 
-			this.DefineAnimatedSpritePosition();
+	private void DefineWindowPosition(Direction position)
+	{
+		//Rect2 windowPosition = this.GetViewportRect();
+		//float x = 0;
+		//float y = windowPosition.Size.y - this._borderRectangle.RectSize.y;
+
+		//if (position == Direction.Left)
+		//{
+		//	x = MARGIN_X;
+		//}
+
+		//if (position == Direction.Right)
+		//{
+		//	x = windowPosition.End.x - this._borderRectangle.RectSize.x - MARGIN_X;
+		//}
+
+		//Vector2 newPosition = new Vector2(x, y - MARGIN_Y);
+		//this.Position = newPosition;
+		//this._container.Position = newPosition;		
+	}
+
+	private void DefinePositionFromAnimation()
+	{
+		float positionY = this._borderRectangle.RectSize.y / 2;
+		Vector2 beginPosition = new Vector2(-50, positionY);
+
+		if (this.CurrentMessage.SpriteDirection == Direction.Right)
+		{
+			Rect2 windowPosition = this.GetViewportRect();
+			beginPosition = new Vector2(windowPosition.Size.x + 50, beginPosition.y);
 		}
 
-		this.SetTextFromNextOrCloseButton();
+		var animation = this._animateBox.GetAnimation(BOXSIZEANIMATION_LEFT_KEY);
+		this.DefineBackgroundPositionFromAnimation(animation, beginPosition);
+	}
+
+	private void DefineBackgroundPositionFromAnimation(Animation animation, Vector2 beginPosition)
+	{
+		float marginX = MARGIN_X;
+		float newPositionX = this._borderRectangle.RectSize.x / 2 + marginX;
+
+		if (this.CurrentMessage.SpriteDirection == Direction.Right)
+		{
+			marginX = -marginX;
+		}
+
+
+		this.DefineObjectPositionFromAnimation(animation, "Container", 0.01f, beginPosition, 
+												new Vector2(newPositionX, this._borderRectangle.RectSize.y / 2));
+	}
+
+	private void DefineObjectPositionFromAnimation(Animation animation, string trackCategory, float beginTime, 
+												   Vector2 beginPosition, Vector2 endPosition)
+	{
+		int trackId = animation.FindTrack(trackCategory + ":position");
+
+		animation.DefinePositionToAnimation(trackId, beginTime, beginPosition);
+		animation.DefinePositionToAnimation(trackId, 0.5f, endPosition);
 	}
 
 	/// <summary>
@@ -152,16 +219,16 @@ public class DialogBox : Node2D
 
 		if (this.Visible)
 		{
-			this.Initialize();
-			this._currentTimer.Start();
+			this.DefineWindowPosition(this.CurrentMessage.SpriteDirection);
+			this.DefinePositionFromAnimation();
+			this._animateBox.Play(BOXSIZEANIMATION_LEFT_KEY);
 		}
 
 		if (!this.Visible)
 		{
 			this.MessageContents.Clear();
-			this.EmitSignal(nameof(EndOfAllMessages));
+			this._eventsProxy.DialogBoxEvents.BeEndOfAllMessages();
 		}
-
 	}
 
 	private void DisplayFullMessage()
@@ -170,33 +237,9 @@ public class DialogBox : Node2D
 		this._currentTimer.Stop();
 	}
 
-	private void DefineAnimatedSpritePosition()
-	{
-		if (this.CurrentMessage.SpriteDirection == Direction.Right)
-		{
-			Vector2 animatedSpriteSize = new Vector2(130, 70); // TODO: 08/06/2020, see to get real size
-
-			Vector2 newPosition = new Vector2(this._animatedSprite.Position.x + this._borderRectangle.RectSize.x - animatedSpriteSize.x,
-											  this._animatedSprite.Position.y + this._borderRectangle.RectSize.y - animatedSpriteSize.y);
-
-			this._animatedSprite.Position = newPosition;
-		}
-	}
-
-	private void PutAtTheBottom()
-	{
-		Rect2 windowPosition = this.GetViewportRect();
-
-		float newY = windowPosition.Size.y - this._borderRectangle.RectSize.y;
-		float newX = windowPosition.Size.x / 2 - (this._borderRectangle.RectSize.x / 2);
-
-		this.Position = new Vector2(newX, newY);
-		this._container.Position = this.Position;
-	}
-
 	private void Resize()
 	{
-		this.PutAtTheBottom();
+		this.DefineWindowPosition(this.CurrentMessage.SpriteDirection);
 	}
 
 	private void Reset()
@@ -205,22 +248,8 @@ public class DialogBox : Node2D
 		this.CurrentPartOfMessage = 0;
 	}
 
-	private void SetTextFromNextOrCloseButton()
-	{
-		this._nextOrCloseButton.Text = "Fermer";
-		if (this.CurrentPartOfMessage < this.MessageContents.Count - 1)
-		{
-			this._nextOrCloseButton.Text = "Suivant";
-		}
-	}
-
 	private string DefineAlignement(string content)
 	{
-		if (this.CurrentMessage.SpriteDirection == Direction.Right)
-		{
-			content = content.AlignRightToBBContent();
-		}
-
 		return content;
 	}
 	#endregion

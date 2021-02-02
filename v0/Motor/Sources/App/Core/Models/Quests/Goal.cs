@@ -21,9 +21,12 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         #endregion
 
         #region Constructors
-        public Goal(IQuest quest)
+        public Goal(IQuest quest): this(quest, "") {}
+
+        public Goal(IQuest quest, string description)
         {
             this.Quest = quest;
+            this.Description = description;
         }
         #endregion
 
@@ -31,7 +34,7 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         public override void _Ready()
         {
             base._Ready();
-            this._questEvents = this.GetRootNode<QuestEvents>();
+            this._questEvents = this.GetRootNode<EventsProxy>().QuestEvents;
             this.DoInitialize();
         }
 
@@ -57,6 +60,11 @@ namespace ladiagonaledupoulpe.Sources.App.Core.Models.Quests
         public bool IsAchieved { get => this._isAchieved; protected set => this._isAchieved = value; }
 
         public IQuest Quest { get; private set; }
+
+        public string Description { get; private set; }
+
+        [Export]
+        public int Id { get; set; }
         #endregion
     }
 }

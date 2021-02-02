@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Models.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,8 +10,24 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
     /// <summary>
     /// Chapter of the story, contains quest list
     /// </summary>
-    public interface IChapter : IList<IQuest>
+    public interface IChapter : IList<IQuest>, IItem
     {
+        /// <summary>
+        /// Activates the chapter
+        /// </summary>
+        void Activate(bool activeQuest = true);
+
+        /// <summary>
+        /// Stops using current chapter
+        /// </summary>
+        void Inactivate();
+
+        /// <summary>
+        /// Searches next quest and activates it.
+        /// If the chapter is not able to find one not actived quest, return false
+        /// </summary>
+        bool ActivateNextQuest();
+
         /// <summary>
         /// Id of the chapter
         /// </summary>
@@ -30,5 +47,15 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Interfaces.Quests
         /// Is done if all quests are achieved
         /// </summary>
         bool IsDone { get; }
+
+        /// <summary>
+        /// True if chapter is active
+        /// </summary>
+        bool IsActive { get; }
+
+        /// <summary>
+        /// Detects if there is at least one inactive quest
+        /// </summary>
+        bool HasNextInactiveQuest { get; }
     }
 }
