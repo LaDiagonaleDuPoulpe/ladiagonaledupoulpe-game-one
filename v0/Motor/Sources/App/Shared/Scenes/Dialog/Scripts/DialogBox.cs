@@ -39,7 +39,8 @@ public class DialogBox : Node2D
 	{
 		this._eventsProxy = this.GetRootNode<EventsProxy>();
 
-		this._container = this.GetNode<CanvasLayer>("CanvasLayer").GetNode<Node2D>("Container");
+		CanvasLayer layer = this.GetNode<CanvasLayer>("CanvasLayer");
+		this._container = layer.GetNode<Node2D>("Container");
 		this.SetVisibility(false);
 
 		this._content = this._container.GetNode<RichTextLabel>("Content");
@@ -148,23 +149,23 @@ public class DialogBox : Node2D
 
 	private void DefineWindowPosition(Direction position)
 	{
-		Rect2 windowPosition = this.GetViewportRect();
-		float x = 0;
-		float y = windowPosition.Size.y - this._borderRectangle.RectSize.y;
+		//Rect2 windowPosition = this.GetViewportRect();
+		//float x = 0;
+		//float y = windowPosition.Size.y - this._borderRectangle.RectSize.y;
 
-		if (position == Direction.Left)
-		{
-			x = MARGIN_X;
-		}
+		//if (position == Direction.Left)
+		//{
+		//	x = MARGIN_X;
+		//}
 
-		if (position == Direction.Right)
-		{
-			x = windowPosition.End.x - this._borderRectangle.RectSize.x - MARGIN_X;
-		}
+		//if (position == Direction.Right)
+		//{
+		//	x = windowPosition.End.x - this._borderRectangle.RectSize.x - MARGIN_X;
+		//}
 
-		Vector2 newPosition = new Vector2(x, y - MARGIN_Y);
-		this.Position = newPosition;
-		this._container.Position = newPosition;		
+		//Vector2 newPosition = new Vector2(x, y - MARGIN_Y);
+		//this.Position = newPosition;
+		//this._container.Position = newPosition;		
 	}
 
 	private void DefinePositionFromAnimation()
@@ -180,34 +181,27 @@ public class DialogBox : Node2D
 
 		var animation = this._animateBox.GetAnimation(BOXSIZEANIMATION_LEFT_KEY);
 		this.DefineBackgroundPositionFromAnimation(animation, beginPosition);
-		this.DefineSpritePositionFromAnimation(animation, beginPosition);
 	}
 
 	private void DefineBackgroundPositionFromAnimation(Animation animation, Vector2 beginPosition)
 	{
 		float marginX = MARGIN_X;
+		float newPositionX = this._borderRectangle.RectSize.x / 2 + marginX;
 
 		if (this.CurrentMessage.SpriteDirection == Direction.Right)
 		{
 			marginX = -marginX;
 		}
 
-		float newPositionX = this._borderRectangle.RectSize.x / 2 + marginX;
 
-		this.DefineObjectPositionFromAnimation(animation, "Background", 0.1f, beginPosition, 
+		this.DefineObjectPositionFromAnimation(animation, "Container", 0.01f, beginPosition, 
 												new Vector2(newPositionX, this._borderRectangle.RectSize.y / 2));
-	}
-
-	private void DefineSpritePositionFromAnimation(Animation animation, Vector2 beginPosition)
-	{
-		this.DefineObjectPositionFromAnimation(animation, "AroundCharacter", 0.2f, beginPosition, 
-											   new Vector2(MARGIN_X * 2, this._borderRectangle.RectPosition.y));
 	}
 
 	private void DefineObjectPositionFromAnimation(Animation animation, string trackCategory, float beginTime, 
 												   Vector2 beginPosition, Vector2 endPosition)
 	{
-		int trackId = animation.FindTrack($"{trackCategory}:position");
+		int trackId = animation.FindTrack(trackCategory + ":position");
 
 		animation.DefinePositionToAnimation(trackId, beginTime, beginPosition);
 		animation.DefinePositionToAnimation(trackId, 0.5f, endPosition);

@@ -17,15 +17,15 @@ namespace ladiagonaledupoulpe.Sources.App.Shared.Tools.ExtensionMethods
         /// Defines value of one key, from one animation
         /// </summary>
         /// <param name="animation"></param>
-        /// <param name="animationId"></param>
+        /// <param name="trackId"></param>
         /// <param name="time"></param>
         /// <param name="position"></param>
-        public static void DefinePositionToAnimation(this Animation animation, int animationId, float time, Vector2 position)
+        public static void DefinePositionToAnimation(this Animation animation, int trackId, float time, Vector2 position)
         {
-            int key = animation.TrackFindKey(animationId, time, true);
+            int key = animation.TrackFindKey(trackId, time);
             if (key >= 0)
             {
-                animation.TrackSetKeyValue(animationId, key, position);
+                animation.TrackSetKeyValue(trackId, key, position);
             }
         }
         #endregion
