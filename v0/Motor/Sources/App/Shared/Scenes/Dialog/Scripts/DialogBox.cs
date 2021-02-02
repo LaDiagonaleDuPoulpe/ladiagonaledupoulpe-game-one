@@ -17,7 +17,7 @@ public class DialogBox : Node2D
 	#region Constants
 	private const string BASE_RESOURCE_PATH = "res://Sources/App/Shared/Assets/Animations";
 	private const string BOXSIZEANIMATION_LEFT_KEY = "BoxSizeLeftAnimation";
-	private const int MARGIN_X = 20;
+	private const int MARGIN_X = 35;
 	private const int MARGIN_Y = 20;
 	#endregion
 
@@ -169,9 +169,14 @@ public class DialogBox : Node2D
 
 	private void DefinePositionFromAnimation()
 	{
-		Rect2 windowPosition = this.GetViewportRect();
 		float positionY = this._borderRectangle.RectSize.y / 2;
 		Vector2 beginPosition = new Vector2(-50, positionY);
+
+		if (this.CurrentMessage.SpriteDirection == Direction.Right)
+		{
+			Rect2 windowPosition = this.GetViewportRect();
+			beginPosition = new Vector2(windowPosition.Size.x + 50, beginPosition.y);
+		}
 
 		var animation = this._animateBox.GetAnimation(BOXSIZEANIMATION_LEFT_KEY);
 		this.DefineBackgroundPositionFromAnimation(animation, beginPosition);
@@ -180,8 +185,17 @@ public class DialogBox : Node2D
 
 	private void DefineBackgroundPositionFromAnimation(Animation animation, Vector2 beginPosition)
 	{
+		float marginX = MARGIN_X;
+
+		if (this.CurrentMessage.SpriteDirection == Direction.Right)
+		{
+			marginX = -marginX;
+		}
+
+		float newPositionX = this._borderRectangle.RectSize.x / 2 + marginX;
+
 		this.DefineObjectPositionFromAnimation(animation, "Background", 0.1f, beginPosition, 
-												new Vector2(this._borderRectangle.RectSize.x / 2 + MARGIN_X, this._borderRectangle.RectSize.y / 2));
+												new Vector2(newPositionX, this._borderRectangle.RectSize.y / 2));
 	}
 
 	private void DefineSpritePositionFromAnimation(Animation animation, Vector2 beginPosition)
